@@ -11,7 +11,15 @@ export default NextAuth({
       clientSecret: process.env.GITHUB_SECRET,
     }),
   ],
-  theme: {
-    colorScheme: "light",
+  callbacks: {
+    async signIn({ user, account, profile, email, credentials }: any) {
+      // if(REF_LINK_MATCH_SOME_REF_LINK_FROM_DATABASE || ACCOUNT_FOUND_IN_DATABASE) {
+      //     return true
+      // } else {
+      //    return false
+      //    and redirect to erro page
+      // }
+      return true;
+    },
   },
 });
