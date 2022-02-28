@@ -1,8 +1,8 @@
-import NextAuth from "next-auth";
-import GithubProvider from "next-auth/providers/github";
-import { PrismaAdapter } from "@next-auth/prisma-adapter";
-import { prisma } from "../../../lib/prisma";
-import { NextApiRequest, NextApiResponse } from "next";
+import NextAuth from 'next-auth';
+import GithubProvider from 'next-auth/providers/github';
+import { PrismaAdapter } from '@next-auth/prisma-adapter';
+import { prisma } from '../../../lib/prisma';
+import { NextApiRequest, NextApiResponse } from 'next';
 
 export default async (req: NextApiRequest, res: NextApiResponse<any>) => {
   const inviteUrlId = req.query.path;
@@ -20,7 +20,7 @@ export default async (req: NextApiRequest, res: NextApiResponse<any>) => {
 
         const cohort = await prisma.cohort.create({
           data: {
-            name: "checkCohort",
+            name: 'checkCohort',
           },
         });
 
