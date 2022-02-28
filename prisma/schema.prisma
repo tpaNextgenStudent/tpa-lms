@@ -54,3 +54,9 @@ model VerificationToken {
 
   @@unique([identifier, token])
 }
+
+model Cohort {
+  id            String  @id @default(cuid())
+  name          String
+  inviteUrlId   String  @default(cuid())
+}
