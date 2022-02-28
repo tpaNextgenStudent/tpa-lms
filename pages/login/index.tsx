@@ -1,6 +1,6 @@
-import { useSession, signIn, signOut } from "next-auth/react";
-import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useSession, signIn, signOut } from 'next-auth/react';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 export default function Login() {
   const Router = useRouter();
@@ -8,11 +8,11 @@ export default function Login() {
 
   useEffect(() => {
     if (session) {
-      Router.push("/");
+      Router.push('/');
     }
   }, [session]);
 
-  const path = (Router.query.refId as string) || "";
+  const path = (Router.query.refId as string) || '';
 
   return !session ? (
     <>
@@ -20,8 +20,8 @@ export default function Login() {
       <button
         onClick={() =>
           signIn(
-            "github",
-            { callbackUrl: "http://localhost:3000" },
+            'github',
+            { callbackUrl: 'http://localhost:3000' },
             {
               path: path,
             }
@@ -32,6 +32,6 @@ export default function Login() {
       </button>
     </>
   ) : (
-    ""
+    ''
   );
 }
