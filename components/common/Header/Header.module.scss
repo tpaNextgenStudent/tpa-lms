@@ -8,9 +8,7 @@
 
 .title {
   margin-right: auto;
-}
-
-.bell {
+  font-weight: 600;
 }
 
 .userWrapper {
@@ -19,7 +17,19 @@
 }
 
 .userAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
 }
 
 .userName {
+  margin-left: 16px;
+}
+
+.activeIcon {
+  margin-left: 11px;
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  background-color: black;
 }

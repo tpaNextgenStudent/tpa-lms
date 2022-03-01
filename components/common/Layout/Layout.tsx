@@ -2,10 +2,11 @@ import { ReactNode } from 'react';
 import styles from './Layout.module.scss';
 import { Sidebar } from '../Sidebar/Sidebar';
 import { Header } from '../Header/Header';
+import { User } from '../../../lib/mocks';
 
 interface LayoutProps {
   children: ReactNode;
-  user: { name: string };
+  user: User;
 }
 
 export const Layout = ({ children, user }: LayoutProps) => {
