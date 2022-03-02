@@ -38,17 +38,18 @@ export interface Task {
   //image -> (probably) null
   //info -> markdown text
 }
-
+type Attempt = { taskId: string; date: string };
 type TaskStatus = 'todo' | 'done' | 'doing';
 export interface UserTask {
   userId: string;
   taskId: string;
   status: TaskStatus;
-  attempt: number;
+  attempts: Attempt[];
+  comment: null | string;
   score: null | number; //grade
   answer: null | string;
   //answer is different for each task type
-  //code -> null - answers posted on github
+  //code -> link to Pull Request with response
   //quiz -> null - automatic assessment after quiz submission using webhooks
   //image -> image (probably image's url uploaded to some provider like cloudfront)
   //info -> null - it's in todo or done
@@ -125,34 +126,38 @@ const mockedUsersTasks: UserTask[] = [
   {
     userId: 'userId',
     answer: null,
-    attempt: 0,
+    attempts: [],
     score: null,
     status: 'doing',
     taskId: 'task_id1',
+    comment: null,
   },
   {
     userId: 'userId',
     answer: null,
-    attempt: 0,
+    attempts: [],
     score: null,
     status: 'todo',
     taskId: 'task_id2',
+    comment: null,
   },
   {
     userId: 'userId',
     answer: null,
-    attempt: 0,
+    attempts: [],
     score: null,
     status: 'todo',
     taskId: 'task_id3',
+    comment: null,
   },
   {
     userId: 'userId',
     answer: null,
-    attempt: 0,
+    attempts: [],
     score: null,
     status: 'todo',
     taskId: 'task_id4',
+    comment: null,
   },
 ];
 
