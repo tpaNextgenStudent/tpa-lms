@@ -58,20 +58,20 @@ export interface UserTask {
 const mockedTasks: Task[] = [
   {
     id: 'task_id1',
+    name: 'Flutter introduction',
+    type: 'info',
+    data: '### Markdown title',
+    moduleId: 'mid',
+    description: 'This is Flutter introduction info-type task!',
+  },
+  {
+    id: 'task_id2',
     name: 'Translate to a box diagram',
     type: 'image',
     data: null,
     moduleId: 'mid',
     description:
       'Flutter is an app SDK for building high-performance, high-fidelity apps for iOS, Android, web and desktop from a single codebase.',
-  },
-  {
-    id: 'task_id2',
-    name: 'Flutter introduction',
-    type: 'info',
-    data: '### Markdown title',
-    moduleId: 'mid',
-    description: 'This is Flutter introduction info-type task!',
   },
   {
     id: 'task_id3',
@@ -96,6 +96,11 @@ const mockedModules: Module[] = [
     id: 'mid',
     name: 'Basics',
     tasks: mockedTasks,
+  },
+  {
+    id: 'mid2',
+    name: 'Module 2',
+    tasks: [],
   },
 ];
 
