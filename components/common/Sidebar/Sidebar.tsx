@@ -4,10 +4,9 @@ import { useRouter } from 'next/router';
 import clsx from 'clsx';
 
 const dashboardLinks = [
-  { path: '/', label: 'Dashboard' },
   { path: '/tasks', label: 'My Tasks' },
   { path: '/scores', label: 'My Scores' },
-  { path: '/placeholder', label: 'Placeholder' },
+  { path: '/cohort', label: 'Cohort Progress' },
 ];
 
 export const Sidebar = () => {
@@ -31,7 +30,7 @@ export const Sidebar = () => {
                 <a
                   className={clsx(
                     styles.navLink,
-                    path === currentPath && styles.navLinkActive
+                    currentPath.includes(path) && styles.navLinkActive
                   )}
                 >
                   <span className={styles.linkIcon} aria-hidden={true} />
