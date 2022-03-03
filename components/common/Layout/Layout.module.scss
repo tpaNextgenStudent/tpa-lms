@@ -1,6 +1,6 @@
 .wrapper {
   display: flex;
-  min-height: 100vh;
+  height: 100vh;
 }
 
 .mainWrapper {
@@ -11,5 +11,5 @@
 
 .contentWrapper {
   flex: 1;
-  padding: 24px;
+  min-height: 0;
 }

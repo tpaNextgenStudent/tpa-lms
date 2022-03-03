@@ -1,7 +1,7 @@
-import { db } from '../../lib/mocks';
+import { db } from '../../../lib/mocks';
 import { GetServerSidePropsContext } from 'next';
 
-export default function TasksIndex() {
+export default function Module() {
   return null;
 }
 
@@ -20,8 +20,14 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
     };
   }
 
-  //user haven't picked module,
-  //find 'in progress' task and redirect user to this task's page
+  //get selected module from url
+  const pickedModuleId = ctx.query.module;
+  //validate picked module, return 404 when not found
+
+  //user haven't picked a task
+  //try to find 'in progress' task in this module
+  //if all tasks are 'done', get first task from the module
+
   return {
     redirect: {
       permanent: true,
