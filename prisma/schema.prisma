@@ -4,25 +4,25 @@ datasource db {
 }
 
 generator client {
-  provider        = "prisma-client-js"
+  provider = "prisma-client-js"
 }
 
 model Account {
-  id                        String  @id @default(cuid())
-  userId                    String
-  type                      String
-  provider                  String
-  providerAccountId         String
-  refresh_token             String?  @db.Text
-  access_token              String?  @db.Text
-  refresh_token_expires_in  Int?
-  expires_at                Int?
-  token_type                String?
-  scope                     String?
-  id_token                  String?  @db.Text
-  session_state             String?
-  oauth_token_secret        String?
-  oauth_token               String?
+  id                       String  @id @default(cuid())
+  userId                   String
+  type                     String
+  provider                 String
+  providerAccountId        String
+  refresh_token            String? @db.Text
+  access_token             String? @db.Text
+  refresh_token_expires_in Int?
+  expires_at               Int?
+  token_type               String?
+  scope                    String?
+  id_token                 String? @db.Text
+  session_state            String?
+  oauth_token_secret       String?
+  oauth_token              String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
@@ -55,8 +55,50 @@ model VerificationToken {
   @@unique([identifier, token])
 }
 
+model LmsUser {
+  id             String          @id @default(cuid())
+  cohortId       String
+  cohort         Cohort          @relation(fields: [cohortId], references: [id])
+  githubName     String
+  name           String
+  surname        String
+  email          String          @unique
+  avatar         String
+  bio            String
+  role           String
+  CompletedTasks CompletedTask[]
+}
+
 model Cohort {
-  id            String  @id @default(cuid())
-  name          String
-  inviteUrlId   String  @default(cuid())
+  id      String        @id @default(cuid())
+  name    String
+  modules String
+  Users   LmsUser[]
+}
+
+model CompletedTask {
+  id      String      @id @default(cuid())
+  userId  String
+  user    LmsUser     @relation(fields: [userId], references: [id])
+  status  String
+  attempt Int
+  score   Int
+  comment String
+  answer  String
+}
+
+model Task {
+  id             String          @id @default(cuid())
+  moduleId       String
+  module         Module        @relation(fields: [moduleId], references: [id])
+  position       Int
+  name           String
+  description    String
+  link           String
+}
+
+model Module {
+  id             String          @id @default(cuid())
+  name           String
+  Tasks          Task[]
 }
