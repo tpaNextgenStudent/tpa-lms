@@ -22,6 +22,7 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
 
   //get selected module from url
   const pickedModuleId = ctx.query.module;
+  //validate picked module, return 404 when not found
 
   //user haven't picked a task
   //try to find 'in progress' task in this module

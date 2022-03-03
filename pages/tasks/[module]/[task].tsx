@@ -4,6 +4,7 @@ import { GetServerSidePropsContext } from 'next';
 import { InferPagePropsType } from '../../../lib/utils/types';
 import { TasksMenu } from '../../../components/tasks/TasksMenu/TasksMenu';
 import styles from '../../../components/tasks/tasks-page/tasksPage.module.scss';
+import { TaskSection } from '../../../components/tasks/TaskSection/TaskSection';
 
 export default function Tasks({
   user,
@@ -13,6 +14,7 @@ export default function Tasks({
   tasks,
   task,
 }: InferPagePropsType<typeof getServerSideProps>) {
+  console.log(task);
   return (
     <Layout user={user}>
       <div className={styles.tasksWrapper}>
@@ -22,6 +24,7 @@ export default function Tasks({
           tasks={tasks}
           task={task}
         />
+        <TaskSection task={task} module={module} />
       </div>
     </Layout>
   );
@@ -71,9 +74,16 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
     //we don't have to map it with prisma, it will be connected with relation
     .map(ut => ({ ...ut, task: moduleTasks.find(t => t.id === ut.taskId) }));
 
+  console.log(userTasks);
+
   const pickedTaskId = ctx.query.task;
 
   const currentTask = usersTasks.find(t => t.taskId === pickedTaskId);
+  if (!currentTask) {
+    return {
+      notFound: true,
+    };
+  }
 
   return {
     props: {
@@ -82,7 +92,10 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
       module,
       modules,
       tasks: userTasks,
-      task: currentTask || null,
+      task: {
+        ...currentTask,
+        task: moduleTasks.find(t => t.id === currentTask.taskId),
+      },
     },
   };
 }

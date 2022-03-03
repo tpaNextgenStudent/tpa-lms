@@ -1,0 +1,74 @@
+.wrapper {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.taskHeader {
+  padding: 24px;
+  display: flex;
+  align-items: center;
+}
+
+.taskTitleIcon {
+  width: 40px;
+  height: 40px;
+  background-color: #e8e7e7;
+  border-radius: 8px;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 17px;
+    height: 17px;
+    border-radius: 50px;
+    background-color: black;
+  }
+}
+
+.taskTitle {
+  margin-left: 24px;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 40px;
+}
+
+.taskModule {
+  padding: 8px 16px;
+  margin-left: 24px;
+  background-color: #eaeaea;
+  border-radius: 64px;
+}
+
+.fullScreenButton {
+  margin-left: auto;
+  background-color: #eaeaea;
+  border-radius: 64px;
+  width: 40px;
+  height: 40px;
+  border: none;
+  cursor: pointer;
+}
+
+.taskBadges {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 24px 24px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.taskBadge {
+  padding: 8px 16px;
+  background-color: #b8b8b8;
+  border-radius: 64px;
+  margin-left: 24px;
+
+  &:first-child {
+    margin-left: 0;
+  }
+}

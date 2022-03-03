@@ -1,0 +1,31 @@
+.codeActionWrapper {
+  background-color: #eaeaea;
+  border-radius: 16px;
+  display: flex;
+  padding: 0 12px 12px 0;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 24px;
+}
+
+.codeActionBlock {
+  margin: 12px 12px 0;
+  display: flex;
+  align-items: center;
+}
+
+.codeText {
+  width: 104px;
+}
+
+.codeGitCommands {
+  flex-basis: 230px;
+  margin-left: 16px;
+  padding: 8px;
+  background-color: white;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 24px;
+}
