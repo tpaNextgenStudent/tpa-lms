@@ -14,7 +14,6 @@ export default function Tasks({
   tasks,
   task,
 }: InferPagePropsType<typeof getServerSideProps>) {
-  console.log(task);
   return (
     <Layout user={user}>
       <div className={styles.tasksWrapper}>
@@ -73,8 +72,6 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
     .filter(ut => ut.userId === user.id && moduleTasksIds.includes(ut.taskId))
     //we don't have to map it with prisma, it will be connected with relation
     .map(ut => ({ ...ut, task: moduleTasks.find(t => t.id === ut.taskId) }));
-
-  console.log(userTasks);
 
   const pickedTaskId = ctx.query.task;
 
