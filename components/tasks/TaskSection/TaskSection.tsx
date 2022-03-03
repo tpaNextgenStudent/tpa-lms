@@ -3,7 +3,7 @@ import { Module, Task, UserTask } from '../../../lib/mocks';
 import { TaskDescription } from '../TaskDescription/TaskDescription';
 import { TaskAction } from '../TaskAction/TaskAction';
 import { useState } from 'react';
-import clsx from 'clsx';
+import { TaskNav } from '../TaskNav/TaskNav';
 
 interface TaskSectionProps {
   task: UserTask & { task: Task };
@@ -27,27 +27,15 @@ export const TaskSection = ({
         <span className={styles.taskBadge}>{status}</span>
         <span className={styles.taskBadge}>{task.type}</span>
       </div>
-      <div className={styles.taskNav}>
-        <button
-          onClick={() => setIsDescriptionView(true)}
-          className={clsx(
-            styles.taskNavButton,
-            isDescriptionView && styles.taskNavButtonActive
-          )}
-        >
-          Description
-        </button>
-        <button
-          onClick={() => setIsDescriptionView(false)}
-          className={clsx(
-            styles.taskNavButton,
-            !isDescriptionView && styles.taskNavButtonActive
-          )}
-        >
-          Information
-        </button>
-      </div>
-      {isDescriptionView && <TaskDescription description={task.description} />}
+      <TaskNav
+        setIsDescriptionView={setIsDescriptionView}
+        isDescriptionView={isDescriptionView}
+      />
+      {isDescriptionView ? (
+        <TaskDescription description={task.description} />
+      ) : (
+        <TaskDescription description={'information'} />
+      )}
       <TaskAction task={task} />
     </main>
   );

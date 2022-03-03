@@ -61,43 +61,6 @@
   padding: 0 24px 24px;
 }
 
-.taskNav {
-  border-bottom: 1px solid #e5e5e5;
-  padding: 0 24px 0;
-}
-
-.taskNavButton {
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 24px;
-  background: none;
-  border: none;
-  margin-left: 24px;
-  position: relative;
-  padding-bottom: 8px;
-  cursor: pointer;
-
-  &:first-child {
-    margin-left: 0;
-  }
-
-  &::after {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 4px;
-    width: 50%;
-    background-color: black;
-    border-radius: 8px;
-  }
-
-  &Active {
-    &::after {
-      content: '';
-    }
-  }
-}
-
 .taskBadge {
   padding: 8px 16px;
   background-color: #b8b8b8;
