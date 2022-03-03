@@ -1,5 +1,6 @@
 import styles from './Header.module.scss';
 import { User } from '../../../lib/mocks';
+import ArrowDown from '../../../public/arrow-down.svg';
 
 interface HeaderProps {
   title: string;
@@ -14,7 +15,9 @@ export const Header = ({ title, user }: HeaderProps) => {
       <div className={styles.userWrapper}>
         <img className={styles.userAvatar} src={user.image} alt="Avatar" />
         <p className={styles.userName}>{fullName}</p>
-        <span className={styles.activeIcon} aria-label="Status: active"></span>
+        <span className={styles.settingsIcon} aria-hidden>
+          <ArrowDown />
+        </span>
       </div>
     </header>
   );

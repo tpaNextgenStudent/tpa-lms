@@ -1,14 +1,18 @@
+@use '/lib/styles/variables/colors.module' as colors;
+
 .headerWrapper {
   height: 120px;
   display: flex;
   align-items: center;
   padding: 24px;
-  border-bottom: 1px solid #e5e5e5;
+  border-bottom: 1px solid colors.$lightGray;
 }
 
 .title {
   margin-right: auto;
   font-weight: 600;
+  font-size: 24px;
+  line-height: 40px;
 }
 
 .userWrapper {
@@ -24,12 +28,13 @@
 
 .userName {
   margin-left: 16px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
 }
 
-.activeIcon {
-  margin-left: 11px;
-  width: 8px;
-  height: 8px;
-  border-radius: 2px;
-  background-color: black;
+.settingsIcon {
+  margin-left: 15px;
+  display: flex;
+  align-items: center;
 }
