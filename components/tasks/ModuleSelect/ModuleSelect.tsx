@@ -14,18 +14,20 @@ export const ModuleSelect = ({ modules }: ModuleSelectProps) => {
   };
 
   return (
-    <select
-      onChange={handleChange}
-      className={styles.moduleSelect}
-      defaultValue={module.id}
-      name="module-select"
-      id="module-select"
-    >
-      {modules.map(m => (
-        <option key={m.id} value={m.id}>
-          {m.name}
-        </option>
-      ))}
-    </select>
+    <div className={styles.moduleSelectWrapper}>
+      <select
+        onChange={handleChange}
+        className={styles.moduleSelect}
+        defaultValue={module.id}
+        name="module-select"
+        id="module-select"
+      >
+        {modules.map(m => (
+          <option key={m.id} value={m.id}>
+            {m.name}
+          </option>
+        ))}
+      </select>
+    </div>
   );
 };
