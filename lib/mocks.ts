@@ -31,12 +31,8 @@ export interface Task {
   moduleId: string;
   type: TaskType;
   description: string; //long text
-  data: null | string;
-  //data is a content of task which is different for each task type
-  //code -> repo link
-  //quiz -> quiz link
-  //image -> (probably) null
-  //info -> markdown text
+  link: null | string;
+  //link for code/quiz type, otherwise null
 }
 type Attempt = { taskId: string; date: string };
 type TaskStatus = 'todo' | 'done' | 'in progress';
@@ -60,24 +56,24 @@ const mockedTasks: Task[] = [
     id: 'task_id1',
     name: 'Flutter introduction',
     type: 'info',
-    data: '### Markdown title',
     moduleId: 'mid',
     description: 'This is Flutter introduction info-type task!',
+    link: null,
   },
   {
     id: 'task_id2',
     name: 'Translate to a box diagram',
     type: 'image',
-    data: null,
     moduleId: 'mid',
     description:
       'Flutter is an app SDK for building high-performance, high-fidelity apps for iOS, Android, web and desktop from a single codebase.',
+    link: null,
   },
   {
     id: 'task_id3',
     name: 'Flutter tour Quiz',
     type: 'quiz',
-    data: 'https://link.to.quiz/quizhash',
+    link: 'https://link.to.quiz/quizhash',
     moduleId: 'mid',
     description: 'This is Flutter tour Quiz quiz-type task!',
   },
@@ -85,7 +81,7 @@ const mockedTasks: Task[] = [
     id: 'task_id4',
     name: 'Inheritance exercise',
     type: 'code',
-    data: 'https://github.com/user/repo',
+    link: 'https://github.com/user/repo',
     moduleId: 'mid',
     description: 'This is Inheritance exercise code-type task!',
   },
