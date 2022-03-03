@@ -1,24 +1,20 @@
+@use '/lib/styles/variables/colors.module' as colors;
+
 .sideBarWrapper {
   width: 256px;
-  background: #f3f3f3;
+  background-color: colors.$white;
   padding: 32px 24px;
   display: flex;
   flex-direction: column;
 }
 
 .logoWrapper {
-  width: 100%;
-  height: 64px;
-  background-color: #dadada;
-  border-radius: 16px;
-}
+  width: 56px;
+  height: 56px;
 
-.logo {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 16px;
-  opacity: 0;
+  path {
+    fill: colors.$purple;
+  }
 }
 
 .navWrapper {
@@ -36,34 +32,31 @@
 .navLink {
   width: 100%;
   height: 100%;
-  padding: 16px;
+  padding: 12px 21px;
   display: flex;
   align-items: center;
   border-radius: 16px;
+  color: colors.$gray;
+
+  svg > path {
+    fill: colors.$gray;
+  }
 
   &Active {
-    background-color: white;
+    svg > path {
+      fill: colors.$purple;
+    }
+  }
+
+  &Active {
+    background-color: colors.$lightPurple;
+    color: colors.$purple;
   }
 }
 
 .linkIcon {
-  width: 24px;
-  height: 24px;
-  border-radius: 4px;
-  background-color: #dadada;
-  position: relative;
-
-  &::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 10px;
-    height: 10px;
-    border-radius: 50px;
-    background-color: black;
-  }
+  display: flex;
+  align-items: center;
 }
 
 .linkText {
