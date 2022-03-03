@@ -1,3 +1,5 @@
+@use '/lib/styles/variables/colors.module' as colors;
+
 .tasksList {
   list-style-type: none;
   overflow-y: auto;
@@ -17,18 +19,20 @@
 
 .task {
   padding: 16px;
-  background-color: #eaeaea;
+  background-color: colors.$white;
   border-radius: 16px;
+  box-shadow: 4px 8px 32px rgba(7, 1, 48, 0.08);
 
   &Active {
-    border: 2px solid black;
+    color: white;
+    background-color: colors.$purple;
   }
 }
 
 .taskName {
   font-weight: 600;
-  font-size: 20px;
-  line-height: 28px;
+  font-size: 16px;
+  line-height: 24px;
 }
 
 .taskBadges {
@@ -38,17 +42,60 @@
 
 .taskBadge {
   margin-top: 16px;
-  margin-right: 8px;
-  display: block;
-  padding: 8px 16px;
-  background-color: #b8b8b8;
-  border-radius: 64px;
   font-weight: 600;
-  font-size: 16px;
-  line-height: 24px;
+  font-size: 12px;
+  line-height: 16px;
+  padding-left: 16px;
+  position: relative;
+  margin-right: 16px;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    background-color: colors.$purple;
+    border-radius: 64px;
+  }
+
+  &Active {
+    &::before {
+      background-color: colors.$white;
+    }
+  }
 }
 
-.viewDetails {
+.moduleName {
+  margin-top: 16px;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 16px;
+  padding: 8px 16px;
   display: block;
-  margin-top: 24px;
+  width: fit-content;
+  background-color: colors.$lightGray;
+  color: colors.$purple;
+  border-radius: 16px;
+
+  &Active {
+    background-color: colors.$white;
+    color: colors.$black;
+  }
+}
+
+.taskLocked {
+  margin-top: 16px;
+  padding: 8px 16px;
+  background-color: colors.$purple;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  border-radius: 64px;
+
+  svg > path {
+    fill: white;
+  }
 }

@@ -39,7 +39,7 @@ export interface Task {
   //info -> markdown text
 }
 type Attempt = { taskId: string; date: string };
-type TaskStatus = 'todo' | 'done' | 'doing';
+type TaskStatus = 'todo' | 'done' | 'in progress';
 export interface UserTask {
   userId: string;
   taskId: string;
@@ -133,7 +133,7 @@ const mockedUsersTasks: UserTask[] = [
     answer: null,
     attempts: [],
     score: null,
-    status: 'doing',
+    status: 'in progress',
     taskId: 'task_id1',
     comment: null,
   },
