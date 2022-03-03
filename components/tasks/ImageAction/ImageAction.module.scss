@@ -30,4 +30,8 @@
   padding: 12px;
   width: 208px;
   cursor: pointer;
+
+  &Active {
+    background-color: black;
+  }
 }
