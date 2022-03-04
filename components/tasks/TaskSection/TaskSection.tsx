@@ -4,6 +4,7 @@ import { TaskDescription } from '../TaskDescription/TaskDescription';
 import { TaskAction } from '../TaskAction/TaskAction';
 import { useState } from 'react';
 import { TaskNav } from '../TaskNav/TaskNav';
+import EnlargeIcon from '../../../public/enlarge-icon.svg';
 
 interface TaskSectionProps {
   task: UserTask & { task: Task };
@@ -18,10 +19,11 @@ export const TaskSection = ({
   return (
     <main className={styles.wrapper}>
       <div className={styles.taskHeader}>
-        <span className={styles.taskTitleIcon} aria-hidden={true} />
         <h2 className={styles.taskTitle}>{task.name}</h2>
         <span className={styles.taskModule}>{module.name}</span>
-        <button className={styles.fullScreenButton}>full</button>
+        <button className={styles.fullScreenButton} aria-hidden>
+          <EnlargeIcon />
+        </button>
       </div>
       <div className={styles.taskBadges}>
         <span className={styles.taskBadge}>{status}</span>
