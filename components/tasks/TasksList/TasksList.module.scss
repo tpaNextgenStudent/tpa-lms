@@ -131,9 +131,11 @@
 
   @media (max-width: media.$laptopS) {
     position: absolute;
-    top: 0;
-    right: 0;
-    transform: translate(25%, -25%) scale(0.8);
+    margin-bottom: 0;
+    bottom: 16px;
+    right: 16px;
+    transform: scale(0.9);
     padding: 8px 12px;
+    box-shadow: shadows.$shadow;
   }
 }
