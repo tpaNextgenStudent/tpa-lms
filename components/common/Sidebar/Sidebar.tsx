@@ -6,6 +6,7 @@ import Logo from '../../../public/logo.svg';
 import TasksIcon from '../../../public/tasks-icon.svg';
 import ScoresIcon from '../../../public/scores-icon.svg';
 import ProgressIcon from '../../../public/progress-icon.svg';
+import CrossIcon from '../../../public/cross-icon.svg';
 
 const dashboardLinks = [
   { path: '/tasks', label: 'My Tasks', Icon: TasksIcon },
@@ -13,12 +14,22 @@ const dashboardLinks = [
   { path: '/cohort', label: 'Cohort Progress', Icon: ProgressIcon },
 ];
 
-export const Sidebar = () => {
+interface SidebarProps {
+  closeMobileNav: () => void;
+  isMobileNavOpen: boolean;
+}
+
+export const Sidebar = ({ closeMobileNav, isMobileNavOpen }: SidebarProps) => {
   const { pathname: currentPath } = useRouter();
   return (
-    <div className={styles.sideBarWrapper}>
+    <div
+      className={clsx(
+        styles.sideBarWrapper,
+        isMobileNavOpen && styles.sideBarWrapperOpen
+      )}
+    >
       <Link href="/">
-        <a>
+        <a className={styles.logoLink}>
           <span className={styles.logoWrapper}>
             <Logo />
           </span>
@@ -45,6 +56,15 @@ export const Sidebar = () => {
           ))}
         </ul>
       </nav>
+      <div className={styles.closeButtonWrapper}>
+        <button
+          className={styles.mobileNavClose}
+          onClick={closeMobileNav}
+          aria-label="Close menu"
+        >
+          <CrossIcon />
+        </button>
+      </div>
     </div>
   );
 };

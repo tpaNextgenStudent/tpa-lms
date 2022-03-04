@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import { ReactNode, useCallback, useState } from 'react';
 import styles from './Layout.module.scss';
 import { Sidebar } from '../Sidebar/Sidebar';
 import { Header } from '../Header/Header';
@@ -11,6 +11,15 @@ interface LayoutProps {
 }
 
 export const Layout = ({ children, user }: LayoutProps) => {
+  const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
+
+  const openMobileNav = useCallback(() => {
+    setIsMobileNavOpen(true);
+  }, []);
+
+  const closeMobileNav = useCallback(() => {
+    setIsMobileNavOpen(false);
+  }, []);
   return (
     <>
       <Head>
@@ -22,9 +31,16 @@ export const Layout = ({ children, user }: LayoutProps) => {
         />
       </Head>
       <div className={styles.wrapper}>
-        <Sidebar />
+        <Sidebar
+          closeMobileNav={closeMobileNav}
+          isMobileNavOpen={isMobileNavOpen}
+        />
         <div className={styles.mainWrapper}>
-          <Header title={'My Tasks'} user={user} />
+          <Header
+            openMobileNav={openMobileNav}
+            title={'My Tasks'}
+            user={user}
+          />
           <div className={styles.contentWrapper}>{children}</div>
         </div>
       </div>
