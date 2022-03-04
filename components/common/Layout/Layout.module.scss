@@ -5,6 +5,7 @@
   height: 100vh;
 
   @media (max-width: media.$laptopS) {
+    min-height: 100vh;
     height: 100%;
   }
 }
