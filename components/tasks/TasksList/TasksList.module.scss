@@ -25,7 +25,7 @@
 
   &Active {
     color: white;
-    background-color: colors.$purple;
+    background-color: colors.$primary;
   }
 }
 
@@ -57,7 +57,7 @@
     transform: translateY(-50%);
     width: 8px;
     height: 8px;
-    background-color: colors.$purple;
+    background-color: colors.$primary;
     border-radius: 64px;
   }
 
@@ -77,7 +77,7 @@
   display: block;
   width: fit-content;
   background-color: colors.$lightGray;
-  color: colors.$purple;
+  color: colors.$primary;
   border-radius: 16px;
 
   &Active {
@@ -89,7 +89,7 @@
 .taskLocked {
   margin-top: 16px;
   padding: 8px 16px;
-  background-color: colors.$purple;
+  background-color: colors.$primary;
   width: fit-content;
   display: flex;
   align-items: center;
