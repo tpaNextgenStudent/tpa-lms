@@ -47,7 +47,13 @@ export const TasksList = ({ currentTask, tasks, module }: TasksListProps) => {
                   {module.name}
                 </span>
                 {status !== 'in progress' && (
-                  <span className={styles.taskLocked} aria-label="Task locked">
+                  <span
+                    className={clsx(
+                      styles.taskLocked,
+                      isActive && styles.taskLockedActive
+                    )}
+                    aria-label="Task locked"
+                  >
                     <LockIcon />
                   </span>
                 )}

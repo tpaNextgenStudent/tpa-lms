@@ -1,5 +1,6 @@
 @use '/lib/styles/variables/colors.module' as colors;
 @use '/lib/styles/variables/shadows.module' as shadows;
+@use '/lib/styles/variables/media.module' as media;
 
 .tasksList {
   list-style-type: none;
@@ -7,6 +8,15 @@
   max-height: 100%;
   padding: 0 24px 24px;
   margin-top: 24px;
+
+  @media (max-width: media.$laptopS) {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    overflow-y: unset;
+    overflow-x: auto;
+    width: 100%;
+  }
 }
 
 .taskLink {
@@ -16,6 +26,16 @@
   &:first-of-type {
     margin-top: 0;
   }
+
+  @media (max-width: media.$laptopS) {
+    margin-top: 0;
+    min-width: 200px;
+    margin-left: 24px;
+
+    &:first-of-type {
+      margin-left: 0;
+    }
+  }
 }
 
 .task {
@@ -23,6 +43,7 @@
   background-color: colors.$white;
   border-radius: 16px;
   box-shadow: shadows.$shadow;
+  position: relative;
 
   &Active {
     color: white;
@@ -98,5 +119,21 @@
 
   svg > path {
     fill: white;
+  }
+
+  &Active {
+    background-color: colors.$white;
+
+    svg > path {
+      fill: colors.$primary;
+    }
+  }
+
+  @media (max-width: media.$laptopS) {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(25%, -25%) scale(0.8);
+    padding: 8px 12px;
   }
 }
