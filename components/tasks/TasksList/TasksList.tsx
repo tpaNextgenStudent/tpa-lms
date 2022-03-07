@@ -1,7 +1,7 @@
 import styles from './TasksList.module.scss';
 import Link from 'next/link';
 import clsx from 'clsx';
-import { UserTask, Task, Module } from '../../../lib/mocks';
+import { UserTask, Task, Module } from '../../../lib/utils/types';
 import LockIcon from '../../../public/lock-icon.svg';
 
 interface TasksListProps {
@@ -13,10 +13,10 @@ interface TasksListProps {
 export const TasksList = ({ currentTask, tasks, module }: TasksListProps) => {
   return (
     <ul className={styles.tasksList}>
-      {tasks.map(({ task, status }) => {
+      {tasks.map(({ task, status, id }) => {
         const isActive = task.id === currentTask.taskId;
         return (
-          <Link key={task.id} href={`/tasks/${module.id}/${task.id}`}>
+          <Link key={id} href={`/tasks/${module.id}/${id}`}>
             <a className={styles.taskLink}>
               <li className={clsx(styles.task, isActive && styles.taskActive)}>
                 <h3 className={styles.taskName}>{task.name}</h3>

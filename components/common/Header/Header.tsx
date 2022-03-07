@@ -1,5 +1,5 @@
 import styles from './Header.module.scss';
-import { User } from '../../../lib/mocks';
+import { User } from '../../../lib/utils/types';
 import ArrowDown from '../../../public/arrow-down.svg';
 import MenuIcon from '../../../public/menu-icon.svg';
 

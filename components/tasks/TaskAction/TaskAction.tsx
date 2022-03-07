@@ -1,4 +1,4 @@
-import { Task } from '../../../lib/mocks';
+import { Task } from '../../../lib/utils/types';
 import { CodeAction } from '../CodeAction/CodeAction';
 import { ImageAction } from '../ImageAction/ImageAction';
 import { QuizAction } from '../QuizAction/QuizAction';

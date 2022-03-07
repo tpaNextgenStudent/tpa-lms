@@ -1,5 +1,5 @@
 import styles from './TasksMenu.module.scss';
-import { Module, Task, UserTask } from '../../../lib/mocks';
+import { Module, Task, UserTask } from '../../../lib/utils/types';
 import { ModuleSelect } from '../ModuleSelect/ModuleSelect';
 import { TasksList } from '../TasksList/TasksList';
 

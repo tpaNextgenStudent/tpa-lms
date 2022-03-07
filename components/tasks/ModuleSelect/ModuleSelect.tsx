@@ -1,5 +1,5 @@
 import styles from './ModuleSelect.module.scss';
-import { Module } from '../../../lib/mocks';
+import { Module } from '../../../lib/utils/types';
 import { ChangeEvent } from 'react';
 import { useRouter } from 'next/router';
 

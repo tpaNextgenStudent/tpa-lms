@@ -1,5 +1,5 @@
 import styles from './TaskSection.module.scss';
-import { Module, Task, UserTask } from '../../../lib/mocks';
+import { Module, Task, UserTask } from '../../../lib/utils/types';
 import { TaskDescription } from '../TaskDescription/TaskDescription';
 import { TaskAction } from '../TaskAction/TaskAction';
 import { useCallback, useState } from 'react';
