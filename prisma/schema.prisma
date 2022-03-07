@@ -70,16 +70,16 @@ model LmsUser {
 }
 
 model Cohort {
-  id      String        @id @default(cuid())
-  name    String
-  modules String
-  Users   LmsUser[]
+  id                 String               @id @default(cuid())
+  name               String
+  Users              LmsUser[]
+  ModulesLinkCohorts ModulesLinkCohorts[]
 }
 
 model CompletedTask {
-  id      String      @id @default(cuid())
+  id      String  @id @default(cuid())
   userId  String
-  user    LmsUser     @relation(fields: [userId], references: [id])
+  user    LmsUser @relation(fields: [userId], references: [id])
   status  String
   attempt Int
   score   Int
@@ -88,17 +88,29 @@ model CompletedTask {
 }
 
 model Task {
-  id             String          @id @default(cuid())
-  moduleId       String
-  module         Module        @relation(fields: [moduleId], references: [id])
-  position       Int
-  name           String
-  description    String
-  link           String
+  id          String @id @default(cuid())
+  module      Module @relation(fields: [moduleId], references: [id])
+  moduleId    String
+  type        String
+  position    Int
+  name        String
+  description String
+  link        String
 }
 
 model Module {
-  id             String          @id @default(cuid())
-  name           String
-  Tasks          Task[]
+  id                 String               @id @default(cuid())
+  name               String
+  tasks              Task[]
+  ModulesLinkCohorts ModulesLinkCohorts[]
+}
+
+model ModulesLinkCohorts {
+  cohort      Cohort @relation(fields: [cohortId], references: [id])
+  cohortId    String
+  module      Module @relation(fields: [moduleId], references: [id])
+  moduleId    String
+  orderNumber Int
+
+  @@id([cohortId, moduleId])
 }
