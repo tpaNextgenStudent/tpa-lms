@@ -1,5 +1,4 @@
-import styles from './TaskAction.module.scss';
-import { Task } from '../../../lib/mocks';
+import { Task } from '../../../lib/utils/types';
 import { CodeAction } from '../CodeAction/CodeAction';
 import { ImageAction } from '../ImageAction/ImageAction';
 import { QuizAction } from '../QuizAction/QuizAction';
@@ -9,13 +8,22 @@ interface TaskActionProps {
   task: Task;
 }
 
+const TASK_TYPES = {
+  CODE: 'code',
+  IMAGE: 'image',
+  QUIZ: 'quiz',
+  INFO: 'info',
+};
+
 export const TaskAction = ({ task }: TaskActionProps) => {
-  return (
-    <div className={styles.wrapper}>
-      {task.type === 'code' && <CodeAction />}
-      {task.type === 'image' && <ImageAction />}
-      {task.type === 'quiz' && <QuizAction />}
-      {task.type === 'info' && <InfoAction />}
-    </div>
-  );
+  switch (task.type) {
+    case TASK_TYPES.CODE:
+      return <CodeAction />;
+    case TASK_TYPES.IMAGE:
+      return <ImageAction />;
+    case TASK_TYPES.QUIZ:
+      return <QuizAction />;
+    case TASK_TYPES.INFO:
+      return <InfoAction />;
+  }
 };

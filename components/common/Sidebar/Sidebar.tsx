@@ -2,29 +2,42 @@ import Link from 'next/link';
 import styles from './Sidebar.module.scss';
 import { useRouter } from 'next/router';
 import clsx from 'clsx';
+import Logo from '../../../public/logo.svg';
+import TasksIcon from '../../../public/tasks-icon.svg';
+import ScoresIcon from '../../../public/scores-icon.svg';
+import ProgressIcon from '../../../public/progress-icon.svg';
+import CrossIcon from '../../../public/cross-icon.svg';
 
 const dashboardLinks = [
-  { path: '/tasks', label: 'My Tasks' },
-  { path: '/scores', label: 'My Scores' },
-  { path: '/cohort', label: 'Cohort Progress' },
+  { path: '/tasks', label: 'My Tasks', Icon: TasksIcon },
+  { path: '/scores', label: 'My Scores', Icon: ScoresIcon },
+  { path: '/cohort', label: 'Cohort Progress', Icon: ProgressIcon },
 ];
 
-export const Sidebar = () => {
+interface SidebarProps {
+  closeMobileNav: () => void;
+  isMobileNavOpen: boolean;
+}
+
+export const Sidebar = ({ closeMobileNav, isMobileNavOpen }: SidebarProps) => {
   const { pathname: currentPath } = useRouter();
   return (
-    <div className={styles.sideBarWrapper}>
+    <div
+      className={clsx(
+        styles.sideBarWrapper,
+        isMobileNavOpen && styles.sideBarWrapperOpen
+      )}
+    >
       <Link href="/">
-        <a className={styles.logoWrapper}>
-          <img
-            src="https://unsplash.it/250/100"
-            alt="Logo"
-            className={styles.logo}
-          />
+        <a className={styles.logoLink}>
+          <span className={styles.logoWrapper}>
+            <Logo />
+          </span>
         </a>
       </Link>
       <nav className={styles.navWrapper}>
         <ul className={styles.navList}>
-          {dashboardLinks.map(({ path, label }) => (
+          {dashboardLinks.map(({ path, label, Icon }) => (
             <li key={path} className={styles.navItem}>
               <Link href={path}>
                 <a
@@ -33,7 +46,9 @@ export const Sidebar = () => {
                     currentPath.includes(path) && styles.navLinkActive
                   )}
                 >
-                  <span className={styles.linkIcon} aria-hidden={true} />
+                  <span className={styles.linkIcon} aria-hidden={true}>
+                    <Icon />
+                  </span>
                   <span className={styles.linkText}>{label}</span>
                 </a>
               </Link>
@@ -41,6 +56,15 @@ export const Sidebar = () => {
           ))}
         </ul>
       </nav>
+      <div className={styles.closeButtonWrapper}>
+        <button
+          className={styles.mobileNavClose}
+          onClick={closeMobileNav}
+          aria-label="Close menu"
+        >
+          <CrossIcon />
+        </button>
+      </div>
     </div>
   );
 };

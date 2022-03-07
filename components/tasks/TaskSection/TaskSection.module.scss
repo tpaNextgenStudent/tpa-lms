@@ -1,38 +1,31 @@
+@use '/lib/styles/variables/colors.module' as colors;
+@use '/lib/styles/variables/shadows.module' as shadows;
+
 .wrapper {
   flex: 1;
   height: 100%;
   display: flex;
   flex-direction: column;
+  background-color: colors.$white;
+
+  &FullScreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 2;
+  }
 }
 
 .taskHeader {
-  padding: 24px;
+  padding: 24px 24px 0;
   display: flex;
   align-items: center;
 }
 
-.taskTitleIcon {
-  width: 40px;
-  height: 40px;
-  background-color: #e8e7e7;
-  border-radius: 8px;
-  position: relative;
-
-  &::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 17px;
-    height: 17px;
-    border-radius: 50px;
-    background-color: black;
-  }
-}
-
 .taskTitle {
-  margin-left: 24px;
+  color: colors.$black;
   font-weight: 600;
   font-size: 24px;
   line-height: 40px;
@@ -40,35 +33,61 @@
 
 .taskModule {
   padding: 8px 16px;
-  margin-left: 24px;
-  background-color: #eaeaea;
+  margin: 0 24px;
+  background-color: colors.$lightPrimary;
   border-radius: 64px;
+  color: colors.$primary;
 }
 
 .fullScreenButton {
   margin-left: auto;
-  background-color: #eaeaea;
   border-radius: 64px;
   width: 40px;
   height: 40px;
   border: none;
   cursor: pointer;
+  background: colors.$white;
+  box-shadow: shadows.$shadow;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: colors.$primary;
+
+  svg {
+    width: 16px;
+    height: 16px;
+    path {
+      fill: colors.$primary;
+    }
+  }
 }
 
 .taskBadges {
   display: flex;
   flex-wrap: wrap;
   padding: 0 24px 24px;
-  border-bottom: 1px solid #e5e5e5;
 }
 
 .taskBadge {
-  padding: 8px 16px;
-  background-color: #b8b8b8;
-  border-radius: 64px;
-  margin-left: 24px;
+  margin-top: 16px;
+  padding-left: 16px;
+  position: relative;
+  margin-right: 16px;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 16px;
+  color: colors.$black;
 
-  &:first-child {
-    margin-left: 0;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    background-color: colors.$primary;
+    border-radius: 64px;
   }
 }
