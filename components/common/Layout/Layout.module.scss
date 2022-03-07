@@ -1,15 +1,23 @@
+@use '/lib/styles/variables/media.module' as media;
+
 .wrapper {
   display: flex;
-  min-height: 100vh;
+  height: 100vh;
+
+  @media (max-width: media.$laptopS) {
+    min-height: 100vh;
+    height: 100%;
+  }
 }
 
 .mainWrapper {
   flex: 1;
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 
 .contentWrapper {
   flex: 1;
-  padding: 24px;
+  min-height: 0;
 }

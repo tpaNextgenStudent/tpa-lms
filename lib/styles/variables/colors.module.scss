@@ -1,0 +1,15 @@
+$primary: #613ced;
+$lightPrimary: #f7f4fe;
+$white: rgb(255, 255, 255);
+$black: #070130;
+$gray: #b9b8c0;
+$lightGray: #f7f7f7;
+
+:export {
+  primary: $primary;
+  lightPurple: $lightPrimary;
+  white: $white;
+  black: $black;
+  gray: $gray;
+  lightGray: $lightGray;
+}

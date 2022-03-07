@@ -1,0 +1,42 @@
+@use '/lib/styles/variables/colors.module' as colors;
+
+.taskNav {
+  border-bottom: 1px solid colors.$lightGray;
+  padding: 0 24px 0;
+}
+
+.taskNavButton {
+  background: none;
+  border: none;
+  margin-left: 24px;
+  position: relative;
+  padding-bottom: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 24px;
+  font-style: normal;
+  color: colors.$gray;
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  &::after {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 4px;
+    width: 50%;
+    background-color: colors.$primary;
+    border-radius: 8px;
+  }
+
+  &Active {
+    color: colors.$black;
+
+    &::after {
+      content: '';
+    }
+  }
+}
