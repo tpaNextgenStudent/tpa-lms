@@ -8,15 +8,22 @@ interface TaskActionProps {
   task: Task;
 }
 
+const TASK_TYPES = {
+  CODE: 'code',
+  IMAGE: 'image',
+  QUIZ: 'quiz',
+  INFO: 'info',
+};
+
 export const TaskAction = ({ task }: TaskActionProps) => {
   switch (task.type) {
-    case 'code':
+    case TASK_TYPES.CODE:
       return <CodeAction />;
-    case 'image':
+    case TASK_TYPES.IMAGE:
       return <ImageAction />;
-    case 'quiz':
+    case TASK_TYPES.QUIZ:
       return <QuizAction />;
-    case 'info':
+    case TASK_TYPES.INFO:
       return <InfoAction />;
   }
 };

@@ -6,7 +6,7 @@
 }
 
 .uploadImageArea {
-  border: 1.5px dashed #cacaca;
+  border: 1.5px dashed colors.$gray;
   box-sizing: border-box;
   border-radius: 16px;
   width: 160px;
@@ -16,7 +16,7 @@
 
 .submitWrapper {
   padding: 16px 24px;
-  border-top: 1px solid #e5e5e5;
+  border-top: 1px solid colors.$lightGray;
 }
 
 .submitButton {
@@ -24,7 +24,7 @@
   margin-left: auto;
   background-color: colors.$gray;
   border-radius: 64px;
-  color: white;
+  color: colors.$white;
   border: none;
   font-weight: 600;
   font-size: 16px;

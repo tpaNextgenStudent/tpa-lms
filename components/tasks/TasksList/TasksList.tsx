@@ -10,6 +10,8 @@ interface TasksListProps {
   module: Module;
 }
 
+const IN_PROGRESS_STATUS = 'in progress';
+
 export const TasksList = ({ currentTask, tasks, module }: TasksListProps) => {
   return (
     <ul className={styles.tasksList}>
@@ -46,7 +48,7 @@ export const TasksList = ({ currentTask, tasks, module }: TasksListProps) => {
                 >
                   {module.name}
                 </span>
-                {status !== 'in progress' && (
+                {status !== IN_PROGRESS_STATUS && (
                   <span
                     className={clsx(
                       styles.taskLocked,

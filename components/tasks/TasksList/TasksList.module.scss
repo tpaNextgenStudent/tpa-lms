@@ -46,7 +46,7 @@
   position: relative;
 
   &Active {
-    color: white;
+    color: colors.$white;
     background-color: colors.$primary;
   }
 }
@@ -118,7 +118,7 @@
   border-radius: 64px;
 
   svg > path {
-    fill: white;
+    fill: colors.$white;
   }
 
   &Active {

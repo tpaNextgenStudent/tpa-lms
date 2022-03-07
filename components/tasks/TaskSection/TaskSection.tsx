@@ -20,9 +20,9 @@ export const TaskSection = ({
   const [isDescriptionView, setIsDescriptionView] = useState(true);
   const [isFullScreenMode, setIsFullScreenMode] = useState(false);
 
-  const toggleFullScreenMode = useCallback(() => {
+  const toggleFullScreenMode = () => {
     setIsFullScreenMode(prev => !prev);
-  }, []);
+  };
 
   return (
     <main
