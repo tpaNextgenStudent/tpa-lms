@@ -13,7 +13,7 @@ interface TasksMenuProps {
 export const TasksMenu = ({ modules, module, tasks, task }: TasksMenuProps) => {
   return (
     <section className={styles.wrapper}>
-      <ModuleSelect modules={modules} />
+      <ModuleSelect modules={modules} module={module} />
       <TasksList currentTask={task} tasks={tasks} module={module} />
     </section>
   );

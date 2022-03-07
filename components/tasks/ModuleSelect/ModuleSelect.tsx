@@ -5,9 +5,10 @@ import { useRouter } from 'next/router';
 
 interface ModuleSelectProps {
   modules: Module[];
+  module: Module;
 }
 
-export const ModuleSelect = ({ modules }: ModuleSelectProps) => {
+export const ModuleSelect = ({ modules, module }: ModuleSelectProps) => {
   const router = useRouter();
   const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
     router.push(`/tasks/${e.target.value}`);
@@ -18,7 +19,7 @@ export const ModuleSelect = ({ modules }: ModuleSelectProps) => {
       <select
         onChange={handleChange}
         className={styles.moduleSelect}
-        defaultValue={module.id}
+        value={module.id}
         name="module-select"
         id="module-select"
       >
