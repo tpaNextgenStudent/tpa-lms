@@ -1,0 +1,84 @@
+@use '/lib/styles/variables/colors.module' as colors;
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.table {
+  width: 100%;
+  height: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+}
+
+.tableHead {
+  padding: 24px 24px 24px 0;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 16px;
+  color: colors.$gray;
+  text-align: left;
+
+  &:first-child {
+    padding-left: 24px;
+  }
+}
+
+.tableRow {
+  &:nth-child(odd) {
+    background: colors.$lightPrimary;
+  }
+}
+
+.tableCell {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 16px;
+  color: colors.$black;
+  padding: 24px 24px 24px 0;
+  max-width: 160px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border-collapse: collapse;
+
+  &:first-child {
+    padding-left: 24px;
+  }
+}
+
+.teacherImg {
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+  border-radius: 50px;
+}
+
+.teacherCellWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.teacherName {
+  margin-left: 10px;
+}
+
+.taskTypeWrapper {
+  position: relative;
+  z-index: 1;
+  padding: 8px 16px;
+  background-color: colors.$primary;
+  border-radius: 64px;
+  color: colors.$white;
+}
+
+.viewLink {
+  display: flex;
+  align-items: center;
+}
+
+.viewLinkArrow {
+  margin-left: 16px;
+}

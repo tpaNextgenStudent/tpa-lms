@@ -15,7 +15,7 @@ export default function Tasks({
   task,
 }: InferPagePropsType<typeof getServerSideProps>) {
   return (
-    <Layout user={user}>
+    <Layout title="My Tasks" user={user}>
       <div className={styles.tasksWrapper}>
         <TasksMenu
           modules={modules}

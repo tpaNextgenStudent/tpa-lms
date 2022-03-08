@@ -3,6 +3,7 @@
 .wrapper {
   display: flex;
   height: 100vh;
+  overflow: hidden;
 
   @media (max-width: media.$laptopS) {
     min-height: 100vh;
