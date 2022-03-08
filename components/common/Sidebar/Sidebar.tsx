@@ -2,7 +2,6 @@ import Link from 'next/link';
 import styles from './Sidebar.module.scss';
 import { useRouter } from 'next/router';
 import clsx from 'clsx';
-import Logo from '../../../public/logo.svg';
 import TasksIcon from '../../../public/tasks-icon.svg';
 import ScoresIcon from '../../../public/scores-icon.svg';
 import ProgressIcon from '../../../public/progress-icon.svg';
@@ -28,13 +27,19 @@ export const Sidebar = ({ closeMobileNav, isMobileNavOpen }: SidebarProps) => {
         isMobileNavOpen && styles.sideBarWrapperOpen
       )}
     >
-      <Link href="/">
-        <a className={styles.logoLink}>
-          <span className={styles.logoWrapper}>
-            <Logo />
-          </span>
-        </a>
-      </Link>
+      <div className={styles.logoLinkWrapper}>
+        <Link href="/">
+          <a className={styles.logoLink}>
+            <span className={styles.logoWrapper}>
+              <img
+                className={styles.logo}
+                src="/tpa_logo.svg"
+                alt="Tech Play Academy logo"
+              />
+            </span>
+          </a>
+        </Link>
+      </div>
       <nav className={styles.navWrapper}>
         <ul className={styles.navList}>
           {dashboardLinks.map(({ path, label, Icon }) => (
