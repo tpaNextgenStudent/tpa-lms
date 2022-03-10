@@ -30,6 +30,7 @@ export interface User {
   email?: string;
   image?: string;
   cohortId: string;
+  role: 'student' | 'teacher';
 }
 
 export interface Module {

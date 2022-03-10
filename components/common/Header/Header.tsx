@@ -6,11 +6,17 @@ import Image from 'next/image';
 
 interface HeaderProps {
   title: string;
+  description?: string;
   user: User;
   openMobileNav: () => void;
 }
 
-export const Header = ({ title, user, openMobileNav }: HeaderProps) => {
+export const Header = ({
+  title,
+  user,
+  openMobileNav,
+  description,
+}: HeaderProps) => {
   const fullName = `${user.firstname} ${user.lastname}`;
   return (
     <header className={styles.headerWrapper}>
@@ -21,7 +27,10 @@ export const Header = ({ title, user, openMobileNav }: HeaderProps) => {
       >
         <MenuIcon />
       </button>
-      <h1 className={styles.title}>{title}</h1>
+      <div className={styles.textWrapper}>
+        <h1 className={styles.title}>{title}</h1>
+        {description && <p className={styles.description}>{description}</p>}
+      </div>
       <div className={styles.userWrapper}>
         <Image
           className={styles.userAvatar}

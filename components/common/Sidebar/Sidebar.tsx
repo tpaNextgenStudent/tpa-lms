@@ -7,19 +7,48 @@ import ScoresIcon from '../../../public/scores-icon.svg';
 import ProgressIcon from '../../../public/progress-icon.svg';
 import CrossIcon from '../../../public/cross-icon.svg';
 import Image from 'next/image';
+import { User } from '../../../lib/utils/types';
 
-const dashboardLinks = [
-  { path: '/tasks', label: 'My Tasks', Icon: TasksIcon },
-  { path: '/scores', label: 'My Scores', Icon: ScoresIcon },
-  { path: '/cohort/progress', label: 'Cohort Progress', Icon: ProgressIcon },
-];
+const dashboardLinks = {
+  teacher: [
+    { path: '/assignments', label: 'Assignments', Icon: TasksIcon },
+    {
+      path: '/cohort/progress',
+      label: 'Cohort Progress',
+      Icon: ProgressIcon,
+    },
+    {
+      path: '/curriculum',
+      label: 'Curriculum',
+      Icon: ScoresIcon,
+    },
+  ],
+  student: [
+    { path: '/tasks', label: 'My Tasks', Icon: TasksIcon },
+    {
+      path: '/scores',
+      label: 'My Scores',
+      Icon: ScoresIcon,
+    },
+    {
+      path: '/cohort/progress',
+      label: 'Cohort Progress',
+      Icon: ProgressIcon,
+    },
+  ],
+};
 
 interface SidebarProps {
   closeMobileNav: () => void;
   isMobileNavOpen: boolean;
+  user: User;
 }
 
-export const Sidebar = ({ closeMobileNav, isMobileNavOpen }: SidebarProps) => {
+export const Sidebar = ({
+  closeMobileNav,
+  isMobileNavOpen,
+  user,
+}: SidebarProps) => {
   const { pathname: currentPath } = useRouter();
   return (
     <div
@@ -44,7 +73,7 @@ export const Sidebar = ({ closeMobileNav, isMobileNavOpen }: SidebarProps) => {
       </div>
       <nav className={styles.navWrapper}>
         <ul className={styles.navList}>
-          {dashboardLinks.map(({ path, label, Icon }) => (
+          {dashboardLinks[user.role].map(({ path, label, Icon }) => (
             <li key={path} className={styles.navItem}>
               <Link href={path}>
                 <a

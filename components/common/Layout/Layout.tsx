@@ -9,9 +9,10 @@ interface LayoutProps {
   children: ReactNode;
   user: User;
   title: string;
+  description?: string;
 }
 
-export const Layout = ({ children, user, title }: LayoutProps) => {
+export const Layout = ({ children, user, title, description }: LayoutProps) => {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
 
   const openMobileNav = useCallback(() => {
@@ -35,9 +36,15 @@ export const Layout = ({ children, user, title }: LayoutProps) => {
         <Sidebar
           closeMobileNav={closeMobileNav}
           isMobileNavOpen={isMobileNavOpen}
+          user={user}
         />
         <div className={styles.mainWrapper}>
-          <Header openMobileNav={openMobileNav} title={title} user={user} />
+          <Header
+            openMobileNav={openMobileNav}
+            title={title}
+            description={description}
+            user={user}
+          />
           <div className={styles.contentWrapper}>{children}</div>
         </div>
       </div>
