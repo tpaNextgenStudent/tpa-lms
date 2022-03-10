@@ -16,7 +16,7 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: 1;
+    z-index: 10;
     transform: translateX(-100%);
 
     &Open {
@@ -39,16 +39,6 @@
   @media (max-width: media.$laptopS) {
     align-self: flex-end;
   }
-}
-
-.logoWrapper {
-  width: 56px;
-  height: 56px;
-}
-
-.logo {
-  width: 100%;
-  object-fit: contain;
 }
 
 .navWrapper {

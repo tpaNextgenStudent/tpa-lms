@@ -8,6 +8,7 @@ import styles from '../../components/scores/scores-page/scoresPage.module.scss';
 import Link from 'next/link';
 import ArrowRightIcon from '../../public/arrow-right.svg';
 import { Table } from '../../components/common/Table/Table';
+import Image from 'next/image';
 
 interface ScoresData {
   submission_date: string;
@@ -64,7 +65,15 @@ const columns: Column<ScoresData>[] = [
       cell: { value: { name: string; img: string } };
     }) => (
       <div className={styles.teacherCellWrapper}>
-        <img className={styles.teacherImg} src={value.img} alt={value.name} />
+        <Image
+          className={styles.teacherImg}
+          width={32}
+          height={32}
+          objectFit="cover"
+          layout="fixed"
+          src={value.img}
+          alt={value.name}
+        />
         <span className={styles.teacherName}>{value.name}</span>
       </div>
     ),
@@ -136,7 +145,7 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
       },
       {
         name: 'Łukasz Matuszczak',
-        img: 'https://unsplash.it/100/100',
+        img: 'https://unsplash.it/100/100/',
       },
     ]);
 

@@ -2,6 +2,7 @@ import styles from './Header.module.scss';
 import { User } from '../../../lib/utils/types';
 import ArrowDown from '../../../public/arrow-down.svg';
 import MenuIcon from '../../../public/menu-icon.svg';
+import Image from 'next/image';
 
 interface HeaderProps {
   title: string;
@@ -22,7 +23,13 @@ export const Header = ({ title, user, openMobileNav }: HeaderProps) => {
       </button>
       <h1 className={styles.title}>{title}</h1>
       <div className={styles.userWrapper}>
-        <img className={styles.userAvatar} src={user.image} alt="Avatar" />
+        <Image
+          className={styles.userAvatar}
+          width={40}
+          height={40}
+          src={user.image!}
+          alt="Avatar"
+        />
         <p className={styles.userName}>{fullName}</p>
         <span className={styles.settingsIcon} aria-hidden>
           <ArrowDown />

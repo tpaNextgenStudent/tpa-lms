@@ -6,6 +6,7 @@ import TasksIcon from '../../../public/tasks-icon.svg';
 import ScoresIcon from '../../../public/scores-icon.svg';
 import ProgressIcon from '../../../public/progress-icon.svg';
 import CrossIcon from '../../../public/cross-icon.svg';
+import Image from 'next/image';
 
 const dashboardLinks = [
   { path: '/tasks', label: 'My Tasks', Icon: TasksIcon },
@@ -30,13 +31,14 @@ export const Sidebar = ({ closeMobileNav, isMobileNavOpen }: SidebarProps) => {
       <div className={styles.logoLinkWrapper}>
         <Link href="/">
           <a className={styles.logoLink}>
-            <span className={styles.logoWrapper}>
-              <img
-                className={styles.logo}
-                src="/tpa_logo.svg"
-                alt="Tech Play Academy logo"
-              />
-            </span>
+            <Image
+              className={styles.logo}
+              src="/tpa_logo.svg"
+              alt="Tech Play Academy logo"
+              objectFit="contain"
+              width={208}
+              height={20}
+            />
           </a>
         </Link>
       </div>

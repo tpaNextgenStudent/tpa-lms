@@ -6,6 +6,7 @@ import faker from '@faker-js/faker';
 import { Column } from 'react-table';
 import styles from '../../components/progress/progress-page/progressPage.module.scss';
 import { Table } from '../../components/common/Table/Table';
+import Image from 'next/image';
 
 interface ProgressData {
   student: { name: string; img: string };
@@ -25,7 +26,15 @@ const columns: Column<ProgressData>[] = [
       cell: { value: { name: string; img: string } };
     }) => (
       <div className={styles.studentCellWrapper}>
-        <img className={styles.studentImg} src={value.img} alt={value.name} />
+        <Image
+          width={32}
+          height={32}
+          layout="fixed"
+          objectFit="cover"
+          className={styles.studentImg}
+          src={value.img}
+          alt={value.name}
+        />
         <span className={styles.studentName}>{value.name}</span>
       </div>
     ),
