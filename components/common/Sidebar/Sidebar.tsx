@@ -10,7 +10,7 @@ import CrossIcon from '../../../public/cross-icon.svg';
 const dashboardLinks = [
   { path: '/tasks', label: 'My Tasks', Icon: TasksIcon },
   { path: '/scores', label: 'My Scores', Icon: ScoresIcon },
-  { path: '/cohort', label: 'Cohort Progress', Icon: ProgressIcon },
+  { path: '/cohort/progress', label: 'Cohort Progress', Icon: ProgressIcon },
 ];
 
 interface SidebarProps {

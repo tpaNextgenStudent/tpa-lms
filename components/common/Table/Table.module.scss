@@ -49,22 +49,6 @@
   }
 }
 
-.teacherImg {
-  width: 32px;
-  height: 32px;
-  object-fit: cover;
-  border-radius: 50px;
-}
-
-.teacherCellWrapper {
-  display: flex;
-  align-items: center;
-}
-
-.teacherName {
-  margin-left: 10px;
-}
-
 .taskTypeWrapper {
   position: relative;
   z-index: 1;
@@ -72,13 +56,4 @@
   background-color: colors.$primary;
   border-radius: 64px;
   color: colors.$white;
-}
-
-.viewLink {
-  display: flex;
-  align-items: center;
-}
-
-.viewLinkArrow {
-  margin-left: 16px;
 }
