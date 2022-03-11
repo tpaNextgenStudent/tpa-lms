@@ -10,9 +10,16 @@ interface LayoutProps {
   user: User;
   title: string;
   description?: string;
+  actionsNumber?: number;
 }
 
-export const Layout = ({ children, user, title, description }: LayoutProps) => {
+export const Layout = ({
+  children,
+  user,
+  title,
+  description,
+  actionsNumber,
+}: LayoutProps) => {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
 
   const openMobileNav = useCallback(() => {
@@ -44,6 +51,7 @@ export const Layout = ({ children, user, title, description }: LayoutProps) => {
             title={title}
             description={description}
             user={user}
+            actionsNumber={actionsNumber}
           />
           <div className={styles.contentWrapper}>{children}</div>
         </div>

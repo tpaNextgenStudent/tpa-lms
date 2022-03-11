@@ -2,88 +2,9 @@ import { getFakeData } from '../../lib/mocks/getFakeData';
 import { GetServerSidePropsContext } from 'next';
 import { InferPagePropsType } from '../../lib/utils/types';
 import { Layout } from '../../components/common/Layout/Layout';
-import { Column } from 'react-table';
-import styles from '../../components/scores/scores-page/scoresPage.module.scss';
-import Image from 'next/image';
-import Link from 'next/link';
-import ArrowRightIcon from '../../public/arrow-right.svg';
 import faker from '@faker-js/faker';
 import { Table } from '../../components/common/Table/Table';
-
-interface AssignmentsData {
-  submission_date: string;
-  student: { name: string; img: string };
-  module: string;
-  task: string;
-  task_type: string;
-  attempt: number;
-  check: { link: string };
-}
-
-const columns: Column<AssignmentsData>[] = [
-  {
-    Header: 'Date of submission',
-    accessor: 'submission_date',
-  },
-  {
-    Header: 'Reviewed by',
-    accessor: 'student',
-
-    Cell: ({
-      cell: { value },
-    }: {
-      cell: { value: { name: string; img: string } };
-    }) => (
-      <div className={styles.teacherCellWrapper}>
-        <Image
-          className={styles.teacherImg}
-          width={32}
-          height={32}
-          objectFit="cover"
-          layout="fixed"
-          src={value.img}
-          alt={value.name}
-        />
-        <span className={styles.teacherName}>{value.name}</span>
-      </div>
-    ),
-  },
-  {
-    Header: 'Module',
-    accessor: 'module',
-  },
-  {
-    Header: 'Task',
-    accessor: 'task',
-  },
-  {
-    Header: 'Task type',
-    accessor: 'task_type',
-
-    Cell: ({ cell: { value } }: { cell: { value: string } }) => (
-      <span className={styles.taskTypeWrapper}>{value}</span>
-    ),
-  },
-  {
-    Header: 'Attempt',
-    accessor: 'attempt',
-  },
-  {
-    Header: '',
-    accessor: 'check',
-
-    Cell: ({ cell: { value } }: { cell: { value: { link: string } } }) => (
-      <Link href={value.link}>
-        <a className={styles.viewLink}>
-          <span>Check</span>
-          <span className={styles.viewLinkArrow}>
-            <ArrowRightIcon />
-          </span>
-        </a>
-      </Link>
-    ),
-  },
-];
+import { columns } from '../../lib/tables/teacher/assignments/assignments';
 
 export default function AssignmentsIndex({
   user,
@@ -94,6 +15,7 @@ export default function AssignmentsIndex({
       user={user}
       title={'Assignments'}
       description="Students' tasks to be reviewed by you."
+      actionsNumber={assignments.length}
     >
       <Table data={assignments} columns={columns} />
     </Layout>
@@ -109,7 +31,7 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
   //todo: when user's role is not a teacher, redirect to home
   //todo: create middlewares checking if a given role has an access to requested page
 
-  const assignments: AssignmentsData[] = [];
+  const assignments = [];
 
   for (let i = 0; i < 20; i++) {
     const sd = `${faker.datatype.number({

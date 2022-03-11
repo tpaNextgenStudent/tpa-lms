@@ -3,59 +3,8 @@ import { GetServerSidePropsContext } from 'next';
 import { getFakeData } from '../../lib/mocks/getFakeData';
 import { InferPagePropsType } from '../../lib/utils/types';
 import faker from '@faker-js/faker';
-import { Column } from 'react-table';
-import styles from '../../components/progress/progress-page/progressPage.module.scss';
 import { Table } from '../../components/common/Table/Table';
-import Image from 'next/image';
-
-interface ProgressData {
-  student: { name: string; img: string };
-  module: string;
-  task_name: string;
-  task_type: string;
-}
-
-const columns: Column<ProgressData>[] = [
-  {
-    Header: 'Student name',
-    accessor: 'student',
-
-    Cell: ({
-      cell: { value },
-    }: {
-      cell: { value: { name: string; img: string } };
-    }) => (
-      <div className={styles.studentCellWrapper}>
-        <Image
-          width={32}
-          height={32}
-          layout="fixed"
-          objectFit="cover"
-          className={styles.studentImg}
-          src={value.img}
-          alt={value.name}
-        />
-        <span className={styles.studentName}>{value.name}</span>
-      </div>
-    ),
-  },
-  {
-    Header: 'Module',
-    accessor: 'module',
-  },
-  {
-    Header: 'Task name',
-    accessor: 'task_name',
-  },
-  {
-    Header: 'Task type',
-    accessor: 'task_type',
-
-    Cell: ({ cell: { value } }: { cell: { value: string } }) => (
-      <span className={styles.taskTypeWrapper}>{value}</span>
-    ),
-  },
-];
+import { columns } from '../../lib/tables/student/cohort-progress/cohort-progress';
 
 export default function CohortProgress({
   user,

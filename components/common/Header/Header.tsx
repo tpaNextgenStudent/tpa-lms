@@ -7,6 +7,7 @@ import Image from 'next/image';
 interface HeaderProps {
   title: string;
   description?: string;
+  actionsNumber?: number;
   user: User;
   openMobileNav: () => void;
 }
@@ -16,6 +17,7 @@ export const Header = ({
   user,
   openMobileNav,
   description,
+  actionsNumber,
 }: HeaderProps) => {
   const fullName = `${user.firstname} ${user.lastname}`;
   return (
@@ -28,7 +30,12 @@ export const Header = ({
         <MenuIcon />
       </button>
       <div className={styles.textWrapper}>
-        <h1 className={styles.title}>{title}</h1>
+        <div className={styles.titleWrapper}>
+          <h1 className={styles.title}>{title}</h1>
+          {actionsNumber && (
+            <span className={styles.actionsNumber}>{actionsNumber}</span>
+          )}
+        </div>
         {description && <p className={styles.description}>{description}</p>}
       </div>
       <div className={styles.userWrapper}>
