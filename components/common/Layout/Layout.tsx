@@ -11,6 +11,7 @@ interface LayoutProps {
   title: string;
   description?: string;
   actionsNumber?: number;
+  cohortName?: string;
 }
 
 export const Layout = ({
@@ -19,6 +20,7 @@ export const Layout = ({
   title,
   description,
   actionsNumber,
+  cohortName,
 }: LayoutProps) => {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
 
@@ -44,6 +46,7 @@ export const Layout = ({
           closeMobileNav={closeMobileNav}
           isMobileNavOpen={isMobileNavOpen}
           user={user}
+          cohortName={cohortName}
         />
         <div className={styles.mainWrapper}>
           <Header
