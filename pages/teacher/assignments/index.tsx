@@ -1,10 +1,10 @@
-import { getFakeData } from '../../lib/mocks/getFakeData';
+import { getFakeData } from '../../../lib/mocks/getFakeData';
 import { GetServerSidePropsContext } from 'next';
-import { InferPagePropsType } from '../../lib/utils/types';
-import { Layout } from '../../components/common/Layout/Layout';
+import { InferPagePropsType } from '../../../lib/utils/types';
+import { Layout } from '../../../components/common/Layout/Layout';
 import faker from '@faker-js/faker';
-import { Table } from '../../components/common/Table/Table';
-import { columns } from '../../lib/tables/teacher/assignments/assignments';
+import { Table } from '../../../components/common/Table/Table';
+import { columns } from '../../../lib/tables/teacher/assignments/assignments';
 
 export default function AssignmentsIndex({
   user,

@@ -1,10 +1,10 @@
-import { Layout } from '../../components/common/Layout/Layout';
+import { Layout } from '../../../components/common/Layout/Layout';
 import { GetServerSidePropsContext } from 'next';
-import { getFakeData } from '../../lib/mocks/getFakeData';
-import { InferPagePropsType } from '../../lib/utils/types';
+import { getFakeData } from '../../../lib/mocks/getFakeData';
+import { InferPagePropsType } from '../../../lib/utils/types';
 import faker from '@faker-js/faker';
-import { Table } from '../../components/common/Table/Table';
-import { columns } from '../../lib/tables/student/my-scores/my-scores';
+import { Table } from '../../../components/common/Table/Table';
+import { columns } from '../../../lib/tables/student/my-scores/my-scores';
 
 export default function ScoresIndex({
   user,

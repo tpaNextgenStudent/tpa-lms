@@ -11,27 +11,27 @@ import { User } from '../../../lib/utils/types';
 
 const dashboardLinks = {
   teacher: [
-    { path: '/assignments', label: 'Assignments', Icon: TasksIcon },
+    { path: '/teacher/assignments', label: 'Assignments', Icon: TasksIcon },
     {
-      path: '/cohort/progress',
+      path: '/teacher/cohort/progress',
       label: 'Cohort Progress',
       Icon: ProgressIcon,
     },
     {
-      path: '/curriculum',
+      path: '/teacher/curriculum',
       label: 'Curriculum',
       Icon: ScoresIcon,
     },
   ],
   student: [
-    { path: '/tasks', label: 'My Tasks', Icon: TasksIcon },
+    { path: '/student/tasks', label: 'My Tasks', Icon: TasksIcon },
     {
-      path: '/scores',
+      path: '/student/scores',
       label: 'My Scores',
       Icon: ScoresIcon,
     },
     {
-      path: '/cohort/progress',
+      path: '/student/cohort/progress',
       label: 'Cohort Progress',
       Icon: ProgressIcon,
     },

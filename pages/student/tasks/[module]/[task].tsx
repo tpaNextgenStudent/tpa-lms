@@ -1,10 +1,10 @@
-import { Layout } from '../../../components/common/Layout/Layout';
+import { Layout } from '../../../../components/common/Layout/Layout';
 import { GetServerSidePropsContext } from 'next';
-import { InferPagePropsType } from '../../../lib/utils/types';
-import { TasksMenu } from '../../../components/tasks/TasksMenu/TasksMenu';
-import styles from '../../../components/tasks/tasks-page/tasksPage.module.scss';
-import { TaskSection } from '../../../components/tasks/TaskSection/TaskSection';
-import { getFakeData } from '../../../lib/mocks/getFakeData';
+import { InferPagePropsType } from '../../../../lib/utils/types';
+import { TasksMenu } from '../../../../components/tasks/TasksMenu/TasksMenu';
+import styles from '../../../../components/tasks/tasks-page/tasksPage.module.scss';
+import { TaskSection } from '../../../../components/tasks/TaskSection/TaskSection';
+import { getFakeData } from '../../../../lib/mocks/getFakeData';
 
 export default function Tasks({
   user,

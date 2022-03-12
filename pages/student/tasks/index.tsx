@@ -1,5 +1,5 @@
 import { GetServerSidePropsContext } from 'next';
-import { getFakeData } from '../../lib/mocks/getFakeData';
+import { getFakeData } from '../../../lib/mocks/getFakeData';
 
 export default function TasksIndex() {
   return null;
@@ -38,7 +38,7 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
       return {
         redirect: {
           permanent: true,
-          destination: `/tasks/${task.moduleId}/${nextTask.id}`,
+          destination: `/student/tasks/${task.moduleId}/${nextTask.id}`,
         },
       };
     }
