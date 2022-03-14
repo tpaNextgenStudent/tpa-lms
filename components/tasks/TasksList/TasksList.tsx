@@ -18,7 +18,7 @@ export const TasksList = ({ currentTask, tasks, module }: TasksListProps) => {
       {tasks.map(({ task, status, id }) => {
         const isActive = task.id === currentTask.taskId;
         return (
-          <Link key={id} href={`/tasks/${module.id}/${id}`}>
+          <Link key={id} href={`/student/tasks/${module.id}/${id}`}>
             <a className={styles.taskLink}>
               <li className={clsx(styles.task, isActive && styles.taskActive)}>
                 <h3 className={styles.taskName}>{task.name}</h3>

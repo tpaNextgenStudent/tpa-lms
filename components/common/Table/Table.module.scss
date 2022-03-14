@@ -19,6 +19,7 @@
   line-height: 16px;
   color: colors.$gray;
   text-align: left;
+  white-space: nowrap;
 
   &:first-child {
     padding-left: 24px;
