@@ -56,61 +56,73 @@ model VerificationToken {
 }
 
 model LmsUser {
-  id             String          @id @default(cuid())
-  cohortId       String
-  cohort         Cohort          @relation(fields: [cohortId], references: [id])
-  githubName     String
-  name           String
-  surname        String
-  email          String          @unique
-  avatar         String
-  bio            String
-  role           String
-  CompletedTasks CompletedTask[]
+  id         String @id @default(cuid())
+  cohortId   String
+  cohort     Cohort @relation(fields: [cohortId], references: [id])
+  githubName String
+  email      String @unique
+  avatar     String
+  name       String
+  surname    String
+  bio        String
+  role       String
 }
 
 model Cohort {
-  id                 String               @id @default(cuid())
-  name               String
-  Users              LmsUser[]
-  ModulesLinkCohorts ModulesLinkCohorts[]
+  id               String             @id @default(cuid())
+  name             String
+  users            LmsUser[]
+  CurriculumModule CurriculumModule[]
 }
 
-model CompletedTask {
-  id      String  @id @default(cuid())
-  userId  String
-  user    LmsUser @relation(fields: [userId], references: [id])
-  status  String
-  attempt Int
-  score   Int
-  comment String
-  answer  String
+model Module {
+  id   String @id @default(cuid())
+  name String
 }
 
 model Task {
   id          String @id @default(cuid())
-  module      Module @relation(fields: [moduleId], references: [id])
-  moduleId    String
-  type        String
-  position    Int
   name        String
+  position    Int
+  type        String
   description String
   link        String
 }
 
-model Module {
-  id                 String               @id @default(cuid())
-  name               String
-  tasks              Task[]
-  ModulesLinkCohorts ModulesLinkCohorts[]
+model CurriculumModule {
+  id       String
+  cohortId String
+  cohort   Cohort           @relation(fields: [cohortId], references: [id])
+  name     String
+  tasks    CurriculumTask[]
+
+  @@id([id, cohortId])
 }
 
-model ModulesLinkCohorts {
-  cohort      Cohort @relation(fields: [cohortId], references: [id])
+model CurriculumTask {
   cohortId    String
-  module      Module @relation(fields: [moduleId], references: [id])
+  id          String
   moduleId    String
-  orderNumber Int
+  module      CurriculumModule @relation(fields: [moduleId, cohortId], references: [id, cohortId])
+  name        String
+  position    Int
+  type        String
+  description String
+  link        String
+  attempts    Attempt[]
 
-  @@id([cohortId, moduleId])
+  @@id([id, cohortId])
+}
+
+model Attempt {
+  id             String         @id @default(cuid())
+  userId         String
+  cohortId       String
+  taskId         String
+  task           CurriculumTask @relation(fields: [taskId, cohortId], references: [id, cohortId])
+  answer         String
+  score          Int
+  comment        String
+  attempt_number Int
+
 }
