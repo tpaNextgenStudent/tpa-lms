@@ -59,19 +59,29 @@ export const Sidebar = ({
         isMobileNavOpen && styles.sideBarWrapperOpen
       )}
     >
-      <div className={styles.logoLinkWrapper}>
-        <Link href="/">
-          <a className={styles.logoLink}>
-            <Image
-              className={styles.logo}
-              src="/tpa_logo.svg"
-              alt="Tech Play Academy logo"
-              objectFit="contain"
-              width={208}
-              height={20}
-            />
-          </a>
-        </Link>
+      <div className={styles.logoCloseWrapper}>
+        <div className={styles.closeButtonWrapper}>
+          <button
+            className={styles.mobileNavClose}
+            onClick={closeMobileNav}
+            aria-label="Close menu"
+          >
+            <CrossIcon />
+          </button>
+        </div>
+        <div className={styles.logoLinkWrapper}>
+          <Link href="/">
+            <a className={styles.logoLink}>
+              <Image
+                src="/tpa_logo.svg"
+                alt="Tech Play Academy logo"
+                objectFit="contain"
+                width={208}
+                height={20}
+              />
+            </a>
+          </Link>
+        </div>
       </div>
       {cohortName && <span className={styles.cohortName}>{cohortName}</span>}
       <nav className={styles.navWrapper}>
@@ -95,15 +105,6 @@ export const Sidebar = ({
           ))}
         </ul>
       </nav>
-      <div className={styles.closeButtonWrapper}>
-        <button
-          className={styles.mobileNavClose}
-          onClick={closeMobileNav}
-          aria-label="Close menu"
-        >
-          <CrossIcon />
-        </button>
-      </div>
     </div>
   );
 };
