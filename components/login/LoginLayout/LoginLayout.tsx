@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import Image from 'next/image';
 import styles from './LoginLayout.module.scss';
+import { CTAButton } from '../../common/CTAButton/CTAButton';
 
 interface LoginLayoutProps {
   children: ReactNode;
@@ -20,9 +21,7 @@ export const LoginLayout = ({ children, headerButton }: LoginLayoutProps) => {
           />
         </div>
         {headerButton && (
-          <button className={styles.button} onClick={headerButton.onClick}>
-            {headerButton.text}
-          </button>
+          <CTAButton text={headerButton.text} onClick={headerButton.onClick} />
         )}
       </header>
       <main className={styles.main}>{children}</main>

@@ -1,6 +1,7 @@
 import styles from './LoginDetailsForm.module.scss';
 import { ChangeEvent, FormEvent, useState } from 'react';
 import { useRouter } from 'next/router';
+import { CTAButton } from '../../common/CTAButton/CTAButton';
 
 interface LoginDetailsFormProps {}
 
@@ -75,9 +76,7 @@ export const LoginDetailsForm = ({}: LoginDetailsFormProps) => {
           placeholder="Type here"
         />
       </div>
-      <button className={styles.submit} type="submit">
-        Submit
-      </button>
+      <CTAButton type="submit" text="Submit" />
     </form>
   );
 };
