@@ -16,13 +16,21 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    z-index: 1;
+    z-index: 10;
     transform: translateX(-100%);
 
     &Open {
       transform: translateX(0);
     }
   }
+}
+
+.logoLinkWrapper {
+  height: 120px;
+  display: flex;
+  align-items: center;
+  margin-top: -32px;
+  align-self: flex-end;
 }
 
 .logoLink {
@@ -33,17 +41,24 @@
   }
 }
 
-.logoWrapper {
-  width: 56px;
-  height: 56px;
+.cohortName {
+  padding: 16px;
+  text-align: center;
+  border: 1px solid colors.$primary;
+  border-radius: 16px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: colors.$black;
 
-  path {
-    fill: colors.$primary;
+  @media (max-width: media.$laptopS) {
+    order: 1000;
+    margin-top: auto;
   }
 }
 
 .navWrapper {
-  margin-top: 48px;
+  margin-top: 28px;
 }
 
 .navList {

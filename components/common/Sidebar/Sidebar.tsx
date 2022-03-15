@@ -2,24 +2,55 @@ import Link from 'next/link';
 import styles from './Sidebar.module.scss';
 import { useRouter } from 'next/router';
 import clsx from 'clsx';
-import Logo from '../../../public/logo.svg';
 import TasksIcon from '../../../public/tasks-icon.svg';
 import ScoresIcon from '../../../public/scores-icon.svg';
 import ProgressIcon from '../../../public/progress-icon.svg';
 import CrossIcon from '../../../public/cross-icon.svg';
+import Image from 'next/image';
+import { User } from '../../../lib/utils/types';
 
-const dashboardLinks = [
-  { path: '/tasks', label: 'My Tasks', Icon: TasksIcon },
-  { path: '/scores', label: 'My Scores', Icon: ScoresIcon },
-  { path: '/cohort', label: 'Cohort Progress', Icon: ProgressIcon },
-];
+const dashboardLinks = {
+  teacher: [
+    { path: '/teacher/assignments', label: 'Assignments', Icon: TasksIcon },
+    {
+      path: '/teacher/cohort/progress',
+      label: 'Cohort Progress',
+      Icon: ProgressIcon,
+    },
+    {
+      path: '/teacher/curriculum',
+      label: 'Curriculum',
+      Icon: ScoresIcon,
+    },
+  ],
+  student: [
+    { path: '/student/tasks', label: 'My Tasks', Icon: TasksIcon },
+    {
+      path: '/student/scores',
+      label: 'My Scores',
+      Icon: ScoresIcon,
+    },
+    {
+      path: '/student/cohort/progress',
+      label: 'Cohort Progress',
+      Icon: ProgressIcon,
+    },
+  ],
+};
 
 interface SidebarProps {
   closeMobileNav: () => void;
   isMobileNavOpen: boolean;
+  user: User;
+  cohortName?: string;
 }
 
-export const Sidebar = ({ closeMobileNav, isMobileNavOpen }: SidebarProps) => {
+export const Sidebar = ({
+  closeMobileNav,
+  isMobileNavOpen,
+  user,
+  cohortName,
+}: SidebarProps) => {
   const { pathname: currentPath } = useRouter();
   return (
     <div
@@ -28,16 +59,24 @@ export const Sidebar = ({ closeMobileNav, isMobileNavOpen }: SidebarProps) => {
         isMobileNavOpen && styles.sideBarWrapperOpen
       )}
     >
-      <Link href="/">
-        <a className={styles.logoLink}>
-          <span className={styles.logoWrapper}>
-            <Logo />
-          </span>
-        </a>
-      </Link>
+      <div className={styles.logoLinkWrapper}>
+        <Link href="/">
+          <a className={styles.logoLink}>
+            <Image
+              className={styles.logo}
+              src="/tpa_logo.svg"
+              alt="Tech Play Academy logo"
+              objectFit="contain"
+              width={208}
+              height={20}
+            />
+          </a>
+        </Link>
+      </div>
+      {cohortName && <span className={styles.cohortName}>{cohortName}</span>}
       <nav className={styles.navWrapper}>
         <ul className={styles.navList}>
-          {dashboardLinks.map(({ path, label, Icon }) => (
+          {dashboardLinks[user.role].map(({ path, label, Icon }) => (
             <li key={path} className={styles.navItem}>
               <Link href={path}>
                 <a

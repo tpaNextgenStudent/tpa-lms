@@ -40,11 +40,35 @@
   border-bottom: 1px solid colors.$lightGray;
 }
 
-.title {
+.textWrapper {
   margin-right: auto;
+}
+
+.titleWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.title {
   font-weight: 600;
   font-size: 24px;
   line-height: 40px;
+}
+
+.actionsNumber {
+  font-weight: 800;
+  font-size: 15px;
+  line-height: 24px;
+  margin-left: 16px;
+  background-color: colors.$lightPrimary;
+  border-radius: 64px;
+  padding: 4px 8px;
+}
+
+.description {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 24px;
 }
 
 .userWrapper {
@@ -53,8 +77,6 @@
 }
 
 .userAvatar {
-  width: 40px;
-  height: 40px;
   border-radius: 50px;
 }
 

@@ -1,19 +1,18 @@
 import styles from './ModuleSelect.module.scss';
 import { Module } from '../../../lib/utils/types';
 import { ChangeEvent } from 'react';
-import { useRouter } from 'next/router';
 
 interface ModuleSelectProps {
   modules: Module[];
   module: Module;
+  handleChange: (e: ChangeEvent<HTMLSelectElement>) => void;
 }
 
-export const ModuleSelect = ({ modules, module }: ModuleSelectProps) => {
-  const router = useRouter();
-  const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    router.push(`/tasks/${e.target.value}`);
-  };
-
+export const ModuleSelect = ({
+  modules,
+  module,
+  handleChange,
+}: ModuleSelectProps) => {
   return (
     <div className={styles.moduleSelectWrapper}>
       <select

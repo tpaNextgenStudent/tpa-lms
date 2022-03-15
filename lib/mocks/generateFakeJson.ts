@@ -116,6 +116,7 @@ function generateFakeJson() {
     email: 'patrykbunix@gmail.com',
     image: 'https://unsplash.it/100/100',
     cohortId: 'cohortId',
+    role: 'teacher',
   };
 
   const mockedCohorts: Cohort[] = [

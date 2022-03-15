@@ -8,9 +8,20 @@ import Head from 'next/head';
 interface LayoutProps {
   children: ReactNode;
   user: User;
+  title: string;
+  description?: string;
+  actionsNumber?: number;
+  cohortName?: string;
 }
 
-export const Layout = ({ children, user }: LayoutProps) => {
+export const Layout = ({
+  children,
+  user,
+  title,
+  description,
+  actionsNumber,
+  cohortName,
+}: LayoutProps) => {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
 
   const openMobileNav = useCallback(() => {
@@ -34,12 +45,16 @@ export const Layout = ({ children, user }: LayoutProps) => {
         <Sidebar
           closeMobileNav={closeMobileNav}
           isMobileNavOpen={isMobileNavOpen}
+          user={user}
+          cohortName={cohortName}
         />
         <div className={styles.mainWrapper}>
           <Header
             openMobileNav={openMobileNav}
-            title={'My Tasks'}
+            title={title}
+            description={description}
             user={user}
+            actionsNumber={actionsNumber}
           />
           <div className={styles.contentWrapper}>{children}</div>
         </div>
