@@ -85,6 +85,16 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
     };
   }
 
+  const task = {
+    ...currentUserTask,
+    task: {
+      ...moduleTasks.find(t => t.id === currentUserTask.taskId)!,
+      description: getMarkdown(),
+    },
+  };
+
+  const taskMDX = task.task.description;
+
   return {
     props: {
       user,
@@ -92,10 +102,73 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
       module,
       modules,
       tasks: userTasks,
-      task: {
-        ...currentUserTask,
-        task: moduleTasks.find(t => t.id === currentUserTask.taskId)!,
-      },
+      task: { ...task, description: taskMDX },
     },
   };
+}
+
+function getMarkdown() {
+  return `
+  # Hiding properties - Task
+  
+  \`\`\`marmaid
+  sequenceDiagram
+  Alice->>John: Hello John, how are you?
+  loop Healthcheck
+  John->>John: Fight against hypochondria
+  end
+  Note right of John: Rational thoughts!
+  John-->>Alice: Great!
+  John->>Bob: How about you?
+  Bob-->>John: Jolly good!
+  \`\`\`
+
+<img src="https://unsplash.it/100/100" height=350 style="border: 2px solid">
+
+Everytime when you want to order Uber driver you have information about possible types of car:
+
+* UberX
+* Uber Pets
+* and so on...
+
+But till you decide on specific type you don't know much about car and driver. These datas are hidden. 
+
+1. Write a class UberCar with properties:
+* uber type
+* price
+* time to pick-up (in minutes)
+* driver
+* car model
+* registration number
+
+2. Write a function which takes a list of uber cars (List<UberCar>) and return a Map<String, UberCar> where:
+* key is a uber type
+* value is a car with the shortest time to pick up for that uber type
+
+Example:
+
+\`\`\`dart 
+List<UberCar> cars = [
+    UberCar('UberX', 12.35, 7, 'John Driver', 'Toyota', 'PO 123'),
+    UberCar('UberX', 18.00, 3, 'Mary Lee', 'BMW', 'PO 991'),
+    UberCar('UberX', 17.02, 4, 'Mark Zack', 'Toyota', 'PP 8881'),
+    UberCar('Uber Pets', 12.12, 17, 'Kate Kate', 'Kia', 'PO 888'),
+    UberCar('UberX', 8.50, 8, 'Luke Ok', 'Mazda', 'XO 288'),
+];
+
+Map<String, UberCar> selectedTypes = sortCarsByType(cars);
+\`\`\`
+
+In results \`selectedTypes\` should hold following values:
+
+\`\`\`dart
+{
+    'UberX': UberCar('UberX', 18.00, 3, 'Mary Lee', 'BMW', 'PO 991'),
+    'Uber Pets': UberCar('Uber Pets', 12.12, 17, 'Kate Kate', 'Kia', 'PO 888')
+}
+\`\`\`
+
+3. Decide which values should be private.
+
+`;
 }
