@@ -1,10 +1,11 @@
-datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
-}
-
 generator client {
   provider = "prisma-client-js"
+}
+
+datasource db {
+  provider          = "postgresql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
 model Account {
@@ -13,18 +14,17 @@ model Account {
   type                     String
   provider                 String
   providerAccountId        String
-  refresh_token            String? @db.Text
-  access_token             String? @db.Text
+  refresh_token            String?
+  access_token             String?
   refresh_token_expires_in Int?
   expires_at               Int?
   token_type               String?
   scope                    String?
-  id_token                 String? @db.Text
+  id_token                 String?
   session_state            String?
   oauth_token_secret       String?
   oauth_token              String?
-
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user                     User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
 }
@@ -58,42 +58,49 @@ model VerificationToken {
 model LmsUser {
   id         String @id @default(cuid())
   cohortId   String
-  cohort     Cohort @relation(fields: [cohortId], references: [id])
   githubName String
-  email      String @unique
-  avatar     String
   name       String
   surname    String
+  email      String @unique
+  avatar     String
   bio        String
   role       String
+  cohort     Cohort @relation(fields: [cohortId], references: [id])
+
+
+  attempts        Attempt[] @relation("user")
+  attemptsTeacher Attempt[] @relation("teacher")
 }
 
 model Cohort {
   id               String             @id @default(cuid())
   name             String
-  users            LmsUser[]
   CurriculumModule CurriculumModule[]
+  users            LmsUser[]
 }
 
 model Module {
-  id   String @id @default(cuid())
-  name String
+  id    String @id @default(cuid())
+  name  String
+  tasks Task[]
 }
 
 model Task {
   id          String @id @default(cuid())
-  name        String
   position    Int
-  type        String
+  name        String
   description String
   link        String
+  type        String
+  moduleId    String
+  module      Module @relation(fields: [moduleId], references: [id])
 }
 
 model CurriculumModule {
   id       String
   cohortId String
-  cohort   Cohort           @relation(fields: [cohortId], references: [id])
   name     String
+  cohort   Cohort           @relation(fields: [cohortId], references: [id])
   tasks    CurriculumTask[]
 
   @@id([id, cohortId])
@@ -103,12 +110,12 @@ model CurriculumTask {
   cohortId    String
   id          String
   moduleId    String
-  module      CurriculumModule @relation(fields: [moduleId, cohortId], references: [id, cohortId])
   name        String
   position    Int
   type        String
   description String
   link        String
+  module      CurriculumModule @relation(fields: [moduleId, cohortId], references: [id, cohortId])
   attempts    Attempt[]
 
   @@id([id, cohortId])
@@ -117,12 +124,14 @@ model CurriculumTask {
 model Attempt {
   id             String         @id @default(cuid())
   userId         String
-  cohortId       String
+  user           LmsUser        @relation("user", fields: [userId], references: [id])
+  teacherId      String
+  teacher        LmsUser        @relation("teacher", fields: [teacherId], references: [id])
   taskId         String
-  task           CurriculumTask @relation(fields: [taskId, cohortId], references: [id, cohortId])
   answer         String
-  score          Int
-  comment        String
   attempt_number Int
-
+  cohortId       String
+  comment        String
+  score          Int
+  task           CurriculumTask @relation(fields: [taskId, cohortId], references: [id, cohortId])
 }
