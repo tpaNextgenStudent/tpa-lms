@@ -1,11 +1,10 @@
 import NextAuth from 'next-auth';
 import GithubProvider from 'next-auth/providers/github';
 import { PrismaAdapter } from '@next-auth/prisma-adapter';
-import { prisma } from '../../../lib/prisma';
+import prisma from '../../../lib/prisma';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 export default async (req: NextApiRequest, res: NextApiResponse<any>) => {
-  const inviteUrlId = req.query.path;
   return NextAuth(req, res, {
     adapter: PrismaAdapter(prisma),
     providers: [
@@ -16,21 +15,25 @@ export default async (req: NextApiRequest, res: NextApiResponse<any>) => {
     ],
     callbacks: {
       async signIn(props: any) {
-        console.log(2, inviteUrlId);
-
-        const cohort = await prisma.cohort.create({
-          data: {
-            name: 'checkCohort',
-          },
+        const userExsist = await prisma.profile.findUnique({
+          where: { login: props.profile.login },
         });
 
-        // if(REF_LINK_MATCH_SOME_REF_LINK_FROM_DATABASE || ACCOUNT_FOUND_IN_DATABASE) {
-        //     return true
-        // } else {
-        //    return false
-        //    and redirect to erro page
-        // }
-        return true;
+        if (userExsist && userExsist.userId) {
+          return true;
+        } else if (userExsist) {
+          await prisma.profile.update({
+            where: {
+              login: props.profile.login,
+            },
+            data: {
+              userId: props.user.id,
+            },
+          });
+          return true;
+        } else {
+          return false;
+        }
       },
     },
   });
