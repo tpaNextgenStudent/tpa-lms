@@ -18,6 +18,10 @@
     background-color: colors.$primary;
   }
 
+  &Locked {
+    cursor: not-allowed;
+  }
+
   @media (max-width: media.$laptopS) {
     margin-top: 0;
     min-width: 200px;
@@ -91,7 +95,7 @@
   }
 }
 
-.taskLocked {
+.taskLockWrapper {
   margin-top: 16px;
   padding: 8px 16px;
   background-color: colors.$primary;

@@ -1,8 +1,8 @@
 import styles from './TasksListItem.module.scss';
 import clsx from 'clsx';
 import LockIcon from '../../../public/lock-icon.svg';
-import Link from 'next/link';
 import { Module, Task, UserTask } from '../../../lib/utils/types';
+import { BlockedLink } from '../../common/BlockedLink/BlockedLink';
 
 interface TaskListItemProps {
   task: UserTask & { task: Task };
@@ -17,50 +17,59 @@ export const TasksListItem = ({
   module,
   task,
 }: TaskListItemProps) => {
+  const isTaskLocked = task.status === 'todo';
   return (
-    <li className={clsx(styles.task, isActive && styles.taskActive)}>
-      <Link href={`/student/tasks/${module.id}/${task.id}`}>
-        <a className={styles.taskLink}>
-          <h3 className={styles.taskName}>{task.task.name}</h3>
-          <div className={styles.taskBadges}>
-            <span
-              className={clsx(
-                styles.taskBadge,
-                isActive && styles.taskBadgeActive
-              )}
-            >
-              {task.status}
-            </span>
-            <span
-              className={clsx(
-                styles.taskBadge,
-                isActive && styles.taskBadgeActive
-              )}
-            >
-              {task.task.type}
-            </span>
-          </div>
+    <li
+      className={clsx(
+        styles.task,
+        isActive && styles.taskActive,
+        isTaskLocked && styles.taskLocked
+      )}
+    >
+      <BlockedLink
+        href={`/student/tasks/${module.id}/${task.id}`}
+        isBlocked={isTaskLocked}
+        className={styles.taskLink}
+      >
+        <h3 className={styles.taskName}>{task.task.name}</h3>
+        <div className={styles.taskBadges}>
           <span
             className={clsx(
-              styles.moduleName,
-              isActive && styles.moduleNameActive
+              styles.taskBadge,
+              isActive && styles.taskBadgeActive
             )}
           >
-            {module.name}
+            {task.status}
           </span>
-          {task.status !== IN_PROGRESS_STATUS && (
-            <span
-              className={clsx(
-                styles.taskLocked,
-                isActive && styles.taskLockedActive
-              )}
-              aria-label="Task locked"
-            >
-              <LockIcon />
-            </span>
+          <span
+            className={clsx(
+              styles.taskBadge,
+              isActive && styles.taskBadgeActive
+            )}
+          >
+            {task.task.type}
+          </span>
+        </div>
+        <span
+          className={clsx(
+            styles.moduleName,
+            isActive && styles.moduleNameActive
           )}
-        </a>
-      </Link>
+        >
+          {module.name}
+        </span>
+        {task.status !== IN_PROGRESS_STATUS && (
+          <span
+            className={clsx(
+              styles.taskLockWrapper,
+              isActive && styles.taskLockWrapperActive
+            )}
+            aria-label="Task locked"
+          >
+            <LockIcon />
+          </span>
+        )}
+      </BlockedLink>
     </li>
   );
 };
