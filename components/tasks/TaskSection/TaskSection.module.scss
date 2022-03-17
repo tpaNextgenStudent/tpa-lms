@@ -39,6 +39,33 @@
   color: colors.$primary;
 }
 
+.descriptionHeaderWrapper {
+  border-bottom: 1px solid colors.$lightGray;
+  padding: 0 24px 0;
+}
+
+.descriptionHeader {
+  width: fit-content;
+  position: relative;
+  padding-bottom: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 24px;
+  font-style: normal;
+  color: colors.$black;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 4px;
+    width: 50%;
+    background-color: colors.$primary;
+    border-radius: 8px;
+  }
+}
+
 .fullScreenButton {
   margin-left: auto;
   border-radius: 64px;
