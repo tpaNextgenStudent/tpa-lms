@@ -2,12 +2,20 @@
 @use '/lib/styles/variables/shadows.module' as shadows;
 @use '/lib/styles/variables/media.module' as media;
 
-.taskLink {
-  display: block;
+.task {
   margin-top: 24px;
+  background-color: colors.$white;
+  border-radius: 16px;
+  box-shadow: shadows.$shadow;
+  position: relative;
 
   &:first-of-type {
     margin-top: 0;
+  }
+
+  &Active {
+    color: colors.$white;
+    background-color: colors.$primary;
   }
 
   @media (max-width: media.$laptopS) {
@@ -21,17 +29,9 @@
   }
 }
 
-.task {
+.taskLink {
+  display: block;
   padding: 16px;
-  background-color: colors.$white;
-  border-radius: 16px;
-  box-shadow: shadows.$shadow;
-  position: relative;
-
-  &Active {
-    color: colors.$white;
-    background-color: colors.$primary;
-  }
 }
 
 .taskName {

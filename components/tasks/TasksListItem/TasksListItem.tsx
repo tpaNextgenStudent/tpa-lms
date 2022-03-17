@@ -18,9 +18,9 @@ export const TasksListItem = ({
   task,
 }: TaskListItemProps) => {
   return (
-    <Link href={`/student/tasks/${module.id}/${task.id}`}>
-      <a className={styles.taskLink}>
-        <li className={clsx(styles.task, isActive && styles.taskActive)}>
+    <li className={clsx(styles.task, isActive && styles.taskActive)}>
+      <Link href={`/student/tasks/${module.id}/${task.id}`}>
+        <a className={styles.taskLink}>
           <h3 className={styles.taskName}>{task.task.name}</h3>
           <div className={styles.taskBadges}>
             <span
@@ -59,8 +59,8 @@ export const TasksListItem = ({
               <LockIcon />
             </span>
           )}
-        </li>
-      </a>
-    </Link>
+        </a>
+      </Link>
+    </li>
   );
 };
