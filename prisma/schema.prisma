@@ -38,13 +38,25 @@ model Session {
 }
 
 model User {
-  id            String    @id @default(cuid())
-  name          String?
-  email         String?   @unique
-  emailVerified DateTime?
-  image         String?
-  accounts      Account[]
-  sessions      Session[]
+  id              String    @id @default(cuid())
+  name            String?
+  email           String?   @unique
+  emailVerified   DateTime?
+  image           String?
+  cohortId        String?
+  accounts        Account[]
+  sessions        Session[]
+  avatar          String
+  bio             String
+  cohort          Cohort?   @relation(fields: [cohortId], references: [id])
+  attempts        Attempt[] @relation("user")
+  attemptsTeacher Attempt[] @relation("teacher")
+}
+
+model Profile {
+  login  String  @unique
+  role   String
+  userId String?
 }
 
 model VerificationToken {
@@ -55,28 +67,11 @@ model VerificationToken {
   @@unique([identifier, token])
 }
 
-model LmsUser {
-  id         String @id @default(cuid())
-  cohortId   String
-  githubName String
-  name       String
-  surname    String
-  email      String @unique
-  avatar     String
-  bio        String
-  role       String
-  cohort     Cohort @relation(fields: [cohortId], references: [id])
-
-
-  attempts        Attempt[] @relation("user")
-  attemptsTeacher Attempt[] @relation("teacher")
-}
-
 model Cohort {
   id               String             @id @default(cuid())
   name             String
   CurriculumModule CurriculumModule[]
-  users            LmsUser[]
+  users            User[]
 }
 
 model Module {
@@ -124,9 +119,7 @@ model CurriculumTask {
 model Attempt {
   id             String         @id @default(cuid())
   userId         String
-  user           LmsUser        @relation("user", fields: [userId], references: [id])
   teacherId      String
-  teacher        LmsUser        @relation("teacher", fields: [teacherId], references: [id])
   taskId         String
   answer         String
   attempt_number Int
@@ -134,4 +127,6 @@ model Attempt {
   comment        String
   score          Int
   task           CurriculumTask @relation(fields: [taskId, cohortId], references: [id, cohortId])
+  user           User           @relation("user", fields: [userId], references: [id])
+  teacher        User           @relation("teacher", fields: [teacherId], references: [id])
 }

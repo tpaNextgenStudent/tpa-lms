@@ -12,24 +12,10 @@ export default function Login() {
     }
   }, [session]);
 
-  const path = (Router.query.refId as string) || '';
-
   return !session ? (
     <>
       Not signed in <br />
-      <button
-        onClick={() =>
-          signIn(
-            'github',
-            { callbackUrl: 'http://localhost:3000' },
-            {
-              path: path,
-            }
-          )
-        }
-      >
-        Sign in
-      </button>
+      <button onClick={() => signIn()}>Sign in</button>
     </>
   ) : (
     ''
