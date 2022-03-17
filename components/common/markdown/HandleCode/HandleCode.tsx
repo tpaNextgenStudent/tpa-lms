@@ -29,7 +29,6 @@ export const HandleCode = ({
       <SyntaxHighlighter
         style={materialDark}
         language={match[1]}
-        PreTag="div"
         {...codeElementProps}
       >
         {children}
