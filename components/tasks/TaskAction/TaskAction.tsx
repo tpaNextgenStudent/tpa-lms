@@ -25,5 +25,7 @@ export const TaskAction = ({ task }: TaskActionProps) => {
       return <QuizAction />;
     case TASK_TYPES.INFO:
       return <InfoAction />;
+    default:
+      return null;
   }
 };

@@ -2,8 +2,7 @@ import styles from './TaskSection.module.scss';
 import { Module, Task, UserTask } from '../../../lib/utils/types';
 import { TaskDescription } from '../TaskDescription/TaskDescription';
 import { TaskAction } from '../TaskAction/TaskAction';
-import { useCallback, useState } from 'react';
-import { TaskNav } from '../TaskNav/TaskNav';
+import { useState } from 'react';
 import EnlargeIcon from '../../../public/enlarge-icon.svg';
 import CrossIcon from '../../../public/cross-icon.svg';
 import clsx from 'clsx';
@@ -17,7 +16,6 @@ export const TaskSection = ({
   task: { task, status },
   module,
 }: TaskSectionProps) => {
-  const [isDescriptionView, setIsDescriptionView] = useState(true);
   const [isFullScreenMode, setIsFullScreenMode] = useState(false);
 
   const toggleFullScreenMode = () => {
@@ -46,15 +44,10 @@ export const TaskSection = ({
         <span className={styles.taskBadge}>{status}</span>
         <span className={styles.taskBadge}>{task.type}</span>
       </div>
-      <TaskNav
-        setIsDescriptionView={setIsDescriptionView}
-        isDescriptionView={isDescriptionView}
-      />
-      {isDescriptionView ? (
-        <TaskDescription description={task.description} />
-      ) : (
-        <TaskDescription description={'information'} />
-      )}
+      <div className={styles.descriptionHeaderWrapper}>
+        <h2 className={styles.descriptionHeader}>Description</h2>
+      </div>
+      <TaskDescription description={task.description} />
       <TaskAction task={task} />
     </main>
   );

@@ -1,4 +1,5 @@
 import styles from './TaskDescription.module.scss';
+import { MarkdownContent } from '../../common/markdown/MarkdownContent/MarkdownContent';
 
 interface TaskDescriptionProps {
   description: string;
@@ -7,7 +8,9 @@ interface TaskDescriptionProps {
 export const TaskDescription = ({ description }: TaskDescriptionProps) => {
   return (
     <article className={styles.wrapper}>
-      <div className={styles.content}>{description}</div>
+      <div className={styles.content}>
+        <MarkdownContent content={description} />
+      </div>
     </article>
   );
 };
