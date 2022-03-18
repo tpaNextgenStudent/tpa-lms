@@ -2,13 +2,13 @@
 
 .wrapper {
   padding: 16px 24px;
-  border-top: 1px solid colors.$bgLightGray;
+  border-top: 1px solid colors.$bgMain;
 }
 
 .button {
   display: block;
   margin-left: auto;
-  background-color: colors.$primary;
+  background-color: colors.$purplePrimary;
   border-radius: 64px;
   color: colors.$white;
   border: none;

@@ -8,7 +8,7 @@
   padding: 32px 24px;
   display: flex;
   flex-direction: column;
-  border-right: 1px solid colors.$bgLightGray;
+  border-right: 1px solid colors.$bgMain;
 
   @media (max-width: media.$laptopS) {
     position: fixed;
@@ -41,12 +41,12 @@
 .cohortName {
   padding: 16px;
   text-align: center;
-  border: 1px solid colors.$primary;
+  border: 1px solid colors.$purplePrimary;
   border-radius: 16px;
   font-weight: 600;
   font-size: 16px;
   line-height: 24px;
-  color: colors.$black;
+  color: colors.$fontPrimary;
 
   @media (max-width: media.$laptopS) {
     order: 1000;
@@ -73,21 +73,21 @@
   display: flex;
   align-items: center;
   border-radius: 16px;
-  color: colors.$gray;
+  color: colors.$fontSecondary;
 
   svg > path {
-    fill: colors.$gray;
+    fill: colors.$fontSecondary;
   }
 
   &Active {
     svg > path {
-      fill: colors.$primary;
+      fill: colors.$purplePrimary;
     }
   }
 
   &Active {
-    background-color: colors.$lightPrimary;
-    color: colors.$primary;
+    background-color: colors.$purpleSecondary;
+    color: colors.$purplePrimary;
   }
 }
 
@@ -122,7 +122,7 @@
 .mobileNavClose {
   border: none;
   background: none;
-  color: colors.$primary;
+  color: colors.$purplePrimary;
   cursor: pointer;
   border-radius: 64px;
   width: 40px;
@@ -137,9 +137,9 @@
   svg {
     width: 16px;
     height: 16px;
-    fill: colors.$primary;
+    fill: colors.$purplePrimary;
     path {
-      fill: colors.$primary;
+      fill: colors.$purplePrimary;
     }
   }
 }

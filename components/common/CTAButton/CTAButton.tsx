@@ -1,5 +1,6 @@
 import styles from './CTAButton.module.scss';
 import { CSSProperties } from 'react';
+import clsx from 'clsx';
 
 interface CTAButtonProps {
   text: string;
@@ -20,7 +21,7 @@ export const CTAButton = ({
     <button
       type={type}
       style={extraStyles}
-      className={styles.button}
+      className={clsx(styles.button, disabled && styles.buttonDisabled)}
       disabled={disabled}
       onClick={onClick}
     >
