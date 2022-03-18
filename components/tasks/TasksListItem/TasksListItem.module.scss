@@ -15,7 +15,7 @@
 
   &Active {
     color: colors.$white;
-    background-color: colors.$primary;
+    background-color: colors.$purplePrimary;
   }
 
   &Locked {
@@ -66,7 +66,7 @@
     transform: translateY(-50%);
     width: 8px;
     height: 8px;
-    background-color: colors.$primary;
+    background-color: colors.$purplePrimary;
     border-radius: 64px;
   }
 
@@ -85,20 +85,20 @@
   padding: 8px 16px;
   display: block;
   width: fit-content;
-  background-color: colors.$bgLightGray;
-  color: colors.$primary;
+  background-color: colors.$bgMain;
+  color: colors.$purplePrimary;
   border-radius: 16px;
 
   &Active {
     background-color: colors.$white;
-    color: colors.$black;
+    color: colors.$fontPrimary;
   }
 }
 
 .taskLockWrapper {
   margin-top: 16px;
   padding: 8px 16px;
-  background-color: colors.$primary;
+  background-color: colors.$purplePrimary;
   width: fit-content;
   display: flex;
   align-items: center;
@@ -112,7 +112,7 @@
     background-color: colors.$white;
 
     svg > path {
-      fill: colors.$primary;
+      fill: colors.$purplePrimary;
     }
   }
 

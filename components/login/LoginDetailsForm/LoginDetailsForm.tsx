@@ -44,7 +44,7 @@ export const LoginDetailsForm = ({}: LoginDetailsFormProps) => {
           type="text"
           name="firstName"
           id="firstName"
-          placeholder="Type here"
+          placeholder="Type here..."
         />
       </div>
       <div className={styles.fieldWrapper}>
@@ -58,7 +58,7 @@ export const LoginDetailsForm = ({}: LoginDetailsFormProps) => {
           type="text"
           name="lastName"
           id="lastName"
-          placeholder="Type here"
+          placeholder="Type here..."
         />
       </div>
       <div className={styles.fieldWrapper}>
@@ -72,8 +72,8 @@ export const LoginDetailsForm = ({}: LoginDetailsFormProps) => {
           name="bio"
           id="bio"
           cols={30}
-          rows={5}
-          placeholder="Type here"
+          rows={3}
+          placeholder="Type here..."
         />
       </div>
       <CTAButton type="submit" text="Submit" />
