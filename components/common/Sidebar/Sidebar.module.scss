@@ -8,7 +8,7 @@
   padding: 32px 24px;
   display: flex;
   flex-direction: column;
-  border-right: 1px solid colors.$lightGray;
+  border-right: 1px solid colors.$bgLightGray;
 
   @media (max-width: media.$laptopS) {
     position: fixed;

@@ -8,7 +8,7 @@
   background: linear-gradient(
     90deg,
     colors.$white max(50%, 700px),
-    colors.$lightGray max(50%, 700px)
+    colors.$bgLightGray max(50%, 700px)
   );
 
   @media (max-width: media.$laptopS) {
