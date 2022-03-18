@@ -1,33 +1,46 @@
-$primary: #8d7cff;
-$lightPrimary: #f6f5ff;
-$black: #070130;
-$gray: #9c99ac;
+//purple
+$purplePrimary: #8d7cff;
+$purpleSecondary: #f6f5ff;
 
-$bgLightGray: #f8f8f8;
-$bgMediumGray: #f0f0f0;
-$bgDarkGray: #acaab9;
-$bgLightPrimary: #ededff;
+//stroke
+$strokeMain: #ededff;
+$strokeLines: #f0f0f0;
 
-$statusGreen: #65ba6b;
-$statusLightGreen: #edffee;
+//background
+$bgMain: #f8f8f8;
+$bgInactive: #acaab9;
 
-$statusOrange: #e19936;
-$statusLightOrange: #fff7eb;
+//status font
+$statusFontGreen: #65ba6b;
+$statusFontOrange: #e19936;
+$statusFontBlue: #2d6add;
 
-$statusBlue: #2d6add;
-$statusLightBlue: #e3edff;
+//status background
+$statusBgGreen: #edffee;
+$statusBgOrange: #fff7eb;
+$statusBgBlue: #e3edff;
 
+//font
+$fontPrimary: #070130;
+$fontSecondary: #9c99ac;
+
+//colors
 $white: rgb(255, 255, 255);
-$lightGray: #f7f7f7;
 
 :export {
-  primary: $primary;
-  lightPurple: $lightPrimary;
-  black: $black;
-  gray: $gray;
-
-  bgLightGray: $bgLightGray;
-  bgMediumGray: $bgMediumGray;
-  bgDarkGray: $bgDarkGray;
-  bgLightPrimary: $bgLightPrimary;
+  purplePrimary: $purplePrimary;
+  purpleSecondary: $purpleSecondary;
+  strokeMain: $strokeMain;
+  strokeLines: $strokeLines;
+  bgMain: $bgMain;
+  bgInactive: $bgInactive;
+  statusFontGreen: $statusFontGreen;
+  statusFontOrange: $statusFontOrange;
+  statusFontBlue: $statusFontBlue;
+  statusBgGreen: $statusBgGreen;
+  statusBgOrange: $statusBgOrange;
+  statusBgBlue: $statusBgBlue;
+  fontPrimary: $fontPrimary;
+  fontSecondary: $fontSecondary;
+  white: $white;
 }
