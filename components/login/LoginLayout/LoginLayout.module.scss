@@ -102,6 +102,8 @@
 .imageWrapper {
   width: 100%;
   box-shadow: shadows.$shadow;
+  overflow: hidden;
+  border-radius: 16px;
 }
 
 .image {
