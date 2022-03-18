@@ -14,14 +14,6 @@
   &:first-child {
     margin-top: 0;
   }
-
-  &:last-of-type {
-    margin-bottom: 72px;
-
-    @media (max-width: media.$tablet) {
-      margin-bottom: 32px;
-    }
-  }
 }
 
 .label {
@@ -45,5 +37,13 @@
 
   &::placeholder {
     color: colors.$fontSecondary;
+  }
+}
+
+.ctaButtonWrapper {
+  margin-top: 72px;
+
+  @media (max-width: media.$tablet) {
+    margin-top: 32px;
   }
 }

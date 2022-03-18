@@ -1,29 +1,48 @@
-import { useSession, signIn, signOut } from 'next-auth/react';
-import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { getSession, signIn, useSession } from 'next-auth/react';
+import { GetServerSidePropsContext } from 'next';
+import { LoginLayout } from '../../components/login/LoginLayout/LoginLayout';
+import { LoginHeroText } from '../../components/login/LoginHeroText/LoginHeroText';
+import styles from '../../components/login/login-page/loginPage.module.scss';
+import { CTAButton } from '../../components/common/CTAButton/CTAButton';
 
 export default function Login() {
-  const Router = useRouter();
-  const { data: session } = useSession();
-
-  useEffect(() => {
-    if (session) {
-      Router.push('/');
-    }
-  }, [session]);
-
   const sendPost = async () => {
     const response = await fetch('api/login/details/23', { method: 'POST' });
     console.log(2, response);
   };
 
-  return !session ? (
-    <>
-      Not signed in <br />
-      <button onClick={() => signIn()}>Sign in</button>
-      <button onClick={() => sendPost()}>SEND POST</button>
-    </>
-  ) : (
-    ''
+  return (
+    <LoginLayout
+      fixedButton={{
+        text: 'Login with github',
+        onClick: () => signIn('github', {}),
+      }}
+    >
+      <LoginHeroText
+        title="*Name, learning platform* whenever you want"
+        description="There will be some text about halftone"
+      />
+      <div className={styles.ctaButtonWrapper}>
+        <CTAButton
+          text="Login with github"
+          onClick={() => signIn('github', {})}
+        />
+      </div>
+    </LoginLayout>
   );
+}
+
+export async function getServerSideProps(ctx: GetServerSidePropsContext) {
+  const session = await getSession(ctx);
+  if (session) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: true,
+      },
+    };
+  }
+  return {
+    props: {},
+  };
 }

@@ -6,7 +6,7 @@ export default function LoginDetails() {
   return (
     <LoginLayout>
       <LoginHeroText
-        title="Well done"
+        title="*Well done*"
         description="Last thing is to fill up 2 forms and type some of your hobbies"
       />
       <LoginDetailsForm />

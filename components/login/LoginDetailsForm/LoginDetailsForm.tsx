@@ -76,7 +76,9 @@ export const LoginDetailsForm = ({}: LoginDetailsFormProps) => {
           placeholder="Type here..."
         />
       </div>
-      <CTAButton type="submit" text="Submit" />
+      <div className={styles.ctaButtonWrapper}>
+        <CTAButton type="submit" text="Submit" />
+      </div>
     </form>
   );
 };

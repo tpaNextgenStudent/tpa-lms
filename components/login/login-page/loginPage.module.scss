@@ -1,0 +1,9 @@
+@use '/lib/styles/variables/media.module' as media;
+
+.ctaButtonWrapper {
+  margin-top: 72px;
+
+  @media (max-width: media.$tablet) {
+    margin-top: 32px;
+  }
+}

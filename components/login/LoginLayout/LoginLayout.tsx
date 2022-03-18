@@ -3,15 +3,21 @@ import Image from 'next/image';
 import styles from './LoginLayout.module.scss';
 import { CTAButton } from '../../common/CTAButton/CTAButton';
 import BgStripesIcon from '../../../public/bg_stripes.svg';
+import clsx from 'clsx';
 
 interface LoginLayoutProps {
   children: ReactNode;
-  headerButton?: { text: string; onClick: () => void };
+  fixedButton?: { text: string; onClick: () => void };
 }
 
-export const LoginLayout = ({ children, headerButton }: LoginLayoutProps) => {
+export const LoginLayout = ({ children, fixedButton }: LoginLayoutProps) => {
   return (
     <div className={styles.pageWrapper}>
+      {fixedButton && (
+        <div className={styles.fixedButtonWrapper}>
+          <CTAButton text={fixedButton.text} onClick={fixedButton.onClick} />
+        </div>
+      )}
       <div className={styles.contentWrapper}>
         <header className={styles.header}>
           <div className={styles.logoWrapper}>
@@ -22,16 +28,15 @@ export const LoginLayout = ({ children, headerButton }: LoginLayoutProps) => {
               height={20}
             />
           </div>
-          {headerButton && (
-            <CTAButton
-              text={headerButton.text}
-              onClick={headerButton.onClick}
-            />
-          )}
         </header>
         <main className={styles.main}>{children}</main>
       </div>
-      <section className={styles.imageSection}>
+      <section
+        className={clsx(
+          styles.imageSection,
+          fixedButton && styles.imageSectionWithFixedButton
+        )}
+      >
         <div className={styles.imageWrapper}>
           <Image
             layout="responsive"

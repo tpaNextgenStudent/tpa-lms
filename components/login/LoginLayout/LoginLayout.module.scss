@@ -36,6 +36,24 @@
   }
 }
 
+.fixedButtonWrapper {
+  position: fixed;
+  right: 96px;
+  top: 32px;
+  z-index: 10;
+  width: 256px;
+
+  & > button {
+    box-shadow: shadows.$shadow;
+  }
+
+  @media (max-width: media.$tablet) {
+    bottom: 24px;
+    top: unset;
+    right: 24px;
+  }
+}
+
 .logoWrapper {
   margin: 40px 24px 40px 0;
 }
@@ -72,14 +90,20 @@
     padding: 32px;
     flex: 1;
   }
+
+  &WithFixedButton {
+    @media (max-width: media.$tablet) {
+      padding-bottom: 100px;
+    }
+  }
 }
 
 .imageWrapper {
   width: 100%;
+  box-shadow: shadows.$shadow;
 }
 
 .image {
-  filter: shadows.$shadow;
   border-radius: 16px;
   z-index: 1;
 }
