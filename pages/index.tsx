@@ -1,22 +1,21 @@
-import { useSession, signIn, signOut } from "next-auth/react";
-import Router from "next/router";
-import { useEffect } from "react";
+import { getSession } from 'next-auth/react';
+import { GetServerSidePropsContext } from 'next';
 
 export default function Component() {
-  const { data: session } = useSession();
+  return null;
+}
 
-  useEffect(() => {
-    if (!session) {
-      Router.push("/login");
-    }
-  }, [session]);
-
-  return session ? (
-    <div>
-      <div>Signed in</div>
-      <button onClick={() => signOut()}>Sign out</button>
-    </div>
-  ) : (
-    ""
-  );
+export async function getServerSideProps(ctx: GetServerSidePropsContext) {
+  const session = await getSession(ctx);
+  if (!session) {
+    return {
+      redirect: {
+        destination: '/login',
+        permanent: false,
+      },
+    };
+  }
+  return {
+    props: {},
+  };
 }
