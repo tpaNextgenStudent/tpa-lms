@@ -38,6 +38,7 @@ export default async (req: NextApiRequest, res: NextApiResponse<any>) => {
       },
     },
     pages: {
+      signIn: '/login',
       error: '/auth/error',
     },
   });

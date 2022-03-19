@@ -1,6 +1,7 @@
 import { GetServerSidePropsContext } from 'next';
 import { InferPagePropsType } from '../../lib/utils/types';
 import { ErrorView } from '../../components/common/ErrorView/ErrorView';
+import { ERROR_TYPE_MESSAGE } from '../../lib/constants';
 
 export default function ErrorPage({
   error,
@@ -9,21 +10,14 @@ export default function ErrorPage({
     <ErrorView
       title={'*Something went wrong*'}
       description={error}
-      button={{ text: 'ContactSupport', onClick: () => {} }}
+      button={{ text: 'Contact Support', onClick: () => {} }}
     />
   );
 }
 
-const ERROR = {
-  Configuration: 'There is a problem with the server configuration.',
-  AccessDenied: 'Access denied. There was an error while logging in.',
-  Verification: 'The token has expired or has already been used',
-  Default: 'Error while authorization',
-};
-
 export function getServerSideProps(ctx: GetServerSidePropsContext) {
-  const errorType = ctx.query.error as keyof typeof ERROR;
+  const errorType = ctx.query.error as keyof typeof ERROR_TYPE_MESSAGE;
   return {
-    props: { error: ERROR[errorType] },
+    props: { error: ERROR_TYPE_MESSAGE[errorType] },
   };
 }
