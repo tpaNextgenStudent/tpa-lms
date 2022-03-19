@@ -37,5 +37,8 @@ export default async (req: NextApiRequest, res: NextApiResponse<any>) => {
         }
       },
     },
+    pages: {
+      error: '/auth/error',
+    },
   });
 };
