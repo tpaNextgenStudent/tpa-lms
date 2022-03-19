@@ -5,6 +5,10 @@ import { LoginHeroText } from '../../components/login/LoginHeroText/LoginHeroTex
 import styles from '../../components/login/login-page/loginPage.module.scss';
 import { CTAButton } from '../../components/common/CTAButton/CTAButton';
 
+const loginWithGithub = async () => {
+  await signIn('github', {});
+};
+
 export default function Login() {
   const sendPost = async () => {
     const response = await fetch('api/login/details/23', { method: 'POST' });
@@ -15,7 +19,7 @@ export default function Login() {
     <LoginLayout
       fixedButton={{
         text: 'Login with github',
-        onClick: () => signIn('github', {}),
+        onClick: loginWithGithub,
       }}
     >
       <LoginHeroText
@@ -23,10 +27,7 @@ export default function Login() {
         description="There will be some text about halftone"
       />
       <div className={styles.ctaButtonWrapper}>
-        <CTAButton
-          text="Login with github"
-          onClick={() => signIn('github', {})}
-        />
+        <CTAButton text="Login with github" onClick={loginWithGithub} />
       </div>
     </LoginLayout>
   );
