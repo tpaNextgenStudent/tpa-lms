@@ -7,7 +7,7 @@
   margin-right: 12px;
   background: none;
   border: none;
-  color: colors.$primary;
+  color: colors.$purplePrimary;
   cursor: pointer;
   border-radius: 64px;
   width: 40px;
@@ -21,9 +21,9 @@
   svg {
     width: 16px;
     height: 16px;
-    fill: colors.$primary;
+    fill: colors.$purplePrimary;
     path {
-      fill: colors.$primary;
+      fill: colors.$purplePrimary;
     }
   }
 
@@ -37,7 +37,7 @@
   display: flex;
   align-items: center;
   padding: 24px;
-  border-bottom: 1px solid colors.$lightGray;
+  border-bottom: 1px solid colors.$bgMain;
 }
 
 .textWrapper {
@@ -60,7 +60,7 @@
   font-size: 15px;
   line-height: 24px;
   margin-left: 16px;
-  background-color: colors.$lightPrimary;
+  background-color: colors.$purpleSecondary;
   border-radius: 64px;
   padding: 4px 8px;
 }

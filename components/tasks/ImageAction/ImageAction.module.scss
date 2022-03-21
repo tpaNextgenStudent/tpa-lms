@@ -6,7 +6,7 @@
 }
 
 .uploadImageArea {
-  border: 1.5px dashed colors.$gray;
+  border: 1.5px dashed colors.$fontSecondary;
   box-sizing: border-box;
   border-radius: 16px;
   width: 160px;
@@ -16,13 +16,13 @@
 
 .submitWrapper {
   padding: 16px 24px;
-  border-top: 1px solid colors.$lightGray;
+  border-top: 1px solid colors.$bgMain;
 }
 
 .submitButton {
   display: block;
   margin-left: auto;
-  background-color: colors.$gray;
+  background-color: colors.$fontSecondary;
   border-radius: 64px;
   color: colors.$white;
   border: none;
@@ -33,6 +33,6 @@
   cursor: pointer;
 
   &Active {
-    background-color: colors.$primary;
+    background-color: colors.$purplePrimary;
   }
 }

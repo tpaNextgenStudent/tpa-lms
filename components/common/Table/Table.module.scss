@@ -17,7 +17,7 @@
   font-weight: 600;
   font-size: 12px;
   line-height: 16px;
-  color: colors.$gray;
+  color: colors.$fontSecondary;
   text-align: left;
   white-space: nowrap;
 
@@ -28,7 +28,7 @@
 
 .tableRow {
   &:nth-child(odd) {
-    background: colors.$lightPrimary;
+    background: colors.$purpleSecondary;
   }
 }
 
@@ -36,7 +36,7 @@
   font-weight: 600;
   font-size: 12px;
   line-height: 16px;
-  color: colors.$black;
+  color: colors.$fontPrimary;
   padding: 24px 24px 24px 0;
   max-width: 200px;
   white-space: nowrap;
@@ -58,7 +58,7 @@
   position: relative;
   z-index: 1;
   padding: 8px 16px;
-  background-color: colors.$primary;
+  background-color: colors.$purplePrimary;
   border-radius: 64px;
   color: colors.$white;
 }

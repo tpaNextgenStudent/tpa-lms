@@ -8,7 +8,7 @@
   padding: 32px 24px;
   display: flex;
   flex-direction: column;
-  border-right: 1px solid colors.$lightGray;
+  border-right: 1px solid colors.$bgMain;
 
   @media (max-width: media.$laptopS) {
     position: fixed;
@@ -18,6 +18,8 @@
     height: 100vh;
     z-index: 10;
     transform: translateX(-100%);
+    display: flex;
+    flex-direction: column;
 
     &Open {
       transform: translateX(0);
@@ -26,30 +28,25 @@
 }
 
 .logoLinkWrapper {
-  height: 120px;
+  height: 56px;
   display: flex;
   align-items: center;
-  margin-top: -32px;
   align-self: flex-end;
 }
 
 .logoLink {
   width: fit-content;
-
-  @media (max-width: media.$laptopS) {
-    align-self: flex-end;
-  }
 }
 
 .cohortName {
   padding: 16px;
   text-align: center;
-  border: 1px solid colors.$primary;
+  border: 1px solid colors.$purplePrimary;
   border-radius: 16px;
   font-weight: 600;
   font-size: 16px;
   line-height: 24px;
-  color: colors.$black;
+  color: colors.$fontPrimary;
 
   @media (max-width: media.$laptopS) {
     order: 1000;
@@ -76,21 +73,21 @@
   display: flex;
   align-items: center;
   border-radius: 16px;
-  color: colors.$gray;
+  color: colors.$fontSecondary;
 
   svg > path {
-    fill: colors.$gray;
+    fill: colors.$fontSecondary;
   }
 
   &Active {
     svg > path {
-      fill: colors.$primary;
+      fill: colors.$purplePrimary;
     }
   }
 
   &Active {
-    background-color: colors.$lightPrimary;
-    color: colors.$primary;
+    background-color: colors.$purpleSecondary;
+    color: colors.$purplePrimary;
   }
 }
 
@@ -105,20 +102,27 @@
 
 .closeButtonWrapper {
   display: none;
-  position: absolute;
-  top: 0;
-  left: 24px;
-  height: 120px;
+  height: 56px;
   align-items: center;
+  margin-right: 24px;
   @media (max-width: media.$laptopS) {
     display: flex;
+  }
+}
+
+.logoCloseWrapper {
+  @media (max-width: media.$laptopS) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
   }
 }
 
 .mobileNavClose {
   border: none;
   background: none;
-  color: colors.$primary;
+  color: colors.$purplePrimary;
   cursor: pointer;
   border-radius: 64px;
   width: 40px;
@@ -133,9 +137,9 @@
   svg {
     width: 16px;
     height: 16px;
-    fill: colors.$primary;
+    fill: colors.$purplePrimary;
     path {
-      fill: colors.$primary;
+      fill: colors.$purplePrimary;
     }
   }
 }

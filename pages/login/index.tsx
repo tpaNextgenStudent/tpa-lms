@@ -1,23 +1,69 @@
-import { useSession, signIn, signOut } from 'next-auth/react';
-import { useRouter } from 'next/router';
-import { useEffect } from 'react';
+import { getSession, signIn, useSession } from 'next-auth/react';
+import { GetServerSidePropsContext } from 'next';
+import { LoginLayout } from '../../components/login/LoginLayout/LoginLayout';
+import { LoginHeroText } from '../../components/login/LoginHeroText/LoginHeroText';
+import styles from '../../components/login/login-page/loginPage.module.scss';
+import { CTAButton } from '../../components/common/CTAButton/CTAButton';
+import { ERROR_TYPE_MESSAGE } from '../../lib/constants';
+import { InferPagePropsType } from '../../lib/utils/types';
+import { ErrorView } from '../../components/common/ErrorView/ErrorView';
 
-export default function Login() {
-  const Router = useRouter();
-  const { data: session } = useSession();
+const loginWithGithub = async () => {
+  await signIn('github', {});
+};
 
-  useEffect(() => {
-    if (session) {
-      Router.push('/');
-    }
-  }, [session]);
+const sendPost = async () => {
+  const response = await fetch('api/login/details/23', { method: 'POST' });
+  console.log(2, response);
+};
 
-  return !session ? (
-    <>
-      Not signed in <br />
-      <button onClick={() => signIn()}>Sign in</button>
-    </>
-  ) : (
-    ''
+export default function Login({
+  error,
+}: InferPagePropsType<typeof getServerSideProps>) {
+  if (error) {
+    return (
+      <ErrorView
+        title="*Something went wrong*"
+        description={error}
+        button={{ text: 'Contact Support', onClick: () => {} }}
+      />
+    );
+  }
+  return (
+    <LoginLayout
+      fixedButton={{
+        text: 'Login with github',
+        onClick: loginWithGithub,
+      }}
+    >
+      <LoginHeroText
+        title="*Name, learning platform* whenever you want"
+        description="There will be some text about halftone"
+      />
+      <div className={styles.ctaButtonWrapper}>
+        <CTAButton text="Login with github" onClick={loginWithGithub} />
+      </div>
+    </LoginLayout>
   );
+}
+
+export async function getServerSideProps(ctx: GetServerSidePropsContext) {
+  const session = await getSession(ctx);
+  if (session) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: true,
+      },
+    };
+  }
+
+  const errorType = ctx.query.error;
+  return {
+    props: {
+      error: errorType
+        ? ERROR_TYPE_MESSAGE[errorType as keyof typeof ERROR_TYPE_MESSAGE]
+        : null,
+    },
+  };
 }
