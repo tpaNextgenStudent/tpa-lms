@@ -62,7 +62,7 @@ export function validate(
   handler: NextApiHandler
 ) {
   return async (req: NextApiRequest, res: NextApiResponse) => {
-    if ('POST') {
+    if (req.method === 'POST') {
       try {
         req.body = await schema.validate(req.body, { abortEarly: false });
       } catch (error: any) {

@@ -4,6 +4,9 @@ const nextConfig = {
   images: {
     domains: ['unsplash.it'],
   },
+  publicRuntimeConfig: {
+    BASE_URL: process.env.BASE_URL || 'localhost:3000',
+  },
 };
 
 module.exports = nextConfig;
