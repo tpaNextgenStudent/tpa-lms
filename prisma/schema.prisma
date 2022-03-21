@@ -43,14 +43,15 @@ model User {
   email           String?   @unique
   emailVerified   DateTime?
   image           String?
-  cohortId        String?
   accounts        Account[]
   sessions        Session[]
-  avatar          String
-  bio             String
-  cohort          Cohort?   @relation(fields: [cohortId], references: [id])
+  legalName       String?
+  surname         String?
+  bio             String?
   attempts        Attempt[] @relation("user")
   attemptsTeacher Attempt[] @relation("teacher")
+  Cohort          Cohort?   @relation(fields: [cohortId], references: [id])
+  cohortId        String?
 }
 
 model Profile {

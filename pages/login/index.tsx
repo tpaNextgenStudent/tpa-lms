@@ -12,10 +12,16 @@ export default function Login() {
     }
   }, [session]);
 
+  const sendPost = async () => {
+    const response = await fetch('api/login/details/23', { method: 'POST' });
+    console.log(2, response);
+  };
+
   return !session ? (
     <>
       Not signed in <br />
       <button onClick={() => signIn()}>Sign in</button>
+      <button onClick={() => sendPost()}>SEND POST</button>
     </>
   ) : (
     ''
