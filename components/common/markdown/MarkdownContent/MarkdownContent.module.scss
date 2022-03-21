@@ -4,7 +4,7 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 28px;
-  color: colors.$black;
+  color: colors.$fontPrimary;
 
   h1,
   h2,
@@ -42,7 +42,7 @@
   }
 
   p > code {
-    background-color: colors.$lightPrimary;
+    background-color: colors.$purpleSecondary;
     padding: 2px 6px;
     border-radius: 8px;
     margin: 0 2px;

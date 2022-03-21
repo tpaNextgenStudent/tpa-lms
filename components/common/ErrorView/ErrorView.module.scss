@@ -1,0 +1,105 @@
+@use '/lib/styles/variables/colors.module' as colors;
+@use '/lib/styles/variables/media.module' as media;
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  height: 187px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 96px;
+
+  @media (max-width: media.$laptopS) {
+    padding: 0 24px;
+    height: 120px;
+  }
+
+  @media (max-width: media.$tablet) {
+    height: auto;
+  }
+}
+
+.main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.logoWrapper {
+  margin: 40px 24px 40px 0;
+}
+
+.contentWrapper {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 96px 32px;
+
+  @media (max-width: media.$laptopS) {
+    padding: 0 24px 24px;
+  }
+}
+
+.title {
+  max-width: 380px;
+  font-weight: 400;
+  font-size: 32px;
+  line-height: 48px;
+  color: colors.$fontPrimary;
+
+  strong {
+    font-weight: 700;
+  }
+}
+
+.description {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 32px;
+  margin-top: 16px;
+  color: colors.$fontSecondary;
+}
+
+.buttonSection {
+  background-color: colors.$purpleSecondary;
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+}
+
+.ctaButtonWrapper {
+  margin: 32px auto 0;
+  width: 100%;
+  max-width: 1440px;
+  padding: 0 96px 32px;
+  position: relative;
+  z-index: 1;
+
+  @media (max-width: media.$laptopS) {
+    padding: 0 24px 24px;
+    margin: 24px auto 0;
+  }
+}
+
+.svgWrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 29vw;
+  height: 27vw;
+  max-width: 425px;
+  max-height: 396px;
+  transform: translate(34%, -32%);
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+}

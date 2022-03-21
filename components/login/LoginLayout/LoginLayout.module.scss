@@ -1,0 +1,146 @@
+@use '/lib/styles/variables/colors.module' as colors;
+@use '/lib/styles/variables/media.module' as media;
+@use '/lib/styles/variables/shadows.module' as shadows;
+
+.pageWrapper {
+  min-height: 100vh;
+  display: flex;
+
+  @media (max-width: media.$tablet) {
+    flex-direction: column;
+  }
+}
+
+.contentBackgroundWrapper {
+  width: 50%;
+  flex-shrink: 0;
+  background-color: colors.$white;
+
+  @media (max-width: media.$tablet) {
+    width: 100%;
+  }
+}
+
+.contentWrapper {
+  width: 100%;
+  height: 100%;
+  max-width: 720px;
+  margin-left: auto;
+}
+
+.header {
+  height: 187px;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 96px;
+
+  @media (max-width: media.$laptopS) {
+    padding: 0 24px;
+    height: 120px;
+  }
+
+  @media (max-width: media.$tablet) {
+    height: auto;
+  }
+}
+
+.fixedButtonWrapper {
+  position: fixed;
+  right: 96px;
+  top: 32px;
+  z-index: 10;
+  width: 256px;
+  max-width: calc(100% - 48px);
+
+  & > button {
+    box-shadow: shadows.$shadow;
+  }
+
+  @media (max-width: media.$tablet) {
+    bottom: 24px;
+    top: unset;
+    right: 24px;
+  }
+}
+
+.logoWrapper {
+  margin: 40px 24px 40px 0;
+}
+
+.main {
+  padding: 0 96px 96px;
+
+  @media (max-width: media.$laptopS) {
+    padding: 0 24px 24px;
+  }
+}
+
+.imageSectionBackgroundWrapper {
+  width: 50%;
+  flex-shrink: 0;
+  background-color: colors.$purpleSecondary;
+
+  @media (max-width: media.$tablet) {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.imageSection {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  max-width: 720px;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 187px 96px 96px;
+  position: relative;
+  overflow: hidden;
+
+  @media (max-width: media.$laptopS) {
+    padding: 120px 24px 24px;
+  }
+
+  @media (max-width: media.$tablet) {
+    width: 100%;
+    padding: 32px 32px 72px;
+  }
+
+  &WithFixedButton {
+    @media (max-width: media.$tablet) {
+      padding-bottom: 100px;
+    }
+  }
+}
+
+.imageWrapper {
+  width: 100%;
+  box-shadow: shadows.$shadow;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.image {
+  border-radius: 16px;
+  z-index: 1;
+}
+
+.svgWrapper {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 29vw;
+  height: 27vw;
+  max-width: 425px;
+  max-height: 396px;
+  transform: translate(-33%, 43%);
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+}

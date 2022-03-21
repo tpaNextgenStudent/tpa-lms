@@ -1,0 +1,7 @@
+$hoverTransitionTime: 0.2s;
+$hoverEaseFunction: ease-in-out;
+
+:export {
+  hoverTransitionTime: $hoverTransitionTime;
+  hoverEaseFunction: $hoverEaseFunction;
+}
