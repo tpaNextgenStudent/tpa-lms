@@ -24,7 +24,7 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
     return {
       redirect: {
         destination: '/login',
-        permanent: true,
+        permanent: false,
       },
     };
   }
@@ -44,7 +44,7 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
       return {
         redirect: {
           destination: '/',
-          permanent: false,
+          permanent: true,
         },
       };
     }
