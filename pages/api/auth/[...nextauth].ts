@@ -15,6 +15,7 @@ export default async (req: NextApiRequest, res: NextApiResponse<any>) => {
     ],
     callbacks: {
       async signIn(props: any) {
+        console.log(23, props.user.id);
         const userExsist = await prisma.profile.findUnique({
           where: { login: props.profile.login },
         });
@@ -27,7 +28,7 @@ export default async (req: NextApiRequest, res: NextApiResponse<any>) => {
               login: props.profile.login,
             },
             data: {
-              userId: props.user.id,
+              userId: '23',
             },
           });
           return true;
