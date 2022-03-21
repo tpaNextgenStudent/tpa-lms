@@ -15,6 +15,7 @@ export default async (req: NextApiRequest, res: NextApiResponse<any>) => {
     ],
     pages: {
       signIn: '/login',
+      error: '/auth/error',
     },
     callbacks: {
       async signIn(props: any) {
@@ -42,10 +43,6 @@ export default async (req: NextApiRequest, res: NextApiResponse<any>) => {
         session.userId = user.id;
         return session;
       },
-    },
-    pages: {
-      signIn: '/login',
-      error: '/auth/error',
     },
   });
 };
