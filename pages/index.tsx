@@ -1,7 +1,7 @@
 import { getSession } from 'next-auth/react';
 import { GetServerSidePropsContext } from 'next';
 import { apiPath } from '../lib/utils/apiPath';
-import axios, { AxiosError } from 'axios';
+import axios from 'axios';
 
 export default function Component() {
   return null;
@@ -19,13 +19,15 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
   }
 
   try {
-    const { data } = await axios.get(apiPath('user/details'), {
+    const { data: user } = await axios.get(apiPath('user/details'), {
       headers: {
-        'Content-Type': 'application/json',
         cookie: ctx.req.headers.cookie as string,
       },
     });
-    const areDetailsFilled = Object.values(data).every(x => x);
+
+    const areDetailsFilled = [user.name, user.surname, user.bio].every(
+      x => !!x
+    );
 
     if (!areDetailsFilled) {
       return {
@@ -39,13 +41,13 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
     //todo: figure out student/teacher root page
     // return {
     //   redirect: {
-    //     destination: '/login/details',
-    //     permanent: false,
+    //     destination: '/student',
+    //     permanent: true,
     //   },
     // };
   } catch (err: unknown) {
     if (axios.isAxiosError(err)) {
-      console.log(err.response?.data.message);
+      console.log(err.response?.statusText);
     }
   }
 
