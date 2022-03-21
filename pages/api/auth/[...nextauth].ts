@@ -35,6 +35,10 @@ export default async (req: NextApiRequest, res: NextApiResponse<any>) => {
           return false;
         }
       },
+      async session({ session, user }) {
+        session.userId = user.id;
+        return session;
+      },
     },
     pages: {
       signIn: '/login',
