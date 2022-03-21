@@ -13,6 +13,9 @@ export default async (req: NextApiRequest, res: NextApiResponse<any>) => {
         clientSecret: process.env.GITHUB_SECRET,
       }),
     ],
+    pages: {
+      signIn: '/login',
+    },
     callbacks: {
       async signIn(props: any) {
         const userExsist = await prisma.profile.findUnique({
