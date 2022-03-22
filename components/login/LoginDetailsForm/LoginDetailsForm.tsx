@@ -29,15 +29,12 @@ export const LoginDetailsForm = ({}: LoginDetailsFormProps) => {
     const { firstName, lastName, bio } = formState;
 
     try {
-      const { status } = await axios.post(apiPath('user/details'), {
+      await axios.post(apiPath('user/details'), {
         name: firstName,
         surname: lastName,
         bio,
       });
-
-      if (status === 200) {
-        router.push('/');
-      }
+      await router.push('/');
     } catch (err: unknown) {
       if (axios.isAxiosError(err)) {
         console.log(err.response?.data);
