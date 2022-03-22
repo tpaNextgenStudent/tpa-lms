@@ -1,5 +1,6 @@
 //purple
 $purplePrimary: #8d7cff;
+$purplePrimaryHover: #6d5dde;
 $purpleSecondary: #f6f5ff;
 
 //stroke
@@ -31,6 +32,7 @@ $white: rgb(255, 255, 255);
 
 :export {
   purplePrimary: $purplePrimary;
+  purplePrimaryHover: $purplePrimaryHover;
   purpleSecondary: $purpleSecondary;
   strokeMain: $strokeMain;
   strokeLines: $strokeLines;
@@ -39,9 +41,11 @@ $white: rgb(255, 255, 255);
   statusFontGreen: $statusFontGreen;
   statusFontOrange: $statusFontOrange;
   statusFontBlue: $statusFontBlue;
+  statusFontRed: $statusFontRed;
   statusBgGreen: $statusBgGreen;
   statusBgOrange: $statusBgOrange;
   statusBgBlue: $statusBgBlue;
+  statusBgRed: $statusBgRed;
   fontPrimary: $fontPrimary;
   fontSecondary: $fontSecondary;
   white: $white;
