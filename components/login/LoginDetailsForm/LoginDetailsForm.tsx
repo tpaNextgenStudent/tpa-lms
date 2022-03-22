@@ -1,91 +1,116 @@
 import styles from './LoginDetailsForm.module.scss';
-import { ChangeEvent, FormEvent, useState } from 'react';
 import { useRouter } from 'next/router';
 import { CTAButton } from '../../common/CTAButton/CTAButton';
 import axios from 'axios';
 import { apiPath } from '../../../lib/utils/apiPath';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { userDetailsSchema, UserDetails } from '../../../schemas/userDetails';
+import clsx from 'clsx';
+import { capitalize } from '../../../lib/utils/capitalize';
 
 interface LoginDetailsFormProps {}
 
-const initialFormState = {
-  firstName: '',
-  lastName: '',
-  bio: '',
-};
-
 export const LoginDetailsForm = ({}: LoginDetailsFormProps) => {
-  const [formState, setFormState] = useState(initialFormState);
   const router = useRouter();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitted },
+  } = useForm<UserDetails>({ resolver: yupResolver(userDetailsSchema) });
 
-  const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setFormState(prev => ({ ...prev, [e.target.name]: e.target.value }));
-  };
-
-  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    const { firstName, lastName, bio } = formState;
-
+  const onSubmit = handleSubmit(async data => {
     try {
-      await axios.post(apiPath('user/details'), {
-        name: firstName,
-        surname: lastName,
-        bio,
-      });
+      await axios.post(apiPath('user/details'), data);
       await router.push('/');
     } catch (err: unknown) {
       if (axios.isAxiosError(err)) {
         console.log(err.response?.data);
       }
     }
-  };
+  });
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
+    <form className={styles.form} onSubmit={onSubmit}>
       <div className={styles.fieldWrapper}>
-        <label className={styles.label} htmlFor="firstName">
+        <label
+          className={clsx(
+            styles.label,
+            errors.name && styles.labelError,
+            !errors.name && isSubmitted && styles.labelCorrect
+          )}
+          htmlFor="name"
+        >
           Name
         </label>
         <input
-          onChange={handleChange}
-          className={styles.field}
-          required
-          type="text"
-          name="firstName"
-          id="firstName"
+          {...register('name')}
+          className={clsx(
+            styles.field,
+            errors.name && styles.fieldError,
+            !errors.name && isSubmitted && styles.fieldCorrect
+          )}
           placeholder="Type here..."
         />
+        {errors.name?.message && (
+          <p className={styles.errorMessage}>
+            {capitalize(errors.name.message)}
+          </p>
+        )}
       </div>
       <div className={styles.fieldWrapper}>
-        <label className={styles.label} htmlFor="lastName">
+        <label
+          className={clsx(
+            styles.label,
+            errors.surname && styles.labelError,
+            !errors.surname && isSubmitted && styles.labelCorrect
+          )}
+          htmlFor="surname"
+        >
           Surname
         </label>
         <input
-          onChange={handleChange}
-          className={styles.field}
-          required
-          type="text"
-          name="lastName"
-          id="lastName"
+          {...register('surname')}
+          className={clsx(
+            styles.field,
+            errors.surname && styles.fieldError,
+            !errors.surname && isSubmitted && styles.fieldCorrect
+          )}
           placeholder="Type here..."
         />
+        {errors.surname?.message && (
+          <p className={styles.errorMessage}>
+            {capitalize(errors.surname.message)}
+          </p>
+        )}
       </div>
       <div className={styles.fieldWrapper}>
-        <label className={styles.label} htmlFor="bio">
+        <label
+          className={clsx(
+            styles.label,
+            errors.bio && styles.labelError,
+            !errors.bio && isSubmitted && styles.labelCorrect
+          )}
+          htmlFor="bio"
+        >
           Tell us something about your hobbies
         </label>
         <textarea
-          onChange={handleChange}
-          className={styles.field}
-          required
-          name="bio"
-          id="bio"
+          {...register('bio')}
+          className={clsx(
+            styles.field,
+            errors.bio && styles.fieldError,
+            !errors.bio && isSubmitted && styles.fieldCorrect
+          )}
           cols={30}
           rows={3}
           placeholder="Type here..."
         />
+        {errors.bio?.message && (
+          <p className={styles.errorMessage}>
+            {capitalize(errors.bio.message)}
+          </p>
+        )}
       </div>
       <div className={styles.ctaButtonWrapper}>
         <CTAButton type="submit" text="Submit" />

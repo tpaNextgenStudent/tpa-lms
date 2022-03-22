@@ -6,4 +6,4 @@ export const userDetailsSchema = object({
   bio: string().required(),
 });
 
-export type userDetails = TypeOf<typeof userDetailsSchema>;
+export type UserDetails = TypeOf<typeof userDetailsSchema>;
