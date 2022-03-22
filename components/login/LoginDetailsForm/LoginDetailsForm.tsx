@@ -2,6 +2,8 @@ import styles from './LoginDetailsForm.module.scss';
 import { ChangeEvent, FormEvent, useState } from 'react';
 import { useRouter } from 'next/router';
 import { CTAButton } from '../../common/CTAButton/CTAButton';
+import axios from 'axios';
+import { apiPath } from '../../../lib/utils/apiPath';
 
 interface LoginDetailsFormProps {}
 
@@ -21,14 +23,26 @@ export const LoginDetailsForm = ({}: LoginDetailsFormProps) => {
     setFormState(prev => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    //todo: send post request to endpoint
-    console.log(formState);
+    const { firstName, lastName, bio } = formState;
 
-    //todo: redirect to /student or /teacher based on role
-    // router.push('/teacher');
+    try {
+      const { status } = await axios.post(apiPath('user/details'), {
+        name: firstName,
+        surname: lastName,
+        bio,
+      });
+
+      if (status === 200) {
+        router.push('/');
+      }
+    } catch (err: unknown) {
+      if (axios.isAxiosError(err)) {
+        console.log(err.response?.data);
+      }
+    }
   };
 
   return (

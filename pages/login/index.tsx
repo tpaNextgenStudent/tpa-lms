@@ -12,11 +12,6 @@ const loginWithGithub = async () => {
   await signIn('github', {});
 };
 
-const sendPost = async () => {
-  const response = await fetch('api/login/details/23', { method: 'POST' });
-  console.log(2, response);
-};
-
 export default function Login({
   error,
 }: InferPagePropsType<typeof getServerSideProps>) {
