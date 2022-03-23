@@ -49,8 +49,10 @@ export const LoginLayout = ({ children, fixedButton }: LoginLayoutProps) => {
               className={styles.image}
             />
           </div>
-          <div className={styles.svgWrapper} aria-hidden>
-            <BgStripesIcon />
+          <div className={styles.svgOverflowWrapper}>
+            <div className={styles.svgWrapper} aria-hidden>
+              <BgStripesIcon />
+            </div>
           </div>
         </section>
       </div>

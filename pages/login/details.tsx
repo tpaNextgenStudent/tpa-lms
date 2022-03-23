@@ -36,7 +36,7 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
       },
     });
 
-    const areDetailsFilled = [user.legalName, user.surname, user.bio].every(
+    const areDetailsFilled = [user.name, user.surname, user.bio].every(
       x => !!x
     );
 

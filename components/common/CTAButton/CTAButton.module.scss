@@ -18,15 +18,13 @@
     color animations.$hoverTransitionTime animations.$hoverEaseFunction;
 
   &:hover {
-    background-color: colors.$white;
-    color: colors.$purplePrimary;
+    background-color: colors.$purplePrimaryHover;
   }
 
   &Disabled {
     cursor: not-allowed;
     &:hover {
       background-color: colors.$purplePrimary;
-      color: colors.$white;
     }
   }
 }

@@ -26,14 +26,14 @@ export default async (req: NextApiRequest, res: NextApiResponse<any>) => {
         if (userExsist && userExsist.providerAccountId) {
           return true;
         } else if (userExsist) {
-          await prisma.profile.update({
-            where: {
-              login: props.profile.login,
-            },
-            data: {
-              providerAccountId: props.account.providerAccountId,
-            },
-          });
+          // await prisma.profile.update({
+          //   where: {
+          //     login: props.profile.login,
+          //   },
+          //   data: {
+          //     providerAccountId: props.account.providerAccountId,
+          //   },
+          // });
           return true;
         } else {
           return false;

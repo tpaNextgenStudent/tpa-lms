@@ -17,10 +17,18 @@
 }
 
 .label {
-  font-weight: 400;
+  font-weight: 500;
   font-size: 14px;
   line-height: 24px;
   color: colors.$fontPrimary;
+
+  &Error {
+    color: colors.$statusFontRed;
+  }
+
+  &Correct {
+    color: colors.$statusFontGreen;
+  }
 }
 
 .field {
@@ -38,6 +46,24 @@
   &::placeholder {
     color: colors.$fontSecondary;
   }
+
+  &Error {
+    background-color: colors.$statusBgRed;
+    border-color: colors.$statusFontRed;
+  }
+
+  &Correct {
+    background-color: colors.$statusBgGreen;
+    border-color: colors.$statusFontGreen;
+  }
+}
+
+.errorMessage {
+  margin-top: 4px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: colors.$statusFontRed;
 }
 
 .ctaButtonWrapper {

@@ -48,9 +48,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (session) {
     switch (req.method) {
       case 'POST':
-        postRequest(req, res, userId);
+        return postRequest(req, res, userId);
       default:
-        getRequest(res, userId);
+        return getRequest(res, userId);
     }
   } else {
     res.status(401).send({ message: 'Unauthorized' });
