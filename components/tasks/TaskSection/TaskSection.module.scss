@@ -18,25 +18,27 @@
   }
 }
 
+.taskModule {
+  width: fit-content;
+  border-radius: 64px;
+  color: colors.$purplePrimary;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 16px;
+  margin: 24px 24px 0;
+}
+
 .taskHeader {
-  padding: 24px 24px 0;
+  padding: 0 24px;
   display: flex;
   align-items: center;
 }
 
 .taskTitle {
   color: colors.$fontPrimary;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 24px;
   line-height: 40px;
-}
-
-.taskModule {
-  padding: 8px 16px;
-  margin: 0 24px;
-  background-color: colors.$purpleSecondary;
-  border-radius: 64px;
-  color: colors.$purplePrimary;
 }
 
 .descriptionHeaderWrapper {
@@ -91,30 +93,14 @@
 }
 
 .taskBadges {
+  margin-top: 16px;
   display: flex;
   flex-wrap: wrap;
   padding: 0 24px 24px;
 }
 
-.taskBadge {
-  margin-top: 16px;
-  padding-left: 16px;
-  position: relative;
-  margin-right: 16px;
-  font-weight: 600;
-  font-size: 12px;
-  line-height: 16px;
-  color: colors.$fontPrimary;
+.taskStatus {
+}
 
-  &::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
-    width: 8px;
-    height: 8px;
-    background-color: colors.$purplePrimary;
-    border-radius: 64px;
-  }
+.taskType {
 }

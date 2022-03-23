@@ -6,6 +6,8 @@ import { useState } from 'react';
 import EnlargeIcon from '../../../public/enlarge-icon.svg';
 import CrossIcon from '../../../public/cross-icon.svg';
 import clsx from 'clsx';
+import { TaskStatusBadge } from '../TaskStatusBadge/TaskStatusBadge';
+import { TaskTypeBadge } from '../TaskTypeBadge/TaskTypeBadge';
 
 interface TaskSectionProps {
   task: UserTask & { task: Task };
@@ -29,9 +31,9 @@ export const TaskSection = ({
         isFullScreenMode && styles.wrapperFullScreen
       )}
     >
+      <p className={styles.taskModule}>{module.name}</p>
       <div className={styles.taskHeader}>
         <h2 className={styles.taskTitle}>{task.name}</h2>
-        <span className={styles.taskModule}>{module.name}</span>
         <button
           onClick={toggleFullScreenMode}
           className={styles.fullScreenButton}
@@ -41,8 +43,8 @@ export const TaskSection = ({
         </button>
       </div>
       <div className={styles.taskBadges}>
-        <span className={styles.taskBadge}>{status}</span>
-        <span className={styles.taskBadge}>{task.type}</span>
+        <TaskStatusBadge status={status} />
+        <TaskTypeBadge type={task.type} />
       </div>
       <div className={styles.descriptionHeaderWrapper}>
         <h2 className={styles.descriptionHeader}>Description</h2>

@@ -2,8 +2,8 @@ import styles from './TaskBadges.module.scss';
 import clsx from 'clsx';
 import { Task, TaskStatus, TaskType, UserTask } from '../../../lib/utils/types';
 import LockIcon from '../../../public/lock-icon.svg';
-import InfoTypeIcon from '../../../public/info-type-icon.svg';
-import CodeTypeIcon from '../../../public/code-type-icon.svg';
+import { TaskTypeBadge } from '../TaskTypeBadge/TaskTypeBadge';
+import { TaskStatusBadge } from '../TaskStatusBadge/TaskStatusBadge';
 
 interface TaskBadgesProps {
   task: UserTask & { task: Task };
@@ -27,20 +27,8 @@ export const TaskBadges = ({ task }: TaskBadgesProps) => {
           {task.score}
         </span>
       )}
-      <span
-        className={clsx(
-          styles.taskStatus,
-          styles[`taskStatus${getColorByStatus(task.status)}`]
-        )}
-      >
-        {task.status}
-      </span>
-      <span className={styles.taskType}>
-        <span className={styles.taskTypeIcon}>
-          <TaskTypeIcon type={task.task.type} />
-        </span>
-        <span className={styles.taskTypeText}>{task.task.type}</span>
-      </span>
+      <TaskStatusBadge status={task.status} />
+      <TaskTypeBadge type={task.task.type} />
     </div>
   );
 };
@@ -61,38 +49,5 @@ function getColorByScore(score: number) {
       return SCORE_COLOR_MODIFIER.GREEN;
     default:
       return SCORE_COLOR_MODIFIER.GREEN;
-  }
-}
-
-const STATUS_COLOR_MODIFIER = {
-  BLUE: 'Blue',
-  GREEN: 'Green',
-  ORANGE: 'Orange',
-  GRAY: 'Gray',
-};
-
-function getColorByStatus(status: TaskStatus) {
-  switch (status) {
-    case 'upcoming':
-      return STATUS_COLOR_MODIFIER.GRAY;
-    case 'in review':
-      return STATUS_COLOR_MODIFIER.ORANGE;
-    case 'approved':
-      return STATUS_COLOR_MODIFIER.GREEN;
-    case 'in progress':
-      return STATUS_COLOR_MODIFIER.BLUE;
-    default:
-      return STATUS_COLOR_MODIFIER.BLUE;
-  }
-}
-
-function TaskTypeIcon({ type }: { type: TaskType }) {
-  switch (type) {
-    case 'info':
-      return <InfoTypeIcon />;
-    case 'code':
-      return <CodeTypeIcon />;
-    default:
-      return null;
   }
 }
