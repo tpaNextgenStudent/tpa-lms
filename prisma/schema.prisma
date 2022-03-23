@@ -9,11 +9,11 @@ datasource db {
 }
 
 model Account {
-  id                       String    @id @default(cuid())
+  id                       String  @id @default(cuid())
   userId                   String
   type                     String
   provider                 String
-  providerAccountId        String    @unique
+  providerAccountId        String  @unique
   refresh_token            String?
   access_token             String?
   refresh_token_expires_in Int?
@@ -24,8 +24,8 @@ model Account {
   session_state            String?
   oauth_token_secret       String?
   oauth_token              String?
-  user                     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
-  profile                  Profile[]
+  user                     User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+
 
   @@unique([provider, providerAccountId])
 }
@@ -56,10 +56,9 @@ model User {
 }
 
 model Profile {
-  login             String   @unique
+  login             String  @unique
   role              String
   providerAccountId String?
-  account           Account? @relation(fields: [providerAccountId], references: [providerAccountId])
 }
 
 model VerificationToken {
