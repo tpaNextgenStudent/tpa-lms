@@ -1,0 +1,144 @@
+@use '/lib/styles/variables/colors.module' as colors;
+@use '/lib/styles/variables/media.module' as media;
+@use '/lib/styles/variables/shadows.module' as shadows;
+
+.taskBadgesWrapper {
+  margin-top: 16px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.taskScore {
+  padding: 4px 8px;
+  border-radius: 100px;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 24px;
+
+  &Red {
+    background-color: colors.$statusBgRed;
+    color: colors.$statusFontRed;
+  }
+
+  &Orange {
+    background-color: colors.$statusBgOrange;
+    color: colors.$statusFontOrange;
+  }
+
+  &Green {
+    background-color: colors.$statusBgGreen;
+    color: colors.$statusFontGreen;
+  }
+}
+
+.taskStatus {
+  padding: 8px 16px 8px 34px;
+  border-radius: 64px;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 16px;
+  margin-left: 16px;
+  text-transform: capitalize;
+  position: relative;
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 64px;
+  }
+
+  &Green {
+    background-color: colors.$statusBgGreen;
+    color: colors.$statusFontGreen;
+
+    &::before {
+      background-color: colors.$statusFontGreen;
+    }
+  }
+
+  &Gray {
+    background-color: colors.$statusBgGray;
+    color: colors.$statusFontGray;
+
+    &::before {
+      background-color: colors.$statusFontGray;
+    }
+  }
+
+  &Blue {
+    background-color: colors.$statusBgBlue;
+    color: colors.$statusFontBlue;
+
+    &::before {
+      background-color: colors.$statusFontBlue;
+    }
+  }
+
+  &Orange {
+    background-color: colors.$statusBgOrange;
+    color: colors.$statusFontOrange;
+
+    &::before {
+      background-color: colors.$statusFontOrange;
+    }
+  }
+}
+
+.taskType {
+  margin-left: 16px;
+  display: flex;
+  align-items: center;
+}
+
+.taskTypeIcon {
+  width: 16px;
+  height: 16px;
+  text-transform: uppercase;
+
+  svg {
+    width: 100%;
+    height: 100%;
+    fill: colors.$purplePrimary;
+  }
+}
+
+.taskTypeText {
+  margin-left: 8px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: colors.$fontPrimary;
+}
+
+.taskLockWrapper {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 64px;
+  border: 1px solid colors.$statusFontGray;
+
+  svg {
+    fill: colors.$statusFontGray;
+  }
+
+  @media (max-width: media.$laptopS) {
+    position: absolute;
+    margin-bottom: 0;
+    bottom: 16px;
+    right: 16px;
+    transform: scale(0.9);
+    padding: 8px 12px;
+    box-shadow: shadows.$shadow;
+  }
+}

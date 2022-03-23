@@ -4,7 +4,7 @@
 
 .sideBarWrapper {
   width: 256px;
-  background-color: colors.$white;
+  background-color: colors.$bgMain;
   padding: 32px 24px;
   display: flex;
   flex-direction: column;
@@ -72,7 +72,10 @@
   padding: 12px 21px;
   display: flex;
   align-items: center;
-  border-radius: 16px;
+  border-radius: 8px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
   color: colors.$fontSecondary;
 
   svg > path {
@@ -86,8 +89,10 @@
   }
 
   &Active {
-    background-color: colors.$purpleSecondary;
+    background-color: colors.$white;
     color: colors.$purplePrimary;
+    box-shadow: shadows.$shadowSmall;
+    font-weight: 700;
   }
 }
 

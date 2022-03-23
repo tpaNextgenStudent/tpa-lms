@@ -1,6 +1,13 @@
 import { faker } from '@faker-js/faker';
 import fs from 'fs';
-import { Cohort, Module, Task, User, UserTask } from '../utils/types';
+import {
+  Cohort,
+  Module,
+  Task,
+  TaskStatus,
+  User,
+  UserTask,
+} from '../utils/types';
 
 function createFakeTasks({
   moduleId,
@@ -17,8 +24,9 @@ function createFakeTasks({
     const taskType = faker.random.arrayElement([
       'info',
       'code',
-      'image',
-      'quiz',
+      'code',
+      // 'image',
+      // 'quiz',
     ] as const);
     const taskLink = ['code', 'quiz'].includes(taskType)
       ? faker.internet.url()
@@ -72,15 +80,24 @@ function createFakeUserTask({
 }: {
   task: Task;
   userId: string;
-  status: 'todo' | 'in progress' | 'done';
+  status: TaskStatus;
 }): UserTask {
+  let score = null;
+  if (task.type !== 'info') {
+    if (status === 'in progress') {
+      score = faker.random.arrayElement([1, null]);
+    } else if (status === 'approved') {
+      score = faker.random.arrayElement([2, 3]);
+    }
+  }
+
   return {
     id: faker.datatype.uuid(),
     taskId: task.id,
     userId,
-    status: status,
+    status,
     comment: null,
-    score: null,
+    score,
     answer: null,
     attempts: [],
   };
@@ -99,7 +116,15 @@ function createFakeUserTasks({
     createFakeUserTask({
       task,
       userId,
-      status: i === 0 ? 'in progress' : 'todo',
+      status:
+        task.type === 'info'
+          ? 'approved'
+          : faker.random.arrayElement([
+              'upcoming',
+              'in progress',
+              'approved',
+              'in review',
+            ]),
     })
   );
 
@@ -116,7 +141,7 @@ function generateFakeJson() {
     email: 'patrykbunix@gmail.com',
     image: 'https://unsplash.it/100/100',
     cohortId: 'cohortId',
-    role: 'teacher',
+    role: 'student',
   };
 
   const mockedCohorts: Cohort[] = [
