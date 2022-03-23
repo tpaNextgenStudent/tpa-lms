@@ -2,7 +2,7 @@ import { getSession, signIn, useSession } from 'next-auth/react';
 import { GetServerSidePropsContext } from 'next';
 import { LoginLayout } from '../../components/login/LoginLayout/LoginLayout';
 import { LoginHeroText } from '../../components/login/LoginHeroText/LoginHeroText';
-import styles from '../../components/login/login-page/loginPage.module.scss';
+import styles from '../../components/login/loginPage/loginPage.module.scss';
 import { CTAButton } from '../../components/common/CTAButton/CTAButton';
 import { ERROR_TYPE_MESSAGE } from '../../lib/constants';
 import { InferPagePropsType } from '../../lib/utils/types';
