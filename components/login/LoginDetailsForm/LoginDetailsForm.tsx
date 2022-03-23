@@ -7,7 +7,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { userDetailsSchema, UserDetails } from '../../../schemas/userDetails';
 import clsx from 'clsx';
-import { capitalize } from '../../../lib/utils/capitalize';
+import { InputErrorMessage } from '../InputErrorMessage/InputErrorMessage';
 
 interface LoginDetailsFormProps {}
 
@@ -46,9 +46,7 @@ export const LoginDetailsForm = ({}: LoginDetailsFormProps) => {
           placeholder="Type here..."
         />
         {errors.name?.message && (
-          <p className={styles.errorMessage}>
-            {capitalize(errors.name.message)}
-          </p>
+          <InputErrorMessage message={errors.name.message} />
         )}
       </div>
       <div className={styles.fieldWrapper}>
@@ -65,9 +63,7 @@ export const LoginDetailsForm = ({}: LoginDetailsFormProps) => {
           placeholder="Type here..."
         />
         {errors.surname?.message && (
-          <p className={styles.errorMessage}>
-            {capitalize(errors.surname.message)}
-          </p>
+          <InputErrorMessage message={errors.surname.message} />
         )}
       </div>
       <div className={styles.fieldWrapper}>
@@ -86,9 +82,7 @@ export const LoginDetailsForm = ({}: LoginDetailsFormProps) => {
           placeholder="Type here..."
         />
         {errors.bio?.message && (
-          <p className={styles.errorMessage}>
-            {capitalize(errors.bio.message)}
-          </p>
+          <InputErrorMessage message={errors.bio.message} />
         )}
       </div>
       <div className={styles.ctaButtonWrapper}>
