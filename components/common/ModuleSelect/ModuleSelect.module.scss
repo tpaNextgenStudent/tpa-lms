@@ -15,7 +15,7 @@
     background-repeat: no-repeat;
     background-size: contain;
     object-position: center;
-    width: 10px;
+    width: 12px;
     height: 6px;
     pointer-events: none;
   }
@@ -23,11 +23,10 @@
 
 .moduleSelect {
   height: 40px;
-  padding: 8px 34px 8px 16px;
-  background-color: colors.$bgMain;
-  border: 1px solid colors.$fontSecondary;
+  padding: 8px 18px 8px 16px;
+  border: 1px solid colors.$strokeMain;
   border-radius: 64px;
-  font-weight: 600;
+  font-weight: 400;
   font-size: 12px;
   line-height: 24px;
   -webkit-appearance: none;
