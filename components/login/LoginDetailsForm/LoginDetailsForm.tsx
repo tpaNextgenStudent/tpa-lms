@@ -33,14 +33,7 @@ export const LoginDetailsForm = ({}: LoginDetailsFormProps) => {
   return (
     <form className={styles.form} onSubmit={onSubmit}>
       <div className={styles.fieldWrapper}>
-        <label
-          className={clsx(
-            styles.label,
-            errors.name && styles.labelError,
-            !errors.name && isSubmitted && styles.labelCorrect
-          )}
-          htmlFor="name"
-        >
+        <label className={clsx(styles.label)} htmlFor="name">
           Name
         </label>
         <input
@@ -59,14 +52,7 @@ export const LoginDetailsForm = ({}: LoginDetailsFormProps) => {
         )}
       </div>
       <div className={styles.fieldWrapper}>
-        <label
-          className={clsx(
-            styles.label,
-            errors.surname && styles.labelError,
-            !errors.surname && isSubmitted && styles.labelCorrect
-          )}
-          htmlFor="surname"
-        >
+        <label className={clsx(styles.label)} htmlFor="surname">
           Surname
         </label>
         <input
@@ -85,14 +71,7 @@ export const LoginDetailsForm = ({}: LoginDetailsFormProps) => {
         )}
       </div>
       <div className={styles.fieldWrapper}>
-        <label
-          className={clsx(
-            styles.label,
-            errors.bio && styles.labelError,
-            !errors.bio && isSubmitted && styles.labelCorrect
-          )}
-          htmlFor="bio"
-        >
+        <label className={clsx(styles.label)} htmlFor="bio">
           Tell us something about your hobbies
         </label>
         <textarea
