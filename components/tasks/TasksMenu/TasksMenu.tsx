@@ -1,9 +1,13 @@
 import styles from './TasksMenu.module.scss';
 import { Module, Task, UserTask } from '../../../lib/utils/types';
-import { ModuleSelect } from '../../common/ModuleSelect/ModuleSelect';
+import {
+  ModuleSelect,
+  OptionType,
+} from '../../common/ModuleSelect/ModuleSelect';
 import { TasksList } from '../TasksList/TasksList';
 import { useRouter } from 'next/router';
 import { ChangeEvent } from 'react';
+import { SingleValue } from 'react-select';
 
 interface TasksMenuProps {
   modules: Module[];
@@ -14,8 +18,10 @@ interface TasksMenuProps {
 
 export const TasksMenu = ({ modules, module, tasks, task }: TasksMenuProps) => {
   const router = useRouter();
-  const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    router.push(`/student/tasks/${e.target.value}`);
+  const handleChange = (option: SingleValue<OptionType>) => {
+    if (option?.value) {
+      router.push(`/student/tasks/${option.value}`);
+    }
   };
   return (
     <section className={styles.wrapper}>
