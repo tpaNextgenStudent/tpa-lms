@@ -10,6 +10,7 @@
   position: relative;
   color: colors.$fontPrimary;
   border: 3px solid colors.$white;
+  min-width: 265px;
 
   &:first-of-type {
     margin-top: 0;
@@ -22,7 +23,6 @@
 
   @media (max-width: media.$laptopS) {
     margin-top: 0;
-    min-width: 200px;
     margin-left: 24px;
 
     &:first-of-type {
