@@ -25,7 +25,7 @@ const customStyles: StylesConfig<OptionType, IsMulti> = {
     borderTopRightRadius: state.menuIsOpen ? '24px' : '64px',
     border: `1px solid ${colors.strokeMain}`,
     borderBottom: state.menuIsOpen ? '0' : `1px solid ${colors.strokeMain}`,
-    height: '40px',
+    height: '48px',
     margin: 0,
     minWidth: '108px',
     width: '100%',
@@ -137,7 +137,6 @@ export const ModuleSelect = ({
         components={{ DropdownIndicator }}
         isSearchable={false}
         hideSelectedOptions
-        menuIsOpen={true}
       />
     </div>
   );
