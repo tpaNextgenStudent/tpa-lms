@@ -50,7 +50,7 @@
 }
 
 .title {
-  font-weight: 600;
+  font-weight: 500;
   font-size: 24px;
   line-height: 40px;
 }
@@ -69,30 +69,4 @@
   font-weight: 600;
   font-size: 12px;
   line-height: 24px;
-}
-
-.userWrapper {
-  display: flex;
-  align-items: center;
-}
-
-.userAvatar {
-  border-radius: 50px;
-}
-
-.userName {
-  margin-left: 16px;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 24px;
-
-  @media (max-width: media.$tabletS) {
-    display: none;
-  }
-}
-
-.settingsIcon {
-  margin-left: 15px;
-  display: flex;
-  align-items: center;
 }
