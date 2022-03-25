@@ -81,13 +81,25 @@ const customStyles: StylesConfig<OptionType, IsMulti> = {
     lineHeight: '24px',
     color: colors.fontPrimary,
     backgroundColor: colors.white,
-
+    position: 'relative',
     ':hover': {
       backgroundColor: colors.purpleSecondary,
     },
-    // ':active': {
-    //   backgroundColor: colors.white,
-    // },
+    '::before': {
+      content: '""',
+      position: 'absolute',
+      top: 0,
+      left: '50%',
+      width: 'calc(100% - 8px)',
+      transform: 'translateX(-50%)',
+      height: '1px',
+      backgroundColor: colors.purpleSecondary,
+    },
+    ':first-child': {
+      '::before': {
+        content: 'none',
+      },
+    },
   }),
 };
 
@@ -125,6 +137,7 @@ export const ModuleSelect = ({
         components={{ DropdownIndicator }}
         isSearchable={false}
         hideSelectedOptions
+        menuIsOpen={true}
       />
     </div>
   );
