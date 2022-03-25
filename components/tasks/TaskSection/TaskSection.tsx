@@ -8,6 +8,8 @@ import CrossIcon from '../../../public/cross-icon.svg';
 import clsx from 'clsx';
 import { TaskStatusBadge } from '../TaskStatusBadge/TaskStatusBadge';
 import { TaskTypeBadge } from '../TaskTypeBadge/TaskTypeBadge';
+import { TaskScoreBadge } from '../TaskScoreBadge/TaskScoreBadge';
+import { TaskAttemptBadge } from '../TaskAttemptBadge/TaskAttemptBadge';
 
 interface TaskSectionProps {
   task: UserTask & { task: Task };
@@ -15,7 +17,7 @@ interface TaskSectionProps {
 }
 
 export const TaskSection = ({
-  task: { task, status },
+  task: { task, status, score, attempts },
   module,
 }: TaskSectionProps) => {
   const [isFullScreenMode, setIsFullScreenMode] = useState(false);
@@ -45,6 +47,8 @@ export const TaskSection = ({
       <div className={styles.taskBadges}>
         <TaskStatusBadge status={status} />
         <TaskTypeBadge type={task.type} />
+        <TaskAttemptBadge text={'Attempt'} attempt={attempts.length} />
+        {score && <TaskScoreBadge text={'Score'} score={score} />}
       </div>
       <div className={styles.descriptionHeaderWrapper}>
         <h2 className={styles.descriptionHeader}>Description</h2>

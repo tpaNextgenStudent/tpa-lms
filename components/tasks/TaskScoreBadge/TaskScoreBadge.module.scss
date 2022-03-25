@@ -1,12 +1,17 @@
 @use '/lib/styles/variables/colors.module' as colors;
 
+.wrapper {
+  display: flex;
+  align-items: center;
+  margin-right: 16px;
+}
+
 .taskScore {
   padding: 4px 8px;
   border-radius: 100px;
   font-weight: 700;
   font-size: 15px;
   line-height: 24px;
-  margin-right: 16px;
 
   &:last-child {
     margin-right: 0;
@@ -26,4 +31,12 @@
     background-color: colors.$statusBgGreen;
     color: colors.$statusFontGreen;
   }
+}
+
+.scoreText {
+  margin-right: 8px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 24px;
+  color: colors.$fontPrimary;
 }
