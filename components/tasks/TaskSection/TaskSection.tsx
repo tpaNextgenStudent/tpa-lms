@@ -73,7 +73,7 @@ export const TaskSection = ({
       ) : (
         <TaskComments />
       )}
-      <TaskAction task={task} />
+      {status !== 'upcoming' && <TaskAction task={task} />}
     </main>
   );
 };
