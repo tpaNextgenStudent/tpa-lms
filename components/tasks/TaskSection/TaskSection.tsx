@@ -66,7 +66,10 @@ export const TaskSection = ({
         isDescriptionView={isDescriptionView}
       />
       {isDescriptionView ? (
-        <TaskDescription description={task.description} />
+        <TaskDescription
+          locked={status === 'upcoming'}
+          description={task.description}
+        />
       ) : (
         <TaskComments />
       )}
