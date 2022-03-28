@@ -9,7 +9,7 @@
   font-weight: 500;
   font-size: 14px;
   line-height: 24px;
-  color: colors.$fontPrimary;
+  color: colors.$fontSecondary;
   background: none;
   border: none;
   margin-left: 24px;
@@ -31,6 +31,8 @@
   }
 
   &Active {
+    color: colors.$fontPrimary;
+
     &::after {
       content: '';
     }
