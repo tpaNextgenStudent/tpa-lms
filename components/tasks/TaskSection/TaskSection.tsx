@@ -12,6 +12,7 @@ import { TaskScoreBadge } from '../TaskScoreBadge/TaskScoreBadge';
 import { TaskAttemptBadge } from '../TaskAttemptBadge/TaskAttemptBadge';
 import { TaskNav } from '../TaskNav/TaskNav';
 import { TaskDoneBadge } from '../TaskDoneBadge/TaskDoneBadge';
+import { TaskComments } from '../TaskComments/TaskComments';
 
 interface TaskSectionProps {
   task: UserTask & { task: Task };
@@ -67,7 +68,7 @@ export const TaskSection = ({
       {isDescriptionView ? (
         <TaskDescription description={task.description} />
       ) : (
-        <TaskDescription description={'Comments section here...'} />
+        <TaskComments />
       )}
       <TaskAction task={task} />
     </main>
