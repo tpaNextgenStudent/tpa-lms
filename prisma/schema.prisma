@@ -51,7 +51,7 @@ model User {
   bio             String?
   attempts        Attempt[] @relation("user")
   attemptsTeacher Attempt[] @relation("teacher")
-  Cohort          Cohort?   @relation(fields: [cohortId], references: [id])
+  cohort          Cohort?   @relation(fields: [cohortId], references: [id])
   cohortId        String?
 }
 
@@ -74,6 +74,8 @@ model Cohort {
   name             String
   CurriculumModule CurriculumModule[]
   users            User[]
+  CurriculumTask   CurriculumTask[]
+  attempts         Attempt[]
 }
 
 model Module {
@@ -84,7 +86,6 @@ model Module {
 
 model Task {
   id          String @id @default(cuid())
-  position    Int
   name        String
   description String
   link        String
@@ -96,6 +97,7 @@ model Task {
 model CurriculumModule {
   id       String
   cohortId String
+  position Int
   name     String
   cohort   Cohort           @relation(fields: [cohortId], references: [id])
   tasks    CurriculumTask[]
@@ -112,6 +114,7 @@ model CurriculumTask {
   type        String
   description String
   link        String
+  cohort      Cohort           @relation(fields: [cohortId], references: [id])
   module      CurriculumModule @relation(fields: [moduleId, cohortId], references: [id, cohortId])
   attempts    Attempt[]
 
@@ -119,16 +122,20 @@ model CurriculumTask {
 }
 
 model Attempt {
-  id             String         @id @default(cuid())
-  userId         String
-  teacherId      String
-  taskId         String
-  answer         String
-  attempt_number Int
-  cohortId       String
-  comment        String
-  score          Int
-  task           CurriculumTask @relation(fields: [taskId, cohortId], references: [id, cohortId])
-  user           User           @relation("user", fields: [userId], references: [id])
-  teacher        User           @relation("teacher", fields: [teacherId], references: [id])
+  id              String         @id @default(cuid())
+  userId          String
+  teacherId       String
+  taskId          String
+  answer          String
+  attempt_number  Int
+  attempt_date    DateTime       @default(now())
+  assessment_date DateTime?
+  cohortId        String
+  cohort          Cohort         @relation(fields: [cohortId], references: [id])
+  comment         String
+  score           Int
+  status          String
+  task            CurriculumTask @relation(fields: [taskId, cohortId], references: [id, cohortId])
+  user            User           @relation("user", fields: [userId], references: [id])
+  teacher         User           @relation("teacher", fields: [teacherId], references: [id])
 }
