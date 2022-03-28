@@ -130,6 +130,7 @@ export const ModuleSelect = ({
   return (
     <div className={styles.moduleSelectWrapper}>
       <Select
+        instanceId="module-select"
         onChange={handleChange}
         value={defaultValue}
         options={selectOptions}

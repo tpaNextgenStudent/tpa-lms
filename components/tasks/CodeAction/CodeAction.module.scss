@@ -2,21 +2,15 @@
 @use '/lib/styles/variables/media.module' as media;
 @use '/lib/styles/variables/animations.module' as animations;
 
-.codeActionWrapper {
+.wrapper {
   position: absolute;
   width: calc(100% - 48px);
   max-width: 869px;
-  background-color: colors.$white;
-  border-radius: 16px;
-  display: flex;
-  padding: 0 32px 0 16px;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
   margin: 24px;
   bottom: 0;
   left: 0;
-  box-shadow: 0 8px 32px rgba(7, 1, 48, 0.12);
+  display: flex;
+  flex-direction: column;
 
   @media (max-width: media.$laptopS) {
     position: static;
@@ -28,6 +22,18 @@
     margin: 12px;
     width: calc(100% - 24px);
   }
+}
+
+.codeActionWrapper {
+  margin-top: 16px;
+  background-color: colors.$white;
+  border-radius: 16px;
+  display: flex;
+  padding: 0 32px 0 16px;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  box-shadow: 0 8px 32px rgba(7, 1, 48, 0.12);
 }
 
 .codeActionBlock {
