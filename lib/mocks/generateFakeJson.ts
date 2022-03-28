@@ -86,7 +86,7 @@ function createFakeUserTask({
   // score = faker.random.arrayElement([1, null]);
   if (task.type === 'info') {
     if (status === 'approved') {
-      score = faker.random.arrayElement([null, 1]);
+      score = 1;
     }
   } else {
     if (status === 'in progress') {
@@ -123,7 +123,7 @@ function createFakeUserTasks({
       userId,
       status:
         task.type === 'info'
-          ? 'approved'
+          ? faker.random.arrayElement(['approved', 'upcoming'])
           : faker.random.arrayElement([
               'upcoming',
               'in progress',
