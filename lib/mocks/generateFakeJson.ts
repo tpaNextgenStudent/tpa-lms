@@ -83,7 +83,12 @@ function createFakeUserTask({
   status: TaskStatus;
 }): UserTask {
   let score = null;
-  if (task.type !== 'info') {
+  // score = faker.random.arrayElement([1, null]);
+  if (task.type === 'info') {
+    if (status === 'approved') {
+      score = faker.random.arrayElement([null, 1]);
+    }
+  } else {
     if (status === 'in progress') {
       score = faker.random.arrayElement([1, null]);
     } else if (status === 'approved') {

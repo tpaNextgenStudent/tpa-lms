@@ -11,6 +11,7 @@ import { TaskTypeBadge } from '../TaskTypeBadge/TaskTypeBadge';
 import { TaskScoreBadge } from '../TaskScoreBadge/TaskScoreBadge';
 import { TaskAttemptBadge } from '../TaskAttemptBadge/TaskAttemptBadge';
 import { TaskNav } from '../TaskNav/TaskNav';
+import { TaskDoneBadge } from '../TaskDoneBadge/TaskDoneBadge';
 
 interface TaskSectionProps {
   task: UserTask & { task: Task };
@@ -49,8 +50,15 @@ export const TaskSection = ({
       <div className={styles.taskBadges}>
         <TaskStatusBadge status={status} />
         <TaskTypeBadge type={task.type} />
-        <TaskAttemptBadge text={'Attempt'} attempt={attempts.length} />
-        {score && <TaskScoreBadge text={'Score'} score={score} />}
+        {task.type !== 'info' && (
+          <TaskAttemptBadge text={'Attempt'} attempt={attempts.length} />
+        )}
+        {score &&
+          (task.type === 'info' ? (
+            <TaskDoneBadge />
+          ) : (
+            <TaskScoreBadge text={'Score'} score={score} />
+          ))}
       </div>
       <TaskNav
         setIsDescriptionView={setIsDescriptionView}
