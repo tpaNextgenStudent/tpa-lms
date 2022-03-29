@@ -31,11 +31,11 @@ export default function CohortProgressIndex({
       cohortName={'TPA - TOYOTA - 05'}
     >
       <div>
-        <ModuleSelect
-          modules={modules}
-          module={module}
-          handleChange={handleChange}
-        />
+        {/*<ModuleSelect*/}
+        {/*  modules={modules}*/}
+        {/*  module={module}*/}
+        {/*  handleChange={handleChange}*/}
+        {/*/>*/}
       </div>
       <Table data={progress} columns={getCohortProgressColumns(module.tasks)} />
     </Layout>
