@@ -1,5 +1,4 @@
 import styles from './TaskSection.module.scss';
-import { Module, Task, UserTask } from '../../../lib/utils/types';
 import { TaskDescription } from '../TaskDescription/TaskDescription';
 import { TaskAction } from '../TaskAction/TaskAction';
 import { useState } from 'react';
@@ -13,18 +12,20 @@ import { TaskAttemptBadge } from '../TaskAttemptBadge/TaskAttemptBadge';
 import { TaskNav } from '../TaskNav/TaskNav';
 import { TaskDoneBadge } from '../TaskDoneBadge/TaskDoneBadge';
 import { TaskComments } from '../TaskComments/TaskComments';
+import { ITask } from '../../../api/tasks';
+import { IModule } from '../../../api/modules';
 
 interface TaskSectionProps {
-  task: UserTask & { task: Task };
-  module: Module;
+  task: ITask;
+  module: IModule;
 }
 
-export const TaskSection = ({
-  task: { task, status, score, attempts },
-  module,
-}: TaskSectionProps) => {
+export const TaskSection = ({ task, module }: TaskSectionProps) => {
   const [isDescriptionView, setIsDescriptionView] = useState(true);
   const [isFullScreenMode, setIsFullScreenMode] = useState(false);
+
+  const lastAttempt = task.attempts[task.attempts.length - 1];
+  const taskStatus = lastAttempt?.status || 'upcoming';
 
   const toggleFullScreenMode = () => {
     setIsFullScreenMode(prev => !prev);
@@ -49,16 +50,16 @@ export const TaskSection = ({
         </button>
       </div>
       <div className={styles.taskBadges}>
-        <TaskStatusBadge status={status} />
+        <TaskStatusBadge status={taskStatus} />
         <TaskTypeBadge type={task.type} />
         {task.type !== 'info' && (
-          <TaskAttemptBadge text={'Attempt'} attempt={attempts.length} />
+          <TaskAttemptBadge text={'Attempt'} attempt={task.attempts.length} />
         )}
-        {score &&
+        {lastAttempt &&
           (task.type === 'info' ? (
             <TaskDoneBadge />
           ) : (
-            <TaskScoreBadge text={'Score'} score={score} />
+            <TaskScoreBadge text={'Score'} score={lastAttempt.score} />
           ))}
       </div>
       <TaskNav
@@ -67,13 +68,13 @@ export const TaskSection = ({
       />
       {isDescriptionView ? (
         <TaskDescription
-          locked={status === 'upcoming'}
+          locked={taskStatus === 'upcoming'}
           description={task.description}
         />
       ) : (
         <TaskComments />
       )}
-      {status !== 'upcoming' && <TaskAction task={task} />}
+      {taskStatus !== 'upcoming' && <TaskAction task={task} />}
     </main>
   );
 };

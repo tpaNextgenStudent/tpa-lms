@@ -1,27 +1,29 @@
 import styles from './TaskBadges.module.scss';
-import { Task, UserTask } from '../../../lib/utils/types';
 import { TaskTypeBadge } from '../TaskTypeBadge/TaskTypeBadge';
 import { TaskStatusBadge } from '../TaskStatusBadge/TaskStatusBadge';
 import { TaskScoreBadge } from '../TaskScoreBadge/TaskScoreBadge';
 import { TaskLockBadge } from '../TaskLockBadge/TaskLockBadge';
 import { TaskDoneBadge } from '../TaskDoneBadge/TaskDoneBadge';
+import { IAttempt, ITask } from '../../../api/tasks';
 
 interface TaskBadgesProps {
-  task: UserTask & { task: Task };
+  task: ITask;
 }
 
 export const TaskBadges = ({ task }: TaskBadgesProps) => {
+  const lastAttempt = task.attempts[task.attempts.length - 1];
+
   return (
     <div className={styles.taskBadgesWrapper}>
       {task.status === 'upcoming' && <TaskLockBadge />}
-      {task.score &&
-        (task.task.type === 'info' ? (
+      {lastAttempt &&
+        (task.type === 'info' ? (
           <TaskDoneBadge />
         ) : (
-          <TaskScoreBadge score={task.score} />
+          <TaskScoreBadge score={lastAttempt.score} />
         ))}
       <TaskStatusBadge status={task.status} />
-      <TaskTypeBadge type={task.task.type} />
+      <TaskTypeBadge type={task.type} />
     </div>
   );
 };

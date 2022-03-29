@@ -9,6 +9,7 @@ import Select, {
   components,
   DropdownIndicatorProps,
 } from 'react-select';
+import { IModule } from '../../../api/modules';
 
 export type OptionType = {
   label: string;
@@ -104,8 +105,8 @@ const customStyles: StylesConfig<OptionType, IsMulti> = {
 };
 
 interface ModuleSelectProps {
-  modules: Module[];
-  module: Module;
+  modules: IModule[];
+  module: IModule;
   handleChange: (value: SingleValue<OptionType>) => void;
 }
 

@@ -1,12 +1,13 @@
 import styles from './TasksListItem.module.scss';
 import clsx from 'clsx';
-import { Module, Task, UserTask } from '../../../lib/utils/types';
 import Link from 'next/link';
 import { TaskBadges } from '../TaskBadges/TaskBadges';
+import { ITask } from '../../../api/tasks';
+import { IModule } from '../../../api/modules';
 
 interface TaskListItemProps {
-  task: UserTask & { task: Task };
-  module: Module;
+  task: ITask;
+  module: IModule;
   isActive: boolean;
 }
 
@@ -27,7 +28,7 @@ export const TasksListItem = ({
           >
             {module.name}
           </span>
-          <h3 className={styles.taskName}>{task.task.name}</h3>
+          <h3 className={styles.taskName}>{task.name}</h3>
           <TaskBadges task={task} />
         </a>
       </Link>

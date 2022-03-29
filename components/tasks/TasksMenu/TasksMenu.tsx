@@ -1,19 +1,19 @@
 import styles from './TasksMenu.module.scss';
-import { Module, Task, UserTask } from '../../../lib/utils/types';
 import {
   ModuleSelect,
   OptionType,
 } from '../../common/ModuleSelect/ModuleSelect';
 import { TasksList } from '../TasksList/TasksList';
 import { useRouter } from 'next/router';
-import { ChangeEvent } from 'react';
 import { SingleValue } from 'react-select';
+import { IModule } from '../../../api/modules';
+import { ITask } from '../../../api/tasks';
 
 interface TasksMenuProps {
-  modules: Module[];
-  module: Module;
-  tasks: (UserTask & { task: Task })[];
-  task: UserTask & { task: Task };
+  modules: IModule[];
+  module: IModule;
+  tasks: ITask[];
+  task: ITask;
 }
 
 export const TasksMenu = ({ modules, module, tasks, task }: TasksMenuProps) => {

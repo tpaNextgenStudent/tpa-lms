@@ -1,11 +1,12 @@
 import styles from './TasksList.module.scss';
-import { UserTask, Task, Module } from '../../../lib/utils/types';
 import { TasksListItem } from '../TasksListItem/TasksListItem';
+import { ITask } from '../../../api/tasks';
+import { IModule } from '../../../api/modules';
 
 interface TasksListProps {
-  currentTask: UserTask & { task: Task };
-  tasks: (UserTask & { task: Task })[];
-  module: Module;
+  currentTask: ITask;
+  tasks: ITask[];
+  module: IModule;
 }
 
 export const TasksList = ({ currentTask, tasks, module }: TasksListProps) => {
@@ -14,7 +15,7 @@ export const TasksList = ({ currentTask, tasks, module }: TasksListProps) => {
       {tasks.map(task => (
         <TasksListItem
           key={task.id}
-          isActive={task.task.id === currentTask.taskId}
+          isActive={task.id === currentTask.id}
           task={task}
           module={module}
         />
