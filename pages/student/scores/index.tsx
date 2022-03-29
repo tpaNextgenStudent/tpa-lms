@@ -39,12 +39,7 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
     const mn = faker.company.bsNoun();
     const moduleName = `${mn[0].toUpperCase()}${mn.slice(1)}`;
 
-    const taskType = faker.random.arrayElement([
-      'info',
-      'image',
-      'quiz',
-      'code',
-    ]);
+    const taskType = faker.random.arrayElement(['info', 'code']);
 
     const attempts = faker.random.arrayElement([1, 2, 3]);
     const score = faker.random.arrayElement([1, 2, 3]);
@@ -66,7 +61,7 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
       module: moduleName,
       task: taskName,
       task_type: taskType,
-      attempts: attempts,
+      attempt: attempts,
       score: score,
       reviewed_by: reviewedBy,
       view: { link: '/scores' },

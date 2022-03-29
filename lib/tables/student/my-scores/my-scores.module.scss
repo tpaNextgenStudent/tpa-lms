@@ -1,12 +1,18 @@
 @use '/lib/styles/variables/colors.module' as colors;
 
-.teacherImg {
-  border-radius: 50px;
-}
-
 .teacherCellWrapper {
   display: flex;
   align-items: center;
+}
+
+.teacherImg {
+  border-radius: 50px;
+  flex-shrink: 0;
+}
+
+.teacherImgWrapper {
+  width: 32px;
+  height: 32px;
 }
 
 .teacherName {
@@ -14,20 +20,64 @@
 }
 
 .taskTypeWrapper {
-  position: relative;
-  z-index: 1;
-  padding: 8px 16px;
-  background-color: colors.$purplePrimary;
-  border-radius: 64px;
-  color: colors.$white;
+  display: flex;
+  align-items: center;
+}
+
+.taskTypeIconWrapper {
+  width: 16px;
+  height: 16px;
+
+  svg {
+    width: 100%;
+    height: 100%;
+    fill: colors.$purplePrimary;
+  }
+}
+
+.taskTypeText {
+  color: colors.$fontPrimary;
+  text-transform: capitalize;
+  margin-left: 8px;
 }
 
 .viewLink {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+  color: colors.$purplePrimary;
+  width: fit-content;
+  margin-left: auto;
+  display: block;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
-.viewLinkArrow {
-  margin-left: 16px;
+.scoreWrapper {
+}
+
+.score {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 64px;
+
+  &Green {
+    color: colors.$statusFontGreen;
+    background-color: colors.$statusBgGreen;
+  }
+
+  &Orange {
+    color: colors.$statusFontOrange;
+    background-color: colors.$statusBgOrange;
+  }
+
+  &Red {
+    color: colors.$statusFontRed;
+    background-color: colors.$statusBgRed;
+  }
 }
