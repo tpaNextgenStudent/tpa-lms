@@ -1,0 +1,63 @@
+@use '/lib/styles/variables/colors.module' as colors;
+
+.taskStatus {
+  padding: 8px 16px 8px 34px;
+  border-radius: 64px;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 16px;
+  margin-right: 16px;
+  text-transform: capitalize;
+  position: relative;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 64px;
+  }
+
+  &Green {
+    background-color: colors.$statusBgGreen;
+    color: colors.$statusFontGreen;
+
+    &::before {
+      background-color: colors.$statusFontGreen;
+    }
+  }
+
+  &Gray {
+    background-color: colors.$statusBgGray;
+    color: colors.$statusFontGray;
+
+    &::before {
+      background-color: colors.$statusFontGray;
+    }
+  }
+
+  &Blue {
+    background-color: colors.$statusBgBlue;
+    color: colors.$statusFontBlue;
+
+    &::before {
+      background-color: colors.$statusFontBlue;
+    }
+  }
+
+  &Orange {
+    background-color: colors.$statusBgOrange;
+    color: colors.$statusFontOrange;
+
+    &::before {
+      background-color: colors.$statusFontOrange;
+    }
+  }
+}

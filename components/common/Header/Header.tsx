@@ -3,6 +3,7 @@ import { User } from '../../../lib/utils/types';
 import ArrowDown from '../../../public/arrow-down.svg';
 import MenuIcon from '../../../public/menu-icon.svg';
 import Image from 'next/image';
+import { UserNav } from '../UserNav/UserNav';
 
 interface HeaderProps {
   title: string;
@@ -19,7 +20,6 @@ export const Header = ({
   description,
   actionsNumber,
 }: HeaderProps) => {
-  const fullName = `${user.firstname} ${user.lastname}`;
   return (
     <header className={styles.headerWrapper}>
       <button
@@ -38,19 +38,7 @@ export const Header = ({
         </div>
         {description && <p className={styles.description}>{description}</p>}
       </div>
-      <div className={styles.userWrapper}>
-        <Image
-          className={styles.userAvatar}
-          width={40}
-          height={40}
-          src={user.image!}
-          alt="Avatar"
-        />
-        <p className={styles.userName}>{fullName}</p>
-        <span className={styles.settingsIcon} aria-hidden>
-          <ArrowDown />
-        </span>
-      </div>
+      <UserNav user={user} />
     </header>
   );
 };

@@ -8,7 +8,7 @@
     "email": "patrykbunix@gmail.com",
     "image": "https://unsplash.it/100/100",
     "cohortId": "cohortId",
-    "role": "teacher"
+    "role": "student"
   },
   "cohorts": [
     {
@@ -17,346 +17,346 @@
       "inviteUrlId": "123123",
       "modules": [
         {
-          "id": "bandwidth",
-          "name": "Bandwidth",
+          "id": "web-readiness",
+          "name": "Web-readiness",
           "tasks": [
             {
-              "id": "6e566205-adf3-4fb1-8a2f-0cb4ad3a965e",
-              "description": "Sequi vel fuga exercitationem quo dolor.\nVoluptatum deleniti consequuntur maiores aut et nisi dolorem et.\nVoluptate excepturi dolores qui.\nIn facilis velit sed ducimus.\nAutem et iusto officia voluptatibus.\nOfficiis quod aut maiores aliquam tempora est.\nIn dolorem aut voluptatem aut.\nIllum et enim.\nDicta nam optio neque eaque dolor.\nUt animi corporis et quis corrupti veniam rem nemo iure.",
-              "type": "image",
-              "moduleId": "bandwidth",
-              "name": "Re-contextualized bandwidth-monitored throughput",
-              "link": null
-            },
-            {
-              "id": "3ff3a73f-ed7a-4ab9-bf32-62cb8fc55c3c",
-              "description": "Ullam eum provident doloremque et.\nQuibusdam delectus dolores occaecati cupiditate pariatur.\nMolestiae animi omnis explicabo atque.\nQui quo veniam dolor libero eaque dolorem.\nQuidem et facilis voluptas aut fuga.\nMaxime voluptatem non totam quas maiores sequi aspernatur nam veniam.\nSit temporibus in necessitatibus esse ut voluptatem.\nFugit neque sed illum sit nobis maiores.\nModi perferendis nulla delectus porro est doloribus ipsum corrupti.\nNostrum aut modi eveniet aliquid aut.",
-              "type": "info",
-              "moduleId": "bandwidth",
-              "name": "De-engineered zero tolerance adapter",
-              "link": null
-            },
-            {
-              "id": "405950b3-8690-482f-a9d5-b7ecdc80a4ab",
-              "description": "Deserunt omnis velit et vitae est et consectetur.\nQui quo qui eum voluptatibus velit.\nDicta aut ut quas quasi porro est velit.\nNulla aliquid cumque aliquam omnis voluptatem vel numquam voluptates enim.\nNon nemo mollitia doloribus porro odio et sequi aspernatur.\nAb maxime ipsa non.\nAut explicabo harum nam qui ut impedit non reprehenderit.\nNon molestiae quas sint hic repudiandae.\nAut cupiditate sequi inventore minima.\nAut sint quidem voluptates minima.",
-              "type": "image",
-              "moduleId": "bandwidth",
-              "name": "Innovative dedicated info-mediaries",
-              "link": null
-            },
-            {
-              "id": "42d4e843-80f1-4629-a7f1-b3a70387fb9b",
-              "description": "Nemo natus quis.\nEt alias hic sit.\nPerspiciatis hic consequuntur in culpa repellendus nulla consequatur voluptatibus enim.\nAutem consectetur rerum hic exercitationem voluptas accusantium voluptatem.\nVoluptatibus molestiae incidunt quia ut et architecto placeat placeat id.\nDucimus eaque eum eveniet.\nEt velit non veniam.\nUt eius qui iste voluptas quia et numquam.\nEst id officia et rerum.\nFacere laboriosam doloremque non aliquam repellendus quos ullam fuga.",
-              "type": "quiz",
-              "moduleId": "bandwidth",
-              "name": "Cross-group bifurcated project",
-              "link": "http://old-fashioned-target.name"
-            },
-            {
-              "id": "27b424a1-f97f-49c4-be07-4186da8f032e",
-              "description": "Et iure temporibus autem id distinctio ducimus.\nEarum dolores cupiditate quia numquam blanditiis labore.\nSapiente deserunt velit molestias.\nVoluptates impedit sit blanditiis enim tempore excepturi magnam.\nAsperiores quibusdam quam perferendis nostrum natus.\nRerum quam rerum dolores porro fugit quia sed porro.\nArchitecto et maiores sint aut dolorum provident magni harum.\nEt impedit aut pariatur id.\nEnim similique reiciendis consequatur at ab a eos.\nEa exercitationem ab ipsam sed est inventore qui.",
-              "type": "quiz",
-              "moduleId": "bandwidth",
-              "name": "Customizable dynamic array",
-              "link": "http://exciting-footrest.biz"
-            },
-            {
-              "id": "da726949-b9db-4c02-bae3-4ba770bfc888",
-              "description": "Rerum nostrum in.\nQuia corrupti reiciendis ad omnis accusantium soluta.\nPerferendis et exercitationem enim incidunt.\nEligendi optio quod et autem.\nUt architecto dolores iusto.\nDistinctio qui rem eum et sequi saepe accusantium occaecati.\nOdit rem necessitatibus quo aut temporibus labore eius quam qui.\nMollitia omnis temporibus et.\nEum sed nihil voluptates voluptates corrupti.\nCorporis dolores ipsum nostrum quam sed dolor ea.",
-              "type": "image",
-              "moduleId": "bandwidth",
-              "name": "Multi-tiered holistic open architecture",
-              "link": null
-            },
-            {
-              "id": "08491138-e516-460b-92a3-ede8c0b81c80",
-              "description": "Perspiciatis explicabo omnis dolores ratione velit ea.\nExcepturi ex deserunt mollitia esse numquam qui.\nMaxime voluptate dolorem occaecati quo autem.\nAt accusantium earum modi sapiente quidem voluptatem.\nProvident quo qui commodi temporibus ut ut magnam.\nNon quae laborum ut ex animi doloribus et et.\nDolorum id autem id et.\nReprehenderit accusamus ullam animi sunt dignissimos earum rerum expedita id.\nReiciendis consequatur quis non quia consequatur veritatis aut.\nFacilis labore qui nisi ut impedit soluta.",
-              "type": "image",
-              "moduleId": "bandwidth",
-              "name": "Down-sized composite info-mediaries",
-              "link": null
-            },
-            {
-              "id": "93f04438-c18d-4543-bda0-891b5d1c766e",
-              "description": "Ut eius et.\nDebitis quasi est doloribus nulla provident.\nQui et quod ad odit.\nEt sit fuga hic et.\nDignissimos voluptas soluta.\nFugiat in libero.\nConsequuntur totam maiores et aut tenetur.\nPerferendis iusto ea dolorum.\nEst in quia quasi pariatur consequatur libero.\nPlaceat assumenda sed molestiae nisi quibusdam harum voluptatum accusamus.",
-              "type": "info",
-              "moduleId": "bandwidth",
-              "name": "Function-based even-keeled flexibility",
-              "link": null
-            },
-            {
-              "id": "c1dda27e-0794-4d67-87bb-eb224a37884d",
-              "description": "Omnis tempore enim eius et voluptatibus quia ut qui.\nEx rem dolores aut accusamus ab rerum dicta deleniti consequatur.\nQuasi nisi assumenda possimus ex.\nQuaerat necessitatibus quos enim voluptatum dolorum sint.\nOfficiis dolor quam dolores eius qui repellendus quos est eos.\nEius est magnam voluptatum non consequatur alias aut.\nFacere iste suscipit.\nQuas consectetur labore quas non quae.\nAspernatur nesciunt repellat et.\nAut expedita reprehenderit voluptate sapiente aut et.",
+              "id": "6c75e77e-2c61-4e2f-afe6-d7e1c50d5ffd",
+              "description": "Rem exercitationem aliquid dolore error rem quam.\nBlanditiis voluptatibus impedit et totam.\nA excepturi iure consequuntur rerum soluta.\nEt officiis et molestias nihil.\nOmnis velit enim ut.\nAliquam et at.\nVeniam accusamus officiis perspiciatis sit in dolorum nulla.\nMollitia quam voluptates minima.\nTempore autem facere eligendi officiis officia ut commodi sunt.\nSed sapiente consectetur cumque.",
               "type": "code",
-              "moduleId": "bandwidth",
-              "name": "Networked zero administration utilisation",
-              "link": "http://political-ark.net"
+              "moduleId": "web-readiness",
+              "name": "Front-line fresh-thinking pricing structure",
+              "link": "https://exalted-water.com"
             },
             {
-              "id": "4d7e368e-9e0b-40ad-a113-147f9258965e",
-              "description": "Repudiandae amet aperiam.\nTenetur aut impedit dolor.\nRatione tempora cum ducimus dolorem maiores consequatur aut sapiente quis.\nNemo ut dolorem corporis dolores.\nAperiam dolore voluptate.\nAspernatur consectetur incidunt commodi.\nRem et voluptatem.\nOccaecati illo ipsam doloribus impedit quia laborum quia a.\nBeatae sunt aliquam dolorem.\nEnim quis id repudiandae.",
-              "type": "image",
-              "moduleId": "bandwidth",
-              "name": "Down-sized client-driven Graphical User Interface",
+              "id": "72a4a48b-5208-4c48-a6ad-0dfc38279f39",
+              "description": "Laborum in quod.\nFuga porro quae ad.\nEum cum et aut accusantium et officia reprehenderit.\nId molestiae optio qui excepturi ex.\nAlias beatae modi deleniti rerum dolorem nihil sed molestias.\nEos quis et et voluptas.\nOfficiis et ullam ratione quis voluptatem a vitae natus.\nEnim consequatur et commodi magnam eaque.\nEt necessitatibus deserunt sit possimus et incidunt molestiae voluptatem harum.\nAssumenda id nostrum animi quia accusamus.",
+              "type": "info",
+              "moduleId": "web-readiness",
+              "name": "Function-based motivating approach",
               "link": null
+            },
+            {
+              "id": "7cb33091-655c-4781-aaa2-af1160a38bf7",
+              "description": "Quasi beatae est error exercitationem et et ab reprehenderit.\nVoluptatem quae quis.\nLibero sit voluptas.\nAut fugiat cumque deserunt delectus recusandae illum fugiat quia.\nRerum quia autem ipsa neque error eos.\nIllo deserunt rerum similique non sapiente quasi molestias et mollitia.\nIpsam sit rerum.\nRatione est nulla eum explicabo.\nOdio distinctio id.\nEnim rerum pariatur.",
+              "type": "info",
+              "moduleId": "web-readiness",
+              "name": "Team-oriented mission-critical archive",
+              "link": null
+            },
+            {
+              "id": "c3e1e79a-a1c2-4dfc-90b2-26ed207bfce6",
+              "description": "Facere eos ducimus ut iure placeat est fugit qui in.\nExercitationem vero culpa cupiditate saepe error magnam error eius dolor.\nAtque aut in dolore unde sed voluptatibus necessitatibus optio suscipit.\nRerum illo nesciunt dolorem.\nOmnis ad sed eligendi dolor ab quis.\nDicta qui dolor nulla qui et atque quia ut velit.\nIncidunt nulla quisquam commodi necessitatibus rerum cum.\nDeserunt aut voluptates.\nQui explicabo vel eos ipsum.\nUt quidem dolorem ut quia magni non est.",
+              "type": "code",
+              "moduleId": "web-readiness",
+              "name": "Centralized 24/7 access",
+              "link": "https://fond-washer.biz"
+            },
+            {
+              "id": "88f4f6e9-42d0-4aed-bb57-742979a16c27",
+              "description": "Et porro dolorem aspernatur explicabo occaecati dolores sed voluptatem.\nOdit et quos quia qui voluptas.\nVoluptas tempore rerum exercitationem quod accusamus reprehenderit quas.\nTemporibus repellendus qui iusto quia earum beatae fuga.\nDicta vitae fugiat dolores et soluta aut harum perspiciatis error.\nSimilique quos sunt ut dolore alias.\nEt quod dignissimos aliquam numquam et expedita consequatur et.\nCumque explicabo in aspernatur molestias officia culpa et enim fuga.\nRepellat saepe velit nostrum et corporis necessitatibus pariatur.\nEveniet ad deleniti laboriosam nisi perspiciatis similique distinctio.",
+              "type": "info",
+              "moduleId": "web-readiness",
+              "name": "User-centric explicit flexibility",
+              "link": null
+            },
+            {
+              "id": "c6d08860-3aff-4865-ad40-566c4a1af358",
+              "description": "Et in ut laboriosam architecto quas eos optio voluptatem quas.\nAut iste molestiae.\nDucimus culpa sit atque temporibus dolorem sint.\nSit quasi perspiciatis non consequatur.\nTemporibus saepe necessitatibus incidunt vitae est quod blanditiis cumque enim.\nVeniam quo aspernatur optio minima quia occaecati nostrum.\nNon temporibus inventore sit.\nVoluptas quae est in delectus deleniti.\nEst atque minima est asperiores commodi omnis dolorem.\nConsectetur commodi voluptate molestiae voluptatum in delectus provident eum labore.",
+              "type": "code",
+              "moduleId": "web-readiness",
+              "name": "Robust dynamic flexibility",
+              "link": "http://shimmering-blue.biz"
+            },
+            {
+              "id": "ce9a7f09-d8a2-4c9a-b148-16447063c584",
+              "description": "Architecto reiciendis ullam qui blanditiis.\nVoluptatem et qui quia.\nQuas voluptatibus est aut natus consequuntur inventore veniam.\nNobis consequatur accusantium ipsam.\nItaque officiis quia consequuntur dolor doloremque et.\nDignissimos id et odit aspernatur.\nConsectetur dolor fugiat adipisci est consequatur voluptatibus placeat praesentium.\nAutem accusamus veniam sed vitae pariatur sint molestiae officiis nobis.\nQui error tenetur non doloremque aliquid veritatis autem.\nEarum et facere sit.",
+              "type": "code",
+              "moduleId": "web-readiness",
+              "name": "Face to face eco-centric protocol",
+              "link": "http://masculine-mother.net"
+            },
+            {
+              "id": "e560249f-b430-441d-b6f9-0005847700d9",
+              "description": "Sed quas fuga nostrum quibusdam et occaecati debitis architecto voluptatem.\nAspernatur dolores qui autem magnam aut aut aliquam.\nLaboriosam omnis dolor error porro molestias.\nQuia rem aut.\nRecusandae voluptatem et.\nIusto quibusdam quasi non similique a animi blanditiis eum minima.\nIllo tenetur ad sunt.\nPerspiciatis at sed quae qui.\nPossimus sint magni dignissimos.\nInventore et eius velit.",
+              "type": "info",
+              "moduleId": "web-readiness",
+              "name": "Down-sized needs-based architecture",
+              "link": null
+            },
+            {
+              "id": "fc3dde68-ab20-4238-9644-b7085f50ce0f",
+              "description": "Et hic qui numquam qui voluptas nesciunt.\nSit molestiae aut eos pariatur quasi aliquam qui cumque omnis.\nRepellendus qui perferendis sit eum rerum totam.\nRerum ea perferendis.\nNihil mollitia eum aspernatur laudantium culpa sed vero sed.\nAdipisci omnis similique est sit nihil.\nIn corrupti libero sit aut.\nSuscipit beatae illo maxime voluptatem ut laboriosam dolorem.\nOfficiis impedit odio autem eius quibusdam quos ut sed.\nPorro voluptatem occaecati et dolorem.",
+              "type": "code",
+              "moduleId": "web-readiness",
+              "name": "Grass-roots needs-based core",
+              "link": "http://elastic-amendment.biz"
+            },
+            {
+              "id": "880b4048-6968-470e-8ebc-7d638ee5a116",
+              "description": "Cupiditate rem ea quidem praesentium.\nQui dolorum voluptatem cumque commodi ex necessitatibus commodi.\nVoluptas fugit dolorem est amet excepturi velit provident maxime doloribus.\nDolor dolore ut non.\nRecusandae et ut quia.\nTempore debitis quis quam voluptatibus tenetur odit.\nAspernatur dolorem voluptate minima aut a explicabo.\nPerspiciatis laboriosam repellendus earum suscipit minus molestiae in et.\nQuia sit at aperiam consequatur.\nRatione fugiat doloribus.",
+              "type": "code",
+              "moduleId": "web-readiness",
+              "name": "Triple-buffered static service-desk",
+              "link": "http://tiny-monument.org"
             }
           ]
         },
         {
-          "id": "supply-chains",
-          "name": "Supply-chains",
+          "id": "partnerships",
+          "name": "Partnerships",
           "tasks": [
             {
-              "id": "7dbee286-2371-4d50-88fe-dc53af5b5800",
-              "description": "Qui quo ullam adipisci in iure et.\nAsperiores voluptatum sit dicta praesentium velit error.\nNisi qui eos eos praesentium veniam repellendus maxime aut qui.\nEt officia sed a ratione et.\nSoluta nulla sunt.\nAperiam rerum rerum et.\nMagnam sapiente recusandae.\nUt et repellat hic neque sint sunt.\nInventore odio deleniti sint distinctio repudiandae ut.\nEaque fugiat dolorum.",
-              "type": "code",
-              "moduleId": "supply-chains",
-              "name": "Cross-platform explicit alliance",
-              "link": "https://radiant-cohort.org"
-            },
-            {
-              "id": "55cd9a03-777f-410b-a79a-7b377fdeaf71",
-              "description": "Magnam ipsum sit distinctio commodi voluptate accusamus nihil non.\nDeleniti libero repudiandae recusandae aut nihil omnis assumenda molestias.\nAut quos eligendi quos.\nUt quidem enim ut occaecati nostrum porro consequatur voluptatem vel.\nSimilique voluptate dolorem rerum quas minus accusamus.\nEa consequatur consequatur dolore esse velit fugiat et aut.\nSequi possimus excepturi iusto nesciunt.\nDeleniti velit unde corrupti voluptatem aliquam quaerat aut.\nDignissimos sint repudiandae.\nQui qui quas aut at voluptatibus eligendi sunt quis ut.",
-              "type": "quiz",
-              "moduleId": "supply-chains",
-              "name": "Reverse-engineered interactive contingency",
-              "link": "http://gray-teletype.biz"
-            },
-            {
-              "id": "45241a3d-12ee-4737-8bfe-8b175870be21",
-              "description": "Quaerat saepe voluptatum et voluptates est aut aliquam ipsum.\nCumque aliquam eveniet aut non nisi dolores repellat facilis id.\nNemo est animi quam ratione voluptas delectus suscipit ut.\nReiciendis accusamus voluptatum numquam dolorem assumenda quod doloremque officia voluptatem.\nIncidunt nihil quisquam maxime rerum eius voluptate.\nMolestiae rem praesentium ut aut qui aut.\nDicta molestias odit molestiae.\nQuis cumque commodi aut qui est rem non.\nIure neque cumque numquam optio quos.\nSimilique quisquam molestias ex consequatur tenetur id.",
-              "type": "image",
-              "moduleId": "supply-chains",
-              "name": "Switchable global firmware",
-              "link": null
-            },
-            {
-              "id": "720f75bf-56be-45fd-b771-17d3b1275232",
-              "description": "Qui nihil minus est ducimus error laborum.\nDebitis quaerat voluptas neque nulla.\nRatione qui impedit nisi incidunt.\nVoluptates qui officiis quaerat ratione enim at.\nDolores praesentium laboriosam ut ad aut accusantium voluptas molestiae.\nSed minus facilis aut sed qui accusantium ducimus sequi maiores.\nIllum dolorum iure fugit non omnis incidunt dolore aliquam.\nRecusandae fugiat sed rem est tenetur.\nIllo numquam necessitatibus dolores et voluptates cum deleniti quas.\nLaborum fuga fugiat.",
-              "type": "image",
-              "moduleId": "supply-chains",
-              "name": "Front-line intermediate function",
-              "link": null
-            },
-            {
-              "id": "c5c3474c-02e3-44e3-b516-6df3c487df2a",
-              "description": "Error qui nisi sit omnis expedita.\nOdio cumque blanditiis neque dolorum est.\nRerum dolor pariatur aut quibusdam id explicabo.\nQui eum tenetur iste et maxime.\nCum doloribus id.\nDeleniti sit sed.\nTempora molestiae doloremque fugit maxime quidem quam et quis.\nPariatur ut debitis qui excepturi sit quo provident.\nA consequuntur saepe voluptatibus velit deserunt numquam.\nQuaerat veritatis ut rerum ut quaerat alias.",
-              "type": "quiz",
-              "moduleId": "supply-chains",
-              "name": "Advanced fault-tolerant adapter",
-              "link": "http://shocked-seeder.org"
-            },
-            {
-              "id": "741af908-1a3b-487d-be64-e068271bc47b",
-              "description": "Est tenetur dignissimos.\nArchitecto ullam libero odio provident minima dolorem qui officiis.\nQuod officiis magni.\nEst officia sed numquam.\nIncidunt vero qui incidunt qui.\nOmnis totam qui ullam.\nNisi eos omnis rerum veniam et id.\nProvident libero rem et.\nEius accusantium nemo ut quibusdam repellendus.\nTempora sunt sit eum adipisci iusto a perferendis ad.",
+              "id": "d20a4f63-a680-4081-a844-2b5d74d50fbc",
+              "description": "Sit itaque dolores repellendus enim rerum occaecati aperiam et quisquam.\nCumque sapiente commodi.\nQuia veniam inventore minima beatae.\nQuaerat aut eum autem nostrum asperiores.\nSunt harum non accusantium ut at ex.\nSoluta id molestias in odit facere dolore.\nDoloremque excepturi reiciendis inventore accusamus.\nTemporibus blanditiis possimus est nesciunt maxime quod cumque esse.\nQui ut consequatur modi nihil debitis necessitatibus.\nCorrupti voluptatem possimus provident omnis qui distinctio molestiae quisquam.",
               "type": "info",
-              "moduleId": "supply-chains",
-              "name": "Pre-emptive neutral conglomeration",
+              "moduleId": "partnerships",
+              "name": "Advanced web-enabled function",
               "link": null
             },
             {
-              "id": "0a25b40f-6027-474c-8396-cbec4a00974e",
-              "description": "Ad labore dolore dolor est voluptas dolor optio nihil.\nQui et laudantium ullam sequi sed dignissimos temporibus laborum et.\nOptio quia suscipit eum ut blanditiis qui ullam.\nPlaceat aliquam dolorum quibusdam omnis vero.\nNon possimus omnis quam.\nIure voluptatem excepturi facilis est eligendi hic totam eius.\nProvident hic asperiores rem.\nDolorum aut eum autem et suscipit esse praesentium voluptatibus saepe.\nRepellat molestias natus est odit occaecati.\nDeleniti deleniti incidunt est exercitationem alias vel sed magni.",
-              "type": "quiz",
-              "moduleId": "supply-chains",
-              "name": "Phased grid-enabled functionalities",
-              "link": "https://webbed-god.biz"
-            },
-            {
-              "id": "48585e13-44a0-464b-a201-3cc9f1180018",
-              "description": "Aliquid voluptatem ab ut quis consequuntur eligendi.\nEa ex velit qui dolore sequi illum beatae aut.\nVoluptatem tempora cum nobis ducimus repellat et consequatur distinctio.\nEum et delectus debitis saepe totam laudantium ipsa est.\nEst repudiandae at rerum fugit.\nA quibusdam non.\nTenetur blanditiis hic est enim sed.\nVitae corrupti expedita saepe tempore est optio.\nDolorem sit nulla.\nVeritatis nobis et dicta est quidem eum.",
+              "id": "4cf341b2-49cb-4d20-a087-2a0cff5ec724",
+              "description": "Enim unde aspernatur sed ducimus nihil est laudantium fugiat.\nDolor quia iusto facere dolor odio unde rerum eum porro.\nDicta distinctio esse.\nAssumenda temporibus est repellat provident quia dolor incidunt voluptatem.\nEt laboriosam quod eos.\nReiciendis molestias soluta sapiente cupiditate cum dolor autem molestiae.\nNon repellat blanditiis atque nisi accusamus consequatur.\nEligendi provident officia architecto non quo saepe exercitationem.\nEaque voluptate similique.\nAperiam id neque autem.",
               "type": "info",
-              "moduleId": "supply-chains",
-              "name": "Streamlined national emulation",
+              "moduleId": "partnerships",
+              "name": "Automated bottom-line utilisation",
               "link": null
             },
             {
-              "id": "40b74515-4cd0-4d77-b92d-9e3831090830",
-              "description": "Illum voluptate culpa autem est ratione nam sunt alias qui.\nId voluptas at odit voluptatibus quaerat modi aut.\nNumquam fugit dignissimos.\nCorporis dolore ratione doloremque non ipsam.\nSapiente quibusdam dolorem soluta.\nPraesentium dolore nihil possimus voluptates sit.\nTotam ut minus id.\nAliquid odit repudiandae nihil doloremque.\nExplicabo beatae accusantium est nesciunt commodi id aut quae.\nSunt tempore id.",
+              "id": "1790375d-8ead-4e9f-a308-16de0bee79c5",
+              "description": "Laboriosam assumenda sit necessitatibus rerum.\nMolestiae neque eligendi aut ad facilis molestiae voluptas.\nQuidem saepe doloribus ut aut maiores.\nOdio repellendus error ut voluptatum et in.\nConsequatur at deserunt enim iure.\nHic aliquam eius.\nIpsum nostrum doloremque qui facilis.\nBlanditiis commodi magni eum.\nMinima tempore nulla odit quis repellat ipsam minima.\nEsse dignissimos est voluptatum eum et dolorem quia.",
               "type": "code",
-              "moduleId": "supply-chains",
-              "name": "Object-based zero administration workforce",
-              "link": "https://incomparable-pacemaker.org"
+              "moduleId": "partnerships",
+              "name": "Extended client-driven framework",
+              "link": "http://far-vendor.info"
             },
             {
-              "id": "bac95263-40e9-4430-ad7f-7a01dc89be13",
-              "description": "Voluptatem quisquam enim fugit voluptas est quidem corrupti eligendi.\nEst maiores cum assumenda quasi tempore ut.\nEum ut atque in id nisi quam dolor laudantium.\nEligendi delectus qui ipsam explicabo aspernatur.\nPerspiciatis qui officiis et sequi corrupti.\nHarum aut totam officiis aut pariatur doloribus quaerat.\nRecusandae velit culpa.\nAut voluptatem consequatur consequatur repellendus voluptas.\nQuis ut saepe est dolorem.\nDolorum consequatur eos nam dolores architecto sed.",
-              "type": "quiz",
-              "moduleId": "supply-chains",
-              "name": "Digitized neutral access",
-              "link": "https://remarkable-heavy.info"
+              "id": "77ccc680-93f9-495f-8ff4-48b1989a0779",
+              "description": "Repudiandae aut et vero quia qui excepturi ea alias rem.\nEst ut voluptatem ipsa eligendi qui sit.\nConsectetur eligendi commodi.\nFacere ipsam enim vero ipsam.\nQui accusantium illum architecto modi numquam quia.\nSit numquam id autem culpa rerum dolor aliquam sed.\nMaiores adipisci nisi qui.\nNesciunt est hic excepturi repellendus est.\nNihil et omnis fuga ipsum.\nEst ipsa delectus saepe.",
+              "type": "code",
+              "moduleId": "partnerships",
+              "name": "Monitored disintermediate synergy",
+              "link": "http://similar-nest.biz"
+            },
+            {
+              "id": "aab52762-f477-4b96-89e0-35305467bf3e",
+              "description": "Sapiente voluptas inventore adipisci error magnam omnis placeat perspiciatis perspiciatis.\nNemo quo fugit.\nLibero quia qui occaecati.\nVoluptatem et rem consequuntur dolorem voluptas.\nNihil aliquid et qui harum voluptate dolore.\nUnde qui et architecto consequuntur dolores architecto quis nihil.\nAspernatur dolor nesciunt.\nReprehenderit et sit doloribus.\nQuaerat expedita quo est dolorum ullam autem.\nVeritatis distinctio qui iure dicta tenetur.",
+              "type": "code",
+              "moduleId": "partnerships",
+              "name": "Upgradable contextually-based protocol",
+              "link": "http://prickly-dressing.com"
+            },
+            {
+              "id": "2243f8a8-568b-49d7-b805-17b6f040a05a",
+              "description": "Provident exercitationem sapiente aut qui soluta vitae.\nSint dolores pariatur ut.\nEaque doloremque id quibusdam.\nNihil ut sit voluptates.\nEt facilis provident.\nVoluptatem excepturi delectus.\nAut aut aliquam excepturi explicabo esse mollitia voluptatum.\nQuidem sint itaque impedit corrupti.\nIusto veniam unde qui impedit aspernatur.\nAut distinctio asperiores consequuntur ratione et et neque ut quo.",
+              "type": "code",
+              "moduleId": "partnerships",
+              "name": "Switchable scalable software",
+              "link": "http://troubled-rush.com"
+            },
+            {
+              "id": "8d3b863f-5275-49fe-ae40-791cba2a77e5",
+              "description": "Incidunt ut corrupti magni enim quia nihil.\nQuo similique molestiae dignissimos velit.\nSunt adipisci aut.\nQuas eum hic necessitatibus vel sed provident aut omnis.\nPossimus laboriosam voluptas nihil iure nam repellendus reiciendis earum dolores.\nEa ipsam tempora aperiam facere doloremque sit voluptatibus architecto quisquam.\nAut similique perspiciatis ab.\nTempore aspernatur tenetur magnam totam debitis consequuntur et.\nDolor et molestias non a aut dolor quasi suscipit officiis.\nEt nam ullam dolor.",
+              "type": "code",
+              "moduleId": "partnerships",
+              "name": "Implemented reciprocal superstructure",
+              "link": "http://animated-tent.name"
+            },
+            {
+              "id": "24892a44-1059-4f6e-a134-f5caeb6e5880",
+              "description": "Quidem itaque sit quisquam voluptas voluptatem.\nFuga temporibus rerum quia delectus ullam.\nRerum est vero omnis officiis exercitationem ipsa dolorum suscipit assumenda.\nEt cupiditate velit odio sint.\nAutem tempore vitae.\nAut nihil eos eum dolor ut sed neque et at.\nSit voluptatum tenetur quia ut et.\nSint debitis libero sapiente voluptas inventore recusandae id quisquam.\nNulla incidunt sint est vel id qui.\nNecessitatibus quisquam architecto modi non ipsum magni doloremque aut deserunt.",
+              "type": "code",
+              "moduleId": "partnerships",
+              "name": "Distributed tangible synergy",
+              "link": "https://meaty-assertion.info"
+            },
+            {
+              "id": "8023f9a4-a32e-44ed-80c4-2091bce447bb",
+              "description": "Aut sit commodi.\nAlias labore fuga quia.\nSit itaque vero architecto est.\nIn consectetur nulla praesentium iusto blanditiis dignissimos harum facilis.\nAut laboriosam modi qui et.\nConsequatur tenetur quis maxime.\nNobis reiciendis fuga saepe est non voluptas consectetur porro.\nAccusamus eius corporis.\nAssumenda quam qui perferendis.\nEaque ex velit.",
+              "type": "code",
+              "moduleId": "partnerships",
+              "name": "Implemented motivating definition",
+              "link": "https://spicy-press.net"
+            },
+            {
+              "id": "18e41aee-758e-4623-80ec-e9c140b89a02",
+              "description": "Et fuga laboriosam facere sint qui.\nAd in facilis et delectus autem.\nQui nostrum sed reiciendis harum officia voluptatem.\nOptio est non qui molestiae.\nRepellat dolor qui nisi sed repudiandae.\nEa suscipit ipsum.\nIn similique vel consectetur quas id.\nRepudiandae modi qui corrupti voluptates molestiae odit omnis.\nVoluptatibus sint qui aperiam incidunt dolore.\nNihil illo aut est sit.",
+              "type": "code",
+              "moduleId": "partnerships",
+              "name": "Customer-focused didactic framework",
+              "link": "https://pitiful-rap.com"
             }
           ]
         },
         {
-          "id": "systems",
-          "name": "Systems",
+          "id": "users",
+          "name": "Users",
           "tasks": [
             {
-              "id": "164c4e51-5693-4a3d-a047-0d2888f98e42",
-              "description": "Provident nisi eum est blanditiis facilis dicta aut autem nihil.\nBlanditiis alias laudantium praesentium voluptatem dolores a aspernatur.\nSed blanditiis sequi aut voluptas sit numquam a quae accusamus.\nDolorum aut quos architecto.\nDeserunt accusantium laudantium pariatur dolores voluptatem incidunt autem.\nUt quia vel doloremque non amet voluptatem officiis ut quod.\nVoluptatem dolorem qui ut.\nEt commodi enim.\nPlaceat consequatur deserunt sit quia minus repellendus molestiae totam.\nQuibusdam reprehenderit necessitatibus.",
-              "type": "quiz",
-              "moduleId": "systems",
-              "name": "De-engineered bi-directional implementation",
-              "link": "http://stale-perch.info"
-            },
-            {
-              "id": "7dc58c5f-869f-4509-8e75-2387b3f02b2c",
-              "description": "Quod repellendus esse eveniet earum repudiandae.\nAsperiores et eum in eius nam.\nDolor quos accusamus officia.\nConsequatur omnis amet quasi natus et iure eveniet expedita nostrum.\nDolor suscipit ullam consequuntur quis.\nNisi rem cum voluptate facilis omnis cumque.\nEveniet voluptatum quia delectus a in.\nNostrum qui dolores quo.\nVel earum molestiae voluptatem quia.\nNeque exercitationem hic in qui cum debitis.",
-              "type": "image",
-              "moduleId": "systems",
-              "name": "Implemented systematic capability",
-              "link": null
-            },
-            {
-              "id": "b864d909-f93c-48e7-bb1e-54e1ef9202ab",
-              "description": "Nobis qui illo rem omnis aut fugiat aut doloremque.\nQui libero quidem distinctio sit quia.\nAssumenda illum corporis quia est dolore dicta accusamus sint.\nVoluptas eius aliquam facere a.\nPerferendis optio sed alias consequatur beatae sint sed quo.\nOmnis est eum nulla alias illo accusamus aut ad officia.\nMaiores id ut assumenda voluptatibus et et iure qui commodi.\nQuo enim minus autem cupiditate quis nisi sunt consequatur magni.\nQui dolores quia.\nMinima voluptatibus eos consequuntur.",
-              "type": "info",
-              "moduleId": "systems",
-              "name": "Monitored responsive emulation",
-              "link": null
-            },
-            {
-              "id": "b09726ff-a81b-4b24-ace6-74ea8cb08b45",
-              "description": "Laudantium similique sint sed veritatis suscipit.\nLibero reprehenderit dolor fugit facilis magnam unde.\nConsequatur voluptas tempora consequatur et voluptates blanditiis iusto enim aut.\nQuo explicabo neque nobis cum soluta ea facilis praesentium.\nDelectus porro cumque corporis architecto et perferendis provident.\nEst nobis molestiae.\nUt qui veniam non nobis eos.\nHic libero consequuntur porro ut omnis quia adipisci enim.\nQui dicta animi laudantium ut autem qui dicta.\nDignissimos earum ea modi sint asperiores exercitationem id.",
-              "type": "image",
-              "moduleId": "systems",
-              "name": "Visionary national productivity",
-              "link": null
-            },
-            {
-              "id": "f34dfedf-2060-4036-937c-a3a44492f142",
-              "description": "Dolore ipsa numquam quisquam et est.\nAut quia error est quasi eaque est ad.\nNatus amet maxime iusto.\nUllam est dicta ut at nostrum dolor beatae fugit ipsam.\nLaudantium quia doloribus.\nVel pariatur recusandae veritatis.\nDolor aperiam autem vel rerum.\nEst fugit nam molestiae.\nQuia numquam optio.\nUt sint exercitationem.",
+              "id": "9de0bee2-af5a-45ea-a545-09ef06e693ca",
+              "description": "Dolores magnam consequatur sed.\nSint sint maxime mollitia culpa id unde eos quaerat.\nAnimi ducimus magnam dolores quis.\nSuscipit alias cupiditate.\nEst nisi magni quo sint mollitia atque animi eos consequatur.\nModi ipsum est voluptas quibusdam laboriosam.\nQuam quia temporibus aut quidem eos dolorum consequatur ratione.\nQuis vero omnis eveniet est voluptatum est asperiores blanditiis praesentium.\nEst veniam ea sed voluptatem.\nAut facilis enim exercitationem necessitatibus voluptatem molestias omnis quo.",
               "type": "code",
-              "moduleId": "systems",
-              "name": "Expanded background knowledge base",
-              "link": "http://rowdy-storey.biz"
+              "moduleId": "users",
+              "name": "Programmable methodical utilisation",
+              "link": "http://cold-goldfish.info"
             },
             {
-              "id": "326e52d0-766f-40f1-b41b-3892e7c14bec",
-              "description": "Magnam qui ipsum occaecati ipsa non pariatur.\nEst facere necessitatibus.\nFugiat voluptatibus aliquid ipsam illo esse magnam.\nBlanditiis aperiam a neque aut omnis.\nTempora veritatis occaecati.\nQuis dolore et ad molestias maxime odio impedit.\nFuga qui rerum nulla quos provident eveniet nisi maiores sit.\nQuisquam dolores officiis veniam tempore et ipsam delectus aut praesentium.\nAt laborum voluptatem.\nDolorem veritatis distinctio sequi ducimus quia.",
-              "type": "image",
-              "moduleId": "systems",
-              "name": "Streamlined uniform artificial intelligence",
-              "link": null
+              "id": "527fae11-8049-4ff9-8c9d-d099a077481a",
+              "description": "Sint nihil iste omnis temporibus nobis.\nDicta perspiciatis ratione mollitia magnam.\nAperiam est incidunt omnis aliquid officiis dolore impedit.\nDebitis omnis atque nam odit ea mollitia qui.\nEa eum voluptatem consectetur.\nLaborum dolores quia alias.\nAut doloribus earum voluptatum a.\nModi voluptas error iure veritatis ut non sed enim et.\nSaepe repudiandae velit dolorum quaerat.\nDucimus velit voluptatem incidunt ut eius nobis qui.",
+              "type": "code",
+              "moduleId": "users",
+              "name": "Reactive national knowledge user",
+              "link": "http://automatic-try.info"
             },
             {
-              "id": "0752fdf1-9108-4d63-a3a5-e7a539c00bb8",
-              "description": "Non quam quae nobis eaque porro.\nIllo beatae voluptatem recusandae porro nam vel voluptate iste.\nRem iste aperiam maxime eum.\nQuas placeat est quasi consequatur et at.\nDolorum commodi debitis odio cumque excepturi.\nAutem culpa est.\nEsse ipsam dolor dolor nihil.\nDeleniti voluptatem nihil quam.\nAccusamus ut exercitationem porro repellendus dolore aliquam voluptate et magnam.\nEst unde reiciendis.",
-              "type": "quiz",
-              "moduleId": "systems",
-              "name": "Streamlined web-enabled hierarchy",
-              "link": "http://wilted-arm-rest.org"
-            },
-            {
-              "id": "a7200017-9ef4-4a5c-9935-3db886ca33a3",
-              "description": "Et ut possimus necessitatibus id quibusdam ut.\nDelectus nemo quam ex non et nemo nulla.\nDolore sunt reiciendis.\nTempore illo in eum velit atque architecto autem atque repellendus.\nIncidunt nesciunt quo et tenetur ut illum et eos quibusdam.\nProvident eos ea voluptates laboriosam delectus aspernatur.\nAut quis placeat fugiat.\nPossimus reiciendis voluptate.\nQuo nihil nulla voluptas quo dolores distinctio.\nA est alias aut.",
+              "id": "c5b12e27-e8a1-45e2-b71c-20d9d7063931",
+              "description": "Ut accusamus voluptates nobis.\nAut ullam et fugit illo nam vel suscipit at.\nSed modi consequatur itaque illo.\nEnim soluta aspernatur.\nCulpa aut magnam.\nPraesentium id sapiente ut est.\nTempora dicta eum beatae consequatur et voluptatum voluptatem.\nEsse doloribus neque praesentium facilis laudantium facere officiis nostrum hic.\nSit facilis unde delectus soluta et et id numquam.\nFacilis omnis praesentium dolore consequuntur optio.",
               "type": "info",
-              "moduleId": "systems",
-              "name": "Enterprise-wide local matrices",
+              "moduleId": "users",
+              "name": "Vision-oriented responsive function",
               "link": null
             },
             {
-              "id": "0d9f7595-1639-4226-997a-6f0e5c005217",
-              "description": "Possimus doloremque autem debitis consequatur autem deleniti enim.\nVoluptatem quae fuga in et quos magnam sit.\nQui quos dolores et possimus aut.\nVel reprehenderit labore in culpa est iste beatae omnis ab.\nSed magni eum ea.\nPerspiciatis officiis quia excepturi eum.\nA est laborum nesciunt est qui quibusdam.\nSint velit et molestias quae dolore.\nQuas voluptates quasi deleniti.\nSaepe error rem fugiat voluptatem.",
-              "type": "image",
-              "moduleId": "systems",
-              "name": "Profit-focused transitional array",
-              "link": null
-            },
-            {
-              "id": "a9bef9f6-c068-4339-bcab-545936dbc131",
-              "description": "Est repudiandae totam earum.\nQuia iusto qui.\nAliquid eum iste dolores ut quo nisi veritatis.\nRatione eos voluptatibus omnis temporibus eum nihil et ut.\nFugit odio harum aperiam itaque est fuga placeat perferendis.\nQuasi delectus magnam deserunt pariatur.\nImpedit et incidunt fuga sunt dicta dolor minus officia.\nVoluptas dolorem quas molestiae tempore.\nDolor porro blanditiis sunt.\nReiciendis quia sint.",
+              "id": "a7892058-9871-4080-ae83-448791cd7d16",
+              "description": "Reprehenderit nisi quia sint quam quo laudantium.\nDolor non qui ab similique sit quos.\nA voluptatem laudantium ex.\nQui repellendus dolores aliquid voluptatum eaque deserunt.\nAperiam voluptatem nemo quis nemo et assumenda pariatur quod corrupti.\nEst impedit maxime.\nDicta recusandae culpa ut tempora ea.\nRerum eos facilis hic nihil dolorum sunt.\nEt est omnis aut accusantium magnam nihil.\nVelit neque voluptas.",
               "type": "info",
-              "moduleId": "systems",
-              "name": "Optimized tangible info-mediaries",
+              "moduleId": "users",
+              "name": "Devolved dynamic workforce",
               "link": null
+            },
+            {
+              "id": "5dcfbbfe-70f4-4307-aaf8-6a639cc76625",
+              "description": "Eaque quibusdam expedita et doloremque esse illum error.\nOfficiis voluptatem in et sunt quis error vitae molestiae.\nRerum magni dignissimos enim ab placeat quia id.\nAliquam accusantium rerum voluptatem quas sint voluptas nulla molestias.\nQuia aut laborum explicabo error harum possimus dolorem.\nEveniet ea nam maiores ducimus excepturi et in eius.\nRerum quo veritatis tempora ut ducimus.\nEt esse possimus occaecati delectus qui aliquid quidem perferendis.\nQuia vero culpa sint at dicta repudiandae.\nUt neque natus impedit aut rerum esse quia est libero.",
+              "type": "code",
+              "moduleId": "users",
+              "name": "Ergonomic explicit structure",
+              "link": "https://delayed-rudiment.net"
+            },
+            {
+              "id": "8d94f37b-a93b-4825-9a71-666fe3827880",
+              "description": "Facere voluptatibus vitae hic non sit sed consequatur illum.\nPerspiciatis odit accusamus molestiae.\nConsequuntur esse dolor suscipit deserunt aut voluptatum est.\nQui provident nisi.\nVero rerum sapiente molestiae voluptas.\nVoluptas dolorem commodi tempore voluptatum.\nDelectus excepturi velit tenetur ab consectetur delectus dicta non.\nVoluptas blanditiis atque eaque molestias.\nInventore magni sunt temporibus.\nPraesentium qui ducimus incidunt nemo corporis quis incidunt est.",
+              "type": "code",
+              "moduleId": "users",
+              "name": "Fully-configurable upward-trending alliance",
+              "link": "https://virtual-someone.net"
+            },
+            {
+              "id": "0ad39a68-5556-4918-a8a3-91286d536093",
+              "description": "Officiis ut dignissimos possimus consequatur dignissimos temporibus ullam eaque.\nQui dolores quaerat non quas quo illo dignissimos.\nMinima voluptatem et veniam.\nAlias et voluptatum iusto quaerat.\nIste distinctio sapiente esse ullam est ut quidem rerum eligendi.\nPariatur consequatur laborum.\nProvident qui voluptas laudantium.\nQui nihil perspiciatis voluptatibus.\nExcepturi vel amet.\nOdio laudantium est.",
+              "type": "info",
+              "moduleId": "users",
+              "name": "Versatile clear-thinking initiative",
+              "link": null
+            },
+            {
+              "id": "fff81e9e-1e42-4d2f-84f4-2023e9ecb741",
+              "description": "Quos modi delectus quia id.\nVoluptatem tenetur iure placeat.\nDucimus consequatur et.\nEt consectetur molestias quia libero itaque laudantium.\nDignissimos iusto voluptatem perferendis tempore.\nLibero quos odio repudiandae quia ipsa.\nAspernatur enim fugit totam tenetur quia rerum voluptates eaque.\nVelit debitis et vero qui fugit tempore ut inventore.\nEt id velit molestiae nam aut qui voluptas commodi architecto.\nAccusantium ad vel qui mollitia blanditiis error vero consectetur est.",
+              "type": "code",
+              "moduleId": "users",
+              "name": "Pre-emptive attitude-oriented protocol",
+              "link": "https://merry-owner.biz"
+            },
+            {
+              "id": "a2dd70e2-1372-466d-a18f-a37f97d04156",
+              "description": "Vero quaerat consequatur laboriosam.\nVel iure quia alias molestias sed corrupti repudiandae suscipit.\nLaborum quo error sapiente fugiat at ex qui in.\nSed qui sapiente esse.\nVeritatis quo veritatis reiciendis quam quo ut distinctio vel.\nAtque ut voluptatibus distinctio voluptatem neque.\nPariatur minima odit reprehenderit.\nMolestiae et et maxime nam corporis.\nCorporis et aut consequatur molestias nulla minus culpa illum.\nEt qui dolorum voluptas vel recusandae quaerat est qui.",
+              "type": "code",
+              "moduleId": "users",
+              "name": "Monitored directional knowledge base",
+              "link": "http://amused-pew.com"
+            },
+            {
+              "id": "1578053d-521e-4bfa-a8da-e42844effff8",
+              "description": "Dolorem dolore voluptas.\nEa magnam debitis ipsa aperiam debitis nostrum maxime.\nEt eum qui at odit eligendi recusandae nesciunt dolorem.\nConsequuntur sit voluptatem blanditiis odio suscipit sit.\nMaiores in neque necessitatibus voluptatem quasi aut amet.\nQuisquam ut voluptas temporibus et culpa dolores quos voluptatibus dolor.\nRerum ipsam excepturi non eligendi.\nImpedit explicabo et distinctio illo autem voluptatum consequatur libero ab.\nVelit assumenda mollitia incidunt ducimus in eligendi.\nCulpa harum fugiat corporis.",
+              "type": "code",
+              "moduleId": "users",
+              "name": "Networked impactful Graphical User Interface",
+              "link": "https://cute-nerve.name"
             }
           ]
         },
         {
-          "id": "methodologies",
-          "name": "Methodologies",
+          "id": "technologies",
+          "name": "Technologies",
           "tasks": [
             {
-              "id": "235be7bd-0447-4f75-9517-0dbf3ff7cd3c",
-              "description": "Eos doloribus in error.\nMolestiae rerum ut repellat libero.\nRepellendus rerum et harum ea quo rem sequi neque ipsam.\nAtque eius quod quo ullam recusandae quia.\nSit et neque.\nOfficiis ut temporibus cum molestias.\nSint dolore doloremque quos asperiores ut ducimus assumenda quaerat.\nMagni accusantium culpa officia expedita non ex.\nNihil autem alias consequatur.\nAspernatur commodi sit.",
-              "type": "image",
-              "moduleId": "methodologies",
-              "name": "Open-source neutral pricing structure",
-              "link": null
-            },
-            {
-              "id": "68c5846b-69e8-4735-970d-db80bdcd0f41",
-              "description": "Aut placeat quo tempora minus nobis quasi unde.\nPlaceat possimus et.\nMolestiae et voluptate qui odio est.\nDolores optio laudantium cum.\nIn pariatur sed mollitia deleniti.\nVel dicta tempore vel in molestiae commodi blanditiis officia.\nQuis enim officia atque sed voluptate eligendi nesciunt omnis.\nAut atque molestiae et.\nSint aut qui.\nSaepe autem et.",
-              "type": "code",
-              "moduleId": "methodologies",
-              "name": "Upgradable background migration",
-              "link": "http://graceful-patio.info"
-            },
-            {
-              "id": "4d3081bd-d57f-4da3-8651-6ac19c61eba2",
-              "description": "Quia nesciunt repellat animi laborum quis ea eos.\nAtque corporis aspernatur magni tempora dolor repellat.\nDolorum reiciendis magni odit ea nulla qui.\nAliquam possimus doloremque non.\nEa corporis sapiente eligendi id voluptatem et qui.\nModi et voluptas.\nDolore et blanditiis sit atque maiores dolor esse officiis dolor.\nIn corrupti inventore non occaecati qui accusamus ut.\nUt voluptatem voluptatem blanditiis hic temporibus nam voluptate ut qui.\nDebitis et dolore sapiente unde non eum aut.",
+              "id": "4535e951-a7b2-41ae-9443-5d36c2e60c76",
+              "description": "Ea hic quasi quis deserunt quia eos adipisci omnis laboriosam.\nTempore neque illo voluptatem sit.\nVoluptatibus rem esse quibusdam molestiae quisquam quasi esse ipsam temporibus.\nLaudantium vel impedit debitis non aspernatur voluptatum.\nModi esse quibusdam sunt ex voluptate sint.\nAccusantium repudiandae error quas qui omnis corporis magnam aspernatur.\nQuo est numquam numquam eius perferendis dignissimos consectetur.\nDignissimos ea sequi architecto.\nSapiente recusandae laboriosam soluta rerum.\nVelit quod voluptas ut vel deserunt est modi.",
               "type": "info",
-              "moduleId": "methodologies",
-              "name": "Integrated interactive adapter",
+              "moduleId": "technologies",
+              "name": "Triple-buffered zero defect knowledge user",
               "link": null
             },
             {
-              "id": "31775d7e-3db1-43c8-8985-61a1b459ffcf",
-              "description": "Et fugit esse qui impedit.\nSint odit veniam officia alias eaque cupiditate.\nRepellat porro et dolorum temporibus vel quisquam qui.\nQuia eaque expedita tempore.\nMinus nesciunt necessitatibus quae quasi cupiditate asperiores.\nProvident ipsa dolorum debitis omnis exercitationem vero cumque consequuntur maiores.\nVelit rem qui quasi.\nQuo doloremque neque.\nIn et voluptas laborum totam voluptates laudantium qui ea nisi.\nNon vitae et.",
+              "id": "adacc7b1-d5bc-42c5-a01c-074998846fc6",
+              "description": "Iusto quos distinctio.\nMagnam et ea et quo praesentium fuga eaque.\nModi similique quos qui.\nNihil non consectetur in cumque in.\nEt id delectus excepturi et ex quia non voluptas.\nAssumenda rem accusantium tempore natus hic maiores aut vero perferendis.\nMinus quo eum aut est repellat dolorem.\nVoluptatem non omnis ut labore omnis assumenda dolore eos illo.\nVoluptas impedit tempore eum placeat quasi eligendi aliquid impedit.\nQuis ut atque.",
               "type": "info",
-              "moduleId": "methodologies",
-              "name": "Mandatory user-facing encryption",
+              "moduleId": "technologies",
+              "name": "Automated 4th generation monitoring",
               "link": null
             },
             {
-              "id": "a31018be-b230-4b4c-b701-4b73c41e7783",
-              "description": "Sint explicabo qui aut eos ut aliquid est.\nMolestias asperiores ducimus rerum veritatis eum et ullam.\nUt ea qui.\nOmnis ipsa ducimus nisi enim corporis quis qui libero consequatur.\nEst aliquid nostrum quo qui suscipit molestiae voluptatibus quis.\nVoluptatibus nobis quia.\nLibero sed enim esse sint quia non delectus qui.\nLaborum quia esse eos molestias natus.\nEt voluptas non enim quibusdam et eligendi fuga.\nBeatae voluptas optio amet magnam laudantium esse perferendis.",
-              "type": "code",
-              "moduleId": "methodologies",
-              "name": "Quality-focused bottom-line Graphical User Interface",
-              "link": "http://hasty-yin.info"
-            },
-            {
-              "id": "83a12e33-e6e0-4bb8-b3bc-19f4eaab3fac",
-              "description": "Enim cupiditate aut dolorem enim nemo animi non nesciunt laboriosam.\nAutem error est aut quas dolores.\nUllam voluptas quae laborum.\nUt voluptas autem.\nSed blanditiis fugiat adipisci quasi sit corrupti.\nVoluptas quo voluptas est.\nIure commodi voluptatem earum nulla consequatur quis consequatur delectus.\nArchitecto et ut velit et animi alias quod voluptas non.\nMolestiae non dolore eum dolores reprehenderit.\nSunt explicabo nisi et aut praesentium.",
-              "type": "quiz",
-              "moduleId": "methodologies",
-              "name": "Re-engineered solution-oriented migration",
-              "link": "https://homely-baboon.info"
-            },
-            {
-              "id": "f9b06ebb-1b53-4493-803c-58c57f7e44e7",
-              "description": "Quod facere officiis et dolore sunt earum quis laudantium porro.\nItaque non est enim.\nQuo sequi et temporibus iste aut dolore voluptatem aut.\nNihil quidem quod qui.\nSequi saepe beatae consequuntur placeat.\nCupiditate numquam deserunt.\nEt atque sequi suscipit quis qui earum et nesciunt.\nEt nihil accusamus ut eius.\nVoluptates eos ducimus omnis illo culpa.\nFacere voluptas quos quis rerum aut qui hic dolore.",
-              "type": "image",
-              "moduleId": "methodologies",
-              "name": "Expanded user-facing internet solution",
+              "id": "87d3a298-9e36-410e-9f17-a8c506363b20",
+              "description": "Est sit aut tempora quo repellat.\nAliquam est sunt mollitia aliquam a.\nQuas et amet nihil et eaque veniam vel explicabo.\nNatus non voluptas accusantium eaque deleniti ipsa repellendus ea eveniet.\nPorro qui a assumenda vitae modi.\nExplicabo consequatur soluta qui qui.\nVoluptatem eos porro qui rerum.\nQui dolorem maxime rerum quia quas nemo libero alias voluptas.\nDolor quas repudiandae explicabo quam eligendi enim.\nQuidem est vel eos animi natus.",
+              "type": "info",
+              "moduleId": "technologies",
+              "name": "Balanced bandwidth-monitored functionalities",
               "link": null
             },
             {
-              "id": "8d50961c-71c6-45da-83df-9947090ffb28",
-              "description": "Molestias soluta laboriosam velit sequi.\nOmnis amet quae sed.\nIn velit nam ea.\nDucimus et quisquam alias iusto est.\nMollitia iste architecto velit sint ducimus quod fugit laboriosam aut.\nAnimi ipsam numquam cumque unde.\nVitae delectus saepe placeat explicabo ut inventore corrupti eaque itaque.\nImpedit tenetur hic.\nPlaceat dolores at recusandae cupiditate et dolor animi.\nEt itaque excepturi ab ea culpa dolor temporibus.",
+              "id": "61fbfd6a-6a59-433a-a943-1f71fba97d61",
+              "description": "Sit et nisi dolor ea et quia asperiores excepturi sunt.\nDolorem rerum nesciunt a nulla ratione rerum officiis.\nOmnis a nihil sint recusandae autem nulla dicta.\nDolorem impedit iste non.\nVoluptatem aut vel.\nTempora quod magnam ut qui dolor et voluptates beatae magni.\nSequi delectus amet iusto id mollitia laborum.\nEt dolor magni natus suscipit nulla praesentium ut necessitatibus.\nVoluptate quo eaque quia aperiam est officia laboriosam officia animi.\nEa tempore eos vel fugit est quo.",
               "type": "code",
-              "moduleId": "methodologies",
-              "name": "Synergistic multi-tasking contingency",
-              "link": "https://knotty-arcade.org"
+              "moduleId": "technologies",
+              "name": "Operative content-based firmware",
+              "link": "http://old-fashioned-effect.com"
             },
             {
-              "id": "4cc3e498-e34a-4bc0-a585-d7ea646810c0",
-              "description": "Recusandae aliquid molestiae ipsam sed labore cum.\nExercitationem recusandae a id velit et.\nVoluptatem ducimus beatae doloremque.\nAut aliquam unde dolores saepe est illo.\nDolor architecto sit officiis voluptatum rem sequi in quisquam quo.\nIusto et eos rem dolorem magni.\nEt labore ullam eos.\nAlias et aliquam.\nQuia quo sunt.\nAut voluptatibus qui rerum veritatis nam.",
-              "type": "quiz",
-              "moduleId": "methodologies",
-              "name": "Configurable methodical core",
-              "link": "https://brave-text.biz"
+              "id": "5a52d7a9-feb1-4755-b6ed-d156705261cd",
+              "description": "Aspernatur voluptate eveniet rerum.\nEt illo blanditiis fuga sit natus id.\nEa totam totam consectetur quis similique ratione et et iste.\nAut vitae eum labore dolor cupiditate repudiandae animi molestias eligendi.\nAut atque et itaque est aut officia magni.\nTempora quia cumque assumenda quaerat deserunt quia.\nOdio perferendis odit at delectus veniam.\nConsequatur incidunt autem eligendi provident.\nEst voluptatum aut laudantium amet nisi ea quia alias et.\nQuia et laborum neque sed voluptatibus error repellendus.",
+              "type": "info",
+              "moduleId": "technologies",
+              "name": "Up-sized dedicated concept",
+              "link": null
             },
             {
-              "id": "2c01ea38-bf09-4533-a059-1a3df42b8019",
-              "description": "Labore eaque voluptatem minima quibusdam odio modi repudiandae aut aut.\nItaque eos nulla.\nVoluptas aliquid sit temporibus doloremque enim et quos.\nEt ipsam consectetur.\nEum alias aut at necessitatibus unde necessitatibus.\nRepudiandae vitae deleniti cupiditate sit et deserunt.\nNatus omnis dolor placeat saepe voluptatem natus pariatur sequi voluptatem.\nAccusantium id ea.\nVoluptas corrupti laudantium fuga voluptatem.\nMinima sint quo est quos recusandae eos et.",
-              "type": "quiz",
-              "moduleId": "methodologies",
-              "name": "Organized asynchronous data-warehouse",
-              "link": "https://insidious-candidate.name"
+              "id": "0b1c0634-c1f5-46ba-b74e-d9e0e6da1d8e",
+              "description": "Aspernatur architecto quas temporibus unde qui qui doloremque et autem.\nAspernatur qui minima sed quam aliquam architecto fugiat.\nEt et labore dolorem occaecati qui harum eum.\nNecessitatibus voluptatibus est cupiditate aliquid labore est veritatis sunt.\nReiciendis in sint aut doloremque.\nEligendi deserunt qui nobis molestiae itaque.\nEarum repellendus perspiciatis.\nOdit harum quia sapiente.\nOptio beatae quod labore sint quidem.\nEt eveniet itaque cupiditate reprehenderit quam quibusdam.",
+              "type": "info",
+              "moduleId": "technologies",
+              "name": "Multi-tiered encompassing capacity",
+              "link": null
+            },
+            {
+              "id": "6a692a93-4475-4dd9-bcc4-93597b379359",
+              "description": "Qui nisi et consequatur ab voluptatem.\nNon earum harum.\nQuaerat eos provident quas velit.\nUt quia impedit saepe occaecati enim tempora earum ut recusandae.\nQuisquam dicta est cumque consequuntur ipsum nobis.\nOdit voluptatum explicabo.\nEst modi magni consequuntur ut rerum fugiat.\nExcepturi sint asperiores ex illo et necessitatibus aut magni aut.\nEt eum voluptatum consequuntur quaerat deserunt est.\nPerferendis facere esse.",
+              "type": "info",
+              "moduleId": "technologies",
+              "name": "Customer-focused web-enabled hardware",
+              "link": null
+            },
+            {
+              "id": "039c259c-3faa-47cc-9151-4b76440590b0",
+              "description": "Voluptatem id ut nobis exercitationem quis.\nQuis cupiditate veritatis.\nDeleniti velit tempora enim.\nOmnis error possimus recusandae fugit quam ab aut.\nNisi veritatis maxime labore accusantium ea.\nQuidem saepe inventore deleniti perferendis adipisci ut laborum.\nVeritatis ipsa autem eum facilis pariatur voluptatum expedita aut.\nQuis facilis ipsam facilis et pariatur.\nVitae quas ut.\nDolorem enim autem et consectetur vel culpa consequatur rerum aut.",
+              "type": "code",
+              "moduleId": "technologies",
+              "name": "Synergized dynamic website",
+              "link": "https://leafy-end.info"
+            },
+            {
+              "id": "fad30930-90f7-45d9-86b1-6ae7730a09d6",
+              "description": "Numquam dolorem est et aut reprehenderit quae consequatur error doloremque.\nReiciendis ea ad labore.\nItaque sed in non eveniet suscipit tenetur itaque.\nCumque tenetur quo eligendi alias possimus.\nDeserunt voluptatem esse quia quae ab at consequatur quae.\nMaiores fuga esse consequatur ex molestias repudiandae reiciendis consequuntur.\nVoluptatum impedit illo occaecati minima omnis.\nEligendi quidem accusamus dolor fuga.\nPraesentium a est accusantium.\nIncidunt atque ut.",
+              "type": "code",
+              "moduleId": "technologies",
+              "name": "Configurable motivating attitude",
+              "link": "http://motionless-warden.name"
+            },
+            {
+              "id": "8b022b42-92b6-41e2-8ec4-25532cb96957",
+              "description": "Quis qui laudantium quibusdam ex itaque.\nReprehenderit aspernatur in voluptate.\nAliquid consequatur qui.\nId veritatis et adipisci in modi quae officia repellendus.\nRecusandae et minus cumque reprehenderit placeat id.\nQuia eligendi est unde quo vitae repellat enim eos.\nIn dolores molestias non recusandae occaecati hic nisi sint amet.\nMagni magnam tempore maiores dolore eum esse praesentium rerum.\nQuia quam delectus sit asperiores expedita ut id quia.\nLaborum ratione in sequi voluptatem quasi culpa.",
+              "type": "code",
+              "moduleId": "technologies",
+              "name": "Phased bandwidth-monitored collaboration",
+              "link": "https://nervous-comparison.net"
             }
           ]
         }
@@ -371,683 +371,1053 @@
           "email": "patrykbunix@gmail.com",
           "image": "https://unsplash.it/100/100",
           "cohortId": "cohortId",
-          "role": "teacher"
+          "role": "student"
         }
       ]
     }
   ],
   "modules": [
     {
-      "id": "bandwidth",
-      "name": "Bandwidth",
+      "id": "web-readiness",
+      "name": "Web-readiness",
       "tasks": [
         {
-          "id": "6e566205-adf3-4fb1-8a2f-0cb4ad3a965e",
-          "description": "Sequi vel fuga exercitationem quo dolor.\nVoluptatum deleniti consequuntur maiores aut et nisi dolorem et.\nVoluptate excepturi dolores qui.\nIn facilis velit sed ducimus.\nAutem et iusto officia voluptatibus.\nOfficiis quod aut maiores aliquam tempora est.\nIn dolorem aut voluptatem aut.\nIllum et enim.\nDicta nam optio neque eaque dolor.\nUt animi corporis et quis corrupti veniam rem nemo iure.",
-          "type": "image",
-          "moduleId": "bandwidth",
-          "name": "Re-contextualized bandwidth-monitored throughput",
-          "link": null
-        },
-        {
-          "id": "3ff3a73f-ed7a-4ab9-bf32-62cb8fc55c3c",
-          "description": "Ullam eum provident doloremque et.\nQuibusdam delectus dolores occaecati cupiditate pariatur.\nMolestiae animi omnis explicabo atque.\nQui quo veniam dolor libero eaque dolorem.\nQuidem et facilis voluptas aut fuga.\nMaxime voluptatem non totam quas maiores sequi aspernatur nam veniam.\nSit temporibus in necessitatibus esse ut voluptatem.\nFugit neque sed illum sit nobis maiores.\nModi perferendis nulla delectus porro est doloribus ipsum corrupti.\nNostrum aut modi eveniet aliquid aut.",
-          "type": "info",
-          "moduleId": "bandwidth",
-          "name": "De-engineered zero tolerance adapter",
-          "link": null
-        },
-        {
-          "id": "405950b3-8690-482f-a9d5-b7ecdc80a4ab",
-          "description": "Deserunt omnis velit et vitae est et consectetur.\nQui quo qui eum voluptatibus velit.\nDicta aut ut quas quasi porro est velit.\nNulla aliquid cumque aliquam omnis voluptatem vel numquam voluptates enim.\nNon nemo mollitia doloribus porro odio et sequi aspernatur.\nAb maxime ipsa non.\nAut explicabo harum nam qui ut impedit non reprehenderit.\nNon molestiae quas sint hic repudiandae.\nAut cupiditate sequi inventore minima.\nAut sint quidem voluptates minima.",
-          "type": "image",
-          "moduleId": "bandwidth",
-          "name": "Innovative dedicated info-mediaries",
-          "link": null
-        },
-        {
-          "id": "42d4e843-80f1-4629-a7f1-b3a70387fb9b",
-          "description": "Nemo natus quis.\nEt alias hic sit.\nPerspiciatis hic consequuntur in culpa repellendus nulla consequatur voluptatibus enim.\nAutem consectetur rerum hic exercitationem voluptas accusantium voluptatem.\nVoluptatibus molestiae incidunt quia ut et architecto placeat placeat id.\nDucimus eaque eum eveniet.\nEt velit non veniam.\nUt eius qui iste voluptas quia et numquam.\nEst id officia et rerum.\nFacere laboriosam doloremque non aliquam repellendus quos ullam fuga.",
-          "type": "quiz",
-          "moduleId": "bandwidth",
-          "name": "Cross-group bifurcated project",
-          "link": "http://old-fashioned-target.name"
-        },
-        {
-          "id": "27b424a1-f97f-49c4-be07-4186da8f032e",
-          "description": "Et iure temporibus autem id distinctio ducimus.\nEarum dolores cupiditate quia numquam blanditiis labore.\nSapiente deserunt velit molestias.\nVoluptates impedit sit blanditiis enim tempore excepturi magnam.\nAsperiores quibusdam quam perferendis nostrum natus.\nRerum quam rerum dolores porro fugit quia sed porro.\nArchitecto et maiores sint aut dolorum provident magni harum.\nEt impedit aut pariatur id.\nEnim similique reiciendis consequatur at ab a eos.\nEa exercitationem ab ipsam sed est inventore qui.",
-          "type": "quiz",
-          "moduleId": "bandwidth",
-          "name": "Customizable dynamic array",
-          "link": "http://exciting-footrest.biz"
-        },
-        {
-          "id": "da726949-b9db-4c02-bae3-4ba770bfc888",
-          "description": "Rerum nostrum in.\nQuia corrupti reiciendis ad omnis accusantium soluta.\nPerferendis et exercitationem enim incidunt.\nEligendi optio quod et autem.\nUt architecto dolores iusto.\nDistinctio qui rem eum et sequi saepe accusantium occaecati.\nOdit rem necessitatibus quo aut temporibus labore eius quam qui.\nMollitia omnis temporibus et.\nEum sed nihil voluptates voluptates corrupti.\nCorporis dolores ipsum nostrum quam sed dolor ea.",
-          "type": "image",
-          "moduleId": "bandwidth",
-          "name": "Multi-tiered holistic open architecture",
-          "link": null
-        },
-        {
-          "id": "08491138-e516-460b-92a3-ede8c0b81c80",
-          "description": "Perspiciatis explicabo omnis dolores ratione velit ea.\nExcepturi ex deserunt mollitia esse numquam qui.\nMaxime voluptate dolorem occaecati quo autem.\nAt accusantium earum modi sapiente quidem voluptatem.\nProvident quo qui commodi temporibus ut ut magnam.\nNon quae laborum ut ex animi doloribus et et.\nDolorum id autem id et.\nReprehenderit accusamus ullam animi sunt dignissimos earum rerum expedita id.\nReiciendis consequatur quis non quia consequatur veritatis aut.\nFacilis labore qui nisi ut impedit soluta.",
-          "type": "image",
-          "moduleId": "bandwidth",
-          "name": "Down-sized composite info-mediaries",
-          "link": null
-        },
-        {
-          "id": "93f04438-c18d-4543-bda0-891b5d1c766e",
-          "description": "Ut eius et.\nDebitis quasi est doloribus nulla provident.\nQui et quod ad odit.\nEt sit fuga hic et.\nDignissimos voluptas soluta.\nFugiat in libero.\nConsequuntur totam maiores et aut tenetur.\nPerferendis iusto ea dolorum.\nEst in quia quasi pariatur consequatur libero.\nPlaceat assumenda sed molestiae nisi quibusdam harum voluptatum accusamus.",
-          "type": "info",
-          "moduleId": "bandwidth",
-          "name": "Function-based even-keeled flexibility",
-          "link": null
-        },
-        {
-          "id": "c1dda27e-0794-4d67-87bb-eb224a37884d",
-          "description": "Omnis tempore enim eius et voluptatibus quia ut qui.\nEx rem dolores aut accusamus ab rerum dicta deleniti consequatur.\nQuasi nisi assumenda possimus ex.\nQuaerat necessitatibus quos enim voluptatum dolorum sint.\nOfficiis dolor quam dolores eius qui repellendus quos est eos.\nEius est magnam voluptatum non consequatur alias aut.\nFacere iste suscipit.\nQuas consectetur labore quas non quae.\nAspernatur nesciunt repellat et.\nAut expedita reprehenderit voluptate sapiente aut et.",
+          "id": "6c75e77e-2c61-4e2f-afe6-d7e1c50d5ffd",
+          "description": "Rem exercitationem aliquid dolore error rem quam.\nBlanditiis voluptatibus impedit et totam.\nA excepturi iure consequuntur rerum soluta.\nEt officiis et molestias nihil.\nOmnis velit enim ut.\nAliquam et at.\nVeniam accusamus officiis perspiciatis sit in dolorum nulla.\nMollitia quam voluptates minima.\nTempore autem facere eligendi officiis officia ut commodi sunt.\nSed sapiente consectetur cumque.",
           "type": "code",
-          "moduleId": "bandwidth",
-          "name": "Networked zero administration utilisation",
-          "link": "http://political-ark.net"
+          "moduleId": "web-readiness",
+          "name": "Front-line fresh-thinking pricing structure",
+          "link": "https://exalted-water.com"
         },
         {
-          "id": "4d7e368e-9e0b-40ad-a113-147f9258965e",
-          "description": "Repudiandae amet aperiam.\nTenetur aut impedit dolor.\nRatione tempora cum ducimus dolorem maiores consequatur aut sapiente quis.\nNemo ut dolorem corporis dolores.\nAperiam dolore voluptate.\nAspernatur consectetur incidunt commodi.\nRem et voluptatem.\nOccaecati illo ipsam doloribus impedit quia laborum quia a.\nBeatae sunt aliquam dolorem.\nEnim quis id repudiandae.",
-          "type": "image",
-          "moduleId": "bandwidth",
-          "name": "Down-sized client-driven Graphical User Interface",
+          "id": "72a4a48b-5208-4c48-a6ad-0dfc38279f39",
+          "description": "Laborum in quod.\nFuga porro quae ad.\nEum cum et aut accusantium et officia reprehenderit.\nId molestiae optio qui excepturi ex.\nAlias beatae modi deleniti rerum dolorem nihil sed molestias.\nEos quis et et voluptas.\nOfficiis et ullam ratione quis voluptatem a vitae natus.\nEnim consequatur et commodi magnam eaque.\nEt necessitatibus deserunt sit possimus et incidunt molestiae voluptatem harum.\nAssumenda id nostrum animi quia accusamus.",
+          "type": "info",
+          "moduleId": "web-readiness",
+          "name": "Function-based motivating approach",
           "link": null
+        },
+        {
+          "id": "7cb33091-655c-4781-aaa2-af1160a38bf7",
+          "description": "Quasi beatae est error exercitationem et et ab reprehenderit.\nVoluptatem quae quis.\nLibero sit voluptas.\nAut fugiat cumque deserunt delectus recusandae illum fugiat quia.\nRerum quia autem ipsa neque error eos.\nIllo deserunt rerum similique non sapiente quasi molestias et mollitia.\nIpsam sit rerum.\nRatione est nulla eum explicabo.\nOdio distinctio id.\nEnim rerum pariatur.",
+          "type": "info",
+          "moduleId": "web-readiness",
+          "name": "Team-oriented mission-critical archive",
+          "link": null
+        },
+        {
+          "id": "c3e1e79a-a1c2-4dfc-90b2-26ed207bfce6",
+          "description": "Facere eos ducimus ut iure placeat est fugit qui in.\nExercitationem vero culpa cupiditate saepe error magnam error eius dolor.\nAtque aut in dolore unde sed voluptatibus necessitatibus optio suscipit.\nRerum illo nesciunt dolorem.\nOmnis ad sed eligendi dolor ab quis.\nDicta qui dolor nulla qui et atque quia ut velit.\nIncidunt nulla quisquam commodi necessitatibus rerum cum.\nDeserunt aut voluptates.\nQui explicabo vel eos ipsum.\nUt quidem dolorem ut quia magni non est.",
+          "type": "code",
+          "moduleId": "web-readiness",
+          "name": "Centralized 24/7 access",
+          "link": "https://fond-washer.biz"
+        },
+        {
+          "id": "88f4f6e9-42d0-4aed-bb57-742979a16c27",
+          "description": "Et porro dolorem aspernatur explicabo occaecati dolores sed voluptatem.\nOdit et quos quia qui voluptas.\nVoluptas tempore rerum exercitationem quod accusamus reprehenderit quas.\nTemporibus repellendus qui iusto quia earum beatae fuga.\nDicta vitae fugiat dolores et soluta aut harum perspiciatis error.\nSimilique quos sunt ut dolore alias.\nEt quod dignissimos aliquam numquam et expedita consequatur et.\nCumque explicabo in aspernatur molestias officia culpa et enim fuga.\nRepellat saepe velit nostrum et corporis necessitatibus pariatur.\nEveniet ad deleniti laboriosam nisi perspiciatis similique distinctio.",
+          "type": "info",
+          "moduleId": "web-readiness",
+          "name": "User-centric explicit flexibility",
+          "link": null
+        },
+        {
+          "id": "c6d08860-3aff-4865-ad40-566c4a1af358",
+          "description": "Et in ut laboriosam architecto quas eos optio voluptatem quas.\nAut iste molestiae.\nDucimus culpa sit atque temporibus dolorem sint.\nSit quasi perspiciatis non consequatur.\nTemporibus saepe necessitatibus incidunt vitae est quod blanditiis cumque enim.\nVeniam quo aspernatur optio minima quia occaecati nostrum.\nNon temporibus inventore sit.\nVoluptas quae est in delectus deleniti.\nEst atque minima est asperiores commodi omnis dolorem.\nConsectetur commodi voluptate molestiae voluptatum in delectus provident eum labore.",
+          "type": "code",
+          "moduleId": "web-readiness",
+          "name": "Robust dynamic flexibility",
+          "link": "http://shimmering-blue.biz"
+        },
+        {
+          "id": "ce9a7f09-d8a2-4c9a-b148-16447063c584",
+          "description": "Architecto reiciendis ullam qui blanditiis.\nVoluptatem et qui quia.\nQuas voluptatibus est aut natus consequuntur inventore veniam.\nNobis consequatur accusantium ipsam.\nItaque officiis quia consequuntur dolor doloremque et.\nDignissimos id et odit aspernatur.\nConsectetur dolor fugiat adipisci est consequatur voluptatibus placeat praesentium.\nAutem accusamus veniam sed vitae pariatur sint molestiae officiis nobis.\nQui error tenetur non doloremque aliquid veritatis autem.\nEarum et facere sit.",
+          "type": "code",
+          "moduleId": "web-readiness",
+          "name": "Face to face eco-centric protocol",
+          "link": "http://masculine-mother.net"
+        },
+        {
+          "id": "e560249f-b430-441d-b6f9-0005847700d9",
+          "description": "Sed quas fuga nostrum quibusdam et occaecati debitis architecto voluptatem.\nAspernatur dolores qui autem magnam aut aut aliquam.\nLaboriosam omnis dolor error porro molestias.\nQuia rem aut.\nRecusandae voluptatem et.\nIusto quibusdam quasi non similique a animi blanditiis eum minima.\nIllo tenetur ad sunt.\nPerspiciatis at sed quae qui.\nPossimus sint magni dignissimos.\nInventore et eius velit.",
+          "type": "info",
+          "moduleId": "web-readiness",
+          "name": "Down-sized needs-based architecture",
+          "link": null
+        },
+        {
+          "id": "fc3dde68-ab20-4238-9644-b7085f50ce0f",
+          "description": "Et hic qui numquam qui voluptas nesciunt.\nSit molestiae aut eos pariatur quasi aliquam qui cumque omnis.\nRepellendus qui perferendis sit eum rerum totam.\nRerum ea perferendis.\nNihil mollitia eum aspernatur laudantium culpa sed vero sed.\nAdipisci omnis similique est sit nihil.\nIn corrupti libero sit aut.\nSuscipit beatae illo maxime voluptatem ut laboriosam dolorem.\nOfficiis impedit odio autem eius quibusdam quos ut sed.\nPorro voluptatem occaecati et dolorem.",
+          "type": "code",
+          "moduleId": "web-readiness",
+          "name": "Grass-roots needs-based core",
+          "link": "http://elastic-amendment.biz"
+        },
+        {
+          "id": "880b4048-6968-470e-8ebc-7d638ee5a116",
+          "description": "Cupiditate rem ea quidem praesentium.\nQui dolorum voluptatem cumque commodi ex necessitatibus commodi.\nVoluptas fugit dolorem est amet excepturi velit provident maxime doloribus.\nDolor dolore ut non.\nRecusandae et ut quia.\nTempore debitis quis quam voluptatibus tenetur odit.\nAspernatur dolorem voluptate minima aut a explicabo.\nPerspiciatis laboriosam repellendus earum suscipit minus molestiae in et.\nQuia sit at aperiam consequatur.\nRatione fugiat doloribus.",
+          "type": "code",
+          "moduleId": "web-readiness",
+          "name": "Triple-buffered static service-desk",
+          "link": "http://tiny-monument.org"
         }
       ]
     },
     {
-      "id": "supply-chains",
-      "name": "Supply-chains",
+      "id": "partnerships",
+      "name": "Partnerships",
       "tasks": [
         {
-          "id": "7dbee286-2371-4d50-88fe-dc53af5b5800",
-          "description": "Qui quo ullam adipisci in iure et.\nAsperiores voluptatum sit dicta praesentium velit error.\nNisi qui eos eos praesentium veniam repellendus maxime aut qui.\nEt officia sed a ratione et.\nSoluta nulla sunt.\nAperiam rerum rerum et.\nMagnam sapiente recusandae.\nUt et repellat hic neque sint sunt.\nInventore odio deleniti sint distinctio repudiandae ut.\nEaque fugiat dolorum.",
-          "type": "code",
-          "moduleId": "supply-chains",
-          "name": "Cross-platform explicit alliance",
-          "link": "https://radiant-cohort.org"
-        },
-        {
-          "id": "55cd9a03-777f-410b-a79a-7b377fdeaf71",
-          "description": "Magnam ipsum sit distinctio commodi voluptate accusamus nihil non.\nDeleniti libero repudiandae recusandae aut nihil omnis assumenda molestias.\nAut quos eligendi quos.\nUt quidem enim ut occaecati nostrum porro consequatur voluptatem vel.\nSimilique voluptate dolorem rerum quas minus accusamus.\nEa consequatur consequatur dolore esse velit fugiat et aut.\nSequi possimus excepturi iusto nesciunt.\nDeleniti velit unde corrupti voluptatem aliquam quaerat aut.\nDignissimos sint repudiandae.\nQui qui quas aut at voluptatibus eligendi sunt quis ut.",
-          "type": "quiz",
-          "moduleId": "supply-chains",
-          "name": "Reverse-engineered interactive contingency",
-          "link": "http://gray-teletype.biz"
-        },
-        {
-          "id": "45241a3d-12ee-4737-8bfe-8b175870be21",
-          "description": "Quaerat saepe voluptatum et voluptates est aut aliquam ipsum.\nCumque aliquam eveniet aut non nisi dolores repellat facilis id.\nNemo est animi quam ratione voluptas delectus suscipit ut.\nReiciendis accusamus voluptatum numquam dolorem assumenda quod doloremque officia voluptatem.\nIncidunt nihil quisquam maxime rerum eius voluptate.\nMolestiae rem praesentium ut aut qui aut.\nDicta molestias odit molestiae.\nQuis cumque commodi aut qui est rem non.\nIure neque cumque numquam optio quos.\nSimilique quisquam molestias ex consequatur tenetur id.",
-          "type": "image",
-          "moduleId": "supply-chains",
-          "name": "Switchable global firmware",
-          "link": null
-        },
-        {
-          "id": "720f75bf-56be-45fd-b771-17d3b1275232",
-          "description": "Qui nihil minus est ducimus error laborum.\nDebitis quaerat voluptas neque nulla.\nRatione qui impedit nisi incidunt.\nVoluptates qui officiis quaerat ratione enim at.\nDolores praesentium laboriosam ut ad aut accusantium voluptas molestiae.\nSed minus facilis aut sed qui accusantium ducimus sequi maiores.\nIllum dolorum iure fugit non omnis incidunt dolore aliquam.\nRecusandae fugiat sed rem est tenetur.\nIllo numquam necessitatibus dolores et voluptates cum deleniti quas.\nLaborum fuga fugiat.",
-          "type": "image",
-          "moduleId": "supply-chains",
-          "name": "Front-line intermediate function",
-          "link": null
-        },
-        {
-          "id": "c5c3474c-02e3-44e3-b516-6df3c487df2a",
-          "description": "Error qui nisi sit omnis expedita.\nOdio cumque blanditiis neque dolorum est.\nRerum dolor pariatur aut quibusdam id explicabo.\nQui eum tenetur iste et maxime.\nCum doloribus id.\nDeleniti sit sed.\nTempora molestiae doloremque fugit maxime quidem quam et quis.\nPariatur ut debitis qui excepturi sit quo provident.\nA consequuntur saepe voluptatibus velit deserunt numquam.\nQuaerat veritatis ut rerum ut quaerat alias.",
-          "type": "quiz",
-          "moduleId": "supply-chains",
-          "name": "Advanced fault-tolerant adapter",
-          "link": "http://shocked-seeder.org"
-        },
-        {
-          "id": "741af908-1a3b-487d-be64-e068271bc47b",
-          "description": "Est tenetur dignissimos.\nArchitecto ullam libero odio provident minima dolorem qui officiis.\nQuod officiis magni.\nEst officia sed numquam.\nIncidunt vero qui incidunt qui.\nOmnis totam qui ullam.\nNisi eos omnis rerum veniam et id.\nProvident libero rem et.\nEius accusantium nemo ut quibusdam repellendus.\nTempora sunt sit eum adipisci iusto a perferendis ad.",
+          "id": "d20a4f63-a680-4081-a844-2b5d74d50fbc",
+          "description": "Sit itaque dolores repellendus enim rerum occaecati aperiam et quisquam.\nCumque sapiente commodi.\nQuia veniam inventore minima beatae.\nQuaerat aut eum autem nostrum asperiores.\nSunt harum non accusantium ut at ex.\nSoluta id molestias in odit facere dolore.\nDoloremque excepturi reiciendis inventore accusamus.\nTemporibus blanditiis possimus est nesciunt maxime quod cumque esse.\nQui ut consequatur modi nihil debitis necessitatibus.\nCorrupti voluptatem possimus provident omnis qui distinctio molestiae quisquam.",
           "type": "info",
-          "moduleId": "supply-chains",
-          "name": "Pre-emptive neutral conglomeration",
+          "moduleId": "partnerships",
+          "name": "Advanced web-enabled function",
           "link": null
         },
         {
-          "id": "0a25b40f-6027-474c-8396-cbec4a00974e",
-          "description": "Ad labore dolore dolor est voluptas dolor optio nihil.\nQui et laudantium ullam sequi sed dignissimos temporibus laborum et.\nOptio quia suscipit eum ut blanditiis qui ullam.\nPlaceat aliquam dolorum quibusdam omnis vero.\nNon possimus omnis quam.\nIure voluptatem excepturi facilis est eligendi hic totam eius.\nProvident hic asperiores rem.\nDolorum aut eum autem et suscipit esse praesentium voluptatibus saepe.\nRepellat molestias natus est odit occaecati.\nDeleniti deleniti incidunt est exercitationem alias vel sed magni.",
-          "type": "quiz",
-          "moduleId": "supply-chains",
-          "name": "Phased grid-enabled functionalities",
-          "link": "https://webbed-god.biz"
-        },
-        {
-          "id": "48585e13-44a0-464b-a201-3cc9f1180018",
-          "description": "Aliquid voluptatem ab ut quis consequuntur eligendi.\nEa ex velit qui dolore sequi illum beatae aut.\nVoluptatem tempora cum nobis ducimus repellat et consequatur distinctio.\nEum et delectus debitis saepe totam laudantium ipsa est.\nEst repudiandae at rerum fugit.\nA quibusdam non.\nTenetur blanditiis hic est enim sed.\nVitae corrupti expedita saepe tempore est optio.\nDolorem sit nulla.\nVeritatis nobis et dicta est quidem eum.",
+          "id": "4cf341b2-49cb-4d20-a087-2a0cff5ec724",
+          "description": "Enim unde aspernatur sed ducimus nihil est laudantium fugiat.\nDolor quia iusto facere dolor odio unde rerum eum porro.\nDicta distinctio esse.\nAssumenda temporibus est repellat provident quia dolor incidunt voluptatem.\nEt laboriosam quod eos.\nReiciendis molestias soluta sapiente cupiditate cum dolor autem molestiae.\nNon repellat blanditiis atque nisi accusamus consequatur.\nEligendi provident officia architecto non quo saepe exercitationem.\nEaque voluptate similique.\nAperiam id neque autem.",
           "type": "info",
-          "moduleId": "supply-chains",
-          "name": "Streamlined national emulation",
+          "moduleId": "partnerships",
+          "name": "Automated bottom-line utilisation",
           "link": null
         },
         {
-          "id": "40b74515-4cd0-4d77-b92d-9e3831090830",
-          "description": "Illum voluptate culpa autem est ratione nam sunt alias qui.\nId voluptas at odit voluptatibus quaerat modi aut.\nNumquam fugit dignissimos.\nCorporis dolore ratione doloremque non ipsam.\nSapiente quibusdam dolorem soluta.\nPraesentium dolore nihil possimus voluptates sit.\nTotam ut minus id.\nAliquid odit repudiandae nihil doloremque.\nExplicabo beatae accusantium est nesciunt commodi id aut quae.\nSunt tempore id.",
+          "id": "1790375d-8ead-4e9f-a308-16de0bee79c5",
+          "description": "Laboriosam assumenda sit necessitatibus rerum.\nMolestiae neque eligendi aut ad facilis molestiae voluptas.\nQuidem saepe doloribus ut aut maiores.\nOdio repellendus error ut voluptatum et in.\nConsequatur at deserunt enim iure.\nHic aliquam eius.\nIpsum nostrum doloremque qui facilis.\nBlanditiis commodi magni eum.\nMinima tempore nulla odit quis repellat ipsam minima.\nEsse dignissimos est voluptatum eum et dolorem quia.",
           "type": "code",
-          "moduleId": "supply-chains",
-          "name": "Object-based zero administration workforce",
-          "link": "https://incomparable-pacemaker.org"
+          "moduleId": "partnerships",
+          "name": "Extended client-driven framework",
+          "link": "http://far-vendor.info"
         },
         {
-          "id": "bac95263-40e9-4430-ad7f-7a01dc89be13",
-          "description": "Voluptatem quisquam enim fugit voluptas est quidem corrupti eligendi.\nEst maiores cum assumenda quasi tempore ut.\nEum ut atque in id nisi quam dolor laudantium.\nEligendi delectus qui ipsam explicabo aspernatur.\nPerspiciatis qui officiis et sequi corrupti.\nHarum aut totam officiis aut pariatur doloribus quaerat.\nRecusandae velit culpa.\nAut voluptatem consequatur consequatur repellendus voluptas.\nQuis ut saepe est dolorem.\nDolorum consequatur eos nam dolores architecto sed.",
-          "type": "quiz",
-          "moduleId": "supply-chains",
-          "name": "Digitized neutral access",
-          "link": "https://remarkable-heavy.info"
+          "id": "77ccc680-93f9-495f-8ff4-48b1989a0779",
+          "description": "Repudiandae aut et vero quia qui excepturi ea alias rem.\nEst ut voluptatem ipsa eligendi qui sit.\nConsectetur eligendi commodi.\nFacere ipsam enim vero ipsam.\nQui accusantium illum architecto modi numquam quia.\nSit numquam id autem culpa rerum dolor aliquam sed.\nMaiores adipisci nisi qui.\nNesciunt est hic excepturi repellendus est.\nNihil et omnis fuga ipsum.\nEst ipsa delectus saepe.",
+          "type": "code",
+          "moduleId": "partnerships",
+          "name": "Monitored disintermediate synergy",
+          "link": "http://similar-nest.biz"
+        },
+        {
+          "id": "aab52762-f477-4b96-89e0-35305467bf3e",
+          "description": "Sapiente voluptas inventore adipisci error magnam omnis placeat perspiciatis perspiciatis.\nNemo quo fugit.\nLibero quia qui occaecati.\nVoluptatem et rem consequuntur dolorem voluptas.\nNihil aliquid et qui harum voluptate dolore.\nUnde qui et architecto consequuntur dolores architecto quis nihil.\nAspernatur dolor nesciunt.\nReprehenderit et sit doloribus.\nQuaerat expedita quo est dolorum ullam autem.\nVeritatis distinctio qui iure dicta tenetur.",
+          "type": "code",
+          "moduleId": "partnerships",
+          "name": "Upgradable contextually-based protocol",
+          "link": "http://prickly-dressing.com"
+        },
+        {
+          "id": "2243f8a8-568b-49d7-b805-17b6f040a05a",
+          "description": "Provident exercitationem sapiente aut qui soluta vitae.\nSint dolores pariatur ut.\nEaque doloremque id quibusdam.\nNihil ut sit voluptates.\nEt facilis provident.\nVoluptatem excepturi delectus.\nAut aut aliquam excepturi explicabo esse mollitia voluptatum.\nQuidem sint itaque impedit corrupti.\nIusto veniam unde qui impedit aspernatur.\nAut distinctio asperiores consequuntur ratione et et neque ut quo.",
+          "type": "code",
+          "moduleId": "partnerships",
+          "name": "Switchable scalable software",
+          "link": "http://troubled-rush.com"
+        },
+        {
+          "id": "8d3b863f-5275-49fe-ae40-791cba2a77e5",
+          "description": "Incidunt ut corrupti magni enim quia nihil.\nQuo similique molestiae dignissimos velit.\nSunt adipisci aut.\nQuas eum hic necessitatibus vel sed provident aut omnis.\nPossimus laboriosam voluptas nihil iure nam repellendus reiciendis earum dolores.\nEa ipsam tempora aperiam facere doloremque sit voluptatibus architecto quisquam.\nAut similique perspiciatis ab.\nTempore aspernatur tenetur magnam totam debitis consequuntur et.\nDolor et molestias non a aut dolor quasi suscipit officiis.\nEt nam ullam dolor.",
+          "type": "code",
+          "moduleId": "partnerships",
+          "name": "Implemented reciprocal superstructure",
+          "link": "http://animated-tent.name"
+        },
+        {
+          "id": "24892a44-1059-4f6e-a134-f5caeb6e5880",
+          "description": "Quidem itaque sit quisquam voluptas voluptatem.\nFuga temporibus rerum quia delectus ullam.\nRerum est vero omnis officiis exercitationem ipsa dolorum suscipit assumenda.\nEt cupiditate velit odio sint.\nAutem tempore vitae.\nAut nihil eos eum dolor ut sed neque et at.\nSit voluptatum tenetur quia ut et.\nSint debitis libero sapiente voluptas inventore recusandae id quisquam.\nNulla incidunt sint est vel id qui.\nNecessitatibus quisquam architecto modi non ipsum magni doloremque aut deserunt.",
+          "type": "code",
+          "moduleId": "partnerships",
+          "name": "Distributed tangible synergy",
+          "link": "https://meaty-assertion.info"
+        },
+        {
+          "id": "8023f9a4-a32e-44ed-80c4-2091bce447bb",
+          "description": "Aut sit commodi.\nAlias labore fuga quia.\nSit itaque vero architecto est.\nIn consectetur nulla praesentium iusto blanditiis dignissimos harum facilis.\nAut laboriosam modi qui et.\nConsequatur tenetur quis maxime.\nNobis reiciendis fuga saepe est non voluptas consectetur porro.\nAccusamus eius corporis.\nAssumenda quam qui perferendis.\nEaque ex velit.",
+          "type": "code",
+          "moduleId": "partnerships",
+          "name": "Implemented motivating definition",
+          "link": "https://spicy-press.net"
+        },
+        {
+          "id": "18e41aee-758e-4623-80ec-e9c140b89a02",
+          "description": "Et fuga laboriosam facere sint qui.\nAd in facilis et delectus autem.\nQui nostrum sed reiciendis harum officia voluptatem.\nOptio est non qui molestiae.\nRepellat dolor qui nisi sed repudiandae.\nEa suscipit ipsum.\nIn similique vel consectetur quas id.\nRepudiandae modi qui corrupti voluptates molestiae odit omnis.\nVoluptatibus sint qui aperiam incidunt dolore.\nNihil illo aut est sit.",
+          "type": "code",
+          "moduleId": "partnerships",
+          "name": "Customer-focused didactic framework",
+          "link": "https://pitiful-rap.com"
         }
       ]
     },
     {
-      "id": "systems",
-      "name": "Systems",
+      "id": "users",
+      "name": "Users",
       "tasks": [
         {
-          "id": "164c4e51-5693-4a3d-a047-0d2888f98e42",
-          "description": "Provident nisi eum est blanditiis facilis dicta aut autem nihil.\nBlanditiis alias laudantium praesentium voluptatem dolores a aspernatur.\nSed blanditiis sequi aut voluptas sit numquam a quae accusamus.\nDolorum aut quos architecto.\nDeserunt accusantium laudantium pariatur dolores voluptatem incidunt autem.\nUt quia vel doloremque non amet voluptatem officiis ut quod.\nVoluptatem dolorem qui ut.\nEt commodi enim.\nPlaceat consequatur deserunt sit quia minus repellendus molestiae totam.\nQuibusdam reprehenderit necessitatibus.",
-          "type": "quiz",
-          "moduleId": "systems",
-          "name": "De-engineered bi-directional implementation",
-          "link": "http://stale-perch.info"
-        },
-        {
-          "id": "7dc58c5f-869f-4509-8e75-2387b3f02b2c",
-          "description": "Quod repellendus esse eveniet earum repudiandae.\nAsperiores et eum in eius nam.\nDolor quos accusamus officia.\nConsequatur omnis amet quasi natus et iure eveniet expedita nostrum.\nDolor suscipit ullam consequuntur quis.\nNisi rem cum voluptate facilis omnis cumque.\nEveniet voluptatum quia delectus a in.\nNostrum qui dolores quo.\nVel earum molestiae voluptatem quia.\nNeque exercitationem hic in qui cum debitis.",
-          "type": "image",
-          "moduleId": "systems",
-          "name": "Implemented systematic capability",
-          "link": null
-        },
-        {
-          "id": "b864d909-f93c-48e7-bb1e-54e1ef9202ab",
-          "description": "Nobis qui illo rem omnis aut fugiat aut doloremque.\nQui libero quidem distinctio sit quia.\nAssumenda illum corporis quia est dolore dicta accusamus sint.\nVoluptas eius aliquam facere a.\nPerferendis optio sed alias consequatur beatae sint sed quo.\nOmnis est eum nulla alias illo accusamus aut ad officia.\nMaiores id ut assumenda voluptatibus et et iure qui commodi.\nQuo enim minus autem cupiditate quis nisi sunt consequatur magni.\nQui dolores quia.\nMinima voluptatibus eos consequuntur.",
-          "type": "info",
-          "moduleId": "systems",
-          "name": "Monitored responsive emulation",
-          "link": null
-        },
-        {
-          "id": "b09726ff-a81b-4b24-ace6-74ea8cb08b45",
-          "description": "Laudantium similique sint sed veritatis suscipit.\nLibero reprehenderit dolor fugit facilis magnam unde.\nConsequatur voluptas tempora consequatur et voluptates blanditiis iusto enim aut.\nQuo explicabo neque nobis cum soluta ea facilis praesentium.\nDelectus porro cumque corporis architecto et perferendis provident.\nEst nobis molestiae.\nUt qui veniam non nobis eos.\nHic libero consequuntur porro ut omnis quia adipisci enim.\nQui dicta animi laudantium ut autem qui dicta.\nDignissimos earum ea modi sint asperiores exercitationem id.",
-          "type": "image",
-          "moduleId": "systems",
-          "name": "Visionary national productivity",
-          "link": null
-        },
-        {
-          "id": "f34dfedf-2060-4036-937c-a3a44492f142",
-          "description": "Dolore ipsa numquam quisquam et est.\nAut quia error est quasi eaque est ad.\nNatus amet maxime iusto.\nUllam est dicta ut at nostrum dolor beatae fugit ipsam.\nLaudantium quia doloribus.\nVel pariatur recusandae veritatis.\nDolor aperiam autem vel rerum.\nEst fugit nam molestiae.\nQuia numquam optio.\nUt sint exercitationem.",
+          "id": "9de0bee2-af5a-45ea-a545-09ef06e693ca",
+          "description": "Dolores magnam consequatur sed.\nSint sint maxime mollitia culpa id unde eos quaerat.\nAnimi ducimus magnam dolores quis.\nSuscipit alias cupiditate.\nEst nisi magni quo sint mollitia atque animi eos consequatur.\nModi ipsum est voluptas quibusdam laboriosam.\nQuam quia temporibus aut quidem eos dolorum consequatur ratione.\nQuis vero omnis eveniet est voluptatum est asperiores blanditiis praesentium.\nEst veniam ea sed voluptatem.\nAut facilis enim exercitationem necessitatibus voluptatem molestias omnis quo.",
           "type": "code",
-          "moduleId": "systems",
-          "name": "Expanded background knowledge base",
-          "link": "http://rowdy-storey.biz"
+          "moduleId": "users",
+          "name": "Programmable methodical utilisation",
+          "link": "http://cold-goldfish.info"
         },
         {
-          "id": "326e52d0-766f-40f1-b41b-3892e7c14bec",
-          "description": "Magnam qui ipsum occaecati ipsa non pariatur.\nEst facere necessitatibus.\nFugiat voluptatibus aliquid ipsam illo esse magnam.\nBlanditiis aperiam a neque aut omnis.\nTempora veritatis occaecati.\nQuis dolore et ad molestias maxime odio impedit.\nFuga qui rerum nulla quos provident eveniet nisi maiores sit.\nQuisquam dolores officiis veniam tempore et ipsam delectus aut praesentium.\nAt laborum voluptatem.\nDolorem veritatis distinctio sequi ducimus quia.",
-          "type": "image",
-          "moduleId": "systems",
-          "name": "Streamlined uniform artificial intelligence",
-          "link": null
+          "id": "527fae11-8049-4ff9-8c9d-d099a077481a",
+          "description": "Sint nihil iste omnis temporibus nobis.\nDicta perspiciatis ratione mollitia magnam.\nAperiam est incidunt omnis aliquid officiis dolore impedit.\nDebitis omnis atque nam odit ea mollitia qui.\nEa eum voluptatem consectetur.\nLaborum dolores quia alias.\nAut doloribus earum voluptatum a.\nModi voluptas error iure veritatis ut non sed enim et.\nSaepe repudiandae velit dolorum quaerat.\nDucimus velit voluptatem incidunt ut eius nobis qui.",
+          "type": "code",
+          "moduleId": "users",
+          "name": "Reactive national knowledge user",
+          "link": "http://automatic-try.info"
         },
         {
-          "id": "0752fdf1-9108-4d63-a3a5-e7a539c00bb8",
-          "description": "Non quam quae nobis eaque porro.\nIllo beatae voluptatem recusandae porro nam vel voluptate iste.\nRem iste aperiam maxime eum.\nQuas placeat est quasi consequatur et at.\nDolorum commodi debitis odio cumque excepturi.\nAutem culpa est.\nEsse ipsam dolor dolor nihil.\nDeleniti voluptatem nihil quam.\nAccusamus ut exercitationem porro repellendus dolore aliquam voluptate et magnam.\nEst unde reiciendis.",
-          "type": "quiz",
-          "moduleId": "systems",
-          "name": "Streamlined web-enabled hierarchy",
-          "link": "http://wilted-arm-rest.org"
-        },
-        {
-          "id": "a7200017-9ef4-4a5c-9935-3db886ca33a3",
-          "description": "Et ut possimus necessitatibus id quibusdam ut.\nDelectus nemo quam ex non et nemo nulla.\nDolore sunt reiciendis.\nTempore illo in eum velit atque architecto autem atque repellendus.\nIncidunt nesciunt quo et tenetur ut illum et eos quibusdam.\nProvident eos ea voluptates laboriosam delectus aspernatur.\nAut quis placeat fugiat.\nPossimus reiciendis voluptate.\nQuo nihil nulla voluptas quo dolores distinctio.\nA est alias aut.",
+          "id": "c5b12e27-e8a1-45e2-b71c-20d9d7063931",
+          "description": "Ut accusamus voluptates nobis.\nAut ullam et fugit illo nam vel suscipit at.\nSed modi consequatur itaque illo.\nEnim soluta aspernatur.\nCulpa aut magnam.\nPraesentium id sapiente ut est.\nTempora dicta eum beatae consequatur et voluptatum voluptatem.\nEsse doloribus neque praesentium facilis laudantium facere officiis nostrum hic.\nSit facilis unde delectus soluta et et id numquam.\nFacilis omnis praesentium dolore consequuntur optio.",
           "type": "info",
-          "moduleId": "systems",
-          "name": "Enterprise-wide local matrices",
+          "moduleId": "users",
+          "name": "Vision-oriented responsive function",
           "link": null
         },
         {
-          "id": "0d9f7595-1639-4226-997a-6f0e5c005217",
-          "description": "Possimus doloremque autem debitis consequatur autem deleniti enim.\nVoluptatem quae fuga in et quos magnam sit.\nQui quos dolores et possimus aut.\nVel reprehenderit labore in culpa est iste beatae omnis ab.\nSed magni eum ea.\nPerspiciatis officiis quia excepturi eum.\nA est laborum nesciunt est qui quibusdam.\nSint velit et molestias quae dolore.\nQuas voluptates quasi deleniti.\nSaepe error rem fugiat voluptatem.",
-          "type": "image",
-          "moduleId": "systems",
-          "name": "Profit-focused transitional array",
-          "link": null
-        },
-        {
-          "id": "a9bef9f6-c068-4339-bcab-545936dbc131",
-          "description": "Est repudiandae totam earum.\nQuia iusto qui.\nAliquid eum iste dolores ut quo nisi veritatis.\nRatione eos voluptatibus omnis temporibus eum nihil et ut.\nFugit odio harum aperiam itaque est fuga placeat perferendis.\nQuasi delectus magnam deserunt pariatur.\nImpedit et incidunt fuga sunt dicta dolor minus officia.\nVoluptas dolorem quas molestiae tempore.\nDolor porro blanditiis sunt.\nReiciendis quia sint.",
+          "id": "a7892058-9871-4080-ae83-448791cd7d16",
+          "description": "Reprehenderit nisi quia sint quam quo laudantium.\nDolor non qui ab similique sit quos.\nA voluptatem laudantium ex.\nQui repellendus dolores aliquid voluptatum eaque deserunt.\nAperiam voluptatem nemo quis nemo et assumenda pariatur quod corrupti.\nEst impedit maxime.\nDicta recusandae culpa ut tempora ea.\nRerum eos facilis hic nihil dolorum sunt.\nEt est omnis aut accusantium magnam nihil.\nVelit neque voluptas.",
           "type": "info",
-          "moduleId": "systems",
-          "name": "Optimized tangible info-mediaries",
+          "moduleId": "users",
+          "name": "Devolved dynamic workforce",
           "link": null
+        },
+        {
+          "id": "5dcfbbfe-70f4-4307-aaf8-6a639cc76625",
+          "description": "Eaque quibusdam expedita et doloremque esse illum error.\nOfficiis voluptatem in et sunt quis error vitae molestiae.\nRerum magni dignissimos enim ab placeat quia id.\nAliquam accusantium rerum voluptatem quas sint voluptas nulla molestias.\nQuia aut laborum explicabo error harum possimus dolorem.\nEveniet ea nam maiores ducimus excepturi et in eius.\nRerum quo veritatis tempora ut ducimus.\nEt esse possimus occaecati delectus qui aliquid quidem perferendis.\nQuia vero culpa sint at dicta repudiandae.\nUt neque natus impedit aut rerum esse quia est libero.",
+          "type": "code",
+          "moduleId": "users",
+          "name": "Ergonomic explicit structure",
+          "link": "https://delayed-rudiment.net"
+        },
+        {
+          "id": "8d94f37b-a93b-4825-9a71-666fe3827880",
+          "description": "Facere voluptatibus vitae hic non sit sed consequatur illum.\nPerspiciatis odit accusamus molestiae.\nConsequuntur esse dolor suscipit deserunt aut voluptatum est.\nQui provident nisi.\nVero rerum sapiente molestiae voluptas.\nVoluptas dolorem commodi tempore voluptatum.\nDelectus excepturi velit tenetur ab consectetur delectus dicta non.\nVoluptas blanditiis atque eaque molestias.\nInventore magni sunt temporibus.\nPraesentium qui ducimus incidunt nemo corporis quis incidunt est.",
+          "type": "code",
+          "moduleId": "users",
+          "name": "Fully-configurable upward-trending alliance",
+          "link": "https://virtual-someone.net"
+        },
+        {
+          "id": "0ad39a68-5556-4918-a8a3-91286d536093",
+          "description": "Officiis ut dignissimos possimus consequatur dignissimos temporibus ullam eaque.\nQui dolores quaerat non quas quo illo dignissimos.\nMinima voluptatem et veniam.\nAlias et voluptatum iusto quaerat.\nIste distinctio sapiente esse ullam est ut quidem rerum eligendi.\nPariatur consequatur laborum.\nProvident qui voluptas laudantium.\nQui nihil perspiciatis voluptatibus.\nExcepturi vel amet.\nOdio laudantium est.",
+          "type": "info",
+          "moduleId": "users",
+          "name": "Versatile clear-thinking initiative",
+          "link": null
+        },
+        {
+          "id": "fff81e9e-1e42-4d2f-84f4-2023e9ecb741",
+          "description": "Quos modi delectus quia id.\nVoluptatem tenetur iure placeat.\nDucimus consequatur et.\nEt consectetur molestias quia libero itaque laudantium.\nDignissimos iusto voluptatem perferendis tempore.\nLibero quos odio repudiandae quia ipsa.\nAspernatur enim fugit totam tenetur quia rerum voluptates eaque.\nVelit debitis et vero qui fugit tempore ut inventore.\nEt id velit molestiae nam aut qui voluptas commodi architecto.\nAccusantium ad vel qui mollitia blanditiis error vero consectetur est.",
+          "type": "code",
+          "moduleId": "users",
+          "name": "Pre-emptive attitude-oriented protocol",
+          "link": "https://merry-owner.biz"
+        },
+        {
+          "id": "a2dd70e2-1372-466d-a18f-a37f97d04156",
+          "description": "Vero quaerat consequatur laboriosam.\nVel iure quia alias molestias sed corrupti repudiandae suscipit.\nLaborum quo error sapiente fugiat at ex qui in.\nSed qui sapiente esse.\nVeritatis quo veritatis reiciendis quam quo ut distinctio vel.\nAtque ut voluptatibus distinctio voluptatem neque.\nPariatur minima odit reprehenderit.\nMolestiae et et maxime nam corporis.\nCorporis et aut consequatur molestias nulla minus culpa illum.\nEt qui dolorum voluptas vel recusandae quaerat est qui.",
+          "type": "code",
+          "moduleId": "users",
+          "name": "Monitored directional knowledge base",
+          "link": "http://amused-pew.com"
+        },
+        {
+          "id": "1578053d-521e-4bfa-a8da-e42844effff8",
+          "description": "Dolorem dolore voluptas.\nEa magnam debitis ipsa aperiam debitis nostrum maxime.\nEt eum qui at odit eligendi recusandae nesciunt dolorem.\nConsequuntur sit voluptatem blanditiis odio suscipit sit.\nMaiores in neque necessitatibus voluptatem quasi aut amet.\nQuisquam ut voluptas temporibus et culpa dolores quos voluptatibus dolor.\nRerum ipsam excepturi non eligendi.\nImpedit explicabo et distinctio illo autem voluptatum consequatur libero ab.\nVelit assumenda mollitia incidunt ducimus in eligendi.\nCulpa harum fugiat corporis.",
+          "type": "code",
+          "moduleId": "users",
+          "name": "Networked impactful Graphical User Interface",
+          "link": "https://cute-nerve.name"
         }
       ]
     },
     {
-      "id": "methodologies",
-      "name": "Methodologies",
+      "id": "technologies",
+      "name": "Technologies",
       "tasks": [
         {
-          "id": "235be7bd-0447-4f75-9517-0dbf3ff7cd3c",
-          "description": "Eos doloribus in error.\nMolestiae rerum ut repellat libero.\nRepellendus rerum et harum ea quo rem sequi neque ipsam.\nAtque eius quod quo ullam recusandae quia.\nSit et neque.\nOfficiis ut temporibus cum molestias.\nSint dolore doloremque quos asperiores ut ducimus assumenda quaerat.\nMagni accusantium culpa officia expedita non ex.\nNihil autem alias consequatur.\nAspernatur commodi sit.",
-          "type": "image",
-          "moduleId": "methodologies",
-          "name": "Open-source neutral pricing structure",
-          "link": null
-        },
-        {
-          "id": "68c5846b-69e8-4735-970d-db80bdcd0f41",
-          "description": "Aut placeat quo tempora minus nobis quasi unde.\nPlaceat possimus et.\nMolestiae et voluptate qui odio est.\nDolores optio laudantium cum.\nIn pariatur sed mollitia deleniti.\nVel dicta tempore vel in molestiae commodi blanditiis officia.\nQuis enim officia atque sed voluptate eligendi nesciunt omnis.\nAut atque molestiae et.\nSint aut qui.\nSaepe autem et.",
-          "type": "code",
-          "moduleId": "methodologies",
-          "name": "Upgradable background migration",
-          "link": "http://graceful-patio.info"
-        },
-        {
-          "id": "4d3081bd-d57f-4da3-8651-6ac19c61eba2",
-          "description": "Quia nesciunt repellat animi laborum quis ea eos.\nAtque corporis aspernatur magni tempora dolor repellat.\nDolorum reiciendis magni odit ea nulla qui.\nAliquam possimus doloremque non.\nEa corporis sapiente eligendi id voluptatem et qui.\nModi et voluptas.\nDolore et blanditiis sit atque maiores dolor esse officiis dolor.\nIn corrupti inventore non occaecati qui accusamus ut.\nUt voluptatem voluptatem blanditiis hic temporibus nam voluptate ut qui.\nDebitis et dolore sapiente unde non eum aut.",
+          "id": "4535e951-a7b2-41ae-9443-5d36c2e60c76",
+          "description": "Ea hic quasi quis deserunt quia eos adipisci omnis laboriosam.\nTempore neque illo voluptatem sit.\nVoluptatibus rem esse quibusdam molestiae quisquam quasi esse ipsam temporibus.\nLaudantium vel impedit debitis non aspernatur voluptatum.\nModi esse quibusdam sunt ex voluptate sint.\nAccusantium repudiandae error quas qui omnis corporis magnam aspernatur.\nQuo est numquam numquam eius perferendis dignissimos consectetur.\nDignissimos ea sequi architecto.\nSapiente recusandae laboriosam soluta rerum.\nVelit quod voluptas ut vel deserunt est modi.",
           "type": "info",
-          "moduleId": "methodologies",
-          "name": "Integrated interactive adapter",
+          "moduleId": "technologies",
+          "name": "Triple-buffered zero defect knowledge user",
           "link": null
         },
         {
-          "id": "31775d7e-3db1-43c8-8985-61a1b459ffcf",
-          "description": "Et fugit esse qui impedit.\nSint odit veniam officia alias eaque cupiditate.\nRepellat porro et dolorum temporibus vel quisquam qui.\nQuia eaque expedita tempore.\nMinus nesciunt necessitatibus quae quasi cupiditate asperiores.\nProvident ipsa dolorum debitis omnis exercitationem vero cumque consequuntur maiores.\nVelit rem qui quasi.\nQuo doloremque neque.\nIn et voluptas laborum totam voluptates laudantium qui ea nisi.\nNon vitae et.",
+          "id": "adacc7b1-d5bc-42c5-a01c-074998846fc6",
+          "description": "Iusto quos distinctio.\nMagnam et ea et quo praesentium fuga eaque.\nModi similique quos qui.\nNihil non consectetur in cumque in.\nEt id delectus excepturi et ex quia non voluptas.\nAssumenda rem accusantium tempore natus hic maiores aut vero perferendis.\nMinus quo eum aut est repellat dolorem.\nVoluptatem non omnis ut labore omnis assumenda dolore eos illo.\nVoluptas impedit tempore eum placeat quasi eligendi aliquid impedit.\nQuis ut atque.",
           "type": "info",
-          "moduleId": "methodologies",
-          "name": "Mandatory user-facing encryption",
+          "moduleId": "technologies",
+          "name": "Automated 4th generation monitoring",
           "link": null
         },
         {
-          "id": "a31018be-b230-4b4c-b701-4b73c41e7783",
-          "description": "Sint explicabo qui aut eos ut aliquid est.\nMolestias asperiores ducimus rerum veritatis eum et ullam.\nUt ea qui.\nOmnis ipsa ducimus nisi enim corporis quis qui libero consequatur.\nEst aliquid nostrum quo qui suscipit molestiae voluptatibus quis.\nVoluptatibus nobis quia.\nLibero sed enim esse sint quia non delectus qui.\nLaborum quia esse eos molestias natus.\nEt voluptas non enim quibusdam et eligendi fuga.\nBeatae voluptas optio amet magnam laudantium esse perferendis.",
-          "type": "code",
-          "moduleId": "methodologies",
-          "name": "Quality-focused bottom-line Graphical User Interface",
-          "link": "http://hasty-yin.info"
-        },
-        {
-          "id": "83a12e33-e6e0-4bb8-b3bc-19f4eaab3fac",
-          "description": "Enim cupiditate aut dolorem enim nemo animi non nesciunt laboriosam.\nAutem error est aut quas dolores.\nUllam voluptas quae laborum.\nUt voluptas autem.\nSed blanditiis fugiat adipisci quasi sit corrupti.\nVoluptas quo voluptas est.\nIure commodi voluptatem earum nulla consequatur quis consequatur delectus.\nArchitecto et ut velit et animi alias quod voluptas non.\nMolestiae non dolore eum dolores reprehenderit.\nSunt explicabo nisi et aut praesentium.",
-          "type": "quiz",
-          "moduleId": "methodologies",
-          "name": "Re-engineered solution-oriented migration",
-          "link": "https://homely-baboon.info"
-        },
-        {
-          "id": "f9b06ebb-1b53-4493-803c-58c57f7e44e7",
-          "description": "Quod facere officiis et dolore sunt earum quis laudantium porro.\nItaque non est enim.\nQuo sequi et temporibus iste aut dolore voluptatem aut.\nNihil quidem quod qui.\nSequi saepe beatae consequuntur placeat.\nCupiditate numquam deserunt.\nEt atque sequi suscipit quis qui earum et nesciunt.\nEt nihil accusamus ut eius.\nVoluptates eos ducimus omnis illo culpa.\nFacere voluptas quos quis rerum aut qui hic dolore.",
-          "type": "image",
-          "moduleId": "methodologies",
-          "name": "Expanded user-facing internet solution",
+          "id": "87d3a298-9e36-410e-9f17-a8c506363b20",
+          "description": "Est sit aut tempora quo repellat.\nAliquam est sunt mollitia aliquam a.\nQuas et amet nihil et eaque veniam vel explicabo.\nNatus non voluptas accusantium eaque deleniti ipsa repellendus ea eveniet.\nPorro qui a assumenda vitae modi.\nExplicabo consequatur soluta qui qui.\nVoluptatem eos porro qui rerum.\nQui dolorem maxime rerum quia quas nemo libero alias voluptas.\nDolor quas repudiandae explicabo quam eligendi enim.\nQuidem est vel eos animi natus.",
+          "type": "info",
+          "moduleId": "technologies",
+          "name": "Balanced bandwidth-monitored functionalities",
           "link": null
         },
         {
-          "id": "8d50961c-71c6-45da-83df-9947090ffb28",
-          "description": "Molestias soluta laboriosam velit sequi.\nOmnis amet quae sed.\nIn velit nam ea.\nDucimus et quisquam alias iusto est.\nMollitia iste architecto velit sint ducimus quod fugit laboriosam aut.\nAnimi ipsam numquam cumque unde.\nVitae delectus saepe placeat explicabo ut inventore corrupti eaque itaque.\nImpedit tenetur hic.\nPlaceat dolores at recusandae cupiditate et dolor animi.\nEt itaque excepturi ab ea culpa dolor temporibus.",
+          "id": "61fbfd6a-6a59-433a-a943-1f71fba97d61",
+          "description": "Sit et nisi dolor ea et quia asperiores excepturi sunt.\nDolorem rerum nesciunt a nulla ratione rerum officiis.\nOmnis a nihil sint recusandae autem nulla dicta.\nDolorem impedit iste non.\nVoluptatem aut vel.\nTempora quod magnam ut qui dolor et voluptates beatae magni.\nSequi delectus amet iusto id mollitia laborum.\nEt dolor magni natus suscipit nulla praesentium ut necessitatibus.\nVoluptate quo eaque quia aperiam est officia laboriosam officia animi.\nEa tempore eos vel fugit est quo.",
           "type": "code",
-          "moduleId": "methodologies",
-          "name": "Synergistic multi-tasking contingency",
-          "link": "https://knotty-arcade.org"
+          "moduleId": "technologies",
+          "name": "Operative content-based firmware",
+          "link": "http://old-fashioned-effect.com"
         },
         {
-          "id": "4cc3e498-e34a-4bc0-a585-d7ea646810c0",
-          "description": "Recusandae aliquid molestiae ipsam sed labore cum.\nExercitationem recusandae a id velit et.\nVoluptatem ducimus beatae doloremque.\nAut aliquam unde dolores saepe est illo.\nDolor architecto sit officiis voluptatum rem sequi in quisquam quo.\nIusto et eos rem dolorem magni.\nEt labore ullam eos.\nAlias et aliquam.\nQuia quo sunt.\nAut voluptatibus qui rerum veritatis nam.",
-          "type": "quiz",
-          "moduleId": "methodologies",
-          "name": "Configurable methodical core",
-          "link": "https://brave-text.biz"
+          "id": "5a52d7a9-feb1-4755-b6ed-d156705261cd",
+          "description": "Aspernatur voluptate eveniet rerum.\nEt illo blanditiis fuga sit natus id.\nEa totam totam consectetur quis similique ratione et et iste.\nAut vitae eum labore dolor cupiditate repudiandae animi molestias eligendi.\nAut atque et itaque est aut officia magni.\nTempora quia cumque assumenda quaerat deserunt quia.\nOdio perferendis odit at delectus veniam.\nConsequatur incidunt autem eligendi provident.\nEst voluptatum aut laudantium amet nisi ea quia alias et.\nQuia et laborum neque sed voluptatibus error repellendus.",
+          "type": "info",
+          "moduleId": "technologies",
+          "name": "Up-sized dedicated concept",
+          "link": null
         },
         {
-          "id": "2c01ea38-bf09-4533-a059-1a3df42b8019",
-          "description": "Labore eaque voluptatem minima quibusdam odio modi repudiandae aut aut.\nItaque eos nulla.\nVoluptas aliquid sit temporibus doloremque enim et quos.\nEt ipsam consectetur.\nEum alias aut at necessitatibus unde necessitatibus.\nRepudiandae vitae deleniti cupiditate sit et deserunt.\nNatus omnis dolor placeat saepe voluptatem natus pariatur sequi voluptatem.\nAccusantium id ea.\nVoluptas corrupti laudantium fuga voluptatem.\nMinima sint quo est quos recusandae eos et.",
-          "type": "quiz",
-          "moduleId": "methodologies",
-          "name": "Organized asynchronous data-warehouse",
-          "link": "https://insidious-candidate.name"
+          "id": "0b1c0634-c1f5-46ba-b74e-d9e0e6da1d8e",
+          "description": "Aspernatur architecto quas temporibus unde qui qui doloremque et autem.\nAspernatur qui minima sed quam aliquam architecto fugiat.\nEt et labore dolorem occaecati qui harum eum.\nNecessitatibus voluptatibus est cupiditate aliquid labore est veritatis sunt.\nReiciendis in sint aut doloremque.\nEligendi deserunt qui nobis molestiae itaque.\nEarum repellendus perspiciatis.\nOdit harum quia sapiente.\nOptio beatae quod labore sint quidem.\nEt eveniet itaque cupiditate reprehenderit quam quibusdam.",
+          "type": "info",
+          "moduleId": "technologies",
+          "name": "Multi-tiered encompassing capacity",
+          "link": null
+        },
+        {
+          "id": "6a692a93-4475-4dd9-bcc4-93597b379359",
+          "description": "Qui nisi et consequatur ab voluptatem.\nNon earum harum.\nQuaerat eos provident quas velit.\nUt quia impedit saepe occaecati enim tempora earum ut recusandae.\nQuisquam dicta est cumque consequuntur ipsum nobis.\nOdit voluptatum explicabo.\nEst modi magni consequuntur ut rerum fugiat.\nExcepturi sint asperiores ex illo et necessitatibus aut magni aut.\nEt eum voluptatum consequuntur quaerat deserunt est.\nPerferendis facere esse.",
+          "type": "info",
+          "moduleId": "technologies",
+          "name": "Customer-focused web-enabled hardware",
+          "link": null
+        },
+        {
+          "id": "039c259c-3faa-47cc-9151-4b76440590b0",
+          "description": "Voluptatem id ut nobis exercitationem quis.\nQuis cupiditate veritatis.\nDeleniti velit tempora enim.\nOmnis error possimus recusandae fugit quam ab aut.\nNisi veritatis maxime labore accusantium ea.\nQuidem saepe inventore deleniti perferendis adipisci ut laborum.\nVeritatis ipsa autem eum facilis pariatur voluptatum expedita aut.\nQuis facilis ipsam facilis et pariatur.\nVitae quas ut.\nDolorem enim autem et consectetur vel culpa consequatur rerum aut.",
+          "type": "code",
+          "moduleId": "technologies",
+          "name": "Synergized dynamic website",
+          "link": "https://leafy-end.info"
+        },
+        {
+          "id": "fad30930-90f7-45d9-86b1-6ae7730a09d6",
+          "description": "Numquam dolorem est et aut reprehenderit quae consequatur error doloremque.\nReiciendis ea ad labore.\nItaque sed in non eveniet suscipit tenetur itaque.\nCumque tenetur quo eligendi alias possimus.\nDeserunt voluptatem esse quia quae ab at consequatur quae.\nMaiores fuga esse consequatur ex molestias repudiandae reiciendis consequuntur.\nVoluptatum impedit illo occaecati minima omnis.\nEligendi quidem accusamus dolor fuga.\nPraesentium a est accusantium.\nIncidunt atque ut.",
+          "type": "code",
+          "moduleId": "technologies",
+          "name": "Configurable motivating attitude",
+          "link": "http://motionless-warden.name"
+        },
+        {
+          "id": "8b022b42-92b6-41e2-8ec4-25532cb96957",
+          "description": "Quis qui laudantium quibusdam ex itaque.\nReprehenderit aspernatur in voluptate.\nAliquid consequatur qui.\nId veritatis et adipisci in modi quae officia repellendus.\nRecusandae et minus cumque reprehenderit placeat id.\nQuia eligendi est unde quo vitae repellat enim eos.\nIn dolores molestias non recusandae occaecati hic nisi sint amet.\nMagni magnam tempore maiores dolore eum esse praesentium rerum.\nQuia quam delectus sit asperiores expedita ut id quia.\nLaborum ratione in sequi voluptatem quasi culpa.",
+          "type": "code",
+          "moduleId": "technologies",
+          "name": "Phased bandwidth-monitored collaboration",
+          "link": "https://nervous-comparison.net"
         }
       ]
     }
   ],
   "tasks": [
     {
-      "id": "6e566205-adf3-4fb1-8a2f-0cb4ad3a965e",
-      "description": "Sequi vel fuga exercitationem quo dolor.\nVoluptatum deleniti consequuntur maiores aut et nisi dolorem et.\nVoluptate excepturi dolores qui.\nIn facilis velit sed ducimus.\nAutem et iusto officia voluptatibus.\nOfficiis quod aut maiores aliquam tempora est.\nIn dolorem aut voluptatem aut.\nIllum et enim.\nDicta nam optio neque eaque dolor.\nUt animi corporis et quis corrupti veniam rem nemo iure.",
-      "type": "image",
-      "moduleId": "bandwidth",
-      "name": "Re-contextualized bandwidth-monitored throughput",
-      "link": null
-    },
-    {
-      "id": "3ff3a73f-ed7a-4ab9-bf32-62cb8fc55c3c",
-      "description": "Ullam eum provident doloremque et.\nQuibusdam delectus dolores occaecati cupiditate pariatur.\nMolestiae animi omnis explicabo atque.\nQui quo veniam dolor libero eaque dolorem.\nQuidem et facilis voluptas aut fuga.\nMaxime voluptatem non totam quas maiores sequi aspernatur nam veniam.\nSit temporibus in necessitatibus esse ut voluptatem.\nFugit neque sed illum sit nobis maiores.\nModi perferendis nulla delectus porro est doloribus ipsum corrupti.\nNostrum aut modi eveniet aliquid aut.",
-      "type": "info",
-      "moduleId": "bandwidth",
-      "name": "De-engineered zero tolerance adapter",
-      "link": null
-    },
-    {
-      "id": "405950b3-8690-482f-a9d5-b7ecdc80a4ab",
-      "description": "Deserunt omnis velit et vitae est et consectetur.\nQui quo qui eum voluptatibus velit.\nDicta aut ut quas quasi porro est velit.\nNulla aliquid cumque aliquam omnis voluptatem vel numquam voluptates enim.\nNon nemo mollitia doloribus porro odio et sequi aspernatur.\nAb maxime ipsa non.\nAut explicabo harum nam qui ut impedit non reprehenderit.\nNon molestiae quas sint hic repudiandae.\nAut cupiditate sequi inventore minima.\nAut sint quidem voluptates minima.",
-      "type": "image",
-      "moduleId": "bandwidth",
-      "name": "Innovative dedicated info-mediaries",
-      "link": null
-    },
-    {
-      "id": "42d4e843-80f1-4629-a7f1-b3a70387fb9b",
-      "description": "Nemo natus quis.\nEt alias hic sit.\nPerspiciatis hic consequuntur in culpa repellendus nulla consequatur voluptatibus enim.\nAutem consectetur rerum hic exercitationem voluptas accusantium voluptatem.\nVoluptatibus molestiae incidunt quia ut et architecto placeat placeat id.\nDucimus eaque eum eveniet.\nEt velit non veniam.\nUt eius qui iste voluptas quia et numquam.\nEst id officia et rerum.\nFacere laboriosam doloremque non aliquam repellendus quos ullam fuga.",
-      "type": "quiz",
-      "moduleId": "bandwidth",
-      "name": "Cross-group bifurcated project",
-      "link": "http://old-fashioned-target.name"
-    },
-    {
-      "id": "27b424a1-f97f-49c4-be07-4186da8f032e",
-      "description": "Et iure temporibus autem id distinctio ducimus.\nEarum dolores cupiditate quia numquam blanditiis labore.\nSapiente deserunt velit molestias.\nVoluptates impedit sit blanditiis enim tempore excepturi magnam.\nAsperiores quibusdam quam perferendis nostrum natus.\nRerum quam rerum dolores porro fugit quia sed porro.\nArchitecto et maiores sint aut dolorum provident magni harum.\nEt impedit aut pariatur id.\nEnim similique reiciendis consequatur at ab a eos.\nEa exercitationem ab ipsam sed est inventore qui.",
-      "type": "quiz",
-      "moduleId": "bandwidth",
-      "name": "Customizable dynamic array",
-      "link": "http://exciting-footrest.biz"
-    },
-    {
-      "id": "da726949-b9db-4c02-bae3-4ba770bfc888",
-      "description": "Rerum nostrum in.\nQuia corrupti reiciendis ad omnis accusantium soluta.\nPerferendis et exercitationem enim incidunt.\nEligendi optio quod et autem.\nUt architecto dolores iusto.\nDistinctio qui rem eum et sequi saepe accusantium occaecati.\nOdit rem necessitatibus quo aut temporibus labore eius quam qui.\nMollitia omnis temporibus et.\nEum sed nihil voluptates voluptates corrupti.\nCorporis dolores ipsum nostrum quam sed dolor ea.",
-      "type": "image",
-      "moduleId": "bandwidth",
-      "name": "Multi-tiered holistic open architecture",
-      "link": null
-    },
-    {
-      "id": "08491138-e516-460b-92a3-ede8c0b81c80",
-      "description": "Perspiciatis explicabo omnis dolores ratione velit ea.\nExcepturi ex deserunt mollitia esse numquam qui.\nMaxime voluptate dolorem occaecati quo autem.\nAt accusantium earum modi sapiente quidem voluptatem.\nProvident quo qui commodi temporibus ut ut magnam.\nNon quae laborum ut ex animi doloribus et et.\nDolorum id autem id et.\nReprehenderit accusamus ullam animi sunt dignissimos earum rerum expedita id.\nReiciendis consequatur quis non quia consequatur veritatis aut.\nFacilis labore qui nisi ut impedit soluta.",
-      "type": "image",
-      "moduleId": "bandwidth",
-      "name": "Down-sized composite info-mediaries",
-      "link": null
-    },
-    {
-      "id": "93f04438-c18d-4543-bda0-891b5d1c766e",
-      "description": "Ut eius et.\nDebitis quasi est doloribus nulla provident.\nQui et quod ad odit.\nEt sit fuga hic et.\nDignissimos voluptas soluta.\nFugiat in libero.\nConsequuntur totam maiores et aut tenetur.\nPerferendis iusto ea dolorum.\nEst in quia quasi pariatur consequatur libero.\nPlaceat assumenda sed molestiae nisi quibusdam harum voluptatum accusamus.",
-      "type": "info",
-      "moduleId": "bandwidth",
-      "name": "Function-based even-keeled flexibility",
-      "link": null
-    },
-    {
-      "id": "c1dda27e-0794-4d67-87bb-eb224a37884d",
-      "description": "Omnis tempore enim eius et voluptatibus quia ut qui.\nEx rem dolores aut accusamus ab rerum dicta deleniti consequatur.\nQuasi nisi assumenda possimus ex.\nQuaerat necessitatibus quos enim voluptatum dolorum sint.\nOfficiis dolor quam dolores eius qui repellendus quos est eos.\nEius est magnam voluptatum non consequatur alias aut.\nFacere iste suscipit.\nQuas consectetur labore quas non quae.\nAspernatur nesciunt repellat et.\nAut expedita reprehenderit voluptate sapiente aut et.",
+      "id": "6c75e77e-2c61-4e2f-afe6-d7e1c50d5ffd",
+      "description": "Rem exercitationem aliquid dolore error rem quam.\nBlanditiis voluptatibus impedit et totam.\nA excepturi iure consequuntur rerum soluta.\nEt officiis et molestias nihil.\nOmnis velit enim ut.\nAliquam et at.\nVeniam accusamus officiis perspiciatis sit in dolorum nulla.\nMollitia quam voluptates minima.\nTempore autem facere eligendi officiis officia ut commodi sunt.\nSed sapiente consectetur cumque.",
       "type": "code",
-      "moduleId": "bandwidth",
-      "name": "Networked zero administration utilisation",
-      "link": "http://political-ark.net"
+      "moduleId": "web-readiness",
+      "name": "Front-line fresh-thinking pricing structure",
+      "link": "https://exalted-water.com"
     },
     {
-      "id": "4d7e368e-9e0b-40ad-a113-147f9258965e",
-      "description": "Repudiandae amet aperiam.\nTenetur aut impedit dolor.\nRatione tempora cum ducimus dolorem maiores consequatur aut sapiente quis.\nNemo ut dolorem corporis dolores.\nAperiam dolore voluptate.\nAspernatur consectetur incidunt commodi.\nRem et voluptatem.\nOccaecati illo ipsam doloribus impedit quia laborum quia a.\nBeatae sunt aliquam dolorem.\nEnim quis id repudiandae.",
-      "type": "image",
-      "moduleId": "bandwidth",
-      "name": "Down-sized client-driven Graphical User Interface",
+      "id": "72a4a48b-5208-4c48-a6ad-0dfc38279f39",
+      "description": "Laborum in quod.\nFuga porro quae ad.\nEum cum et aut accusantium et officia reprehenderit.\nId molestiae optio qui excepturi ex.\nAlias beatae modi deleniti rerum dolorem nihil sed molestias.\nEos quis et et voluptas.\nOfficiis et ullam ratione quis voluptatem a vitae natus.\nEnim consequatur et commodi magnam eaque.\nEt necessitatibus deserunt sit possimus et incidunt molestiae voluptatem harum.\nAssumenda id nostrum animi quia accusamus.",
+      "type": "info",
+      "moduleId": "web-readiness",
+      "name": "Function-based motivating approach",
       "link": null
     },
     {
-      "id": "7dbee286-2371-4d50-88fe-dc53af5b5800",
-      "description": "Qui quo ullam adipisci in iure et.\nAsperiores voluptatum sit dicta praesentium velit error.\nNisi qui eos eos praesentium veniam repellendus maxime aut qui.\nEt officia sed a ratione et.\nSoluta nulla sunt.\nAperiam rerum rerum et.\nMagnam sapiente recusandae.\nUt et repellat hic neque sint sunt.\nInventore odio deleniti sint distinctio repudiandae ut.\nEaque fugiat dolorum.",
+      "id": "7cb33091-655c-4781-aaa2-af1160a38bf7",
+      "description": "Quasi beatae est error exercitationem et et ab reprehenderit.\nVoluptatem quae quis.\nLibero sit voluptas.\nAut fugiat cumque deserunt delectus recusandae illum fugiat quia.\nRerum quia autem ipsa neque error eos.\nIllo deserunt rerum similique non sapiente quasi molestias et mollitia.\nIpsam sit rerum.\nRatione est nulla eum explicabo.\nOdio distinctio id.\nEnim rerum pariatur.",
+      "type": "info",
+      "moduleId": "web-readiness",
+      "name": "Team-oriented mission-critical archive",
+      "link": null
+    },
+    {
+      "id": "c3e1e79a-a1c2-4dfc-90b2-26ed207bfce6",
+      "description": "Facere eos ducimus ut iure placeat est fugit qui in.\nExercitationem vero culpa cupiditate saepe error magnam error eius dolor.\nAtque aut in dolore unde sed voluptatibus necessitatibus optio suscipit.\nRerum illo nesciunt dolorem.\nOmnis ad sed eligendi dolor ab quis.\nDicta qui dolor nulla qui et atque quia ut velit.\nIncidunt nulla quisquam commodi necessitatibus rerum cum.\nDeserunt aut voluptates.\nQui explicabo vel eos ipsum.\nUt quidem dolorem ut quia magni non est.",
       "type": "code",
-      "moduleId": "supply-chains",
-      "name": "Cross-platform explicit alliance",
-      "link": "https://radiant-cohort.org"
+      "moduleId": "web-readiness",
+      "name": "Centralized 24/7 access",
+      "link": "https://fond-washer.biz"
     },
     {
-      "id": "55cd9a03-777f-410b-a79a-7b377fdeaf71",
-      "description": "Magnam ipsum sit distinctio commodi voluptate accusamus nihil non.\nDeleniti libero repudiandae recusandae aut nihil omnis assumenda molestias.\nAut quos eligendi quos.\nUt quidem enim ut occaecati nostrum porro consequatur voluptatem vel.\nSimilique voluptate dolorem rerum quas minus accusamus.\nEa consequatur consequatur dolore esse velit fugiat et aut.\nSequi possimus excepturi iusto nesciunt.\nDeleniti velit unde corrupti voluptatem aliquam quaerat aut.\nDignissimos sint repudiandae.\nQui qui quas aut at voluptatibus eligendi sunt quis ut.",
-      "type": "quiz",
-      "moduleId": "supply-chains",
-      "name": "Reverse-engineered interactive contingency",
-      "link": "http://gray-teletype.biz"
-    },
-    {
-      "id": "45241a3d-12ee-4737-8bfe-8b175870be21",
-      "description": "Quaerat saepe voluptatum et voluptates est aut aliquam ipsum.\nCumque aliquam eveniet aut non nisi dolores repellat facilis id.\nNemo est animi quam ratione voluptas delectus suscipit ut.\nReiciendis accusamus voluptatum numquam dolorem assumenda quod doloremque officia voluptatem.\nIncidunt nihil quisquam maxime rerum eius voluptate.\nMolestiae rem praesentium ut aut qui aut.\nDicta molestias odit molestiae.\nQuis cumque commodi aut qui est rem non.\nIure neque cumque numquam optio quos.\nSimilique quisquam molestias ex consequatur tenetur id.",
-      "type": "image",
-      "moduleId": "supply-chains",
-      "name": "Switchable global firmware",
-      "link": null
-    },
-    {
-      "id": "720f75bf-56be-45fd-b771-17d3b1275232",
-      "description": "Qui nihil minus est ducimus error laborum.\nDebitis quaerat voluptas neque nulla.\nRatione qui impedit nisi incidunt.\nVoluptates qui officiis quaerat ratione enim at.\nDolores praesentium laboriosam ut ad aut accusantium voluptas molestiae.\nSed minus facilis aut sed qui accusantium ducimus sequi maiores.\nIllum dolorum iure fugit non omnis incidunt dolore aliquam.\nRecusandae fugiat sed rem est tenetur.\nIllo numquam necessitatibus dolores et voluptates cum deleniti quas.\nLaborum fuga fugiat.",
-      "type": "image",
-      "moduleId": "supply-chains",
-      "name": "Front-line intermediate function",
-      "link": null
-    },
-    {
-      "id": "c5c3474c-02e3-44e3-b516-6df3c487df2a",
-      "description": "Error qui nisi sit omnis expedita.\nOdio cumque blanditiis neque dolorum est.\nRerum dolor pariatur aut quibusdam id explicabo.\nQui eum tenetur iste et maxime.\nCum doloribus id.\nDeleniti sit sed.\nTempora molestiae doloremque fugit maxime quidem quam et quis.\nPariatur ut debitis qui excepturi sit quo provident.\nA consequuntur saepe voluptatibus velit deserunt numquam.\nQuaerat veritatis ut rerum ut quaerat alias.",
-      "type": "quiz",
-      "moduleId": "supply-chains",
-      "name": "Advanced fault-tolerant adapter",
-      "link": "http://shocked-seeder.org"
-    },
-    {
-      "id": "741af908-1a3b-487d-be64-e068271bc47b",
-      "description": "Est tenetur dignissimos.\nArchitecto ullam libero odio provident minima dolorem qui officiis.\nQuod officiis magni.\nEst officia sed numquam.\nIncidunt vero qui incidunt qui.\nOmnis totam qui ullam.\nNisi eos omnis rerum veniam et id.\nProvident libero rem et.\nEius accusantium nemo ut quibusdam repellendus.\nTempora sunt sit eum adipisci iusto a perferendis ad.",
+      "id": "88f4f6e9-42d0-4aed-bb57-742979a16c27",
+      "description": "Et porro dolorem aspernatur explicabo occaecati dolores sed voluptatem.\nOdit et quos quia qui voluptas.\nVoluptas tempore rerum exercitationem quod accusamus reprehenderit quas.\nTemporibus repellendus qui iusto quia earum beatae fuga.\nDicta vitae fugiat dolores et soluta aut harum perspiciatis error.\nSimilique quos sunt ut dolore alias.\nEt quod dignissimos aliquam numquam et expedita consequatur et.\nCumque explicabo in aspernatur molestias officia culpa et enim fuga.\nRepellat saepe velit nostrum et corporis necessitatibus pariatur.\nEveniet ad deleniti laboriosam nisi perspiciatis similique distinctio.",
       "type": "info",
-      "moduleId": "supply-chains",
-      "name": "Pre-emptive neutral conglomeration",
+      "moduleId": "web-readiness",
+      "name": "User-centric explicit flexibility",
       "link": null
     },
     {
-      "id": "0a25b40f-6027-474c-8396-cbec4a00974e",
-      "description": "Ad labore dolore dolor est voluptas dolor optio nihil.\nQui et laudantium ullam sequi sed dignissimos temporibus laborum et.\nOptio quia suscipit eum ut blanditiis qui ullam.\nPlaceat aliquam dolorum quibusdam omnis vero.\nNon possimus omnis quam.\nIure voluptatem excepturi facilis est eligendi hic totam eius.\nProvident hic asperiores rem.\nDolorum aut eum autem et suscipit esse praesentium voluptatibus saepe.\nRepellat molestias natus est odit occaecati.\nDeleniti deleniti incidunt est exercitationem alias vel sed magni.",
-      "type": "quiz",
-      "moduleId": "supply-chains",
-      "name": "Phased grid-enabled functionalities",
-      "link": "https://webbed-god.biz"
-    },
-    {
-      "id": "48585e13-44a0-464b-a201-3cc9f1180018",
-      "description": "Aliquid voluptatem ab ut quis consequuntur eligendi.\nEa ex velit qui dolore sequi illum beatae aut.\nVoluptatem tempora cum nobis ducimus repellat et consequatur distinctio.\nEum et delectus debitis saepe totam laudantium ipsa est.\nEst repudiandae at rerum fugit.\nA quibusdam non.\nTenetur blanditiis hic est enim sed.\nVitae corrupti expedita saepe tempore est optio.\nDolorem sit nulla.\nVeritatis nobis et dicta est quidem eum.",
-      "type": "info",
-      "moduleId": "supply-chains",
-      "name": "Streamlined national emulation",
-      "link": null
-    },
-    {
-      "id": "40b74515-4cd0-4d77-b92d-9e3831090830",
-      "description": "Illum voluptate culpa autem est ratione nam sunt alias qui.\nId voluptas at odit voluptatibus quaerat modi aut.\nNumquam fugit dignissimos.\nCorporis dolore ratione doloremque non ipsam.\nSapiente quibusdam dolorem soluta.\nPraesentium dolore nihil possimus voluptates sit.\nTotam ut minus id.\nAliquid odit repudiandae nihil doloremque.\nExplicabo beatae accusantium est nesciunt commodi id aut quae.\nSunt tempore id.",
+      "id": "c6d08860-3aff-4865-ad40-566c4a1af358",
+      "description": "Et in ut laboriosam architecto quas eos optio voluptatem quas.\nAut iste molestiae.\nDucimus culpa sit atque temporibus dolorem sint.\nSit quasi perspiciatis non consequatur.\nTemporibus saepe necessitatibus incidunt vitae est quod blanditiis cumque enim.\nVeniam quo aspernatur optio minima quia occaecati nostrum.\nNon temporibus inventore sit.\nVoluptas quae est in delectus deleniti.\nEst atque minima est asperiores commodi omnis dolorem.\nConsectetur commodi voluptate molestiae voluptatum in delectus provident eum labore.",
       "type": "code",
-      "moduleId": "supply-chains",
-      "name": "Object-based zero administration workforce",
-      "link": "https://incomparable-pacemaker.org"
+      "moduleId": "web-readiness",
+      "name": "Robust dynamic flexibility",
+      "link": "http://shimmering-blue.biz"
     },
     {
-      "id": "bac95263-40e9-4430-ad7f-7a01dc89be13",
-      "description": "Voluptatem quisquam enim fugit voluptas est quidem corrupti eligendi.\nEst maiores cum assumenda quasi tempore ut.\nEum ut atque in id nisi quam dolor laudantium.\nEligendi delectus qui ipsam explicabo aspernatur.\nPerspiciatis qui officiis et sequi corrupti.\nHarum aut totam officiis aut pariatur doloribus quaerat.\nRecusandae velit culpa.\nAut voluptatem consequatur consequatur repellendus voluptas.\nQuis ut saepe est dolorem.\nDolorum consequatur eos nam dolores architecto sed.",
-      "type": "quiz",
-      "moduleId": "supply-chains",
-      "name": "Digitized neutral access",
-      "link": "https://remarkable-heavy.info"
-    },
-    {
-      "id": "164c4e51-5693-4a3d-a047-0d2888f98e42",
-      "description": "Provident nisi eum est blanditiis facilis dicta aut autem nihil.\nBlanditiis alias laudantium praesentium voluptatem dolores a aspernatur.\nSed blanditiis sequi aut voluptas sit numquam a quae accusamus.\nDolorum aut quos architecto.\nDeserunt accusantium laudantium pariatur dolores voluptatem incidunt autem.\nUt quia vel doloremque non amet voluptatem officiis ut quod.\nVoluptatem dolorem qui ut.\nEt commodi enim.\nPlaceat consequatur deserunt sit quia minus repellendus molestiae totam.\nQuibusdam reprehenderit necessitatibus.",
-      "type": "quiz",
-      "moduleId": "systems",
-      "name": "De-engineered bi-directional implementation",
-      "link": "http://stale-perch.info"
-    },
-    {
-      "id": "7dc58c5f-869f-4509-8e75-2387b3f02b2c",
-      "description": "Quod repellendus esse eveniet earum repudiandae.\nAsperiores et eum in eius nam.\nDolor quos accusamus officia.\nConsequatur omnis amet quasi natus et iure eveniet expedita nostrum.\nDolor suscipit ullam consequuntur quis.\nNisi rem cum voluptate facilis omnis cumque.\nEveniet voluptatum quia delectus a in.\nNostrum qui dolores quo.\nVel earum molestiae voluptatem quia.\nNeque exercitationem hic in qui cum debitis.",
-      "type": "image",
-      "moduleId": "systems",
-      "name": "Implemented systematic capability",
-      "link": null
-    },
-    {
-      "id": "b864d909-f93c-48e7-bb1e-54e1ef9202ab",
-      "description": "Nobis qui illo rem omnis aut fugiat aut doloremque.\nQui libero quidem distinctio sit quia.\nAssumenda illum corporis quia est dolore dicta accusamus sint.\nVoluptas eius aliquam facere a.\nPerferendis optio sed alias consequatur beatae sint sed quo.\nOmnis est eum nulla alias illo accusamus aut ad officia.\nMaiores id ut assumenda voluptatibus et et iure qui commodi.\nQuo enim minus autem cupiditate quis nisi sunt consequatur magni.\nQui dolores quia.\nMinima voluptatibus eos consequuntur.",
-      "type": "info",
-      "moduleId": "systems",
-      "name": "Monitored responsive emulation",
-      "link": null
-    },
-    {
-      "id": "b09726ff-a81b-4b24-ace6-74ea8cb08b45",
-      "description": "Laudantium similique sint sed veritatis suscipit.\nLibero reprehenderit dolor fugit facilis magnam unde.\nConsequatur voluptas tempora consequatur et voluptates blanditiis iusto enim aut.\nQuo explicabo neque nobis cum soluta ea facilis praesentium.\nDelectus porro cumque corporis architecto et perferendis provident.\nEst nobis molestiae.\nUt qui veniam non nobis eos.\nHic libero consequuntur porro ut omnis quia adipisci enim.\nQui dicta animi laudantium ut autem qui dicta.\nDignissimos earum ea modi sint asperiores exercitationem id.",
-      "type": "image",
-      "moduleId": "systems",
-      "name": "Visionary national productivity",
-      "link": null
-    },
-    {
-      "id": "f34dfedf-2060-4036-937c-a3a44492f142",
-      "description": "Dolore ipsa numquam quisquam et est.\nAut quia error est quasi eaque est ad.\nNatus amet maxime iusto.\nUllam est dicta ut at nostrum dolor beatae fugit ipsam.\nLaudantium quia doloribus.\nVel pariatur recusandae veritatis.\nDolor aperiam autem vel rerum.\nEst fugit nam molestiae.\nQuia numquam optio.\nUt sint exercitationem.",
+      "id": "ce9a7f09-d8a2-4c9a-b148-16447063c584",
+      "description": "Architecto reiciendis ullam qui blanditiis.\nVoluptatem et qui quia.\nQuas voluptatibus est aut natus consequuntur inventore veniam.\nNobis consequatur accusantium ipsam.\nItaque officiis quia consequuntur dolor doloremque et.\nDignissimos id et odit aspernatur.\nConsectetur dolor fugiat adipisci est consequatur voluptatibus placeat praesentium.\nAutem accusamus veniam sed vitae pariatur sint molestiae officiis nobis.\nQui error tenetur non doloremque aliquid veritatis autem.\nEarum et facere sit.",
       "type": "code",
-      "moduleId": "systems",
-      "name": "Expanded background knowledge base",
-      "link": "http://rowdy-storey.biz"
+      "moduleId": "web-readiness",
+      "name": "Face to face eco-centric protocol",
+      "link": "http://masculine-mother.net"
     },
     {
-      "id": "326e52d0-766f-40f1-b41b-3892e7c14bec",
-      "description": "Magnam qui ipsum occaecati ipsa non pariatur.\nEst facere necessitatibus.\nFugiat voluptatibus aliquid ipsam illo esse magnam.\nBlanditiis aperiam a neque aut omnis.\nTempora veritatis occaecati.\nQuis dolore et ad molestias maxime odio impedit.\nFuga qui rerum nulla quos provident eveniet nisi maiores sit.\nQuisquam dolores officiis veniam tempore et ipsam delectus aut praesentium.\nAt laborum voluptatem.\nDolorem veritatis distinctio sequi ducimus quia.",
-      "type": "image",
-      "moduleId": "systems",
-      "name": "Streamlined uniform artificial intelligence",
-      "link": null
-    },
-    {
-      "id": "0752fdf1-9108-4d63-a3a5-e7a539c00bb8",
-      "description": "Non quam quae nobis eaque porro.\nIllo beatae voluptatem recusandae porro nam vel voluptate iste.\nRem iste aperiam maxime eum.\nQuas placeat est quasi consequatur et at.\nDolorum commodi debitis odio cumque excepturi.\nAutem culpa est.\nEsse ipsam dolor dolor nihil.\nDeleniti voluptatem nihil quam.\nAccusamus ut exercitationem porro repellendus dolore aliquam voluptate et magnam.\nEst unde reiciendis.",
-      "type": "quiz",
-      "moduleId": "systems",
-      "name": "Streamlined web-enabled hierarchy",
-      "link": "http://wilted-arm-rest.org"
-    },
-    {
-      "id": "a7200017-9ef4-4a5c-9935-3db886ca33a3",
-      "description": "Et ut possimus necessitatibus id quibusdam ut.\nDelectus nemo quam ex non et nemo nulla.\nDolore sunt reiciendis.\nTempore illo in eum velit atque architecto autem atque repellendus.\nIncidunt nesciunt quo et tenetur ut illum et eos quibusdam.\nProvident eos ea voluptates laboriosam delectus aspernatur.\nAut quis placeat fugiat.\nPossimus reiciendis voluptate.\nQuo nihil nulla voluptas quo dolores distinctio.\nA est alias aut.",
+      "id": "e560249f-b430-441d-b6f9-0005847700d9",
+      "description": "Sed quas fuga nostrum quibusdam et occaecati debitis architecto voluptatem.\nAspernatur dolores qui autem magnam aut aut aliquam.\nLaboriosam omnis dolor error porro molestias.\nQuia rem aut.\nRecusandae voluptatem et.\nIusto quibusdam quasi non similique a animi blanditiis eum minima.\nIllo tenetur ad sunt.\nPerspiciatis at sed quae qui.\nPossimus sint magni dignissimos.\nInventore et eius velit.",
       "type": "info",
-      "moduleId": "systems",
-      "name": "Enterprise-wide local matrices",
+      "moduleId": "web-readiness",
+      "name": "Down-sized needs-based architecture",
       "link": null
     },
     {
-      "id": "0d9f7595-1639-4226-997a-6f0e5c005217",
-      "description": "Possimus doloremque autem debitis consequatur autem deleniti enim.\nVoluptatem quae fuga in et quos magnam sit.\nQui quos dolores et possimus aut.\nVel reprehenderit labore in culpa est iste beatae omnis ab.\nSed magni eum ea.\nPerspiciatis officiis quia excepturi eum.\nA est laborum nesciunt est qui quibusdam.\nSint velit et molestias quae dolore.\nQuas voluptates quasi deleniti.\nSaepe error rem fugiat voluptatem.",
-      "type": "image",
-      "moduleId": "systems",
-      "name": "Profit-focused transitional array",
-      "link": null
-    },
-    {
-      "id": "a9bef9f6-c068-4339-bcab-545936dbc131",
-      "description": "Est repudiandae totam earum.\nQuia iusto qui.\nAliquid eum iste dolores ut quo nisi veritatis.\nRatione eos voluptatibus omnis temporibus eum nihil et ut.\nFugit odio harum aperiam itaque est fuga placeat perferendis.\nQuasi delectus magnam deserunt pariatur.\nImpedit et incidunt fuga sunt dicta dolor minus officia.\nVoluptas dolorem quas molestiae tempore.\nDolor porro blanditiis sunt.\nReiciendis quia sint.",
-      "type": "info",
-      "moduleId": "systems",
-      "name": "Optimized tangible info-mediaries",
-      "link": null
-    },
-    {
-      "id": "235be7bd-0447-4f75-9517-0dbf3ff7cd3c",
-      "description": "Eos doloribus in error.\nMolestiae rerum ut repellat libero.\nRepellendus rerum et harum ea quo rem sequi neque ipsam.\nAtque eius quod quo ullam recusandae quia.\nSit et neque.\nOfficiis ut temporibus cum molestias.\nSint dolore doloremque quos asperiores ut ducimus assumenda quaerat.\nMagni accusantium culpa officia expedita non ex.\nNihil autem alias consequatur.\nAspernatur commodi sit.",
-      "type": "image",
-      "moduleId": "methodologies",
-      "name": "Open-source neutral pricing structure",
-      "link": null
-    },
-    {
-      "id": "68c5846b-69e8-4735-970d-db80bdcd0f41",
-      "description": "Aut placeat quo tempora minus nobis quasi unde.\nPlaceat possimus et.\nMolestiae et voluptate qui odio est.\nDolores optio laudantium cum.\nIn pariatur sed mollitia deleniti.\nVel dicta tempore vel in molestiae commodi blanditiis officia.\nQuis enim officia atque sed voluptate eligendi nesciunt omnis.\nAut atque molestiae et.\nSint aut qui.\nSaepe autem et.",
+      "id": "fc3dde68-ab20-4238-9644-b7085f50ce0f",
+      "description": "Et hic qui numquam qui voluptas nesciunt.\nSit molestiae aut eos pariatur quasi aliquam qui cumque omnis.\nRepellendus qui perferendis sit eum rerum totam.\nRerum ea perferendis.\nNihil mollitia eum aspernatur laudantium culpa sed vero sed.\nAdipisci omnis similique est sit nihil.\nIn corrupti libero sit aut.\nSuscipit beatae illo maxime voluptatem ut laboriosam dolorem.\nOfficiis impedit odio autem eius quibusdam quos ut sed.\nPorro voluptatem occaecati et dolorem.",
       "type": "code",
-      "moduleId": "methodologies",
-      "name": "Upgradable background migration",
-      "link": "http://graceful-patio.info"
+      "moduleId": "web-readiness",
+      "name": "Grass-roots needs-based core",
+      "link": "http://elastic-amendment.biz"
     },
     {
-      "id": "4d3081bd-d57f-4da3-8651-6ac19c61eba2",
-      "description": "Quia nesciunt repellat animi laborum quis ea eos.\nAtque corporis aspernatur magni tempora dolor repellat.\nDolorum reiciendis magni odit ea nulla qui.\nAliquam possimus doloremque non.\nEa corporis sapiente eligendi id voluptatem et qui.\nModi et voluptas.\nDolore et blanditiis sit atque maiores dolor esse officiis dolor.\nIn corrupti inventore non occaecati qui accusamus ut.\nUt voluptatem voluptatem blanditiis hic temporibus nam voluptate ut qui.\nDebitis et dolore sapiente unde non eum aut.",
-      "type": "info",
-      "moduleId": "methodologies",
-      "name": "Integrated interactive adapter",
-      "link": null
-    },
-    {
-      "id": "31775d7e-3db1-43c8-8985-61a1b459ffcf",
-      "description": "Et fugit esse qui impedit.\nSint odit veniam officia alias eaque cupiditate.\nRepellat porro et dolorum temporibus vel quisquam qui.\nQuia eaque expedita tempore.\nMinus nesciunt necessitatibus quae quasi cupiditate asperiores.\nProvident ipsa dolorum debitis omnis exercitationem vero cumque consequuntur maiores.\nVelit rem qui quasi.\nQuo doloremque neque.\nIn et voluptas laborum totam voluptates laudantium qui ea nisi.\nNon vitae et.",
-      "type": "info",
-      "moduleId": "methodologies",
-      "name": "Mandatory user-facing encryption",
-      "link": null
-    },
-    {
-      "id": "a31018be-b230-4b4c-b701-4b73c41e7783",
-      "description": "Sint explicabo qui aut eos ut aliquid est.\nMolestias asperiores ducimus rerum veritatis eum et ullam.\nUt ea qui.\nOmnis ipsa ducimus nisi enim corporis quis qui libero consequatur.\nEst aliquid nostrum quo qui suscipit molestiae voluptatibus quis.\nVoluptatibus nobis quia.\nLibero sed enim esse sint quia non delectus qui.\nLaborum quia esse eos molestias natus.\nEt voluptas non enim quibusdam et eligendi fuga.\nBeatae voluptas optio amet magnam laudantium esse perferendis.",
+      "id": "880b4048-6968-470e-8ebc-7d638ee5a116",
+      "description": "Cupiditate rem ea quidem praesentium.\nQui dolorum voluptatem cumque commodi ex necessitatibus commodi.\nVoluptas fugit dolorem est amet excepturi velit provident maxime doloribus.\nDolor dolore ut non.\nRecusandae et ut quia.\nTempore debitis quis quam voluptatibus tenetur odit.\nAspernatur dolorem voluptate minima aut a explicabo.\nPerspiciatis laboriosam repellendus earum suscipit minus molestiae in et.\nQuia sit at aperiam consequatur.\nRatione fugiat doloribus.",
       "type": "code",
-      "moduleId": "methodologies",
-      "name": "Quality-focused bottom-line Graphical User Interface",
-      "link": "http://hasty-yin.info"
+      "moduleId": "web-readiness",
+      "name": "Triple-buffered static service-desk",
+      "link": "http://tiny-monument.org"
     },
     {
-      "id": "83a12e33-e6e0-4bb8-b3bc-19f4eaab3fac",
-      "description": "Enim cupiditate aut dolorem enim nemo animi non nesciunt laboriosam.\nAutem error est aut quas dolores.\nUllam voluptas quae laborum.\nUt voluptas autem.\nSed blanditiis fugiat adipisci quasi sit corrupti.\nVoluptas quo voluptas est.\nIure commodi voluptatem earum nulla consequatur quis consequatur delectus.\nArchitecto et ut velit et animi alias quod voluptas non.\nMolestiae non dolore eum dolores reprehenderit.\nSunt explicabo nisi et aut praesentium.",
-      "type": "quiz",
-      "moduleId": "methodologies",
-      "name": "Re-engineered solution-oriented migration",
-      "link": "https://homely-baboon.info"
-    },
-    {
-      "id": "f9b06ebb-1b53-4493-803c-58c57f7e44e7",
-      "description": "Quod facere officiis et dolore sunt earum quis laudantium porro.\nItaque non est enim.\nQuo sequi et temporibus iste aut dolore voluptatem aut.\nNihil quidem quod qui.\nSequi saepe beatae consequuntur placeat.\nCupiditate numquam deserunt.\nEt atque sequi suscipit quis qui earum et nesciunt.\nEt nihil accusamus ut eius.\nVoluptates eos ducimus omnis illo culpa.\nFacere voluptas quos quis rerum aut qui hic dolore.",
-      "type": "image",
-      "moduleId": "methodologies",
-      "name": "Expanded user-facing internet solution",
+      "id": "d20a4f63-a680-4081-a844-2b5d74d50fbc",
+      "description": "Sit itaque dolores repellendus enim rerum occaecati aperiam et quisquam.\nCumque sapiente commodi.\nQuia veniam inventore minima beatae.\nQuaerat aut eum autem nostrum asperiores.\nSunt harum non accusantium ut at ex.\nSoluta id molestias in odit facere dolore.\nDoloremque excepturi reiciendis inventore accusamus.\nTemporibus blanditiis possimus est nesciunt maxime quod cumque esse.\nQui ut consequatur modi nihil debitis necessitatibus.\nCorrupti voluptatem possimus provident omnis qui distinctio molestiae quisquam.",
+      "type": "info",
+      "moduleId": "partnerships",
+      "name": "Advanced web-enabled function",
       "link": null
     },
     {
-      "id": "8d50961c-71c6-45da-83df-9947090ffb28",
-      "description": "Molestias soluta laboriosam velit sequi.\nOmnis amet quae sed.\nIn velit nam ea.\nDucimus et quisquam alias iusto est.\nMollitia iste architecto velit sint ducimus quod fugit laboriosam aut.\nAnimi ipsam numquam cumque unde.\nVitae delectus saepe placeat explicabo ut inventore corrupti eaque itaque.\nImpedit tenetur hic.\nPlaceat dolores at recusandae cupiditate et dolor animi.\nEt itaque excepturi ab ea culpa dolor temporibus.",
+      "id": "4cf341b2-49cb-4d20-a087-2a0cff5ec724",
+      "description": "Enim unde aspernatur sed ducimus nihil est laudantium fugiat.\nDolor quia iusto facere dolor odio unde rerum eum porro.\nDicta distinctio esse.\nAssumenda temporibus est repellat provident quia dolor incidunt voluptatem.\nEt laboriosam quod eos.\nReiciendis molestias soluta sapiente cupiditate cum dolor autem molestiae.\nNon repellat blanditiis atque nisi accusamus consequatur.\nEligendi provident officia architecto non quo saepe exercitationem.\nEaque voluptate similique.\nAperiam id neque autem.",
+      "type": "info",
+      "moduleId": "partnerships",
+      "name": "Automated bottom-line utilisation",
+      "link": null
+    },
+    {
+      "id": "1790375d-8ead-4e9f-a308-16de0bee79c5",
+      "description": "Laboriosam assumenda sit necessitatibus rerum.\nMolestiae neque eligendi aut ad facilis molestiae voluptas.\nQuidem saepe doloribus ut aut maiores.\nOdio repellendus error ut voluptatum et in.\nConsequatur at deserunt enim iure.\nHic aliquam eius.\nIpsum nostrum doloremque qui facilis.\nBlanditiis commodi magni eum.\nMinima tempore nulla odit quis repellat ipsam minima.\nEsse dignissimos est voluptatum eum et dolorem quia.",
       "type": "code",
-      "moduleId": "methodologies",
-      "name": "Synergistic multi-tasking contingency",
-      "link": "https://knotty-arcade.org"
+      "moduleId": "partnerships",
+      "name": "Extended client-driven framework",
+      "link": "http://far-vendor.info"
     },
     {
-      "id": "4cc3e498-e34a-4bc0-a585-d7ea646810c0",
-      "description": "Recusandae aliquid molestiae ipsam sed labore cum.\nExercitationem recusandae a id velit et.\nVoluptatem ducimus beatae doloremque.\nAut aliquam unde dolores saepe est illo.\nDolor architecto sit officiis voluptatum rem sequi in quisquam quo.\nIusto et eos rem dolorem magni.\nEt labore ullam eos.\nAlias et aliquam.\nQuia quo sunt.\nAut voluptatibus qui rerum veritatis nam.",
-      "type": "quiz",
-      "moduleId": "methodologies",
-      "name": "Configurable methodical core",
-      "link": "https://brave-text.biz"
+      "id": "77ccc680-93f9-495f-8ff4-48b1989a0779",
+      "description": "Repudiandae aut et vero quia qui excepturi ea alias rem.\nEst ut voluptatem ipsa eligendi qui sit.\nConsectetur eligendi commodi.\nFacere ipsam enim vero ipsam.\nQui accusantium illum architecto modi numquam quia.\nSit numquam id autem culpa rerum dolor aliquam sed.\nMaiores adipisci nisi qui.\nNesciunt est hic excepturi repellendus est.\nNihil et omnis fuga ipsum.\nEst ipsa delectus saepe.",
+      "type": "code",
+      "moduleId": "partnerships",
+      "name": "Monitored disintermediate synergy",
+      "link": "http://similar-nest.biz"
     },
     {
-      "id": "2c01ea38-bf09-4533-a059-1a3df42b8019",
-      "description": "Labore eaque voluptatem minima quibusdam odio modi repudiandae aut aut.\nItaque eos nulla.\nVoluptas aliquid sit temporibus doloremque enim et quos.\nEt ipsam consectetur.\nEum alias aut at necessitatibus unde necessitatibus.\nRepudiandae vitae deleniti cupiditate sit et deserunt.\nNatus omnis dolor placeat saepe voluptatem natus pariatur sequi voluptatem.\nAccusantium id ea.\nVoluptas corrupti laudantium fuga voluptatem.\nMinima sint quo est quos recusandae eos et.",
-      "type": "quiz",
-      "moduleId": "methodologies",
-      "name": "Organized asynchronous data-warehouse",
-      "link": "https://insidious-candidate.name"
+      "id": "aab52762-f477-4b96-89e0-35305467bf3e",
+      "description": "Sapiente voluptas inventore adipisci error magnam omnis placeat perspiciatis perspiciatis.\nNemo quo fugit.\nLibero quia qui occaecati.\nVoluptatem et rem consequuntur dolorem voluptas.\nNihil aliquid et qui harum voluptate dolore.\nUnde qui et architecto consequuntur dolores architecto quis nihil.\nAspernatur dolor nesciunt.\nReprehenderit et sit doloribus.\nQuaerat expedita quo est dolorum ullam autem.\nVeritatis distinctio qui iure dicta tenetur.",
+      "type": "code",
+      "moduleId": "partnerships",
+      "name": "Upgradable contextually-based protocol",
+      "link": "http://prickly-dressing.com"
+    },
+    {
+      "id": "2243f8a8-568b-49d7-b805-17b6f040a05a",
+      "description": "Provident exercitationem sapiente aut qui soluta vitae.\nSint dolores pariatur ut.\nEaque doloremque id quibusdam.\nNihil ut sit voluptates.\nEt facilis provident.\nVoluptatem excepturi delectus.\nAut aut aliquam excepturi explicabo esse mollitia voluptatum.\nQuidem sint itaque impedit corrupti.\nIusto veniam unde qui impedit aspernatur.\nAut distinctio asperiores consequuntur ratione et et neque ut quo.",
+      "type": "code",
+      "moduleId": "partnerships",
+      "name": "Switchable scalable software",
+      "link": "http://troubled-rush.com"
+    },
+    {
+      "id": "8d3b863f-5275-49fe-ae40-791cba2a77e5",
+      "description": "Incidunt ut corrupti magni enim quia nihil.\nQuo similique molestiae dignissimos velit.\nSunt adipisci aut.\nQuas eum hic necessitatibus vel sed provident aut omnis.\nPossimus laboriosam voluptas nihil iure nam repellendus reiciendis earum dolores.\nEa ipsam tempora aperiam facere doloremque sit voluptatibus architecto quisquam.\nAut similique perspiciatis ab.\nTempore aspernatur tenetur magnam totam debitis consequuntur et.\nDolor et molestias non a aut dolor quasi suscipit officiis.\nEt nam ullam dolor.",
+      "type": "code",
+      "moduleId": "partnerships",
+      "name": "Implemented reciprocal superstructure",
+      "link": "http://animated-tent.name"
+    },
+    {
+      "id": "24892a44-1059-4f6e-a134-f5caeb6e5880",
+      "description": "Quidem itaque sit quisquam voluptas voluptatem.\nFuga temporibus rerum quia delectus ullam.\nRerum est vero omnis officiis exercitationem ipsa dolorum suscipit assumenda.\nEt cupiditate velit odio sint.\nAutem tempore vitae.\nAut nihil eos eum dolor ut sed neque et at.\nSit voluptatum tenetur quia ut et.\nSint debitis libero sapiente voluptas inventore recusandae id quisquam.\nNulla incidunt sint est vel id qui.\nNecessitatibus quisquam architecto modi non ipsum magni doloremque aut deserunt.",
+      "type": "code",
+      "moduleId": "partnerships",
+      "name": "Distributed tangible synergy",
+      "link": "https://meaty-assertion.info"
+    },
+    {
+      "id": "8023f9a4-a32e-44ed-80c4-2091bce447bb",
+      "description": "Aut sit commodi.\nAlias labore fuga quia.\nSit itaque vero architecto est.\nIn consectetur nulla praesentium iusto blanditiis dignissimos harum facilis.\nAut laboriosam modi qui et.\nConsequatur tenetur quis maxime.\nNobis reiciendis fuga saepe est non voluptas consectetur porro.\nAccusamus eius corporis.\nAssumenda quam qui perferendis.\nEaque ex velit.",
+      "type": "code",
+      "moduleId": "partnerships",
+      "name": "Implemented motivating definition",
+      "link": "https://spicy-press.net"
+    },
+    {
+      "id": "18e41aee-758e-4623-80ec-e9c140b89a02",
+      "description": "Et fuga laboriosam facere sint qui.\nAd in facilis et delectus autem.\nQui nostrum sed reiciendis harum officia voluptatem.\nOptio est non qui molestiae.\nRepellat dolor qui nisi sed repudiandae.\nEa suscipit ipsum.\nIn similique vel consectetur quas id.\nRepudiandae modi qui corrupti voluptates molestiae odit omnis.\nVoluptatibus sint qui aperiam incidunt dolore.\nNihil illo aut est sit.",
+      "type": "code",
+      "moduleId": "partnerships",
+      "name": "Customer-focused didactic framework",
+      "link": "https://pitiful-rap.com"
+    },
+    {
+      "id": "9de0bee2-af5a-45ea-a545-09ef06e693ca",
+      "description": "Dolores magnam consequatur sed.\nSint sint maxime mollitia culpa id unde eos quaerat.\nAnimi ducimus magnam dolores quis.\nSuscipit alias cupiditate.\nEst nisi magni quo sint mollitia atque animi eos consequatur.\nModi ipsum est voluptas quibusdam laboriosam.\nQuam quia temporibus aut quidem eos dolorum consequatur ratione.\nQuis vero omnis eveniet est voluptatum est asperiores blanditiis praesentium.\nEst veniam ea sed voluptatem.\nAut facilis enim exercitationem necessitatibus voluptatem molestias omnis quo.",
+      "type": "code",
+      "moduleId": "users",
+      "name": "Programmable methodical utilisation",
+      "link": "http://cold-goldfish.info"
+    },
+    {
+      "id": "527fae11-8049-4ff9-8c9d-d099a077481a",
+      "description": "Sint nihil iste omnis temporibus nobis.\nDicta perspiciatis ratione mollitia magnam.\nAperiam est incidunt omnis aliquid officiis dolore impedit.\nDebitis omnis atque nam odit ea mollitia qui.\nEa eum voluptatem consectetur.\nLaborum dolores quia alias.\nAut doloribus earum voluptatum a.\nModi voluptas error iure veritatis ut non sed enim et.\nSaepe repudiandae velit dolorum quaerat.\nDucimus velit voluptatem incidunt ut eius nobis qui.",
+      "type": "code",
+      "moduleId": "users",
+      "name": "Reactive national knowledge user",
+      "link": "http://automatic-try.info"
+    },
+    {
+      "id": "c5b12e27-e8a1-45e2-b71c-20d9d7063931",
+      "description": "Ut accusamus voluptates nobis.\nAut ullam et fugit illo nam vel suscipit at.\nSed modi consequatur itaque illo.\nEnim soluta aspernatur.\nCulpa aut magnam.\nPraesentium id sapiente ut est.\nTempora dicta eum beatae consequatur et voluptatum voluptatem.\nEsse doloribus neque praesentium facilis laudantium facere officiis nostrum hic.\nSit facilis unde delectus soluta et et id numquam.\nFacilis omnis praesentium dolore consequuntur optio.",
+      "type": "info",
+      "moduleId": "users",
+      "name": "Vision-oriented responsive function",
+      "link": null
+    },
+    {
+      "id": "a7892058-9871-4080-ae83-448791cd7d16",
+      "description": "Reprehenderit nisi quia sint quam quo laudantium.\nDolor non qui ab similique sit quos.\nA voluptatem laudantium ex.\nQui repellendus dolores aliquid voluptatum eaque deserunt.\nAperiam voluptatem nemo quis nemo et assumenda pariatur quod corrupti.\nEst impedit maxime.\nDicta recusandae culpa ut tempora ea.\nRerum eos facilis hic nihil dolorum sunt.\nEt est omnis aut accusantium magnam nihil.\nVelit neque voluptas.",
+      "type": "info",
+      "moduleId": "users",
+      "name": "Devolved dynamic workforce",
+      "link": null
+    },
+    {
+      "id": "5dcfbbfe-70f4-4307-aaf8-6a639cc76625",
+      "description": "Eaque quibusdam expedita et doloremque esse illum error.\nOfficiis voluptatem in et sunt quis error vitae molestiae.\nRerum magni dignissimos enim ab placeat quia id.\nAliquam accusantium rerum voluptatem quas sint voluptas nulla molestias.\nQuia aut laborum explicabo error harum possimus dolorem.\nEveniet ea nam maiores ducimus excepturi et in eius.\nRerum quo veritatis tempora ut ducimus.\nEt esse possimus occaecati delectus qui aliquid quidem perferendis.\nQuia vero culpa sint at dicta repudiandae.\nUt neque natus impedit aut rerum esse quia est libero.",
+      "type": "code",
+      "moduleId": "users",
+      "name": "Ergonomic explicit structure",
+      "link": "https://delayed-rudiment.net"
+    },
+    {
+      "id": "8d94f37b-a93b-4825-9a71-666fe3827880",
+      "description": "Facere voluptatibus vitae hic non sit sed consequatur illum.\nPerspiciatis odit accusamus molestiae.\nConsequuntur esse dolor suscipit deserunt aut voluptatum est.\nQui provident nisi.\nVero rerum sapiente molestiae voluptas.\nVoluptas dolorem commodi tempore voluptatum.\nDelectus excepturi velit tenetur ab consectetur delectus dicta non.\nVoluptas blanditiis atque eaque molestias.\nInventore magni sunt temporibus.\nPraesentium qui ducimus incidunt nemo corporis quis incidunt est.",
+      "type": "code",
+      "moduleId": "users",
+      "name": "Fully-configurable upward-trending alliance",
+      "link": "https://virtual-someone.net"
+    },
+    {
+      "id": "0ad39a68-5556-4918-a8a3-91286d536093",
+      "description": "Officiis ut dignissimos possimus consequatur dignissimos temporibus ullam eaque.\nQui dolores quaerat non quas quo illo dignissimos.\nMinima voluptatem et veniam.\nAlias et voluptatum iusto quaerat.\nIste distinctio sapiente esse ullam est ut quidem rerum eligendi.\nPariatur consequatur laborum.\nProvident qui voluptas laudantium.\nQui nihil perspiciatis voluptatibus.\nExcepturi vel amet.\nOdio laudantium est.",
+      "type": "info",
+      "moduleId": "users",
+      "name": "Versatile clear-thinking initiative",
+      "link": null
+    },
+    {
+      "id": "fff81e9e-1e42-4d2f-84f4-2023e9ecb741",
+      "description": "Quos modi delectus quia id.\nVoluptatem tenetur iure placeat.\nDucimus consequatur et.\nEt consectetur molestias quia libero itaque laudantium.\nDignissimos iusto voluptatem perferendis tempore.\nLibero quos odio repudiandae quia ipsa.\nAspernatur enim fugit totam tenetur quia rerum voluptates eaque.\nVelit debitis et vero qui fugit tempore ut inventore.\nEt id velit molestiae nam aut qui voluptas commodi architecto.\nAccusantium ad vel qui mollitia blanditiis error vero consectetur est.",
+      "type": "code",
+      "moduleId": "users",
+      "name": "Pre-emptive attitude-oriented protocol",
+      "link": "https://merry-owner.biz"
+    },
+    {
+      "id": "a2dd70e2-1372-466d-a18f-a37f97d04156",
+      "description": "Vero quaerat consequatur laboriosam.\nVel iure quia alias molestias sed corrupti repudiandae suscipit.\nLaborum quo error sapiente fugiat at ex qui in.\nSed qui sapiente esse.\nVeritatis quo veritatis reiciendis quam quo ut distinctio vel.\nAtque ut voluptatibus distinctio voluptatem neque.\nPariatur minima odit reprehenderit.\nMolestiae et et maxime nam corporis.\nCorporis et aut consequatur molestias nulla minus culpa illum.\nEt qui dolorum voluptas vel recusandae quaerat est qui.",
+      "type": "code",
+      "moduleId": "users",
+      "name": "Monitored directional knowledge base",
+      "link": "http://amused-pew.com"
+    },
+    {
+      "id": "1578053d-521e-4bfa-a8da-e42844effff8",
+      "description": "Dolorem dolore voluptas.\nEa magnam debitis ipsa aperiam debitis nostrum maxime.\nEt eum qui at odit eligendi recusandae nesciunt dolorem.\nConsequuntur sit voluptatem blanditiis odio suscipit sit.\nMaiores in neque necessitatibus voluptatem quasi aut amet.\nQuisquam ut voluptas temporibus et culpa dolores quos voluptatibus dolor.\nRerum ipsam excepturi non eligendi.\nImpedit explicabo et distinctio illo autem voluptatum consequatur libero ab.\nVelit assumenda mollitia incidunt ducimus in eligendi.\nCulpa harum fugiat corporis.",
+      "type": "code",
+      "moduleId": "users",
+      "name": "Networked impactful Graphical User Interface",
+      "link": "https://cute-nerve.name"
+    },
+    {
+      "id": "4535e951-a7b2-41ae-9443-5d36c2e60c76",
+      "description": "Ea hic quasi quis deserunt quia eos adipisci omnis laboriosam.\nTempore neque illo voluptatem sit.\nVoluptatibus rem esse quibusdam molestiae quisquam quasi esse ipsam temporibus.\nLaudantium vel impedit debitis non aspernatur voluptatum.\nModi esse quibusdam sunt ex voluptate sint.\nAccusantium repudiandae error quas qui omnis corporis magnam aspernatur.\nQuo est numquam numquam eius perferendis dignissimos consectetur.\nDignissimos ea sequi architecto.\nSapiente recusandae laboriosam soluta rerum.\nVelit quod voluptas ut vel deserunt est modi.",
+      "type": "info",
+      "moduleId": "technologies",
+      "name": "Triple-buffered zero defect knowledge user",
+      "link": null
+    },
+    {
+      "id": "adacc7b1-d5bc-42c5-a01c-074998846fc6",
+      "description": "Iusto quos distinctio.\nMagnam et ea et quo praesentium fuga eaque.\nModi similique quos qui.\nNihil non consectetur in cumque in.\nEt id delectus excepturi et ex quia non voluptas.\nAssumenda rem accusantium tempore natus hic maiores aut vero perferendis.\nMinus quo eum aut est repellat dolorem.\nVoluptatem non omnis ut labore omnis assumenda dolore eos illo.\nVoluptas impedit tempore eum placeat quasi eligendi aliquid impedit.\nQuis ut atque.",
+      "type": "info",
+      "moduleId": "technologies",
+      "name": "Automated 4th generation monitoring",
+      "link": null
+    },
+    {
+      "id": "87d3a298-9e36-410e-9f17-a8c506363b20",
+      "description": "Est sit aut tempora quo repellat.\nAliquam est sunt mollitia aliquam a.\nQuas et amet nihil et eaque veniam vel explicabo.\nNatus non voluptas accusantium eaque deleniti ipsa repellendus ea eveniet.\nPorro qui a assumenda vitae modi.\nExplicabo consequatur soluta qui qui.\nVoluptatem eos porro qui rerum.\nQui dolorem maxime rerum quia quas nemo libero alias voluptas.\nDolor quas repudiandae explicabo quam eligendi enim.\nQuidem est vel eos animi natus.",
+      "type": "info",
+      "moduleId": "technologies",
+      "name": "Balanced bandwidth-monitored functionalities",
+      "link": null
+    },
+    {
+      "id": "61fbfd6a-6a59-433a-a943-1f71fba97d61",
+      "description": "Sit et nisi dolor ea et quia asperiores excepturi sunt.\nDolorem rerum nesciunt a nulla ratione rerum officiis.\nOmnis a nihil sint recusandae autem nulla dicta.\nDolorem impedit iste non.\nVoluptatem aut vel.\nTempora quod magnam ut qui dolor et voluptates beatae magni.\nSequi delectus amet iusto id mollitia laborum.\nEt dolor magni natus suscipit nulla praesentium ut necessitatibus.\nVoluptate quo eaque quia aperiam est officia laboriosam officia animi.\nEa tempore eos vel fugit est quo.",
+      "type": "code",
+      "moduleId": "technologies",
+      "name": "Operative content-based firmware",
+      "link": "http://old-fashioned-effect.com"
+    },
+    {
+      "id": "5a52d7a9-feb1-4755-b6ed-d156705261cd",
+      "description": "Aspernatur voluptate eveniet rerum.\nEt illo blanditiis fuga sit natus id.\nEa totam totam consectetur quis similique ratione et et iste.\nAut vitae eum labore dolor cupiditate repudiandae animi molestias eligendi.\nAut atque et itaque est aut officia magni.\nTempora quia cumque assumenda quaerat deserunt quia.\nOdio perferendis odit at delectus veniam.\nConsequatur incidunt autem eligendi provident.\nEst voluptatum aut laudantium amet nisi ea quia alias et.\nQuia et laborum neque sed voluptatibus error repellendus.",
+      "type": "info",
+      "moduleId": "technologies",
+      "name": "Up-sized dedicated concept",
+      "link": null
+    },
+    {
+      "id": "0b1c0634-c1f5-46ba-b74e-d9e0e6da1d8e",
+      "description": "Aspernatur architecto quas temporibus unde qui qui doloremque et autem.\nAspernatur qui minima sed quam aliquam architecto fugiat.\nEt et labore dolorem occaecati qui harum eum.\nNecessitatibus voluptatibus est cupiditate aliquid labore est veritatis sunt.\nReiciendis in sint aut doloremque.\nEligendi deserunt qui nobis molestiae itaque.\nEarum repellendus perspiciatis.\nOdit harum quia sapiente.\nOptio beatae quod labore sint quidem.\nEt eveniet itaque cupiditate reprehenderit quam quibusdam.",
+      "type": "info",
+      "moduleId": "technologies",
+      "name": "Multi-tiered encompassing capacity",
+      "link": null
+    },
+    {
+      "id": "6a692a93-4475-4dd9-bcc4-93597b379359",
+      "description": "Qui nisi et consequatur ab voluptatem.\nNon earum harum.\nQuaerat eos provident quas velit.\nUt quia impedit saepe occaecati enim tempora earum ut recusandae.\nQuisquam dicta est cumque consequuntur ipsum nobis.\nOdit voluptatum explicabo.\nEst modi magni consequuntur ut rerum fugiat.\nExcepturi sint asperiores ex illo et necessitatibus aut magni aut.\nEt eum voluptatum consequuntur quaerat deserunt est.\nPerferendis facere esse.",
+      "type": "info",
+      "moduleId": "technologies",
+      "name": "Customer-focused web-enabled hardware",
+      "link": null
+    },
+    {
+      "id": "039c259c-3faa-47cc-9151-4b76440590b0",
+      "description": "Voluptatem id ut nobis exercitationem quis.\nQuis cupiditate veritatis.\nDeleniti velit tempora enim.\nOmnis error possimus recusandae fugit quam ab aut.\nNisi veritatis maxime labore accusantium ea.\nQuidem saepe inventore deleniti perferendis adipisci ut laborum.\nVeritatis ipsa autem eum facilis pariatur voluptatum expedita aut.\nQuis facilis ipsam facilis et pariatur.\nVitae quas ut.\nDolorem enim autem et consectetur vel culpa consequatur rerum aut.",
+      "type": "code",
+      "moduleId": "technologies",
+      "name": "Synergized dynamic website",
+      "link": "https://leafy-end.info"
+    },
+    {
+      "id": "fad30930-90f7-45d9-86b1-6ae7730a09d6",
+      "description": "Numquam dolorem est et aut reprehenderit quae consequatur error doloremque.\nReiciendis ea ad labore.\nItaque sed in non eveniet suscipit tenetur itaque.\nCumque tenetur quo eligendi alias possimus.\nDeserunt voluptatem esse quia quae ab at consequatur quae.\nMaiores fuga esse consequatur ex molestias repudiandae reiciendis consequuntur.\nVoluptatum impedit illo occaecati minima omnis.\nEligendi quidem accusamus dolor fuga.\nPraesentium a est accusantium.\nIncidunt atque ut.",
+      "type": "code",
+      "moduleId": "technologies",
+      "name": "Configurable motivating attitude",
+      "link": "http://motionless-warden.name"
+    },
+    {
+      "id": "8b022b42-92b6-41e2-8ec4-25532cb96957",
+      "description": "Quis qui laudantium quibusdam ex itaque.\nReprehenderit aspernatur in voluptate.\nAliquid consequatur qui.\nId veritatis et adipisci in modi quae officia repellendus.\nRecusandae et minus cumque reprehenderit placeat id.\nQuia eligendi est unde quo vitae repellat enim eos.\nIn dolores molestias non recusandae occaecati hic nisi sint amet.\nMagni magnam tempore maiores dolore eum esse praesentium rerum.\nQuia quam delectus sit asperiores expedita ut id quia.\nLaborum ratione in sequi voluptatem quasi culpa.",
+      "type": "code",
+      "moduleId": "technologies",
+      "name": "Phased bandwidth-monitored collaboration",
+      "link": "https://nervous-comparison.net"
     }
   ],
   "usersTasks": [
     {
-      "id": "36cb928e-4933-4dae-927c-3a0c31825acb",
-      "taskId": "6e566205-adf3-4fb1-8a2f-0cb4ad3a965e",
+      "id": "1ce04156-50a1-4e95-82c2-1de1bcfd9191",
+      "taskId": "6c75e77e-2c61-4e2f-afe6-d7e1c50d5ffd",
+      "userId": "userId",
+      "status": "approved",
+      "comment": null,
+      "score": 2,
+      "answer": null,
+      "attempts": []
+    },
+    {
+      "id": "0a513158-2e32-4448-ae50-1ca5c4beffc1",
+      "taskId": "72a4a48b-5208-4c48-a6ad-0dfc38279f39",
+      "userId": "userId",
+      "status": "upcoming",
+      "comment": null,
+      "score": null,
+      "answer": null,
+      "attempts": []
+    },
+    {
+      "id": "063a5f25-d061-48e8-9383-873c8f418c8f",
+      "taskId": "7cb33091-655c-4781-aaa2-af1160a38bf7",
+      "userId": "userId",
+      "status": "approved",
+      "comment": null,
+      "score": 1,
+      "answer": null,
+      "attempts": []
+    },
+    {
+      "id": "3e5ee4af-63f5-472c-a996-508473ca09a0",
+      "taskId": "c3e1e79a-a1c2-4dfc-90b2-26ed207bfce6",
+      "userId": "userId",
+      "status": "upcoming",
+      "comment": null,
+      "score": null,
+      "answer": null,
+      "attempts": []
+    },
+    {
+      "id": "b084a020-fa3f-4378-842b-95457f598d9c",
+      "taskId": "88f4f6e9-42d0-4aed-bb57-742979a16c27",
+      "userId": "userId",
+      "status": "approved",
+      "comment": null,
+      "score": 1,
+      "answer": null,
+      "attempts": []
+    },
+    {
+      "id": "7d3c722d-93f7-45a6-8b34-fc02f8359cb7",
+      "taskId": "c6d08860-3aff-4865-ad40-566c4a1af358",
+      "userId": "userId",
+      "status": "in review",
+      "comment": null,
+      "score": null,
+      "answer": null,
+      "attempts": []
+    },
+    {
+      "id": "1c874c5f-e37a-4302-b5c9-56cda9d3e05b",
+      "taskId": "ce9a7f09-d8a2-4c9a-b148-16447063c584",
+      "userId": "userId",
+      "status": "in progress",
+      "comment": null,
+      "score": 1,
+      "answer": null,
+      "attempts": []
+    },
+    {
+      "id": "5888af1d-6f09-48fa-aed7-a943950e6b45",
+      "taskId": "e560249f-b430-441d-b6f9-0005847700d9",
+      "userId": "userId",
+      "status": "approved",
+      "comment": null,
+      "score": 1,
+      "answer": null,
+      "attempts": []
+    },
+    {
+      "id": "430d8ff6-9256-4442-a831-9e1ab402a7fd",
+      "taskId": "fc3dde68-ab20-4238-9644-b7085f50ce0f",
+      "userId": "userId",
+      "status": "in review",
+      "comment": null,
+      "score": null,
+      "answer": null,
+      "attempts": []
+    },
+    {
+      "id": "1030425d-5b12-415b-b551-163cadbdaffe",
+      "taskId": "880b4048-6968-470e-8ebc-7d638ee5a116",
+      "userId": "userId",
+      "status": "in progress",
+      "comment": null,
+      "score": 1,
+      "answer": null,
+      "attempts": []
+    },
+    {
+      "id": "2edd7fbb-3e2f-4587-b0e6-a1f124488c31",
+      "taskId": "d20a4f63-a680-4081-a844-2b5d74d50fbc",
+      "userId": "userId",
+      "status": "approved",
+      "comment": null,
+      "score": 1,
+      "answer": null,
+      "attempts": []
+    },
+    {
+      "id": "26e7dbe3-5396-4d43-bc15-cf4a96d178ca",
+      "taskId": "4cf341b2-49cb-4d20-a087-2a0cff5ec724",
+      "userId": "userId",
+      "status": "approved",
+      "comment": null,
+      "score": 1,
+      "answer": null,
+      "attempts": []
+    },
+    {
+      "id": "8574e69a-e2ea-4762-886a-f3ce03c02b5b",
+      "taskId": "1790375d-8ead-4e9f-a308-16de0bee79c5",
+      "userId": "userId",
+      "status": "approved",
+      "comment": null,
+      "score": 3,
+      "answer": null,
+      "attempts": []
+    },
+    {
+      "id": "b46cec56-6121-4de4-b1c1-dd0ecb785e19",
+      "taskId": "77ccc680-93f9-495f-8ff4-48b1989a0779",
+      "userId": "userId",
+      "status": "in review",
+      "comment": null,
+      "score": null,
+      "answer": null,
+      "attempts": []
+    },
+    {
+      "id": "2520baa3-e3c9-41bd-b2ed-39d70bd18051",
+      "taskId": "aab52762-f477-4b96-89e0-35305467bf3e",
+      "userId": "userId",
+      "status": "upcoming",
+      "comment": null,
+      "score": null,
+      "answer": null,
+      "attempts": []
+    },
+    {
+      "id": "b3944e4c-880f-4911-a5df-9c12665bd003",
+      "taskId": "2243f8a8-568b-49d7-b805-17b6f040a05a",
+      "userId": "userId",
+      "status": "in review",
+      "comment": null,
+      "score": null,
+      "answer": null,
+      "attempts": []
+    },
+    {
+      "id": "c755bd28-34f9-41d2-84b3-21cebcc2f65c",
+      "taskId": "8d3b863f-5275-49fe-ae40-791cba2a77e5",
+      "userId": "userId",
+      "status": "upcoming",
+      "comment": null,
+      "score": null,
+      "answer": null,
+      "attempts": []
+    },
+    {
+      "id": "8cf8b1de-ddff-4dab-8810-1589cc87c587",
+      "taskId": "24892a44-1059-4f6e-a134-f5caeb6e5880",
+      "userId": "userId",
+      "status": "approved",
+      "comment": null,
+      "score": 2,
+      "answer": null,
+      "attempts": []
+    },
+    {
+      "id": "2e789a06-9a60-4227-a851-bb14193c284d",
+      "taskId": "8023f9a4-a32e-44ed-80c4-2091bce447bb",
+      "userId": "userId",
+      "status": "in progress",
+      "comment": null,
+      "score": 1,
+      "answer": null,
+      "attempts": []
+    },
+    {
+      "id": "6dc3abb5-6e9a-4487-a58b-07d94c4ed3d4",
+      "taskId": "18e41aee-758e-4623-80ec-e9c140b89a02",
+      "userId": "userId",
+      "status": "approved",
+      "comment": null,
+      "score": 2,
+      "answer": null,
+      "attempts": []
+    },
+    {
+      "id": "870edd18-d38c-426f-b5d2-df108c745f1e",
+      "taskId": "9de0bee2-af5a-45ea-a545-09ef06e693ca",
+      "userId": "userId",
+      "status": "in review",
+      "comment": null,
+      "score": null,
+      "answer": null,
+      "attempts": []
+    },
+    {
+      "id": "191df6cb-5eae-4160-b321-54d32b2adadf",
+      "taskId": "527fae11-8049-4ff9-8c9d-d099a077481a",
+      "userId": "userId",
+      "status": "in progress",
+      "comment": null,
+      "score": 1,
+      "answer": null,
+      "attempts": []
+    },
+    {
+      "id": "e41dcaed-6214-4ff8-8c90-eee73b2a0255",
+      "taskId": "c5b12e27-e8a1-45e2-b71c-20d9d7063931",
+      "userId": "userId",
+      "status": "upcoming",
+      "comment": null,
+      "score": null,
+      "answer": null,
+      "attempts": []
+    },
+    {
+      "id": "5cf3f3f4-1b51-4b4f-9f2d-59b536dde129",
+      "taskId": "a7892058-9871-4080-ae83-448791cd7d16",
+      "userId": "userId",
+      "status": "approved",
+      "comment": null,
+      "score": 1,
+      "answer": null,
+      "attempts": []
+    },
+    {
+      "id": "465b7227-9fb0-4c94-9764-ef3cd4bb80b8",
+      "taskId": "5dcfbbfe-70f4-4307-aaf8-6a639cc76625",
+      "userId": "userId",
+      "status": "approved",
+      "comment": null,
+      "score": 3,
+      "answer": null,
+      "attempts": []
+    },
+    {
+      "id": "46912045-32ac-43a3-b786-16bce347b30c",
+      "taskId": "8d94f37b-a93b-4825-9a71-666fe3827880",
+      "userId": "userId",
+      "status": "approved",
+      "comment": null,
+      "score": 3,
+      "answer": null,
+      "attempts": []
+    },
+    {
+      "id": "6965ad4f-3332-4ada-a577-7edd6443a7b9",
+      "taskId": "0ad39a68-5556-4918-a8a3-91286d536093",
+      "userId": "userId",
+      "status": "approved",
+      "comment": null,
+      "score": 1,
+      "answer": null,
+      "attempts": []
+    },
+    {
+      "id": "690ea5c5-57e0-48ee-acae-78e0e9b17aae",
+      "taskId": "fff81e9e-1e42-4d2f-84f4-2023e9ecb741",
+      "userId": "userId",
+      "status": "approved",
+      "comment": null,
+      "score": 3,
+      "answer": null,
+      "attempts": []
+    },
+    {
+      "id": "8440dc64-2549-48d3-b9b5-364dfdbe1567",
+      "taskId": "a2dd70e2-1372-466d-a18f-a37f97d04156",
+      "userId": "userId",
+      "status": "in review",
+      "comment": null,
+      "score": null,
+      "answer": null,
+      "attempts": []
+    },
+    {
+      "id": "ee3a6ac0-bfb2-4472-8c08-f91d4bc773f3",
+      "taskId": "1578053d-521e-4bfa-a8da-e42844effff8",
+      "userId": "userId",
+      "status": "in review",
+      "comment": null,
+      "score": null,
+      "answer": null,
+      "attempts": []
+    },
+    {
+      "id": "9876e031-2b77-4ba0-b177-9a0f85af294c",
+      "taskId": "4535e951-a7b2-41ae-9443-5d36c2e60c76",
+      "userId": "userId",
+      "status": "approved",
+      "comment": null,
+      "score": 1,
+      "answer": null,
+      "attempts": []
+    },
+    {
+      "id": "ee5ca69e-bec9-4975-b445-99ecdb3e239e",
+      "taskId": "adacc7b1-d5bc-42c5-a01c-074998846fc6",
+      "userId": "userId",
+      "status": "upcoming",
+      "comment": null,
+      "score": null,
+      "answer": null,
+      "attempts": []
+    },
+    {
+      "id": "b8da82a5-de64-4b26-9472-6129ae6e9bb3",
+      "taskId": "87d3a298-9e36-410e-9f17-a8c506363b20",
+      "userId": "userId",
+      "status": "approved",
+      "comment": null,
+      "score": 1,
+      "answer": null,
+      "attempts": []
+    },
+    {
+      "id": "3d164ff1-5104-4705-8bdd-3b2810123a55",
+      "taskId": "61fbfd6a-6a59-433a-a943-1f71fba97d61",
+      "userId": "userId",
+      "status": "in review",
+      "comment": null,
+      "score": null,
+      "answer": null,
+      "attempts": []
+    },
+    {
+      "id": "7ac7769f-ba10-4c46-8332-cfb9cc94838b",
+      "taskId": "5a52d7a9-feb1-4755-b6ed-d156705261cd",
+      "userId": "userId",
+      "status": "upcoming",
+      "comment": null,
+      "score": null,
+      "answer": null,
+      "attempts": []
+    },
+    {
+      "id": "b3fe717d-f36d-48eb-9221-497c26f00423",
+      "taskId": "0b1c0634-c1f5-46ba-b74e-d9e0e6da1d8e",
+      "userId": "userId",
+      "status": "upcoming",
+      "comment": null,
+      "score": null,
+      "answer": null,
+      "attempts": []
+    },
+    {
+      "id": "b3486281-418a-48cc-ac7b-0e5a47eb92fe",
+      "taskId": "6a692a93-4475-4dd9-bcc4-93597b379359",
+      "userId": "userId",
+      "status": "upcoming",
+      "comment": null,
+      "score": null,
+      "answer": null,
+      "attempts": []
+    },
+    {
+      "id": "758f282b-2916-4a18-b032-bc243ee234c9",
+      "taskId": "039c259c-3faa-47cc-9151-4b76440590b0",
       "userId": "userId",
       "status": "in progress",
       "comment": null,
@@ -1056,390 +1426,20 @@
       "attempts": []
     },
     {
-      "id": "9351da51-28ab-4f3d-9513-343edf6d357b",
-      "taskId": "3ff3a73f-ed7a-4ab9-bf32-62cb8fc55c3c",
+      "id": "e4ade6d6-797a-4302-81da-21099fe7f488",
+      "taskId": "fad30930-90f7-45d9-86b1-6ae7730a09d6",
       "userId": "userId",
-      "status": "todo",
+      "status": "approved",
       "comment": null,
-      "score": null,
+      "score": 3,
       "answer": null,
       "attempts": []
     },
     {
-      "id": "5a8e411f-5a3d-45ee-9e5b-2d28de63b99f",
-      "taskId": "405950b3-8690-482f-a9d5-b7ecdc80a4ab",
+      "id": "45d9911b-c791-4997-893d-4a68b014ebe4",
+      "taskId": "8b022b42-92b6-41e2-8ec4-25532cb96957",
       "userId": "userId",
-      "status": "todo",
-      "comment": null,
-      "score": null,
-      "answer": null,
-      "attempts": []
-    },
-    {
-      "id": "e19032ec-2fe7-4532-bb07-68a729eb3c62",
-      "taskId": "42d4e843-80f1-4629-a7f1-b3a70387fb9b",
-      "userId": "userId",
-      "status": "todo",
-      "comment": null,
-      "score": null,
-      "answer": null,
-      "attempts": []
-    },
-    {
-      "id": "6b465919-73ac-4140-96c0-67d6169ffe2a",
-      "taskId": "27b424a1-f97f-49c4-be07-4186da8f032e",
-      "userId": "userId",
-      "status": "todo",
-      "comment": null,
-      "score": null,
-      "answer": null,
-      "attempts": []
-    },
-    {
-      "id": "3debf54a-8897-48fe-a12a-2391c1803d23",
-      "taskId": "da726949-b9db-4c02-bae3-4ba770bfc888",
-      "userId": "userId",
-      "status": "todo",
-      "comment": null,
-      "score": null,
-      "answer": null,
-      "attempts": []
-    },
-    {
-      "id": "88f8cdc0-59f5-4a8e-a130-69db8a6e0bd2",
-      "taskId": "08491138-e516-460b-92a3-ede8c0b81c80",
-      "userId": "userId",
-      "status": "todo",
-      "comment": null,
-      "score": null,
-      "answer": null,
-      "attempts": []
-    },
-    {
-      "id": "67c99871-9f8c-4085-bcb3-353b08d208ab",
-      "taskId": "93f04438-c18d-4543-bda0-891b5d1c766e",
-      "userId": "userId",
-      "status": "todo",
-      "comment": null,
-      "score": null,
-      "answer": null,
-      "attempts": []
-    },
-    {
-      "id": "64cc904c-def7-4815-bab1-e60ec3026b80",
-      "taskId": "c1dda27e-0794-4d67-87bb-eb224a37884d",
-      "userId": "userId",
-      "status": "todo",
-      "comment": null,
-      "score": null,
-      "answer": null,
-      "attempts": []
-    },
-    {
-      "id": "94009a55-d5e6-4db2-af2e-a6d29dc9b38f",
-      "taskId": "4d7e368e-9e0b-40ad-a113-147f9258965e",
-      "userId": "userId",
-      "status": "todo",
-      "comment": null,
-      "score": null,
-      "answer": null,
-      "attempts": []
-    },
-    {
-      "id": "99d232db-d887-4f41-ab28-caaa88a7fd06",
-      "taskId": "7dbee286-2371-4d50-88fe-dc53af5b5800",
-      "userId": "userId",
-      "status": "todo",
-      "comment": null,
-      "score": null,
-      "answer": null,
-      "attempts": []
-    },
-    {
-      "id": "8b16dc13-0719-4c3b-a8e5-b305146d3e3d",
-      "taskId": "55cd9a03-777f-410b-a79a-7b377fdeaf71",
-      "userId": "userId",
-      "status": "todo",
-      "comment": null,
-      "score": null,
-      "answer": null,
-      "attempts": []
-    },
-    {
-      "id": "8b9bb192-60c7-4ff1-b282-50a1b374f01e",
-      "taskId": "45241a3d-12ee-4737-8bfe-8b175870be21",
-      "userId": "userId",
-      "status": "todo",
-      "comment": null,
-      "score": null,
-      "answer": null,
-      "attempts": []
-    },
-    {
-      "id": "7214fb9e-f8b0-4743-b7b4-528bfd797126",
-      "taskId": "720f75bf-56be-45fd-b771-17d3b1275232",
-      "userId": "userId",
-      "status": "todo",
-      "comment": null,
-      "score": null,
-      "answer": null,
-      "attempts": []
-    },
-    {
-      "id": "a4b25d57-52ce-4375-a06e-cc83765941e7",
-      "taskId": "c5c3474c-02e3-44e3-b516-6df3c487df2a",
-      "userId": "userId",
-      "status": "todo",
-      "comment": null,
-      "score": null,
-      "answer": null,
-      "attempts": []
-    },
-    {
-      "id": "5d1ecf4d-e1f8-43e8-9a7f-b8eecfb159b2",
-      "taskId": "741af908-1a3b-487d-be64-e068271bc47b",
-      "userId": "userId",
-      "status": "todo",
-      "comment": null,
-      "score": null,
-      "answer": null,
-      "attempts": []
-    },
-    {
-      "id": "11df97d5-73e3-4f61-aed1-804c92ca3cd6",
-      "taskId": "0a25b40f-6027-474c-8396-cbec4a00974e",
-      "userId": "userId",
-      "status": "todo",
-      "comment": null,
-      "score": null,
-      "answer": null,
-      "attempts": []
-    },
-    {
-      "id": "94f84974-d056-4c60-bba5-212e6f31d169",
-      "taskId": "48585e13-44a0-464b-a201-3cc9f1180018",
-      "userId": "userId",
-      "status": "todo",
-      "comment": null,
-      "score": null,
-      "answer": null,
-      "attempts": []
-    },
-    {
-      "id": "e788951a-0c41-4b9f-bdd3-1d01f86db0f1",
-      "taskId": "40b74515-4cd0-4d77-b92d-9e3831090830",
-      "userId": "userId",
-      "status": "todo",
-      "comment": null,
-      "score": null,
-      "answer": null,
-      "attempts": []
-    },
-    {
-      "id": "67500b8d-94b7-49e2-a774-c740e6a16911",
-      "taskId": "bac95263-40e9-4430-ad7f-7a01dc89be13",
-      "userId": "userId",
-      "status": "todo",
-      "comment": null,
-      "score": null,
-      "answer": null,
-      "attempts": []
-    },
-    {
-      "id": "d549f1d1-5b86-4cba-a68d-9d194a5a5baa",
-      "taskId": "164c4e51-5693-4a3d-a047-0d2888f98e42",
-      "userId": "userId",
-      "status": "todo",
-      "comment": null,
-      "score": null,
-      "answer": null,
-      "attempts": []
-    },
-    {
-      "id": "0a750685-f580-4237-bbf2-055912314c8d",
-      "taskId": "7dc58c5f-869f-4509-8e75-2387b3f02b2c",
-      "userId": "userId",
-      "status": "todo",
-      "comment": null,
-      "score": null,
-      "answer": null,
-      "attempts": []
-    },
-    {
-      "id": "b5b2c636-c5f1-4777-8379-94835b0a4ee4",
-      "taskId": "b864d909-f93c-48e7-bb1e-54e1ef9202ab",
-      "userId": "userId",
-      "status": "todo",
-      "comment": null,
-      "score": null,
-      "answer": null,
-      "attempts": []
-    },
-    {
-      "id": "677d7bbc-fbcb-4af7-a8ca-9fcb8467001d",
-      "taskId": "b09726ff-a81b-4b24-ace6-74ea8cb08b45",
-      "userId": "userId",
-      "status": "todo",
-      "comment": null,
-      "score": null,
-      "answer": null,
-      "attempts": []
-    },
-    {
-      "id": "e8074ce6-fc62-4b47-8531-4c071dd2c916",
-      "taskId": "f34dfedf-2060-4036-937c-a3a44492f142",
-      "userId": "userId",
-      "status": "todo",
-      "comment": null,
-      "score": null,
-      "answer": null,
-      "attempts": []
-    },
-    {
-      "id": "0b52dadd-deca-4103-90da-e1d618817807",
-      "taskId": "326e52d0-766f-40f1-b41b-3892e7c14bec",
-      "userId": "userId",
-      "status": "todo",
-      "comment": null,
-      "score": null,
-      "answer": null,
-      "attempts": []
-    },
-    {
-      "id": "2499f305-048c-4f51-85d8-39481f8b3337",
-      "taskId": "0752fdf1-9108-4d63-a3a5-e7a539c00bb8",
-      "userId": "userId",
-      "status": "todo",
-      "comment": null,
-      "score": null,
-      "answer": null,
-      "attempts": []
-    },
-    {
-      "id": "c9a7d305-29d5-4536-a995-ed7a8e0299cf",
-      "taskId": "a7200017-9ef4-4a5c-9935-3db886ca33a3",
-      "userId": "userId",
-      "status": "todo",
-      "comment": null,
-      "score": null,
-      "answer": null,
-      "attempts": []
-    },
-    {
-      "id": "1ba06b1c-247f-4edb-9a74-bfb431a0323c",
-      "taskId": "0d9f7595-1639-4226-997a-6f0e5c005217",
-      "userId": "userId",
-      "status": "todo",
-      "comment": null,
-      "score": null,
-      "answer": null,
-      "attempts": []
-    },
-    {
-      "id": "2ee1f8a5-54d8-468b-8f29-a8495155505a",
-      "taskId": "a9bef9f6-c068-4339-bcab-545936dbc131",
-      "userId": "userId",
-      "status": "todo",
-      "comment": null,
-      "score": null,
-      "answer": null,
-      "attempts": []
-    },
-    {
-      "id": "cfcccc43-2033-4453-98ae-7e031e7bad11",
-      "taskId": "235be7bd-0447-4f75-9517-0dbf3ff7cd3c",
-      "userId": "userId",
-      "status": "todo",
-      "comment": null,
-      "score": null,
-      "answer": null,
-      "attempts": []
-    },
-    {
-      "id": "9c9190ef-23e0-49e3-92e0-ae67522dfaa6",
-      "taskId": "68c5846b-69e8-4735-970d-db80bdcd0f41",
-      "userId": "userId",
-      "status": "todo",
-      "comment": null,
-      "score": null,
-      "answer": null,
-      "attempts": []
-    },
-    {
-      "id": "df9fdfe2-5f1a-46ee-a009-279e9c2ffb0c",
-      "taskId": "4d3081bd-d57f-4da3-8651-6ac19c61eba2",
-      "userId": "userId",
-      "status": "todo",
-      "comment": null,
-      "score": null,
-      "answer": null,
-      "attempts": []
-    },
-    {
-      "id": "7fb4926f-c708-4c63-a241-b14f20b1664e",
-      "taskId": "31775d7e-3db1-43c8-8985-61a1b459ffcf",
-      "userId": "userId",
-      "status": "todo",
-      "comment": null,
-      "score": null,
-      "answer": null,
-      "attempts": []
-    },
-    {
-      "id": "bd9b334d-4a0d-43e2-b7fc-777cbd97213a",
-      "taskId": "a31018be-b230-4b4c-b701-4b73c41e7783",
-      "userId": "userId",
-      "status": "todo",
-      "comment": null,
-      "score": null,
-      "answer": null,
-      "attempts": []
-    },
-    {
-      "id": "ff74b58b-1f40-4fbe-9a86-1c7e630f97b5",
-      "taskId": "83a12e33-e6e0-4bb8-b3bc-19f4eaab3fac",
-      "userId": "userId",
-      "status": "todo",
-      "comment": null,
-      "score": null,
-      "answer": null,
-      "attempts": []
-    },
-    {
-      "id": "74e85e8c-d62f-4193-ba48-4d37f230138c",
-      "taskId": "f9b06ebb-1b53-4493-803c-58c57f7e44e7",
-      "userId": "userId",
-      "status": "todo",
-      "comment": null,
-      "score": null,
-      "answer": null,
-      "attempts": []
-    },
-    {
-      "id": "93e6dc2f-af85-4507-9092-57c1bda9caed",
-      "taskId": "8d50961c-71c6-45da-83df-9947090ffb28",
-      "userId": "userId",
-      "status": "todo",
-      "comment": null,
-      "score": null,
-      "answer": null,
-      "attempts": []
-    },
-    {
-      "id": "a2257e9c-c609-45e7-a6a7-8bdde571ee9f",
-      "taskId": "4cc3e498-e34a-4bc0-a585-d7ea646810c0",
-      "userId": "userId",
-      "status": "todo",
-      "comment": null,
-      "score": null,
-      "answer": null,
-      "attempts": []
-    },
-    {
-      "id": "7fa9b617-a7db-4eec-88be-2845ca8582e3",
-      "taskId": "2c01ea38-bf09-4533-a059-1a3df42b8019",
-      "userId": "userId",
-      "status": "todo",
+      "status": "upcoming",
       "comment": null,
       "score": null,
       "answer": null,

@@ -12,11 +12,17 @@
   h4,
   h5,
   h6 {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 20px;
     margin-top: 32px;
   }
 
   p {
     margin-top: 16px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 28px;
   }
 
   img {
@@ -30,6 +36,12 @@
   ol {
     margin-top: 16px;
     list-style-position: inside;
+  }
+
+  li {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 28px;
   }
 
   svg {

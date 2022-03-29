@@ -1,0 +1,23 @@
+@use '/lib/styles/variables/colors.module' as colors;
+@use '/lib/styles/variables/media.module' as media;
+
+.taskLockWrapper {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 64px;
+  border: 1px solid colors.$statusFontGray;
+  margin-right: 16px;
+  flex-shrink: 0;
+  background-color: colors.$white;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  svg {
+    fill: colors.$statusFontGray;
+  }
+}

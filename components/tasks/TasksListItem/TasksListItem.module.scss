@@ -1,30 +1,26 @@
 @use '/lib/styles/variables/colors.module' as colors;
-@use '/lib/styles/variables/shadows.module' as shadows;
 @use '/lib/styles/variables/media.module' as media;
 
 .task {
-  margin-top: 24px;
+  margin-top: 16px;
   background-color: colors.$white;
   border-radius: 16px;
-  box-shadow: shadows.$shadow;
   position: relative;
+  color: colors.$fontPrimary;
+  border: 3px solid colors.$white;
+  min-width: 265px;
+  box-shadow: 4px 8px 32px rgba(7, 1, 48, 0.08);
 
   &:first-of-type {
     margin-top: 0;
   }
 
   &Active {
-    color: colors.$white;
-    background-color: colors.$purplePrimary;
-  }
-
-  &Locked {
-    cursor: not-allowed;
+    border-color: colors.$purplePrimary;
   }
 
   @media (max-width: media.$laptopS) {
     margin-top: 0;
-    min-width: 200px;
     margin-left: 24px;
 
     &:first-of-type {
@@ -38,91 +34,19 @@
   padding: 16px;
 }
 
+.moduleName {
+  display: block;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 16px;
+  width: fit-content;
+  color: colors.$purplePrimary;
+}
+
 .taskName {
-  font-weight: 600;
+  margin-top: 8px;
+  font-weight: 700;
   font-size: 16px;
   line-height: 24px;
-}
-
-.taskBadges {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.taskBadge {
-  margin-top: 16px;
-  font-weight: 600;
-  font-size: 12px;
-  line-height: 16px;
-  padding-left: 16px;
-  position: relative;
-  margin-right: 16px;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
-    width: 8px;
-    height: 8px;
-    background-color: colors.$purplePrimary;
-    border-radius: 64px;
-  }
-
-  &Active {
-    &::before {
-      background-color: colors.$white;
-    }
-  }
-}
-
-.moduleName {
-  margin-top: 16px;
-  font-weight: bold;
-  font-size: 12px;
-  line-height: 16px;
-  padding: 8px 16px;
-  display: block;
-  width: fit-content;
-  background-color: colors.$bgMain;
-  color: colors.$purplePrimary;
-  border-radius: 16px;
-
-  &Active {
-    background-color: colors.$white;
-    color: colors.$fontPrimary;
-  }
-}
-
-.taskLockWrapper {
-  margin-top: 16px;
-  padding: 8px 16px;
-  background-color: colors.$purplePrimary;
-  width: fit-content;
-  display: flex;
-  align-items: center;
-  border-radius: 64px;
-
-  svg > path {
-    fill: colors.$white;
-  }
-
-  &Active {
-    background-color: colors.$white;
-
-    svg > path {
-      fill: colors.$purplePrimary;
-    }
-  }
-
-  @media (max-width: media.$laptopS) {
-    position: absolute;
-    margin-bottom: 0;
-    bottom: 16px;
-    right: 16px;
-    transform: scale(0.9);
-    padding: 8px 12px;
-    box-shadow: shadows.$shadow;
-  }
+  color: colors.$fontPrimary;
 }

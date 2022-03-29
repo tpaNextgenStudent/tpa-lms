@@ -1,48 +1,25 @@
 import { GetServerSidePropsContext } from 'next';
-import { getFakeData } from '../../../lib/mocks/getFakeData';
+import { getUserModules } from '../../../api/modules';
 
 export default function TasksIndex() {
   return null;
 }
 
-export async function getServerSideProps(ctx: GetServerSidePropsContext) {
-  //just for data mocking case, we fetch all the data at once using api routes,
-  //normally we will access all data using prisma client
-  const data = await getFakeData();
+export async function getServerSideProps({ req }: GetServerSidePropsContext) {
+  try {
+    const modules = await getUserModules({
+      cookie: req.headers.cookie as string,
+    });
 
-  //get user id from next auth, and fetch all his data using prisma.user.findFirst
-  const user = data.user;
+    const currentModule = modules[0];
 
-  //probably accessible when we declare that we want to include (populate) cohort relation
-  const cohorts = data.cohorts;
-  const userCohort = cohorts.find(c => c.id === user.cohortId);
-
-  //if user has no cohort, inform him that he has to ask a teacher for link
-  if (!userCohort) {
     return {
       redirect: {
         permanent: true,
-        destination: '/join-to-cohort-error',
+        destination: `/student/tasks/${currentModule.id}`,
       },
     };
-  }
-
-  //user haven't picked module,
-  //find 'in progress' task and redirect user to this task's page
-  const nextTask = data.usersTasks.find(task => task.status === 'in progress');
-
-  if (nextTask) {
-    const task = data.tasks.find(t => t.id === nextTask.taskId);
-
-    if (task) {
-      return {
-        redirect: {
-          permanent: true,
-          destination: `/student/tasks/${task.moduleId}/${nextTask.id}`,
-        },
-      };
-    }
-  }
+  } catch (e) {}
 
   return {
     notFound: true,

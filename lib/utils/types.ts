@@ -39,7 +39,7 @@ export interface Module {
   tasks: Task[];
 }
 
-type TaskType = 'code' | 'quiz' | 'image' | 'info';
+export type TaskType = 'code' | 'quiz' | 'image' | 'info';
 
 export interface Task {
   id: string;
@@ -51,7 +51,7 @@ export interface Task {
   //link for code/quiz type, otherwise null
 }
 type Attempt = { taskId: string; date: string };
-type TaskStatus = 'todo' | 'done' | 'in progress';
+export type TaskStatus = 'upcoming' | 'in progress' | 'approved' | 'in review';
 export interface UserTask {
   id: string;
   userId: string;

@@ -1,22 +1,30 @@
 import styles from './TaskSection.module.scss';
-import { Module, Task, UserTask } from '../../../lib/utils/types';
 import { TaskDescription } from '../TaskDescription/TaskDescription';
 import { TaskAction } from '../TaskAction/TaskAction';
 import { useState } from 'react';
 import EnlargeIcon from '../../../public/enlarge-icon.svg';
 import CrossIcon from '../../../public/cross-icon.svg';
 import clsx from 'clsx';
+import { TaskStatusBadge } from '../TaskStatusBadge/TaskStatusBadge';
+import { TaskTypeBadge } from '../TaskTypeBadge/TaskTypeBadge';
+import { TaskScoreBadge } from '../TaskScoreBadge/TaskScoreBadge';
+import { TaskAttemptBadge } from '../TaskAttemptBadge/TaskAttemptBadge';
+import { TaskNav } from '../TaskNav/TaskNav';
+import { TaskDoneBadge } from '../TaskDoneBadge/TaskDoneBadge';
+import { TaskComments } from '../TaskComments/TaskComments';
+import { ITask } from '../../../api/tasks';
+import { IModule } from '../../../api/modules';
 
 interface TaskSectionProps {
-  task: UserTask & { task: Task };
-  module: Module;
+  task: ITask;
+  module: IModule;
 }
 
-export const TaskSection = ({
-  task: { task, status },
-  module,
-}: TaskSectionProps) => {
+export const TaskSection = ({ task, module }: TaskSectionProps) => {
+  const [isDescriptionView, setIsDescriptionView] = useState(true);
   const [isFullScreenMode, setIsFullScreenMode] = useState(false);
+
+  const lastAttempt = task.attempts[task.attempts.length - 1];
 
   const toggleFullScreenMode = () => {
     setIsFullScreenMode(prev => !prev);
@@ -29,9 +37,9 @@ export const TaskSection = ({
         isFullScreenMode && styles.wrapperFullScreen
       )}
     >
+      <p className={styles.taskModule}>{module.name}</p>
       <div className={styles.taskHeader}>
         <h2 className={styles.taskTitle}>{task.name}</h2>
-        <span className={styles.taskModule}>{module.name}</span>
         <button
           onClick={toggleFullScreenMode}
           className={styles.fullScreenButton}
@@ -41,14 +49,31 @@ export const TaskSection = ({
         </button>
       </div>
       <div className={styles.taskBadges}>
-        <span className={styles.taskBadge}>{status}</span>
-        <span className={styles.taskBadge}>{task.type}</span>
+        <TaskStatusBadge status={task.status} />
+        <TaskTypeBadge type={task.type} />
+        {task.type !== 'info' && (
+          <TaskAttemptBadge text={'Attempt'} attempt={task.attempts.length} />
+        )}
+        {lastAttempt &&
+          (task.type === 'info' ? (
+            <TaskDoneBadge />
+          ) : (
+            <TaskScoreBadge text={'Score'} score={lastAttempt.score} />
+          ))}
       </div>
-      <div className={styles.descriptionHeaderWrapper}>
-        <h2 className={styles.descriptionHeader}>Description</h2>
-      </div>
-      <TaskDescription description={task.description} />
-      <TaskAction task={task} />
+      <TaskNav
+        setIsDescriptionView={setIsDescriptionView}
+        isDescriptionView={isDescriptionView}
+      />
+      {isDescriptionView ? (
+        <TaskDescription
+          locked={task.status === 'upcoming'}
+          description={task.description}
+        />
+      ) : (
+        <TaskComments />
+      )}
+      {task.status !== 'upcoming' && <TaskAction task={task} />}
     </main>
   );
 };
