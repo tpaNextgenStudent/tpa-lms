@@ -25,7 +25,6 @@ export const TaskSection = ({ task, module }: TaskSectionProps) => {
   const [isFullScreenMode, setIsFullScreenMode] = useState(false);
 
   const lastAttempt = task.attempts[task.attempts.length - 1];
-  const taskStatus = lastAttempt?.status || 'upcoming';
 
   const toggleFullScreenMode = () => {
     setIsFullScreenMode(prev => !prev);
@@ -50,7 +49,7 @@ export const TaskSection = ({ task, module }: TaskSectionProps) => {
         </button>
       </div>
       <div className={styles.taskBadges}>
-        <TaskStatusBadge status={taskStatus} />
+        <TaskStatusBadge status={task.status} />
         <TaskTypeBadge type={task.type} />
         {task.type !== 'info' && (
           <TaskAttemptBadge text={'Attempt'} attempt={task.attempts.length} />
@@ -68,13 +67,13 @@ export const TaskSection = ({ task, module }: TaskSectionProps) => {
       />
       {isDescriptionView ? (
         <TaskDescription
-          locked={taskStatus === 'upcoming'}
+          locked={task.status === 'upcoming'}
           description={task.description}
         />
       ) : (
         <TaskComments />
       )}
-      {taskStatus !== 'upcoming' && <TaskAction task={task} />}
+      {task.status !== 'upcoming' && <TaskAction task={task} />}
     </main>
   );
 };
