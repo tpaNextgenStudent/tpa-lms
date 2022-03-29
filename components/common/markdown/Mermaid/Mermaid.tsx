@@ -3,7 +3,7 @@ import mermaid from 'mermaid';
 
 mermaid.initialize({
   startOnLoad: true,
-  theme: 'default',
+  // theme: 'default',
 });
 
 interface MermaidProps {
