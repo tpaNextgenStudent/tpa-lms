@@ -18,3 +18,90 @@
   margin-top: 24px;
   max-width: 869px;
 }
+
+.commentsListItem {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 16px 16px;
+  border: 1px solid colors.$strokeMain;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.commentHeader {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.teacher {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.teacherImgWrapper {
+  width: 32px;
+  height: 32px;
+  margin-right: 10px;
+}
+
+.teacherImg {
+  border-radius: 64px;
+}
+
+.teacherName {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: colors.$fontPrimary;
+  margin-right: 24px;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: -12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 4px;
+    border-radius: 64px;
+    background-color: colors.$purplePrimary;
+  }
+}
+
+.time {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
+  color: colors.$fontSecondary;
+  padding-right: 24px;
+  margin-right: auto;
+  margin-top: 8px;
+}
+
+.attemptBadges {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  * > {
+    margin-top: 8px;
+  }
+}
+
+.underAssessmentBadge {
+  padding: 10px 16px;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 12px;
+  color: colors.$statusFontBlue;
+  background-color: colors.$statusBgBlue;
+  border-radius: 64px;
+  margin-top: 8px;
+  text-align: center;
+}
+
+.commentContent {
+}

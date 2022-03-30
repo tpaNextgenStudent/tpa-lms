@@ -71,7 +71,7 @@ export const TaskSection = ({ task, module }: TaskSectionProps) => {
           description={task.description}
         />
       ) : (
-        <TaskComments />
+        <TaskComments attempts={task.attempts} />
       )}
       {task.status !== 'upcoming' && <TaskAction task={task} />}
     </main>

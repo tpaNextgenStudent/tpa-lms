@@ -17,6 +17,15 @@
   font-size: 15px;
   line-height: 24px;
 
+  &Circle {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   &Red {
     background-color: colors.$statusBgRed;
     color: colors.$statusFontRed;
