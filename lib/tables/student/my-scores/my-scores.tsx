@@ -40,6 +40,7 @@ export const columns: Column<ScoresData>[] = [
   {
     Header: 'Task type',
     accessor: 'task_type',
+    minWidth: 100,
 
     Cell: ({ cell: { value } }: { cell: { value: TaskType } }) => (
       <span className={styles.taskTypeWrapper}>
@@ -53,10 +54,12 @@ export const columns: Column<ScoresData>[] = [
   {
     Header: 'Attempt',
     accessor: 'attempt',
+    minWidth: 100,
   },
   {
     Header: 'Score',
     accessor: 'score',
+    minWidth: 100,
 
     Cell: ({ cell: { value } }: { cell: { value: number } }) => (
       <span className={styles.scoreWrapper}>
