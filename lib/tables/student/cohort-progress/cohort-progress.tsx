@@ -20,10 +20,10 @@ export const columns: Column<ProgressData>[] = [
     Cell: ({
       cell: { value },
     }: {
-      cell: { value: { name: string; img: string } };
+      cell: { value: { name: string; img: string; login: string } };
     }) => (
       <div className={styles.studentCellWrapper}>
-        <span className={styles.studentImgWrapper}>
+        <div className={styles.studentImgWrapper}>
           <Image
             width={32}
             height={32}
@@ -33,8 +33,11 @@ export const columns: Column<ProgressData>[] = [
             src={value.img}
             alt={value.name}
           />
-        </span>
-        <span className={styles.studentName}>{value.name}</span>
+        </div>
+        <div className={styles.studentNameWrapper}>
+          <p className={styles.studentName}>{value.name}</p>
+          <p className={styles.studentLogin}>#{value.login}</p>
+        </div>
       </div>
     ),
   },

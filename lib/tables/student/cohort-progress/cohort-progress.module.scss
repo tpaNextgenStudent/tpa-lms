@@ -14,6 +14,16 @@
   height: 32px;
 }
 
-.studentName {
+.studentNameWrapper {
   margin-left: 10px;
+}
+
+.studentName {
+}
+
+.studentLogin {
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 16px;
+  color: colors.$fontSecondary;
 }

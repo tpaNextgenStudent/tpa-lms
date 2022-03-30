@@ -35,22 +35,27 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
     const student = faker.random.arrayElement([
       {
         name: 'Paulina Pogorzelska',
+        login: 'pogorzelska',
         img: 'https://unsplash.it/75/75/',
       },
       {
         name: 'Patryk Górka',
+        login: 'gorka',
         img: 'https://unsplash.it/50/50/',
       },
       {
         name: 'Łukasz Matuszczak',
+        login: 'matuszczak',
         img: 'https://unsplash.it/25/25',
       },
       {
         name: 'Mateusz Supel',
+        login: 'supel',
         img: 'https://unsplash.it/100/100',
       },
       {
         name: 'Magdalena Misiak',
+        login: 'misiak',
         img: 'https://unsplash.it/150/150',
       },
     ]);
