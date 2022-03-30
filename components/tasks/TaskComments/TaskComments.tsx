@@ -58,9 +58,7 @@ export const TaskComments = ({ attempts }: TaskCommentsProps) => {
                     )}
                   </div>
                 </div>
-                <div className={styles.commentContent}>
-                  <MarkdownContent content={attempt.comment} />
-                </div>
+                <MarkdownContent content={attempt.comment} />
               </li>
             );
           })}
