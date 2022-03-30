@@ -3,7 +3,7 @@ import { GetServerSidePropsContext } from 'next';
 import { getFakeData } from '../../../lib/mocks/getFakeData';
 import { InferPagePropsType } from '../../../lib/utils/types';
 import faker from '@faker-js/faker';
-import { Table } from '../../../components/common/Table/Table';
+import { Table } from '../../../components/common/tables/Table/Table';
 import { columns } from '../../../lib/tables/student/cohort-progress/cohort-progress';
 
 export default function CohortProgress({
@@ -30,32 +30,32 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
     const mn = faker.company.bsNoun();
     const moduleName = `${mn[0].toUpperCase()}${mn.slice(1)}`;
 
-    const taskType = faker.random.arrayElement([
-      'info',
-      'image',
-      'quiz',
-      'code',
-    ]);
+    const taskType = faker.random.arrayElement(['info', 'code']);
 
     const student = faker.random.arrayElement([
       {
         name: 'Paulina Pogorzelska',
+        login: 'pogorzelska',
         img: 'https://unsplash.it/75/75/',
       },
       {
         name: 'Patryk Górka',
+        login: 'gorka',
         img: 'https://unsplash.it/50/50/',
       },
       {
         name: 'Łukasz Matuszczak',
+        login: 'matuszczak',
         img: 'https://unsplash.it/25/25',
       },
       {
         name: 'Mateusz Supel',
+        login: 'supel',
         img: 'https://unsplash.it/100/100',
       },
       {
         name: 'Magdalena Misiak',
+        login: 'misiak',
         img: 'https://unsplash.it/150/150',
       },
     ]);

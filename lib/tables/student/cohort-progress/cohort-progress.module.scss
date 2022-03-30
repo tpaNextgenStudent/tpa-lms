@@ -9,15 +9,21 @@
   align-items: center;
 }
 
-.studentName {
+.studentImgWrapper {
+  width: 32px;
+  height: 32px;
+}
+
+.studentNameWrapper {
   margin-left: 10px;
 }
 
-.taskTypeWrapper {
-  position: relative;
-  z-index: 1;
-  padding: 8px 16px;
-  background-color: colors.$purplePrimary;
-  border-radius: 64px;
-  color: colors.$white;
+.studentName {
+}
+
+.studentLogin {
+  font-weight: 400;
+  font-size: 10px;
+  line-height: 16px;
+  color: colors.$fontSecondary;
 }

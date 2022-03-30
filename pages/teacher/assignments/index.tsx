@@ -3,7 +3,7 @@ import { GetServerSidePropsContext } from 'next';
 import { InferPagePropsType } from '../../../lib/utils/types';
 import { Layout } from '../../../components/common/Layout/Layout';
 import faker from '@faker-js/faker';
-import { Table } from '../../../components/common/Table/Table';
+import { Table } from '../../../components/common/tables/Table/Table';
 import { columns } from '../../../lib/tables/teacher/assignments/assignments';
 
 export default function AssignmentsIndex({
