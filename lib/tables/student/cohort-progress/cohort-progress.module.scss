@@ -9,15 +9,11 @@
   align-items: center;
 }
 
-.studentName {
-  margin-left: 10px;
+.studentImgWrapper {
+  width: 32px;
+  height: 32px;
 }
 
-.taskTypeWrapper {
-  position: relative;
-  z-index: 1;
-  padding: 8px 16px;
-  background-color: colors.$purplePrimary;
-  border-radius: 64px;
-  color: colors.$white;
+.studentName {
+  margin-left: 10px;
 }

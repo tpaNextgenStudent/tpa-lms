@@ -6,6 +6,7 @@ import { TaskTypeIcon } from '../../../../components/tasks/TaskTypeIcon/TaskType
 import { TaskType } from '../../../utils/types';
 import clsx from 'clsx';
 import { getColorByScore } from '../../../getColorByScore';
+import { TaskTypeCell } from '../../../../components/common/tables/TaskTypeCell/TaskTypeCell';
 
 interface ScoresData {
   submission_date: string;
@@ -43,12 +44,7 @@ export const columns: Column<ScoresData>[] = [
     minWidth: 100,
 
     Cell: ({ cell: { value } }: { cell: { value: TaskType } }) => (
-      <span className={styles.taskTypeWrapper}>
-        <span className={styles.taskTypeIconWrapper}>
-          <TaskTypeIcon type={value} />
-        </span>
-        <span className={styles.taskTypeText}>{value}</span>
-      </span>
+      <TaskTypeCell type={value} />
     ),
   },
   {

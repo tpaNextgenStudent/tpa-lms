@@ -3,7 +3,7 @@ import { GetServerSidePropsContext } from 'next';
 import { getFakeData } from '../../../lib/mocks/getFakeData';
 import { InferPagePropsType } from '../../../lib/utils/types';
 import faker from '@faker-js/faker';
-import { Table } from '../../../components/common/Table/Table';
+import { Table } from '../../../components/common/tables/Table/Table';
 import { columns } from '../../../lib/tables/student/cohort-progress/cohort-progress';
 
 export default function CohortProgress({
@@ -30,12 +30,7 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
     const mn = faker.company.bsNoun();
     const moduleName = `${mn[0].toUpperCase()}${mn.slice(1)}`;
 
-    const taskType = faker.random.arrayElement([
-      'info',
-      'image',
-      'quiz',
-      'code',
-    ]);
+    const taskType = faker.random.arrayElement(['info', 'code']);
 
     const student = faker.random.arrayElement([
       {

@@ -5,7 +5,7 @@ import { Layout } from '../../../../components/common/Layout/Layout';
 import { ModuleSelect } from '../../../../components/common/ModuleSelect/ModuleSelect';
 import { useRouter } from 'next/router';
 import { ChangeEvent } from 'react';
-import { Table } from '../../../../components/common/Table/Table';
+import { Table } from '../../../../components/common/tables/Table/Table';
 import {
   CohortProgressData,
   getCohortProgressColumns,
