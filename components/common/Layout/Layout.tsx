@@ -34,6 +34,7 @@ export const Layout = ({
   return (
     <>
       <Head>
+        <title>{title}</title>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link
