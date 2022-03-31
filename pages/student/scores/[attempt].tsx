@@ -11,7 +11,11 @@ export default function ScoresIndex({
   task,
 }: InferPagePropsType<typeof getServerSideProps>) {
   return (
-    <Layout title="My Scores" user={user}>
+    <Layout
+      title={task.name}
+      user={user}
+      headerPrevButton={{ pageName: 'My Scores', pageLink: '/student/scores' }}
+    >
       <TaskSection task={task} module={module} isActionLocked />
     </Layout>
   );

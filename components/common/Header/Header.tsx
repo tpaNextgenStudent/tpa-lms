@@ -1,9 +1,9 @@
 import styles from './Header.module.scss';
 import { User } from '../../../lib/utils/types';
-import ArrowDown from '../../../public/arrow-down.svg';
+import ArrowLeftIcon from '../../../public/arrow-left.svg';
 import MenuIcon from '../../../public/menu-icon.svg';
-import Image from 'next/image';
 import { UserNav } from '../UserNav/UserNav';
+import Link from 'next/link';
 
 interface HeaderProps {
   title: string;
@@ -11,6 +11,7 @@ interface HeaderProps {
   actionsNumber?: number;
   user: User;
   openMobileNav: () => void;
+  prevButton?: { pageName: string; pageLink: string };
 }
 
 export const Header = ({
@@ -19,6 +20,7 @@ export const Header = ({
   openMobileNav,
   description,
   actionsNumber,
+  prevButton,
 }: HeaderProps) => {
   return (
     <header className={styles.headerWrapper}>
@@ -31,7 +33,22 @@ export const Header = ({
       </button>
       <div className={styles.textWrapper}>
         <div className={styles.titleWrapper}>
-          <h1 className={styles.title}>{title}</h1>
+          {prevButton && (
+            <Link href={prevButton.pageLink} aria-label="Go back">
+              <a className={styles.prevLink}>
+                <ArrowLeftIcon />
+              </a>
+            </Link>
+          )}
+
+          <h1 className={styles.title}>
+            {prevButton && (
+              <span className={styles.titlePrevPage}>
+                {prevButton.pageName}
+              </span>
+            )}
+            <span>{title}</span>
+          </h1>
           {actionsNumber && (
             <span className={styles.actionsNumber}>{actionsNumber}</span>
           )}
