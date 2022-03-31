@@ -39,7 +39,6 @@ export const columns: Column<ScoresData>[] = [
   {
     Header: 'Task',
     accessor: 'task',
-    // maxWidth: 250,
   },
   {
     Header: 'Task type',
@@ -100,13 +99,10 @@ export const columns: Column<ScoresData>[] = [
     accessor: 'view',
     minWidth: 150,
 
-    Cell: ({ cell: { value } }: { cell: { value: { link: string } } }) => {
-      console.log(value.link);
-      return (
-        <Link href={value.link}>
-          <a className={styles.viewLink}>View task</a>
-        </Link>
-      );
-    },
+    Cell: ({ cell: { value } }: { cell: { value: { link: string } } }) => (
+      <Link href={value.link}>
+        <a className={styles.viewLink}>View task</a>
+      </Link>
+    ),
   },
 ];
