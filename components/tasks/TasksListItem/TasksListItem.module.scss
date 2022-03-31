@@ -15,8 +15,17 @@
     margin-top: 0;
   }
 
+  &:hover {
+    background-color: colors.$whiteHover;
+    border-color: colors.$whiteHover;
+  }
+
   &Active {
     border-color: colors.$purplePrimary;
+
+    &:hover {
+      border-color: colors.$purplePrimary;
+    }
   }
 
   @media (max-width: media.$laptopS) {

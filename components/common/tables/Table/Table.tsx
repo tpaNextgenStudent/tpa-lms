@@ -22,7 +22,10 @@ export const Table = <T extends {}>({ data, columns }: TableProps<T>) => {
                   const { key, ...columnHeaderProps } = column.getHeaderProps();
                   return (
                     <th
-                      style={{ minWidth: column.minWidth }}
+                      style={{
+                        minWidth: column.minWidth,
+                        maxWidth: column.maxWidth,
+                      }}
                       className={styles.tableHead}
                       key={key}
                       {...columnHeaderProps}

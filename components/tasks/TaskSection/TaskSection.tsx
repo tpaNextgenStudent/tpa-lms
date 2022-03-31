@@ -18,9 +18,14 @@ import { IModule } from '../../../api/modules';
 interface TaskSectionProps {
   task: ITask;
   module: IModule;
+  isActionLocked?: boolean;
 }
 
-export const TaskSection = ({ task, module }: TaskSectionProps) => {
+export const TaskSection = ({
+  task,
+  module,
+  isActionLocked,
+}: TaskSectionProps) => {
   const [isDescriptionView, setIsDescriptionView] = useState(true);
   const [isFullScreenMode, setIsFullScreenMode] = useState(false);
 
@@ -73,7 +78,9 @@ export const TaskSection = ({ task, module }: TaskSectionProps) => {
       ) : (
         <TaskComments attempts={task.attempts} />
       )}
-      {task.status !== 'upcoming' && <TaskAction task={task} />}
+      {!isActionLocked && task.status !== 'upcoming' && (
+        <TaskAction task={task} />
+      )}
     </main>
   );
 };

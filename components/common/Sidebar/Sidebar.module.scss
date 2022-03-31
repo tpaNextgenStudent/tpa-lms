@@ -93,6 +93,10 @@
     box-shadow: 0 2px 24px rgba(88, 92, 221, 0.04);
     font-weight: 700;
   }
+
+  &:hover {
+    background-color: colors.$bgTable;
+  }
 }
 
 .linkIcon {

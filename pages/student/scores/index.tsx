@@ -2,71 +2,69 @@ import { Layout } from '../../../components/common/Layout/Layout';
 import { GetServerSidePropsContext } from 'next';
 import { getFakeData } from '../../../lib/mocks/getFakeData';
 import { InferPagePropsType } from '../../../lib/utils/types';
-import faker from '@faker-js/faker';
 import { Table } from '../../../components/common/tables/Table/Table';
 import { columns } from '../../../lib/tables/student/my-scores/my-scores';
+import { getUserModules } from '../../../api/modules';
+import { getUserTasksByModule } from '../../../api/tasks';
+import dayjs from 'dayjs';
 
 export default function ScoresIndex({
   user,
-  scores,
+  attempts,
 }: InferPagePropsType<typeof getServerSideProps>) {
   return (
     <Layout title="My Scores" user={user}>
-      <Table columns={columns} data={scores} />
+      <Table columns={columns} data={attempts} />
     </Layout>
   );
 }
 
-export async function getServerSideProps(ctx: GetServerSidePropsContext) {
+export async function getServerSideProps({
+  req,
+  res,
+}: GetServerSidePropsContext) {
   const data = await getFakeData();
 
-  const user = data.user;
+  const modules = await getUserModules({
+    cookie: req.headers.cookie as string,
+  });
+  const module = modules[0];
 
-  const scores = [];
+  const tasks = await getUserTasksByModule(module.id, {
+    cookie: req.headers.cookie as string,
+  });
 
-  for (let i = 0; i < 20; i++) {
-    const sd = `${faker.datatype.number({
-      min: 1,
-      max: 28,
-    })} ${faker.date.month()}`;
-    const rd = `${faker.datatype.number({
-      min: 1,
-      max: 28,
-    })} ${faker.date.month()}`;
-
-    const taskName = faker.company.catchPhrase();
-
-    const mn = faker.company.bsNoun();
-    const moduleName = `${mn[0].toUpperCase()}${mn.slice(1)}`;
-
-    const taskType = faker.random.arrayElement(['info', 'code']);
-
-    const attempts = faker.random.arrayElement([1, 2, 3]);
-    const score = faker.random.arrayElement([1, 2, 3]);
-
-    const reviewedBy = faker.random.arrayElement([
-      {
-        name: 'Go Kubo',
-        img: 'https://unsplash.it/75/75/',
-      },
-      {
-        name: 'Łukasz Matuszczak',
-        img: 'https://unsplash.it/100/100/',
-      },
-    ]);
-
-    scores.push({
-      submission_date: sd,
-      review_date: rd,
-      module: moduleName,
-      task: taskName,
-      task_type: taskType,
-      attempt: attempts,
-      score: score,
-      reviewed_by: reviewedBy,
-      view: { link: '/scores' },
+  const attempts = tasks
+    .map(({ attempts }) => attempts)
+    .flat()
+    .map(a => {
+      return {
+        submission_date: dayjs(a.attempt_date).format('DD MMMM'),
+        review_date: dayjs(a.assessment_date).format('DD MMMM'),
+        module: module.name,
+        task: 'Translate to a box diagram',
+        task_type: 'code',
+        attempt: a.attempt_number,
+        score: a.score,
+        reviewed_by: {
+          name: `${a.teacher.legalName} ${a.teacher.surname}`,
+          img: a.teacher.image,
+        },
+        view: { link: `/student/scores/attemptId` },
+      };
     });
-  }
 
-  return { props: { user, scores } };
+  const mockedUser = {
+    id: 'userId',
+    name: 'PatrykBuniX',
+    firstname: 'Patryk',
+    lastname: 'Górka',
+    bio: 'Frontend developer in love with TypeScript and Next.js',
+    email: 'patrykbunix@gmail.com',
+    image: 'https://unsplash.it/100/100',
+    cohortId: 'cohortId',
+    role: 'student' as const,
+  };
+
+  return { props: { user: mockedUser, attempts } };
 }

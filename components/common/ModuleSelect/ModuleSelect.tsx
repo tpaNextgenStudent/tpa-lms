@@ -33,6 +33,7 @@ const customStyles: StylesConfig<OptionType, IsMulti> = {
     ':hover': {
       border: `1px solid ${colors.strokeMain}`,
       borderBottom: state.menuIsOpen ? '0' : `1px solid ${colors.strokeMain}`,
+      backgroundColor: colors.bgTable,
     },
   }),
   valueContainer: (provided, state) => ({
@@ -84,7 +85,7 @@ const customStyles: StylesConfig<OptionType, IsMulti> = {
     backgroundColor: colors.white,
     position: 'relative',
     ':hover': {
-      backgroundColor: colors.purpleSecondary,
+      backgroundColor: colors.bgTable,
     },
     '::before': {
       content: '""',
