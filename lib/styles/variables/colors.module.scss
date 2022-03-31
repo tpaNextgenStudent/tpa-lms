@@ -10,7 +10,7 @@ $strokeLines: #f0f0f0;
 //background
 $bgMain: #f8f8f8;
 $bgInactive: #acaab9;
-$bgTable: #f9f9ff;
+$bgTable: #fbfbfb;
 
 //status font
 $statusFontGreen: #65ba6b;
@@ -31,7 +31,8 @@ $fontPrimary: #070130;
 $fontSecondary: #9c99ac;
 
 //colors
-$white: rgb(255, 255, 255);
+$white: #ffffff;
+$whiteHover: #f6f6f5;
 
 :export {
   purplePrimary: $purplePrimary;
