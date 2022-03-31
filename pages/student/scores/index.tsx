@@ -14,7 +14,7 @@ export default function ScoresIndex({
 }: InferPagePropsType<typeof getServerSideProps>) {
   return (
     <Layout title="My Scores" user={user}>
-      <Table columns={columns} data={attempts} />
+      <Table columns={columns} data={attempts} isFullWidth />
     </Layout>
   );
 }
