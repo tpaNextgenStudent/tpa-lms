@@ -38,13 +38,14 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
       };
     }
 
-    //todo: figure out student/teacher root page
-    // return {
-    //   redirect: {
-    //     destination: '/student',
-    //     permanent: true,
-    //   },
-    // };
+    //todo: figure out student/teacher root page by role
+    //for now lets assume that it's student
+    return {
+      redirect: {
+        destination: '/student/tasks',
+        permanent: true,
+      },
+    };
   } catch (err: unknown) {
     if (axios.isAxiosError(err)) {
       console.log(err.response?.statusText);
