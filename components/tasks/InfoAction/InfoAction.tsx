@@ -1,11 +1,12 @@
 import styles from './InfoAction.module.scss';
+import { CTAButton } from '../../common/CTAButton/CTAButton';
 
 interface InfoActionProps {}
 
 export const InfoAction = ({}: InfoActionProps) => {
   return (
     <div className={styles.wrapper}>
-      <button className={styles.button}>Mark as read</button>
+      <CTAButton text="Mark as read" />
     </div>
   );
 };

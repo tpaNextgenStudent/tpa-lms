@@ -2,7 +2,6 @@ import { Column } from 'react-table';
 import styles from './my-scores.module.scss';
 import Image from 'next/image';
 import Link from 'next/link';
-import { TaskTypeIcon } from '../../../../components/tasks/TaskTypeIcon/TaskTypeIcon';
 import { TaskType } from '../../../utils/types';
 import clsx from 'clsx';
 import { getColorByScore } from '../../../getColorByScore';
@@ -32,16 +31,18 @@ export const columns: Column<ScoresData>[] = [
   {
     Header: 'Module',
     accessor: 'module',
+
+    Cell: ({ cell: { value } }: { cell: { value: string } }) => (
+      <span className={styles.moduleName}>{value}</span>
+    ),
   },
   {
     Header: 'Task',
     accessor: 'task',
-    minWidth: 250,
   },
   {
     Header: 'Task type',
     accessor: 'task_type',
-    minWidth: 100,
 
     Cell: ({ cell: { value } }: { cell: { value: TaskType } }) => (
       <TaskTypeCell type={value} />
@@ -50,12 +51,10 @@ export const columns: Column<ScoresData>[] = [
   {
     Header: 'Attempt',
     accessor: 'attempt',
-    minWidth: 100,
   },
   {
     Header: 'Score',
     accessor: 'score',
-    minWidth: 100,
 
     Cell: ({ cell: { value } }: { cell: { value: number } }) => (
       <span className={styles.scoreWrapper}>
