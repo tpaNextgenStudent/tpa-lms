@@ -43,7 +43,7 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
     return {
       redirect: {
         destination: '/student/tasks',
-        permanent: true,
+        permanent: false,
       },
     };
   } catch (err: unknown) {

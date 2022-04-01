@@ -19,7 +19,7 @@ export async function getServerSideProps({
 
     return {
       redirect: {
-        permanent: true,
+        permanent: false,
         destination: `/student/tasks/${moduleId}/${currentTask.id}`,
       },
     };

@@ -15,7 +15,7 @@ export async function getServerSideProps({ req }: GetServerSidePropsContext) {
 
     return {
       redirect: {
-        permanent: true,
+        permanent: false,
         destination: `/student/tasks/${currentModule.id}`,
       },
     };

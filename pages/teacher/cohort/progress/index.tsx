@@ -17,7 +17,7 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
   if (!userCohort) {
     return {
       redirect: {
-        permanent: true,
+        permanent: false,
         destination: '/join-to-cohort-error',
       },
     };
@@ -30,7 +30,7 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
   if (firstModule) {
     return {
       redirect: {
-        permanent: true,
+        permanent: false,
         destination: `/teacher/cohort/progress/${firstModule.id}`,
       },
     };
