@@ -12,6 +12,7 @@ interface LayoutProps {
   description?: string;
   actionsNumber?: number;
   cohortName?: string;
+  headerPrevButton?: { pageName: string; pageLink: string };
 }
 
 export const Layout = ({
@@ -21,6 +22,7 @@ export const Layout = ({
   description,
   actionsNumber,
   cohortName,
+  headerPrevButton,
 }: LayoutProps) => {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
 
@@ -51,6 +53,7 @@ export const Layout = ({
         />
         <div className={styles.mainWrapper}>
           <Header
+            prevButton={headerPrevButton}
             openMobileNav={openMobileNav}
             title={title}
             description={description}

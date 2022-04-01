@@ -1,18 +1,27 @@
 import styles from './Table.module.scss';
 import { Column, useTable } from 'react-table';
+import clsx from 'clsx';
 
 interface TableProps<T extends {}> {
   data: T[];
   columns: Column<T>[];
+  isFullWidth?: boolean;
 }
 
-export const Table = <T extends {}>({ data, columns }: TableProps<T>) => {
+export const Table = <T extends {}>({
+  data,
+  columns,
+  isFullWidth,
+}: TableProps<T>) => {
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable<T>({ columns, data });
 
   return (
     <main className={styles.wrapper}>
-      <table className={styles.table} {...getTableProps()}>
+      <table
+        className={clsx(styles.table, isFullWidth && styles.tableFullWidth)}
+        {...getTableProps()}
+      >
         <thead>
           {headerGroups.map(headerGroup => {
             const { key, ...headerProps } = headerGroup.getHeaderGroupProps();
