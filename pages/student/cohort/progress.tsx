@@ -1,10 +1,10 @@
 import { Layout } from '../../../components/common/Layout/Layout';
-import { GetServerSidePropsContext } from 'next';
 import { getFakeData } from '../../../lib/mocks/getFakeData';
 import { InferPagePropsType } from '../../../lib/utils/types';
 import faker from '@faker-js/faker';
 import { Table } from '../../../components/common/tables/Table/Table';
 import { columns } from '../../../lib/tables/student/cohort-progress/cohort-progress';
+import { withServerSideAuth } from '../../../lib/auth/withServerSideAuth';
 
 export default function CohortProgress({
   user,
@@ -17,7 +17,7 @@ export default function CohortProgress({
   );
 }
 
-export async function getServerSideProps(ctx: GetServerSidePropsContext) {
+export const getServerSideProps = withServerSideAuth(async ctx => {
   const data = await getFakeData();
 
   const user = data.user;
@@ -69,4 +69,4 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
   }
 
   return { props: { user, progress } };
-}
+});
