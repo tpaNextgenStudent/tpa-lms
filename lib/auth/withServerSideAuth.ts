@@ -2,12 +2,10 @@ import { GetServerSidePropsContext, GetServerSidePropsResult } from 'next';
 import { getSession } from 'next-auth/react';
 
 export const withServerSideAuth =
-  <Props>(
+  <P>(
     handler: (
       ctx: GetServerSidePropsContext
-    ) =>
-      | GetServerSidePropsResult<Props>
-      | Promise<GetServerSidePropsResult<Props>>
+    ) => GetServerSidePropsResult<P> | Promise<GetServerSidePropsResult<P>>
   ) =>
   async (ctx: GetServerSidePropsContext) => {
     const session = await getSession(ctx);

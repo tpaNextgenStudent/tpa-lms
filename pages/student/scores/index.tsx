@@ -1,5 +1,4 @@
 import { Layout } from '../../../components/common/Layout/Layout';
-import { GetServerSidePropsContext } from 'next';
 import { getFakeData } from '../../../lib/mocks/getFakeData';
 import { InferPagePropsType } from '../../../lib/utils/types';
 import { Table } from '../../../components/common/tables/Table/Table';
@@ -7,6 +6,7 @@ import { columns } from '../../../lib/tables/student/my-scores/my-scores';
 import { getUserModules } from '../../../api/modules';
 import { getUserTasksByModule } from '../../../api/tasks';
 import dayjs from 'dayjs';
+import { withServerSideAuth } from '../../../lib/auth/withServerSideAuth';
 
 export default function ScoresIndex({
   user,
@@ -19,10 +19,7 @@ export default function ScoresIndex({
   );
 }
 
-export async function getServerSideProps({
-  req,
-  res,
-}: GetServerSidePropsContext) {
+export const getServerSideProps = withServerSideAuth(async ({ req, res }) => {
   const data = await getFakeData();
 
   const modules = await getUserModules({
@@ -67,4 +64,4 @@ export async function getServerSideProps({
   };
 
   return { props: { user: mockedUser, attempts } };
-}
+});

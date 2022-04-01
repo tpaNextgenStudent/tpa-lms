@@ -1,10 +1,9 @@
 import { LoginDetailsForm } from '../../components/login/LoginDetailsForm/LoginDetailsForm';
 import { LoginLayout } from '../../components/login/LoginLayout/LoginLayout';
 import { LoginHeroText } from '../../components/login/LoginHeroText/LoginHeroText';
-import { GetServerSidePropsContext } from 'next';
-import { getSession } from 'next-auth/react';
 import axios from 'axios';
 import { apiPath } from '../../lib/utils/apiPath';
+import { withServerSideAuth } from '../../lib/auth/withServerSideAuth';
 
 export default function LoginDetails() {
   return (
@@ -18,17 +17,7 @@ export default function LoginDetails() {
   );
 }
 
-export async function getServerSideProps(ctx: GetServerSidePropsContext) {
-  const session = await getSession(ctx);
-  if (!session) {
-    return {
-      redirect: {
-        destination: '/login',
-        permanent: false,
-      },
-    };
-  }
-
+export const getServerSideProps = withServerSideAuth(async ctx => {
   try {
     const { data: user } = await axios.get(apiPath('user/details'), {
       headers: {
@@ -55,4 +44,4 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
   }
 
   return { props: {} };
-}
+});

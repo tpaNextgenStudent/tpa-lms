@@ -1,23 +1,12 @@
-import { getSession } from 'next-auth/react';
-import { GetServerSidePropsContext } from 'next';
 import { apiPath } from '../lib/utils/apiPath';
 import axios from 'axios';
+import { withServerSideAuth } from '../lib/auth/withServerSideAuth';
 
 export default function Component() {
   return null;
 }
 
-export async function getServerSideProps(ctx: GetServerSidePropsContext) {
-  const session = await getSession(ctx);
-  if (!session) {
-    return {
-      redirect: {
-        destination: '/login',
-        permanent: false,
-      },
-    };
-  }
-
+export const getServerSideProps = withServerSideAuth(async ctx => {
   try {
     const { data: user } = await axios.get(apiPath('user/details'), {
       headers: {
@@ -55,4 +44,4 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
   return {
     props: {},
   };
-}
+});
