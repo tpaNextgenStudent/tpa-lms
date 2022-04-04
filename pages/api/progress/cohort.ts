@@ -7,18 +7,31 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   const cohortUsers = await prisma.assignment.findMany({
     where: {
-      cohortId: session?.user?.assignments[0].cohortId,
+      cohort_id: session?.user?.assignments[0].cohort_id,
       role: 'student',
     },
     include: { user: true, curriculum: true },
+    orderBy: [
+      {
+        curriculum: {
+          last_module_position: 'desc',
+        },
+      },
+      {
+        curriculum: {
+          last_task_position: 'desc',
+        },
+      },
+    ],
   });
 
   const response = await Promise.all(
     cohortUsers.map(async (user): Promise<any> => {
-      const moduleProgress = user?.curriculum?.moduleProgress || {};
+      console.log(999, user);
+      const moduleProgress = user?.curriculum?.module_progress || {};
       const lastModulePosition =
-        (user?.curriculum?.lastModulePosition || 1) - 1;
-      const lastTaskPosition = (user?.curriculum?.lastTaskPosition || 1) - 1;
+        (user?.curriculum?.last_module_position || 1) - 1;
+      const lastTaskPosition = (user?.curriculum?.last_task_position || 1) - 1;
 
       const lastModule =
         moduleProgress[lastModulePosition as keyof typeof moduleProgress];
@@ -37,11 +50,12 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       });
 
       return {
-        user: session.user,
+        user: user.user,
         module_name: module?.module.name,
         module_position: lastModule['position'],
         task_name: task?.name,
         task_position: lastTask['position'],
+        task_type: task?.type,
       };
     })
   );

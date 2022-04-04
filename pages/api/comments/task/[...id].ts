@@ -8,15 +8,23 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   const response = await prisma.attempt.findMany({
     where: {
-      taskId: taskId,
-      assignmentId: session.user?.assignments[0].id,
+      task_id: taskId,
+      assignment_id: session.user?.assignments[0].id,
     },
-    orderBy: {
-      attemptNumber: 'asc',
-    },
-    include: {
+    select: {
+      id: true,
+      score: true,
+      answer: true,
+      comment: true,
+      attempt_number: true,
+      submission_date: true,
+      evaluation_date: true,
       teacher: true,
       student: true,
+      task: true,
+    },
+    orderBy: {
+      attempt_number: 'asc',
     },
   });
 

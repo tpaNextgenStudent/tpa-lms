@@ -34,7 +34,7 @@ const userResponseSchema = {
   image: true,
   email: true,
   accounts: true,
-  assignments: { select: { cohort: true } },
+  assignments: { select: { cohort: true, role: true } },
 };
 
 const getRequest = async (res: NextApiResponse, userId: string) => {
@@ -44,10 +44,11 @@ const getRequest = async (res: NextApiResponse, userId: string) => {
   });
 
   const userProfile = await prisma.profile.findFirst({
-    where: { providerAccountId: user?.accounts[0].providerAccountId },
+    where: { provider_account_id: user?.accounts[0].provider_account_id },
   });
 
   const response = {
+    role: user?.assignments[0].role,
     name: user?.name,
     surname: user?.surname,
     bio: user?.bio,

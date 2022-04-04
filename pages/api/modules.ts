@@ -6,14 +6,14 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const session = await getUserSession({ req });
 
   const userAssigment = await prisma.assignment.findFirst({
-    where: { userId: session.user?.id },
+    where: { user_id: session.user?.id },
   });
 
   const curriculum = await prisma.curriculum.findUnique({
-    where: { assignmentId: userAssigment?.id },
+    where: { assignment_id: userAssigment?.id },
   });
 
-  const modules = curriculum?.moduleProgress as Array<any>;
+  const modules = curriculum?.module_progress as Array<any>;
 
   const response = await Promise.all(
     modules.map(async (module: any): Promise<any> => {
