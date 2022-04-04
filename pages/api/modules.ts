@@ -18,7 +18,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const response = await Promise.all(
     modules.map(async (module: any): Promise<any> => {
       const moduleDetails = await prisma.moduleVersion.findUnique({
-        where: { id: module.moduleId },
+        where: { id: module.module_id },
         include: { module: true },
       });
 

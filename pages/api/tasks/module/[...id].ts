@@ -12,8 +12,8 @@ const getUserResults = async (moduleId: string, session: any) => {
   });
 
   const modules = curriculum?.module_progress as Array<any>;
-  module = modules.find(module => module.moduleId === moduleId);
-
+  module = modules.find(module => module.module_id === moduleId);
+  console.log(modules);
   return module['tasks' as keyof typeof module];
 };
 
