@@ -141,6 +141,6 @@ model Attempt {
   attemptNumber      Int
   teacherAssigmentId String
   teacher            Assignment @relation("teacher", fields: [teacherAssigmentId], references: [id])
-  submit_date        DateTime
+  submission_date    DateTime   @default(now())
   evaluation_date    DateTime?
 }
