@@ -44,18 +44,18 @@ const getRequest = async (res: NextApiResponse, userId: string) => {
   });
 
   const userProfile = await prisma.profile.findFirst({
-    where: { provider_account_id: user?.accounts[0].provider_account_id },
+    where: { provider_account_id: user?.accounts[0].providerAccountId },
   });
 
   const response = {
-    role: user?.assignments[0].role,
+    role: user?.assignments[0]?.role,
     name: user?.name,
     surname: user?.surname,
     bio: user?.bio,
     image: user?.image,
     email: user?.email,
     github_login: userProfile?.login,
-    cohort_name: user?.assignments[0].cohort.name,
+    cohort_name: user?.assignments[0]?.cohort?.name,
   };
 
   res.status(200).send(response);
