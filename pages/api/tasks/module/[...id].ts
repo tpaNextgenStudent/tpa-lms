@@ -4,14 +4,14 @@ import getUserSession from '../../../../utils/getUserSession';
 
 const getUserResults = async (moduleId: string, session: any) => {
   const userAssigment = await prisma.assignment.findFirst({
-    where: { userId: session.user?.id },
+    where: { user_id: session.user?.id },
   });
 
   const curriculum = await prisma.curriculum.findUnique({
-    where: { assignmentId: userAssigment?.id },
+    where: { assignment_id: userAssigment?.id },
   });
 
-  const modules = curriculum?.moduleProgress as Array<any>;
+  const modules = curriculum?.module_progress as Array<any>;
   module = modules.find(module => module.moduleId === moduleId);
 
   return module['tasks' as keyof typeof module];
