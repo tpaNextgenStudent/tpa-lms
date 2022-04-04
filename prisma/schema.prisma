@@ -39,26 +39,22 @@ model Session {
 }
 
 model User {
-  id              String    @id @default(cuid())
-  name            String?
-  email           String?   @unique
-  emailVerified   DateTime?
-  image           String?
-  accounts        Account[]
-  sessions        Session[]
-  legalName       String?
-  surname         String?
-  bio             String?
-  attempts        Attempt[] @relation("user")
-  attemptsTeacher Attempt[] @relation("teacher")
-  cohort          Cohort?   @relation(fields: [cohortId], references: [id])
-  cohortId        String?
+  id            String       @id @default(cuid())
+  email         String?      @unique
+  emailVerified DateTime?
+  image         String?
+  accounts      Account[]
+  sessions      Session[]
+  assignments   Assignment[]
+  name          String?
+  surname       String?
+  bio           String?
 }
 
 model Profile {
-  login             String  @unique
+  login             String @unique
   role              String
-  providerAccountId String?
+  providerAccountId String
 }
 
 model VerificationToken {
@@ -70,72 +66,81 @@ model VerificationToken {
 }
 
 model Cohort {
-  id               String             @id @default(cuid())
-  name             String
-  CurriculumModule CurriculumModule[]
-  users            User[]
-  CurriculumTask   CurriculumTask[]
-  attempts         Attempt[]
+  id          String       @id @default(cuid())
+  name        String
+  assignments Assignment[]
+}
+
+model Assignment {
+  id                String      @id @default(cuid())
+  cohortId          String
+  cohort            Cohort      @relation(fields: [cohortId], references: [id])
+  userId            String
+  user              User        @relation(fields: [userId], references: [id])
+  role              userRole
+  curriculum        Curriculum?
+  checkAttempts     Attempt[]   @relation("teacher")
+  submittedAttempts Attempt[]   @relation("student")
+}
+
+enum userRole {
+  student
+  teacher
 }
 
 model Module {
-  id    String @id @default(cuid())
-  name  String
-  tasks Task[]
+  id             String          @id @default(cuid())
+  name           String
+  moduleVersions ModuleVersion[]
+}
+
+model ModuleVersion {
+  id             String @id @default(cuid())
+  moduleId       String
+  module         Module @relation(fields: [moduleId], references: [id])
+  version_number Int
+  tasks          Task[]
 }
 
 model Task {
-  id          String @id @default(cuid())
-  name        String
-  description String
-  link        String
-  type        String
-  moduleId    String
-  module      Module @relation(fields: [moduleId], references: [id])
+  id              String        @id @default(cuid())
+  curriculumId    String
+  moduleVersionId String
+  moduleVersion   ModuleVersion @relation(fields: [moduleVersionId], references: [id])
+  type            taskType
+  position        Int
+  name            String
+  description     String
+  link            String
+  attempts        Attempt[]
 }
 
-model CurriculumModule {
-  id       String
-  cohortId String
-  position Int
-  name     String
-  cohort   Cohort           @relation(fields: [cohortId], references: [id])
-  tasks    CurriculumTask[]
-
-  @@id([id, cohortId])
+enum taskType {
+  info
+  code
 }
 
-model CurriculumTask {
-  cohortId    String
-  id          String
-  moduleId    String
-  name        String
-  position    Int
-  type        String
-  description String
-  link        String
-  cohort      Cohort           @relation(fields: [cohortId], references: [id])
-  module      CurriculumModule @relation(fields: [moduleId, cohortId], references: [id, cohortId])
-  attempts    Attempt[]
-
-  @@id([id, cohortId])
+model Curriculum {
+  id                 String     @id @default(cuid())
+  assignmentId       String     @unique
+  assignment         Assignment @relation(fields: [assignmentId], references: [id])
+  moduleProgress     Json
+  lastModulePosition Int
+  lastTaskPosition   Int
 }
 
 model Attempt {
-  id              String         @id @default(cuid())
-  userId          String
-  teacherId       String
-  taskId          String
-  answer          String
-  attempt_number  Int
-  attempt_date    DateTime       @default(now())
-  assessment_date DateTime?
-  cohortId        String
-  cohort          Cohort         @relation(fields: [cohortId], references: [id])
-  comment         String
-  score           Int
-  status          String
-  task            CurriculumTask @relation(fields: [taskId, cohortId], references: [id, cohortId])
-  user            User           @relation("user", fields: [userId], references: [id])
-  teacher         User           @relation("teacher", fields: [teacherId], references: [id])
+  id                 String     @id @default(cuid())
+  assignmentId       String
+  student            Assignment @relation("student", fields: [assignmentId], references: [id])
+  taskId             String
+  task               Task       @relation(fields: [taskId], references: [id])
+  score              Int
+  answer             String
+  comment            String
+  attemptNumber      Int
+  teacherAssigmentId String
+  teacher            Assignment @relation("teacher", fields: [teacherAssigmentId], references: [id])
+  submission_date    DateTime   @default(now())
+  evaluation_date    DateTime?
 }
