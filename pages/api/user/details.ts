@@ -9,33 +9,52 @@ const postRequest = async (
   res: NextApiResponse,
   userId: string
 ) => {
-  const response = req.body;
+  const { name, surname, bio } = req.body;
 
-  const updateUser = await prisma.user.update({
+  const updatedUser = await prisma.user.update({
     where: { id: userId },
     data: {
-      legalName: response.name,
-      surname: response.surname,
-      bio: response.bio,
+      name,
+      surname,
+      bio,
     },
   });
 
   res.status(200).send({
-    name: updateUser.legalName,
-    surname: updateUser.surname,
-    bio: updateUser.bio,
+    name: updatedUser.name,
+    surname: updatedUser.surname,
+    bio: updatedUser.bio,
   });
+};
+
+const userResponseSchema = {
+  name: true,
+  surname: true,
+  bio: true,
+  image: true,
+  email: true,
+  accounts: true,
+  assignments: { select: { cohort: true } },
 };
 
 const getRequest = async (res: NextApiResponse, userId: string) => {
   const user = await prisma.user.findUnique({
     where: { id: userId },
+    select: userResponseSchema,
+  });
+
+  const userProfile = await prisma.profile.findFirst({
+    where: { providerAccountId: user?.accounts[0].providerAccountId },
   });
 
   const response = {
-    name: user?.legalName,
+    name: user?.name,
     surname: user?.surname,
     bio: user?.bio,
+    image: user?.image,
+    email: user?.email,
+    github_login: userProfile?.login,
+    cohort_name: user?.assignments[0].cohort.name,
   };
 
   res.status(200).send(response);
