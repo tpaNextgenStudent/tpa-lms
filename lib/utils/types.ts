@@ -1,13 +1,12 @@
+import { Redirect } from 'next/types';
+
 export type InferPagePropsType<T> = T extends (
   ...args: readonly any[]
 ) => Promise<
-  | { readonly props: infer P }
-  | { readonly notFound: boolean }
+  | { props: infer P | Promise<infer P> }
+  | { notFound: true }
   | {
-      redirect: {
-        permanent: boolean;
-        destination: string;
-      };
+      redirect: Redirect;
     }
 >
   ? NonNullable<P>

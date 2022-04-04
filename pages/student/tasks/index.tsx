@@ -1,11 +1,12 @@
 import { GetServerSidePropsContext } from 'next';
 import { getUserModules } from '../../../api/modules';
+import { withServerSideAuth } from '../../../lib/auth/withServerSideAuth';
 
 export default function TasksIndex() {
   return null;
 }
 
-export async function getServerSideProps({ req }: GetServerSidePropsContext) {
+export const getServerSideProps = withServerSideAuth(async ({ req }) => {
   try {
     const modules = await getUserModules({
       cookie: req.headers.cookie as string,
@@ -15,7 +16,7 @@ export async function getServerSideProps({ req }: GetServerSidePropsContext) {
 
     return {
       redirect: {
-        permanent: true,
+        permanent: false,
         destination: `/student/tasks/${currentModule.id}`,
       },
     };
@@ -24,4 +25,4 @@ export async function getServerSideProps({ req }: GetServerSidePropsContext) {
   return {
     notFound: true,
   };
-}
+});
