@@ -13,7 +13,7 @@ const getUserResults = async (moduleId: string, session: any) => {
 
   const modules = curriculum?.module_progress as Array<any>;
   module = modules.find(module => module.module_id === moduleId);
-  console.log(modules);
+
   return module['tasks' as keyof typeof module];
 };
 
@@ -42,10 +42,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     const result = userResults.find(
       (taskResult: any) => taskResult.id === task.id
     );
+    delete result['id'];
 
     return {
-      ...task,
-      ...result,
+      task_data: task,
+      last_attempt: result,
     };
   });
 
