@@ -21,7 +21,7 @@ export const HandleCode = ({
   if (!inline && match) {
     const lang = match[1];
 
-    if (lang === 'marmaid') {
+    if (lang === 'mermaid') {
       return <Mermaid chart={String(children)} />;
     }
 
