@@ -1,67 +1,53 @@
 import { Layout } from '../../../components/common/Layout/Layout';
-import { getFakeData } from '../../../lib/mocks/getFakeData';
 import { InferPagePropsType } from '../../../lib/utils/types';
 import { Table } from '../../../components/common/tables/Table/Table';
 import { columns } from '../../../lib/tables/student/my-scores/my-scores';
-import { getUserModules } from '../../../api/modules';
-import { getUserTasksByModule } from '../../../api/tasks';
 import dayjs from 'dayjs';
 import { withServerSideAuth } from '../../../lib/auth/withServerSideAuth';
+import { getUserDetails } from '../../../api/user';
+import { getUserScores } from '../../../api/scores';
 
 export default function ScoresIndex({
   user,
-  attempts,
+  scores,
 }: InferPagePropsType<typeof getServerSideProps>) {
   return (
     <Layout title="My Scores" user={user}>
-      <Table columns={columns} data={attempts} isFullWidth />
+      <Table columns={columns} data={scores} isFullWidth />
     </Layout>
   );
 }
 
 export const getServerSideProps = withServerSideAuth(async ({ req, res }) => {
-  const data = await getFakeData();
+  const authCookie = req.headers.cookie as string;
+  const user = await getUserDetails({ cookie: authCookie });
 
-  const modules = await getUserModules({
-    cookie: req.headers.cookie as string,
-  });
-  const module = modules[0];
+  const rawSores = await getUserScores({ cookie: authCookie });
 
-  const tasks = await getUserTasksByModule(module.id, {
-    cookie: req.headers.cookie as string,
-  });
-
-  const attempts = tasks
-    .map(({ attempts }) => attempts)
-    .flat()
-    .map(a => {
+  const scores = rawSores.map(
+    ({ attempt, task_type, task_name, module_name }) => {
+      const teacherName = [
+        attempt.teacher.user.name,
+        attempt.teacher.user.surname,
+      ]
+        .filter(n => n)
+        .join(' ');
       return {
-        submission_date: dayjs(a.attempt_date).format('DD MMMM'),
-        review_date: dayjs(a.assessment_date).format('DD MMMM'),
-        module: module.name,
-        task: 'Translate to a box diagram',
-        task_type: 'code',
-        attempt: a.attempt_number,
-        score: a.score,
+        submission_date: dayjs(attempt.submission_date).format('DD MMMM'),
+        review_date: dayjs(attempt.evaluation_date).format('DD MMMM'),
+        module: module_name,
+        task: task_name,
+        task_type: task_type,
+        attempt: attempt.attempt_number,
+        score: attempt.score,
         reviewed_by: {
-          name: `${a.teacher.legalName} ${a.teacher.surname}`,
-          img: a.teacher.image,
+          name: teacherName,
+          img: attempt.teacher.user.image,
         },
-        view: { link: `/student/scores/attemptId` },
+        view: { link: `/student/scores/${attempt.id}` },
       };
-    });
+    }
+  );
 
-  const mockedUser = {
-    id: 'userId',
-    name: 'PatrykBuniX',
-    firstname: 'Patryk',
-    lastname: 'Górka',
-    bio: 'Frontend developer in love with TypeScript and Next.js',
-    email: 'patrykbunix@gmail.com',
-    image: 'https://unsplash.it/100/100',
-    cohortId: 'cohortId',
-    role: 'student' as const,
-  };
-
-  return { props: { user: mockedUser, attempts } };
+  return { props: { user, scores } };
 });

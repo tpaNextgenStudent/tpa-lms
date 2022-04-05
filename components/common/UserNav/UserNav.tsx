@@ -1,14 +1,14 @@
 import styles from './UserNav.module.scss';
 import Image from 'next/image';
 import ArrowDown from '../../../public/arrow-down.svg';
-import { User } from '../../../lib/utils/types';
 import Link from 'next/link';
 import { useRef, useState } from 'react';
 import clsx from 'clsx';
 import { useClickOutside } from '../../../lib/useClickOutside';
+import { IUserDetails } from '../../../api/user';
 
 interface UserNavProps {
-  user: User;
+  user: IUserDetails;
 }
 
 export const UserNav = ({ user }: UserNavProps) => {
@@ -42,17 +42,20 @@ export const UserNav = ({ user }: UserNavProps) => {
     setIsDropdownOpen(false);
   };
 
-  const fullName = `${user.firstname} ${user.lastname}`;
+  const fullName = `${user.name} ${user.surname}`;
 
   return (
     <div onMouseLeave={handleMouseLeave} className={styles.userWrapper}>
-      <Image
-        className={styles.userAvatar}
-        width={40}
-        height={40}
-        src={user.image!}
-        alt="Avatar"
-      />
+      {user.image && (
+        <Image
+          className={styles.userAvatar}
+          width={40}
+          height={40}
+          src={user.image!}
+          alt="Avatar"
+        />
+      )}
+
       <p className={styles.userName}>{fullName}</p>
       <button
         ref={buttonRef}

@@ -1,4 +1,4 @@
-import { getUserTasksByModule } from '../../../../api/tasks';
+import { getCurrentTask, getUserTasksByModule } from '../../../../api/tasks';
 import { withServerSideAuth } from '../../../../lib/auth/withServerSideAuth';
 
 export default function Module() {
@@ -8,17 +8,26 @@ export default function Module() {
 export const getServerSideProps = withServerSideAuth(
   async ({ req, params }) => {
     const moduleId = params!.module as string;
+    const authCookie = req.headers.cookie as string;
+
     try {
       const tasks = await getUserTasksByModule(moduleId, {
-        cookie: req.headers.cookie as string,
+        cookie: authCookie,
       });
 
-      const currentTask = tasks[0];
+      const { task_id } = await getCurrentTask({ cookie: authCookie });
+
+      const isTaskInModule = tasks.map(t => t.task_data.id).includes(task_id);
+
+      const currentTaskId = isTaskInModule
+        ? task_id
+        : tasks.find(t => t.last_attempt.status === 'in progress')?.task_data
+            .id || tasks[0].task_data.id;
 
       return {
         redirect: {
           permanent: false,
-          destination: `/student/tasks/${moduleId}/${currentTask.id}`,
+          destination: `/student/tasks/${moduleId}/${currentTaskId}`,
         },
       };
     } catch (e) {}

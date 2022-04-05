@@ -1,14 +1,17 @@
 import { Layout } from '../../../components/common/Layout/Layout';
 import { InferPagePropsType } from '../../../lib/utils/types';
-import { getUserModules } from '../../../api/modules';
-import { getUserTasksByModule } from '../../../api/tasks';
 import { TaskSection } from '../../../components/tasks/TaskSection/TaskSection';
 import { withServerSideAuth } from '../../../lib/auth/withServerSideAuth';
+import { getUserDetails } from '../../../api/user';
+import { getAttemptById } from '../../../api/attempts';
+import { attemptToComments } from '../../../lib/utils/attemptsToComments';
 
 export default function ScoresIndex({
   user,
   module,
   task,
+  attempt,
+  comments,
 }: InferPagePropsType<typeof getServerSideProps>) {
   return (
     <Layout
@@ -16,52 +19,48 @@ export default function ScoresIndex({
       user={user}
       headerPrevButton={{ pageName: 'My Scores', pageLink: '/student/scores' }}
     >
-      <TaskSection task={task} module={module} isActionLocked />
+      <TaskSection
+        task={task}
+        comments={comments}
+        attempt={attempt}
+        module={module}
+        isActionLocked
+      />
     </Layout>
   );
 }
-
 export const getServerSideProps = withServerSideAuth(
   async ({ req, params }) => {
     const { attempt: attemptId } = params! as {
       attempt: string;
     };
-    try {
-      const modules = await getUserModules({
-        cookie: req.headers.cookie as string,
-      });
 
-      const module = modules[0];
+    const authCookie = req.headers.cookie as string;
+    const user = await getUserDetails({ cookie: authCookie });
 
-      const tasks = await getUserTasksByModule(module.id, {
-        cookie: req.headers.cookie as string,
-      });
+    const attempt = await getAttemptById(attemptId, { cookie: authCookie });
 
-      const mockedUser = {
-        id: 'userId',
-        name: 'PatrykBuniX',
-        firstname: 'Patryk',
-        lastname: 'Górka',
-        bio: 'Frontend developer in love with TypeScript and Next.js',
-        email: 'patrykbunix@gmail.com',
-        image: 'https://unsplash.it/100/100',
-        cohortId: 'cohortId',
-        role: 'student' as const,
-      };
-
-      return {
-        props: {
-          user: mockedUser,
-          module,
-          modules,
-          tasks,
-          task: tasks[0],
-        },
-      };
-    } catch (e) {}
+    const comments = attemptToComments(attempt);
 
     return {
-      notFound: true,
+      props: {
+        user,
+        module: {
+          module_version_id: attempt.task.module_version_id,
+          name: 'Module Name',
+        },
+        task: {
+          name: attempt.task.name,
+          type: attempt.task.type,
+          description: attempt.task.description,
+        },
+        attempt: {
+          status: 'approved' as const,
+          attempt_number: attempt.attempt_number,
+          score: attempt.score,
+        },
+        comments,
+      },
     };
   }
 );

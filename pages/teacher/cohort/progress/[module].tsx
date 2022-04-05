@@ -23,23 +23,24 @@ export default function CohortProgressIndex({
   const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
     router.push(`/teacher/cohort/progress/${e.target.value}`);
   };
-  return (
-    <Layout
-      user={user}
-      title="Cohort Progress"
-      description="Stundets's progress grouped by modules."
-      cohortName={'TPA - TOYOTA - 05'}
-    >
-      <div>
-        {/*<ModuleSelect*/}
-        {/*  modules={modules}*/}
-        {/*  module={module}*/}
-        {/*  handleChange={handleChange}*/}
-        {/*/>*/}
-      </div>
-      <Table data={progress} columns={getCohortProgressColumns(module.tasks)} />
-    </Layout>
-  );
+  return null;
+  // return (
+  //   <Layout
+  //     user={user}
+  //     title="Cohort Progress"
+  //     description="Stundets's progress grouped by modules."
+  //     cohortName={'TPA - TOYOTA - 05'}
+  //   >
+  //     <div>
+  //       {/*<ModuleSelect*/}
+  //       {/*  modules={modules}*/}
+  //       {/*  module={module}*/}
+  //       {/*  handleChange={handleChange}*/}
+  //       {/*/>*/}
+  //     </div>
+  //     <Table data={progress} columns={getCohortProgressColumns(module.tasks)} />
+  //   </Layout>
+  // );
 }
 
 export async function getServerSideProps(ctx: GetServerSidePropsContext) {

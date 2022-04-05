@@ -15,7 +15,7 @@ interface ScoresData {
   task_type: string;
   attempt: number;
   score: number;
-  reviewed_by: { name: string; img: string };
+  reviewed_by: { name: string; img: string | null };
   view: { link: string };
 }
 
@@ -76,19 +76,21 @@ export const columns: Column<ScoresData>[] = [
     Cell: ({
       cell: { value },
     }: {
-      cell: { value: { name: string; img: string } };
+      cell: { value: ScoresData['reviewed_by'] };
     }) => (
       <div className={styles.teacherCellWrapper}>
         <span className={styles.teacherImgWrapper}>
-          <Image
-            className={styles.teacherImg}
-            width={32}
-            height={32}
-            objectFit="cover"
-            layout="fixed"
-            src={value.img}
-            alt={value.name}
-          />
+          {value.img && (
+            <Image
+              className={styles.teacherImg}
+              width={32}
+              height={32}
+              objectFit="cover"
+              layout="fixed"
+              src={value.img}
+              alt={value.name}
+            />
+          )}
         </span>
         <span className={styles.teacherName}>{value.name}</span>
       </div>

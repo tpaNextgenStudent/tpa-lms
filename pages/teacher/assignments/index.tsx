@@ -10,17 +10,18 @@ export default function AssignmentsIndex({
   user,
   assignments,
 }: InferPagePropsType<typeof getServerSideProps>) {
-  return (
-    <Layout
-      user={user}
-      title={'Assignments'}
-      description="Students' tasks to be reviewed by you."
-      actionsNumber={assignments.length}
-      cohortName="TPA - TOYOTA - 05"
-    >
-      <Table data={assignments} columns={columns} />
-    </Layout>
-  );
+  return null;
+  // return (
+  //   <Layout
+  //     user={user}
+  //     title={'Assignments'}
+  //     description="Students' tasks to be reviewed by you."
+  //     actionsNumber={assignments.length}
+  //     cohortName="TPA - TOYOTA - 05"
+  //   >
+  //     <Table data={assignments} columns={columns} />
+  //   </Layout>
+  // );
 }
 
 export async function getServerSideProps(ctx: GetServerSidePropsContext) {
