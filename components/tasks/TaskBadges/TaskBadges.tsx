@@ -11,20 +11,17 @@ interface TaskBadgesProps {
 }
 
 export const TaskBadges = ({ task }: TaskBadgesProps) => {
-  const lastAttempt = task.attempts[task.attempts.length - 1];
-
   const isTaskLocked = task.status === 'upcoming';
   const isInfoType = task.type === 'info';
 
   return (
     <div className={styles.taskBadgesWrapper}>
       {isTaskLocked && <TaskLockBadge />}
-      {lastAttempt &&
-        (isInfoType ? (
-          <TaskDoneBadge />
-        ) : (
-          <TaskScoreBadge score={lastAttempt.score} />
-        ))}
+      {isInfoType ? (
+        <TaskDoneBadge />
+      ) : (
+        task.score && <TaskScoreBadge score={task.score} />
+      )}
       <TaskStatusBadge status={task.status} />
       <TaskTypeBadge type={task.type} />
     </div>

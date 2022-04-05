@@ -7,7 +7,7 @@ import ScoresIcon from '../../../public/scores-icon.svg';
 import ProgressIcon from '../../../public/progress-icon.svg';
 import CrossIcon from '../../../public/cross-icon.svg';
 import Image from 'next/image';
-import { User } from '../../../lib/utils/types';
+import { IUserDetails } from '../../../api/user';
 
 const dashboardLinks = {
   teacher: [
@@ -41,7 +41,7 @@ const dashboardLinks = {
 interface SidebarProps {
   closeMobileNav: () => void;
   isMobileNavOpen: boolean;
-  user: User;
+  user: IUserDetails;
   cohortName?: string;
 }
 

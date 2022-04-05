@@ -6,6 +6,8 @@ import { TaskSection } from '../../../../components/tasks/TaskSection/TaskSectio
 import { getUserTasksByModule } from '../../../../api/tasks';
 import { getUserModules } from '../../../../api/modules';
 import { withServerSideAuth } from '../../../../lib/auth/withServerSideAuth';
+import { getUserDetails } from '../../../../api/user';
+import { getCommentsByTask } from '../../../../api/comments';
 
 export default function Tasks({
   user,
@@ -13,6 +15,7 @@ export default function Tasks({
   modules,
   tasks,
   task,
+  comments,
 }: InferPagePropsType<typeof getServerSideProps>) {
   return (
     <Layout title="My Tasks" user={user}>
@@ -23,7 +26,7 @@ export default function Tasks({
           tasks={tasks}
           task={task}
         />
-        <TaskSection task={task} module={module} />
+        <TaskSection comments={comments} task={task} module={module} />
       </div>
     </Layout>
   );
@@ -31,41 +34,37 @@ export default function Tasks({
 
 export const getServerSideProps = withServerSideAuth(
   async ({ req, params }) => {
+    const authCookie = req.headers.cookie as string;
+    const user = await getUserDetails({ cookie: req.headers.cookie as string });
+
     const { module: moduleId, task: taskId } = params! as {
       module: string;
       task: string;
     };
     try {
       const modules = await getUserModules({
-        cookie: req.headers.cookie as string,
+        cookie: authCookie,
       });
-      const module = modules.find(m => m.id === moduleId)!;
+      const module = modules.find(m => m.module_version_id === moduleId)!;
 
       const tasks = await getUserTasksByModule(moduleId, {
-        cookie: req.headers.cookie as string,
+        cookie: authCookie,
       });
 
       const task = tasks.find(t => t.id === taskId)!;
 
-      const mockedUser = {
-        id: 'userId',
-        name: 'PatrykBuniX',
-        firstname: 'Patryk',
-        lastname: 'Górka',
-        bio: 'Frontend developer in love with TypeScript and Next.js',
-        email: 'patrykbunix@gmail.com',
-        image: 'https://unsplash.it/100/100',
-        cohortId: 'cohortId',
-        role: 'student' as const,
-      };
+      const comments = await getCommentsByTask(taskId, {
+        cookie: authCookie,
+      });
 
       return {
         props: {
-          user: mockedUser,
+          user,
           module,
           modules,
           tasks,
           task,
+          comments,
         },
       };
     } catch (e) {}

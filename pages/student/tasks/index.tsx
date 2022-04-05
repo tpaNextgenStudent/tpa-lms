@@ -17,7 +17,7 @@ export const getServerSideProps = withServerSideAuth(async ({ req }) => {
     return {
       redirect: {
         permanent: false,
-        destination: `/student/tasks/${currentModule.id}`,
+        destination: `/student/tasks/${currentModule.module_version_id}`,
       },
     };
   } catch (e) {}

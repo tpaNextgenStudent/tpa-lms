@@ -1,18 +1,19 @@
 import { apiPath } from '../lib/utils/apiPath';
 import axios from 'axios';
-import { Module } from '@prisma/client';
+import { Task } from '@prisma/client';
 
 type Options = {
   cookie: string;
 };
 
-export interface IModule extends Module {
-  position: number;
+export interface IModuleVersion {
+  module_version_id: string;
+  name: string;
 }
 
 export const getUserModules = async ({
   cookie,
-}: Options): Promise<IModule[]> => {
+}: Options): Promise<IModuleVersion[]> => {
   const { data } = await axios.get(apiPath('modules'), {
     headers: { cookie },
   });

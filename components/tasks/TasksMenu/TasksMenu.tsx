@@ -6,12 +6,12 @@ import {
 import { TasksList } from '../TasksList/TasksList';
 import { useRouter } from 'next/router';
 import { SingleValue } from 'react-select';
-import { IModule } from '../../../api/modules';
+import { IModuleVersion } from '../../../api/modules';
 import { ITask } from '../../../api/tasks';
 
 interface TasksMenuProps {
-  modules: IModule[];
-  module: IModule;
+  modules: IModuleVersion[];
+  module: IModuleVersion;
   tasks: ITask[];
   task: ITask;
 }

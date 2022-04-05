@@ -13,23 +13,24 @@ import { TaskNav } from '../TaskNav/TaskNav';
 import { TaskDoneBadge } from '../TaskDoneBadge/TaskDoneBadge';
 import { TaskComments } from '../TaskComments/TaskComments';
 import { ITask } from '../../../api/tasks';
-import { IModule } from '../../../api/modules';
+import { IModuleVersion } from '../../../api/modules';
+import { IComment } from '../../../api/comments';
 
 interface TaskSectionProps {
   task: ITask;
-  module: IModule;
+  comments: IComment[];
+  module: IModuleVersion;
   isActionLocked?: boolean;
 }
 
 export const TaskSection = ({
   task,
   module,
+  comments,
   isActionLocked,
 }: TaskSectionProps) => {
   const [isDescriptionView, setIsDescriptionView] = useState(true);
   const [isFullScreenMode, setIsFullScreenMode] = useState(false);
-
-  const lastAttempt = task.attempts[task.attempts.length - 1];
 
   const toggleFullScreenMode = () => {
     setIsFullScreenMode(prev => !prev);
@@ -57,14 +58,13 @@ export const TaskSection = ({
         <TaskStatusBadge status={task.status} />
         <TaskTypeBadge type={task.type} />
         {task.type !== 'info' && (
-          <TaskAttemptBadge text={'Attempt'} attempt={task.attempts.length} />
+          <TaskAttemptBadge text={'Attempt'} attempt={0} />
         )}
-        {lastAttempt &&
-          (task.type === 'info' ? (
-            <TaskDoneBadge />
-          ) : (
-            <TaskScoreBadge text={'Score'} score={lastAttempt.score} />
-          ))}
+        {task.type === 'info' ? (
+          <TaskDoneBadge />
+        ) : (
+          task.score && <TaskScoreBadge text={'Score'} score={task.score} />
+        )}
       </div>
       <TaskNav
         setIsDescriptionView={setIsDescriptionView}
@@ -76,7 +76,7 @@ export const TaskSection = ({
           description={task.description}
         />
       ) : (
-        <TaskComments attempts={task.attempts} />
+        <TaskComments comments={comments} />
       )}
       {!isActionLocked && task.status !== 'upcoming' && (
         <TaskAction task={task} />

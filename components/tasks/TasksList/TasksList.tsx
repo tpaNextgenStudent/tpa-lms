@@ -1,12 +1,12 @@
 import styles from './TasksList.module.scss';
 import { TasksListItem } from '../TasksListItem/TasksListItem';
 import { ITask } from '../../../api/tasks';
-import { IModule } from '../../../api/modules';
+import { IModuleVersion } from '../../../api/modules';
 
 interface TasksListProps {
   currentTask: ITask;
   tasks: ITask[];
-  module: IModule;
+  module: IModuleVersion;
 }
 
 export const TasksList = ({ currentTask, tasks, module }: TasksListProps) => {

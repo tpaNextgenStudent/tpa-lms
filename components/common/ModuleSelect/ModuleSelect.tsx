@@ -1,5 +1,4 @@
 import styles from './ModuleSelect.module.scss';
-import { Module } from '../../../lib/utils/types';
 import colors from '../../../lib/styles/variables/colors.module.scss';
 import ArrowDownIcon from '../../../public/arrow-down.svg';
 
@@ -9,7 +8,7 @@ import Select, {
   components,
   DropdownIndicatorProps,
 } from 'react-select';
-import { IModule } from '../../../api/modules';
+import { IModuleVersion } from '../../../api/modules';
 
 export type OptionType = {
   label: string;
@@ -42,6 +41,7 @@ const customStyles: StylesConfig<OptionType, IsMulti> = {
     display: 'flex',
     alignItems: 'center',
     padding: 0,
+    overflow: 'hidden',
   }),
   singleValue: (provided, state) => ({
     ...provided,
@@ -106,8 +106,8 @@ const customStyles: StylesConfig<OptionType, IsMulti> = {
 };
 
 interface ModuleSelectProps {
-  modules: IModule[];
-  module: IModule;
+  modules: IModuleVersion[];
+  module: IModuleVersion;
   handleChange: (value: SingleValue<OptionType>) => void;
 }
 
@@ -124,9 +124,12 @@ export const ModuleSelect = ({
   module,
   handleChange,
 }: ModuleSelectProps) => {
-  const selectOptions = modules.map(m => ({ value: m.id, label: m.name }));
+  const selectOptions = modules.map(m => ({
+    value: m.module_version_id,
+    label: m.name,
+  }));
   const defaultValue = selectOptions.filter(
-    option => option.value === module.id
+    option => option.value === module.module_version_id
   );
 
   return (

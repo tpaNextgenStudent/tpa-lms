@@ -14,9 +14,9 @@ export const getServerSideProps = withServerSideAuth(async ctx => {
       },
     });
 
-    const areDetailsFilled = [user.name, user.surname, user.bio].every(
-      x => !!x
-    );
+    const { name, surname, bio, role } = user;
+
+    const areDetailsFilled = name && surname && bio;
 
     if (!areDetailsFilled) {
       return {
@@ -27,11 +27,17 @@ export const getServerSideProps = withServerSideAuth(async ctx => {
       };
     }
 
-    //todo: figure out student/teacher root page by role
-    //for now lets assume that it's student
+    if (role === 'student') {
+      return {
+        redirect: {
+          destination: '/student/tasks',
+          permanent: false,
+        },
+      };
+    }
     return {
       redirect: {
-        destination: '/student/tasks',
+        destination: '/teacher',
         permanent: false,
       },
     };

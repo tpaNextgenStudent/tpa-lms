@@ -1,6 +1,7 @@
 import { apiPath } from '../lib/utils/apiPath';
 import axios from 'axios';
 import { Task, Attempt } from '@prisma/client';
+import { TaskType } from '../lib/utils/types';
 
 type Options = {
   cookie: string;
@@ -19,11 +20,15 @@ export interface IAttempt extends Attempt {
 
 export type TaskStatus = 'upcoming' | 'in progress' | 'approved' | 'in review';
 
-export interface ITask extends Task {
-  type: 'info' | 'code';
-  status: TaskStatus;
+export interface ITask {
+  id: string;
+  answer: string | null;
+  description: string;
+  name: string;
   position: number;
-  attempts: IAttempt[];
+  score: number | null;
+  status: TaskStatus;
+  type: TaskType;
 }
 
 export const getUserTasksByModule = async (
