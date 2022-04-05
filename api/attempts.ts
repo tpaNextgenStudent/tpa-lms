@@ -26,15 +26,7 @@ export interface IAttempt {
   submission_date: string;
   evaluation_date: string;
   teacher: {
-    user: {
-      id: string;
-      email: string | null;
-      emailVerified: boolean | null;
-      image: string | null;
-      name: string | null;
-      surname: string | null;
-      bio: string | null;
-    };
+    user: IUser;
   };
 }
 
