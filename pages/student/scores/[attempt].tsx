@@ -1,9 +1,10 @@
 import { Layout } from '../../../components/common/Layout/Layout';
-import { Comment, InferPagePropsType } from '../../../lib/utils/types';
+import { InferPagePropsType } from '../../../lib/utils/types';
 import { TaskSection } from '../../../components/tasks/TaskSection/TaskSection';
 import { withServerSideAuth } from '../../../lib/auth/withServerSideAuth';
 import { getUserDetails } from '../../../api/user';
 import { getAttemptById } from '../../../api/attempts';
+import { attemptToComments } from '../../../lib/utils/attemptsToComments';
 
 export default function ScoresIndex({
   user,
@@ -39,22 +40,7 @@ export const getServerSideProps = withServerSideAuth(
 
     const attempt = await getAttemptById(attemptId, { cookie: authCookie });
 
-    const comments: Comment[] = attempt.comment
-      ? [
-          {
-            author: {
-              name: attempt.teacher.user.name,
-              surname: attempt.teacher.user.surname,
-              image: attempt.teacher.user.image,
-            },
-            attempt_score: attempt.score,
-            content: attempt.comment,
-            attempt_number: attempt.attempt_number,
-            attempt_id: attempt.id,
-            date: attempt.evaluation_date,
-          },
-        ]
-      : [];
+    const comments = attemptToComments(attempt);
 
     return {
       props: {

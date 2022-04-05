@@ -1,5 +1,5 @@
 import { Layout } from '../../../../components/common/Layout/Layout';
-import { Comment, InferPagePropsType } from '../../../../lib/utils/types';
+import { InferPagePropsType } from '../../../../lib/utils/types';
 import { TasksMenu } from '../../../../components/tasks/TasksMenu/TasksMenu';
 import styles from '../../../../components/tasks/tasksPage/tasksPage.module.scss';
 import { TaskSection } from '../../../../components/tasks/TaskSection/TaskSection';
@@ -8,6 +8,7 @@ import { getUserModules } from '../../../../api/modules';
 import { withServerSideAuth } from '../../../../lib/auth/withServerSideAuth';
 import { getUserDetails } from '../../../../api/user';
 import { getAttemptsByTask } from '../../../../api/attempts';
+import { attemptsToComments } from '../../../../lib/utils/attemptsToComments';
 
 export default function Tasks({
   user,
@@ -62,20 +63,7 @@ export const getServerSideProps = withServerSideAuth(
         cookie: authCookie,
       });
 
-      const comments: Comment[] = attempts
-        .filter(a => !!a.comment)
-        .map(attempt => ({
-          author: {
-            name: attempt.teacher.user.name,
-            surname: attempt.teacher.user.surname,
-            image: attempt.teacher.user.image,
-          },
-          attempt_id: attempt.attempt_id,
-          attempt_number: attempt.attempt_number,
-          attempt_score: attempt.score,
-          date: attempt.evaluation_date,
-          content: attempt.comment!,
-        }));
+      const comments = attemptsToComments(attempts);
 
       return {
         props: {
