@@ -1,6 +1,7 @@
 import { apiPath } from '../lib/utils/apiPath';
 import axios from 'axios';
 import { TaskType } from '../lib/utils/types';
+import { IUser } from './user';
 
 type Options = {
   cookie: string;
@@ -57,6 +58,9 @@ export interface ISingleAttempt {
     name: string;
     description: string;
     link: string;
+  };
+  teacher: {
+    user: IUser;
   };
 }
 

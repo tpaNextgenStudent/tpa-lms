@@ -1,7 +1,5 @@
 import { Layout } from '../../../components/common/Layout/Layout';
-import { InferPagePropsType } from '../../../lib/utils/types';
-import { getUserModules } from '../../../api/modules';
-import { getUserTasksByModule } from '../../../api/tasks';
+import { Comment, InferPagePropsType } from '../../../lib/utils/types';
 import { TaskSection } from '../../../components/tasks/TaskSection/TaskSection';
 import { withServerSideAuth } from '../../../lib/auth/withServerSideAuth';
 import { getUserDetails } from '../../../api/user';
@@ -12,6 +10,7 @@ export default function ScoresIndex({
   module,
   task,
   attempt,
+  comments,
 }: InferPagePropsType<typeof getServerSideProps>) {
   return (
     <Layout
@@ -21,7 +20,7 @@ export default function ScoresIndex({
     >
       <TaskSection
         task={task}
-        attempts={[attempt]}
+        comments={comments}
         attempt={attempt}
         module={module}
         isActionLocked
@@ -29,7 +28,6 @@ export default function ScoresIndex({
     </Layout>
   );
 }
-
 export const getServerSideProps = withServerSideAuth(
   async ({ req, params }) => {
     const { attempt: attemptId } = params! as {
@@ -40,6 +38,23 @@ export const getServerSideProps = withServerSideAuth(
     const user = await getUserDetails({ cookie: authCookie });
 
     const attempt = await getAttemptById(attemptId, { cookie: authCookie });
+
+    const comments: Comment[] = attempt.comment
+      ? [
+          {
+            author: {
+              name: attempt.teacher.user.name,
+              surname: attempt.teacher.user.surname,
+              image: attempt.teacher.user.image,
+            },
+            attempt_score: attempt.score,
+            content: attempt.comment,
+            attempt_number: attempt.attempt_number,
+            attempt_id: attempt.id,
+            date: attempt.evaluation_date,
+          },
+        ]
+      : [];
 
     return {
       props: {
@@ -54,16 +69,11 @@ export const getServerSideProps = withServerSideAuth(
           description: attempt.task.description,
         },
         attempt: {
-          attempt_id: attempt.id,
           status: 'approved' as const,
           attempt_number: attempt.attempt_number,
           score: attempt.score,
-          comment: attempt.comment,
-          evaluation_date: attempt.evaluation_date,
-          teacher: {
-            user: { name: 'TName', surname: 'TSurname', image: null },
-          },
         },
+        comments,
       },
     };
   }

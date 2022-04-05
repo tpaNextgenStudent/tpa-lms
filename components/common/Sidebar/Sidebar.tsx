@@ -42,14 +42,12 @@ interface SidebarProps {
   closeMobileNav: () => void;
   isMobileNavOpen: boolean;
   user: IUserDetails;
-  cohortName?: string;
 }
 
 export const Sidebar = ({
   closeMobileNav,
   isMobileNavOpen,
   user,
-  cohortName,
 }: SidebarProps) => {
   const { pathname: currentPath } = useRouter();
   return (
@@ -83,7 +81,9 @@ export const Sidebar = ({
           </Link>
         </div>
       </div>
-      {cohortName && <span className={styles.cohortName}>{cohortName}</span>}
+      {user.role === 'teacher' && (
+        <span className={styles.cohortName}>{user.cohort_name}</span>
+      )}
       <nav className={styles.navWrapper}>
         <ul className={styles.navList}>
           {dashboardLinks[user.role].map(({ path, label, Icon }) => (

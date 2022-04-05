@@ -46,13 +46,16 @@ export const UserNav = ({ user }: UserNavProps) => {
 
   return (
     <div onMouseLeave={handleMouseLeave} className={styles.userWrapper}>
-      <Image
-        className={styles.userAvatar}
-        width={40}
-        height={40}
-        src={user.image!}
-        alt="Avatar"
-      />
+      {user.image && (
+        <Image
+          className={styles.userAvatar}
+          width={40}
+          height={40}
+          src={user.image!}
+          alt="Avatar"
+        />
+      )}
+
       <p className={styles.userName}>{fullName}</p>
       <button
         ref={buttonRef}

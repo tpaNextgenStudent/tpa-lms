@@ -1,5 +1,5 @@
 import { Layout } from '../../../../components/common/Layout/Layout';
-import { InferPagePropsType } from '../../../../lib/utils/types';
+import { Comment, InferPagePropsType } from '../../../../lib/utils/types';
 import { TasksMenu } from '../../../../components/tasks/TasksMenu/TasksMenu';
 import styles from '../../../../components/tasks/tasksPage/tasksPage.module.scss';
 import { TaskSection } from '../../../../components/tasks/TaskSection/TaskSection';
@@ -15,7 +15,7 @@ export default function Tasks({
   modules,
   tasks,
   task,
-  attempts,
+  comments,
 }: InferPagePropsType<typeof getServerSideProps>) {
   return (
     <Layout title="My Tasks" user={user}>
@@ -27,7 +27,7 @@ export default function Tasks({
           task={task}
         />
         <TaskSection
-          attempts={attempts}
+          comments={comments}
           attempt={task.last_attempt}
           task={task.task_data}
           module={module}
@@ -62,6 +62,21 @@ export const getServerSideProps = withServerSideAuth(
         cookie: authCookie,
       });
 
+      const comments: Comment[] = attempts
+        .filter(a => !!a.comment)
+        .map(attempt => ({
+          author: {
+            name: attempt.teacher.user.name,
+            surname: attempt.teacher.user.surname,
+            image: attempt.teacher.user.image,
+          },
+          attempt_id: attempt.attempt_id,
+          attempt_number: attempt.attempt_number,
+          attempt_score: attempt.score,
+          date: attempt.evaluation_date,
+          content: attempt.comment!,
+        }));
+
       return {
         props: {
           user,
@@ -69,7 +84,7 @@ export const getServerSideProps = withServerSideAuth(
           modules,
           tasks,
           task,
-          attempts,
+          comments,
         },
       };
     } catch (e) {

@@ -12,6 +12,21 @@ export type InferPagePropsType<T> = T extends (
   ? NonNullable<P>
   : never;
 
+interface CommentAuthor {
+  name: string | null;
+  surname: string | null;
+  image: string | null;
+}
+
+export interface Comment {
+  attempt_id: string;
+  content: string;
+  date: string;
+  attempt_number: number;
+  attempt_score: number | null;
+  author: CommentAuthor;
+}
+
 export interface Cohort {
   id: string;
   name: string;

@@ -14,25 +14,12 @@ import { TaskDoneBadge } from '../TaskDoneBadge/TaskDoneBadge';
 import { TaskComments } from '../TaskComments/TaskComments';
 import { TaskStatus } from '../../../api/tasks';
 import { IModuleVersion } from '../../../api/modules';
-import { TaskType } from '../../../lib/utils/types';
+import { Comment, TaskType } from '../../../lib/utils/types';
 
 interface TaskSectionProps {
   task: { name: string; type: TaskType; description: string };
   attempt: { status: TaskStatus; attempt_number: number; score: number | null };
-  attempts: {
-    attempt_id: string;
-    comment: string | null;
-    evaluation_date: string;
-    attempt_number: number;
-    score: number | null;
-    teacher: {
-      user: {
-        name: string | null;
-        surname: string | null;
-        image: string | null;
-      };
-    };
-  }[];
+  comments: Comment[];
   module: IModuleVersion;
   isActionLocked?: boolean;
 }
@@ -41,7 +28,7 @@ export const TaskSection = ({
   task,
   attempt,
   module,
-  attempts,
+  comments,
   isActionLocked,
 }: TaskSectionProps) => {
   const [isDescriptionView, setIsDescriptionView] = useState(true);
@@ -93,7 +80,7 @@ export const TaskSection = ({
           description={task.description}
         />
       ) : (
-        <TaskComments attempts={attempts} />
+        <TaskComments comments={comments} />
       )}
       {!isActionLocked && attempt.status !== 'upcoming' && (
         <TaskAction type={task.type} />
