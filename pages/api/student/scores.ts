@@ -36,11 +36,20 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         where: {
           id: score.attempt_id,
         },
-        include: { teacher: true },
+        select: {
+          id: true,
+          score: true,
+          answer: true,
+          comment: true,
+          attempt_number: true,
+          submission_date: true,
+          evaluation_date: true,
+          teacher: { select: { user: true } },
+        },
       });
 
       return {
-        ...attempt,
+        attempt,
         task_name: task?.name,
         module_name: module?.module.name,
       };
