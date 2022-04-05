@@ -5,63 +5,82 @@ import { TaskAttemptBadge } from '../TaskAttemptBadge/TaskAttemptBadge';
 import { MarkdownContent } from '../../common/markdown/MarkdownContent/MarkdownContent';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import dayjs from 'dayjs';
-import { IComment } from '../../../api/comments';
 dayjs.extend(relativeTime);
 
 interface TaskCommentsProps {
-  comments: IComment[];
+  attempts: {
+    attempt_id: string;
+    comment: string | null;
+    evaluation_date: string;
+    attempt_number: number;
+    score: number | null;
+    teacher: {
+      user: {
+        name: string | null;
+        surname: string | null;
+        image: string | null;
+      };
+    };
+  }[];
 }
 
-export const TaskComments = ({ comments }: TaskCommentsProps) => {
+export const TaskComments = ({ attempts }: TaskCommentsProps) => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.content}>
         <ul>
-          {comments.map(comment => {
-            const teacherName = `${comment.teacher.id} ${comment.teacher.id}`;
-            return (
-              <li key={comment.id} className={styles.commentsListItem}>
-                <div className={styles.commentHeader}>
-                  <div className={styles.teacher}>
-                    <div className={styles.teacherImgWrapper}>
-                      {/*<Image*/}
-                      {/*  className={styles.teacherImg}*/}
-                      {/*  src={comment.teacher.id}*/}
-                      {/*  width={32}*/}
-                      {/*  height={32}*/}
-                      {/*  layout={'fixed'}*/}
-                      {/*  alt={`${teacherName} avatar`}*/}
-                      {/*/>*/}
+          {attempts
+            .filter(a => a.comment)
+            .map(attempt => {
+              const teacherName = `${attempt.teacher.user.name} ${attempt.teacher.user.surname}`;
+              return (
+                <li
+                  key={attempt.attempt_id}
+                  className={styles.commentsListItem}
+                >
+                  <div className={styles.commentHeader}>
+                    <div className={styles.teacher}>
+                      <div className={styles.teacherImgWrapper}>
+                        {attempt.teacher.user.image && (
+                          <Image
+                            className={styles.teacherImg}
+                            src={attempt.teacher.user.image}
+                            width={32}
+                            height={32}
+                            layout={'fixed'}
+                            alt={`${teacherName} avatar`}
+                          />
+                        )}
+                      </div>
+                      <span className={styles.teacherName}>{teacherName}</span>
                     </div>
-                    <span className={styles.teacherName}>{teacherName}</span>
-                  </div>
-                  <span className={styles.time}>
-                    {dayjs(comment.evaluation_date).fromNow()}
-                  </span>
-                  <div className={styles.attemptBadges}>
-                    {comment.score && (
-                      <TaskScoreBadge
+                    <span className={styles.time}>
+                      {dayjs(attempt.evaluation_date).fromNow()}
+                    </span>
+                    <div className={styles.attemptBadges}>
+                      {attempt.score && (
+                        <TaskScoreBadge
+                          isCircle
+                          score={attempt.score}
+                          text="Score"
+                        />
+                      )}
+                      <TaskAttemptBadge
                         isCircle
-                        score={comment.score}
-                        text="Score"
+                        attempt={attempt.attempt_number}
+                        text="Attempt"
                       />
-                    )}
-                    <TaskAttemptBadge
-                      isCircle
-                      attempt={comment.attempt_number}
-                      text="Attempt"
-                    />
-                    {!comment.score && (
-                      <span className={styles.underAssessmentBadge}>
-                        Version under assesment
-                      </span>
-                    )}
+                      {attempt.attempt_id && (
+                        <span className={styles.underAssessmentBadge}>
+                          Version under assesment
+                        </span>
+                      )}
+                    </div>
                   </div>
-                </div>
-                <MarkdownContent content={comment.comment} />
-              </li>
-            );
-          })}
+                  <MarkdownContent content={attempt.comment!} />
+                </li>
+              );
+            })}
         </ul>
       </div>
     </div>

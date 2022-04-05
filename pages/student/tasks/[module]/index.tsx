@@ -18,7 +18,7 @@ export const getServerSideProps = withServerSideAuth(
       return {
         redirect: {
           permanent: false,
-          destination: `/student/tasks/${moduleId}/${currentTask.id}`,
+          destination: `/student/tasks/${moduleId}/${currentTask.task_data.id}`,
         },
       };
     } catch (e) {}

@@ -5,14 +5,25 @@ type Options = {
   cookie: string;
 };
 
+export interface IUser {
+  id: string;
+  name: string | null;
+  surname: string | null;
+  bio: string | null;
+  email: string | null;
+  emailVerified: boolean | null;
+  image: string | null;
+}
+
 export interface IUserDetails {
-  role: 'student' | 'teacher';
   name: string | null;
   surname: string | null;
   bio: string | null;
   image: string | null;
   email: string | null;
   cohort_name: string;
+  github_login: string;
+  role: 'student' | 'teacher';
 }
 
 export const getUserDetails = async ({

@@ -12,21 +12,36 @@ import { TaskAttemptBadge } from '../TaskAttemptBadge/TaskAttemptBadge';
 import { TaskNav } from '../TaskNav/TaskNav';
 import { TaskDoneBadge } from '../TaskDoneBadge/TaskDoneBadge';
 import { TaskComments } from '../TaskComments/TaskComments';
-import { ITask } from '../../../api/tasks';
+import { TaskStatus } from '../../../api/tasks';
 import { IModuleVersion } from '../../../api/modules';
-import { IComment } from '../../../api/comments';
+import { TaskType } from '../../../lib/utils/types';
 
 interface TaskSectionProps {
-  task: ITask;
-  comments: IComment[];
+  task: { name: string; type: TaskType; description: string };
+  attempt: { status: TaskStatus; attempt_number: number; score: number | null };
+  attempts: {
+    attempt_id: string;
+    comment: string | null;
+    evaluation_date: string;
+    attempt_number: number;
+    score: number | null;
+    teacher: {
+      user: {
+        name: string | null;
+        surname: string | null;
+        image: string | null;
+      };
+    };
+  }[];
   module: IModuleVersion;
   isActionLocked?: boolean;
 }
 
 export const TaskSection = ({
   task,
+  attempt,
   module,
-  comments,
+  attempts,
   isActionLocked,
 }: TaskSectionProps) => {
   const [isDescriptionView, setIsDescriptionView] = useState(true);
@@ -55,15 +70,17 @@ export const TaskSection = ({
         </button>
       </div>
       <div className={styles.taskBadges}>
-        <TaskStatusBadge status={task.status} />
+        <TaskStatusBadge status={attempt.status} />
         <TaskTypeBadge type={task.type} />
         {task.type !== 'info' && (
-          <TaskAttemptBadge text={'Attempt'} attempt={0} />
+          <TaskAttemptBadge text={'Attempt'} attempt={attempt.attempt_number} />
         )}
         {task.type === 'info' ? (
           <TaskDoneBadge />
         ) : (
-          task.score && <TaskScoreBadge text={'Score'} score={task.score} />
+          attempt.score && (
+            <TaskScoreBadge text={'Score'} score={attempt.score} />
+          )
         )}
       </div>
       <TaskNav
@@ -72,14 +89,14 @@ export const TaskSection = ({
       />
       {isDescriptionView ? (
         <TaskDescription
-          locked={task.status === 'upcoming'}
+          locked={attempt.status === 'upcoming'}
           description={task.description}
         />
       ) : (
-        <TaskComments comments={comments} />
+        <TaskComments attempts={attempts} />
       )}
-      {!isActionLocked && task.status !== 'upcoming' && (
-        <TaskAction task={task} />
+      {!isActionLocked && attempt.status !== 'upcoming' && (
+        <TaskAction type={task.type} />
       )}
     </main>
   );

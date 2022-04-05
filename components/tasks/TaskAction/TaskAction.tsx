@@ -1,9 +1,9 @@
 import { CodeAction } from '../CodeAction/CodeAction';
 import { InfoAction } from '../InfoAction/InfoAction';
-import { ITask } from '../../../api/tasks';
+import { TaskType } from '../../../lib/utils/types';
 
 interface TaskActionProps {
-  task: ITask;
+  type: TaskType;
 }
 
 const TASK_TYPES = {
@@ -13,8 +13,8 @@ const TASK_TYPES = {
   INFO: 'info',
 };
 
-export const TaskAction = ({ task }: TaskActionProps) => {
-  switch (task.type) {
+export const TaskAction = ({ type }: TaskActionProps) => {
+  switch (type) {
     case TASK_TYPES.CODE:
       return <CodeAction />;
     case TASK_TYPES.INFO:

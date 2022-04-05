@@ -13,22 +13,24 @@ type Teacher = {
   image: string;
 };
 
-export interface IAttempt extends Attempt {
-  status: 'upcoming' | 'in progress' | 'approved' | 'in review';
-  teacher: Teacher;
-}
-
 export type TaskStatus = 'upcoming' | 'in progress' | 'approved' | 'in review';
 
 export interface ITask {
-  id: string;
-  answer: string | null;
-  description: string;
-  name: string;
-  position: number;
-  score: number | null;
-  status: TaskStatus;
-  type: TaskType;
+  task_data: {
+    id: string;
+    type: TaskType;
+    position: number;
+    name: string;
+    description: string;
+  };
+  last_attempt: {
+    score: number;
+    answer: string;
+    status: TaskStatus;
+    position: number;
+    attempt_id: string;
+    attempt_number: number;
+  };
 }
 
 export const getUserTasksByModule = async (

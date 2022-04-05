@@ -7,7 +7,7 @@ import { getUserTasksByModule } from '../../../../api/tasks';
 import { getUserModules } from '../../../../api/modules';
 import { withServerSideAuth } from '../../../../lib/auth/withServerSideAuth';
 import { getUserDetails } from '../../../../api/user';
-import { getCommentsByTask } from '../../../../api/comments';
+import { getAttemptsByTask } from '../../../../api/attempts';
 
 export default function Tasks({
   user,
@@ -15,7 +15,7 @@ export default function Tasks({
   modules,
   tasks,
   task,
-  comments,
+  attempts,
 }: InferPagePropsType<typeof getServerSideProps>) {
   return (
     <Layout title="My Tasks" user={user}>
@@ -26,7 +26,12 @@ export default function Tasks({
           tasks={tasks}
           task={task}
         />
-        <TaskSection comments={comments} task={task} module={module} />
+        <TaskSection
+          attempts={attempts}
+          attempt={task.last_attempt}
+          task={task.task_data}
+          module={module}
+        />
       </div>
     </Layout>
   );
@@ -35,7 +40,7 @@ export default function Tasks({
 export const getServerSideProps = withServerSideAuth(
   async ({ req, params }) => {
     const authCookie = req.headers.cookie as string;
-    const user = await getUserDetails({ cookie: req.headers.cookie as string });
+    const user = await getUserDetails({ cookie: authCookie });
 
     const { module: moduleId, task: taskId } = params! as {
       module: string;
@@ -51,9 +56,9 @@ export const getServerSideProps = withServerSideAuth(
         cookie: authCookie,
       });
 
-      const task = tasks.find(t => t.id === taskId)!;
+      const task = tasks.find(t => t.task_data.id === taskId)!;
 
-      const comments = await getCommentsByTask(taskId, {
+      const attempts = await getAttemptsByTask(taskId, {
         cookie: authCookie,
       });
 
@@ -64,10 +69,12 @@ export const getServerSideProps = withServerSideAuth(
           modules,
           tasks,
           task,
-          comments,
+          attempts,
         },
       };
-    } catch (e) {}
+    } catch (e) {
+      console.log(e);
+    }
 
     return {
       notFound: true,
