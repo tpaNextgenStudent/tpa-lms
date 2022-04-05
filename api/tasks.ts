@@ -42,3 +42,17 @@ export const getUserTasksByModule = async (
   });
   return data;
 };
+
+export interface ICurrentTask {
+  module_id: string;
+  task_id: string;
+}
+
+export const getCurrentTask = async ({
+  cookie,
+}: Options): Promise<ICurrentTask> => {
+  const { data } = await axios.get(apiPath(`student/task/current`), {
+    headers: { cookie },
+  });
+  return data;
+};
