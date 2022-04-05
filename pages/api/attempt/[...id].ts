@@ -8,7 +8,18 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   const response = await prisma.attempt.findUnique({
     where: { id: attempt_id },
-    include: { task: true },
+    select: {
+      id: true,
+      task_id: true,
+      score: true,
+      answer: true,
+      task: true,
+      comment: true,
+      attempt_number: true,
+      submission_date: true,
+      evaluation_date: true,
+      teacher: { select: { user: true } },
+    },
   });
 
   if (session.nextAuthSession) {
