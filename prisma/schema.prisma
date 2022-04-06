@@ -143,4 +143,5 @@ model Attempt {
   teacher              Assignment @relation("teacher", fields: [teacher_assigment_id], references: [id])
   submission_date      DateTime   @default(now())
   evaluation_date      DateTime?
+  status               String?
 }

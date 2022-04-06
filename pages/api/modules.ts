@@ -16,13 +16,14 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const modules = curriculum?.module_progress as Array<any>;
 
   const response = await Promise.all(
-    modules.map(async (module: any): Promise<any> => {
+    modules.map(async (module: any, counter: number): Promise<any> => {
       const moduleDetails = await prisma.moduleVersion.findUnique({
         where: { id: module.module_id },
         include: { module: true },
       });
 
       return {
+        module_number: counter + 1,
         name: moduleDetails?.module.name,
         module_version_id: moduleDetails?.id,
       };
