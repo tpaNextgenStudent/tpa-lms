@@ -15,7 +15,7 @@ export const TaskDescription = ({
     <article className={styles.wrapper}>
       <div className={styles.content}>
         {locked ? (
-          <LockedTaskInfo content="There will be a copy that inform users to finish previous task to unlock this one" />
+          <LockedTaskInfo content="Finish previous task to unlock this content!" />
         ) : (
           <MarkdownContent content={description} />
         )}

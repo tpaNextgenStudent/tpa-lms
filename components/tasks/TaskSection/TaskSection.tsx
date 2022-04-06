@@ -12,24 +12,27 @@ import { TaskAttemptBadge } from '../TaskAttemptBadge/TaskAttemptBadge';
 import { TaskNav } from '../TaskNav/TaskNav';
 import { TaskDoneBadge } from '../TaskDoneBadge/TaskDoneBadge';
 import { TaskComments } from '../TaskComments/TaskComments';
-import { ITask } from '../../../api/tasks';
-import { IModule } from '../../../api/modules';
+import { TaskStatus } from '../../../api/tasks';
+import { IModuleVersion } from '../../../api/modules';
+import { Comment, TaskType } from '../../../lib/utils/types';
 
 interface TaskSectionProps {
-  task: ITask;
-  module: IModule;
+  task: { name: string; type: TaskType; description: string };
+  attempt: { status: TaskStatus; attempt_number: number; score: number | null };
+  comments: Comment[];
+  module: IModuleVersion;
   isActionLocked?: boolean;
 }
 
 export const TaskSection = ({
   task,
+  attempt,
   module,
+  comments,
   isActionLocked,
 }: TaskSectionProps) => {
   const [isDescriptionView, setIsDescriptionView] = useState(true);
   const [isFullScreenMode, setIsFullScreenMode] = useState(false);
-
-  const lastAttempt = task.attempts[task.attempts.length - 1];
 
   const toggleFullScreenMode = () => {
     setIsFullScreenMode(prev => !prev);
@@ -54,17 +57,18 @@ export const TaskSection = ({
         </button>
       </div>
       <div className={styles.taskBadges}>
-        <TaskStatusBadge status={task.status} />
+        <TaskStatusBadge status={attempt.status} />
         <TaskTypeBadge type={task.type} />
         {task.type !== 'info' && (
-          <TaskAttemptBadge text={'Attempt'} attempt={task.attempts.length} />
+          <TaskAttemptBadge text={'Attempt'} attempt={attempt.attempt_number} />
         )}
-        {lastAttempt &&
-          (task.type === 'info' ? (
-            <TaskDoneBadge />
-          ) : (
-            <TaskScoreBadge text={'Score'} score={lastAttempt.score} />
-          ))}
+        {task.type === 'info' ? (
+          <TaskDoneBadge />
+        ) : (
+          attempt.score && (
+            <TaskScoreBadge text={'Score'} score={attempt.score} />
+          )
+        )}
       </div>
       <TaskNav
         setIsDescriptionView={setIsDescriptionView}
@@ -72,14 +76,14 @@ export const TaskSection = ({
       />
       {isDescriptionView ? (
         <TaskDescription
-          locked={task.status === 'upcoming'}
+          locked={attempt.status === 'upcoming'}
           description={task.description}
         />
       ) : (
-        <TaskComments attempts={task.attempts} />
+        <TaskComments comments={comments} />
       )}
-      {!isActionLocked && task.status !== 'upcoming' && (
-        <TaskAction task={task} />
+      {!isActionLocked && attempt.status !== 'upcoming' && (
+        <TaskAction type={task.type} />
       )}
     </main>
   );

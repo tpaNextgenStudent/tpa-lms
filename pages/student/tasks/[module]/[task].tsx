@@ -6,6 +6,9 @@ import { TaskSection } from '../../../../components/tasks/TaskSection/TaskSectio
 import { getUserTasksByModule } from '../../../../api/tasks';
 import { getUserModules } from '../../../../api/modules';
 import { withServerSideAuth } from '../../../../lib/auth/withServerSideAuth';
+import { getUserDetails } from '../../../../api/user';
+import { getAttemptsByTask } from '../../../../api/attempts';
+import { attemptsToComments } from '../../../../lib/utils/attemptsToComments';
 
 export default function Tasks({
   user,
@@ -13,6 +16,7 @@ export default function Tasks({
   modules,
   tasks,
   task,
+  comments,
 }: InferPagePropsType<typeof getServerSideProps>) {
   return (
     <Layout title="My Tasks" user={user}>
@@ -23,7 +27,12 @@ export default function Tasks({
           tasks={tasks}
           task={task}
         />
-        <TaskSection task={task} module={module} />
+        <TaskSection
+          comments={comments}
+          attempt={task.last_attempt}
+          task={task.task_data}
+          module={module}
+        />
       </div>
     </Layout>
   );
@@ -31,44 +40,44 @@ export default function Tasks({
 
 export const getServerSideProps = withServerSideAuth(
   async ({ req, params }) => {
+    const authCookie = req.headers.cookie as string;
+    const user = await getUserDetails({ cookie: authCookie });
+
     const { module: moduleId, task: taskId } = params! as {
       module: string;
       task: string;
     };
     try {
       const modules = await getUserModules({
-        cookie: req.headers.cookie as string,
+        cookie: authCookie,
       });
-      const module = modules.find(m => m.id === moduleId)!;
+      const module = modules.find(m => m.module_version_id === moduleId)!;
 
       const tasks = await getUserTasksByModule(moduleId, {
-        cookie: req.headers.cookie as string,
+        cookie: authCookie,
       });
 
-      const task = tasks.find(t => t.id === taskId)!;
+      const task = tasks.find(t => t.task_data.id === taskId)!;
 
-      const mockedUser = {
-        id: 'userId',
-        name: 'PatrykBuniX',
-        firstname: 'Patryk',
-        lastname: 'Górka',
-        bio: 'Frontend developer in love with TypeScript and Next.js',
-        email: 'patrykbunix@gmail.com',
-        image: 'https://unsplash.it/100/100',
-        cohortId: 'cohortId',
-        role: 'student' as const,
-      };
+      const attempts = await getAttemptsByTask(taskId, {
+        cookie: authCookie,
+      });
+
+      const comments = attemptsToComments(attempts);
 
       return {
         props: {
-          user: mockedUser,
+          user,
           module,
           modules,
           tasks,
           task,
+          comments,
         },
       };
-    } catch (e) {}
+    } catch (e) {
+      console.log(e);
+    }
 
     return {
       notFound: true,

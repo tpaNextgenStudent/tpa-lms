@@ -5,7 +5,7 @@ import { TaskType } from '../../../utils/types';
 import { TaskTypeCell } from '../../../../components/common/tables/TaskTypeCell/TaskTypeCell';
 
 interface ProgressData {
-  student: { name: string; img: string };
+  student: { name: string; img: string | null; login: string | null };
   module: string;
   task_name: string;
   task_type: string;
@@ -20,23 +20,25 @@ export const columns: Column<ProgressData>[] = [
     Cell: ({
       cell: { value },
     }: {
-      cell: { value: { name: string; img: string; login: string } };
+      cell: { value: ProgressData['student'] };
     }) => (
       <div className={styles.studentCellWrapper}>
         <div className={styles.studentImgWrapper}>
-          <Image
-            width={32}
-            height={32}
-            layout="fixed"
-            objectFit="cover"
-            className={styles.studentImg}
-            src={value.img}
-            alt={value.name}
-          />
+          {value.img && (
+            <Image
+              width={32}
+              height={32}
+              layout="fixed"
+              objectFit="cover"
+              className={styles.studentImg}
+              src={value.img}
+              alt={value.name}
+            />
+          )}
         </div>
         <div className={styles.studentNameWrapper}>
           <p className={styles.studentName}>{value.name}</p>
-          <p className={styles.studentLogin}>#{value.login}</p>
+          {value.login && <p className={styles.studentLogin}>#{value.login}</p>}
         </div>
       </div>
     ),
@@ -44,6 +46,10 @@ export const columns: Column<ProgressData>[] = [
   {
     Header: 'Module',
     accessor: 'module',
+
+    Cell: ({ cell: { value } }: { cell: { value: string } }) => (
+      <span className={styles.moduleName}>{value}</span>
+    ),
   },
   {
     Header: 'Task name',

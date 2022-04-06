@@ -1,6 +1,7 @@
 import { apiPath } from '../lib/utils/apiPath';
 import axios from 'axios';
 import { Task, Attempt } from '@prisma/client';
+import { TaskType } from '../lib/utils/types';
 
 type Options = {
   cookie: string;
@@ -12,18 +13,24 @@ type Teacher = {
   image: string;
 };
 
-export interface IAttempt extends Attempt {
-  status: 'upcoming' | 'in progress' | 'approved' | 'in review';
-  teacher: Teacher;
-}
-
 export type TaskStatus = 'upcoming' | 'in progress' | 'approved' | 'in review';
 
-export interface ITask extends Task {
-  type: 'info' | 'code';
-  status: TaskStatus;
-  position: number;
-  attempts: IAttempt[];
+export interface ITask {
+  task_data: {
+    id: string;
+    type: TaskType;
+    position: number;
+    name: string;
+    description: string;
+  };
+  last_attempt: {
+    score: number;
+    answer: string;
+    status: TaskStatus;
+    position: number;
+    attempt_id: string;
+    attempt_number: number;
+  };
 }
 
 export const getUserTasksByModule = async (
@@ -31,6 +38,20 @@ export const getUserTasksByModule = async (
   { cookie }: Options
 ): Promise<ITask[]> => {
   const { data } = await axios.get(apiPath(`tasks/module/${moduleId}`), {
+    headers: { cookie },
+  });
+  return data;
+};
+
+export interface ICurrentTask {
+  module_id: string;
+  task_id: string;
+}
+
+export const getCurrentTask = async ({
+  cookie,
+}: Options): Promise<ICurrentTask> => {
+  const { data } = await axios.get(apiPath(`student/task/current`), {
     headers: { cookie },
   });
   return data;

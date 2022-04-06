@@ -1,5 +1,5 @@
 import styles from './Header.module.scss';
-import { User } from '../../../lib/utils/types';
+import { IUserDetails } from '../../../api/user';
 import ArrowLeftIcon from '../../../public/arrow-left.svg';
 import MenuIcon from '../../../public/menu-icon.svg';
 import { UserNav } from '../UserNav/UserNav';
@@ -9,7 +9,7 @@ interface HeaderProps {
   title: string;
   description?: string;
   actionsNumber?: number;
-  user: User;
+  user: IUserDetails;
   openMobileNav: () => void;
   prevButton?: { pageName: string; pageLink: string };
 }

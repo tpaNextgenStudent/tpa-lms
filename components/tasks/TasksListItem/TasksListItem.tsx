@@ -3,11 +3,11 @@ import clsx from 'clsx';
 import Link from 'next/link';
 import { TaskBadges } from '../TaskBadges/TaskBadges';
 import { ITask } from '../../../api/tasks';
-import { IModule } from '../../../api/modules';
+import { IModuleVersion } from '../../../api/modules';
 
 interface TaskListItemProps {
   task: ITask;
-  module: IModule;
+  module: IModuleVersion;
   isActive: boolean;
 }
 
@@ -18,7 +18,9 @@ export const TasksListItem = ({
 }: TaskListItemProps) => {
   return (
     <li className={clsx(styles.task, isActive && styles.taskActive)}>
-      <Link href={`/student/tasks/${module.id}/${task.id}`}>
+      <Link
+        href={`/student/tasks/${module.module_version_id}/${task.task_data.id}`}
+      >
         <a className={styles.taskLink}>
           <span
             className={clsx(
@@ -28,7 +30,7 @@ export const TasksListItem = ({
           >
             {module.name}
           </span>
-          <h3 className={styles.taskName}>{task.name}</h3>
+          <h3 className={styles.taskName}>{task.task_data.name}</h3>
           <TaskBadges task={task} />
         </a>
       </Link>

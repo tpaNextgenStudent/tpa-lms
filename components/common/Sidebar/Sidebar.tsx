@@ -7,7 +7,7 @@ import ScoresIcon from '../../../public/scores-icon.svg';
 import ProgressIcon from '../../../public/progress-icon.svg';
 import CrossIcon from '../../../public/cross-icon.svg';
 import Image from 'next/image';
-import { User } from '../../../lib/utils/types';
+import { IUserDetails } from '../../../api/user';
 
 const dashboardLinks = {
   teacher: [
@@ -41,15 +41,13 @@ const dashboardLinks = {
 interface SidebarProps {
   closeMobileNav: () => void;
   isMobileNavOpen: boolean;
-  user: User;
-  cohortName?: string;
+  user: IUserDetails;
 }
 
 export const Sidebar = ({
   closeMobileNav,
   isMobileNavOpen,
   user,
-  cohortName,
 }: SidebarProps) => {
   const { pathname: currentPath } = useRouter();
   return (
@@ -83,7 +81,9 @@ export const Sidebar = ({
           </Link>
         </div>
       </div>
-      {cohortName && <span className={styles.cohortName}>{cohortName}</span>}
+      {user.role === 'teacher' && (
+        <span className={styles.cohortName}>{user.cohort_name}</span>
+      )}
       <nav className={styles.navWrapper}>
         <ul className={styles.navList}>
           {dashboardLinks[user.role].map(({ path, label, Icon }) => (

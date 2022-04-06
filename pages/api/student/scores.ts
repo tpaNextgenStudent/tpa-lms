@@ -51,6 +51,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       return {
         attempt,
         task_name: task?.name,
+        task_type: task?.type,
         module_name: module?.module.name,
       };
     })
