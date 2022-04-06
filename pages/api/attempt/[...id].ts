@@ -1,5 +1,4 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { responseSymbol } from 'next/dist/server/web/spec-compliant/fetch-event';
 import prisma from '../../../lib/prisma';
 import getUserSession from '../../../utils/getUserSession';
 
