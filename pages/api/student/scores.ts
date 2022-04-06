@@ -19,6 +19,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           ...rest,
           task_id: id,
           module_version_id: module.module_id,
+          module_number: module.position,
         });
       }
     });
@@ -53,6 +54,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         task_name: task?.name,
         task_type: task?.type,
         module_name: module?.module.name,
+        module_number: score.module_number,
       };
     })
   );
