@@ -64,7 +64,7 @@ export const TaskSection = ({
         <TaskTypeBadge type={task.type} />
         <TaskStatusBadge status={attempt.status} />
         {task.type !== 'info' && attempt.attempt_number && (
-          <TaskAttemptBadge text={'Attempt'} attempt={attempt.attempt_number} />
+          <TaskAttemptBadge attempt={attempt.attempt_number} />
         )}
         {task.type === 'info' ? (
           <TaskDoneBadge />

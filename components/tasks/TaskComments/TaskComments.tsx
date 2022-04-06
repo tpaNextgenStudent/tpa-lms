@@ -58,11 +58,7 @@ export const TaskComments = ({ comments }: TaskCommentsProps) => {
                         text="Score"
                       />
                     )}
-                    <TaskAttemptBadge
-                      isCircle
-                      attempt={comment.attempt_number}
-                      text="Attempt"
-                    />
+                    <TaskAttemptBadge attempt={comment.attempt_number} />
                   </div>
                 </div>
                 <MarkdownContent content={comment.content} />

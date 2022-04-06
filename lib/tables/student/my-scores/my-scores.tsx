@@ -6,6 +6,7 @@ import { TaskType } from '../../../utils/types';
 import clsx from 'clsx';
 import { getColorByScore } from '../../../getColorByScore';
 import { TaskTypeCell } from '../../../../components/common/tables/TaskTypeCell/TaskTypeCell';
+import { TaskAttemptBadge } from '../../../../components/tasks/TaskAttemptBadge/TaskAttemptBadge';
 
 interface ScoresData {
   submission_date: string;
@@ -51,6 +52,10 @@ export const columns: Column<ScoresData>[] = [
   {
     Header: 'Attempt',
     accessor: 'attempt',
+
+    Cell: ({ cell: { value } }: { cell: { value: number } }) => (
+      <TaskAttemptBadge attempt={value} styleType="circle" />
+    ),
   },
   {
     Header: 'Score',
