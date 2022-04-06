@@ -24,12 +24,12 @@ export interface ITask {
     description: string;
   };
   last_attempt: {
-    score: number;
-    answer: string;
+    score: number | null;
+    answer: string | null;
     status: TaskStatus;
     position: number;
-    attempt_id: string;
-    attempt_number: number;
+    attempt_id: string | null;
+    attempt_number: number | null;
   };
 }
 
