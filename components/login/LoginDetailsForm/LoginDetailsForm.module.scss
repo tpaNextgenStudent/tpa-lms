@@ -21,14 +21,6 @@
   font-size: 14px;
   line-height: 24px;
   color: colors.$fontPrimary;
-
-  &Error {
-    color: colors.$statusFontRed;
-  }
-
-  &Correct {
-    color: colors.$statusFontGreen;
-  }
 }
 
 .field {
@@ -48,12 +40,10 @@
   }
 
   &Error {
-    background-color: colors.$statusBgRed;
     border-color: colors.$statusFontRed;
   }
 
   &Correct {
-    background-color: colors.$statusBgGreen;
     border-color: colors.$statusFontGreen;
   }
 }

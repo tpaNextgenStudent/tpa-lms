@@ -49,7 +49,6 @@ export const Layout = ({
           closeMobileNav={closeMobileNav}
           isMobileNavOpen={isMobileNavOpen}
           user={user}
-          cohortName={cohortName}
         />
         <div className={styles.mainWrapper}>
           <Header

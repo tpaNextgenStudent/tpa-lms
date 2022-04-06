@@ -47,7 +47,7 @@ export const TaskComments = ({ comments }: TaskCommentsProps) => {
                     {comment.attempt_id && (
                       <Link href={`/student/scores/${comment.attempt_id}`}>
                         <a className={styles.underAssessmentLink}>
-                          Version under assesment
+                          Version under assessment
                         </a>
                       </Link>
                     )}
@@ -58,11 +58,7 @@ export const TaskComments = ({ comments }: TaskCommentsProps) => {
                         text="Score"
                       />
                     )}
-                    <TaskAttemptBadge
-                      isCircle
-                      attempt={comment.attempt_number}
-                      text="Attempt"
-                    />
+                    <TaskAttemptBadge attempt={comment.attempt_number} />
                   </div>
                 </div>
                 <MarkdownContent content={comment.content} />

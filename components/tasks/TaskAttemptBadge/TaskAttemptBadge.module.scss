@@ -15,16 +15,27 @@
 }
 
 .value {
-  padding: 4px 8px;
+  padding: 8px 20px;
   border-radius: 100px;
-  font-weight: 500;
-  font-size: 15px;
-  line-height: 24px;
   background-color: colors.$bgMain;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 16px;
 
-  &Circle {
+  &WithText {
+    padding: 4px;
     width: 32px;
     height: 32px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &Circle {
+    padding: 8px;
+    min-width: 32px;
+    min-height: 32px;
     flex-shrink: 0;
     display: flex;
     align-items: center;

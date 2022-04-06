@@ -3,20 +3,35 @@ import clsx from 'clsx';
 
 interface TaskAttemptBadgeProps {
   attempt: number;
-  text?: string;
-  isCircle?: boolean;
+  styleType?: 'circle' | 'text-outside';
 }
 
 export const TaskAttemptBadge = ({
   attempt,
-  text,
-  isCircle,
+  styleType,
 }: TaskAttemptBadgeProps) => {
+  if (styleType === 'text-outside') {
+    return (
+      <span className={styles.wrapper}>
+        <span className={styles.text}>Attempt </span>
+        <span className={clsx(styles.value, styles.valueWithText)}>
+          {attempt}
+        </span>
+      </span>
+    );
+  }
+
+  const attemptText =
+    styleType === 'circle' ? `A${attempt}` : `Attempt ${attempt}`;
   return (
     <span className={styles.wrapper}>
-      {text && <span className={styles.text}>{text}</span>}
-      <span className={clsx(styles.value, isCircle && styles.valueCircle)}>
-        {attempt}
+      <span
+        className={clsx(
+          styles.value,
+          styleType === 'circle' && styles.valueCircle
+        )}
+      >
+        {attemptText}
       </span>
     </span>
   );

@@ -14,8 +14,8 @@
   padding: 4px 8px;
   border-radius: 100px;
   font-weight: 700;
-  font-size: 15px;
-  line-height: 24px;
+  font-size: 12px;
+  line-height: 16px;
 
   &Circle {
     width: 32px;
@@ -26,19 +26,26 @@
     justify-content: center;
   }
 
+  &Border {
+    border: 1px solid;
+  }
+
   &Red {
     background-color: colors.$statusBgRed;
     color: colors.$statusFontRed;
+    border-color: colors.$statusFontRed;
   }
 
   &Orange {
     background-color: colors.$statusBgOrange;
     color: colors.$statusFontOrange;
+    border-color: colors.$statusFontOrange;
   }
 
   &Green {
     background-color: colors.$statusBgGreen;
     color: colors.$statusFontGreen;
+    border-color: colors.$statusFontGreen;
   }
 }
 
