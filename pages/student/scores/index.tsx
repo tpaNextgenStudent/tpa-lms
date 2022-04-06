@@ -25,7 +25,7 @@ export const getServerSideProps = withServerSideAuth(async ({ req, res }) => {
   const rawSores = await getUserScores({ cookie: authCookie });
 
   const scores = rawSores.map(
-    ({ attempt, task_type, task_name, module_name }) => {
+    ({ attempt, task_type, task_name, module_number }) => {
       const teacherName = [
         attempt.teacher.user.name,
         attempt.teacher.user.surname,
@@ -35,7 +35,7 @@ export const getServerSideProps = withServerSideAuth(async ({ req, res }) => {
       return {
         submission_date: dayjs(attempt.submission_date).format('DD MMMM'),
         review_date: dayjs(attempt.evaluation_date).format('DD MMMM'),
-        module: module_name,
+        module: `Module ${module_number}`,
         task: task_name,
         task_type: task_type,
         attempt: attempt.attempt_number,

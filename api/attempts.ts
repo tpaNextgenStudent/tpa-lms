@@ -54,6 +54,7 @@ export interface ISingleAttempt {
   teacher: {
     user: IUser;
   };
+  module_number: number;
 }
 
 export const getAttemptsByTask = async (

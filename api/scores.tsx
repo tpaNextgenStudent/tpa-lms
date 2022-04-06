@@ -21,6 +21,7 @@ export interface IScore {
   task_name: string;
   task_type: TaskType;
   module_name: string;
+  module_number: number;
 }
 
 export const getUserScores = async ({ cookie }: Options): Promise<IScore[]> => {

@@ -48,6 +48,7 @@ export const getServerSideProps = withServerSideAuth(
         module: {
           module_version_id: attempt.task.module_version_id,
           name: 'Module Name',
+          module_number: attempt.module_number,
         },
         task: {
           name: attempt.task.name,
