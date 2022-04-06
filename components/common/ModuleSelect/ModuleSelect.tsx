@@ -132,7 +132,7 @@ export const ModuleSelect = ({
 }: ModuleSelectProps) => {
   const selectOptions = modules.map(m => ({
     value: m.module_version_id,
-    label: m.name,
+    label: `Module ${m.module_number}`,
   }));
   const defaultValue = selectOptions.filter(
     option => option.value === module.module_version_id

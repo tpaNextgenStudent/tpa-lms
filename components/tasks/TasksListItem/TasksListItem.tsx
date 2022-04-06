@@ -16,6 +16,7 @@ export const TasksListItem = ({
   module,
   task,
 }: TaskListItemProps) => {
+  const moduleName = `Module ${module.module_number}`;
   return (
     <li className={clsx(styles.task, isActive && styles.taskActive)}>
       <Link
@@ -28,7 +29,7 @@ export const TasksListItem = ({
               isActive && styles.moduleNameActive
             )}
           >
-            {module.name}
+            {moduleName}
           </span>
           <h3 className={styles.taskName}>{task.task_data.name}</h3>
           <TaskBadges task={task} />

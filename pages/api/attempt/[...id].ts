@@ -38,7 +38,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     module => module.module_id === moduleId
   ).position;
 
-  const response = { ...attempt, module_numer: moduleNumber };
+  const response = { ...attempt, module_number: moduleNumber };
 
   if (session.nextAuthSession) {
     res.status(200).send(response);

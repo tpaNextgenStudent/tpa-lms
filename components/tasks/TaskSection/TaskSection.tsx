@@ -42,6 +42,8 @@ export const TaskSection = ({
     setIsFullScreenMode(prev => !prev);
   };
 
+  const moduleName = `Module ${module.module_number}`;
+
   return (
     <main
       className={clsx(
@@ -49,7 +51,7 @@ export const TaskSection = ({
         isFullScreenMode && styles.wrapperFullScreen
       )}
     >
-      <p className={styles.taskModule}>{module.name}</p>
+      <p className={styles.taskModule}>{moduleName}</p>
       <div className={styles.taskHeader}>
         <h2 className={styles.taskTitle}>{task.name}</h2>
         <button

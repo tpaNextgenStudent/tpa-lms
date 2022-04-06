@@ -7,6 +7,7 @@ type Options = {
 };
 
 export interface IModuleVersion {
+  module_number: number;
   module_version_id: string;
   name: string;
 }
