@@ -3,7 +3,7 @@ import { TaskDescription } from '../TaskDescription/TaskDescription';
 import { TaskAction } from '../TaskAction/TaskAction';
 import { useState } from 'react';
 import EnlargeIcon from '../../../public/enlarge-icon.svg';
-import CrossIcon from '../../../public/cross-icon.svg';
+import ShrinkIcon from '../../../public/shrink-icon.svg';
 import clsx from 'clsx';
 import { TaskStatusBadge } from '../TaskStatusBadge/TaskStatusBadge';
 import { TaskTypeBadge } from '../TaskTypeBadge/TaskTypeBadge';
@@ -18,7 +18,11 @@ import { Comment, TaskType } from '../../../lib/utils/types';
 
 interface TaskSectionProps {
   task: { name: string; type: TaskType; description: string };
-  attempt: { status: TaskStatus; attempt_number: number; score: number | null };
+  attempt: {
+    status: TaskStatus;
+    attempt_number: number | null;
+    score: number | null;
+  };
   comments: Comment[];
   module: IModuleVersion;
   isActionLocked?: boolean;
@@ -53,14 +57,14 @@ export const TaskSection = ({
           className={styles.fullScreenButton}
           aria-hidden
         >
-          {isFullScreenMode ? <CrossIcon /> : <EnlargeIcon />}
+          {isFullScreenMode ? <ShrinkIcon /> : <EnlargeIcon />}
         </button>
       </div>
       <div className={styles.taskBadges}>
-        <TaskStatusBadge status={attempt.status} />
         <TaskTypeBadge type={task.type} />
-        {task.type !== 'info' && (
-          <TaskAttemptBadge text={'Attempt'} attempt={attempt.attempt_number} />
+        <TaskStatusBadge status={attempt.status} />
+        {task.type !== 'info' && attempt.attempt_number && (
+          <TaskAttemptBadge attempt={attempt.attempt_number} />
         )}
         {task.type === 'info' ? (
           <TaskDoneBadge />

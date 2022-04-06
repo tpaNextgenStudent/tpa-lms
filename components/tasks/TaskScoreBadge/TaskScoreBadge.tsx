@@ -6,12 +6,14 @@ interface TaskScoreBadgeProps {
   score: number;
   text?: string;
   isCircle?: boolean;
+  withBorder?: boolean;
 }
 
 export const TaskScoreBadge = ({
   score,
   text,
   isCircle,
+  withBorder,
 }: TaskScoreBadgeProps) => {
   return (
     <span className={styles.wrapper}>
@@ -20,6 +22,7 @@ export const TaskScoreBadge = ({
         className={clsx(
           styles.taskScore,
           isCircle && styles.taskScoreCircle,
+          withBorder && styles.taskScoreBorder,
           styles[`taskScore${getColorByScore(score)}`]
         )}
       >
