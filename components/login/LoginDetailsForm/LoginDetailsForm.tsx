@@ -33,14 +33,7 @@ export const LoginDetailsForm = ({}: LoginDetailsFormProps) => {
   return (
     <form className={styles.form} onSubmit={onSubmit}>
       <div className={styles.fieldWrapper}>
-        <label
-          className={clsx(
-            styles.label,
-            errors.name && styles.labelError,
-            !errors.name && isSubmitted && styles.labelCorrect
-          )}
-          htmlFor="name"
-        >
+        <label className={clsx(styles.label)} htmlFor="name">
           Name
         </label>
         <input
