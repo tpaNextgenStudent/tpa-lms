@@ -47,7 +47,7 @@ export const TaskComments = ({ comments }: TaskCommentsProps) => {
                     {comment.attempt_id && (
                       <Link href={`/student/scores/${comment.attempt_id}`}>
                         <a className={styles.underAssessmentLink}>
-                          Version under assesment
+                          Version under assessment
                         </a>
                       </Link>
                     )}
