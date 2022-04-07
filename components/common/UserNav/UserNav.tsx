@@ -42,7 +42,7 @@ export const UserNav = ({ user }: UserNavProps) => {
     setIsDropdownOpen(false);
   };
 
-  const fullName = `${user.name} ${user.surname}`;
+  const fullName = [user.name, user.surname].filter(n => !!n).join(' ');
 
   return (
     <div onMouseLeave={handleMouseLeave} className={styles.userWrapper}>
@@ -51,6 +51,7 @@ export const UserNav = ({ user }: UserNavProps) => {
           className={styles.userAvatar}
           width={40}
           height={40}
+          layout="fixed"
           src={user.image!}
           alt="Avatar"
         />

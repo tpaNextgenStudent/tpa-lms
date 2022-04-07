@@ -1,18 +1,19 @@
 @use '/lib/styles/variables/colors.module' as colors;
 @use '/lib/styles/variables/media.module' as media;
+@use '/lib/styles/variables/shadows.module' as shadows;
+@use '/lib/styles/variables/fonts.module' as fonts;
 
 .mobileBurgerMenuButton {
   display: none;
   margin-right: 12px;
-  background: none;
   border: none;
   color: colors.$purplePrimary;
   cursor: pointer;
   border-radius: 64px;
   width: 40px;
   height: 40px;
-  background: colors.$white;
-  box-shadow: 4px 8px 32px rgba(7, 1, 48, 0.04);
+  background-color: colors.$white;
+  box-shadow: shadows.$image;
   flex-shrink: 0;
   align-items: center;
   justify-content: center;
@@ -32,10 +33,9 @@
 }
 
 .headerWrapper {
-  height: 120px;
   display: flex;
-  align-items: center;
-  padding: 24px;
+  align-items: flex-start;
+  padding: 42px 24px 24px;
   border-bottom: 1px solid colors.$strokeLines;
 }
 
@@ -43,13 +43,8 @@
   margin-right: auto;
 }
 
-.titleWrapper {
-  display: flex;
-  align-items: center;
-}
-
 .title {
-  font-weight: 400;
+  font-weight: fonts.$weightMedium;
   font-size: 24px;
   line-height: 40px;
 }
@@ -64,7 +59,7 @@
 }
 
 .actionsNumber {
-  font-weight: 800;
+  font-weight: fonts.$weightBold;
   font-size: 15px;
   line-height: 24px;
   margin-left: 16px;
@@ -74,9 +69,10 @@
 }
 
 .description {
-  font-weight: 600;
+  font-weight: fonts.$weightRegular;
   font-size: 12px;
-  line-height: 24px;
+  line-height: 16px;
+  color: colors.$fontSecondary;
 }
 
 .prevLink {
