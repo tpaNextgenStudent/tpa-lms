@@ -1,5 +1,7 @@
 @use '/lib/styles/variables/colors.module' as colors;
 @use '/lib/styles/variables/media.module' as media;
+@use '/lib/styles/variables/fonts.module' as fonts;
+@use '/lib/styles/variables/shadows.module' as shadows;
 
 .sideBarWrapper {
   width: 256px;
@@ -7,7 +9,7 @@
   padding: 32px 24px;
   display: flex;
   flex-direction: column;
-  border-right: 1px solid colors.$strokeLines;
+  border-right: 1px solid colors.$bgMain;
 
   @media (max-width: media.$laptopS) {
     position: fixed;
@@ -54,7 +56,7 @@
 }
 
 .navWrapper {
-  margin-top: 28px;
+  margin-top: 64px;
 }
 
 .navList {
@@ -72,7 +74,7 @@
   display: flex;
   align-items: center;
   border-radius: 8px;
-  font-weight: 400;
+  font-weight: fonts.$weightRegular;
   font-size: 16px;
   line-height: 24px;
   color: colors.$fontSecondary;
@@ -91,7 +93,7 @@
     background-color: colors.$white;
     color: colors.$purplePrimary;
     box-shadow: 0 2px 24px rgba(88, 92, 221, 0.04);
-    font-weight: 700;
+    font-weight: fonts.$weightBold;
   }
 
   &:hover {
