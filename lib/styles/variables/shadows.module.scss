@@ -1,0 +1,7 @@
+$primary: 4px 8px 32px rgba(7, 1, 48, 0.12);
+$secondary: 0px 4px 32px rgba(7, 1, 48, 0.12);
+
+:export {
+  primary: $primary;
+  secondary: $secondary;
+}
