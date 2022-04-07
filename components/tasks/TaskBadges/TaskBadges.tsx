@@ -16,16 +16,15 @@ export const TaskBadges = ({ task }: TaskBadgesProps) => {
 
   return (
     <div className={styles.taskBadgesWrapper}>
-      {isTaskLocked && <TaskLockBadge />}
+      <TaskTypeBadge type={task.task_data.type} />
+      <TaskStatusBadge status={task.last_attempt.status} />
       {isInfoType ? (
         <TaskDoneBadge />
       ) : (
         task.last_attempt.score && (
-          <TaskScoreBadge score={task.last_attempt.score} />
+          <TaskScoreBadge isCircle score={task.last_attempt.score} />
         )
       )}
-      <TaskStatusBadge status={task.last_attempt.status} />
-      <TaskTypeBadge type={task.task_data.type} />
     </div>
   );
 };
