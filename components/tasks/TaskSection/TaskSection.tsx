@@ -15,6 +15,7 @@ import { TaskComments } from '../TaskComments/TaskComments';
 import { TaskStatus } from '../../../api/tasks';
 import { IModuleVersion } from '../../../api/modules';
 import { Comment, TaskType } from '../../../lib/utils/types';
+import { TaskBadges } from '../TaskBadges/TaskBadges';
 
 interface TaskSectionProps {
   task: { name: string; type: TaskType; description: string };
@@ -35,6 +36,7 @@ export const TaskSection = ({
   comments,
   isActionLocked,
 }: TaskSectionProps) => {
+  console.log('task section attempt: ', attempt);
   const [isDescriptionView, setIsDescriptionView] = useState(true);
   const [isFullScreenMode, setIsFullScreenMode] = useState(false);
 

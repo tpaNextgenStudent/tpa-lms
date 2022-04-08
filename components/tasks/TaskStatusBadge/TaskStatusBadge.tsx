@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import styles from './TaskStatusBadge.module.scss';
 import { TaskStatus } from '../../../lib/utils/types';
+import LockIcon from '../../../public/lock-icon.svg';
 
 interface TaskStatusBadgeProps {
   status: TaskStatus;
@@ -11,10 +12,16 @@ export const TaskStatusBadge = ({ status }: TaskStatusBadgeProps) => {
     <span
       className={clsx(
         styles.taskStatus,
+        status === 'upcoming' && styles.taskStatusUpcoming,
         styles[`taskStatus${getColorByStatus(status)}`]
       )}
     >
-      {status}
+      {status === 'upcoming' && (
+        <span className={styles.lockWrapper}>
+          <LockIcon />
+        </span>
+      )}
+      <span>{status}</span>
     </span>
   );
 };

@@ -2,28 +2,30 @@ import styles from './TaskBadges.module.scss';
 import { TaskTypeBadge } from '../TaskTypeBadge/TaskTypeBadge';
 import { TaskStatusBadge } from '../TaskStatusBadge/TaskStatusBadge';
 import { TaskScoreBadge } from '../TaskScoreBadge/TaskScoreBadge';
-import { TaskLockBadge } from '../TaskLockBadge/TaskLockBadge';
 import { TaskDoneBadge } from '../TaskDoneBadge/TaskDoneBadge';
-import { ITask } from '../../../api/tasks';
+import { TaskStatus } from '../../../api/tasks';
+import { TaskType } from '../../../lib/utils/types';
 
 interface TaskBadgesProps {
-  task: ITask;
+  task: { name: string; type: TaskType; description: string };
+  attempt: {
+    status: TaskStatus;
+    attempt_number: number | null;
+    score: number | null;
+  };
 }
 
-export const TaskBadges = ({ task }: TaskBadgesProps) => {
-  const isTaskLocked = task.last_attempt.status === 'upcoming';
-  const isInfoType = task.task_data.type === 'info';
+export const TaskBadges = ({ task, attempt }: TaskBadgesProps) => {
+  const isInfoType = task.type === 'info';
 
   return (
     <div className={styles.taskBadgesWrapper}>
-      <TaskTypeBadge type={task.task_data.type} />
-      <TaskStatusBadge status={task.last_attempt.status} />
+      <TaskTypeBadge type={task.type} />
+      <TaskStatusBadge status={attempt.status} />
       {isInfoType ? (
         <TaskDoneBadge />
       ) : (
-        task.last_attempt.score && (
-          <TaskScoreBadge isCircle score={task.last_attempt.score} />
-        )
+        attempt.score && <TaskScoreBadge isCircle score={attempt.score} />
       )}
     </div>
   );

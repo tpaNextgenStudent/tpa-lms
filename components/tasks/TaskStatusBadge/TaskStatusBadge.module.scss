@@ -1,14 +1,17 @@
 @use '/lib/styles/variables/colors.module' as colors;
+@use '/lib/styles/variables/fonts.module' as fonts;
 
 .taskStatus {
   padding: 8px 16px 8px 34px;
   border-radius: 64px;
-  font-weight: 700;
+  font-weight: fonts.$weightBold;
   font-size: 12px;
   line-height: 16px;
   margin-right: 16px;
   text-transform: capitalize;
   position: relative;
+  display: flex;
+  align-items: center;
 
   &:last-child {
     margin-right: 0;
@@ -59,5 +62,22 @@
     &::before {
       background-color: colors.$statusFontOrange;
     }
+  }
+
+  &Upcoming {
+    padding: 8px 16px;
+
+    &::before {
+      content: none;
+    }
+  }
+}
+
+.lockWrapper {
+  margin-right: 12px;
+  display: flex;
+  align-items: center;
+  svg {
+    fill: colors.$fontSecondary;
   }
 }
