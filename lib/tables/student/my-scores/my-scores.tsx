@@ -72,7 +72,7 @@ export const columns: Column<ScoresData>[] = [
     width: '3fr',
 
     Cell: ({ cell: { value } }: { cell: { value: number } }) => (
-      <TaskScoreBadge score={value} isCircle withBorder />
+      <TaskScoreBadge score={value} withBorder />
     ),
   },
   {

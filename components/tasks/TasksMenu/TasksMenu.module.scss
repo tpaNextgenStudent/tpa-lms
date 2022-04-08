@@ -2,7 +2,8 @@
 @use '/lib/styles/variables/media.module' as media;
 
 .wrapper {
-  flex-basis: 314px;
+  width: 314px;
+  overflow-x: hidden;
   padding-top: 24px;
   height: 100%;
   display: flex;
@@ -11,6 +12,7 @@
 
   @media (max-width: media.$laptopS) {
     border-right: none;
-    flex-basis: 0;
+    width: auto;
+    overflow-x: auto;
   }
 }

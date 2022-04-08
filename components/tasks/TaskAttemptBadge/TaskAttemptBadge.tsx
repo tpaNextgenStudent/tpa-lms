@@ -1,9 +1,11 @@
 import styles from './TaskAttemptBadge.module.scss';
 import clsx from 'clsx';
 
+export type TaskAttemptBadgeStyleType = 'circle' | 'text-outside';
+
 interface TaskAttemptBadgeProps {
   attempt: number;
-  styleType?: 'circle' | 'text-outside';
+  styleType?: TaskAttemptBadgeStyleType;
 }
 
 export const TaskAttemptBadge = ({
