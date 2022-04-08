@@ -3,8 +3,6 @@ import styles from './my-scores.module.scss';
 import Image from 'next/image';
 import Link from 'next/link';
 import { TaskType } from '../../../utils/types';
-import clsx from 'clsx';
-import { getColorByScore } from '../../../getColorByScore';
 import { TaskTypeCell } from '../../../../components/common/tables/TaskTypeCell/TaskTypeCell';
 import { TaskAttemptBadge } from '../../../../components/tasks/TaskAttemptBadge/TaskAttemptBadge';
 import { TaskScoreBadge } from '../../../../components/tasks/TaskScoreBadge/TaskScoreBadge';
@@ -25,14 +23,17 @@ export const columns: Column<ScoresData>[] = [
   {
     Header: 'Date of submission',
     accessor: 'submission_date',
+    width: '5fr',
   },
   {
     Header: 'Date of review',
     accessor: 'review_date',
+    width: '5fr',
   },
   {
     Header: 'Module',
     accessor: 'module',
+    width: '3fr',
 
     Cell: ({ cell: { value } }: { cell: { value: string } }) => (
       <span className={styles.moduleName}>{value}</span>
@@ -41,10 +42,16 @@ export const columns: Column<ScoresData>[] = [
   {
     Header: 'Task',
     accessor: 'task',
+    width: 205,
+
+    Cell: ({ cell: { value } }: { cell: { value: string } }) => (
+      <strong>{value}</strong>
+    ),
   },
   {
     Header: 'Task type',
     accessor: 'task_type',
+    width: '3fr',
 
     Cell: ({ cell: { value } }: { cell: { value: TaskType } }) => (
       <TaskTypeCell type={value} />
@@ -53,6 +60,7 @@ export const columns: Column<ScoresData>[] = [
   {
     Header: 'Attempt',
     accessor: 'attempt',
+    width: '3fr',
 
     Cell: ({ cell: { value } }: { cell: { value: number } }) => (
       <TaskAttemptBadge attempt={value} styleType="circle" />
@@ -61,6 +69,7 @@ export const columns: Column<ScoresData>[] = [
   {
     Header: 'Score',
     accessor: 'score',
+    width: '3fr',
 
     Cell: ({ cell: { value } }: { cell: { value: number } }) => (
       <TaskScoreBadge score={value} isCircle withBorder />
@@ -69,6 +78,7 @@ export const columns: Column<ScoresData>[] = [
   {
     Header: 'Reviewed by',
     accessor: 'reviewed_by',
+    width: '4fr',
 
     Cell: ({
       cell: { value },
@@ -96,7 +106,7 @@ export const columns: Column<ScoresData>[] = [
   {
     Header: '',
     accessor: 'view',
-    minWidth: 150,
+    width: '4fr',
 
     Cell: ({ cell: { value } }: { cell: { value: { link: string } } }) => (
       <Link href={value.link}>

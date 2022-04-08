@@ -12,7 +12,11 @@ export default function ScoresIndex({
   scores,
 }: InferPagePropsType<typeof getServerSideProps>) {
   return (
-    <Layout title="My Scores" user={user}>
+    <Layout
+      title="My Scores"
+      description="Track your scores. You can get 1 - don't give up, try again! 2 and 3 - well done, you are ready to go with the next task!"
+      user={user}
+    >
       <Table columns={columns} data={scores} isFullWidth />
     </Layout>
   );
@@ -33,8 +37,8 @@ export const getServerSideProps = withServerSideAuth(async ({ req, res }) => {
         .filter(n => n)
         .join(' ');
       return {
-        submission_date: dayjs(attempt.submission_date).format('DD MMMM'),
-        review_date: dayjs(attempt.evaluation_date).format('DD MMMM'),
+        submission_date: dayjs(attempt.submission_date).format('DD MMM YYYY'),
+        review_date: dayjs(attempt.evaluation_date).format('DD MMM YYYY'),
         module: `Module ${module_number}`,
         task: task_name,
         task_type: task_type,

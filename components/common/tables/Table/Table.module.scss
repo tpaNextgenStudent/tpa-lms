@@ -1,68 +1,67 @@
 @use '/lib/styles/variables/colors.module' as colors;
+@use '/lib/styles/variables/fonts.module' as fonts;
 
 .wrapper {
-  width: 100%;
   height: 100%;
   overflow-y: auto;
 }
 
 .table {
-  table-layout: fixed;
-  max-height: 100%;
   overflow-x: auto;
-  border-collapse: collapse;
-  min-width: 1200px;
+  min-width: 1170px;
 
   &FullWidth {
     width: 100%;
   }
 }
 
+.headRow {
+  padding: 0 24px;
+}
+
 .tableHead {
-  padding: 24px 32px 24px 0;
-  font-weight: 500;
+  font-weight: fonts.$weightMedium;
   font-size: 12px;
   line-height: 16px;
   color: colors.$fontSecondary;
   text-align: left;
-  max-width: 100%;
-  white-space: nowrap;
-
-  &:first-child {
-    padding-left: 24px;
-  }
+  padding: 24px 0 12px 0;
 }
 
 .tableRow {
-  padding-left: 16px;
-  border-top: 1px solid colors.$strokeLines;
+  padding: 0 24px;
+  position: relative;
 
+  &::before {
+    position: absolute;
+    content: '';
+    width: calc(100% - 48px);
+    height: 1px;
+    background-color: colors.$strokeMain;
+    top: 0;
+    left: 24px;
+  }
+}
+
+.tableRowWrapper {
   &:nth-child(odd) {
     background: colors.$bgTable;
   }
 }
 
 .tableCell {
-  font-weight: 500;
+  font-weight: fonts.$weightMedium;
   font-size: 12px;
   line-height: 16px;
   color: colors.$fontPrimary;
-  padding: 24px 32px 24px 0;
-
-  &:first-child {
-    padding-left: 24px;
-  }
-
-  &:last-child {
-    max-width: unset;
-    width: 100%;
-  }
+  padding: 24px 0;
+  display: flex;
+  align-items: center;
 }
 
 .taskTypeWrapper {
   position: relative;
   z-index: 1;
-  padding: 8px 16px;
   background-color: colors.$purplePrimary;
   border-radius: 64px;
   color: colors.$white;

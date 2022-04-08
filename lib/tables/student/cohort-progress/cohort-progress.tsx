@@ -15,7 +15,7 @@ export const columns: Column<ProgressData>[] = [
   {
     Header: 'Student name',
     accessor: 'student',
-    minWidth: 250,
+    width: 200,
 
     Cell: ({
       cell: { value },
@@ -46,6 +46,7 @@ export const columns: Column<ProgressData>[] = [
   {
     Header: 'Module',
     accessor: 'module',
+    width: 100,
 
     Cell: ({ cell: { value } }: { cell: { value: string } }) => (
       <span className={styles.moduleName}>{value}</span>
@@ -54,11 +55,12 @@ export const columns: Column<ProgressData>[] = [
   {
     Header: 'Task name',
     accessor: 'task_name',
-    minWidth: 250,
+    width: 205,
   },
   {
     Header: 'Task type',
     accessor: 'task_type',
+    width: 100,
 
     Cell: ({ cell: { value } }: { cell: { value: TaskType } }) => (
       <TaskTypeCell type={value} />
