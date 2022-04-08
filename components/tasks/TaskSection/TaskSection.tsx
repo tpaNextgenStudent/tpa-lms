@@ -16,6 +16,7 @@ import { TaskStatus } from '../../../api/tasks';
 import { IModuleVersion } from '../../../api/modules';
 import { Comment, TaskType } from '../../../lib/utils/types';
 import { TaskBadges } from '../TaskBadges/TaskBadges';
+import { CTAButton } from '../../common/CTAButton/CTAButton';
 
 interface TaskSectionProps {
   task: { name: string; type: TaskType; description: string };
@@ -92,6 +93,11 @@ export const TaskSection = ({
       )}
       {!isActionLocked && attempt.status !== 'upcoming' && (
         <TaskAction type={task.type} />
+      )}
+      {attempt.score && attempt.score < 3 && (
+        <div className={styles.tryAgainBar}>
+          <CTAButton text="Pass one more time" />
+        </div>
       )}
     </main>
   );
