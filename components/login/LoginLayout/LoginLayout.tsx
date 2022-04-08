@@ -47,6 +47,7 @@ export const LoginLayout = ({ children, fixedButton }: LoginLayoutProps) => {
               width={547}
               height={389}
               className={styles.image}
+              alt="Screen of Tech Play Academy LMS app"
             />
           </div>
           <div className={styles.svgOverflowWrapper}>
