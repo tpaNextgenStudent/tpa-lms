@@ -1,8 +1,10 @@
 @use '/lib/styles/variables/colors.module' as colors;
+@use '/lib/styles/variables/shadows.module' as shadows;
+@use '/lib/styles/variables/fonts.module' as fonts;
 
 .wrapper {
   background-color: colors.$statusFontBlue;
-  box-shadow: 0 8px 32px rgba(7, 1, 48, 0.12);
+  box-shadow: shadows.$secondary;
   border-radius: 8px;
   padding: 16px 48px 16px 24px;
   position: relative;
@@ -10,7 +12,7 @@
 
 .message {
   color: colors.$white;
-  font-weight: 500;
+  font-weight: fonts.$weightMedium;
   font-size: 14px;
   line-height: 24px;
 }
@@ -24,6 +26,8 @@
   top: 50%;
   transform: translateY(-50%);
   cursor: pointer;
+  display: flex;
+  align-items: center;
 
   svg {
     stroke: colors.$white;

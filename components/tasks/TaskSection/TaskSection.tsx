@@ -72,7 +72,7 @@ export const TaskSection = ({
           <TaskDoneBadge />
         ) : (
           attempt.score && (
-            <TaskScoreBadge text={'Score'} score={attempt.score} />
+            <TaskScoreBadge text={'Score'} score={attempt.score} isCircle />
           )
         )}
       </div>

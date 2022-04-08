@@ -54,7 +54,7 @@ const CodeLine = ({ value, index }: CodeLineProps) => {
       <button
         onClick={() => handleCopyClick(value)}
         title={isCopied ? 'Copied' : 'Copy to clipboard'}
-        style={{ top: `calc(8px + ${index * 24}px)` }}
+        style={{ top: `calc(${index * 24}px)` }}
         className={styles.clipboardButton}
       >
         {isCopied ? <TickIcon /> : <ClipboardIcon />}
