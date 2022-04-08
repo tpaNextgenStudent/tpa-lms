@@ -32,7 +32,7 @@ export const Header = ({
         <MenuIcon />
       </button>
       <div className={styles.textWrapper}>
-        <div>
+        <div className={styles.titleWrapper}>
           {prevButton && (
             <Link href={prevButton.pageLink} aria-label="Go back">
               <a className={styles.prevLink}>
