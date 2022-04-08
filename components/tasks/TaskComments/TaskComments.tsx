@@ -44,7 +44,7 @@ export const TaskComments = ({ comments }: TaskCommentsProps) => {
                     <span className={styles.teacherName}>{authorName}</span>
                   </div>
                   <span className={styles.time}>
-                    {dayjs(comment.date).fromNow()}
+                    {dayjs(comment.date).format('DD MMM YYYY, HH:MM a')}
                   </span>
                   <div className={styles.attemptBadges}>
                     {comment.attempt_id && asPath !== versionLink && (
@@ -54,6 +54,7 @@ export const TaskComments = ({ comments }: TaskCommentsProps) => {
                         </a>
                       </Link>
                     )}
+                    <TaskAttemptBadge attempt={comment.attempt_number} />
                     {comment.attempt_score && (
                       <TaskScoreBadge
                         isCircle
@@ -61,10 +62,11 @@ export const TaskComments = ({ comments }: TaskCommentsProps) => {
                         text="Score"
                       />
                     )}
-                    <TaskAttemptBadge attempt={comment.attempt_number} />
                   </div>
                 </div>
-                <MarkdownContent content={comment.content} />
+                <div className={styles.contentWrapper}>
+                  <MarkdownContent content={comment.content} />
+                </div>
               </li>
             );
           })}

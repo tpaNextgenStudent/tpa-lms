@@ -84,7 +84,7 @@ const customStyles: StylesConfig<OptionType, IsMulti> = {
     boxShadow: 'none',
     border: `1px solid ${colors.purplePrimary}`,
     borderTop: 0,
-    position: 'relative',
+    position: 'absolute',
     '::before': {
       content: "''",
       position: 'absolute',
