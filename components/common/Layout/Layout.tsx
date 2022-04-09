@@ -12,7 +12,7 @@ interface LayoutProps {
   description?: string;
   actionsNumber?: number;
   cohortName?: string;
-  headerPrevButton?: { pageName: string; pageLink: string };
+  headerPrevButton?: { pageName?: string; pageLink: string };
 }
 
 export const Layout = ({
