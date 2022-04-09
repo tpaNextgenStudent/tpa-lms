@@ -4,18 +4,22 @@ import dayjs from 'dayjs';
 import { withServerSideAuth } from '../../lib/auth/withServerSideAuth';
 import { getUserDetails } from '../../api/user';
 import { ProfileBanner } from '../../components/profile/ProfileBanner/ProfileBanner';
+import { ProfileUserInfo } from '../../components/profile/ProfileUserInfo/ProfileUserInfo';
 
 export default function UserProfileIndex({
   user,
 }: InferPagePropsType<typeof getServerSideProps>) {
+  const userName = [user.name, user.surname].filter(n => !!n).join(' ');
   return (
     <Layout headerPrevButton={{ pageLink: '/' }} title="My Profile" user={user}>
       <ProfileBanner />
-      <p>{user.role}</p>
-      <p>{user.name}</p>
-      <p>{user.surname}</p>
-      <p>{user.github_login}</p>
-      <p>{user.bio}</p>
+      <ProfileUserInfo
+        name={userName}
+        login={user.github_login}
+        bio={user.bio}
+        joinDate="2022-03-31T22:00:00.000Z"
+        avatar={user.image}
+      />
       <p>{user.cohort_name}</p>
     </Layout>
   );
