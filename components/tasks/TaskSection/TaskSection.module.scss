@@ -72,7 +72,12 @@
 }
 
 .taskBadges {
-  display: flex;
-  flex-wrap: wrap;
   margin: 16px 24px 24px;
+}
+
+.tryAgainBar {
+  padding: 24px;
+  display: flex;
+  justify-content: flex-end;
+  border: 1px solid colors.$strokeLines;
 }

@@ -56,11 +56,7 @@ export const TaskComments = ({ comments }: TaskCommentsProps) => {
                     )}
                     <TaskAttemptBadge attempt={comment.attempt_number} />
                     {comment.attempt_score && (
-                      <TaskScoreBadge
-                        isCircle
-                        score={comment.attempt_score}
-                        text="Score"
-                      />
+                      <TaskScoreBadge score={comment.attempt_score} withText />
                     )}
                   </div>
                 </div>

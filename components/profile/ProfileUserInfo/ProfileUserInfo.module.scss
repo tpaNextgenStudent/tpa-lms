@@ -1,0 +1,132 @@
+@use '/lib/styles/variables/colors.module' as colors;
+@use '/lib/styles/variables/fonts.module' as fonts;
+@use '/lib/styles/variables/media.module' as media;
+
+.wrapper {
+  padding: 16px 24px;
+  display: flex;
+  flex-wrap: wrap;
+
+  @media (max-width: media.$tabletS) {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.imgWrapper {
+  width: 152px;
+  height: 152px;
+  max-width: calc(100vw - 48px);
+  max-height: calc(100vw - 48px);
+  background-color: colors.$bgInactive;
+  border-radius: 100px;
+  overflow: hidden;
+  margin-right: 16px;
+  position: relative;
+  transform: translateY(-48px);
+  flex-shrink: 0;
+
+  @media (max-width: media.$tabletS) {
+    transform: none;
+    margin-right: 0;
+  }
+}
+
+.aboutWrapper {
+  display: flex;
+  flex-direction: column;
+
+  @media (max-width: media.$tabletS) {
+    align-items: center;
+  }
+}
+
+.nameWrapper {
+  display: flex;
+  align-items: center;
+
+  @media (max-width: media.$tabletS) {
+    flex-direction: column;
+  }
+}
+
+.name {
+  font-weight: fonts.$weightMedium;
+  font-size: 20px;
+  line-height: 40px;
+  color: colors.$fontPrimary;
+  margin-right: 16px;
+
+  @media (max-width: media.$tabletS) {
+    margin-right: 0;
+    margin-top: 16px;
+    line-height: unset;
+    text-align: center;
+  }
+}
+
+.ghLink {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  background-color: colors.$purpleSecondary;
+  border-radius: 4px;
+  margin-right: 16px;
+
+  @media (max-width: media.$tabletS) {
+    margin-right: 0;
+    margin-top: 8px;
+  }
+}
+
+.login {
+  text-transform: lowercase;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: fonts.$weightMedium;
+  color: colors.$purplePrimary;
+}
+
+.ghIcon {
+  display: flex;
+  align-items: center;
+  margin-right: 8px;
+  svg {
+    width: 16px;
+    height: 16px;
+    fill: colors.$purplePrimary;
+  }
+}
+
+.bio {
+  margin-top: 4px;
+  font-weight: fonts.$weightRegular;
+  color: colors.$fontPrimary;
+  font-size: 16px;
+  line-height: 24px;
+  max-width: 450px;
+
+  @media (max-width: media.$tabletS) {
+    margin-top: 16px;
+    text-align: center;
+  }
+}
+
+.joinDate {
+  margin-left: auto;
+  font-weight: fonts.$weightMedium;
+  font-size: 16px;
+  line-height: 24px;
+  color: colors.$fontSecondary;
+
+  strong {
+    color: colors.$fontPrimary;
+    white-space: nowrap;
+  }
+
+  @media (max-width: media.$tabletS) {
+    margin-left: 0;
+    margin-top: 16px;
+    text-align: center;
+  }
+}

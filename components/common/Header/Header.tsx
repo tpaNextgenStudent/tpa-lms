@@ -11,7 +11,7 @@ interface HeaderProps {
   actionsNumber?: number;
   user: IUserDetails;
   openMobileNav: () => void;
-  prevButton?: { pageName: string; pageLink: string };
+  prevButton?: { pageName?: string; pageLink: string };
 }
 
 export const Header = ({
@@ -32,7 +32,7 @@ export const Header = ({
         <MenuIcon />
       </button>
       <div className={styles.textWrapper}>
-        <div>
+        <div className={styles.titleWrapper}>
           {prevButton && (
             <Link href={prevButton.pageLink} aria-label="Go back">
               <a className={styles.prevLink}>
@@ -41,7 +41,7 @@ export const Header = ({
             </Link>
           )}
           <h1 className={styles.title}>
-            {prevButton && (
+            {prevButton && prevButton.pageName && (
               <span className={styles.titlePrevPage}>
                 {prevButton.pageName}
               </span>
