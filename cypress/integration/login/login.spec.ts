@@ -1,6 +1,12 @@
 import Cookie = Cypress.Cookie;
 
 describe('Login', () => {
+  const LOGIN_TEXT = 'Login with github';
+  it(`Displays ${LOGIN_TEXT} button(s)`, () => {
+    cy.visit('/login');
+    cy.contains(LOGIN_TEXT).should('exist');
+  });
+
   it('Success for GitHub provider', () => {
     const cookiesName = Cypress.env('COOKIE_NAME');
     const socialLoginOptions = {
