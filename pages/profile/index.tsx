@@ -6,6 +6,7 @@ import { getUserDetails } from '../../api/user';
 import { ProfileBanner } from '../../components/profile/ProfileBanner/ProfileBanner';
 import { ProfileUserInfo } from '../../components/profile/ProfileUserInfo/ProfileUserInfo';
 import { ProfileCohortInfo } from '../../components/profile/ProfileCohortInfo/ProfileCohortInfo';
+import { ProfileTeacherInfo } from '../../components/profile/ProfileTeacherInfo/ProfileTeacherInfo';
 
 export default function UserProfileIndex({
   user,
@@ -22,6 +23,7 @@ export default function UserProfileIndex({
         avatar={user.image}
       />
       <ProfileCohortInfo name={user.cohort_name} numberOfStudents={17} />
+      <ProfileTeacherInfo name={'Go Kubo'} avatar={null} />
     </Layout>
   );
 }
