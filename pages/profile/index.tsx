@@ -5,6 +5,7 @@ import { withServerSideAuth } from '../../lib/auth/withServerSideAuth';
 import { getUserDetails } from '../../api/user';
 import { ProfileBanner } from '../../components/profile/ProfileBanner/ProfileBanner';
 import { ProfileUserInfo } from '../../components/profile/ProfileUserInfo/ProfileUserInfo';
+import { ProfileCohortInfo } from '../../components/profile/ProfileCohortInfo/ProfileCohortInfo';
 
 export default function UserProfileIndex({
   user,
@@ -20,7 +21,7 @@ export default function UserProfileIndex({
         joinDate="2022-03-31T22:00:00.000Z"
         avatar={user.image}
       />
-      <p>{user.cohort_name}</p>
+      <ProfileCohortInfo name={user.cohort_name} numberOfStudents={17} />
     </Layout>
   );
 }
