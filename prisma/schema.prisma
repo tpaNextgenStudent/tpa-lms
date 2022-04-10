@@ -108,6 +108,7 @@ model Task {
   module_version_id String
   module_version    ModuleVersion? @relation(fields: [module_version_id], references: [id])
   type              taskType
+  summative         Boolean?
   position          Int
   name              String
   description       String
@@ -135,13 +136,15 @@ model Attempt {
   student              Assignment @relation("student", fields: [assignment_id], references: [id])
   task_id              String
   task                 Task       @relation(fields: [task_id], references: [id])
-  score                Int
+  score                Int?
   answer               String
-  comment              String
+  comment              String?
   attempt_number       Int
   teacher_assigment_id String
   teacher              Assignment @relation("teacher", fields: [teacher_assigment_id], references: [id])
   submission_date      DateTime   @default(now())
   evaluation_date      DateTime?
-  status               String?
+  status               String
+  module_number        Int?
+  task_number          Int?
 }
