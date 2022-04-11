@@ -1,6 +1,6 @@
 import styles from './TaskLockBadge.module.scss';
 import clsx from 'clsx';
-import LockIcon from '../../../public/lock-icon.svg';
+import LockIcon from '../../../public/svg/lock-icon.svg';
 
 interface TaskLockBadgeProps {}
 

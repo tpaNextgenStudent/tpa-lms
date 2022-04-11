@@ -1,6 +1,6 @@
 import { TaskType } from '../../../lib/utils/types';
-import InfoTypeIcon from '../../../public/info-type-icon.svg';
-import CodeTypeIcon from '../../../public/code-type-icon.svg';
+import InfoTypeIcon from '../../../public/svg/info-type-icon.svg';
+import CodeTypeIcon from '../../../public/svg/code-type-icon.svg';
 
 export const TaskTypeIcon = ({ type }: { type: TaskType }) => {
   switch (type) {

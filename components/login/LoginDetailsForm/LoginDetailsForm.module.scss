@@ -1,5 +1,6 @@
 @use '/lib/styles/variables/colors.module' as colors;
 @use '/lib/styles/variables/media.module' as media;
+@use '/lib/styles/variables/fonts.module' as fonts;
 
 .form {
   margin-top: 32px;
@@ -17,7 +18,7 @@
 }
 
 .label {
-  font-weight: 500;
+  font-weight: fonts.$weightMedium;
   font-size: 14px;
   line-height: 24px;
   color: colors.$fontPrimary;
@@ -25,7 +26,7 @@
 
 .field {
   margin-top: 8px;
-  font-weight: 400;
+  font-weight: fonts.$weightRegular;
   font-size: 12px;
   line-height: 24px;
   color: colors.$fontPrimary;
@@ -50,7 +51,7 @@
 
 .errorMessage {
   margin-top: 4px;
-  font-weight: 400;
+  font-weight: fonts.$weightRegular;
   font-size: 12px;
   line-height: 16px;
   color: colors.$statusFontRed;

@@ -1,7 +1,7 @@
 import styles from './CodeActionLines.module.scss';
 import { MouseEvent, useEffect, useRef, useState } from 'react';
-import TickIcon from '../../../public/tick-icon.svg';
-import ClipboardIcon from '../../../public/clipboard-icon.svg';
+import TickIcon from '../../../public/svg/tick-icon.svg';
+import ClipboardIcon from '../../../public/svg/clipboard-icon.svg';
 
 interface CodeActionLinesProps {
   onMouseEnter?: (e: MouseEvent<HTMLDivElement>) => void;

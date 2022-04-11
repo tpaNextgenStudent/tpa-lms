@@ -1,4 +1,4 @@
-import { getSession, signIn, useSession } from 'next-auth/react';
+import { getSession, signIn } from 'next-auth/react';
 import { GetServerSidePropsContext } from 'next';
 import { LoginLayout } from '../../components/login/LoginLayout/LoginLayout';
 import { LoginHeroText } from '../../components/login/LoginHeroText/LoginHeroText';
@@ -25,15 +25,10 @@ export default function Login({
     );
   }
   return (
-    <LoginLayout
-      fixedButton={{
-        text: 'Login with github',
-        onClick: loginWithGithub,
-      }}
-    >
+    <LoginLayout>
       <LoginHeroText
-        title="*Name, learning platform* whenever you want"
-        description="There will be some text about halftone"
+        titleLines={['*Hello! 👋*', '*Welcome to*', '*Tech Play Academy.*']}
+        description="Start your journey with signing in using your GitHub account."
       />
       <div className={styles.ctaButtonWrapper}>
         <CTAButton text="Login with github" onClick={loginWithGithub} />

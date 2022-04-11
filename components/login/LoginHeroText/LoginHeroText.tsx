@@ -1,17 +1,26 @@
 import styles from './LoginHeroText.module.scss';
 import { HandleBold } from '../../common/HandleBold/HandleBold';
+import { Fragment } from 'react';
 
 interface LoginHeroTextProps {
-  title?: string;
+  titleLines?: string[];
   description?: string;
 }
 
-export const LoginHeroText = ({ title, description }: LoginHeroTextProps) => {
+export const LoginHeroText = ({
+  titleLines,
+  description,
+}: LoginHeroTextProps) => {
   return (
     <div className={styles.wrapper}>
-      {title && (
+      {titleLines && titleLines.length > 0 && (
         <h1 className={styles.title}>
-          <HandleBold>{title}</HandleBold>
+          {titleLines.map(line => (
+            <Fragment key={line}>
+              <HandleBold key={line}>{line}</HandleBold>
+              <br />
+            </Fragment>
+          ))}
         </h1>
       )}
       {description && <p className={styles.description}>{description}</p>}

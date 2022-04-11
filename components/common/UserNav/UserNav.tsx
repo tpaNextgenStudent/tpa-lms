@@ -1,11 +1,12 @@
 import styles from './UserNav.module.scss';
 import Image from 'next/image';
-import ArrowDown from '../../../public/arrow-down.svg';
+import ArrowDown from '../../../public/svg/arrow-down.svg';
 import Link from 'next/link';
 import { useRef, useState } from 'react';
 import clsx from 'clsx';
 import { useClickOutside } from '../../../lib/useClickOutside';
 import { IUserDetails } from '../../../api/user';
+import { signOut } from 'next-auth/react';
 
 interface UserNavProps {
   user: IUserDetails;
@@ -86,7 +87,12 @@ export const UserNav = ({ user }: UserNavProps) => {
             </Link>
           </li>
           <li className={styles.userNavListItem}>
-            <button className={styles.userNavLogoutButton}>Log out</button>
+            <button
+              onClick={() => signOut()}
+              className={styles.userNavLogoutButton}
+            >
+              Log out
+            </button>
           </li>
         </ul>
       </div>
