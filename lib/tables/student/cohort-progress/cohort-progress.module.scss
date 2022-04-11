@@ -1,31 +1,3 @@
-@use '/lib/styles/variables/colors.module' as colors;
-@use '/lib/styles/variables/fonts.module' as fonts;
-
-.studentImg {
-  border-radius: 50px;
-}
-
-.studentCellWrapper {
-  display: flex;
-  align-items: center;
-}
-
-.studentImgWrapper {
-  width: 32px;
-  height: 32px;
-}
-
-.studentNameWrapper {
-  margin-left: 10px;
-}
-
-.studentLogin {
-  font-weight: fonts.$weightRegular;
-  font-size: 10px;
-  line-height: 16px;
-  color: colors.$fontSecondary;
-}
-
 .moduleName {
   white-space: nowrap;
 }

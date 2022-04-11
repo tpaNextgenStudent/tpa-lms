@@ -1,79 +1,84 @@
 import { Column } from 'react-table';
 import styles from './assignments.module.scss';
-import Image from 'next/image';
 import Link from 'next/link';
-import ArrowRightIcon from '../../../../public/svg/arrow-right.svg';
+import { UserNameCell } from '../../../../components/common/tables/UserNameCell/UserNameCell';
+import { TaskTypeCell } from '../../../../components/common/tables/TaskTypeCell/TaskTypeCell';
+import { TaskType } from '../../../utils/types';
+import { TaskAttemptBadge } from '../../../../components/tasks/TaskAttemptBadge/TaskAttemptBadge';
 
-interface AssignmentsData {
+export interface AssignmentsData {
   submission_date: string;
-  student: { name: string; img: string };
+  student: { name: string; login: string | null; img: string | null };
   module: string;
   task: string;
   task_type: string;
   attempt: number;
-  check: { link: string };
+  check: { id: string };
 }
 
 export const columns: Column<AssignmentsData>[] = [
   {
     Header: 'Date of submission',
     accessor: 'submission_date',
+    width: 110,
   },
   {
     Header: 'Student name',
     accessor: 'student',
+    width: 160,
 
     Cell: ({
-      cell: { value },
+      cell: {
+        value: { name, img, login },
+      },
     }: {
-      cell: { value: { name: string; img: string } };
-    }) => (
-      <div className={styles.studentCellWrapper}>
-        <Image
-          className={styles.studentImg}
-          width={32}
-          height={32}
-          objectFit="cover"
-          layout="fixed"
-          src={value.img}
-          alt={value.name}
-        />
-        <span className={styles.studentName}>{value.name}</span>
-      </div>
-    ),
+      cell: { value: AssignmentsData['student'] };
+    }) => <UserNameCell name={name} img={img} login={login} />,
   },
   {
     Header: 'Module',
     accessor: 'module',
+    width: 90,
   },
   {
     Header: 'Task name',
     accessor: 'task',
+    width: 256,
+
+    Cell: ({ cell: { value } }: { cell: { value: string } }) => (
+      <span className={styles.taskName}>{value}</span>
+    ),
   },
   {
     Header: 'Task type',
     accessor: 'task_type',
+    width: 100,
 
-    Cell: ({ cell: { value } }: { cell: { value: string } }) => (
-      <span className={styles.taskTypeWrapper}>{value}</span>
+    Cell: ({ cell: { value } }: { cell: { value: TaskType } }) => (
+      <TaskTypeCell type={value} />
     ),
   },
   {
     Header: 'Attempt',
     accessor: 'attempt',
+    width: 100,
+
+    Cell: ({ cell: { value } }: { cell: { value: number } }) => (
+      <TaskAttemptBadge attempt={value} styleType="circle" />
+    ),
   },
   {
     Header: '',
     accessor: 'check',
+    width: '1fr',
 
-    Cell: ({ cell: { value } }: { cell: { value: { link: string } } }) => (
-      <Link href={value.link}>
-        <a className={styles.viewLink}>
-          <span>Check</span>
-          <span className={styles.viewLinkArrow}>
-            <ArrowRightIcon />
-          </span>
-        </a>
+    Cell: ({
+      cell: { value },
+    }: {
+      cell: { value: AssignmentsData['check'] };
+    }) => (
+      <Link href={`/teacher/assignments/${value.id}`}>
+        <a className={styles.checkLink}>Check</a>
       </Link>
     ),
   },

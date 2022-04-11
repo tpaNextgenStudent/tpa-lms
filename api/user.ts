@@ -5,9 +5,11 @@ type Options = {
   cookie: string;
 };
 
+export type UserRole = 'teacher' | 'student';
+
 export interface IUser {
   id: string;
-  name: string | null;
+  name: string;
   surname: string | null;
   bio: string | null;
   email: string | null;
@@ -23,7 +25,7 @@ export interface IUserDetails {
   email: string | null;
   cohort_name: string;
   github_login: string;
-  role: 'student' | 'teacher';
+  role: UserRole;
 }
 
 export const getUserDetails = async ({
