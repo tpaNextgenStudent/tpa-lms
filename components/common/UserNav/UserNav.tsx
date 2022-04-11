@@ -1,6 +1,6 @@
 import styles from './UserNav.module.scss';
 import Image from 'next/image';
-import ArrowDown from '../../../public/arrow-down.svg';
+import ArrowDown from '../../../public/svg/arrow-down.svg';
 import Link from 'next/link';
 import { useRef, useState } from 'react';
 import clsx from 'clsx';

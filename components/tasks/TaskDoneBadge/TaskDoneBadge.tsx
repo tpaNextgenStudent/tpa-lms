@@ -1,5 +1,5 @@
 import styles from './TaskDoneBadge.module.scss';
-import TickIcon from '../../../public/tick-icon.svg';
+import TickIcon from '../../../public/svg/tick-icon.svg';
 
 interface TaskDoneBadgeProps {}
 

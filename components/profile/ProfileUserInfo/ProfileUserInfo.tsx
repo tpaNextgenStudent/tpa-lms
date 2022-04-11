@@ -1,6 +1,6 @@
 import styles from './ProfileUserInfo.module.scss';
 import Image from 'next/image';
-import GhIcon from '../../../public/gh-icon.svg';
+import GhIcon from '../../../public/svg/gh-icon.svg';
 import dayjs from 'dayjs';
 
 interface ProfileUserInfoProps {
@@ -22,7 +22,7 @@ export const ProfileUserInfo = ({
     <section className={styles.wrapper}>
       <div className={styles.imgWrapper}>
         <Image
-          src={avatar || '/user.svg'}
+          src={avatar || '/svg/user.svg'}
           alt={`${name} avatar`}
           width={152}
           height={152}

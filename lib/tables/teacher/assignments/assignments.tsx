@@ -2,7 +2,7 @@ import { Column } from 'react-table';
 import styles from './assignments.module.scss';
 import Image from 'next/image';
 import Link from 'next/link';
-import ArrowRightIcon from '../../../../public/arrow-right.svg';
+import ArrowRightIcon from '../../../../public/svg/arrow-right.svg';
 
 interface AssignmentsData {
   submission_date: string;

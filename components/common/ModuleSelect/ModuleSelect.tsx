@@ -1,7 +1,7 @@
 import styles from './ModuleSelect.module.scss';
 import colors from '../../../lib/styles/variables/colors.module.scss';
 import fonts from '../../../lib/styles/variables/fonts.module.scss';
-import ArrowDownIcon from '../../../public/arrow-down.svg';
+import ArrowDownIcon from '../../../public/svg/arrow-down.svg';
 
 import Select, {
   SingleValue,

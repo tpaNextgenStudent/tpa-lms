@@ -16,7 +16,7 @@ export const ProfileTeacherInfo = ({
       <div className={styles.teacherWrapper}>
         <div className={styles.imgWrapper}>
           <Image
-            src={avatar || '/user.svg'}
+            src={avatar || '/svg/user.svg'}
             alt={`${name} avatar`}
             width={64}
             height={64}

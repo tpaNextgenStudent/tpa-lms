@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import styles from './TaskStatusBadge.module.scss';
 import { TaskStatus } from '../../../lib/utils/types';
-import LockIcon from '../../../public/lock-icon.svg';
+import LockIcon from '../../../public/svg/lock-icon.svg';
 
 interface TaskStatusBadgeProps {
   status: TaskStatus;
