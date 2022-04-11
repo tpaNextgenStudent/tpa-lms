@@ -2,7 +2,7 @@ import { Column } from 'react-table';
 import styles from './cohort-progress.module.scss';
 import Image from 'next/image';
 import Link from 'next/link';
-import ArrowRightIcon from '../../../../public/arrow-right.svg';
+import ArrowRightIcon from '../../../../public/svg/arrow-right.svg';
 import { Task } from '../../../utils/types';
 
 export interface CohortProgressData {

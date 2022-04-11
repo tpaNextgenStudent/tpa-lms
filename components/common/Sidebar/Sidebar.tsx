@@ -2,10 +2,10 @@ import Link from 'next/link';
 import styles from './Sidebar.module.scss';
 import { useRouter } from 'next/router';
 import clsx from 'clsx';
-import TasksIcon from '../../../public/tasks-icon.svg';
-import ScoresIcon from '../../../public/scores-icon.svg';
-import ProgressIcon from '../../../public/progress-icon.svg';
-import CrossIcon from '../../../public/cross-icon.svg';
+import TasksIcon from '../../../public/svg/tasks-icon.svg';
+import ScoresIcon from '../../../public/svg/scores-icon.svg';
+import ProgressIcon from '../../../public/svg/progress-icon.svg';
+import CrossIcon from '../../../public/svg/cross-icon.svg';
 import Image from 'next/image';
 import { IUserDetails } from '../../../api/user';
 
@@ -71,7 +71,7 @@ export const Sidebar = ({
           <Link href="/">
             <a className={styles.logoLink}>
               <Image
-                src="/tpa_logo.svg"
+                src="/svg/tpa-logo.svg"
                 alt="Tech Play Academy logo"
                 objectFit="contain"
                 width={208}

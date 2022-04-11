@@ -1,13 +1,15 @@
 @use '/lib/styles/variables/colors.module' as colors;
 @use '/lib/styles/variables/media.module' as media;
+@use '/lib/styles/variables/fonts.module' as fonts;
+@use '/lib/styles/variables/shadows.module' as shadows;
 
 .sideBarWrapper {
   width: 256px;
   background-color: colors.$bgMain;
-  padding: 32px 24px;
+  padding: 52px 24px 32px;
   display: flex;
   flex-direction: column;
-  border-right: 1px solid colors.$strokeLines;
+  border-right: 1px solid colors.$bgMain;
 
   @media (max-width: media.$laptopS) {
     position: fixed;
@@ -27,7 +29,6 @@
 }
 
 .logoLinkWrapper {
-  height: 56px;
   display: flex;
   align-items: center;
   align-self: flex-end;
@@ -42,7 +43,7 @@
   text-align: center;
   border: 1px solid colors.$purplePrimary;
   border-radius: 16px;
-  font-weight: 600;
+  font-weight: fonts.$weightMedium;
   font-size: 16px;
   line-height: 24px;
   color: colors.$fontPrimary;
@@ -54,7 +55,7 @@
 }
 
 .navWrapper {
-  margin-top: 28px;
+  margin-top: 64px;
 }
 
 .navList {
@@ -72,7 +73,7 @@
   display: flex;
   align-items: center;
   border-radius: 8px;
-  font-weight: 400;
+  font-weight: fonts.$weightRegular;
   font-size: 16px;
   line-height: 24px;
   color: colors.$fontSecondary;
@@ -90,8 +91,8 @@
   &Active {
     background-color: colors.$white;
     color: colors.$purplePrimary;
-    box-shadow: 0 2px 24px rgba(88, 92, 221, 0.04);
-    font-weight: 700;
+    box-shadow: shadows.$navbar;
+    font-weight: fonts.$weightBold;
   }
 
   &:hover {
@@ -136,7 +137,7 @@
   width: 40px;
   height: 40px;
   background: colors.$white;
-  box-shadow: 4px 8px 32px rgba(7, 1, 48, 0.04);
+  box-shadow: shadows.$image;
   flex-shrink: 0;
   display: flex;
   align-items: center;

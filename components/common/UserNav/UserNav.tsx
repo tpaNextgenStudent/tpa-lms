@@ -1,11 +1,12 @@
 import styles from './UserNav.module.scss';
 import Image from 'next/image';
-import ArrowDown from '../../../public/arrow-down.svg';
+import ArrowDown from '../../../public/svg/arrow-down.svg';
 import Link from 'next/link';
 import { useRef, useState } from 'react';
 import clsx from 'clsx';
 import { useClickOutside } from '../../../lib/useClickOutside';
 import { IUserDetails } from '../../../api/user';
+import { signOut } from 'next-auth/react';
 
 interface UserNavProps {
   user: IUserDetails;
@@ -42,20 +43,22 @@ export const UserNav = ({ user }: UserNavProps) => {
     setIsDropdownOpen(false);
   };
 
-  const fullName = `${user.name} ${user.surname}`;
+  const fullName = [user.name, user.surname].filter(n => !!n).join(' ');
 
   return (
     <div onMouseLeave={handleMouseLeave} className={styles.userWrapper}>
       {user.image && (
-        <Image
-          className={styles.userAvatar}
-          width={40}
-          height={40}
-          src={user.image!}
-          alt="Avatar"
-        />
+        <div className={styles.userAvatar}>
+          <Image
+            className={styles.userAvatar}
+            width={40}
+            height={40}
+            layout="fixed"
+            src={user.image!}
+            alt="Avatar"
+          />
+        </div>
       )}
-
       <p className={styles.userName}>{fullName}</p>
       <button
         ref={buttonRef}
@@ -84,7 +87,12 @@ export const UserNav = ({ user }: UserNavProps) => {
             </Link>
           </li>
           <li className={styles.userNavListItem}>
-            <button className={styles.userNavLogoutButton}>Log out</button>
+            <button
+              onClick={() => signOut()}
+              className={styles.userNavLogoutButton}
+            >
+              Log out
+            </button>
           </li>
         </ul>
       </div>

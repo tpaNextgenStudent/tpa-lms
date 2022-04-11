@@ -1,0 +1,52 @@
+@use '/lib/styles/variables/colors.module' as colors;
+@use '/lib/styles/variables/fonts.module' as fonts;
+@use '/lib/styles/variables/media.module' as media;
+
+.wrapper {
+  @media (max-width: media.$tabletS) {
+    margin-top: 24px;
+  }
+}
+
+.header {
+  font-weight: fonts.$weightMedium;
+  font-size: 20px;
+  line-height: 40px;
+  color: colors.$fontPrimary;
+  margin-left: 24px;
+}
+
+.table {
+  table-layout: fixed;
+  border-collapse: collapse;
+  text-align: left;
+  overflow-x: auto;
+  display: block;
+}
+
+.th {
+  background-color: colors.$white;
+  font-weight: fonts.$weightMedium;
+  font-size: 12px;
+  line-height: 16px;
+  color: colors.$fontSecondary;
+  padding: 16px 24px;
+  white-space: nowrap;
+}
+
+.tr {
+}
+
+.td {
+  background-color: colors.$purpleSecondary;
+  padding: 24px;
+  font-weight: fonts.$weightMedium;
+  color: colors.$fontPrimary;
+  font-size: 12px;
+  line-height: 16px;
+  min-width: 160px;
+
+  &:last-child {
+    width: 100%;
+  }
+}

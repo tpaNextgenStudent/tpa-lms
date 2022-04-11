@@ -1,7 +1,7 @@
 import styles from './Header.module.scss';
 import { IUserDetails } from '../../../api/user';
-import ArrowLeftIcon from '../../../public/arrow-left.svg';
-import MenuIcon from '../../../public/menu-icon.svg';
+import ArrowLeftIcon from '../../../public/svg/arrow-left.svg';
+import MenuIcon from '../../../public/svg/menu-icon.svg';
 import { UserNav } from '../UserNav/UserNav';
 import Link from 'next/link';
 
@@ -11,7 +11,7 @@ interface HeaderProps {
   actionsNumber?: number;
   user: IUserDetails;
   openMobileNav: () => void;
-  prevButton?: { pageName: string; pageLink: string };
+  prevButton?: { pageName?: string; pageLink: string };
 }
 
 export const Header = ({
@@ -40,9 +40,8 @@ export const Header = ({
               </a>
             </Link>
           )}
-
           <h1 className={styles.title}>
-            {prevButton && (
+            {prevButton && prevButton.pageName && (
               <span className={styles.titlePrevPage}>
                 {prevButton.pageName}
               </span>

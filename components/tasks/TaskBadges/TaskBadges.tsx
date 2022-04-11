@@ -2,30 +2,78 @@ import styles from './TaskBadges.module.scss';
 import { TaskTypeBadge } from '../TaskTypeBadge/TaskTypeBadge';
 import { TaskStatusBadge } from '../TaskStatusBadge/TaskStatusBadge';
 import { TaskScoreBadge } from '../TaskScoreBadge/TaskScoreBadge';
-import { TaskLockBadge } from '../TaskLockBadge/TaskLockBadge';
 import { TaskDoneBadge } from '../TaskDoneBadge/TaskDoneBadge';
-import { ITask } from '../../../api/tasks';
+import { TaskStatus } from '../../../api/tasks';
+import { TaskType } from '../../../lib/utils/types';
+import {
+  TaskAttemptBadge,
+  TaskAttemptBadgeStyleType,
+} from '../TaskAttemptBadge/TaskAttemptBadge';
+import clsx from 'clsx';
+import { Fragment } from 'react';
 
-interface TaskBadgesProps {
-  task: ITask;
+type BadgeType = 'type' | 'status' | 'attempt' | 'score';
+
+interface TaskBadgesConfig {
+  score?: {
+    withText?: boolean;
+    withBorder?: boolean;
+  };
+  attempt?: {
+    styleType?: TaskAttemptBadgeStyleType;
+  };
 }
 
-export const TaskBadges = ({ task }: TaskBadgesProps) => {
-  const isTaskLocked = task.last_attempt.status === 'upcoming';
-  const isInfoType = task.task_data.type === 'info';
+interface TaskBadgesProps {
+  task: { name: string; type: TaskType; description: string };
+  attempt: {
+    status: TaskStatus;
+    attempt_number: number | null;
+    score: number | null;
+  };
+  className?: string;
+  badges?: BadgeType[];
+  config?: TaskBadgesConfig;
+}
 
-  return (
-    <div className={styles.taskBadgesWrapper}>
-      {isTaskLocked && <TaskLockBadge />}
-      {isInfoType ? (
+export const TaskBadges = ({
+  task,
+  attempt,
+  className,
+  badges = ['type', 'status', 'score'],
+  config,
+}: TaskBadgesProps) => {
+  const isInfoType = task.type === 'info';
+
+  const typeToComponentArr = {
+    type: () => <TaskTypeBadge type={task.type} />,
+    status: () => <TaskStatusBadge status={attempt.status} />,
+    score: () =>
+      isInfoType ? (
         <TaskDoneBadge />
       ) : (
-        task.last_attempt.score && (
-          <TaskScoreBadge score={task.last_attempt.score} />
+        attempt.score && (
+          <TaskScoreBadge
+            score={attempt.score}
+            withText={config?.score?.withText}
+            withBorder={config?.score?.withBorder}
+          />
         )
-      )}
-      <TaskStatusBadge status={task.last_attempt.status} />
-      <TaskTypeBadge type={task.task_data.type} />
+      ),
+    attempt: () =>
+      typeof attempt.attempt_number === 'number' && (
+        <TaskAttemptBadge
+          attempt={attempt.attempt_number}
+          styleType={config?.attempt?.styleType}
+        />
+      ),
+  };
+
+  return (
+    <div className={clsx(styles.taskBadgesWrapper, className)}>
+      {badges?.map((type, index) => {
+        return <Fragment key={index}>{typeToComponentArr[type]()}</Fragment>;
+      })}
     </div>
   );
 };

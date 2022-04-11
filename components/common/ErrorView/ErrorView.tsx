@@ -2,7 +2,7 @@ import styles from './ErrorView.module.scss';
 import { CTAButton } from '../CTAButton/CTAButton';
 import { HandleBold } from '../HandleBold/HandleBold';
 import Image from 'next/image';
-import BgStripesIcon from '../../../public/bg_stripes.svg';
+import BgStripesIcon from '../../../public/svg/bg-stripes.svg';
 
 interface ErrorViewProps {
   title: string;
@@ -16,7 +16,7 @@ export const ErrorView = ({ title, description, button }: ErrorViewProps) => {
       <header className={styles.header}>
         <div className={styles.logoWrapper}>
           <Image
-            src="/tpa_logo.svg"
+            src="/svg/tpa-logo.svg"
             alt="Tech Play Academy Logo"
             width={208}
             height={20}

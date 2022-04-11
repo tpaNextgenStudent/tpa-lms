@@ -1,7 +1,7 @@
 import styles from './CodeActionLines.module.scss';
 import { MouseEvent, useEffect, useRef, useState } from 'react';
-import TickIcon from '../../../public/tick-icon.svg';
-import ClipboardIcon from '../../../public/clipboard-icon.svg';
+import TickIcon from '../../../public/svg/tick-icon.svg';
+import ClipboardIcon from '../../../public/svg/clipboard-icon.svg';
 
 interface CodeActionLinesProps {
   onMouseEnter?: (e: MouseEvent<HTMLDivElement>) => void;
@@ -54,7 +54,7 @@ const CodeLine = ({ value, index }: CodeLineProps) => {
       <button
         onClick={() => handleCopyClick(value)}
         title={isCopied ? 'Copied' : 'Copy to clipboard'}
-        style={{ top: `calc(8px + ${index * 24}px)` }}
+        style={{ top: `calc(${index * 24}px)` }}
         className={styles.clipboardButton}
       >
         {isCopied ? <TickIcon /> : <ClipboardIcon />}

@@ -19,7 +19,11 @@ export default function Tasks({
   comments,
 }: InferPagePropsType<typeof getServerSideProps>) {
   return (
-    <Layout title="My Tasks" user={user}>
+    <Layout
+      title="My Tasks"
+      user={user}
+      description="Find all of yours tasks divided into modules."
+    >
       <div className={styles.tasksWrapper}>
         <TasksMenu
           modules={modules}

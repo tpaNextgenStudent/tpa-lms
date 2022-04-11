@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import Image from 'next/image';
 import styles from './LoginLayout.module.scss';
 import { CTAButton } from '../../common/CTAButton/CTAButton';
-import BgStripesIcon from '../../../public/bg_stripes.svg';
+import BgStripesIcon from '../../../public/svg/bg-stripes.svg';
 import clsx from 'clsx';
 
 interface LoginLayoutProps {
@@ -23,7 +23,7 @@ export const LoginLayout = ({ children, fixedButton }: LoginLayoutProps) => {
           <header className={styles.header}>
             <div className={styles.logoWrapper}>
               <Image
-                src="/tpa_logo.svg"
+                src="/svg/tpa-logo.svg"
                 alt="Tech Play Academy Logo"
                 width={208}
                 height={20}
@@ -47,6 +47,7 @@ export const LoginLayout = ({ children, fixedButton }: LoginLayoutProps) => {
               width={547}
               height={389}
               className={styles.image}
+              alt="Screen of Tech Play Academy LMS app"
             />
           </div>
           <div className={styles.svgOverflowWrapper}>

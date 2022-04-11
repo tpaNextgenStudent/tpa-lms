@@ -46,7 +46,7 @@ export const CodeAction = () => {
         <div className={styles.codeActionBlock}>
           <p className={styles.codeText}>Submit your work</p>
           <CodeActionLines
-            lines={[`git commit -a -m solution`, 'git push origin my-branch']}
+            lines={[`git commit -a -m solution`, 'git checkout -b my-branch']}
           />
         </div>
       </div>

@@ -32,7 +32,7 @@ export const TasksListItem = ({
             {moduleName}
           </span>
           <h3 className={styles.taskName}>{task.task_data.name}</h3>
-          <TaskBadges task={task} />
+          <TaskBadges task={task.task_data} attempt={task.last_attempt} />
         </a>
       </Link>
     </li>

@@ -2,19 +2,16 @@ import styles from './TaskSection.module.scss';
 import { TaskDescription } from '../TaskDescription/TaskDescription';
 import { TaskAction } from '../TaskAction/TaskAction';
 import { useState } from 'react';
-import EnlargeIcon from '../../../public/enlarge-icon.svg';
-import ShrinkIcon from '../../../public/shrink-icon.svg';
+import EnlargeIcon from '../../../public/svg/enlarge-icon.svg';
+import ShrinkIcon from '../../../public/svg/shrink-icon.svg';
 import clsx from 'clsx';
-import { TaskStatusBadge } from '../TaskStatusBadge/TaskStatusBadge';
-import { TaskTypeBadge } from '../TaskTypeBadge/TaskTypeBadge';
-import { TaskScoreBadge } from '../TaskScoreBadge/TaskScoreBadge';
-import { TaskAttemptBadge } from '../TaskAttemptBadge/TaskAttemptBadge';
 import { TaskNav } from '../TaskNav/TaskNav';
-import { TaskDoneBadge } from '../TaskDoneBadge/TaskDoneBadge';
 import { TaskComments } from '../TaskComments/TaskComments';
 import { TaskStatus } from '../../../api/tasks';
 import { IModuleVersion } from '../../../api/modules';
 import { Comment, TaskType } from '../../../lib/utils/types';
+import { TaskBadges } from '../TaskBadges/TaskBadges';
+import { CTAButton } from '../../common/CTAButton/CTAButton';
 
 interface TaskSectionProps {
   task: { name: string; type: TaskType; description: string };
@@ -62,20 +59,13 @@ export const TaskSection = ({
           {isFullScreenMode ? <ShrinkIcon /> : <EnlargeIcon />}
         </button>
       </div>
-      <div className={styles.taskBadges}>
-        <TaskTypeBadge type={task.type} />
-        <TaskStatusBadge status={attempt.status} />
-        {task.type !== 'info' && attempt.attempt_number && (
-          <TaskAttemptBadge attempt={attempt.attempt_number} />
-        )}
-        {task.type === 'info' ? (
-          <TaskDoneBadge />
-        ) : (
-          attempt.score && (
-            <TaskScoreBadge text={'Score'} score={attempt.score} />
-          )
-        )}
-      </div>
+      <TaskBadges
+        task={task}
+        attempt={attempt}
+        className={styles.taskBadges}
+        badges={['type', 'status', 'attempt', 'score']}
+        config={{ score: { withText: true } }}
+      />
       <TaskNav
         setIsDescriptionView={setIsDescriptionView}
         isDescriptionView={isDescriptionView}
@@ -90,6 +80,11 @@ export const TaskSection = ({
       )}
       {!isActionLocked && attempt.status !== 'upcoming' && (
         <TaskAction type={task.type} />
+      )}
+      {attempt.score && attempt.score < 3 && (
+        <div className={styles.tryAgainBar}>
+          <CTAButton text="Pass one more time" />
+        </div>
       )}
     </main>
   );

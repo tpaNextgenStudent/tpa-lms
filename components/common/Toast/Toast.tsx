@@ -1,5 +1,5 @@
 import styles from './Toast.module.scss';
-import CrossIcon from '../../../public/cross-icon.svg';
+import CrossIcon from '../../../public/svg/cross-icon.svg';
 
 interface ToastProps {
   message: string;
