@@ -64,7 +64,7 @@ export const TaskSection = ({
         attempt={attempt}
         className={styles.taskBadges}
         badges={['type', 'status', 'attempt', 'score']}
-        config={{ score: { withText: true } }}
+        config={{ score: { withText: true, withBorder: true } }}
       />
       <TaskNav
         setIsDescriptionView={setIsDescriptionView}

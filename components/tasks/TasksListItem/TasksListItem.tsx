@@ -32,7 +32,11 @@ export const TasksListItem = ({
             {moduleName}
           </span>
           <h3 className={styles.taskName}>{task.task_data.name}</h3>
-          <TaskBadges task={task.task_data} attempt={task.last_attempt} />
+          <TaskBadges
+            task={task.task_data}
+            attempt={task.last_attempt}
+            config={{ score: { withBorder: true } }}
+          />
         </a>
       </Link>
     </li>
