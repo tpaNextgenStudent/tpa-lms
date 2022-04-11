@@ -14,7 +14,7 @@ describe('Login', () => {
       password: Cypress.env('GITHUB_PW'),
       loginUrl: Cypress.config().baseUrl + '/login',
       loginSelector: 'button',
-      postLoginSelector: 'ul',
+      postLoginSelector: '[data-cypress=UserNav]',
       getAllBrowserCookies: true,
     };
 
