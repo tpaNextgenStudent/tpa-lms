@@ -46,7 +46,11 @@ export const UserNav = ({ user }: UserNavProps) => {
   const fullName = [user.name, user.surname].filter(n => !!n).join(' ');
 
   return (
-    <div onMouseLeave={handleMouseLeave} className={styles.userWrapper}>
+    <div
+      data-cypress="UserNav"
+      onMouseLeave={handleMouseLeave}
+      className={styles.userWrapper}
+    >
       {user.image && (
         <div className={styles.userAvatar}>
           <Image
