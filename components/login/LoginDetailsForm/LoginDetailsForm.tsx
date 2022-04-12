@@ -5,7 +5,10 @@ import axios from 'axios';
 import { apiPath } from '../../../lib/utils/apiPath';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { userDetailsSchema, UserDetails } from '../../../schemas/userDetails';
+import {
+  userDetailsSchema,
+  UserDetails,
+} from '../../../schemas/userDetailsSchema';
 import clsx from 'clsx';
 import { capitalize } from '../../../lib/utils/capitalize';
 
