@@ -1,7 +1,7 @@
 import { getSession } from 'next-auth/react';
 import { NextApiHandler, NextApiRequest, NextApiResponse } from 'next';
 import prisma from '../../../lib/prisma';
-import { userDetailsSchema } from '../../../schemas/userDetails';
+import { userDetailsSchema } from '../../../schemas/userDetailsSchema';
 import { ObjectShape, OptionalObjectSchema } from 'yup/lib/object';
 
 const postRequest = async (
