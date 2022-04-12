@@ -43,6 +43,7 @@ export const TaskSection = ({
 
   return (
     <main
+      data-cypress="TaskSection"
       className={clsx(
         styles.wrapper,
         isFullScreenMode && styles.wrapperFullScreen
@@ -50,7 +51,9 @@ export const TaskSection = ({
     >
       <p className={styles.taskModule}>{moduleName}</p>
       <div className={styles.taskHeader}>
-        <h2 className={styles.taskTitle}>{task.name}</h2>
+        <h2 data-cypress="TaskSectionTaskTitle" className={styles.taskTitle}>
+          {task.name}
+        </h2>
         <button
           onClick={toggleFullScreenMode}
           className={styles.fullScreenButton}

@@ -12,7 +12,7 @@ export const TaskNav = ({
   setIsDescriptionView,
 }: TaskNavProps) => {
   return (
-    <div className={styles.taskNav}>
+    <div data-cypress="TaskNav" className={styles.taskNav}>
       <button
         onClick={() => setIsDescriptionView(true)}
         className={clsx(
