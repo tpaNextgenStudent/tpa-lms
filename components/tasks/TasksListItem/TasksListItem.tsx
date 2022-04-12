@@ -19,7 +19,7 @@ export const TasksListItem = ({
   const moduleName = `Module ${module.module_number}`;
   return (
     <li
-      data-cypress={isActive && 'ActiveTaskListItem'}
+      data-cypress={isActive ? 'ActiveTaskListItem' : 'TaskListItem'}
       className={clsx(styles.task, isActive && styles.taskActive)}
     >
       <Link

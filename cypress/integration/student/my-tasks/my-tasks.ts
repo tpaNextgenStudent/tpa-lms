@@ -1,5 +1,5 @@
 describe('Student - My Tasks', () => {
-  it('Displays my tasks page', () => {
+  it('Displays my tasks page with tasks list', () => {
     cy.login();
     cy.visit('/student/tasks');
 
@@ -8,7 +8,7 @@ describe('Student - My Tasks', () => {
     const activeTaskListElement = cy.get('[data-cypress=ActiveTaskListItem]');
     activeTaskListElement.should('exist');
 
-    const activeTaskListElementHeader = activeTaskListElement.get(
+    const activeTaskListElementTitle = activeTaskListElement.get(
       '[data-cypress=TaskListItemTitle]'
     );
 
@@ -25,9 +25,27 @@ describe('Student - My Tasks', () => {
       taskTitle = element.text();
     });
 
-    activeTaskListElementHeader.should(element => {
+    activeTaskListElementTitle.should(element => {
       const activeListItemTitle = element.text();
       expect(taskTitle).to.equal(activeListItemTitle);
+    });
+  });
+
+  it('Switches between tasks', () => {
+    const item = cy.get('[data-cypress=TaskListItem]:first');
+    const itemTitle = item.get('[data-cypress=TaskListItemTitle]');
+
+    let nextTaskTitle: string;
+
+    itemTitle.should(e => {
+      nextTaskTitle = e.text();
+    });
+
+    item.click();
+    item.invoke('attr', 'data-cypress').should('equal', 'ActiveTaskListItem');
+
+    cy.get('[data-cypress=TaskSectionTaskTitle]').should(e => {
+      expect(e.text()).to.equal(nextTaskTitle);
     });
   });
 
