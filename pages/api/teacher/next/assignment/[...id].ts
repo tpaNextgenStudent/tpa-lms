@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import prisma from '../../../lib/prisma';
-import getUserSession from '../../../utils/getUserSession';
+import prisma from '../../../../../lib/prisma';
+import getUserSession from '../../../../../utils/getUserSession';
 import { Attempt } from '@prisma/client';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
@@ -36,5 +36,23 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     }
   });
 
-  res.status(200).send(mappedResponse);
+  const attempt_id = req.query.id[0];
+
+  const currentAttemptIndex = mappedResponse.findIndex(
+    (attempt: any) => attempt.id == attempt_id
+  );
+
+  if (currentAttemptIndex === -1) {
+    return res.status(404).send({
+      message:
+        'Attempt is not avaiable in list of attempts to assess for this teacher',
+    });
+  }
+
+  const nextAttempt = mappedResponse[currentAttemptIndex + 1];
+
+  res.status(200).send({
+    next_attempt_id: nextAttempt ? nextAttempt?.id : null,
+    assessments_number: mappedResponse.length,
+  });
 };
