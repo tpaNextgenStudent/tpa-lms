@@ -8,7 +8,7 @@ describe('Student - My Tasks', () => {
     const activeTaskListElement = cy.get('[data-cypress=ActiveTaskListItem]');
     activeTaskListElement.should('exist');
 
-    const activeTaskListElementTitle = activeTaskListElement.get(
+    const activeTaskListElementTitle = activeTaskListElement.find(
       '[data-cypress=TaskListItemTitle]'
     );
 
@@ -16,7 +16,7 @@ describe('Student - My Tasks', () => {
     const taskSection = cy.get('[data-cypress=TaskSection]');
     taskSection.should('exist');
 
-    const taskSectionTaskTitle = taskSection.get(
+    const taskSectionTaskTitle = taskSection.find(
       '[data-cypress=TaskSectionTaskTitle]'
     );
 
@@ -30,29 +30,4 @@ describe('Student - My Tasks', () => {
       expect(taskTitle).to.equal(activeListItemTitle);
     });
   });
-
-  it('Switches between tasks', () => {
-    const item = cy.get('[data-cypress=TaskListItem]:first');
-    const itemTitle = item.get('[data-cypress=TaskListItemTitle]');
-
-    let nextTaskTitle: string;
-
-    itemTitle.should(e => {
-      nextTaskTitle = e.text();
-    });
-
-    item.click();
-    item.invoke('attr', 'data-cypress').should('equal', 'ActiveTaskListItem');
-
-    cy.get('[data-cypress=TaskSectionTaskTitle]').should(e => {
-      expect(e.text()).to.equal(nextTaskTitle);
-    });
-  });
-
-  //- changing active task
-  //- description/comments nav
-  //- fullscreen
-  //- code copy
-  //- code hover warning
-  //-
 });
