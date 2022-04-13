@@ -55,6 +55,7 @@ export const TaskSection = ({
           {task.name}
         </h2>
         <button
+          data-cypress="TaskSectionFullScreenButton"
           onClick={toggleFullScreenMode}
           className={styles.fullScreenButton}
           aria-hidden

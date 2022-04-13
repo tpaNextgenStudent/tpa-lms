@@ -80,9 +80,28 @@ describe('Student - My Tasks', () => {
     });
   });
 
-  it('Switches between fullscreen and default view', () => {});
+  it('Switches between fullscreen and default view', () => {
+    cy.get('[data-cypress=TaskSectionFullScreenButton')
+      .click()
+      .then(() => {
+        cy.get('[data-cypress=TaskSection').should(
+          'have.css',
+          'position',
+          'fixed'
+        );
+      });
+    cy.get('[data-cypress=TaskSectionFullScreenButton')
+      .click()
+      .then(() => {
+        cy.get('[data-cypress=TaskSection').should(
+          'not.have.css',
+          'position',
+          'fixed'
+        );
+      });
+  });
 
-  //- fullscreen
   //- code copy
+
   //- code hover warning
 });
