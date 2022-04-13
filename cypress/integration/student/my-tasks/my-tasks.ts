@@ -30,4 +30,59 @@ describe('Student - My Tasks', () => {
       expect(taskTitle).to.equal(activeListItemTitle);
     });
   });
+
+  it('Switches between tasks', () => {
+    cy.get('[data-cypress=TaskListItem]')
+      .first()
+      .then($item => {
+        const itemTitle = cy
+          .wrap($item)
+          .find('[data-cypress=TaskListItemTitle]');
+
+        let nextTaskTitle: string;
+        itemTitle.should(e => {
+          nextTaskTitle = e.text();
+        });
+
+        cy.wrap($item).click();
+        cy.wrap($item)
+          .invoke('attr', 'data-cypress')
+          .should('equal', 'ActiveTaskListItem');
+
+        cy.get('[data-cypress=TaskSectionTaskTitle]').should(e => {
+          expect(e.text()).to.equal(nextTaskTitle);
+        });
+      });
+  });
+
+  it('Switches between description and comments tab', () => {
+    cy.get('[data-cypress=TaskComments]').should('not.exist');
+    cy.get('[data-cypress=TaskDescription]').should('exist');
+
+    cy.get('[data-cypress=TaskNav]').then($element => {
+      cy.wrap($element)
+        .find('[data-cypress=TaskNavComments]')
+        .should('exist')
+        .click()
+        .then(() => {
+          cy.get('[data-cypress=TaskComments]').should('exist');
+          cy.get('[data-cypress=TaskDescription]').should('not.exist');
+        });
+
+      cy.wrap($element)
+        .find('[data-cypress=TaskNavDescription]')
+        .should('exist')
+        .click()
+        .then(() => {
+          cy.get('[data-cypress=TaskComments]').should('not.exist');
+          cy.get('[data-cypress=TaskDescription]').should('exist');
+        });
+    });
+  });
+
+  it('Switches between fullscreen and default view', () => {});
+
+  //- fullscreen
+  //- code copy
+  //- code hover warning
 });

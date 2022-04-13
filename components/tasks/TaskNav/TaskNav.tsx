@@ -14,6 +14,7 @@ export const TaskNav = ({
   return (
     <div data-cypress="TaskNav" className={styles.taskNav}>
       <button
+        data-cypress="TaskNavDescription"
         onClick={() => setIsDescriptionView(true)}
         className={clsx(
           styles.taskNavButton,
@@ -23,6 +24,7 @@ export const TaskNav = ({
         Description
       </button>
       <button
+        data-cypress="TaskNavComments"
         onClick={() => setIsDescriptionView(false)}
         className={clsx(
           styles.taskNavButton,
