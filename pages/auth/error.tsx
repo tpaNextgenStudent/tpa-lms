@@ -10,7 +10,7 @@ export default function ErrorPage({
     <ErrorView
       title={'*Something went wrong*'}
       description={error}
-      button={{ text: 'Contact Support', onClick: () => {} }}
+      primaryButton={{ text: 'Contact Support', onClick: () => {} }}
     />
   );
 }

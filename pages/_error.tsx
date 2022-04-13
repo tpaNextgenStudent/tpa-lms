@@ -11,7 +11,10 @@ export default function Error({
     <ErrorView
       title={title}
       description={description}
-      button={{ text: 'Go back to home page', onClick: () => router.push('/') }}
+      primaryButton={{
+        text: 'Go back to home page',
+        onClick: () => router.push('/'),
+      }}
     />
   );
 }
