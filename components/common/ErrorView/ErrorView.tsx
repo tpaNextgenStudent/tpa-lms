@@ -7,10 +7,16 @@ import BgStripesIcon from '../../../public/svg/bg-stripes.svg';
 interface ErrorViewProps {
   title: string;
   description: string;
-  button?: { text: string; onClick: () => void };
+  primaryButton?: { text: string; onClick: () => void };
+  secondaryButton?: { text: string; onClick: () => void };
 }
 
-export const ErrorView = ({ title, description, button }: ErrorViewProps) => {
+export const ErrorView = ({
+  title,
+  description,
+  primaryButton,
+  secondaryButton,
+}: ErrorViewProps) => {
   return (
     <div className={styles.wrapper}>
       <header className={styles.header}>
@@ -33,9 +39,21 @@ export const ErrorView = ({ title, description, button }: ErrorViewProps) => {
           </p>
         </div>
         <div className={styles.buttonSection}>
-          {button && (
+          {(primaryButton || secondaryButton) && (
             <div className={styles.ctaButtonWrapper}>
-              <CTAButton onClick={button.onClick} text={button.text} />
+              {primaryButton && (
+                <CTAButton
+                  onClick={primaryButton.onClick}
+                  text={primaryButton.text}
+                />
+              )}
+              {secondaryButton && (
+                <CTAButton
+                  styleType="secondary"
+                  onClick={secondaryButton.onClick}
+                  text={secondaryButton.text}
+                />
+              )}
             </div>
           )}
           <div className={styles.svgWrapper}>

@@ -22,6 +22,18 @@
     background-color: colors.$purplePrimaryHover;
   }
 
+  &Secondary {
+    background-color: colors.$white;
+    border-color: colors.$purplePrimary;
+    color: colors.$purplePrimary;
+
+    &:hover {
+      background-color: colors.$white;
+      border-color: colors.$purplePrimaryHover;
+      color: colors.$purplePrimaryHover;
+    }
+  }
+
   &Disabled {
     cursor: not-allowed;
     &:hover {

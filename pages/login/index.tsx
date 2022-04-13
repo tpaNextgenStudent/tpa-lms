@@ -24,8 +24,12 @@ export default function Login({
         description={
           'Access denied. Please, contact support or go back to the login page and try again.'
         }
-        button={{
-          text: 'Go back to login page',
+        primaryButton={{
+          text: 'Contact support',
+          onClick: () => {},
+        }}
+        secondaryButton={{
+          text: 'Back to login page',
           onClick: () => {
             router.push('/login');
           },
