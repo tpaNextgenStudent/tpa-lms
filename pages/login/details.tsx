@@ -17,31 +17,31 @@ export default function LoginDetails() {
   );
 }
 
-export const getServerSideProps = withServerSideAuth(async ctx => {
-  try {
-    const { data: user } = await axios.get(apiPath('user/details'), {
-      headers: {
-        cookie: ctx.req.headers.cookie as string,
-      },
-    });
-
-    const areDetailsFilled = [user.name, user.surname, user.bio].every(
-      x => !!x
-    );
-
-    if (areDetailsFilled) {
-      return {
-        redirect: {
-          destination: '/',
-          permanent: false,
-        },
-      };
-    }
-  } catch (err: unknown) {
-    if (axios.isAxiosError(err)) {
-      console.log(err.response?.statusText);
-    }
-  }
-
-  return { props: {} };
-});
+// export const getServerSideProps = withServerSideAuth(async ctx => {
+//   try {
+//     const { data: user } = await axios.get(apiPath('user/details'), {
+//       headers: {
+//         cookie: ctx.req.headers.cookie as string,
+//       },
+//     });
+//
+//     const areDetailsFilled = [user.name, user.surname, user.bio].every(
+//       x => !!x
+//     );
+//
+//     if (areDetailsFilled) {
+//       return {
+//         redirect: {
+//           destination: '/',
+//           permanent: false,
+//         },
+//       };
+//     }
+//   } catch (err: unknown) {
+//     if (axios.isAxiosError(err)) {
+//       console.log(err.response?.statusText);
+//     }
+//   }
+//
+//   return { props: {} };
+// });
