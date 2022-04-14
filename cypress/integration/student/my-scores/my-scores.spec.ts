@@ -42,7 +42,6 @@ describe('Student - My Scores', () => {
       .then(() => {
         cy.get('h1').should('include.text', 'My Scores');
         cy.get('h1').should('include.text', taskName);
-        cy.get('[data-cypress=TaskSectionTryAgainBar]').should('exist');
       });
 
     cy.get('[data-cypress=TaskSection]').within($section => {
@@ -52,5 +51,15 @@ describe('Student - My Scores', () => {
         taskName
       );
     });
+
+    cy.get('[data-cypress=TaskSectionTryAgainBar]')
+      .should('exist')
+      .find('button')
+      .click();
+
+    cy.location('pathname', { timeout: 10000 }).should(
+      'match',
+      new RegExp('/student\\/tasks\\/.+')
+    );
   });
 });
