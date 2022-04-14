@@ -5,7 +5,7 @@ interface InfoActionProps {}
 
 export const InfoAction = ({}: InfoActionProps) => {
   return (
-    <div className={styles.wrapper}>
+    <div data-cypress="InfoAction" className={styles.wrapper}>
       <CTAButton text="Mark as read" />
     </div>
   );

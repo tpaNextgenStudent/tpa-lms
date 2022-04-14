@@ -136,5 +136,16 @@ describe('Student - My Tasks', () => {
       });
   });
 
-  it('Displays appropriate task action', () => {});
+  it('Displays appropriate task action', () => {
+    cy.get('[data-cypress=TaskSection]').within($section => {
+      cy.get('[data-cypress=TaskTypeBadge]').should($taskType => {
+        const expectedTaskType = $taskType.text().toLocaleLowerCase();
+        if (expectedTaskType === 'code') {
+          cy.get('[data-cypress=CodeAction]').should('exist');
+        } else if (expectedTaskType === 'info') {
+          cy.get('[data-cypress=InfoAction]').should('exist');
+        }
+      });
+    });
+  });
 });

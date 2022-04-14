@@ -28,7 +28,7 @@ export const CodeAction = () => {
   }, []);
 
   return (
-    <div className={styles.wrapper}>
+    <div data-cypress="CodeAction" className={styles.wrapper}>
       {isWarningVisible && (
         <Toast
           onCloseClick={handleToastClose}
