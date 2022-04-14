@@ -11,15 +11,14 @@ export default function LoginDetails() {
   const router = useRouter();
 
   const onSubmit = async (data: UserDetails) => {
-    console.log(data);
-    // try {
-    //   await axios.post(apiPath('user/details'), data);
-    //   await router.push('/');
-    // } catch (err: unknown) {
-    //   if (axios.isAxiosError(err)) {
-    //     console.log(err.response?.data);
-    //   }
-    // }
+    try {
+      await axios.post(apiPath('user/details'), data);
+      await router.push('/');
+    } catch (err: unknown) {
+      if (axios.isAxiosError(err)) {
+        console.log(err.response?.data);
+      }
+    }
   };
 
   return (
@@ -33,31 +32,31 @@ export default function LoginDetails() {
   );
 }
 
-// export const getServerSideProps = withServerSideAuth(async ctx => {
-//   try {
-//     const { data: user } = await axios.get(apiPath('user/details'), {
-//       headers: {
-//         cookie: ctx.req.headers.cookie as string,
-//       },
-//     });
-//
-//     const areDetailsFilled = [user.name, user.surname, user.bio].every(
-//       x => !!x
-//     );
-//
-//     if (areDetailsFilled) {
-//       return {
-//         redirect: {
-//           destination: '/',
-//           permanent: false,
-//         },
-//       };
-//     }
-//   } catch (err: unknown) {
-//     if (axios.isAxiosError(err)) {
-//       console.log(err.response?.statusText);
-//     }
-//   }
-//
-//   return { props: {} };
-// });
+export const getServerSideProps = withServerSideAuth(async ctx => {
+  try {
+    const { data: user } = await axios.get(apiPath('user/details'), {
+      headers: {
+        cookie: ctx.req.headers.cookie as string,
+      },
+    });
+
+    const areDetailsFilled = [user.name, user.surname, user.bio].every(
+      x => !!x
+    );
+
+    if (areDetailsFilled) {
+      return {
+        redirect: {
+          destination: '/',
+          permanent: false,
+        },
+      };
+    }
+  } catch (err: unknown) {
+    if (axios.isAxiosError(err)) {
+      console.log(err.response?.statusText);
+    }
+  }
+
+  return { props: {} };
+});
