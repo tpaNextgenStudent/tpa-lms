@@ -14,11 +14,7 @@ export default function ScoresIndex({
   comments,
 }: InferPagePropsType<typeof getServerSideProps>) {
   return (
-    <Layout
-      title={task.name}
-      user={user}
-      headerPrevButton={{ pageName: 'My Scores', pageLink: '/student/scores' }}
-    >
+    <Layout title={task.name} user={user} withHeaderPrevButton>
       <TaskSection
         task={task}
         comments={comments}

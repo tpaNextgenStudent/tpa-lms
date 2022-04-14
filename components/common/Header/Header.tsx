@@ -3,7 +3,7 @@ import { IUserDetails } from '../../../api/user';
 import ArrowLeftIcon from '../../../public/svg/arrow-left.svg';
 import MenuIcon from '../../../public/svg/menu-icon.svg';
 import { UserNav } from '../UserNav/UserNav';
-import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 interface HeaderProps {
   title: string;
@@ -11,7 +11,7 @@ interface HeaderProps {
   actionsNumber?: number;
   user: IUserDetails;
   openMobileNav: () => void;
-  prevButton?: { pageName?: string; pageLink: string };
+  withPrevButton: boolean;
 }
 
 export const Header = ({
@@ -20,8 +20,9 @@ export const Header = ({
   openMobileNav,
   description,
   actionsNumber,
-  prevButton,
+  withPrevButton,
 }: HeaderProps) => {
+  const { query, back } = useRouter();
   return (
     <header className={styles.headerWrapper}>
       <button
@@ -33,18 +34,18 @@ export const Header = ({
       </button>
       <div className={styles.textWrapper}>
         <div className={styles.titleWrapper}>
-          {prevButton && (
-            <Link href={prevButton.pageLink} aria-label="Go back">
-              <a className={styles.prevLink}>
-                <ArrowLeftIcon />
-              </a>
-            </Link>
+          {withPrevButton && (
+            <button
+              className={styles.prevLink}
+              onClick={back}
+              aria-label="Go back"
+            >
+              <ArrowLeftIcon />
+            </button>
           )}
           <h1 className={styles.title}>
-            {prevButton && prevButton.pageName && (
-              <span className={styles.titlePrevPage}>
-                {prevButton.pageName}
-              </span>
+            {withPrevButton && query.prevPage && (
+              <span className={styles.titlePrevPage}>{query.prevPage}</span>
             )}
             <span>{title}</span>
           </h1>
