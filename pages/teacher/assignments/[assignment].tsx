@@ -8,12 +8,7 @@ export default function ScoresIndex({
   user,
 }: InferPagePropsType<typeof getServerSideProps>) {
   return (
-    <Layout
-      title="Assignments"
-      // title={task.name}
-      user={user}
-      withHeaderPrevButton
-    >
+    <Layout title="Assignments" user={user} withHeaderPrevButton>
       <p>single assignment to check</p>
     </Layout>
   );
