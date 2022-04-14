@@ -88,7 +88,10 @@ export const TaskSection = ({
         <TaskAction type={task.type} />
       )}
       {attempt.score && attempt.score < 3 && (
-        <div className={styles.tryAgainBar}>
+        <div
+          data-cypress="TaskSectionTryAgainBar"
+          className={styles.tryAgainBar}
+        >
           <CTAButton text="Pass one more time" />
         </div>
       )}

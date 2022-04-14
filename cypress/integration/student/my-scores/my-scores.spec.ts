@@ -37,11 +37,12 @@ describe('Student - My Scores', () => {
       .should('exist')
       .click();
 
-    cy.location('pathname')
+    cy.location('pathname', { timeout: 10000 })
       .should('match', new RegExp('/student\\/scores\\/.+'))
       .then(() => {
         cy.get('h1').should('include.text', 'My Scores');
         cy.get('h1').should('include.text', taskName);
+        cy.get('[data-cypress=TaskSectionTryAgainBar]').should('exist');
       });
 
     cy.get('[data-cypress=TaskSection]').within($section => {
