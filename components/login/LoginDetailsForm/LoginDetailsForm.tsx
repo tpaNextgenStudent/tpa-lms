@@ -12,9 +12,11 @@ import {
 import clsx from 'clsx';
 import { capitalize } from '../../../lib/utils/capitalize';
 
-interface LoginDetailsFormProps {}
+interface LoginDetailsFormProps {
+  onSubmit: (data: UserDetails) => Promise<void>;
+}
 
-export const LoginDetailsForm = ({}: LoginDetailsFormProps) => {
+export const LoginDetailsForm = ({ onSubmit }: LoginDetailsFormProps) => {
   const router = useRouter();
   const {
     register,
@@ -22,19 +24,12 @@ export const LoginDetailsForm = ({}: LoginDetailsFormProps) => {
     formState: { errors, isSubmitted },
   } = useForm<UserDetails>({ resolver: yupResolver(userDetailsSchema) });
 
-  const onSubmit = handleSubmit(async data => {
-    try {
-      await axios.post(apiPath('user/details'), data);
-      await router.push('/');
-    } catch (err: unknown) {
-      if (axios.isAxiosError(err)) {
-        console.log(err.response?.data);
-      }
-    }
-  });
-
   return (
-    <form className={styles.form} onSubmit={onSubmit}>
+    <form
+      className={styles.form}
+      onSubmit={handleSubmit(onSubmit)}
+      data-testid="form"
+    >
       <div className={styles.fieldWrapper}>
         <label className={clsx(styles.label)} htmlFor="name">
           Name
@@ -47,9 +42,10 @@ export const LoginDetailsForm = ({}: LoginDetailsFormProps) => {
             !errors.name && isSubmitted && styles.fieldCorrect
           )}
           placeholder="Type here..."
+          data-testid="name-input"
         />
         {errors.name?.message && (
-          <p className={styles.errorMessage}>
+          <p className={styles.errorMessage} data-testid="name-error">
             {capitalize(errors.name.message)}
           </p>
         )}
@@ -73,9 +69,10 @@ export const LoginDetailsForm = ({}: LoginDetailsFormProps) => {
             !errors.surname && isSubmitted && styles.fieldCorrect
           )}
           placeholder="Type here..."
+          data-testid="surname-input"
         />
         {errors.surname?.message && (
-          <p className={styles.errorMessage}>
+          <p className={styles.errorMessage} data-testid="surname-error">
             {capitalize(errors.surname.message)}
           </p>
         )}
@@ -101,9 +98,10 @@ export const LoginDetailsForm = ({}: LoginDetailsFormProps) => {
           cols={30}
           rows={3}
           placeholder="Type here..."
+          data-testid="bio-input"
         />
         {errors.bio?.message && (
-          <p className={styles.errorMessage}>
+          <p className={styles.errorMessage} data-testid="bio-error">
             {capitalize(errors.bio.message)}
           </p>
         )}

@@ -4,15 +4,31 @@ import { LoginHeroText } from '../../components/login/LoginHeroText/LoginHeroTex
 import axios from 'axios';
 import { apiPath } from '../../lib/utils/apiPath';
 import { withServerSideAuth } from '../../lib/auth/withServerSideAuth';
+import { useRouter } from 'next/router';
+import { UserDetails } from '../../schemas/userDetailsSchema';
 
 export default function LoginDetails() {
+  const router = useRouter();
+
+  const onSubmit = async (data: UserDetails) => {
+    console.log(data);
+    // try {
+    //   await axios.post(apiPath('user/details'), data);
+    //   await router.push('/');
+    // } catch (err: unknown) {
+    //   if (axios.isAxiosError(err)) {
+    //     console.log(err.response?.data);
+    //   }
+    // }
+  };
+
   return (
     <LoginLayout>
       <LoginHeroText
         titleLines={['*Well done!*']}
         description="Tell other students a few words about yourself."
       />
-      <LoginDetailsForm />
+      <LoginDetailsForm onSubmit={onSubmit} />
     </LoginLayout>
   );
 }
