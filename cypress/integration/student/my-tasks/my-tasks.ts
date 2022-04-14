@@ -31,6 +31,41 @@ describe('Student - My Tasks', () => {
     });
   });
 
+  it('Switches between modules using module select', () => {
+    let currentModuleName: string;
+    cy.get('[data-cypress=TaskSectionModuleName]').then($element => {
+      cy.get('[data-cypress=ModuleSelect]').within($moduleSelect => {
+        expect($moduleSelect.text()).to.eq($element.text());
+        currentModuleName = $element.text();
+      });
+    });
+
+    cy.get('[data-cypress=ModuleSelect]').click();
+    cy.get('#react-select-module-select-listbox').then($list => {
+      cy.wrap($list)
+        .first()
+        .then($item => {
+          cy.wrap($item).click();
+          cy.get('[data-cypress=TaskSectionModuleName]').contains(
+            $item.text(),
+            { timeout: 10000 }
+          );
+        });
+    });
+    cy.get('[data-cypress=ModuleSelect]').click();
+    cy.get('#react-select-module-select-listbox').then($list => {
+      cy.wrap($list)
+        .first()
+        .then($item => {
+          cy.wrap($item).click();
+          cy.get('[data-cypress=TaskSectionModuleName]').contains(
+            $item.text(),
+            { timeout: 10000 }
+          );
+        });
+    });
+  });
+
   it('Switches between tasks', () => {
     cy.get('[data-cypress=TaskListItem]')
       .first()
@@ -101,7 +136,5 @@ describe('Student - My Tasks', () => {
       });
   });
 
-  //- code copy
-
-  //- code hover warning
+  it('Displays appropriate task action', () => {});
 });

@@ -49,7 +49,9 @@ export const TaskSection = ({
         isFullScreenMode && styles.wrapperFullScreen
       )}
     >
-      <p className={styles.taskModule}>{moduleName}</p>
+      <p data-cypress="TaskSectionModuleName" className={styles.taskModule}>
+        {moduleName}
+      </p>
       <div className={styles.taskHeader}>
         <h2 data-cypress="TaskSectionTaskTitle" className={styles.taskTitle}>
           {task.name}

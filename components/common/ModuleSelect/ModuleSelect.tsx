@@ -8,6 +8,7 @@ import Select, {
   StylesConfig,
   components,
   DropdownIndicatorProps,
+  ControlProps,
 } from 'react-select';
 import { IModuleVersion } from '../../../api/modules';
 
@@ -161,7 +162,7 @@ export const ModuleSelect = ({
   );
 
   return (
-    <div className={styles.moduleSelectWrapper}>
+    <div data-cypress="ModuleSelect" className={styles.moduleSelectWrapper}>
       <Select
         instanceId="module-select"
         onChange={handleChange}
