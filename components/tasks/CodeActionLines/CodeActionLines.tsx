@@ -1,44 +1,44 @@
 import styles from './CodeActionLines.module.scss';
-import { MouseEvent, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import TickIcon from '../../../public/svg/tick-icon.svg';
 import ClipboardIcon from '../../../public/svg/clipboard-icon.svg';
 
 interface CodeActionLinesProps {
-  onMouseEnter?: (e: MouseEvent<HTMLDivElement>) => void;
   lines: string[];
+  onCopyClick: () => void;
 }
 
 interface CodeLineProps {
   value: string;
   index: number;
+  onCopyClick: () => void;
 }
 
 export const CodeActionLines = ({
   lines,
-  onMouseEnter,
+  onCopyClick,
 }: CodeActionLinesProps) => {
   return (
-    <div className={styles.codeWrapper} onMouseEnter={onMouseEnter}>
+    <div className={styles.codeWrapper}>
       <code className={styles.codeBlock}>
         {lines.map((value, index) => {
-          return <CodeLine key={value} value={value} index={index} />;
+          return (
+            <CodeLine
+              onCopyClick={onCopyClick}
+              key={value}
+              value={value}
+              index={index}
+            />
+          );
         })}
       </code>
     </div>
   );
 };
 
-const CodeLine = ({ value, index }: CodeLineProps) => {
+const CodeLine = ({ value, index, onCopyClick }: CodeLineProps) => {
   const [isCopied, setIsCopied] = useState(false);
   const timeoutIdRef = useRef<ReturnType<typeof setTimeout>>();
-
-  const handleCopyClick = async (value: string) => {
-    await navigator.clipboard.writeText(value);
-    setIsCopied(true);
-    timeoutIdRef.current = setTimeout(() => {
-      setIsCopied(false);
-    }, 1000);
-  };
 
   useEffect(() => {
     return () => {
@@ -48,11 +48,20 @@ const CodeLine = ({ value, index }: CodeLineProps) => {
     };
   }, []);
 
+  const handleClick = async () => {
+    await navigator.clipboard.writeText(value);
+    setIsCopied(true);
+    timeoutIdRef.current = setTimeout(() => {
+      setIsCopied(false);
+    }, 1000);
+    onCopyClick();
+  };
+
   return (
     <pre className={styles.codeLine} key={value}>
       <span>{value}</span>
       <button
-        onClick={() => handleCopyClick(value)}
+        onClick={handleClick}
         title={isCopied ? 'Copied' : 'Copy to clipboard'}
         style={{ top: `calc(${index * 24}px)` }}
         className={styles.clipboardButton}

@@ -7,6 +7,7 @@ import { CTAButton } from '../../components/common/CTAButton/CTAButton';
 import { ERROR_TYPE_MESSAGE } from '../../lib/constants';
 import { InferPagePropsType } from '../../lib/utils/types';
 import { ErrorView } from '../../components/common/ErrorView/ErrorView';
+import { useRouter } from 'next/router';
 
 const loginWithGithub = async () => {
   await signIn('github', {});
@@ -15,12 +16,20 @@ const loginWithGithub = async () => {
 export default function Login({
   error,
 }: InferPagePropsType<typeof getServerSideProps>) {
+  const router = useRouter();
   if (error) {
     return (
       <ErrorView
         title="*Something went wrong*"
-        description={error}
-        button={{ text: 'Contact Support', onClick: () => {} }}
+        description={
+          'Access denied. Please, contact support or go back to the login page and try again.'
+        }
+        primaryButton={{
+          text: 'Back to login page',
+          onClick: () => {
+            router.push('/login');
+          },
+        }}
       />
     );
   }

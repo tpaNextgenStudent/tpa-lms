@@ -108,8 +108,17 @@ export const columns: Column<ScoresData>[] = [
     accessor: 'view',
     width: '4fr',
 
-    Cell: ({ cell: { value } }: { cell: { value: { link: string } } }) => (
-      <Link href={value.link}>
+    Cell: ({
+      cell: {
+        value: { link },
+      },
+    }: {
+      cell: { value: ScoresData['view'] };
+    }) => (
+      <Link
+        href={`${link}?prevPage=${encodeURIComponent('My Scores')}`}
+        as={link}
+      >
         <a className={styles.viewLink}>View task</a>
       </Link>
     ),
