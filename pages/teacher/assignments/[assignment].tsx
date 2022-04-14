@@ -12,7 +12,7 @@ export default function ScoresIndex({
       title="Assignments"
       // title={task.name}
       user={user}
-      headerPrevButton={{ pageName: 'My Scores', pageLink: '/student/scores' }}
+      withHeaderPrevButton
     >
       <p>single assignment to check</p>
     </Layout>
