@@ -1,6 +1,8 @@
+/// <reference types="cypress" />
 import './commands';
+import Chainable = Cypress.Chainable;
 
-Cypress.Commands.add('login', () => {
+Cypress.Commands.add('login' as keyof Chainable, () => {
   const cookiesName = Cypress.env('COOKIE_NAME');
   const socialLoginOptions = {
     username: Cypress.env('GITHUB_USER'),
