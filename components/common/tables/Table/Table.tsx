@@ -20,7 +20,7 @@ export const Table = <T extends {}>({
   const gridTemplateCols = headerGroups[0].headers.map(({ width }) => width);
 
   return (
-    <main className={styles.wrapper}>
+    <main data-cypress="Table" className={styles.wrapper}>
       <div
         className={clsx(styles.table, isFullWidth && styles.tableFullWidth)}
         {...getTableProps()}
@@ -39,6 +39,7 @@ export const Table = <T extends {}>({
                       column.getHeaderProps();
                     return (
                       <div
+                        data-cypress="TableHead"
                         style={{
                           minWidth: column.minWidth,
                           maxWidth: column.maxWidth,
@@ -61,7 +62,12 @@ export const Table = <T extends {}>({
             prepareRow(row);
             const { key, ...rowProps } = row.getRowProps();
             return (
-              <div className={styles.tableRowWrapper} key={key} {...rowProps}>
+              <div
+                data-cypress="TableRow"
+                className={styles.tableRowWrapper}
+                key={key}
+                {...rowProps}
+              >
                 <TableGridWrapper
                   className={styles.tableRow}
                   columns={gridTemplateCols}

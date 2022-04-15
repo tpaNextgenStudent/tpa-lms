@@ -45,7 +45,7 @@ export const columns: Column<ScoresData>[] = [
     width: 205,
 
     Cell: ({ cell: { value } }: { cell: { value: string } }) => (
-      <strong>{value}</strong>
+      <strong data-cypress="MyScoresTableTaskCell">{value}</strong>
     ),
   },
   {
