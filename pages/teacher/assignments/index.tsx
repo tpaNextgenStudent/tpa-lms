@@ -45,7 +45,7 @@ export const getServerSideProps = withServerSideAuth(async ({ req, res }) => {
       task: a.task.name,
       task_type: a.task.type,
       attempt: a.attempt_number,
-      check: { id: a.assignment_id },
+      check: { id: a.id },
     };
   });
 

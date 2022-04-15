@@ -6,12 +6,18 @@ import TasksIcon from '../../../public/svg/tasks-icon.svg';
 import ScoresIcon from '../../../public/svg/scores-icon.svg';
 import ProgressIcon from '../../../public/svg/progress-icon.svg';
 import CrossIcon from '../../../public/svg/cross-icon.svg';
+import AssignmentsIcon from '../../../public/svg/assignments-icon.svg';
+import CurriculumIcon from '../../../public/svg/curriculum-icon.svg';
 import Image from 'next/image';
 import { IUserDetails } from '../../../api/user';
 
 const dashboardLinks = {
   teacher: [
-    { path: '/teacher/assignments', label: 'Assignments', Icon: TasksIcon },
+    {
+      path: '/teacher/assignments',
+      label: 'Assignments',
+      Icon: AssignmentsIcon,
+    },
     {
       path: '/teacher/cohort/progress',
       label: 'Cohort Progress',
@@ -20,7 +26,7 @@ const dashboardLinks = {
     {
       path: '/teacher/curriculum',
       label: 'Curriculum',
-      Icon: ScoresIcon,
+      Icon: CurriculumIcon,
     },
   ],
   student: [
@@ -81,30 +87,32 @@ export const Sidebar = ({
           </Link>
         </div>
       </div>
-      {user.role === 'teacher' && (
-        <span className={styles.cohortName}>{user.cohort_name}</span>
-      )}
-      <nav className={styles.navWrapper}>
-        <ul className={styles.navList}>
-          {dashboardLinks[user.role].map(({ path, label, Icon }) => (
-            <li key={path} className={styles.navItem}>
-              <Link href={path}>
-                <a
-                  className={clsx(
-                    styles.navLink,
-                    currentPath.includes(path) && styles.navLinkActive
-                  )}
-                >
-                  <span className={styles.linkIcon} aria-hidden={true}>
-                    <Icon />
-                  </span>
-                  <span className={styles.linkText}>{label}</span>
-                </a>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </nav>
+      <div className={styles.sidebarContentWrapper}>
+        {user.role === 'teacher' && (
+          <span className={styles.cohortName}>{user.cohort_name}</span>
+        )}
+        <nav className={styles.navWrapper}>
+          <ul className={styles.navList}>
+            {dashboardLinks[user.role].map(({ path, label, Icon }) => (
+              <li key={path} className={styles.navItem}>
+                <Link href={path}>
+                  <a
+                    className={clsx(
+                      styles.navLink,
+                      currentPath.includes(path) && styles.navLinkActive
+                    )}
+                  >
+                    <span className={styles.linkIcon} aria-hidden={true}>
+                      <Icon />
+                    </span>
+                    <span className={styles.linkText}>{label}</span>
+                  </a>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
     </div>
   );
 };

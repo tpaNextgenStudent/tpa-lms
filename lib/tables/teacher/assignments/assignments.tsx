@@ -77,7 +77,10 @@ export const columns: Column<AssignmentsData>[] = [
     }: {
       cell: { value: AssignmentsData['check'] };
     }) => (
-      <Link href={`/teacher/assignments/${value.id}`}>
+      <Link
+        href={`/teacher/assignments/${value.id}?prevPage=Assignments`}
+        as={`/teacher/assignments/${value.id}`}
+      >
         <a className={styles.checkLink}>Check</a>
       </Link>
     ),

@@ -3,16 +3,28 @@ import { InferPagePropsType } from '../../../lib/utils/types';
 import { withServerSideAuth } from '../../../lib/auth/withServerSideAuth';
 import { getUserDetails } from '../../../api/user';
 import { getAttemptById } from '../../../api/attempts';
+import { TaskSection } from '../../../components/tasks/TaskSection/TaskSection';
+import { attemptToComments } from '../../../lib/utils/attemptsToComments';
 
 export default function ScoresIndex({
   user,
+  attempt,
+  task,
+  comments,
+  module,
 }: InferPagePropsType<typeof getServerSideProps>) {
   return (
-    <Layout title="Assignments" user={user} withHeaderPrevButton>
-      <p>single assignment to check</p>
+    <Layout title={'Student'} user={user} withHeaderPrevButton>
+      <TaskSection
+        task={task}
+        comments={comments}
+        attempt={attempt}
+        module={module}
+      />
     </Layout>
   );
 }
+
 export const getServerSideProps = withServerSideAuth(
   async ({ req, params }) => {
     const { assignment: assignmentId } = params! as {
@@ -24,9 +36,28 @@ export const getServerSideProps = withServerSideAuth(
 
     const attempt = await getAttemptById(assignmentId, { cookie: authCookie });
 
+    const comments = attemptToComments(attempt);
+
     return {
       props: {
         user,
+        module: {
+          module_version_id: attempt.task.module_version_id,
+          name: 'Module Name',
+          module_number: attempt.module_number,
+        },
+        task: {
+          id: attempt.task_id,
+          name: attempt.task.name,
+          type: attempt.task.type,
+          description: attempt.task.description,
+        },
+        attempt: {
+          status: 'approved' as const,
+          attempt_number: attempt.attempt_number,
+          score: attempt.score,
+        },
+        comments,
       },
     };
   }

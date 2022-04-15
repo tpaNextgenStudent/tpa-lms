@@ -26,6 +26,8 @@ interface TaskSectionProps {
   module: IModuleVersion;
   isTaskActionVisible?: boolean;
   isPassAgainVisible?: boolean;
+  isTeacherNextTaskVisible?: boolean;
+  isTeacherAssessVisible?: boolean;
 }
 
 export const TaskSection = ({
@@ -35,6 +37,8 @@ export const TaskSection = ({
   comments,
   isTaskActionVisible = false,
   isPassAgainVisible = false,
+  isTeacherNextTaskVisible = false,
+  isTeacherAssessVisible = false,
 }: TaskSectionProps) => {
   const router = useRouter();
   const [isDescriptionView, setIsDescriptionView] = useState(true);
@@ -44,7 +48,7 @@ export const TaskSection = ({
     setIsFullScreenMode(prev => !prev);
   };
 
-  const moduleName = `Module ${module.module_number}`;
+  const moduleNumber = `Module ${module.module_number}`;
 
   return (
     <main
@@ -55,7 +59,7 @@ export const TaskSection = ({
       )}
     >
       <p data-cypress="TaskSectionModuleName" className={styles.taskModule}>
-        {moduleName}
+        {moduleNumber}
       </p>
       <div className={styles.taskHeader}>
         <h2 data-cypress="TaskSectionTaskTitle" className={styles.taskTitle}>

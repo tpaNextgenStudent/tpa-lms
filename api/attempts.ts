@@ -2,6 +2,7 @@ import { apiPath } from '../lib/utils/apiPath';
 import axios from 'axios';
 import { TaskType } from '../lib/utils/types';
 import { IUser } from './user';
+import { TaskStatus } from './tasks';
 
 type Options = {
   cookie: string;
@@ -32,29 +33,30 @@ export interface IAttempt {
 
 export interface ISingleAttempt {
   id: string;
-  assignment_id: string;
   task_id: string;
-  score: number;
+  score: null | number;
   answer: string;
-  comment: string | null;
-  attempt_number: number;
-  teacher_assigment_id: string;
-  submission_date: string;
-  evaluation_date: string;
   task: {
     id: string;
     curriculum_id: string;
     module_version_id: string;
     type: TaskType;
+    summative: boolean;
     position: number;
     name: string;
     description: string;
     link: string;
   };
+  comment: string | null;
+  attempt_number: number;
+  submission_date: string;
+  evaluation_date: string | null;
+  status: TaskStatus;
   teacher: {
     user: IUser;
   };
   module_number: number;
+  task_number: number;
 }
 
 export const getAttemptsByTask = async (
