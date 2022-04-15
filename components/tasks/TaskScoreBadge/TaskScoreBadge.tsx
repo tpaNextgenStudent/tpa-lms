@@ -14,7 +14,7 @@ export const TaskScoreBadge = ({
   withBorder,
 }: TaskScoreBadgeProps) => {
   return (
-    <span className={styles.wrapper}>
+    <span data-cypress="TaskScoreBadge" className={styles.wrapper}>
       {withText && <span className={styles.scoreText}>Score</span>}
       <span
         className={clsx(

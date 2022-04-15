@@ -41,7 +41,7 @@
   width: 100%;
   max-width: 1440px;
   margin: 0 auto;
-  padding: 0 96px 32px;
+  padding: 0 96px 48px;
 
   @media (max-width: media.$laptopS) {
     padding: 0 24px 24px;
@@ -66,6 +66,7 @@
   line-height: 32px;
   margin-top: 16px;
   color: colors.$fontSecondary;
+  max-width: 446px;
 }
 
 .buttonSection {
@@ -73,19 +74,29 @@
   position: relative;
   flex: 1;
   overflow: hidden;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .ctaButtonWrapper {
-  margin: 32px auto 0;
+  margin: 56px auto 0;
   width: 100%;
   max-width: 1440px;
-  padding: 0 96px 32px;
   position: relative;
+  padding: 0 96px 32px;
   z-index: 1;
 
   @media (max-width: media.$laptopS) {
     padding: 0 24px 24px;
     margin: 24px auto 0;
+  }
+
+  & > * {
+    margin-right: 24px;
+
+    &:last-child {
+      margin-right: 0;
+    }
   }
 }
 

@@ -12,7 +12,7 @@ export const TaskDescription = ({
   locked,
 }: TaskDescriptionProps) => {
   return (
-    <article className={styles.wrapper}>
+    <article data-cypress="TaskDescription" className={styles.wrapper}>
       <div className={styles.content}>
         {locked ? (
           <LockedTaskInfo content="Finish previous task to unlock this content!" />

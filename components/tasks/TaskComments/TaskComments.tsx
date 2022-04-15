@@ -17,7 +17,7 @@ interface TaskCommentsProps {
 export const TaskComments = ({ comments }: TaskCommentsProps) => {
   const { asPath } = useRouter();
   return (
-    <div className={styles.wrapper}>
+    <div data-cypress="TaskComments" className={styles.wrapper}>
       <div className={styles.content}>
         <ul>
           {comments.map(comment => {
@@ -48,7 +48,12 @@ export const TaskComments = ({ comments }: TaskCommentsProps) => {
                   </span>
                   <div className={styles.attemptBadges}>
                     {comment.attempt_id && asPath !== versionLink && (
-                      <Link href={versionLink}>
+                      <Link
+                        href={`${versionLink}?prevPage=${encodeURIComponent(
+                          'My Tasks'
+                        )}`}
+                        as={versionLink}
+                      >
                         <a className={styles.underAssessmentLink}>
                           Version under assessment
                         </a>

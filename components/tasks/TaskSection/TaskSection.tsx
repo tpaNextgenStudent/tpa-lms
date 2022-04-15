@@ -12,9 +12,11 @@ import { IModuleVersion } from '../../../api/modules';
 import { Comment, TaskType } from '../../../lib/utils/types';
 import { TaskBadges } from '../TaskBadges/TaskBadges';
 import { CTAButton } from '../../common/CTAButton/CTAButton';
+import { router } from 'next/client';
+import { useRouter } from 'next/router';
 
 interface TaskSectionProps {
-  task: { name: string; type: TaskType; description: string };
+  task: { id: string; name: string; type: TaskType; description: string };
   attempt: {
     status: TaskStatus;
     attempt_number: number | null;
@@ -22,7 +24,8 @@ interface TaskSectionProps {
   };
   comments: Comment[];
   module: IModuleVersion;
-  isActionLocked?: boolean;
+  isTaskActionVisible?: boolean;
+  isPassAgainVisible?: boolean;
 }
 
 export const TaskSection = ({
@@ -30,8 +33,10 @@ export const TaskSection = ({
   attempt,
   module,
   comments,
-  isActionLocked,
+  isTaskActionVisible = false,
+  isPassAgainVisible = false,
 }: TaskSectionProps) => {
+  const router = useRouter();
   const [isDescriptionView, setIsDescriptionView] = useState(true);
   const [isFullScreenMode, setIsFullScreenMode] = useState(false);
 
@@ -43,15 +48,21 @@ export const TaskSection = ({
 
   return (
     <main
+      data-cypress="TaskSection"
       className={clsx(
         styles.wrapper,
         isFullScreenMode && styles.wrapperFullScreen
       )}
     >
-      <p className={styles.taskModule}>{moduleName}</p>
+      <p data-cypress="TaskSectionModuleName" className={styles.taskModule}>
+        {moduleName}
+      </p>
       <div className={styles.taskHeader}>
-        <h2 className={styles.taskTitle}>{task.name}</h2>
+        <h2 data-cypress="TaskSectionTaskTitle" className={styles.taskTitle}>
+          {task.name}
+        </h2>
         <button
+          data-cypress="TaskSectionFullScreenButton"
           onClick={toggleFullScreenMode}
           className={styles.fullScreenButton}
           aria-hidden
@@ -78,12 +89,17 @@ export const TaskSection = ({
       ) : (
         <TaskComments comments={comments} />
       )}
-      {!isActionLocked && attempt.status !== 'upcoming' && (
-        <TaskAction type={task.type} />
-      )}
-      {attempt.score && attempt.score < 3 && (
+      {isTaskActionVisible && <TaskAction type={task.type} />}
+      {isPassAgainVisible && (
         <div className={styles.tryAgainBar}>
-          <CTAButton text="Pass one more time" />
+          <CTAButton
+            onClick={() => {
+              router.push(
+                `/student/tasks/${module.module_version_id}/${task.id}`
+              );
+            }}
+            text="Pass one more time"
+          />
         </div>
       )}
     </main>

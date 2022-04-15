@@ -18,7 +18,10 @@ export const TasksListItem = ({
 }: TaskListItemProps) => {
   const moduleName = `Module ${module.module_number}`;
   return (
-    <li className={clsx(styles.task, isActive && styles.taskActive)}>
+    <li
+      data-cypress={isActive ? 'ActiveTaskListItem' : 'TaskListItem'}
+      className={clsx(styles.task, isActive && styles.taskActive)}
+    >
       <Link
         href={`/student/tasks/${module.module_version_id}/${task.task_data.id}`}
       >
@@ -31,7 +34,9 @@ export const TasksListItem = ({
           >
             {moduleName}
           </span>
-          <h3 className={styles.taskName}>{task.task_data.name}</h3>
+          <h3 data-cypress="TaskListItemTitle" className={styles.taskName}>
+            {task.task_data.name}
+          </h3>
           <TaskBadges
             task={task.task_data}
             attempt={task.last_attempt}
