@@ -4,22 +4,76 @@
 @use '/lib/styles/variables/shadows.module' as shadows;
 
 .wrapper {
-}
-
-.form {
+  box-shadow: shadows.$primary;
+  position: absolute;
+  bottom: 100%;
+  margin: 24px;
+  padding: 24px;
+  min-width: 619px;
+  background-color: colors.$white;
+  border-radius: 16px;
 }
 
 .closeButton {
+  display: flex;
+  border: none;
+  background: none;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  cursor: pointer;
+
+  svg {
+    width: 16px;
+    height: 16px;
+    stroke-width: 2px;
+  }
 }
 
-.textArea {
+.textarea {
+  width: 100%;
+  resize: none;
+  border: 1px solid colors.$strokeMain;
+  border-radius: 8px;
+  padding: 16px;
+  font-family: fonts.$familyPrimary;
+  color: colors.$fontPrimary;
+  font-weight: fonts.$weightMedium;
+  font-size: 12px;
+  line-height: 24px;
+  height: 189px;
+  display: block;
+
+  &::placeholder {
+    color: colors.$fontSecondary;
+    font-weight: fonts.$weightMedium;
+    font-size: 12px;
+    line-height: 24px;
+  }
 }
 
 .actionWrapper {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
 }
 
-.scoreSelectWrapper {
+.selectWrapper {
+  display: flex;
+  align-items: center;
 }
 
-.submitButton {
+.selectLabel {
+  margin-right: 16px;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: fonts.$weightMedium;
+  color: colors.$fontPrimary;
+}
+
+.select {
+  margin-left: 0 !important;
+  width: fit-content;
 }

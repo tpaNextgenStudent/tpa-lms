@@ -1,6 +1,7 @@
 import styles from './TeacherAssessPanel.module.scss';
 import { CTAButton } from '../../common/CTAButton/CTAButton';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
+import { TeacherAssessForm } from '../TeacherAssessForm/TeacherAssessForm';
 
 interface TeacherAssessPanelProps {}
 
@@ -11,10 +12,14 @@ export const TeacherAssessPanel = ({}: TeacherAssessPanelProps) => {
     setIsPanelOpen(true);
   };
 
+  const closePanel = () => {
+    setIsPanelOpen(false);
+  };
+
   return (
     <div className={styles.wrapper}>
       {isPanelOpen ? (
-        <p>panel here</p>
+        <TeacherAssessForm closePanel={closePanel} />
       ) : (
         <CTAButton
           text="Assess"

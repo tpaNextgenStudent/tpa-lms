@@ -38,6 +38,7 @@ export const TasksMenu = ({ modules, module, tasks, task }: TasksMenuProps) => {
   return (
     <section className={styles.wrapper}>
       <CustomSelect
+        id="module-select"
         options={selectOptions}
         value={defaultValue}
         handleChange={handleChange}
