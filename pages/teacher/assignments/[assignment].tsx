@@ -20,6 +20,7 @@ export default function ScoresIndex({
         comments={comments}
         attempt={attempt}
         module={module}
+        isTeacherAssessPanelVisible
       />
     </Layout>
   );

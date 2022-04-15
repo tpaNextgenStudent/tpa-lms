@@ -14,6 +14,7 @@ import { TaskBadges } from '../TaskBadges/TaskBadges';
 import { CTAButton } from '../../common/CTAButton/CTAButton';
 import { router } from 'next/client';
 import { useRouter } from 'next/router';
+import { TeacherAssessPanel } from '../TeacherAssessPanel/TeacherAssessPanel';
 
 interface TaskSectionProps {
   task: { id: string; name: string; type: TaskType; description: string };
@@ -26,8 +27,7 @@ interface TaskSectionProps {
   module: IModuleVersion;
   isTaskActionVisible?: boolean;
   isPassAgainVisible?: boolean;
-  isTeacherNextTaskVisible?: boolean;
-  isTeacherAssessVisible?: boolean;
+  isTeacherAssessPanelVisible?: boolean;
 }
 
 export const TaskSection = ({
@@ -37,8 +37,7 @@ export const TaskSection = ({
   comments,
   isTaskActionVisible = false,
   isPassAgainVisible = false,
-  isTeacherNextTaskVisible = false,
-  isTeacherAssessVisible = false,
+  isTeacherAssessPanelVisible = false,
 }: TaskSectionProps) => {
   const router = useRouter();
   const [isDescriptionView, setIsDescriptionView] = useState(true);
@@ -106,6 +105,7 @@ export const TaskSection = ({
           />
         </div>
       )}
+      {isTeacherAssessPanelVisible && <TeacherAssessPanel />}
     </main>
   );
 };
