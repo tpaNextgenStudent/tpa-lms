@@ -8,7 +8,7 @@ interface TaskTypeBadgeProps {
 
 export const TaskTypeBadge = ({ type }: TaskTypeBadgeProps) => {
   return (
-    <span className={styles.taskType}>
+    <span data-cypress="TaskTypeBadge" className={styles.taskType}>
       <span className={styles.taskTypeIcon}>
         <TaskTypeIcon type={type} />
       </span>

@@ -17,7 +17,7 @@ interface TaskCommentsProps {
 export const TaskComments = ({ comments }: TaskCommentsProps) => {
   const { asPath } = useRouter();
   return (
-    <div className={styles.wrapper}>
+    <div data-cypress="TaskComments" className={styles.wrapper}>
       <div className={styles.content}>
         <ul>
           {comments.map(comment => {
