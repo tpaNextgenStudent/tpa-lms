@@ -58,13 +58,14 @@ const CodeLine = ({ value, index, onCopyClick }: CodeLineProps) => {
   };
 
   return (
-    <pre className={styles.codeLine} key={value}>
-      <span>{value}</span>
+    <pre className={styles.codeLine} key={value} data-testid="code-action-line">
+      <span data-testid="code-action-line-value">{value}</span>
       <button
         onClick={handleClick}
         title={isCopied ? 'Copied' : 'Copy to clipboard'}
         style={{ top: `calc(${index * 24}px)` }}
         className={styles.clipboardButton}
+        data-testid="code-action-line-button"
       >
         {isCopied ? <TickIcon /> : <ClipboardIcon />}
       </button>
