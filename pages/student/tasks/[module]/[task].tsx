@@ -36,6 +36,7 @@ export default function Tasks({
           attempt={task.last_attempt}
           task={task.task_data}
           module={module}
+          isTaskActionVisible
         />
       </div>
     </Layout>

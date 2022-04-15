@@ -14,17 +14,13 @@ export default function ScoresIndex({
   comments,
 }: InferPagePropsType<typeof getServerSideProps>) {
   return (
-    <Layout
-      title={task.name}
-      user={user}
-      headerPrevButton={{ pageName: 'My Scores', pageLink: '/student/scores' }}
-    >
+    <Layout title={task.name} user={user} withHeaderPrevButton>
       <TaskSection
         task={task}
         comments={comments}
         attempt={attempt}
         module={module}
-        isActionLocked
+        isPassAgainVisible
       />
     </Layout>
   );
@@ -51,6 +47,7 @@ export const getServerSideProps = withServerSideAuth(
           module_number: attempt.module_number,
         },
         task: {
+          id: attempt.task_id,
           name: attempt.task.name,
           type: attempt.task.type,
           description: attempt.task.description,

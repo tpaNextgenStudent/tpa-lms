@@ -1,6 +1,5 @@
 import { Layout } from '../../components/common/Layout/Layout';
 import { InferPagePropsType } from '../../lib/utils/types';
-import dayjs from 'dayjs';
 import { withServerSideAuth } from '../../lib/auth/withServerSideAuth';
 import { getUserDetails } from '../../api/user';
 import { ProfileBanner } from '../../components/profile/ProfileBanner/ProfileBanner';
@@ -13,7 +12,7 @@ export default function UserProfileIndex({
 }: InferPagePropsType<typeof getServerSideProps>) {
   const userName = [user.name, user.surname].filter(n => !!n).join(' ');
   return (
-    <Layout headerPrevButton={{ pageLink: '/' }} title="My Profile" user={user}>
+    <Layout withHeaderPrevButton title="My Profile" user={user}>
       <ProfileBanner />
       <ProfileUserInfo
         name={userName}
