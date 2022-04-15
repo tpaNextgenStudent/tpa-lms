@@ -12,9 +12,13 @@ export default function ScoresIndex({
   task,
   comments,
   module,
+  student,
 }: InferPagePropsType<typeof getServerSideProps>) {
+  const studentFullName = [student.name, student.surname]
+    .filter(n => !!n)
+    .join(' ');
   return (
-    <Layout title={'Student'} user={user} withHeaderPrevButton>
+    <Layout title={studentFullName} user={user} withHeaderPrevButton>
       <TaskSection
         task={task}
         comments={comments}
@@ -59,6 +63,7 @@ export const getServerSideProps = withServerSideAuth(
           score: attempt.score,
         },
         comments,
+        student: attempt.student.user,
       },
     };
   }

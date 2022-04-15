@@ -52,7 +52,6 @@ export const CustomSelect = ({
         isSearchable={false}
         hideSelectedOptions
         inputId={id}
-        menuIsOpen
       />
     </div>
   );

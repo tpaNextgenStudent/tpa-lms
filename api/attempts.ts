@@ -55,6 +55,9 @@ export interface ISingleAttempt {
   teacher: {
     user: IUser;
   };
+  student: {
+    user: IUser;
+  };
   module_number: number;
   task_number: number;
 }

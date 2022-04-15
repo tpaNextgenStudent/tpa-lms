@@ -24,6 +24,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       evaluation_date: true,
       status: true,
       teacher: { select: { user: true } },
+      student: { select: { user: true } },
       module_number: true,
       task_number: true,
     },
