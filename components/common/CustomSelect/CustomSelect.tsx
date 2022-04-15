@@ -1,4 +1,4 @@
-import styles from './ModuleSelect.module.scss';
+import styles from './CustomSelect.module.scss';
 import colors from '../../../lib/styles/variables/colors.module.scss';
 import fonts from '../../../lib/styles/variables/fonts.module.scss';
 import ArrowDownIcon from '../../../public/svg/arrow-down.svg';
@@ -8,9 +8,7 @@ import Select, {
   StylesConfig,
   components,
   DropdownIndicatorProps,
-  ControlProps,
 } from 'react-select';
-import { IModuleVersion } from '../../../api/modules';
 
 export type OptionType = {
   label: string;
@@ -134,9 +132,9 @@ const customStyles: StylesConfig<OptionType, IsMulti> = {
   }),
 };
 
-interface ModuleSelectProps {
-  modules: IModuleVersion[];
-  module: IModuleVersion;
+interface CustomSelectProps {
+  options: OptionType[];
+  value: OptionType;
   handleChange: (value: SingleValue<OptionType>) => void;
 }
 
@@ -148,26 +146,18 @@ const DropdownIndicator = (props: DropdownIndicatorProps<any>) => {
   );
 };
 
-export const ModuleSelect = ({
-  modules,
-  module,
+export const CustomSelect = ({
+  options,
+  value,
   handleChange,
-}: ModuleSelectProps) => {
-  const selectOptions = modules.map(m => ({
-    value: m.module_version_id,
-    label: `Module ${m.module_number}`,
-  }));
-  const defaultValue = selectOptions.filter(
-    option => option.value === module.module_version_id
-  );
-
+}: CustomSelectProps) => {
   return (
-    <div data-cypress="ModuleSelect" className={styles.moduleSelectWrapper}>
+    <div data-cypress="CustomSelect" className={styles.wrapper}>
       <Select
         instanceId="module-select"
         onChange={handleChange}
-        value={defaultValue}
-        options={selectOptions}
+        value={value}
+        options={options}
         styles={customStyles}
         components={{ DropdownIndicator }}
         isSearchable={false}
