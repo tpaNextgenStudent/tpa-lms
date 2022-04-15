@@ -10,11 +10,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     where: { user_id: session.user?.id },
   });
 
-  const curriculum = await prisma.curriculum.findUnique({
-    where: { assignment_id: userAssigment?.id },
-  });
-
-  const attempt = await prisma.attempt.findUnique({
+  const response = await prisma.attempt.findUnique({
     where: { id: attempt_id },
     select: {
       id: true,
@@ -28,17 +24,10 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       evaluation_date: true,
       status: true,
       teacher: { select: { user: true } },
+      module_number: true,
+      task_number: true,
     },
   });
-
-  const moduleId = attempt?.task.module_version_id;
-  const curriculumProgress = (curriculum?.module_progress as Array<any>) || [];
-
-  const moduleNumber = curriculumProgress.find(
-    module => module.module_id === moduleId
-  ).position;
-
-  const response = { ...attempt, module_number: moduleNumber };
 
   if (session.nextAuthSession) {
     res.status(200).send(response);
