@@ -90,7 +90,10 @@ export const TaskSection = ({
       )}
       {isTaskActionVisible && <TaskAction type={task.type} />}
       {isPassAgainVisible && (
-        <div className={styles.tryAgainBar}>
+        <div
+          data-cypress="TaskSectionTryAgainBar"
+          className={styles.tryAgainBar}
+        >
           <CTAButton
             onClick={() => {
               router.push(

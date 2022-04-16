@@ -34,13 +34,13 @@ describe('Student - My Tasks', () => {
   it('Switches between modules using module select', () => {
     let currentModuleName: string;
     cy.get('[data-cypress=TaskSectionModuleName]').then($element => {
-      cy.get('[data-cypress=ModuleSelect]').within($moduleSelect => {
+      cy.get('[data-cypress=CustomSelect]').within($moduleSelect => {
         expect($moduleSelect.text()).to.eq($element.text());
         currentModuleName = $element.text();
       });
     });
 
-    cy.get('[data-cypress=ModuleSelect]').click();
+    cy.get('[data-cypress=CustomSelect]').click();
     cy.get('#react-select-module-select-listbox').then($list => {
       cy.wrap($list)
         .first()
@@ -52,7 +52,7 @@ describe('Student - My Tasks', () => {
           );
         });
     });
-    cy.get('[data-cypress=ModuleSelect]').click();
+    cy.get('[data-cypress=CustomSelect]').click();
     cy.get('#react-select-module-select-listbox').then($list => {
       cy.wrap($list)
         .first()
