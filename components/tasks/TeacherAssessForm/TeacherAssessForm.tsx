@@ -48,6 +48,7 @@ export const TeacherAssessForm = ({ closePanel }: TeacherAssessFormProps) => {
       const res = await postTeacherAssessment(attemptId, {
         body: { score: currentScore.value, comment },
       });
+      router.push(`${router.asPath}?view=comments`);
       //refresh the page to get fresh data
       // router.reload();
     } catch (err) {
