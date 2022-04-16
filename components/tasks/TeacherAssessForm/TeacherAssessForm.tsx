@@ -79,7 +79,7 @@ export const TeacherAssessForm = ({ closePanel }: TeacherAssessFormProps) => {
               handleChange={handleScoreChange}
             />
           </div>
-          <CTAButton text="Submit" type="submit" />
+          <CTAButton className={styles.submit} text="Submit" type="submit" />
         </div>
       </form>
     </div>
