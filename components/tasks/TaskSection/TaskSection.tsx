@@ -39,7 +39,6 @@ export const TaskSection = ({
   isTeacherAssessPanelVisible = false,
 }: TaskSectionProps) => {
   const router = useRouter();
-  const [isDescriptionView, setIsDescriptionView] = useState(true);
   const [isFullScreenMode, setIsFullScreenMode] = useState(false);
 
   const toggleFullScreenMode = () => {
@@ -47,6 +46,7 @@ export const TaskSection = ({
   };
 
   const moduleNumber = `Module ${module.module_number}`;
+  const isCommentsView = router.query.view === 'comments';
 
   return (
     <main
@@ -79,17 +79,14 @@ export const TaskSection = ({
         badges={['type', 'status', 'attempt', 'score']}
         config={{ score: { withText: true, withBorder: true } }}
       />
-      <TaskNav
-        setIsDescriptionView={setIsDescriptionView}
-        isDescriptionView={isDescriptionView}
-      />
-      {isDescriptionView ? (
+      <TaskNav />
+      {isCommentsView ? (
+        <TaskComments comments={comments} />
+      ) : (
         <TaskDescription
           locked={attempt.status === 'upcoming'}
           description={task.description}
         />
-      ) : (
-        <TaskComments comments={comments} />
       )}
       {isTaskActionVisible && <TaskAction type={task.type} />}
       {isPassAgainVisible && (
