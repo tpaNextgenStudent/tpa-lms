@@ -5,4 +5,4 @@ export const assessSchema = object({
   comment: string().required(),
 });
 
-export type UserDetails = TypeOf<typeof assessSchema>;
+export type AssessValue = TypeOf<typeof assessSchema>;

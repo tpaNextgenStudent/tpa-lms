@@ -7,6 +7,8 @@ import {
 import { SingleValue } from 'react-select';
 import { FormEvent, useState } from 'react';
 import CrossIcon from '../../../public/svg/cross-icon.svg';
+import { useRouter } from 'next/router';
+import { postTeacherAssessment } from '../../../api/assess';
 
 interface TeacherAssessFormProps {
   closePanel: () => void;
@@ -14,20 +16,23 @@ interface TeacherAssessFormProps {
 
 const scoreOptions = [
   {
-    value: 1,
+    value: '1',
     label: '1',
   },
   {
-    value: 2,
+    value: '2',
     label: '2 ',
   },
   {
-    value: 3,
+    value: '3',
     label: '3',
   },
 ];
 
 export const TeacherAssessForm = ({ closePanel }: TeacherAssessFormProps) => {
+  const router = useRouter();
+  const attemptId = router.query.assignment as string;
+
   const [currentScore, setCurrentScore] = useState<OptionType>(scoreOptions[0]);
   const [comment, setComment] = useState('');
 
@@ -37,10 +42,18 @@ export const TeacherAssessForm = ({ closePanel }: TeacherAssessFormProps) => {
     }
   };
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log({ score: currentScore.value, comment });
-    e.currentTarget.reset();
+    try {
+      const res = await postTeacherAssessment(attemptId, {
+        body: { score: currentScore.value, comment },
+      });
+      //refresh the page to get fresh data
+      // router.reload();
+    } catch (err) {
+      //show toast error message
+      console.error(err);
+    }
   };
 
   const handleInput = (e: FormEvent<HTMLTextAreaElement>) => {

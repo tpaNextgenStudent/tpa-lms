@@ -11,7 +11,7 @@ import { getCustomSelectStyles } from './getCustomSelectStyles';
 
 export type OptionType = {
   label: string;
-  value: string | number;
+  value: string;
 };
 
 interface CustomSelectProps {

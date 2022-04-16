@@ -12,7 +12,6 @@ import { IModuleVersion } from '../../../api/modules';
 import { Comment, TaskType } from '../../../lib/utils/types';
 import { TaskBadges } from '../TaskBadges/TaskBadges';
 import { CTAButton } from '../../common/CTAButton/CTAButton';
-import { router } from 'next/client';
 import { useRouter } from 'next/router';
 import { TeacherAssessPanel } from '../TeacherAssessPanel/TeacherAssessPanel';
 
