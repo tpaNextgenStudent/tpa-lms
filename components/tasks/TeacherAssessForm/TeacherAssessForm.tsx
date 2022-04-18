@@ -74,11 +74,12 @@ export const TeacherAssessForm = ({ closePanel }: TeacherAssessFormProps) => {
       >
         <CrossIcon />
       </button>
-      <form onSubmit={handleSubmit}>
+      <form data-cypress="TeacherAssessForm" onSubmit={handleSubmit}>
         <textarea
           className={styles.textarea}
           name="comment"
           id="comment"
+          data-cypress="TeacherAssessFormComment"
           rows={6}
           placeholder="Add your comment here..."
           value={comment}

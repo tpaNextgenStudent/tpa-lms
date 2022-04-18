@@ -25,7 +25,7 @@ export const TeacherAssessPanel = ({
   };
 
   return (
-    <div className={styles.wrapper}>
+    <div data-cypress="TeacherAssessPanel" className={styles.wrapper}>
       {isPanelOpen ? (
         <TeacherAssessForm closePanel={closePanel} />
       ) : (
