@@ -19,7 +19,6 @@ export default function AssignmentsIndex({
       user={user}
       title={'Assignments'}
       description="Students' tasks to be reviewed by you."
-      cohortName="TPA - TOYOTA - 05"
       actionsNumber={assignments.length}
     >
       <Table data={assignments} columns={columns} isFullWidth />

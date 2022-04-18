@@ -39,6 +39,10 @@ export const columns: Column<AssignmentsData>[] = [
     Header: 'Module',
     accessor: 'module',
     width: 90,
+
+    Cell: ({ cell: { value } }: { cell: { value: string } }) => (
+      <span data-cypress="AssignmentsTableModuleCell">{value}</span>
+    ),
   },
   {
     Header: 'Task name',
@@ -46,7 +50,9 @@ export const columns: Column<AssignmentsData>[] = [
     width: 256,
 
     Cell: ({ cell: { value } }: { cell: { value: string } }) => (
-      <span className={styles.taskName}>{value}</span>
+      <span data-cypress="AssignmentsTableTaskCell" className={styles.taskName}>
+        {value}
+      </span>
     ),
   },
   {

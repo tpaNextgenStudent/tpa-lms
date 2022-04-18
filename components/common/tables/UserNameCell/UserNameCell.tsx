@@ -24,7 +24,9 @@ export const UserNameCell = ({ img, name, login }: UserNameCellProps) => {
         )}
       </div>
       <div className={styles.userNameWrapper}>
-        <p className={styles.userName}>{name}</p>
+        <p data-cypress="UserName" className={styles.userName}>
+          {name}
+        </p>
         {login && <p className={styles.userLogin}>#{login}</p>}
       </div>
     </div>
