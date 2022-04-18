@@ -52,6 +52,7 @@
   font-weight: fonts.$weightMedium;
   font-size: 24px;
   line-height: 40px;
+  color: colors.$fontPrimary;
 }
 
 .titlePrevPage {
@@ -60,6 +61,10 @@
   &::after {
     content: ' / ';
     color: colors.$fontPrimary;
+  }
+
+  &:hover {
+    color: colors.$purplePrimary;
   }
 }
 

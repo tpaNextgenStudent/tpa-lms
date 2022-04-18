@@ -18,7 +18,12 @@ export default function ScoresIndex({
     .filter(n => !!n)
     .join(' ');
   return (
-    <Layout title={studentFullName} user={user} withHeaderPrevButton>
+    <Layout
+      parentPage={{ title: 'Assignments', link: '/teacher/assignments' }}
+      title={studentFullName}
+      user={user}
+      withHeaderPrevButton
+    >
       <TaskSection
         task={task}
         comments={comments}

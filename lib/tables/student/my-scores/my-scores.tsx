@@ -100,10 +100,7 @@ export const columns: Column<ScoresData>[] = [
     }: {
       cell: { value: ScoresData['view'] };
     }) => (
-      <Link
-        href={`${link}?prevPage=${encodeURIComponent('My Scores')}`}
-        as={link}
-      >
+      <Link href={link}>
         <a className={styles.viewLink}>View task</a>
       </Link>
     ),

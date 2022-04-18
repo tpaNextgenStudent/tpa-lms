@@ -11,7 +11,11 @@ export default function CohortProgress({
   progress,
 }: InferPagePropsType<typeof getServerSideProps>) {
   return (
-    <Layout title="Cohort Progress" user={user}>
+    <Layout
+      title="Cohort Progress"
+      description="See your teammates and how they are doing with their tasks."
+      user={user}
+    >
       <Table data={progress} columns={columns} />
     </Layout>
   );

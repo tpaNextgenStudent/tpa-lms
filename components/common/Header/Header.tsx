@@ -4,6 +4,7 @@ import ArrowLeftIcon from '../../../public/svg/arrow-left.svg';
 import MenuIcon from '../../../public/svg/menu-icon.svg';
 import { UserNav } from '../UserNav/UserNav';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 interface HeaderProps {
   title: string;
@@ -12,6 +13,7 @@ interface HeaderProps {
   user: IUserDetails;
   openMobileNav: () => void;
   withPrevButton: boolean;
+  parentPage?: { title: string; link: string };
 }
 
 export const Header = ({
@@ -21,8 +23,9 @@ export const Header = ({
   description,
   actionsNumber,
   withPrevButton,
+  parentPage,
 }: HeaderProps) => {
-  const { query, back } = useRouter();
+  const { back } = useRouter();
   return (
     <header className={styles.headerWrapper}>
       <button
@@ -44,8 +47,10 @@ export const Header = ({
             </button>
           )}
           <h1 className={styles.title}>
-            {withPrevButton && query.prevPage && (
-              <span className={styles.titlePrevPage}>{query.prevPage}</span>
+            {parentPage && (
+              <Link href={parentPage.link}>
+                <a className={styles.titlePrevPage}>{parentPage.title}</a>
+              </Link>
             )}
             <span>{title}</span>
           </h1>

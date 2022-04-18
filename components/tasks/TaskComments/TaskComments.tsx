@@ -48,12 +48,7 @@ export const TaskComments = ({ comments }: TaskCommentsProps) => {
                   </span>
                   <div className={styles.attemptBadges}>
                     {comment.attempt_id && asPath !== versionLink && (
-                      <Link
-                        href={`${versionLink}?prevPage=${encodeURIComponent(
-                          'My Tasks'
-                        )}`}
-                        as={versionLink}
-                      >
+                      <Link href={versionLink}>
                         <a className={styles.underAssessmentLink}>
                           Version under assessment
                         </a>
