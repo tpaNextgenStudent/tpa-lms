@@ -27,6 +27,7 @@ interface TaskSectionProps {
   isTaskActionVisible?: boolean;
   isPassAgainVisible?: boolean;
   isTeacherAssessPanelVisible?: boolean;
+  nextAttempt?: { next_attempt_id: string | null; assessments_number: number };
 }
 
 export const TaskSection = ({
@@ -37,6 +38,7 @@ export const TaskSection = ({
   isTaskActionVisible = false,
   isPassAgainVisible = false,
   isTeacherAssessPanelVisible = false,
+  nextAttempt,
 }: TaskSectionProps) => {
   const router = useRouter();
   const [isFullScreenMode, setIsFullScreenMode] = useState(false);
@@ -104,7 +106,9 @@ export const TaskSection = ({
           />
         </div>
       )}
-      {isTeacherAssessPanelVisible && <TeacherAssessPanel />}
+      {isTeacherAssessPanelVisible && (
+        <TeacherAssessPanel nextAttempt={nextAttempt} />
+      )}
     </main>
   );
 };

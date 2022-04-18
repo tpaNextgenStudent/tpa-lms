@@ -3,10 +3,17 @@ import { CTAButton } from '../../common/CTAButton/CTAButton';
 import { useCallback, useState } from 'react';
 import { TeacherAssessForm } from '../TeacherAssessForm/TeacherAssessForm';
 import { AssessValue } from '../../../schemas/assessSchema';
+import { useRouter } from 'next/router';
 
-interface TeacherAssessPanelProps {}
+interface TeacherAssessPanelProps {
+  nextAttempt?: { next_attempt_id: string | null; assessments_number: number };
+}
 
-export const TeacherAssessPanel = ({}: TeacherAssessPanelProps) => {
+export const TeacherAssessPanel = ({
+  nextAttempt,
+}: TeacherAssessPanelProps) => {
+  const router = useRouter();
+
   const [isPanelOpen, setIsPanelOpen] = useState(false);
 
   const openPanel = () => {
@@ -28,16 +35,26 @@ export const TeacherAssessPanel = ({}: TeacherAssessPanelProps) => {
           onClick={openPanel}
         />
       )}
-      <div className={styles.nextTaskBar}>
-        <p className={styles.tasksLeftText}>
-          You have <strong>5 tasks</strong> to assess
-        </p>
-        <CTAButton
-          className={styles.nextTaskButton}
-          text="Next Task"
-          styleType="secondary"
-        />
-      </div>
+      {nextAttempt?.next_attempt_id && nextAttempt.assessments_number > 1 && (
+        <div className={styles.nextTaskBar}>
+          <p className={styles.tasksLeftText}>
+            You have{' '}
+            <strong>
+              {nextAttempt.assessments_number - 1}{' '}
+              {`task${nextAttempt.assessments_number - 1 > 1 ? 's' : ''}`}
+            </strong>{' '}
+            to assess
+          </p>
+          <CTAButton
+            onClick={() =>
+              router.push(`/teacher/assignments/${nextAttempt.next_attempt_id}`)
+            }
+            className={styles.nextTaskButton}
+            text="Next Task"
+            styleType="secondary"
+          />
+        </div>
+      )}
     </div>
   );
 };

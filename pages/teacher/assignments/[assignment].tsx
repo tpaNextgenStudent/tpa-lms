@@ -5,6 +5,7 @@ import { getUserDetails } from '../../../api/user';
 import { getAttemptById } from '../../../api/attempts';
 import { TaskSection } from '../../../components/tasks/TaskSection/TaskSection';
 import { attemptToComments } from '../../../lib/utils/attemptsToComments';
+import { getNextTeacherAssessmentTask } from '../../../api/assess';
 
 export default function ScoresIndex({
   user,
@@ -13,6 +14,7 @@ export default function ScoresIndex({
   comments,
   module,
   student,
+  nextAttempt,
 }: InferPagePropsType<typeof getServerSideProps>) {
   const studentFullName = [student.name, student.surname]
     .filter(n => !!n)
@@ -30,6 +32,7 @@ export default function ScoresIndex({
         attempt={attempt}
         module={module}
         isTeacherAssessPanelVisible
+        nextAttempt={nextAttempt}
       />
     </Layout>
   );
@@ -40,13 +43,17 @@ export const getServerSideProps = withServerSideAuth(
     const { assignment: assignmentId } = params! as {
       assignment: string;
     };
-
     const authCookie = req.headers.cookie as string;
+
     const user = await getUserDetails({ cookie: authCookie });
 
     const attempt = await getAttemptById(assignmentId, { cookie: authCookie });
 
     const comments = attemptToComments(attempt);
+
+    const nextAttempt = await getNextTeacherAssessmentTask(assignmentId, {
+      cookie: authCookie,
+    });
 
     return {
       props: {
@@ -69,6 +76,7 @@ export const getServerSideProps = withServerSideAuth(
         },
         comments,
         student: attempt.student.user,
+        nextAttempt,
       },
     };
   }
