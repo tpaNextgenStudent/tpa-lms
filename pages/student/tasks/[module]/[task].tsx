@@ -62,7 +62,13 @@ export const getServerSideProps = withServerSideAuth(
         cookie: authCookie,
       });
 
-      const task = tasks.find(t => t.task_data.id === taskId)!;
+      const task = tasks.find(t => t.task_data.id === taskId);
+
+      if (!task) {
+        return {
+          notFound: true,
+        };
+      }
 
       const attempts = await getAttemptsByTask(taskId, {
         cookie: authCookie,
@@ -81,11 +87,9 @@ export const getServerSideProps = withServerSideAuth(
         },
       };
     } catch (e) {
-      console.log(e);
+      return {
+        notFound: true,
+      };
     }
-
-    return {
-      notFound: true,
-    };
   }
 );

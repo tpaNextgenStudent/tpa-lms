@@ -36,7 +36,6 @@ export const getServerSideProps = withServerSideAuth(async ({ req, res }) => {
       ]
         .filter(n => n)
         .join(' ');
-      console.log(attempt.teacher.user);
       return {
         submission_date: dayjs(attempt.submission_date).format('DD MMM YYYY'),
         review_date: dayjs(attempt.evaluation_date).format('DD MMM YYYY'),
