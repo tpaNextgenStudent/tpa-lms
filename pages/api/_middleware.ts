@@ -1,18 +1,24 @@
-import type { NextFetchEvent, NextRequest } from 'next/server';
 import { getSession } from 'next-auth/react';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 const middleware = async (req: NextApiRequest, ev: NextApiResponse) => {
-  //   const session = await getSession({ req });
-  //   if (!session) {
-  //     const myBlob = new Blob();
+  //Require session in all endpoints except login
 
-  //     return new Response(myBlob, {
-  //       status: 401,
-  //     });
-  //     // return res.status(401).send({ message: 'Unauthorized' });
-  //   }
-  console.log(23);
-  return null;
+  if (!req.url?.includes('api/auth')) {
+    const session = await getSession({ req });
+    console.log(session);
+    // if (!session) {
+    //   const obj = { message: 'unauthorized' };
+    //   const blob = new Blob([JSON.stringify(obj, null, 2)], {
+    //     type: 'application/json',
+    //   });
+    //   return new Response(blob, {
+    //     status: 401,
+    //   });
+    // }
+    return null;
+  } else {
+    return null;
+  }
 };
 export default middleware;
