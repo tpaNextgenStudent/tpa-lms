@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import prisma from '../../../lib/prisma';
-import getUserSession from '../../../utils/getUserSession';
+import { getUserSession } from '../../../lib/auth/getUserSession';
 import { Attempt } from '@prisma/client';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {

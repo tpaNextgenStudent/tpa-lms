@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 import styles from './TaskScoreBadge.module.scss';
-import { getColorByScore } from '../../../lib/getColorByScore';
+import { getColorByScore } from '../../../lib/utils/getColorByScore';
 
 interface TaskScoreBadgeProps {
   score: number;

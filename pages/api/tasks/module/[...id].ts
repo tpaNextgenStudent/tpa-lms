@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import prisma from '../../../../lib/prisma';
-import getUserSession from '../../../../utils/getUserSession';
+import { getUserSession } from '../../../../lib/auth/getUserSession';
 
 const getUserResults = async (moduleId: string, session: any) => {
   const userAssigment = await prisma.assignment.findFirst({

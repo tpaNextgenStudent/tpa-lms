@@ -36,7 +36,7 @@ export const Layout = ({
   return (
     <>
       <Head>
-        <title>{title.replaceAll('*', '')}</title>
+        <title>{title}</title>
       </Head>
       <div className={styles.wrapper}>
         <Sidebar

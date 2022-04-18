@@ -2,7 +2,7 @@ import { NextApiHandler, NextApiRequest, NextApiResponse } from 'next';
 import prisma from '../../../../../lib/prisma';
 import { assessSchema } from '../../../../../schemas/assessSchema';
 import { ObjectShape, OptionalObjectSchema } from 'yup/lib/object';
-import getUserSession from '../../../../../utils/getUserSession';
+import { getUserSession } from '../../../../../lib/auth/getUserSession';
 import { Attempt } from '@prisma/client';
 
 const updateCurriculum = async (updatedAttempt: Attempt) => {
