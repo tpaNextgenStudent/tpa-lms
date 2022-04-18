@@ -45,12 +45,16 @@ export const TeacherAssessForm = ({ closePanel }: TeacherAssessFormProps) => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const res = await postTeacherAssessment(attemptId, {
+      await postTeacherAssessment(attemptId, {
         body: { score: currentScore.value, comment },
       });
-      router.push(`${router.asPath}?view=comments`);
-      //refresh the page to get fresh data
-      // router.reload();
+      closePanel();
+      const { view: _, ...prevQuery } = router.query;
+      const newQuery = Object.assign(prevQuery, { view: 'comments' });
+      router.push({
+        pathname: router.pathname,
+        query: newQuery,
+      });
     } catch (err) {
       //show toast error message
       console.error(err);

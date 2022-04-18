@@ -29,7 +29,7 @@ export default function ScoresIndex({
         comments={comments}
         attempt={attempt}
         module={module}
-        isTeacherAssessPanelVisible={typeof attempt.score !== 'number'}
+        isTeacherAssessPanelVisible
       />
     </Layout>
   );
