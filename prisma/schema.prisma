@@ -39,22 +39,23 @@ model Session {
 }
 
 model User {
-  id            String       @id @default(cuid())
-  email         String?      @unique
+  id            String    @id @default(cuid())
+  email         String?   @unique
   emailVerified DateTime?
   image         String?
   accounts      Account[]
   sessions      Session[]
-  assignments   Assignment[]
   name          String?
   surname       String?
   bio           String?
 }
 
 model Profile {
-  login               String @unique
-  role                String
-  provider_account_id String
+  profile_id          String       @unique @default(cuid())
+  login               String       @unique
+  role                UserRole
+  provider_account_id String       @unique
+  assignments         Assignment[]
 }
 
 model VerificationToken {
@@ -75,12 +76,17 @@ model Assignment {
   id                 String      @id @default(cuid())
   cohort_id          String
   cohort             Cohort      @relation(fields: [cohort_id], references: [id])
-  user_id            String
-  user               User        @relation(fields: [user_id], references: [id])
+  profile_id         String?
+  profile            Profile?    @relation(fields: [profile_id], references: [profile_id])
   role               userRole
   curriculum         Curriculum?
   checked_attempts   Attempt[]   @relation("teacher")
   submitted_attempts Attempt[]   @relation("student")
+}
+
+enum UserRole {
+  student
+  teacher
 }
 
 enum userRole {

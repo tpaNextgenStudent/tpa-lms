@@ -1,15 +1,17 @@
-import prisma from '../prisma';
+import prisma from '../lib/prisma';
 import { NextApiRequest } from 'next';
 import { getSession } from 'next-auth/react';
 
-export const getUserSession = async ({ req }: { req: NextApiRequest }) => {
+const getUserSession = async ({ req }: { req: NextApiRequest }) => {
   const nextAuthSession = await getSession({ req });
   const userId = nextAuthSession?.userId as string;
 
   const user = await prisma.user.findFirst({
     where: { id: userId },
-    include: { assignments: true },
+    include: { accounts: true },
   });
 
   return { nextAuthSession, user };
 };
+
+export default getUserSession;

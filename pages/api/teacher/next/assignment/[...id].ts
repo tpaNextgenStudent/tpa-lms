@@ -1,13 +1,14 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import prisma from '../../../../../lib/prisma';
-import { getUserSession } from '../../../../../lib/auth/getUserSession';
 import { Attempt } from '@prisma/client';
+import getUserSession from '../../../../../utils/getUserSession';
+import getUserAssignment from '../../../../../utils/getUserAssignment';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const session = await getUserSession({ req });
-  const assignment = await prisma.assignment.findFirst({
-    where: { user_id: session.user?.id },
-  });
+  const assignment = await getUserAssignment(
+    session?.user?.accounts[0].providerAccountId
+  );
 
   if (!assignment) {
     return res
@@ -24,7 +25,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       teacher_assigment_id: assignment.id,
       task: { type: 'code', summative: true },
     },
-    include: { task: true, student: { include: { user: true } } },
     orderBy: {
       submission_date: 'asc',
     },

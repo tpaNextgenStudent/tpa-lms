@@ -27,35 +27,29 @@ const postRequest = async (
   });
 };
 
-const userResponseSchema = {
-  name: true,
-  surname: true,
-  bio: true,
-  image: true,
-  email: true,
-  accounts: true,
-  assignments: { select: { cohort: true, role: true } },
-};
-
 const getRequest = async (res: NextApiResponse, userId: string) => {
   const user = await prisma.user.findUnique({
     where: { id: userId },
-    select: userResponseSchema,
+    include: { accounts: true },
   });
 
-  const userProfile = await prisma.profile.findFirst({
+  const profile = await prisma.profile.findFirst({
     where: { provider_account_id: user?.accounts[0].providerAccountId },
+    select: {
+      login: true,
+      assignments: { select: { role: true, cohort: true } },
+    },
   });
-
+  console.log(profile);
   const response = {
-    role: user?.assignments[0]?.role,
+    role: profile?.assignments[0]?.role,
     name: user?.name,
     surname: user?.surname,
     bio: user?.bio,
     image: user?.image,
     email: user?.email,
-    github_login: userProfile?.login,
-    cohort_name: user?.assignments[0]?.cohort?.name,
+    github_login: profile?.login,
+    cohort_name: profile?.assignments[0]?.cohort?.name,
   };
 
   res.status(200).send(response);
