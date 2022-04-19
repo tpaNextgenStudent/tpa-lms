@@ -26,15 +26,25 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     },
   });
 
-  const { ...user } = await prisma.account.findUnique({
+  const { ...teacher } = await prisma.account.findUnique({
     where: {
       providerAccountId: attempt?.teacher?.profile?.provider_account_id,
     },
     include: { user: true },
   });
+  const { ...student } = await prisma.account.findUnique({
+    where: {
+      providerAccountId: attempt?.student?.profile?.provider_account_id,
+    },
+    include: { user: true },
+  });
 
   if (session.nextAuthSession) {
-    res.status(200).send({ ...attempt, teacher: { user: user.user } });
+    res.status(200).send({
+      ...attempt,
+      teacher: { user: teacher.user },
+      student: { user: student.user },
+    });
   } else {
     res.status(401).send({ message: 'Unauthorized' });
   }
