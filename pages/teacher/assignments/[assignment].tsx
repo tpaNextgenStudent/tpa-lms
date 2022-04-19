@@ -71,6 +71,7 @@ export const getServerSideProps = withServerSideAuth(
             name: attempt.task.name,
             type: attempt.task.type,
             description: attempt.task.description,
+            link: attempt.task.link,
           },
           attempt: {
             status: 'approved' as const,
@@ -78,7 +79,7 @@ export const getServerSideProps = withServerSideAuth(
             score: attempt.score,
           },
           comments,
-          student: attempt.student.profile,
+          student: attempt.student.user,
           nextAttempt,
         },
       };

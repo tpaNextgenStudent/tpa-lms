@@ -54,6 +54,7 @@ export interface ISingleAttempt {
   evaluation_date: string | null;
   status: TaskStatus;
   student: {
+    user: IUser;
     profile: IProfile;
   };
   teacher: {
