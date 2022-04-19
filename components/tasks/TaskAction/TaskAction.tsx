@@ -3,7 +3,13 @@ import { InfoAction } from '../InfoAction/InfoAction';
 import { TaskType } from '../../../lib/utils/types';
 
 interface TaskActionProps {
-  type: TaskType;
+  task: {
+    id: string;
+    name: string;
+    type: TaskType;
+    description: string;
+    link: string | null;
+  };
 }
 
 const TASK_TYPES = {
@@ -13,12 +19,12 @@ const TASK_TYPES = {
   INFO: 'info',
 };
 
-export const TaskAction = ({ type }: TaskActionProps) => {
-  switch (type) {
+export const TaskAction = ({ task }: TaskActionProps) => {
+  switch (task.type) {
     case TASK_TYPES.CODE:
-      return <CodeAction />;
+      return <CodeAction task={task} />;
     case TASK_TYPES.INFO:
-      return <InfoAction />;
+      return <InfoAction task={task} />;
     default:
       return null;
   }

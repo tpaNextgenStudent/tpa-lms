@@ -16,7 +16,13 @@ import { useRouter } from 'next/router';
 import { TeacherAssessPanel } from '../TeacherAssessPanel/TeacherAssessPanel';
 
 interface TaskSectionProps {
-  task: { id: string; name: string; type: TaskType; description: string };
+  task: {
+    id: string;
+    name: string;
+    type: TaskType;
+    description: string;
+    link: string | null;
+  };
   attempt: {
     status: TaskStatus;
     attempt_number: number | null;
@@ -90,7 +96,7 @@ export const TaskSection = ({
           description={task.description}
         />
       )}
-      {isTaskActionVisible && <TaskAction type={task.type} />}
+      {isTaskActionVisible && <TaskAction task={task} />}
       {isPassAgainVisible && (
         <div
           data-cypress="TaskSectionTryAgainBar"
