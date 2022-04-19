@@ -1,6 +1,6 @@
 import { apiPath } from '../lib/utils/apiPath';
 import axios from 'axios';
-import { TaskType } from '../lib/utils/types';
+import { IProfile, TaskType } from '../lib/utils/types';
 import { IUser } from './user';
 import { TaskStatus } from './tasks';
 
@@ -15,6 +15,7 @@ export interface IAttempt {
     curriculum_id: string;
     module_version_id: string;
     type: TaskType;
+    summative: boolean;
     position: number;
     name: string;
     description: string;
@@ -34,8 +35,8 @@ export interface IAttempt {
 export interface ISingleAttempt {
   id: string;
   task_id: string;
-  score: null | number;
-  answer: string;
+  score: number | null;
+  answer: string | null;
   task: {
     id: string;
     curriculum_id: string;
@@ -45,17 +46,17 @@ export interface ISingleAttempt {
     position: number;
     name: string;
     description: string;
-    link: string;
+    link: string | null;
   };
   comment: string | null;
   attempt_number: number;
   submission_date: string;
   evaluation_date: string | null;
   status: TaskStatus;
-  teacher: {
-    user: IUser;
-  };
   student: {
+    profile: IProfile;
+  };
+  teacher: {
     user: IUser;
   };
   module_number: number;

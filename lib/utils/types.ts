@@ -54,6 +54,12 @@ export interface Module {
 }
 
 export type TaskType = 'code' | 'quiz' | 'image' | 'info';
+export type IProfile = {
+  profile_id: string;
+  login: string;
+  role: string;
+  provider_account_id: string;
+};
 
 export interface Task {
   id: string;

@@ -33,10 +33,6 @@ export interface IAssignment {
     link: string | null;
   };
   student: {
-    id: string;
-    cohort_id: string;
-    user_id: string;
-    role: UserRole;
     user: IUser;
   };
 }

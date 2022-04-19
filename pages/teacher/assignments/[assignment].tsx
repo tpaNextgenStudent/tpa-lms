@@ -78,7 +78,7 @@ export const getServerSideProps = withServerSideAuth(
             score: attempt.score,
           },
           comments,
-          student: attempt.student.user,
+          student: attempt.student.profile,
           nextAttempt,
         },
       };

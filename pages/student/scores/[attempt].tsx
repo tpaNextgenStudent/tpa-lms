@@ -57,6 +57,7 @@ export const getServerSideProps = withServerSideAuth(
             name: attempt.task.name,
             type: attempt.task.type,
             description: attempt.task.description,
+            link: attempt.task.link,
           },
           attempt: {
             status: 'approved' as const,

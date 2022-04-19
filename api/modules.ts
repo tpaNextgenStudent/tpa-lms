@@ -1,6 +1,5 @@
 import { apiPath } from '../lib/utils/apiPath';
 import axios from 'axios';
-import { Task } from '@prisma/client';
 
 type Options = {
   cookie: string;
@@ -18,5 +17,6 @@ export const getUserModules = async ({
   const { data } = await axios.get(apiPath('modules'), {
     headers: { cookie },
   });
+  console.log(data);
   return data;
 };
