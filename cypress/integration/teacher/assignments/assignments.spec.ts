@@ -60,6 +60,25 @@ describe('Teacher - Assignments', () => {
     });
   });
 
+  it('Navigates to next attempt to assess', () => {
+    let attemptId = '';
+
+    cy.location().should(loc => {
+      const parts = loc.pathname.split('/');
+      attemptId = parts[parts.length - 1];
+    });
+    cy.get('button')
+      .contains('Next Task')
+      .should('exist')
+      .click()
+      .then(() => {
+        cy.location().should(loc => {
+          const parts = loc.pathname.split('/');
+          expect(parts[parts.length - 1]).not.to.eq(attemptId);
+        });
+      });
+  });
+
   it('Allows the teacher to assess attempt', () => {
     const commentContent = "Very good! I'm proud of you!";
     let attemptId = '';
@@ -68,18 +87,6 @@ describe('Teacher - Assignments', () => {
       const parts = loc.pathname.split('/');
       attemptId = parts[parts.length - 1];
     });
-
-    cy.intercept(
-      'POST',
-      `http://localhost:3000/api/teacher/assess/attempt/${attemptId}`,
-      {
-        statusCode: 200,
-        body: {
-          score: '2',
-          comment: commentContent,
-        },
-      }
-    );
 
     cy.get('[data-cypress=TeacherAssessPanel]')
       .should('exist')
@@ -103,32 +110,23 @@ describe('Teacher - Assignments', () => {
                   cy.wrap($item).click();
                 });
             });
+            cy.intercept(
+              'POST',
+              `http://localhost:3000/api/teacher/assess/attempt/*`,
+              {
+                statusCode: 200,
+                body: {
+                  score: '2',
+                  comment: commentContent,
+                },
+              }
+            );
             cy.get('button[type=submit]').should('exist').click();
           });
       });
     cy.get('[data-cypress=TeacherAssessForm]').should('not.exist');
     cy.location().should(loc => {
-      expect(loc.search).to.eq('?view=comments');
+      expect(loc.pathname).to.eq('/teacher/assignments');
     });
-    cy.get('[data-cypress=CTAButton]').first().should('exist');
-  });
-
-  it('Navigates to next attempt to assess', () => {
-    let attemptId = '';
-
-    cy.location().should(loc => {
-      const parts = loc.pathname.split('/');
-      attemptId = parts[parts.length - 1];
-    });
-    cy.get('button')
-      .contains('Next Task')
-      .should('exist')
-      .click()
-      .then(() => {
-        cy.location().should(loc => {
-          const parts = loc.pathname.split('/');
-          expect(parts[parts.length - 1]).not.to.eq(attemptId);
-        });
-      });
   });
 });

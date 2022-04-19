@@ -49,12 +49,7 @@ export const TeacherAssessForm = ({ closePanel }: TeacherAssessFormProps) => {
         body: { score: currentScore.value, comment },
       });
       closePanel();
-      const { view: _, ...prevQuery } = router.query;
-      const newQuery = Object.assign(prevQuery, { view: 'comments' });
-      router.push({
-        pathname: router.pathname,
-        query: newQuery,
-      });
+      router.push('/teacher/assignments');
     } catch (err) {
       //show toast error message
       console.error(err);

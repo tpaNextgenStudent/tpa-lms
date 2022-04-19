@@ -63,6 +63,7 @@ export const getServerSideProps = withServerSideAuth(
             status: 'approved' as const,
             attempt_number: attempt.attempt_number,
             score: attempt.score,
+            answer: attempt.answer,
           },
           comments,
         },

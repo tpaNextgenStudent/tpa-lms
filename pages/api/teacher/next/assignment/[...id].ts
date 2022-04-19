@@ -30,10 +30,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     },
   });
 
-  const mappedResponse = response.map((attempt: Attempt) => {
-    if (!attempt.score && !attempt.comment) {
-      return attempt;
-    }
+  const mappedResponse = response.filter((attempt: Attempt) => {
+    return !attempt.score && !attempt.comment;
   });
 
   const attempt_id = req.query.id[0];

@@ -5,7 +5,7 @@ import { LockedTaskInfo } from '../LockedTaskInfo/LockedTaskInfo';
 interface TaskDescriptionProps {
   description: string;
   locked?: boolean;
-  answer: string | null;
+  answer?: string | null;
 }
 
 export const TaskDescription = ({

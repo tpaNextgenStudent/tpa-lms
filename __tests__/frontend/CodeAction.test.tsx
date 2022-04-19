@@ -1,5 +1,4 @@
 import { render, screen, within } from '@testing-library/react';
-import '@testing-library/jest-dom';
 import { CodeAction } from '../../components/tasks/CodeAction/CodeAction';
 import userEvent from '@testing-library/user-event';
 
@@ -17,7 +16,11 @@ describe('CodeAction', () => {
       asPath: '/student/tasks/moduleId/taskId',
     }));
 
-    render(<CodeAction />);
+    render(
+      <CodeAction
+        task={{ description: '', id: '', link: '', type: 'code', name: '' }}
+      />
+    );
 
     //no toast at initial render
     const toast = screen.queryByTestId('toast');
