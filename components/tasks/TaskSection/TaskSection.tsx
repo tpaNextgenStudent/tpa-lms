@@ -27,6 +27,7 @@ interface TaskSectionProps {
     status: TaskStatus;
     attempt_number: number | null;
     score: number | null;
+    answer: null | string;
   };
   comments: Comment[];
   module: IModuleVersion;
@@ -92,6 +93,7 @@ export const TaskSection = ({
         <TaskComments comments={comments} />
       ) : (
         <TaskDescription
+          answer={attempt.answer}
           locked={attempt.status === 'upcoming'}
           description={task.description}
         />
