@@ -1,13 +1,14 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import prisma from '../../lib/prisma';
 import getUserSession from '../../utils/getUserSession';
+import getUserAssignment from '../../utils/getUserAssignment';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const session = await getUserSession({ req });
 
-  const userAssigment = await prisma.assignment.findFirst({
-    where: { user_id: session.user?.id },
-  });
+  const userAssigment = await getUserAssignment(
+    session?.user?.accounts[0].providerAccountId
+  );
 
   const curriculum = await prisma.curriculum.findUnique({
     where: { assignment_id: userAssigment?.id },

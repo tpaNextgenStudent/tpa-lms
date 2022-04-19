@@ -8,7 +8,7 @@ const getUserSession = async ({ req }: { req: NextApiRequest }) => {
 
   const user = await prisma.user.findFirst({
     where: { id: userId },
-    include: { assignments: true },
+    include: { accounts: true },
   });
 
   return { nextAuthSession, user };

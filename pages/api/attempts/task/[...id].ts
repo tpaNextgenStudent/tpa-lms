@@ -1,15 +1,19 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import prisma from '../../../../lib/prisma';
 import getUserSession from '../../../../utils/getUserSession';
+import getUserAssignment from '../../../../utils/getUserAssignment';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const session = await getUserSession({ req });
   const taskId = req.query.id[0];
+  const userAssigment = await getUserAssignment(
+    session?.user?.accounts[0].providerAccountId
+  );
 
   const response = await prisma.attempt.findMany({
     where: {
       task_id: taskId,
-      assignment_id: session.user?.assignments[0].id,
+      assignment_id: userAssigment?.id,
     },
     select: {
       id: true,
@@ -19,7 +23,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       attempt_number: true,
       submission_date: true,
       evaluation_date: true,
-      teacher: { select: { user: true } },
+      teacher: { select: { profile: true } },
       task: true,
     },
     orderBy: {
@@ -27,7 +31,19 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     },
   });
 
-  const mappedResponse = response.map(
+  const responseWithTeacherData = await Promise.all(
+    response.map(async (attempt): Promise<any> => {
+      const { ...user } = await prisma.account.findUnique({
+        where: {
+          providerAccountId: attempt.teacher.profile?.provider_account_id,
+        },
+        include: { user: true },
+      });
+      return { ...attempt, teacher: { user: user.user } };
+    })
+  );
+
+  const mappedResponse = responseWithTeacherData.map(
     ({ id: attempt_id, task: task_data, ...rest }) => ({
       attempt_id,
       task_data,

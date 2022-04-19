@@ -54,8 +54,8 @@ model Profile {
   profile_id          String       @unique @default(cuid())
   login               String       @unique
   role                UserRole
-  provider_account_id String
-  Assignment          Assignment[]
+  provider_account_id String       @unique
+  assignments         Assignment[]
 }
 
 model VerificationToken {
