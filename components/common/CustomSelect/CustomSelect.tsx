@@ -20,6 +20,7 @@ interface CustomSelectProps {
   handleChange: (value: SingleValue<OptionType>) => void;
   className?: string;
   id: string;
+  openSelectToTop?: boolean;
 }
 
 const DropdownIndicator = (props: DropdownIndicatorProps<any>) => {
@@ -36,6 +37,7 @@ export const CustomSelect = ({
   handleChange,
   className,
   id,
+  openSelectToTop = false,
 }: CustomSelectProps) => {
   return (
     <div
@@ -47,10 +49,14 @@ export const CustomSelect = ({
         onChange={handleChange}
         value={value}
         options={options}
-        styles={getCustomSelectStyles({ fontWeight: 'medium' })}
+        styles={getCustomSelectStyles({
+          fontWeight: 'medium',
+          openSelectToTop,
+        })}
         components={{ DropdownIndicator }}
         isSearchable={false}
         hideSelectedOptions
+        menuPlacement={openSelectToTop ? 'top' : 'bottom'}
         inputId={id}
       />
     </div>

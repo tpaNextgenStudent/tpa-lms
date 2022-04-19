@@ -24,10 +24,16 @@ export const TeacherAssessPanel = ({
     setIsPanelOpen(false);
   };
 
+  const hasNextTask =
+    nextAttempt?.next_attempt_id && nextAttempt.assessments_number > 1;
+
   return (
     <div data-cypress="TeacherAssessPanel" className={styles.wrapper}>
       {isPanelOpen ? (
-        <TeacherAssessForm closePanel={closePanel} />
+        <TeacherAssessForm
+          closePanel={closePanel}
+          openSelectToTop={!hasNextTask}
+        />
       ) : (
         <CTAButton
           text="Assess"
@@ -35,7 +41,7 @@ export const TeacherAssessPanel = ({
           onClick={openPanel}
         />
       )}
-      {nextAttempt?.next_attempt_id && nextAttempt.assessments_number > 1 && (
+      {hasNextTask && (
         <div className={styles.nextTaskBar}>
           <p className={styles.tasksLeftText}>
             You have{' '}

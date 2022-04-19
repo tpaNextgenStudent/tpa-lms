@@ -5,13 +5,14 @@ import {
   OptionType,
 } from '../../common/CustomSelect/CustomSelect';
 import { SingleValue } from 'react-select';
-import { FormEvent, useState } from 'react';
+import { FormEvent, useRef, useState } from 'react';
 import CrossIcon from '../../../public/svg/cross-icon.svg';
 import { useRouter } from 'next/router';
 import { postTeacherAssessment } from '../../../api/assess';
 
 interface TeacherAssessFormProps {
   closePanel: () => void;
+  openSelectToTop?: boolean;
 }
 
 const scoreOptions = [
@@ -29,7 +30,10 @@ const scoreOptions = [
   },
 ];
 
-export const TeacherAssessForm = ({ closePanel }: TeacherAssessFormProps) => {
+export const TeacherAssessForm = ({
+  closePanel,
+  openSelectToTop = false,
+}: TeacherAssessFormProps) => {
   const router = useRouter();
   const attemptId = router.query.assignment as string;
 
@@ -91,6 +95,7 @@ export const TeacherAssessForm = ({ closePanel }: TeacherAssessFormProps) => {
               options={scoreOptions}
               value={currentScore}
               handleChange={handleScoreChange}
+              openSelectToTop={openSelectToTop}
             />
           </div>
           <CTAButton className={styles.submit} text="Submit" type="submit" />

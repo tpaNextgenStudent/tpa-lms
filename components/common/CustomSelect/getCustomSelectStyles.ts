@@ -7,8 +7,10 @@ type IsMulti = false;
 
 export function getCustomSelectStyles({
   fontWeight = 'regular',
+  openSelectToTop = false,
 }: {
   fontWeight?: 'regular' | 'bold' | 'medium';
+  openSelectToTop?: boolean;
 }) {
   const fW =
     fontWeight === 'regular'
@@ -17,12 +19,18 @@ export function getCustomSelectStyles({
       ? fonts.weightBold
       : fonts.weightMedium;
 
+  function getBorderRadius(isOpen: boolean, isTop: boolean) {
+    if (isTop) {
+      return isOpen ? '0 0 24px 24px' : '64px';
+    } else {
+      return isOpen ? '24px 24px 0 0' : '64px';
+    }
+  }
+
   const customStyles: StylesConfig<OptionType, IsMulti> = {
     control: (provided, state) => ({
       ...provided,
-      borderRadius: state.menuIsOpen ? '0' : '64px',
-      borderTopLeftRadius: state.menuIsOpen ? '24px' : '64px',
-      borderTopRightRadius: state.menuIsOpen ? '24px' : '64px',
+      borderRadius: getBorderRadius(state.menuIsOpen, openSelectToTop),
       flexWrap: 'nowrap',
       height: '48px',
       boxShadow: 'none',
@@ -30,18 +38,30 @@ export function getCustomSelectStyles({
       border: state.isFocused
         ? `1px solid ${colors.purplePrimary}`
         : `1px solid ${colors.strokeMain}`,
-      borderBottom: state.menuIsOpen
-        ? '0'
-        : `1px solid ${
-            state.isFocused ? colors.purplePrimary : colors.strokeMain
-          }`,
+      borderBottom:
+        !openSelectToTop && state.menuIsOpen
+          ? '0'
+          : `1px solid ${
+              state.isFocused ? colors.purplePrimary : colors.strokeMain
+            }`,
+      borderTop:
+        openSelectToTop && state.menuIsOpen
+          ? '0'
+          : `1px solid ${
+              state.isFocused ? colors.purplePrimary : colors.strokeMain
+            }`,
       margin: 0,
       width: '100%',
       ':hover': {
         border: `1px solid ${colors.purplePrimary}`,
-        borderBottom: !state.menuIsOpen
-          ? `1px solid ${colors.purplePrimary}`
-          : 0,
+        borderBottom:
+          !state.menuIsOpen || openSelectToTop
+            ? `1px solid ${colors.purplePrimary}`
+            : 0,
+        borderTop:
+          !state.menuIsOpen || !openSelectToTop
+            ? `1px solid ${colors.purplePrimary}`
+            : 0,
         backgroundColor: colors.bgTable,
       },
     }),
@@ -78,29 +98,46 @@ export function getCustomSelectStyles({
       width: '100%',
       margin: 0,
       borderRadius: 0,
-      borderBottomLeftRadius: '24px',
-      borderBottomRightRadius: '24px',
+      borderBottomLeftRadius: !openSelectToTop ? '24px' : 0,
+      borderBottomRightRadius: !openSelectToTop ? '24px' : 0,
+      borderTopLeftRadius: openSelectToTop ? '24px' : 0,
+      borderTopRightRadius: openSelectToTop ? '24px' : 0,
       boxShadow: 'none',
       border: `1px solid ${colors.purplePrimary}`,
-      borderTop: 0,
+      borderTop: !openSelectToTop ? 0 : `1px solid ${colors.purplePrimary}`,
+      borderBottom: openSelectToTop ? 0 : `1px solid ${colors.purplePrimary}`,
       position: 'absolute',
-      '::before': {
-        content: "''",
-        position: 'absolute',
-        width: 'calc(100% - 16px)',
-        height: '1px',
-        backgroundColor: colors.strokeMain,
-        top: 0,
-        left: '50%',
-        transform: 'translateX(-50%)',
-        zIndex: 1,
-      },
+      '::before': openSelectToTop
+        ? {
+            content: "''",
+            position: 'absolute',
+            width: 'calc(100% - 16px)',
+            height: '1px',
+            backgroundColor: colors.strokeMain,
+            bottom: 0,
+            left: '50%',
+            transform: 'translateX(-50%)',
+            zIndex: 1,
+          }
+        : {
+            content: "''",
+            position: 'absolute',
+            width: 'calc(100% - 16px)',
+            height: '1px',
+            backgroundColor: colors.strokeMain,
+            top: 0,
+            left: '50%',
+            transform: 'translateX(-50%)',
+            zIndex: 1,
+          },
     }),
     menuList: (provided, state) => ({
       ...provided,
       padding: 0,
-      borderBottomLeftRadius: '24px',
-      borderBottomRightRadius: '24px',
+      borderBottomLeftRadius: !openSelectToTop ? '24px' : 0,
+      borderBottomRightRadius: !openSelectToTop ? '24px' : 0,
+      borderTopLeftRadius: openSelectToTop ? '24px' : 0,
+      borderTopRightRadius: openSelectToTop ? '24px' : 0,
     }),
     option: (provided, state) => ({
       ...provided,

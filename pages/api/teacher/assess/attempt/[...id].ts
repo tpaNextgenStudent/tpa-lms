@@ -51,21 +51,19 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   }
 
   const { score, comment } = req.body;
-  console.log({ score, comment });
-  // const updatedAttempt = await prisma.attempt.update({
-  //   where: { id: attempt_id },
-  //   data: {
-  //     score: parseInt(score),
-  //     comment,
-  //     evaluation_date: new Date(),
-  //     status: score > 1 ? 'approved' : 'in progress',
-  //   },
-  // });
-  //
-  // updateCurriculum(updatedAttempt);
+  const updatedAttempt = await prisma.attempt.update({
+    where: { id: attempt_id },
+    data: {
+      score: parseInt(score),
+      comment,
+      evaluation_date: new Date(),
+      status: score > 1 ? 'approved' : 'in progress',
+    },
+  });
 
-  // res.status(200).send(updatedAttempt);
-  res.status(200).send(true);
+  updateCurriculum(updatedAttempt);
+
+  res.status(200).send(updatedAttempt);
 };
 
 export function validate(
