@@ -1,12 +1,17 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import prisma from '../../../lib/prisma';
 import getUserSession from '../../../utils/getUserSession';
+import getUserAssignment from '../../../utils/getUserAssignment';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const session = await getUserSession({ req });
 
+  const userAssigment = await getUserAssignment(
+    session?.user?.accounts[0].providerAccountId
+  );
+
   const curriculum = await prisma.curriculum.findUnique({
-    where: { assignment_id: session.user?.assignments[0].id },
+    where: { assignment_id: userAssigment?.id },
   });
 
   const moduleProgress = curriculum?.module_progress as Array<any>;
@@ -45,12 +50,23 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           attempt_number: true,
           submission_date: true,
           evaluation_date: true,
-          teacher: { select: { user: true } },
+          teacher: { select: { profile: true } },
         },
       });
 
+      const teacherAccount = await prisma.account.findFirst({
+        where: {
+          providerAccountId: attempt?.teacher?.profile?.provider_account_id,
+        },
+        include: { user: true },
+      });
+      const singleAttempt = {
+        ...attempt,
+        teacher: { user: teacherAccount?.user },
+      };
+
       return {
-        attempt,
+        attempt: singleAttempt,
         task_name: task?.name,
         task_type: task?.type,
         module_name: module?.module.name,
