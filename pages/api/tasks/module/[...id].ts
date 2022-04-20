@@ -34,6 +34,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           position: true,
           name: true,
           description: true,
+          link: true,
         },
       },
     },

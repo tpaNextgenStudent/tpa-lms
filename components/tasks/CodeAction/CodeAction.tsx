@@ -3,11 +3,19 @@ import { useEffect, useState, useCallback } from 'react';
 import { Toast } from '../../common/Toast/Toast';
 import { useRouter } from 'next/router';
 import { CodeActionLines } from '../CodeActionLines/CodeActionLines';
+import { TaskType } from '../../../lib/utils/types';
 
-const sampleUrl =
-  'https://github.com/tpa-nextgen/modules-master/blob/master/outlines/model_with_classes_1/task_formative_01.md';
+interface CodeActionProps {
+  task: {
+    id: string;
+    name: string;
+    type: TaskType;
+    description: string;
+    link: string | null;
+  };
+}
 
-export const CodeAction = () => {
+export const CodeAction = ({ task }: CodeActionProps) => {
   const router = useRouter();
 
   const [isWarningVisible, setIsWarningVisible] = useState(false);
@@ -40,7 +48,7 @@ export const CodeAction = () => {
           <p className={styles.codeText}>How to start</p>
           <CodeActionLines
             onCopyClick={onCopyClick}
-            lines={[`git clone ${sampleUrl}`, 'git checkout -b my-branch']}
+            lines={[`git clone ${task.link}`, 'git checkout -b my-branch']}
           />
         </div>
         <div className={styles.codeActionBlock}>

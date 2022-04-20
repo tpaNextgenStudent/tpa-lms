@@ -1,11 +1,11 @@
 import { Column } from 'react-table';
 import styles from './my-scores.module.scss';
-import Image from 'next/image';
 import Link from 'next/link';
 import { TaskType } from '../../../utils/types';
 import { TaskTypeCell } from '../../../../components/common/tables/TaskTypeCell/TaskTypeCell';
 import { TaskAttemptBadge } from '../../../../components/tasks/TaskAttemptBadge/TaskAttemptBadge';
 import { TaskScoreBadge } from '../../../../components/tasks/TaskScoreBadge/TaskScoreBadge';
+import { UserNameCell } from '../../../../components/common/tables/UserNameCell/UserNameCell';
 
 interface ScoresData {
   submission_date: string;
@@ -15,7 +15,7 @@ interface ScoresData {
   task_type: string;
   attempt: number;
   score: number;
-  reviewed_by: { name: string; img: string | null };
+  reviewed_by: { name: string; img: string | null; login: string | null };
   view: { link: string };
 }
 
@@ -81,27 +81,12 @@ export const columns: Column<ScoresData>[] = [
     width: '4fr',
 
     Cell: ({
-      cell: { value },
+      cell: {
+        value: { name, img, login },
+      },
     }: {
       cell: { value: ScoresData['reviewed_by'] };
-    }) => (
-      <div className={styles.teacherCellWrapper}>
-        <span className={styles.teacherImgWrapper}>
-          {value.img && (
-            <Image
-              className={styles.teacherImg}
-              width={32}
-              height={32}
-              objectFit="cover"
-              layout="fixed"
-              src={value.img}
-              alt={value.name}
-            />
-          )}
-        </span>
-        <span className={styles.teacherName}>{value.name}</span>
-      </div>
-    ),
+    }) => <UserNameCell name={name} img={img} login={login} />,
   },
   {
     Header: '',
@@ -115,10 +100,7 @@ export const columns: Column<ScoresData>[] = [
     }: {
       cell: { value: ScoresData['view'] };
     }) => (
-      <Link
-        href={`${link}?prevPage=${encodeURIComponent('My Scores')}`}
-        as={link}
-      >
+      <Link href={link}>
         <a className={styles.viewLink}>View task</a>
       </Link>
     ),

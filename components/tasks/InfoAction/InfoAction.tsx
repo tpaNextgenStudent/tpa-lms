@@ -1,7 +1,16 @@
 import styles from './InfoAction.module.scss';
 import { CTAButton } from '../../common/CTAButton/CTAButton';
+import { TaskType } from '../../../lib/utils/types';
 
-interface InfoActionProps {}
+interface InfoActionProps {
+  task: {
+    id: string;
+    name: string;
+    type: TaskType;
+    description: string;
+    link: string | null;
+  };
+}
 
 export const InfoAction = ({}: InfoActionProps) => {
   return (

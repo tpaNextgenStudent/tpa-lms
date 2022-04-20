@@ -35,18 +35,28 @@
 }
 
 .logoLink {
+  height: auto;
+  display: flex;
   width: fit-content;
 }
 
+.sidebarContentWrapper {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
 .cohortName {
-  padding: 16px;
-  text-align: center;
-  border: 1px solid colors.$purplePrimary;
-  border-radius: 16px;
-  font-weight: fonts.$weightMedium;
+  font-weight: fonts.$weightBold;
   font-size: 16px;
   line-height: 24px;
+  padding: 12px 8px;
+  text-align: center;
+  border: 1px solid colors.$strokeMain;
+  text-transform: uppercase;
   color: colors.$fontPrimary;
+  background-color: colors.$white;
+  border-radius: 8px;
 
   @media (max-width: media.$laptopS) {
     order: 1000;
@@ -55,7 +65,7 @@
 }
 
 .navWrapper {
-  margin-top: 64px;
+  margin-top: 16px;
 }
 
 .navList {

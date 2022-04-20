@@ -20,6 +20,7 @@ export const CTAButton = ({
 }: CTAButtonProps) => {
   return (
     <button
+      data-cypress="CTAButton"
       data-testid="cta-button"
       type={type}
       className={clsx(

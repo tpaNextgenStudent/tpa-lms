@@ -1,6 +1,5 @@
 import { apiPath } from '../lib/utils/apiPath';
 import axios from 'axios';
-import { Task } from '@prisma/client';
 
 type Options = {
   cookie: string;

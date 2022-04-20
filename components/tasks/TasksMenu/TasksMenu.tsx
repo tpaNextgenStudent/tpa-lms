@@ -1,13 +1,12 @@
 import styles from './TasksMenu.module.scss';
-import {
-  ModuleSelect,
-  OptionType,
-} from '../../common/ModuleSelect/ModuleSelect';
+import { OptionType } from '../../common/CustomSelect/CustomSelect';
 import { TasksList } from '../TasksList/TasksList';
 import { useRouter } from 'next/router';
 import { SingleValue } from 'react-select';
 import { IModuleVersion } from '../../../api/modules';
 import { ITask } from '../../../api/tasks';
+import { CustomSelect } from '../../common/CustomSelect/CustomSelect';
+import { useMemo } from 'react';
 
 interface TasksMenuProps {
   modules: IModuleVersion[];
@@ -23,11 +22,25 @@ export const TasksMenu = ({ modules, module, tasks, task }: TasksMenuProps) => {
       router.push(`/student/tasks/${option.value}`);
     }
   };
+
+  const selectOptions = useMemo(() => {
+    return modules.map(({ module_version_id, module_number }) => ({
+      value: module_version_id,
+      label: `Module ${module_number}`,
+    }));
+  }, [modules]);
+
+  const defaultValue = {
+    value: module.module_version_id,
+    label: `Module ${module.module_number}`,
+  };
+
   return (
     <section className={styles.wrapper}>
-      <ModuleSelect
-        modules={modules}
-        module={module}
+      <CustomSelect
+        id="module-select"
+        options={selectOptions}
+        value={defaultValue}
         handleChange={handleChange}
       />
       <TasksList currentTask={task} tasks={tasks} module={module} />

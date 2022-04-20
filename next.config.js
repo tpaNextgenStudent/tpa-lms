@@ -4,7 +4,7 @@ const nextConfig = {
   images: {
     domains: ['unsplash.it', 'avatars.githubusercontent.com'],
   },
-  publicRuntimeConfig: {
+  env: {
     BASE_URL: process.env.BASE_URL || 'localhost:3000',
   },
 };

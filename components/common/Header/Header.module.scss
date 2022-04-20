@@ -34,6 +34,7 @@
 
 .titleWrapper {
   display: flex;
+  align-items: center;
 }
 
 .headerWrapper {
@@ -51,6 +52,7 @@
   font-weight: fonts.$weightMedium;
   font-size: 24px;
   line-height: 40px;
+  color: colors.$fontPrimary;
 }
 
 .titlePrevPage {
@@ -60,6 +62,10 @@
     content: ' / ';
     color: colors.$fontPrimary;
   }
+
+  &:hover {
+    color: colors.$purplePrimary;
+  }
 }
 
 .actionsNumber {
@@ -68,8 +74,12 @@
   line-height: 24px;
   margin-left: 16px;
   background-color: colors.$purpleSecondary;
+  color: colors.$purplePrimary;
   border-radius: 64px;
   padding: 4px 8px;
+  min-width: 32px;
+  height: 32px;
+  text-align: center;
 }
 
 .description {

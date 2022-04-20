@@ -2,7 +2,7 @@ import { IAttempt, ISingleAttempt } from '../../api/attempts';
 import { Comment } from './types';
 
 export function attemptToComments(attempt: ISingleAttempt): Comment[] {
-  return attempt.comment
+  return attempt.comment && attempt.evaluation_date
     ? [
         {
           author: {

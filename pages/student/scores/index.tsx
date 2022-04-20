@@ -47,6 +47,7 @@ export const getServerSideProps = withServerSideAuth(async ({ req, res }) => {
         reviewed_by: {
           name: teacherName,
           img: attempt.teacher.user.image,
+          login: attempt.teacher.user.email,
         },
         view: { link: `/student/scores/${attempt.id}` },
       };

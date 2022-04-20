@@ -1,8 +1,8 @@
 import { Column } from 'react-table';
 import styles from './cohort-progress.module.scss';
-import Image from 'next/image';
 import { TaskType } from '../../../utils/types';
 import { TaskTypeCell } from '../../../../components/common/tables/TaskTypeCell/TaskTypeCell';
+import { UserNameCell } from '../../../../components/common/tables/UserNameCell/UserNameCell';
 
 interface ProgressData {
   student: { name: string; img: string | null; login: string | null };
@@ -18,30 +18,12 @@ export const columns: Column<ProgressData>[] = [
     width: 200,
 
     Cell: ({
-      cell: { value },
+      cell: {
+        value: { name, img, login },
+      },
     }: {
       cell: { value: ProgressData['student'] };
-    }) => (
-      <div className={styles.studentCellWrapper}>
-        <div className={styles.studentImgWrapper}>
-          {value.img && (
-            <Image
-              width={32}
-              height={32}
-              layout="fixed"
-              objectFit="cover"
-              className={styles.studentImg}
-              src={value.img}
-              alt={value.name}
-            />
-          )}
-        </div>
-        <div className={styles.studentNameWrapper}>
-          <p className={styles.studentName}>{value.name}</p>
-          {value.login && <p className={styles.studentLogin}>#{value.login}</p>}
-        </div>
-      </div>
-    ),
+    }) => <UserNameCell name={name} img={img} login={login} />,
   },
   {
     Header: 'Module',

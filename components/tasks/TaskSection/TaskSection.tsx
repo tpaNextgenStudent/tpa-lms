@@ -12,20 +12,29 @@ import { IModuleVersion } from '../../../api/modules';
 import { Comment, TaskType } from '../../../lib/utils/types';
 import { TaskBadges } from '../TaskBadges/TaskBadges';
 import { CTAButton } from '../../common/CTAButton/CTAButton';
-import { router } from 'next/client';
 import { useRouter } from 'next/router';
+import { TeacherAssessPanel } from '../TeacherAssessPanel/TeacherAssessPanel';
 
 interface TaskSectionProps {
-  task: { id: string; name: string; type: TaskType; description: string };
+  task: {
+    id: string;
+    name: string;
+    type: TaskType;
+    description: string;
+    link: string | null;
+  };
   attempt: {
     status: TaskStatus;
     attempt_number: number | null;
     score: number | null;
+    answer: null | string;
   };
   comments: Comment[];
   module: IModuleVersion;
   isTaskActionVisible?: boolean;
   isPassAgainVisible?: boolean;
+  isTeacherAssessPanelVisible?: boolean;
+  nextAttempt?: { next_attempt_id: string | null; assessments_number: number };
 }
 
 export const TaskSection = ({
@@ -35,16 +44,18 @@ export const TaskSection = ({
   comments,
   isTaskActionVisible = false,
   isPassAgainVisible = false,
+  isTeacherAssessPanelVisible = false,
+  nextAttempt,
 }: TaskSectionProps) => {
   const router = useRouter();
-  const [isDescriptionView, setIsDescriptionView] = useState(true);
   const [isFullScreenMode, setIsFullScreenMode] = useState(false);
 
   const toggleFullScreenMode = () => {
     setIsFullScreenMode(prev => !prev);
   };
 
-  const moduleName = `Module ${module.module_number}`;
+  const moduleNumber = `Module ${module.module_number}`;
+  const isCommentsView = router.query.view === 'comments';
 
   return (
     <main
@@ -55,7 +66,7 @@ export const TaskSection = ({
       )}
     >
       <p data-cypress="TaskSectionModuleName" className={styles.taskModule}>
-        {moduleName}
+        {moduleNumber}
       </p>
       <div className={styles.taskHeader}>
         <h2 data-cypress="TaskSectionTaskTitle" className={styles.taskTitle}>
@@ -77,21 +88,22 @@ export const TaskSection = ({
         badges={['type', 'status', 'attempt', 'score']}
         config={{ score: { withText: true, withBorder: true } }}
       />
-      <TaskNav
-        setIsDescriptionView={setIsDescriptionView}
-        isDescriptionView={isDescriptionView}
-      />
-      {isDescriptionView ? (
+      <TaskNav />
+      {isCommentsView ? (
+        <TaskComments comments={comments} />
+      ) : (
         <TaskDescription
+          answer={attempt.answer}
           locked={attempt.status === 'upcoming'}
           description={task.description}
         />
-      ) : (
-        <TaskComments comments={comments} />
       )}
-      {isTaskActionVisible && <TaskAction type={task.type} />}
+      {isTaskActionVisible && <TaskAction task={task} />}
       {isPassAgainVisible && (
-        <div className={styles.tryAgainBar}>
+        <div
+          data-cypress="TaskSectionTryAgainBar"
+          className={styles.tryAgainBar}
+        >
           <CTAButton
             onClick={() => {
               router.push(
@@ -101,6 +113,9 @@ export const TaskSection = ({
             text="Pass one more time"
           />
         </div>
+      )}
+      {isTeacherAssessPanelVisible && (
+        <TeacherAssessPanel nextAttempt={nextAttempt} />
       )}
     </main>
   );

@@ -30,10 +30,10 @@ export const getServerSideProps = withServerSideAuth(
           destination: `/student/tasks/${moduleId}/${currentTaskId}`,
         },
       };
-    } catch (e) {}
-
-    return {
-      notFound: true,
-    };
+    } catch (e) {
+      return {
+        notFound: true,
+      };
+    }
   }
 );

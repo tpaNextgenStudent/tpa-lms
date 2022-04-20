@@ -1,5 +1,3 @@
-import { publicRuntimeConfig } from '../runtimeConfig';
-
 export const apiPath = (endpoint: string) => {
-  return `${publicRuntimeConfig.BASE_URL}/api/${endpoint}`;
+  return `${process.env.BASE_URL}/api/${endpoint}`;
 };

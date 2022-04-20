@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import prisma from '../../../lib/prisma';
-import getUserSession from '../../../utils/getUserSession';
 import { Attempt } from '@prisma/client';
+import getUserSession from '../../../utils/getUserSession';
 import getUserAssignment from '../../../utils/getUserAssignment';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
@@ -39,14 +39,15 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         },
         include: { user: true },
       });
-      return { ...attempt, student: { user: user.user } };
+      return {
+        ...attempt,
+        student: { user: user.user, profile: attempt.student.profile },
+      };
     })
   );
 
-  const mappedResponse = responseWithUserData.map((attempt: Attempt) => {
-    if (!attempt.score && !attempt.comment) {
-      return attempt;
-    }
+  const mappedResponse = responseWithUserData.filter((attempt: Attempt) => {
+    return !attempt.score && !attempt.comment;
   });
 
   res.status(200).send(mappedResponse.filter(n => n));

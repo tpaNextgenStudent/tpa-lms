@@ -1,21 +1,14 @@
 import { apiPath } from '../lib/utils/apiPath';
 import axios from 'axios';
 import { TaskType } from '../lib/utils/types';
+import { IUser } from './user';
 
 type Options = {
   cookie: string;
 };
 
 export interface IProgressItem {
-  user: {
-    id: string;
-    email: string | null;
-    emailVerified: boolean | null;
-    image: string | null;
-    name: string;
-    surname: string | null;
-    bio: string | null;
-  };
+  user: IUser;
   module_name: string;
   module_position: number;
   task_name: string;

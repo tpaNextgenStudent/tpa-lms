@@ -14,7 +14,12 @@ export default function ScoresIndex({
   comments,
 }: InferPagePropsType<typeof getServerSideProps>) {
   return (
-    <Layout title={task.name} user={user} withHeaderPrevButton>
+    <Layout
+      parentPage={{ title: 'My Scores', link: '/student/scores' }}
+      title={task.name}
+      user={user}
+      withHeaderPrevButton
+    >
       <TaskSection
         task={task}
         comments={comments}
@@ -30,35 +35,43 @@ export const getServerSideProps = withServerSideAuth(
     const { attempt: attemptId } = params! as {
       attempt: string;
     };
-
     const authCookie = req.headers.cookie as string;
-    const user = await getUserDetails({ cookie: authCookie });
 
-    const attempt = await getAttemptById(attemptId, { cookie: authCookie });
+    try {
+      const user = await getUserDetails({ cookie: authCookie });
 
-    const comments = attemptToComments(attempt);
+      const attempt = await getAttemptById(attemptId, { cookie: authCookie });
 
-    return {
-      props: {
-        user,
-        module: {
-          module_version_id: attempt.task.module_version_id,
-          name: 'Module Name',
-          module_number: attempt.module_number,
+      const comments = attemptToComments(attempt);
+
+      return {
+        props: {
+          user,
+          module: {
+            module_version_id: attempt.task.module_version_id,
+            name: 'Module Name',
+            module_number: attempt.module_number,
+          },
+          task: {
+            id: attempt.task_id,
+            name: attempt.task.name,
+            type: attempt.task.type,
+            description: attempt.task.description,
+            link: attempt.task.link,
+          },
+          attempt: {
+            status: 'approved' as const,
+            attempt_number: attempt.attempt_number,
+            score: attempt.score,
+            answer: attempt.answer,
+          },
+          comments,
         },
-        task: {
-          id: attempt.task_id,
-          name: attempt.task.name,
-          type: attempt.task.type,
-          description: attempt.task.description,
-        },
-        attempt: {
-          status: 'approved' as const,
-          attempt_number: attempt.attempt_number,
-          score: attempt.score,
-        },
-        comments,
-      },
-    };
+      };
+    } catch (e) {
+      return {
+        notFound: true,
+      };
+    }
   }
 );

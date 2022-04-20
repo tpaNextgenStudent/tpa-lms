@@ -37,7 +37,7 @@ export const getServerSideProps = withServerSideAuth(async ctx => {
     }
     return {
       redirect: {
-        destination: '/teacher',
+        destination: '/teacher/assignments',
         permanent: false,
       },
     };

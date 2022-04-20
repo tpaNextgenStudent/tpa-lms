@@ -22,6 +22,7 @@ export interface ITask {
     position: number;
     name: string;
     description: string;
+    link: string | null;
   };
   last_attempt: {
     score: number | null;

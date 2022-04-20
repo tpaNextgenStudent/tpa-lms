@@ -4,7 +4,7 @@ import ArrowDown from '../../../public/svg/arrow-down.svg';
 import Link from 'next/link';
 import { useRef, useState } from 'react';
 import clsx from 'clsx';
-import { useClickOutside } from '../../../lib/useClickOutside';
+import { useClickOutside } from '../../../lib/hooks/useClickOutside';
 import { IUserDetails } from '../../../api/user';
 import { signOut } from 'next-auth/react';
 
