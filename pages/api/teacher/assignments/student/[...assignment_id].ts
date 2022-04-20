@@ -1,11 +1,12 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import prisma from '../../../lib/prisma';
-import getUserSession from '../../../utils/getUserSession';
+import prisma from '../../../../../lib/prisma';
+import getUserSession from '../../../../../utils/getUserSession';
 import { Attempt } from '@prisma/client';
-import getUserAssignment from '../../../utils/getUserAssignment';
+import getUserAssignment from '../../../../../utils/getUserAssignment';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const session = await getUserSession({ req });
+  const assignmentId = req.query.assignment_id[0];
 
   const assignment = await getUserAssignment(
     session?.user?.accounts[0].providerAccountId
@@ -22,6 +23,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   const response = await prisma.attempt.findMany({
     where: {
+      assignment_id: assignmentId,
       teacher_assigment_id: assignment.id,
       task: { type: 'code', summative: true },
     },
