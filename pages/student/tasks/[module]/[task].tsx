@@ -43,7 +43,7 @@ export default function Tasks({
   );
 }
 
-export const getServerSideProps = withServerSideAuth(
+export const getServerSideProps = withServerSideAuth('student')(
   async ({ req, params }) => {
     const authCookie = req.headers.cookie as string;
     const user = await getUserDetails({ cookie: authCookie });

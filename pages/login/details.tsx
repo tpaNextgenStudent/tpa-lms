@@ -32,7 +32,7 @@ export default function LoginDetails() {
   );
 }
 
-export const getServerSideProps = withServerSideAuth(async ctx => {
+export const getServerSideProps = withServerSideAuth()(async ctx => {
   try {
     const { data: user } = await axios.get(apiPath('user/details'), {
       headers: {

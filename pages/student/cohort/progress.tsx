@@ -21,27 +21,29 @@ export default function CohortProgress({
   );
 }
 
-export const getServerSideProps = withServerSideAuth(async ({ req, res }) => {
-  const authCookie = req.headers.cookie as string;
-  const user = await getUserDetails({ cookie: authCookie });
+export const getServerSideProps = withServerSideAuth('student')(
+  async ({ req, res }) => {
+    const authCookie = req.headers.cookie as string;
+    const user = await getUserDetails({ cookie: authCookie });
 
-  const p = await getCohortProgress({ cookie: authCookie });
+    const p = await getCohortProgress({ cookie: authCookie });
 
-  const progress = p.map(
-    ({ user, module_name, task_name, task_type, module_position }) => {
-      const userName = [user.name, user.surname].filter(n => n).join(' ');
-      return {
-        student: {
-          name: userName,
-          login: user.email,
-          img: user.image,
-        },
-        module: `Module ${module_position}`,
-        task_name,
-        task_type,
-      };
-    }
-  );
+    const progress = p.map(
+      ({ user, module_name, task_name, task_type, module_position }) => {
+        const userName = [user.name, user.surname].filter(n => n).join(' ');
+        return {
+          student: {
+            name: userName,
+            login: user.email,
+            img: user.image,
+          },
+          module: `Module ${module_position}`,
+          task_name,
+          task_type,
+        };
+      }
+    );
 
-  return { props: { user, progress } };
-});
+    return { props: { user, progress } };
+  }
+);

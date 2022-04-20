@@ -30,7 +30,7 @@ export default function ScoresIndex({
     </Layout>
   );
 }
-export const getServerSideProps = withServerSideAuth(
+export const getServerSideProps = withServerSideAuth('student')(
   async ({ req, params }) => {
     const { attempt: attemptId } = params! as {
       attempt: string;

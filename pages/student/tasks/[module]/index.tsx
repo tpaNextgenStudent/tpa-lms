@@ -5,7 +5,7 @@ export default function Module() {
   return null;
 }
 
-export const getServerSideProps = withServerSideAuth(
+export const getServerSideProps = withServerSideAuth('student')(
   async ({ req, params }) => {
     const moduleId = params!.module as string;
     const authCookie = req.headers.cookie as string;
