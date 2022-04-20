@@ -36,16 +36,3 @@ export const getUserDetails = async ({
   });
   return data;
 };
-
-// axios does not work in next js middleware so we need to use native fetch there
-export const fetchGetUserDetails = async ({
-  cookie,
-}: Options): Promise<IUserDetails> => {
-  const res = await fetch(apiPath('user/details'), {
-    headers: { cookie },
-  });
-  if (!res.ok) {
-    throw Error(res.statusText);
-  }
-  return await res.json();
-};
