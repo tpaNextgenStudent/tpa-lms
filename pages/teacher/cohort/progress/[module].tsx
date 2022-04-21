@@ -8,6 +8,7 @@ import {
 import { withServerSideAuth } from '../../../../lib/auth/withServerSideAuth';
 import { getTeacherCohortProgress } from '../../../../api/cohort';
 import { getUserDetails } from '../../../../api/user';
+import { GradesLegend } from '../../../../components/teacher/GradesLegend/GradesLegend';
 
 export default function CohortProgressIndex({
   user,
@@ -20,6 +21,7 @@ export default function CohortProgressIndex({
       title="Cohort Progress"
       description="Students' progress grouped by modules."
     >
+      <GradesLegend />
       <Table
         data={progress}
         columns={getTeacherCohortProgressColumns(numOfTasksInModule)}

@@ -11,9 +11,10 @@ interface GradeCellProps {
     status: TaskStatus;
     attempt_number: number;
   } | null;
+  isEmpty?: boolean;
 }
 
-export const GradeCell = ({ grade }: GradeCellProps) => {
+export const GradeCell = ({ grade, isEmpty = false }: GradeCellProps) => {
   if (grade) {
     if (grade.status === 'in review') {
       return (
@@ -32,7 +33,9 @@ export const GradeCell = ({ grade }: GradeCellProps) => {
             styles[`wrapper${getColorByScore(grade.score)}`]
           )}
         >
-          <span className={styles.value}>{grade.attempt_number}</span>
+          <span className={styles.value}>
+            {isEmpty ? '-' : grade.attempt_number}
+          </span>
         </span>
       );
     }
