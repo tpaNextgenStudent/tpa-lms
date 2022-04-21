@@ -3,7 +3,10 @@ import styles from './cohort-progress.module.scss';
 import Link from 'next/link';
 import { UserNameCell } from '../../../../components/common/tables/UserNameCell/UserNameCell';
 import { TaskStatus } from '../../../../api/tasks';
-import { ITeacherProgressItem } from '../../../../api/cohort';
+import {
+  ITeacherProgressItem,
+  ITeacherProgressTask,
+} from '../../../../api/cohort';
 import { GradeCell } from '../../../../components/common/tables/GradeCell/GradeCell';
 
 type TaskScoreField = {
@@ -77,25 +80,36 @@ export function getTeacherCohortProgressColumns(
 export const mapProgressToTableData = (
   rawProgress: ITeacherProgressItem[]
 ): CohortProgressData[] => {
-  return rawProgress.map(({ student, tasks }) => {
-    const studentName = [student.user.name, student.user.surname]
-      .filter(n => n)
-      .join(' ');
+  return rawProgress
+    .sort(({ tasks: t1 }, { tasks: t2 }) => {
+      return countApprovedTasks(t1) > countApprovedTasks(t2) ? -1 : 1;
+    })
+    .map(({ student, tasks }) => {
+      const studentName = [student.user.name, student.user.surname]
+        .filter(n => n)
+        .join(' ');
 
-    return Object.assign(
-      {
-        student: {
-          name: studentName,
-          login: student.profile.login,
-          img: student.user.image,
+      return Object.assign(
+        {
+          student: {
+            name: studentName,
+            login: student.profile.login,
+            img: student.user.image,
+          },
+          profile: { link: '/profile/test' },
         },
-        profile: { link: '/profile/test' },
-      },
-      ...tasks
-        .sort((a, b) => (a.position > b.position ? 1 : -1))
-        .map(({ position, score, status, attempt_number }) => ({
+        ...tasks.map(({ position, score, status, attempt_number }) => ({
           [`task_${position}`]: { score, status, attempt_number },
         }))
-    );
-  });
+      );
+    });
 };
+
+function countApprovedTasks(tasks: ITeacherProgressTask[]) {
+  return tasks.reduce((acc, current) => {
+    if (current.status === 'approved') {
+      return acc + (current.score || 2);
+    }
+    return acc;
+  }, 0);
+}
