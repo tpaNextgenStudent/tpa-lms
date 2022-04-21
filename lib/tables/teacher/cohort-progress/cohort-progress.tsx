@@ -1,73 +1,101 @@
 import { Column } from 'react-table';
 import styles from './cohort-progress.module.scss';
-import Image from 'next/image';
 import Link from 'next/link';
-import ArrowRightIcon from '../../../../public/svg/arrow-right.svg';
-import { Task } from '../../../utils/types';
+import { UserNameCell } from '../../../../components/common/tables/UserNameCell/UserNameCell';
+import { TaskStatus } from '../../../../api/tasks';
+import { ITeacherProgressItem } from '../../../../api/cohort';
+import { GradeCell } from '../../../../components/common/tables/GradeCell/GradeCell';
+
+type TaskScoreField = {
+  score: number | null;
+  status: TaskStatus;
+  attempt_number: number;
+};
 
 export interface CohortProgressData {
-  student: { name: string; username: string; img: string };
+  student: { name: string; img: string | null; login: string | null };
+  [key: `task_${number}`]: TaskScoreField | null;
   profile: { link: string };
-  [key: `task_${number}`]: number;
 }
 
-export function getCohortProgressColumns(
-  tasks: Task[]
+export function getTeacherCohortProgressColumns(
+  numOfTasksInModule: number
 ): Column<CohortProgressData>[] {
-  const tasksColumns = tasks.map(
-    (task, index) =>
+  //prepare columns for all tasks
+  const tasksColumns = [...Array(numOfTasksInModule)].map(
+    (_, index) =>
       ({
-        Header: `Task ${index + 1}`,
+        Header: () => (
+          <span className={styles.taskCell}>{`Task ${index + 1}`}</span>
+        ),
         accessor: `task_${index + 1}`,
-        Cell: ({ cell: { value } }: { cell: { value: number } }) => (
-          <span className={styles.scoreWrapper}>{value}</span>
+        width: 41,
+
+        Cell: ({
+          cell: { value },
+        }: {
+          cell: { value: TaskScoreField | null };
+        }) => (
+          <span className={styles.taskCell}>
+            <GradeCell grade={value} />
+          </span>
         ),
       } as const)
   );
+
   return [
     {
       Header: 'Student name',
       accessor: 'student',
+      width: 158,
 
       Cell: ({
         cell: { value },
       }: {
-        cell: { value: { name: string; username: string; img: string } };
+        cell: { value: CohortProgressData['student'] };
       }) => (
-        <div className={styles.studentCellWrapper}>
-          <div className={styles.studentImgWrapper}>
-            <Image
-              className={styles.studentImg}
-              width={32}
-              height={32}
-              objectFit="cover"
-              layout="fixed"
-              src={value.img}
-              alt={value.name}
-            />
-          </div>
-          <div className={styles.studentNameWrapper}>
-            <span className={styles.studentName}>{value.name}</span>
-            <span className={styles.studentName}>#{value.username}</span>
-          </div>
-        </div>
+        <UserNameCell name={value.name} img={value.img} login={value.login} />
       ),
     },
     ...tasksColumns,
     {
       Header: '',
       accessor: 'profile',
+      width: '1fr',
 
       Cell: ({ cell: { value } }: { cell: { value: { link: string } } }) => (
         <Link href={value.link}>
           <a className={styles.profileLink}>
-            <span>Profile</span>
-            <span className={styles.profileLinkArrow}>
-              <ArrowRightIcon />
-            </span>
+            <span>Go to profile</span>
           </a>
         </Link>
       ),
     },
   ];
 }
+
+export const mapProgressToTableData = (
+  rawProgress: ITeacherProgressItem[]
+): CohortProgressData[] => {
+  return rawProgress.map(({ student, tasks }) => {
+    const studentName = [student.user.name, student.user.surname]
+      .filter(n => n)
+      .join(' ');
+
+    return Object.assign(
+      {
+        student: {
+          name: studentName,
+          login: student.profile.login,
+          img: student.user.image,
+        },
+        profile: { link: '/profile/test' },
+      },
+      ...tasks
+        .sort((a, b) => (a.position > b.position ? 1 : -1))
+        .map(({ position, score, status, attempt_number }) => ({
+          [`task_${position}`]: { score, status, attempt_number },
+        }))
+    );
+  });
+};

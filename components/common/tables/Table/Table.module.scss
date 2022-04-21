@@ -44,6 +44,7 @@
 }
 
 .tableRowWrapper {
+  min-width: max-content;
   &:nth-child(odd) {
     background: colors.$bgTable;
   }

@@ -7,12 +7,14 @@ interface TableProps<T extends {}> {
   data: T[];
   columns: Column<T>[];
   isFullWidth?: boolean;
+  colGap?: number;
 }
 
 export const Table = <T extends {}>({
   data,
   columns,
   isFullWidth,
+  colGap,
 }: TableProps<T>) => {
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable<T>({ columns, data });
@@ -31,6 +33,7 @@ export const Table = <T extends {}>({
             return (
               <div key={key} {...headerProps}>
                 <TableGridWrapper
+                  colGap={colGap}
                   className={styles.headRow}
                   columns={gridTemplateCols}
                 >
@@ -69,6 +72,7 @@ export const Table = <T extends {}>({
                 {...rowProps}
               >
                 <TableGridWrapper
+                  colGap={colGap}
                   className={styles.tableRow}
                   columns={gridTemplateCols}
                 >

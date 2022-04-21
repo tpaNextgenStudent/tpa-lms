@@ -1,40 +1,23 @@
 @use '/lib/styles/variables/colors.module' as colors;
-
-.studentImgWrapper {
-  flex-shrink: 0;
-}
-
-.studentImg {
-  border-radius: 50px;
-  flex-shrink: 0;
-}
-
-.studentCellWrapper {
-  display: flex;
-  align-items: center;
-}
-
-.studentNameWrapper {
-  display: flex;
-  flex-direction: column;
-}
-
-.studentName {
-  margin-left: 10px;
-}
+@use '/lib/styles/variables/fonts.module' as fonts;
 
 .profileLink {
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  color: colors.$purplePrimary;
+  font-weight: fonts.$weightBold;
+  font-size: 12px;
+  line-height: 24px;
+  margin-left: auto;
+
+  &:hover {
+    text-decoration: underline;
+  }
 }
 
-.profileLinkArrow {
-  margin-left: 16px;
-}
-
-.scoreWrapper {
-  background-color: colors.$fontSecondary;
-  padding: 8px 12px;
-  border-radius: 64px;
+.taskCell {
+  width: fit-content;
+  display: block;
+  margin: 0 auto;
 }

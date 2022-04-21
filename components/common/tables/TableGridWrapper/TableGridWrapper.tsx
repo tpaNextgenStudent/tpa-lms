@@ -6,19 +6,21 @@ interface TableGridWrapperProps {
   children: ReactNode;
   className?: string;
   columns: (string | number | undefined)[];
+  colGap?: number;
 }
 
 export const TableGridWrapper = ({
   children,
   className,
   columns,
+  colGap = 32,
 }: TableGridWrapperProps) => {
   const gridTemplateColumns = columns
     .map(v => (typeof v === 'number' ? `${v}px` : v))
     .join(' ');
   return (
     <div
-      style={{ gridTemplateColumns }}
+      style={{ gridTemplateColumns, ['--gap' as string]: `${colGap}px` }}
       className={clsx(styles.gridWrapper, className)}
     >
       {children}
