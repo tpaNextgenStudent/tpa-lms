@@ -38,7 +38,7 @@ export default function ScoresIndex({
   );
 }
 
-export const getServerSideProps = withServerSideAuth(
+export const getServerSideProps = withServerSideAuth('teacher')(
   async ({ req, params }) => {
     const { assignment: assignmentId } = params! as {
       assignment: string;

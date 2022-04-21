@@ -26,27 +26,29 @@ export default function AssignmentsIndex({
   );
 }
 
-export const getServerSideProps = withServerSideAuth(async ({ req, res }) => {
-  const authCookie = req.headers.cookie as string;
-  const user = await getUserDetails({ cookie: authCookie });
+export const getServerSideProps = withServerSideAuth('teacher')(
+  async ({ req, res }) => {
+    const authCookie = req.headers.cookie as string;
+    const user = await getUserDetails({ cookie: authCookie });
 
-  const rawAssignments = await getTeacherAssignments({ cookie: authCookie });
+    const rawAssignments = await getTeacherAssignments({ cookie: authCookie });
 
-  const assignments: AssignmentsData[] = rawAssignments.map(a => {
-    return {
-      submission_date: dayjs(a.submission_date).format('DD MMM YYYY'),
-      student: {
-        name: a.student.user.name,
-        login: a.student.user.email,
-        img: a.student.user.image,
-      },
-      module: `Module ${a.module_number}`,
-      task: a.task.name,
-      task_type: a.task.type,
-      attempt: a.attempt_number,
-      check: { id: a.id },
-    };
-  });
+    const assignments: AssignmentsData[] = rawAssignments.map(a => {
+      return {
+        submission_date: dayjs(a.submission_date).format('DD MMM YYYY'),
+        student: {
+          name: a.student.user.name,
+          login: a.student.user.email,
+          img: a.student.user.image,
+        },
+        module: `Module ${a.module_number}`,
+        task: a.task.name,
+        task_type: a.task.type,
+        attempt: a.attempt_number,
+        check: { id: a.id },
+      };
+    });
 
-  return { props: { user, assignments } };
-});
+    return { props: { user, assignments } };
+  }
+);
