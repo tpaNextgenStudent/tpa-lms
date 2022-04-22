@@ -57,3 +57,27 @@ export const getTeacherCohortProgress = async (
   );
   return data;
 };
+
+export interface ITeacherSingleStudentScores {
+  user: IUser;
+  profile: IProfile;
+  tasks_in_modules: {
+    tasks: ITeacherProgressTask[];
+    position: number;
+    module_id: string;
+  }[];
+}
+
+export const getTeacherSingleStudentScores = async (
+  assignmentId: string,
+  { cookie }: Options
+): Promise<ITeacherSingleStudentScores> => {
+  const { data } = await axios.get(
+    apiPath(`teacher/scores/student/${assignmentId}`),
+    {
+      headers: { cookie },
+    }
+  );
+
+  return data.student;
+};

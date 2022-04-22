@@ -96,7 +96,9 @@ export const mapProgressToTableData = (
             login: student.profile.login,
             img: student.user.image,
           },
-          profile: { link: '/profile/test' },
+          profile: {
+            link: `/teacher/cohort/progress/student/${student.assignment_id}`,
+          },
         },
         ...tasks.map(({ position, score, status, attempt_number }) => ({
           [`task_${position}`]: { score, status, attempt_number },
