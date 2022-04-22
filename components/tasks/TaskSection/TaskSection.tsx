@@ -5,7 +5,6 @@ import { useState } from 'react';
 import EnlargeIcon from '../../../public/svg/enlarge-icon.svg';
 import ShrinkIcon from '../../../public/svg/shrink-icon.svg';
 import clsx from 'clsx';
-import { TaskNav } from '../TaskNav/TaskNav';
 import { TaskComments } from '../TaskComments/TaskComments';
 import { TaskStatus } from '../../../api/tasks';
 import { IModuleVersion } from '../../../api/modules';
@@ -14,6 +13,7 @@ import { TaskBadges } from '../TaskBadges/TaskBadges';
 import { CTAButton } from '../../common/CTAButton/CTAButton';
 import { useRouter } from 'next/router';
 import { TeacherAssessPanel } from '../TeacherAssessPanel/TeacherAssessPanel';
+import { ViewParamTabsSection } from '../../common/ViewParamTabsSection/ViewParamTabsSection';
 
 interface TaskSectionProps {
   task: {
@@ -55,7 +55,6 @@ export const TaskSection = ({
   };
 
   const moduleNumber = `Module ${module.module_number}`;
-  const isCommentsView = router.query.view === 'comments';
 
   return (
     <main
@@ -88,16 +87,18 @@ export const TaskSection = ({
         badges={['type', 'status', 'attempt', 'score']}
         config={{ score: { withText: true, withBorder: true } }}
       />
-      <TaskNav />
-      {isCommentsView ? (
-        <TaskComments comments={comments} />
-      ) : (
-        <TaskDescription
-          answer={attempt.answer}
-          locked={attempt.status === 'upcoming'}
-          description={task.description}
-        />
-      )}
+      <ViewParamTabsSection
+        tabs={{
+          description: (
+            <TaskDescription
+              answer={attempt.answer}
+              locked={attempt.status === 'upcoming'}
+              description={task.description}
+            />
+          ),
+          comments: <TaskComments comments={comments} />,
+        }}
+      />
       {isTaskActionVisible && <TaskAction task={task} />}
       {isPassAgainVisible && (
         <div

@@ -11,6 +11,7 @@ import {
   getTeacherStudentProgressColumns,
   mapStudentProgressToTableData,
 } from '../../../../../lib/tables/teacher/cohort-student-progress/cohort-student-progress';
+import { ViewParamTabsSection } from '../../../../../components/common/ViewParamTabsSection/ViewParamTabsSection';
 
 export default function CohortProgressIndex({
   user,
@@ -39,11 +40,20 @@ export default function CohortProgressIndex({
         avatar={student.user.image}
         bio={student.user.bio}
       />
-      <GradesLegend />
-      <Table
-        data={studentTableData}
-        columns={getTeacherStudentProgressColumns(8)}
-        colGap={26}
+      <ViewParamTabsSection
+        tabs={{
+          scores: (
+            <>
+              <GradesLegend />
+              <Table
+                data={studentTableData}
+                columns={getTeacherStudentProgressColumns(8)}
+                colGap={26}
+              />
+            </>
+          ),
+          'tasks to be assigned': <span>tasks to be assigned</span>,
+        }}
       />
     </Layout>
   );
