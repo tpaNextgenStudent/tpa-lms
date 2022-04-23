@@ -12,13 +12,16 @@ import {
   mapStudentProgressToTableData,
 } from '../../../../../lib/tables/teacher/cohort-student-progress/cohort-student-progress';
 import { ViewParamTabsSection } from '../../../../../components/common/ViewParamTabsSection/ViewParamTabsSection';
+import { getTeacherAssignmentsByStudent } from '../../../../../api/assignments';
+import { mapStudentAssignmentsToTableData } from '../../../../../lib/tables/teacher/student-assignments/student-assignments';
+import { columns } from '../../../../../lib/tables/teacher/student-assignments/student-assignments';
 
 export default function CohortProgressIndex({
   user,
   student,
-  studentTableData,
+  studentScoresTableData,
+  studentAssignmentsTableData,
 }: InferPagePropsType<typeof getServerSideProps>) {
-  console.log(student);
   const userName = [student.user.name, student.user.surname]
     .filter(n => !!n)
     .join(' ');
@@ -46,13 +49,19 @@ export default function CohortProgressIndex({
             <>
               <GradesLegend />
               <Table
-                data={studentTableData}
+                data={studentScoresTableData}
                 columns={getTeacherStudentProgressColumns(8)}
                 colGap={26}
               />
             </>
           ),
-          'tasks to be assigned': <span>tasks to be assigned</span>,
+          'tasks to be assigned': (
+            <Table
+              data={studentAssignmentsTableData}
+              columns={columns}
+              colGap={26}
+            />
+          ),
         }}
       />
     </Layout>
@@ -68,6 +77,7 @@ export const getServerSideProps = withServerSideAuth('teacher')(
 
     try {
       const user = await getUserDetails({ cookie: authCookie });
+
       const {
         user: studentUser,
         profile,
@@ -75,14 +85,26 @@ export const getServerSideProps = withServerSideAuth('teacher')(
       } = await getTeacherSingleStudentScores(assignmentId, {
         cookie: authCookie,
       });
+      const studentScoresTableData =
+        mapStudentProgressToTableData(tasks_in_modules);
 
-      const studentTableData = mapStudentProgressToTableData(tasks_in_modules);
+      const rawStudentAssignments = await getTeacherAssignmentsByStudent(
+        assignmentId,
+        {
+          cookie: authCookie,
+        }
+      );
+
+      const studentAssignmentsTableData = mapStudentAssignmentsToTableData(
+        rawStudentAssignments
+      );
 
       return {
         props: {
           user,
           student: { user: studentUser, profile },
-          studentTableData,
+          studentScoresTableData,
+          studentAssignmentsTableData,
         },
       };
     } catch {
