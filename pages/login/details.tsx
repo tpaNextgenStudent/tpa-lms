@@ -6,6 +6,7 @@ import { apiPath } from '../../lib/utils/apiPath';
 import { withServerSideAuth } from '../../lib/auth/withServerSideAuth';
 import { useRouter } from 'next/router';
 import { UserDetails } from '../../schemas/userDetailsSchema';
+import { toast } from 'react-toastify';
 
 export default function LoginDetails() {
   const router = useRouter();
@@ -13,11 +14,14 @@ export default function LoginDetails() {
   const onSubmit = async (data: UserDetails) => {
     try {
       await axios.post(apiPath('user/details'), data);
+      toast('User details successfully updated!', {
+        type: 'success',
+      });
       await router.push('/');
-    } catch (err: unknown) {
-      if (axios.isAxiosError(err)) {
-        console.log(err.response?.data);
-      }
+    } catch {
+      toast('There was an error while updating user details!', {
+        type: 'error',
+      });
     }
   };
 
