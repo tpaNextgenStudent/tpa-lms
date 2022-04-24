@@ -14,7 +14,7 @@ export const ProfileCohortInfo = ({
   progressLink,
 }: ProfileCohortInfoProps) => {
   return (
-    <section className={styles.wrapper}>
+    <section data-cypress="ProfileCohortInfo" className={styles.wrapper}>
       <h2 className={styles.header}>Cohort</h2>
       <table className={styles.table}>
         <tr className={styles.tr}>
@@ -23,12 +23,24 @@ export const ProfileCohortInfo = ({
           {progressLink && <th className={styles.th} />}
         </tr>
         <tr className={styles.tr}>
-          <td className={clsx(styles.td, styles.cohortName)}>{name}</td>
-          <td className={styles.td}>{numberOfStudents}</td>
+          <td
+            data-cypress="ProfileCohortName"
+            className={clsx(styles.td, styles.cohortName)}
+          >
+            {name}
+          </td>
+          <td data-cypress="ProfileCohortNumOfStudents" className={styles.td}>
+            {numberOfStudents}
+          </td>
           {progressLink && (
             <td className={styles.td}>
               <Link href={progressLink}>
-                <a className={styles.progressLink}>Go to cohort progress</a>
+                <a
+                  data-cypress="ProfileCohortProgressLink"
+                  className={styles.progressLink}
+                >
+                  Go to cohort progress
+                </a>
               </Link>
             </td>
           )}

@@ -5,7 +5,7 @@ interface ProfileBannerProps {}
 
 export const ProfileBanner = ({}: ProfileBannerProps) => {
   return (
-    <div className={styles.bannerWrapper}>
+    <div data-cypress="ProfileBanner" className={styles.bannerWrapper}>
       <Image
         src="/profile-code-bg.png"
         width={208}

@@ -11,7 +11,7 @@ export const ProfileTeacherInfo = ({
   avatar,
 }: ProfileTeacherInfoProps) => {
   return (
-    <section className={styles.wrapper}>
+    <section data-cypress="ProfileTeacherInfo" className={styles.wrapper}>
       <h2 className={styles.header}>Teacher</h2>
       <div className={styles.teacherWrapper}>
         <div className={styles.imgWrapper}>
@@ -24,7 +24,9 @@ export const ProfileTeacherInfo = ({
             objectFit="cover"
           />
         </div>
-        <span className={styles.name}>{name}</span>
+        <span data-cypress="ProfileTeacherName" className={styles.name}>
+          {name}
+        </span>
       </div>
     </section>
   );
