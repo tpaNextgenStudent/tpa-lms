@@ -20,10 +20,8 @@ export default function Login({
   if (error) {
     return (
       <ErrorView
-        title="*Something went wrong*"
-        description={
-          'Access denied. Please, contact support or go back to the login page and try again.'
-        }
+        title="*Something went wrong.*"
+        description="Please, go back and log in again."
         primaryButton={{
           text: 'Back to login page',
           onClick: () => {

@@ -3,6 +3,7 @@ import { CTAButton } from '../CTAButton/CTAButton';
 import { HandleBold } from '../HandleBold/HandleBold';
 import Image from 'next/image';
 import BgStripesIcon from '../../../public/svg/bg-stripes.svg';
+import Link from 'next/link';
 
 interface ErrorViewProps {
   title: string;
@@ -20,14 +21,16 @@ export const ErrorView = ({
   return (
     <div className={styles.wrapper}>
       <header className={styles.header}>
-        <div className={styles.logoWrapper}>
-          <Image
-            src="/svg/tpa-logo.svg"
-            alt="Tech Play Academy Logo"
-            width={208}
-            height={20}
-          />
-        </div>
+        <Link href="/">
+          <a className={styles.logoWrapper} aria-label="Home page link">
+            <Image
+              src="/svg/tpa-logo.svg"
+              alt="Tech Play Academy Logo"
+              width={208}
+              height={20}
+            />
+          </a>
+        </Link>
       </header>
       <main className={styles.main}>
         <div className={styles.contentWrapper}>
