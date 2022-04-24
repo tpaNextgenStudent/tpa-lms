@@ -9,6 +9,7 @@ interface TableProps<T extends {}> {
   isFullWidth?: boolean;
   colGap?: number;
   className?: string;
+  id?: string;
 }
 
 export const Table = <T extends {}>({
@@ -17,6 +18,7 @@ export const Table = <T extends {}>({
   isFullWidth,
   colGap,
   className,
+  id,
 }: TableProps<T>) => {
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable<T>({ columns, data });
@@ -24,7 +26,11 @@ export const Table = <T extends {}>({
   const gridTemplateCols = headerGroups[0].headers.map(({ width }) => width);
 
   return (
-    <main data-cypress="Table" className={clsx(styles.wrapper, className)}>
+    <main
+      data-cypress="Table"
+      id={id}
+      className={clsx(styles.wrapper, className)}
+    >
       <div
         className={clsx(styles.table, isFullWidth && styles.tableFullWidth)}
         {...getTableProps()}

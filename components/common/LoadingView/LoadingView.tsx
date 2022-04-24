@@ -16,7 +16,7 @@ export const LoadingView = ({ children, isLoading }: LoadingViewProps) => {
         <div
           className={clsx(styles.wrapper, isLoading && styles.wrapperLoading)}
         >
-          <button className={styles.trapButton} aria-hidden={'true'} />
+          {isLoading && <button className={styles.trapButton} aria-hidden />}
           <LoadingAnimation />
         </div>
       </FocusTrap>

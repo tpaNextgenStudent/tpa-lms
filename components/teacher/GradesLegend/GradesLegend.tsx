@@ -8,7 +8,10 @@ interface GradesLegendProps {
 
 export const GradesLegend = ({ className }: GradesLegendProps) => {
   return (
-    <section className={clsx(styles.wrapper, className)}>
+    <section
+      data-cypress="GradesLegend"
+      className={clsx(styles.wrapper, className)}
+    >
       <p className={styles.legendItem}>
         <span>Number of attempts</span>
         <span className={styles.attempts}>1,2,3...</span>

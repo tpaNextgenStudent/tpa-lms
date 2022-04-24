@@ -9,7 +9,7 @@ interface UserNameCellProps {
 
 export const UserNameCell = ({ img, name, login }: UserNameCellProps) => {
   return (
-    <div className={styles.userCellWrapper}>
+    <div data-cypress="UserNameCell" className={styles.userCellWrapper}>
       <div className={styles.userImgWrapper}>
         {img && (
           <Image

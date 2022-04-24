@@ -35,7 +35,7 @@ export default function CohortProgressIndex({
         link: '/teacher/cohort/progress',
       }}
       withHeaderPrevButton
-      title={'User name'}
+      title={userName}
     >
       <ProfileBanner />
       <ProfileUserInfo
@@ -50,6 +50,7 @@ export default function CohortProgressIndex({
             <>
               <GradesLegend className={styles.gradesLegendWrapper} />
               <Table
+                id="student-scores-table"
                 data={studentScoresTableData}
                 columns={getTeacherStudentProgressColumns(8)}
                 colGap={26}
@@ -58,6 +59,7 @@ export default function CohortProgressIndex({
           ),
           'tasks to be assigned': (
             <Table
+              id="student-tasks-to-be-assigned-table"
               className={styles.toAssignTableWrapper}
               data={studentAssignmentsTableData}
               columns={columns}
