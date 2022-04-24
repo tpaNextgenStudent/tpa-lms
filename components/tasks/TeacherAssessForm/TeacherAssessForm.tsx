@@ -5,9 +5,10 @@ import {
   OptionType,
 } from '../../common/CustomSelect/CustomSelect';
 import { SingleValue } from 'react-select';
-import { FormEvent, useRef, useState } from 'react';
+import { FormEvent, useState } from 'react';
 import CrossIcon from '../../../public/svg/cross-icon.svg';
 import { useRouter } from 'next/router';
+import { toast } from 'react-toastify';
 import { postTeacherAssessment } from '../../../api/assess';
 
 interface TeacherAssessFormProps {
@@ -53,10 +54,12 @@ export const TeacherAssessForm = ({
         body: { score: currentScore.value, comment },
       });
       closePanel();
-      router.push('/teacher/assignments');
+      await router.push('/teacher/assignments');
+      toast('Attempt successfully assessed!', { type: 'success' });
     } catch (err) {
-      //show toast error message
-      console.error(err);
+      toast('There was an error while assessing this attempt!', {
+        type: 'error',
+      });
     }
   };
 

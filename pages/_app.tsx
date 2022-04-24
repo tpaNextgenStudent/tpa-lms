@@ -5,6 +5,8 @@ import '../lib/styles/gmfStyles.scss';
 import { LoadingView } from '../components/common/LoadingView/LoadingView';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function App({ Component, pageProps }: AppProps) {
   const [isLoading, setIsLoading] = useState(false);
@@ -29,6 +31,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <SessionProvider session={pageProps.session} refetchInterval={0}>
       <LoadingView isLoading={isLoading}>
         <Component {...pageProps} />
+        <ToastContainer closeOnClick={false} position="bottom-left" />
       </LoadingView>
     </SessionProvider>
   );
