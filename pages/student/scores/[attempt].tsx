@@ -25,7 +25,9 @@ export default function ScoresIndex({
         comments={comments}
         attempt={attempt}
         module={module}
-        isPassAgainVisible
+        isPassAgainVisible={
+          typeof attempt.score === 'number' && attempt.score < 3
+        }
       />
     </Layout>
   );
