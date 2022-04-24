@@ -90,16 +90,18 @@ export const TaskSection = ({
       <ViewParamTabsSection
         tabs={{
           description: (
-            <TaskDescription
-              answer={attempt.answer}
-              locked={attempt.status === 'upcoming'}
-              description={task.description}
-            />
+            <>
+              <TaskDescription
+                answer={attempt.answer}
+                locked={attempt.status === 'upcoming'}
+                description={task.description}
+              />
+              {isTaskActionVisible && <TaskAction task={task} />}
+            </>
           ),
           comments: <TaskComments comments={comments} />,
         }}
       />
-      {isTaskActionVisible && <TaskAction task={task} />}
       {isPassAgainVisible && (
         <div
           data-cypress="TaskSectionTryAgainBar"
