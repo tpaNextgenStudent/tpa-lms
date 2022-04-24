@@ -34,9 +34,6 @@
   white-space: nowrap;
 }
 
-.tr {
-}
-
 .td {
   background-color: colors.$purpleSecondary;
   padding: 24px;
@@ -48,5 +45,28 @@
 
   &:last-child {
     width: 100%;
+  }
+}
+
+.cohortName {
+  text-transform: uppercase;
+}
+
+.progressLink {
+  display: block;
+  font-weight: fonts.$weightBold;
+  font-size: 12px;
+  line-height: 24px;
+  color: colors.$purplePrimary;
+  margin-left: auto;
+  width: fit-content;
+  margin-right: 42px;
+
+  @media (max-width: media.$laptopS) {
+    margin-right: 0px;
+  }
+
+  &:hover {
+    text-decoration: underline;
   }
 }
