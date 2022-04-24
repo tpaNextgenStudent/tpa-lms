@@ -15,6 +15,7 @@ import { ViewParamTabsSection } from '../../../../../components/common/ViewParam
 import { getTeacherAssignmentsByStudent } from '../../../../../api/assignments';
 import { mapStudentAssignmentsToTableData } from '../../../../../lib/tables/teacher/student-assignments/student-assignments';
 import { columns } from '../../../../../lib/tables/teacher/student-assignments/student-assignments';
+import styles from '../../../../../components/teacher/cohort/progress/student/singleStudentProgressPage.module.scss';
 
 export default function CohortProgressIndex({
   user,
@@ -47,7 +48,7 @@ export default function CohortProgressIndex({
         tabs={{
           scores: (
             <>
-              <GradesLegend />
+              <GradesLegend className={styles.gradesLegendWrapper} />
               <Table
                 data={studentScoresTableData}
                 columns={getTeacherStudentProgressColumns(8)}
@@ -57,6 +58,7 @@ export default function CohortProgressIndex({
           ),
           'tasks to be assigned': (
             <Table
+              className={styles.toAssignTableWrapper}
               data={studentAssignmentsTableData}
               columns={columns}
               colGap={26}

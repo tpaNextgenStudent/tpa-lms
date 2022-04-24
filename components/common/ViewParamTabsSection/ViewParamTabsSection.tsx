@@ -54,7 +54,7 @@ export const ViewParamTabsSection = ({ tabs }: TabsSectionProps) => {
   );
 
   return (
-    <div>
+    <>
       <div data-cypress="ViewParamTabsSection" className={styles.taskNav}>
         {Object.keys(tabs).map(label => {
           return (
@@ -75,6 +75,6 @@ export const ViewParamTabsSection = ({ tabs }: TabsSectionProps) => {
         })}
       </div>
       {CurrentComponent}
-    </div>
+    </>
   );
 };
