@@ -65,7 +65,8 @@ export const TaskSection = ({
       )}
     >
       <p data-cypress="TaskSectionModuleName" className={styles.taskModule}>
-        {moduleNumber}
+        <span className={styles.taskModuleNumber}>{moduleNumber}</span>
+        <span className={styles.taskModuleName}>{module.name}</span>
       </p>
       <div className={styles.taskHeader}>
         <h2 data-cypress="TaskSectionTaskTitle" className={styles.taskTitle}>
