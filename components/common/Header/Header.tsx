@@ -62,7 +62,7 @@ export const Header = ({
             )}
             <span>{title}</span>
           </h1>
-          {actionsNumber && (
+          {typeof actionsNumber === 'number' && (
             <span className={styles.actionsNumber}>{actionsNumber}</span>
           )}
         </div>
