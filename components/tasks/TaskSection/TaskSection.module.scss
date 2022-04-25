@@ -27,12 +27,33 @@
 
 .taskModule {
   width: fit-content;
-  border-radius: 64px;
-  color: colors.$purplePrimary;
   font-weight: fonts.$weightBold;
   font-size: 12px;
   line-height: 16px;
-  margin: 24px 24px 0;
+  margin: 16px 24px 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.taskModuleNumber {
+  color: colors.$purplePrimary;
+  position: relative;
+  margin: 8px 20px 0 0;
+  &::after {
+    content: '';
+    position: absolute;
+    right: -12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 4px;
+    border-radius: 64px;
+    background-color: colors.$purplePrimary;
+  }
+}
+.taskModuleName {
+  margin-top: 8px;
+  color: colors.$fontPrimary;
 }
 
 .taskHeader {

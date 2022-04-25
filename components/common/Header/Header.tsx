@@ -25,7 +25,15 @@ export const Header = ({
   withPrevButton,
   parentPage,
 }: HeaderProps) => {
-  const { back } = useRouter();
+  const router = useRouter();
+
+  const goToPrevPage = () => {
+    if (parentPage) {
+      return router.push(parentPage.link);
+    }
+    return router.back();
+  };
+
   return (
     <header className={styles.headerWrapper}>
       <button
@@ -40,7 +48,7 @@ export const Header = ({
           {withPrevButton && (
             <button
               className={styles.prevLink}
-              onClick={back}
+              onClick={goToPrevPage}
               aria-label="Go back"
             >
               <ArrowLeftIcon />
@@ -54,7 +62,7 @@ export const Header = ({
             )}
             <span>{title}</span>
           </h1>
-          {actionsNumber && (
+          {typeof actionsNumber === 'number' && (
             <span className={styles.actionsNumber}>{actionsNumber}</span>
           )}
         </div>

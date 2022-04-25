@@ -65,7 +65,8 @@ export const TaskSection = ({
       )}
     >
       <p data-cypress="TaskSectionModuleName" className={styles.taskModule}>
-        {moduleNumber}
+        <span className={styles.taskModuleNumber}>{moduleNumber}</span>
+        <span className={styles.taskModuleName}>{module.name}</span>
       </p>
       <div className={styles.taskHeader}>
         <h2 data-cypress="TaskSectionTaskTitle" className={styles.taskTitle}>
@@ -90,16 +91,18 @@ export const TaskSection = ({
       <ViewParamTabsSection
         tabs={{
           description: (
-            <TaskDescription
-              answer={attempt.answer}
-              locked={attempt.status === 'upcoming'}
-              description={task.description}
-            />
+            <>
+              <TaskDescription
+                answer={attempt.answer}
+                locked={attempt.status === 'upcoming'}
+                description={task.description}
+              />
+              {isTaskActionVisible && <TaskAction task={task} />}
+            </>
           ),
           comments: <TaskComments comments={comments} />,
         }}
       />
-      {isTaskActionVisible && <TaskAction task={task} />}
       {isPassAgainVisible && (
         <div
           data-cypress="TaskSectionTryAgainBar"
