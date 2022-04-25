@@ -1,4 +1,5 @@
 import { withServerSideAuth } from '../../../../lib/auth/withServerSideAuth';
+import { getUserModules } from '../../../../api/modules';
 
 export default function CohortProgressIndex() {
   return null;
@@ -9,10 +10,8 @@ export const getServerSideProps = withServerSideAuth('teacher')(
     const authCookie = req.headers.cookie as string;
 
     try {
-      // const modules = await getUserModules({ cookie: authCookie });
-
-      const firstModule = true;
-      const moduleId = 'cl1gs22ai03987ks6d0gsive8';
+      const modules = await getUserModules({ cookie: authCookie });
+      const firstModule = modules[0];
 
       if (!firstModule) {
         return {
@@ -23,7 +22,7 @@ export const getServerSideProps = withServerSideAuth('teacher')(
       return {
         redirect: {
           permanent: false,
-          destination: `/teacher/cohort/progress/${moduleId}`,
+          destination: `/teacher/cohort/progress/${firstModule.module_version_id}`,
         },
       };
     } catch {
