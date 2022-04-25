@@ -9,6 +9,7 @@ import { withServerSideAuth } from '../../../../lib/auth/withServerSideAuth';
 import { getTeacherCohortProgress } from '../../../../api/cohort';
 import { getUserDetails } from '../../../../api/user';
 import { GradesLegend } from '../../../../components/teacher/GradesLegend/GradesLegend';
+import { getUserModules } from '../../../../api/modules';
 
 export default function CohortProgressIndex({
   user,
@@ -40,10 +41,16 @@ export const getServerSideProps = withServerSideAuth('teacher')(
 
     try {
       const user = await getUserDetails({ cookie: authCookie });
-      const numOfTasksInModule = 14;
+      const modules = await getUserModules({ cookie: authCookie });
+      const module =
+        modules.find(m => m.module_version_id === moduleId) || null;
       const rawProgress = await getTeacherCohortProgress(moduleId, {
         cookie: authCookie,
       });
+
+      const numOfTasksInModule = Math.max(
+        ...rawProgress.map(({ tasks }) => tasks.length)
+      );
 
       const progress = mapProgressToTableData(rawProgress);
       return { props: { user, progress, numOfTasksInModule } };
