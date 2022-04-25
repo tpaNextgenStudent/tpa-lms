@@ -1,129 +1,76 @@
-import { GetServerSidePropsContext } from 'next';
-import { getFakeData } from '../../../../lib/mocks/getFakeData';
-import { InferPagePropsType, Task } from '../../../../lib/utils/types';
+import { InferPagePropsType } from '../../../../lib/utils/types';
 import { Layout } from '../../../../components/common/Layout/Layout';
-import { useRouter } from 'next/router';
-import { ChangeEvent } from 'react';
 import { Table } from '../../../../components/common/tables/Table/Table';
 import {
-  CohortProgressData,
-  getCohortProgressColumns,
+  getTeacherCohortProgressColumns,
+  mapProgressToTableData,
 } from '../../../../lib/tables/teacher/cohort-progress/cohort-progress';
-import faker from '@faker-js/faker';
+import { withServerSideAuth } from '../../../../lib/auth/withServerSideAuth';
+import { getTeacherCohortProgress } from '../../../../api/cohort';
+import { getUserDetails } from '../../../../api/user';
+import { GradesLegend } from '../../../../components/teacher/GradesLegend/GradesLegend';
+import { getUserModules } from '../../../../api/modules';
+import { SingleValue } from 'react-select';
+import { OptionType } from '../../../../components/common/CustomSelect/CustomSelect';
+import { useRouter } from 'next/router';
 
 export default function CohortProgressIndex({
   user,
-  module,
-  modules,
   progress,
+  numOfTasksInModule,
+  modules,
+  module,
 }: InferPagePropsType<typeof getServerSideProps>) {
-  console.log(progress);
   const router = useRouter();
-  const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    router.push(`/teacher/cohort/progress/${e.target.value}`);
+  const onModuleChange = (option: SingleValue<OptionType>) => {
+    if (option?.value) {
+      router.push(`/teacher/cohort/progress/${option.value}`);
+    }
   };
-  return null;
-  // return (
-  //   <Layout
-  //     user={user}
-  //     title="Cohort Progress"
-  //     description="Stundets's progress grouped by modules."
-  //     cohortName={'TPA - TOYOTA - 05'}
-  //   >
-  //     <div>
-  //       {/*<ModuleSelect*/}
-  //       {/*  modules={modules}*/}
-  //       {/*  module={module}*/}
-  //       {/*  handleChange={handleChange}*/}
-  //       {/*/>*/}
-  //     </div>
-  //     <Table data={progress} columns={getCohortProgressColumns(module.tasks)} />
-  //   </Layout>
-  // );
+  return (
+    <Layout
+      user={user}
+      title="Cohort Progress"
+      description="Students' progress grouped by modules."
+    >
+      <GradesLegend />
+      <Table
+        data={progress}
+        columns={getTeacherCohortProgressColumns({
+          numOfTasksInModule,
+          modules,
+          module,
+          onModuleChange,
+        })}
+        colGap={26}
+      />
+    </Layout>
+  );
 }
 
-export async function getServerSideProps(ctx: GetServerSidePropsContext) {
-  const data = await getFakeData();
-
-  const user = data.user;
-
-  const cohorts = data.cohorts;
-  const userCohort = cohorts.find(c => c.id === user.cohortId);
-
-  //if user has no cohort, inform him that he has to ask a teacher for link
-  if (!userCohort) {
-    return {
-      redirect: {
-        permanent: false,
-        destination: '/join-to-cohort-error',
-      },
+export const getServerSideProps = withServerSideAuth('teacher')(
+  async ({ req, params }) => {
+    const authCookie = req.headers.cookie as string;
+    const { module: moduleId } = params! as {
+      module: string;
     };
+
+    try {
+      const user = await getUserDetails({ cookie: authCookie });
+      const modules = await getUserModules({ cookie: authCookie });
+      const module = modules.find(m => m.module_version_id === moduleId)!;
+      const rawProgress = await getTeacherCohortProgress(moduleId, {
+        cookie: authCookie,
+      });
+
+      const numOfTasksInModule = Math.max(
+        ...rawProgress.map(({ tasks }) => tasks.length)
+      );
+
+      const progress = mapProgressToTableData(rawProgress);
+      return { props: { user, progress, numOfTasksInModule, modules, module } };
+    } catch {
+      return { notFound: true };
+    }
   }
-
-  const pickedModuleId = ctx.query.module;
-
-  const module = data.modules.find(m => m.id === pickedModuleId);
-
-  if (!module) {
-    return {
-      notFound: true,
-    };
-  }
-
-  return {
-    props: {
-      user,
-      module,
-      modules: data.modules,
-      progress: getFakeProgress(module.tasks),
-    },
-  };
-}
-
-function getFakeProgress(tasks: Task[]): CohortProgressData[] {
-  const students = [
-    {
-      name: 'Paulina Pogorzelska',
-      username: 'pogorzelska',
-      img: 'https://unsplash.it/75/75/',
-    },
-    {
-      name: 'Patryk Górka',
-      username: 'gorka',
-      img: 'https://unsplash.it/50/50/',
-    },
-    {
-      name: 'Łukasz Matuszczak',
-      username: 'matuszczak',
-      img: 'https://unsplash.it/25/25',
-    },
-    {
-      name: 'Mateusz Supel',
-      username: 'supel',
-      img: 'https://unsplash.it/100/100',
-    },
-    {
-      name: 'Magdalena Misiak',
-      username: 'misiak',
-      img: 'https://unsplash.it/150/150',
-    },
-  ];
-
-  return students.map(({ name, username, img }) => {
-    return {
-      student: { name, username, img },
-      ...tasks
-        .map((task, index) => {
-          return {
-            [`task_${index + 1}`]: faker.random.arrayElement([1, 2, 3]),
-          };
-        })
-        .reduce((acc, curr) => {
-          const [key, val] = Object.entries(curr)[0];
-          acc[key] = val;
-          return acc;
-        }, {}),
-      profile: { link: '/teacher/cohort/progress' },
-    };
-  });
-}
+);

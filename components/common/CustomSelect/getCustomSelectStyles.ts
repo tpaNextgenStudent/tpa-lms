@@ -32,7 +32,7 @@ export function getCustomSelectStyles({
       ...provided,
       borderRadius: getBorderRadius(state.menuIsOpen, openSelectToTop),
       flexWrap: 'nowrap',
-      height: '48px',
+      height: '40px',
       boxShadow: 'none',
       transition: 'none',
       border: state.isFocused
@@ -141,7 +141,8 @@ export function getCustomSelectStyles({
     }),
     option: (provided, state) => ({
       ...provided,
-      padding: '12px 16px',
+      padding: '8px 16px',
+      height: '40px',
       fontWeight: fW,
       fontSize: '12px',
       lineHeight: '24px',

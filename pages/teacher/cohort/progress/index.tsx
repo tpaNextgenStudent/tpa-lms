@@ -1,42 +1,34 @@
-import { GetServerSidePropsContext } from 'next';
-import { getFakeData } from '../../../../lib/mocks/getFakeData';
+import { withServerSideAuth } from '../../../../lib/auth/withServerSideAuth';
+import { getUserModules } from '../../../../api/modules';
 
 export default function CohortProgressIndex() {
   return null;
 }
 
-export async function getServerSideProps(ctx: GetServerSidePropsContext) {
-  const data = await getFakeData();
+export const getServerSideProps = withServerSideAuth('teacher')(
+  async ({ req, res }) => {
+    const authCookie = req.headers.cookie as string;
 
-  const user = data.user;
+    try {
+      const modules = await getUserModules({ cookie: authCookie });
+      const firstModule = modules[0];
 
-  const cohorts = data.cohorts;
-  const userCohort = cohorts.find(c => c.id === user.cohortId);
+      if (!firstModule) {
+        return {
+          notFound: true,
+        };
+      }
 
-  //if user has no cohort, inform him that he has to ask a teacher for link
-  if (!userCohort) {
-    return {
-      redirect: {
-        permanent: false,
-        destination: '/join-to-cohort-error',
-      },
-    };
+      return {
+        redirect: {
+          permanent: false,
+          destination: `/teacher/cohort/progress/${firstModule.module_version_id}`,
+        },
+      };
+    } catch {
+      return {
+        notFound: true,
+      };
+    }
   }
-
-  //teacher haven't picked module,
-  //find 'in progress' task and redirect user to this task's page
-  const firstModule = userCohort.modules[0];
-
-  if (firstModule) {
-    return {
-      redirect: {
-        permanent: false,
-        destination: `/teacher/cohort/progress/${firstModule.id}`,
-      },
-    };
-  }
-
-  return {
-    notFound: true,
-  };
-}
+);
