@@ -23,13 +23,13 @@ interface TaskSectionProps {
     description: string;
     link: string | null;
   };
-  attempt: {
+  attempt?: {
     status: TaskStatus;
     attempt_number: number | null;
     score: number | null;
     answer: null | string;
   };
-  comments: Comment[];
+  comments?: Comment[];
   module: IModuleVersion;
   isTaskActionVisible?: boolean;
   isPassAgainVisible?: boolean;
@@ -93,14 +93,14 @@ export const TaskSection = ({
           description: (
             <>
               <TaskDescription
-                answer={attempt.answer}
-                locked={attempt.status === 'upcoming'}
+                answer={attempt?.answer}
+                locked={attempt?.status === 'upcoming'}
                 description={task.description}
               />
               {isTaskActionVisible && <TaskAction task={task} />}
             </>
           ),
-          comments: <TaskComments comments={comments} />,
+          comments: comments && <TaskComments comments={comments} />,
         }}
       />
       {isPassAgainVisible && (

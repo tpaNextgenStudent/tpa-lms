@@ -9,12 +9,14 @@ interface TaskListItemProps {
   task: ITask;
   module: IModuleVersion;
   isActive: boolean;
+  tasksPathPrefix: string;
 }
 
 export const TasksListItem = ({
   isActive,
   module,
   task,
+  tasksPathPrefix,
 }: TaskListItemProps) => {
   const moduleName = `Module ${module.module_number}`;
   return (
@@ -23,7 +25,7 @@ export const TasksListItem = ({
       className={clsx(styles.task, isActive && styles.taskActive)}
     >
       <Link
-        href={`/student/tasks/${module.module_version_id}/${task.task_data.id}`}
+        href={`${tasksPathPrefix}/${module.module_version_id}/${task.task_data.id}`}
       >
         <a className={styles.taskLink}>
           <span
@@ -39,7 +41,7 @@ export const TasksListItem = ({
           </h3>
           <TaskBadges
             task={task.task_data}
-            attempt={task.last_attempt}
+            attempt={task.last_attempt || undefined}
             config={{ score: { withBorder: true } }}
           />
         </a>

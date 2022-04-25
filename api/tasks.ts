@@ -31,7 +31,7 @@ export interface ITask {
     position: number;
     attempt_id: string | null;
     attempt_number: number | null;
-  };
+  } | null;
 }
 
 export const getUserTasksByModule = async (

@@ -13,13 +13,20 @@ interface TasksMenuProps {
   module: IModuleVersion;
   tasks: ITask[];
   task: ITask;
+  tasksPathPrefix: string;
 }
 
-export const TasksMenu = ({ modules, module, tasks, task }: TasksMenuProps) => {
+export const TasksMenu = ({
+  modules,
+  module,
+  tasks,
+  task,
+  tasksPathPrefix,
+}: TasksMenuProps) => {
   const router = useRouter();
   const handleChange = (option: SingleValue<OptionType>) => {
     if (option?.value) {
-      router.push(`/student/tasks/${option.value}`);
+      router.push(`${tasksPathPrefix}/${option.value}`);
     }
   };
 
@@ -43,7 +50,12 @@ export const TasksMenu = ({ modules, module, tasks, task }: TasksMenuProps) => {
         value={defaultValue}
         handleChange={handleChange}
       />
-      <TasksList currentTask={task} tasks={tasks} module={module} />
+      <TasksList
+        tasksPathPrefix={tasksPathPrefix}
+        currentTask={task}
+        tasks={tasks}
+        module={module}
+      />
     </section>
   );
 };
