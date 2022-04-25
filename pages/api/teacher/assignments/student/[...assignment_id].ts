@@ -45,11 +45,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     })
   );
 
-  const mappedResponse = responseWithUserData.map((attempt: Attempt) => {
-    if (!attempt.score && !attempt.comment) {
-      return attempt;
-    }
+  const mappedResponse = responseWithUserData.filter((attempt: Attempt) => {
+    return !attempt.score && !attempt.comment;
   });
 
-  res.status(200).send(mappedResponse.filter(n => n));
+  res.status(200).send(mappedResponse);
 };

@@ -94,18 +94,20 @@ describe('Student - My Tasks', () => {
     cy.get('[data-cypress=TaskComments]').should('not.exist');
     cy.get('[data-cypress=TaskDescription]').should('exist');
 
-    cy.get('[data-cypress=TaskNav]').then($element => {
+    cy.get('[data-cypress=ViewParamTabsSection]').then($element => {
       cy.wrap($element)
-        .find('[data-cypress=TaskNavComments]')
+        .contains('Comments')
         .should('exist')
         .click()
         .then(() => {
-          cy.get('[data-cypress=TaskComments]').should('exist');
+          cy.get('[data-cypress=TaskComments]', { timeout: 10000 }).should(
+            'exist'
+          );
           cy.get('[data-cypress=TaskDescription]').should('not.exist');
         });
 
       cy.wrap($element)
-        .find('[data-cypress=TaskNavDescription]')
+        .contains('Description')
         .should('exist')
         .click()
         .then(() => {

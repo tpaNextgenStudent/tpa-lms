@@ -7,16 +7,15 @@
   width: 100vw;
   height: 100vh;
   z-index: 999;
-  display: flex;
   justify-content: center;
   align-items: center;
-  opacity: 0;
+  display: flex;
+  visibility: hidden;
   pointer-events: none;
   background: rgba(255, 255, 255, 0.96);
 
   &Loading {
-    opacity: 1;
-    pointer-events: unset;
+    visibility: visible;
   }
 }
 

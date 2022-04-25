@@ -1,11 +1,17 @@
 import styles from './GradesLegend.module.scss';
 import { GradeCell } from '../../common/tables/GradeCell/GradeCell';
+import clsx from 'clsx';
 
-interface GradesLegendProps {}
+interface GradesLegendProps {
+  className?: string;
+}
 
-export const GradesLegend = ({}: GradesLegendProps) => {
+export const GradesLegend = ({ className }: GradesLegendProps) => {
   return (
-    <section className={styles.wrapper}>
+    <section
+      data-cypress="GradesLegend"
+      className={clsx(styles.wrapper, className)}
+    >
       <p className={styles.legendItem}>
         <span>Number of attempts</span>
         <span className={styles.attempts}>1,2,3...</span>

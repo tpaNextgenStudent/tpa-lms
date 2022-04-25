@@ -1,16 +1,14 @@
 import { Column } from 'react-table';
-import styles from './assignments.module.scss';
+import styles from './student-assignments.module.scss';
 import Link from 'next/link';
-import { UserNameCell } from '../../../../components/common/tables/UserNameCell/UserNameCell';
 import { TaskTypeCell } from '../../../../components/common/tables/TaskTypeCell/TaskTypeCell';
 import { TaskType } from '../../../utils/types';
 import { TaskAttemptBadge } from '../../../../components/tasks/TaskAttemptBadge/TaskAttemptBadge';
-import dayjs from 'dayjs';
 import { IAssignment } from '../../../../api/assignments';
+import dayjs from 'dayjs';
 
 export interface AssignmentsData {
   submission_date: string;
-  student: { name: string; login: string | null; img: string | null };
   module: string;
   task: string;
   task_type: string;
@@ -23,19 +21,6 @@ export const columns: Column<AssignmentsData>[] = [
     Header: 'Date of submission',
     accessor: 'submission_date',
     width: 110,
-  },
-  {
-    Header: 'Student name',
-    accessor: 'student',
-    width: 160,
-
-    Cell: ({
-      cell: {
-        value: { name, img, login },
-      },
-    }: {
-      cell: { value: AssignmentsData['student'] };
-    }) => <UserNameCell name={name} img={img} login={login} />,
   },
   {
     Header: 'Module',
@@ -92,17 +77,12 @@ export const columns: Column<AssignmentsData>[] = [
   },
 ];
 
-export const mapAssignmentsToTableData = (
+export const mapStudentAssignmentsToTableData = (
   rawAssignments: IAssignment[]
 ): AssignmentsData[] => {
   return rawAssignments.map(a => {
     return {
       submission_date: dayjs(a.submission_date).format('DD MMM YYYY'),
-      student: {
-        name: a.student.user.name,
-        login: a.student.user.email,
-        img: a.student.user.image,
-      },
       module: `Module ${a.module_number}`,
       task: a.task.name,
       task_type: a.task.type,

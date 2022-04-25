@@ -45,3 +45,17 @@ export const getTeacherAssignments = async ({
   });
   return data;
 };
+
+export const getTeacherAssignmentsByStudent = async (
+  assignmentId: string,
+  { cookie }: Options
+): Promise<IAssignment[]> => {
+  const { data } = await axios.get(
+    apiPath(`teacher/assignments/student/${assignmentId}`),
+    {
+      headers: { cookie },
+    }
+  );
+
+  return data;
+};

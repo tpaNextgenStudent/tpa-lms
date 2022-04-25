@@ -4,6 +4,7 @@ import { Table } from '../../../components/common/tables/Table/Table';
 import {
   AssignmentsData,
   columns,
+  mapAssignmentsToTableData,
 } from '../../../lib/tables/teacher/assignments/assignments';
 import { withServerSideAuth } from '../../../lib/auth/withServerSideAuth';
 import { getUserDetails } from '../../../api/user';
@@ -33,21 +34,8 @@ export const getServerSideProps = withServerSideAuth('teacher')(
 
     const rawAssignments = await getTeacherAssignments({ cookie: authCookie });
 
-    const assignments: AssignmentsData[] = rawAssignments.map(a => {
-      return {
-        submission_date: dayjs(a.submission_date).format('DD MMM YYYY'),
-        student: {
-          name: a.student.user.name,
-          login: a.student.user.email,
-          img: a.student.user.image,
-        },
-        module: `Module ${a.module_number}`,
-        task: a.task.name,
-        task_type: a.task.type,
-        attempt: a.attempt_number,
-        check: { id: a.id },
-      };
-    });
+    const assignments: AssignmentsData[] =
+      mapAssignmentsToTableData(rawAssignments);
 
     return { props: { user, assignments } };
   }

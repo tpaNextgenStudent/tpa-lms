@@ -92,7 +92,7 @@ export const TeacherAssessForm = ({
             <CustomSelect
               id="score-select"
               className={styles.select}
-              options={scoreOptions}
+              options={openSelectToTop ? scoreOptions.reverse() : scoreOptions}
               value={currentScore}
               handleChange={handleScoreChange}
               openSelectToTop={openSelectToTop}
