@@ -10,12 +10,23 @@ import { getTeacherCohortProgress } from '../../../../api/cohort';
 import { getUserDetails } from '../../../../api/user';
 import { GradesLegend } from '../../../../components/teacher/GradesLegend/GradesLegend';
 import { getUserModules } from '../../../../api/modules';
+import { SingleValue } from 'react-select';
+import { OptionType } from '../../../../components/common/CustomSelect/CustomSelect';
+import { useRouter } from 'next/router';
 
 export default function CohortProgressIndex({
   user,
   progress,
   numOfTasksInModule,
+  modules,
+  module,
 }: InferPagePropsType<typeof getServerSideProps>) {
+  const router = useRouter();
+  const onModuleChange = (option: SingleValue<OptionType>) => {
+    if (option?.value) {
+      router.push(`/teacher/cohort/progress/${option.value}`);
+    }
+  };
   return (
     <Layout
       user={user}
@@ -25,7 +36,12 @@ export default function CohortProgressIndex({
       <GradesLegend />
       <Table
         data={progress}
-        columns={getTeacherCohortProgressColumns(numOfTasksInModule)}
+        columns={getTeacherCohortProgressColumns({
+          numOfTasksInModule,
+          modules,
+          module,
+          onModuleChange,
+        })}
         colGap={26}
       />
     </Layout>
@@ -42,8 +58,7 @@ export const getServerSideProps = withServerSideAuth('teacher')(
     try {
       const user = await getUserDetails({ cookie: authCookie });
       const modules = await getUserModules({ cookie: authCookie });
-      const module =
-        modules.find(m => m.module_version_id === moduleId) || null;
+      const module = modules.find(m => m.module_version_id === moduleId)!;
       const rawProgress = await getTeacherCohortProgress(moduleId, {
         cookie: authCookie,
       });
@@ -53,7 +68,7 @@ export const getServerSideProps = withServerSideAuth('teacher')(
       );
 
       const progress = mapProgressToTableData(rawProgress);
-      return { props: { user, progress, numOfTasksInModule } };
+      return { props: { user, progress, numOfTasksInModule, modules, module } };
     } catch {
       return { notFound: true };
     }

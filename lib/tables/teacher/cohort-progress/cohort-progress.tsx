@@ -8,6 +8,12 @@ import {
   ITeacherProgressTask,
 } from '../../../../api/cohort';
 import { GradeCell } from '../../../../components/common/tables/GradeCell/GradeCell';
+import { IModuleVersion } from '../../../../api/modules';
+import {
+  CustomSelect,
+  OptionType,
+} from '../../../../components/common/CustomSelect/CustomSelect';
+import { SingleValue } from 'react-select';
 
 type TaskScoreField = {
   score: number | null;
@@ -21,9 +27,29 @@ export interface CohortProgressData {
   profile: { link: string };
 }
 
-export function getTeacherCohortProgressColumns(
-  numOfTasksInModule: number
-): Column<CohortProgressData>[] {
+interface Props {
+  numOfTasksInModule: number;
+  modules: IModuleVersion[];
+  module: IModuleVersion;
+  onModuleChange: (option: SingleValue<OptionType>) => void;
+}
+
+export function getTeacherCohortProgressColumns({
+  numOfTasksInModule,
+  modules,
+  module,
+  onModuleChange,
+}: Props): Column<CohortProgressData>[] {
+  const selectOptions = modules.map(({ module_version_id, module_number }) => ({
+    value: module_version_id,
+    label: `Module ${module_number}`,
+  }));
+
+  const defaultValue = {
+    value: module.module_version_id,
+    label: `Module ${module.module_number}`,
+  };
+
   //prepare columns for all tasks
   const tasksColumns = [...Array(numOfTasksInModule)].map(
     (_, index) =>
@@ -62,7 +88,15 @@ export function getTeacherCohortProgressColumns(
     },
     ...tasksColumns,
     {
-      Header: '',
+      Header: () => (
+        <CustomSelect
+          id="module-select"
+          options={selectOptions}
+          value={defaultValue}
+          handleChange={onModuleChange}
+          className={styles.modulePicker}
+        />
+      ),
       accessor: 'profile',
       width: '1fr',
 
