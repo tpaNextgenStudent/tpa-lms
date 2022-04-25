@@ -22,6 +22,7 @@ export default function CohortProgressIndex({
   student,
   studentScoresTableData,
   studentAssignmentsTableData,
+  maxNumOfTasks,
 }: InferPagePropsType<typeof getServerSideProps>) {
   const userName = [student.user.name, student.user.surname]
     .filter(n => !!n)
@@ -52,7 +53,7 @@ export default function CohortProgressIndex({
               <Table
                 id="student-scores-table"
                 data={studentScoresTableData}
-                columns={getTeacherStudentProgressColumns(8)}
+                columns={getTeacherStudentProgressColumns(maxNumOfTasks)}
                 colGap={26}
               />
             </>
@@ -89,6 +90,10 @@ export const getServerSideProps = withServerSideAuth('teacher')(
       } = await getTeacherSingleStudentScores(assignmentId, {
         cookie: authCookie,
       });
+      const maxNumOfTasks = Math.max(
+        ...tasks_in_modules.map(m => m.tasks.length)
+      );
+
       const studentScoresTableData =
         mapStudentProgressToTableData(tasks_in_modules);
 
@@ -109,6 +114,7 @@ export const getServerSideProps = withServerSideAuth('teacher')(
           student: { user: studentUser, profile },
           studentScoresTableData,
           studentAssignmentsTableData,
+          maxNumOfTasks,
         },
       };
     } catch {
