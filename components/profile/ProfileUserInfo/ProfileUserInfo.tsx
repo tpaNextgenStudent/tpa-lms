@@ -19,7 +19,7 @@ export const ProfileUserInfo = ({
   joinDate,
 }: ProfileUserInfoProps) => {
   return (
-    <section className={styles.wrapper}>
+    <section data-cypress="ProfileUserInfo" className={styles.wrapper}>
       <div className={styles.imgWrapper}>
         <Image
           src={avatar || '/svg/user.svg'}
@@ -32,19 +32,34 @@ export const ProfileUserInfo = ({
       </div>
       <div className={styles.aboutWrapper}>
         <div className={styles.nameWrapper}>
-          <h2 className={styles.name}>{name}</h2>
-          <a className={styles.ghLink} href={`https://github.com/${login}`}>
+          <h2 data-cypress="ProfileUserName" className={styles.name}>
+            {name}
+          </h2>
+          <a
+            data-cypress="ProfileUserGithubLink"
+            target="_blank"
+            rel="noreferrer noopener"
+            className={styles.ghLink}
+            href={`https://github.com/${login}`}
+          >
             <span className={styles.ghIcon} aria-label="Github icon">
               <GhIcon />
             </span>
             <span className={styles.login}>{login}</span>
           </a>
         </div>
-        {bio && <p className={styles.bio}>{bio}</p>}
+        {bio && (
+          <p data-cypress="ProfileUserBio" className={styles.bio}>
+            {bio}
+          </p>
+        )}
       </div>
       {joinDate && (
         <p className={styles.joinDate}>
-          You joined: <strong>{dayjs(joinDate).format('D MMMM, YYYY')}</strong>
+          You joined:{' '}
+          <strong data-cypress="ProfileUserJoinDate">
+            {dayjs(joinDate).format('D MMMM, YYYY')}
+          </strong>
         </p>
       )}
     </section>

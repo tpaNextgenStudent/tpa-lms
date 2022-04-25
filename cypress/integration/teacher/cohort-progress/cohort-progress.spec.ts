@@ -8,14 +8,41 @@ describe('Teacher - Cohort Progress', () => {
     cy.get('[data-cypress=GradesLegend]').should('exist');
 
     cy.get('[data-cypress=Table]').within(() => {
-      const tableHeaders = ['Student name', 'Task 1', 'Task 2'];
+      const tableHeaders = ['Student name', 'Task 1'];
       tableHeaders.forEach(header => {
         cy.get('[data-cypress=TableHead]').contains(header).should('exist');
       });
     });
   });
 
-  // it('Switches between modules', () => {});
+  it('Switches between modules using module select', () => {
+    let currentModuleName: string;
+    let moduleId: string;
+
+    cy.location().should(loc => {
+      const parts = loc.pathname.split('/');
+      moduleId = parts[parts.length - 1];
+    });
+
+    cy.get('[data-cypress=CustomSelect]')
+      .within($moduleSelect => {
+        currentModuleName = $moduleSelect.text();
+      })
+      .click();
+
+    cy.get('#react-select-module-select-listbox').then($list => {
+      cy.wrap($list).first().click();
+      cy.location('pathname', { timeout: 10000 }).should(
+        'not.include',
+        moduleId
+      );
+      cy.get('[data-cypress=CustomSelect]', { timeout: 10000 }).within(
+        $moduleSelect => {
+          expect($moduleSelect.text()).not.to.eq(currentModuleName);
+        }
+      );
+    });
+  });
 
   let studentName: string;
   it('Navigates to single student progress view', () => {
@@ -37,19 +64,17 @@ describe('Teacher - Cohort Progress', () => {
           'include.text',
           'Cohort Progress'
         );
-        cy.get('h1').should('include.text', studentName);
+        cy.get('h1', { timeout: 10000 }).should('include.text', studentName);
       });
 
     cy.get('[data-cypress=GradesLegend]').should('exist');
 
     cy.get('[data-cypress=Table]').within(() => {
-      const tableHeaders = ['Module', 'Task 1', 'Task 2'];
+      const tableHeaders = ['Module', 'Task 1'];
       tableHeaders.forEach(header => {
         cy.get('[data-cypress=TableHead]').contains(header).should('exist');
       });
     });
-
-    //todo: check if module scores matches
   });
 
   it("Switches between 'scores' and 'tasks to be assigned tabs'", () => {
