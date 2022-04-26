@@ -5,6 +5,7 @@ import MenuIcon from '../../../public/svg/menu-icon.svg';
 import { UserNav } from '../UserNav/UserNav';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import clsx from 'clsx';
 
 interface HeaderProps {
   title: string;
@@ -44,7 +45,12 @@ export const Header = ({
         <MenuIcon />
       </button>
       <div className={styles.textWrapper}>
-        <div className={styles.titleWrapper}>
+        <div
+          className={clsx(
+            styles.titleWrapper,
+            !description && styles.titleWrapperEmptyDesc
+          )}
+        >
           {withPrevButton && (
             <button
               className={styles.prevLink}

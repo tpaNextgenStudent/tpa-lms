@@ -16,11 +16,7 @@ export default function Tasks({
   task,
 }: InferPagePropsType<typeof getServerSideProps>) {
   return (
-    <Layout
-      title="My Tasks"
-      user={user}
-      description="Find all of yours tasks divided into modules."
-    >
+    <Layout title="Curriculum" user={user}>
       <div className={styles.tasksWrapper}>
         <TasksMenu
           tasksPathPrefix={'/teacher/curriculum'}

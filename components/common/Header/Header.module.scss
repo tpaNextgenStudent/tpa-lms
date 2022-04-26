@@ -35,6 +35,10 @@
 .titleWrapper {
   display: flex;
   align-items: center;
+
+  &EmptyDesc {
+    margin-bottom: 16px;
+  }
 }
 
 .headerWrapper {
