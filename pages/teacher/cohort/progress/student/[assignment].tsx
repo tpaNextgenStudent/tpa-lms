@@ -16,6 +16,7 @@ import { getTeacherAssignmentsByStudent } from '../../../../../api/assignments';
 import { mapStudentAssignmentsToTableData } from '../../../../../lib/tables/teacher/student-assignments/student-assignments';
 import { columns } from '../../../../../lib/tables/teacher/student-assignments/student-assignments';
 import styles from '../../../../../components/teacher/cohort/progress/student/singleStudentProgressPage.module.scss';
+import { EmptyStateView } from '../../../../../components/common/EmptyStateView/EmptyStateView';
 
 export default function CohortProgressIndex({
   user,
@@ -58,15 +59,21 @@ export default function CohortProgressIndex({
               />
             </>
           ),
-          'tasks to be assigned': (
-            <Table
-              id="student-tasks-to-be-assigned-table"
-              className={styles.toAssignTableWrapper}
-              data={studentAssignmentsTableData}
-              columns={columns}
-              colGap={26}
-            />
-          ),
+          'tasks to be assigned':
+            studentAssignmentsTableData.length > 0 ? (
+              <Table
+                id="student-tasks-to-be-assigned-table"
+                className={styles.toAssignTableWrapper}
+                data={studentAssignmentsTableData}
+                columns={columns}
+                colGap={26}
+              />
+            ) : (
+              <EmptyStateView
+                imgSrc="/img/no-assignments-robot.png"
+                message="No assignments to be reviewed"
+              />
+            ),
         }}
       />
     </Layout>
