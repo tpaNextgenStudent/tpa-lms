@@ -7,8 +7,6 @@ import { getUserTasksByModule } from '../../../../api/tasks';
 import { getUserModules } from '../../../../api/modules';
 import { withServerSideAuth } from '../../../../lib/auth/withServerSideAuth';
 import { getUserDetails } from '../../../../api/user';
-import { getAttemptsByTask } from '../../../../api/attempts';
-import { attemptsToComments } from '../../../../lib/utils/attemptsToComments';
 
 export default function Tasks({
   user,
@@ -16,35 +14,24 @@ export default function Tasks({
   modules,
   tasks,
   task,
-  comments,
 }: InferPagePropsType<typeof getServerSideProps>) {
   return (
-    <Layout
-      title="My Tasks"
-      user={user}
-      description="Find all of yours tasks divided into modules."
-    >
+    <Layout title="Curriculum" user={user}>
       <div className={styles.tasksWrapper}>
         <TasksMenu
-          tasksPathPrefix={'/student/tasks'}
+          tasksPathPrefix={'/teacher/curriculum'}
           modules={modules}
           module={module}
           tasks={tasks}
           task={task}
         />
-        <TaskSection
-          comments={comments}
-          attempt={task.last_attempt || undefined}
-          task={task.task_data}
-          module={module}
-          isTaskActionVisible
-        />
+        <TaskSection task={task.task_data} module={module} />
       </div>
     </Layout>
   );
 }
 
-export const getServerSideProps = withServerSideAuth('student')(
+export const getServerSideProps = withServerSideAuth('teacher')(
   async ({ req, params }) => {
     const authCookie = req.headers.cookie as string;
     const user = await getUserDetails({ cookie: authCookie });
@@ -71,12 +58,6 @@ export const getServerSideProps = withServerSideAuth('student')(
         };
       }
 
-      const attempts = await getAttemptsByTask(taskId, {
-        cookie: authCookie,
-      });
-
-      const comments = attemptsToComments(attempts);
-
       return {
         props: {
           user,
@@ -84,7 +65,6 @@ export const getServerSideProps = withServerSideAuth('student')(
           modules,
           tasks,
           task,
-          comments,
         },
       };
     } catch (e) {

@@ -7,7 +7,6 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "mock-json": "npx ts-node ./lib/mocks/generateFakeJson.ts",
     "prepare": "husky install",
     "cypress": "cypress open",
     "test": "jest",

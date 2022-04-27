@@ -26,7 +26,7 @@ interface TaskBadgesConfig {
 
 interface TaskBadgesProps {
   task: { name: string; type: TaskType; description: string };
-  attempt: {
+  attempt?: {
     status: TaskStatus;
     attempt_number: number | null;
     score: number | null;
@@ -47,12 +47,12 @@ export const TaskBadges = ({
 
   const typeToComponentArr = {
     type: () => <TaskTypeBadge type={task.type} />,
-    status: () => <TaskStatusBadge status={attempt.status} />,
+    status: () => attempt && <TaskStatusBadge status={attempt.status} />,
     score: () =>
       isInfoType ? (
         <TaskDoneBadge />
       ) : (
-        attempt.score && (
+        attempt?.score && (
           <TaskScoreBadge
             score={attempt.score}
             withText={config?.score?.withText}
@@ -61,7 +61,7 @@ export const TaskBadges = ({
         )
       ),
     attempt: () =>
-      typeof attempt.attempt_number === 'number' && (
+      typeof attempt?.attempt_number === 'number' && (
         <TaskAttemptBadge
           attempt={attempt.attempt_number}
           styleType={config?.attempt?.styleType}

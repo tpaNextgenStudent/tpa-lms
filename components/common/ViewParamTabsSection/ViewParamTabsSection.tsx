@@ -18,8 +18,11 @@ export const ViewParamTabsSection = ({ tabs }: TabsSectionProps) => {
   );
 
   useEffect(() => {
-    //when view param is invalid redirect to default view
-    if (viewParam && !Object.keys(tabs).includes(viewParam)) {
+    //when view param is invalid or there is no component under this label => redirect to default view
+    if (
+      viewParam &&
+      (!Object.keys(tabs).includes(viewParam) || !tabs[viewParam])
+    ) {
       const { view: _, ...prevQuery } = router.query;
       router.push(
         {
@@ -56,21 +59,23 @@ export const ViewParamTabsSection = ({ tabs }: TabsSectionProps) => {
   return (
     <>
       <div data-cypress="ViewParamTabsSection" className={styles.taskNav}>
-        {Object.keys(tabs).map(label => {
+        {Object.entries(tabs).map(([label, component]) => {
           return (
-            <button
-              key={label}
-              onClick={() =>
-                updateViewParam(label !== defaultLabel ? label : null)
-              }
-              className={clsx(
-                styles.taskNavButton,
-                label === (router.query.view || defaultLabel) &&
-                  styles.taskNavButtonActive
-              )}
-            >
-              {capitalize(label)}
-            </button>
+            component && (
+              <button
+                key={label}
+                onClick={() =>
+                  updateViewParam(label !== defaultLabel ? label : null)
+                }
+                className={clsx(
+                  styles.taskNavButton,
+                  label === (router.query.view || defaultLabel) &&
+                    styles.taskNavButtonActive
+                )}
+              >
+                {capitalize(label)}
+              </button>
+            )
           );
         })}
       </div>

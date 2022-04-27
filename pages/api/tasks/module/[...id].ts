@@ -44,11 +44,12 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     const result = userResults.find(
       (taskResult: any) => taskResult.id === task.id
     );
+
     delete result['id'];
 
     return {
       task_data: task,
-      last_attempt: result,
+      last_attempt: Object.keys(result).length === 0 ? null : result,
     };
   });
 
