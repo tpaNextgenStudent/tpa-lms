@@ -7,7 +7,7 @@ export const ProfileBanner = ({}: ProfileBannerProps) => {
   return (
     <div data-cypress="ProfileBanner" className={styles.bannerWrapper}>
       <Image
-        src="/profile-code-bg.png"
+        src="/img/profile-code-bg.png"
         width={208}
         height={121}
         layout="fixed"

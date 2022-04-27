@@ -42,7 +42,7 @@ export const LoginLayout = ({ children, fixedButton }: LoginLayoutProps) => {
           <div className={styles.imageWrapper}>
             <Image
               layout="responsive"
-              src={'/app_screen.png'}
+              src={'/img/app_screen.png'}
               width={547}
               height={389}
               className={styles.image}
