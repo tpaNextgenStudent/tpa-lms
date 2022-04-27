@@ -37,7 +37,7 @@ export default function CohortProgressIndex({
         link: '/teacher/cohort/progress',
       }}
       withHeaderPrevButton
-      title={userName}
+      title="Cohort Progress"
       headerTitle={userName}
     >
       <ProfileBanner />

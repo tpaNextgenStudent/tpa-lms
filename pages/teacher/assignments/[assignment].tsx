@@ -53,8 +53,6 @@ export const getServerSideProps = withServerSideAuth('teacher')(
         cookie: authCookie,
       });
 
-      console.log(attempt);
-
       const comments = attemptToComments(attempt);
 
       const nextAttempt = await getNextTeacherAssessmentTask(assignmentId, {
