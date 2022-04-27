@@ -2,7 +2,6 @@ import { ReactNode } from 'react';
 import Image from 'next/image';
 import styles from './LoginLayout.module.scss';
 import { CTAButton } from '../../common/CTAButton/CTAButton';
-import BgStripesIcon from '../../../public/svg/bg-stripes.svg';
 import clsx from 'clsx';
 
 interface LoginLayoutProps {
@@ -50,12 +49,18 @@ export const LoginLayout = ({ children, fixedButton }: LoginLayoutProps) => {
               alt="Screen of Tech Play Academy LMS app"
             />
           </div>
-          <div className={styles.svgOverflowWrapper}>
-            <div className={styles.svgWrapper} aria-hidden>
-              <BgStripesIcon />
-            </div>
-          </div>
         </section>
+        <div className={styles.bgImgWrapper} aria-hidden>
+          <Image
+            src={'/img/login-bg.png'}
+            layout="responsive"
+            height={420}
+            width={720}
+            alt=""
+            quality={100}
+            objectFit="cover"
+          />
+        </div>
       </div>
     </div>
   );

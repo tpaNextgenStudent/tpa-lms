@@ -34,7 +34,12 @@ export default function Login({
   return (
     <LoginLayout>
       <LoginHeroText
-        titleLines={['*Hello! 👋*', '*Welcome to*', '*Tech Play Academy.*']}
+        titleLines={[
+          'Welcome to TechPlayAcademy! 👋',
+          '*Learn a professional approach*',
+          '*to building software*',
+          '*products*',
+        ]}
         description="Start your journey with signing in using your GitHub account."
       />
       <div className={styles.ctaButtonWrapper}>
