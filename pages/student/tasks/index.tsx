@@ -1,4 +1,3 @@
-import { getUserModules } from '../../../api/modules';
 import { withServerSideAuth } from '../../../lib/auth/withServerSideAuth';
 import { getCurrentTask } from '../../../api/tasks';
 

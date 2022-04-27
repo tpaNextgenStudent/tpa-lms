@@ -30,14 +30,14 @@ export const getServerSideProps = withServerSideAuth()(async ctx => {
     if (role === 'student') {
       return {
         redirect: {
-          destination: '/student/tasks',
+          destination: '/student',
           permanent: false,
         },
       };
     }
     return {
       redirect: {
-        destination: '/teacher/assignments',
+        destination: '/teacher',
         permanent: false,
       },
     };
