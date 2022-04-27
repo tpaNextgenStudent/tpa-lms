@@ -18,7 +18,8 @@ export default function AssignmentsIndex({
   return (
     <Layout
       user={user}
-      title={'Assignments'}
+      headerTitle="Assignments"
+      title="Assignments"
       description="Students' tasks to be reviewed by you."
       actionsNumber={assignments.length}
     >

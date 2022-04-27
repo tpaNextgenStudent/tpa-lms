@@ -38,6 +38,7 @@ export default function CohortProgressIndex({
       }}
       withHeaderPrevButton
       title={userName}
+      headerTitle={userName}
     >
       <ProfileBanner />
       <ProfileUserInfo

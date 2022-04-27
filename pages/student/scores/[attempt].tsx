@@ -16,7 +16,8 @@ export default function ScoresIndex({
   return (
     <Layout
       parentPage={{ title: 'My Scores', link: '/student/scores' }}
-      title={task.name}
+      headerTitle={task.name}
+      title={'My Scores'}
       user={user}
       withHeaderPrevButton
     >
