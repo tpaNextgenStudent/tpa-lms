@@ -36,7 +36,7 @@ export default function Login({
     );
   }
   return (
-    <LoginLayout>
+    <LoginLayout title="TPA - Login">
       <LoginHeroText
         titleLines={[
           'Welcome to TechPlayAcademy! 👋',
