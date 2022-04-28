@@ -9,7 +9,7 @@ type Options = {
 };
 
 export interface IProgressItem {
-  user: IUser;
+  student: { user: IUser; profile: IProfile };
   module_name: string;
   module_position: number;
   task_name: string;
