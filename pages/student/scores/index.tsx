@@ -57,7 +57,7 @@ export const getServerSideProps = withServerSideAuth('student')(
           reviewed_by: {
             name: teacherName,
             img: attempt.teacher.user.image,
-            login: attempt.teacher.user.email,
+            login: attempt.teacher.profile.login,
           },
           view: { link: `/student/scores/${attempt.id}` },
         };

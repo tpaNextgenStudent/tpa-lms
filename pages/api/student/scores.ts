@@ -62,7 +62,10 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       });
       const singleAttempt = {
         ...attempt,
-        teacher: { user: teacherAccount?.user },
+        teacher: {
+          user: teacherAccount?.user,
+          profile: attempt?.teacher.profile,
+        },
       };
 
       return {
