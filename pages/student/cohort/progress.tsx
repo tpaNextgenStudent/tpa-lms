@@ -18,14 +18,7 @@ export default function CohortProgress({
       description="See your teammates and how they are doing with their tasks."
       user={user}
     >
-      {progress.length < 1 ? (
-        <EmptyStateView
-          message="Here you will see how you are doing among other students"
-          imgSrc="/img/no-assignments-robot.png"
-        />
-      ) : (
-        <Table data={progress} columns={columns} />
-      )}
+      <Table data={progress} columns={columns} />
     </Layout>
   );
 }
