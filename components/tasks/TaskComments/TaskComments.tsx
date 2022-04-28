@@ -5,7 +5,7 @@ import { TaskAttemptBadge } from '../TaskAttemptBadge/TaskAttemptBadge';
 import { MarkdownContent } from '../../common/markdown/MarkdownContent/MarkdownContent';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import dayjs from 'dayjs';
-import { Comment } from '../../../lib/utils/types';
+import { Comment } from '../../../lib/types';
 import Link from 'next/link';
 dayjs.extend(relativeTime);
 import { useRouter } from 'next/router';

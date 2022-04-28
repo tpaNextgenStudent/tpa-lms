@@ -1,5 +1,5 @@
 import styles from './TaskTypeBadge.module.scss';
-import { TaskType } from '../../../lib/utils/types';
+import { TaskType } from '../../../lib/types';
 import { TaskTypeIcon } from '../TaskTypeIcon/TaskTypeIcon';
 
 interface TaskTypeBadgeProps {

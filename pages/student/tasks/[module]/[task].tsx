@@ -1,5 +1,5 @@
 import { Layout } from '../../../../components/common/Layout/Layout';
-import { InferPagePropsType } from '../../../../lib/utils/types';
+import { InferPagePropsType } from '../../../../lib/types';
 import { TasksMenu } from '../../../../components/tasks/TasksMenu/TasksMenu';
 import styles from '../../../../components/tasks/tasksPage/tasksPage.module.scss';
 import { TaskSection } from '../../../../components/tasks/TaskSection/TaskSection';
@@ -8,7 +8,7 @@ import { getUserModules } from '../../../../api/modules';
 import { withServerSideAuth } from '../../../../lib/auth/withServerSideAuth';
 import { getUserDetails } from '../../../../api/user';
 import { getAttemptsByTask } from '../../../../api/attempts';
-import { attemptsToComments } from '../../../../lib/utils/attemptsToComments';
+import { attemptsToComments } from '../../../../utils/attemptsToComments';
 
 export default function Tasks({
   user,

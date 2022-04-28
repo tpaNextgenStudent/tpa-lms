@@ -2,7 +2,7 @@ import { Column } from 'react-table';
 import styles from './student-assignments.module.scss';
 import Link from 'next/link';
 import { TaskTypeCell } from '../../../../components/common/tables/TaskTypeCell/TaskTypeCell';
-import { TaskType } from '../../../utils/types';
+import { TaskType } from '../../../types';
 import { TaskAttemptBadge } from '../../../../components/tasks/TaskAttemptBadge/TaskAttemptBadge';
 import { IAssignment } from '../../../../api/assignments';
 import dayjs from 'dayjs';

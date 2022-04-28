@@ -1,7 +1,7 @@
-import { apiPath } from '../lib/utils/apiPath';
+import { apiPath } from '../utils/apiPath';
 import axios from 'axios';
 import { IUser, UserRole } from './user';
-import { TaskType, TaskStatus, IProfile } from '../lib/utils/types';
+import { TaskType, TaskStatus, IProfile } from '../lib/types';
 
 type Options = {
   cookie: string;

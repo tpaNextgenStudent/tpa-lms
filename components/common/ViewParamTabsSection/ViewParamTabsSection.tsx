@@ -2,7 +2,7 @@ import styles from './ViewParamTabsSection.module.scss';
 import { ReactNode, useCallback, useEffect, useMemo } from 'react';
 import { useRouter } from 'next/router';
 import clsx from 'clsx';
-import { capitalize } from '../../../lib/utils/capitalize';
+import { capitalize } from '../../../utils/capitalize';
 
 interface TabsSectionProps {
   tabs: { [label: string]: ReactNode };

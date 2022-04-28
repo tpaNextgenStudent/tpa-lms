@@ -1,6 +1,6 @@
 import { CodeAction } from '../CodeAction/CodeAction';
 import { InfoAction } from '../InfoAction/InfoAction';
-import { TaskType } from '../../../lib/utils/types';
+import { TaskType } from '../../../lib/types';
 
 interface TaskActionProps {
   task: {

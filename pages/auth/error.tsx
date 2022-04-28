@@ -1,5 +1,5 @@
 import { GetServerSidePropsContext } from 'next';
-import { InferPagePropsType } from '../../lib/utils/types';
+import { InferPagePropsType } from '../../lib/types';
 import { ErrorView } from '../../components/common/ErrorView/ErrorView';
 import { ERROR_TYPE_MESSAGE } from '../../lib/constants';
 import { useRouter } from 'next/router';

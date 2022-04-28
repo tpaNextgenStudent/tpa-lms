@@ -1,6 +1,6 @@
 import styles from './InfoAction.module.scss';
 import { CTAButton } from '../../common/CTAButton/CTAButton';
-import { TaskType } from '../../../lib/utils/types';
+import { TaskType } from '../../../lib/types';
 
 interface InfoActionProps {
   task: {

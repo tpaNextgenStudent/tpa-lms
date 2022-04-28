@@ -1,7 +1,7 @@
 import { Column } from 'react-table';
 import styles from './my-scores.module.scss';
 import Link from 'next/link';
-import { TaskType } from '../../../utils/types';
+import { TaskType } from '../../../types';
 import { TaskTypeCell } from '../../../../components/common/tables/TaskTypeCell/TaskTypeCell';
 import { TaskAttemptBadge } from '../../../../components/tasks/TaskAttemptBadge/TaskAttemptBadge';
 import { TaskScoreBadge } from '../../../../components/tasks/TaskScoreBadge/TaskScoreBadge';

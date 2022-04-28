@@ -1,4 +1,4 @@
-import { apiPath } from '../lib/utils/apiPath';
+import { apiPath } from '../utils/apiPath';
 import axios from 'axios';
 
 type Options = {

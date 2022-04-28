@@ -1,4 +1,4 @@
-import { InferPagePropsType } from '../../../../lib/utils/types';
+import { InferPagePropsType } from '../../../../lib/types';
 import { Layout } from '../../../../components/common/Layout/Layout';
 import { Table } from '../../../../components/common/tables/Table/Table';
 import {

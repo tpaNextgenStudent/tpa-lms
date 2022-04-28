@@ -1,5 +1,5 @@
 import { Layout } from '../../../../components/common/Layout/Layout';
-import { InferPagePropsType } from '../../../../lib/utils/types';
+import { InferPagePropsType } from '../../../../lib/types';
 import { TasksMenu } from '../../../../components/tasks/TasksMenu/TasksMenu';
 import styles from '../../../../components/tasks/tasksPage/tasksPage.module.scss';
 import { TaskSection } from '../../../../components/tasks/TaskSection/TaskSection';

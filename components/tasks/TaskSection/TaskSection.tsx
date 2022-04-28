@@ -8,7 +8,7 @@ import clsx from 'clsx';
 import { TaskComments } from '../TaskComments/TaskComments';
 import { TaskStatus } from '../../../api/tasks';
 import { IModuleVersion } from '../../../api/modules';
-import { Comment, TaskType } from '../../../lib/utils/types';
+import { Comment, TaskType } from '../../../lib/types';
 import { TaskBadges } from '../TaskBadges/TaskBadges';
 import { CTAButton } from '../../common/CTAButton/CTAButton';
 import { useRouter } from 'next/router';

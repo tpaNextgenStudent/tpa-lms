@@ -8,7 +8,7 @@ import {
   UserDetails,
 } from '../../../schemas/userDetailsSchema';
 import clsx from 'clsx';
-import { capitalize } from '../../../lib/utils/capitalize';
+import { capitalize } from '../../../utils/capitalize';
 
 interface LoginDetailsFormProps {
   onSubmit: (data: UserDetails) => Promise<void>;

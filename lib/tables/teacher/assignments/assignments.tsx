@@ -3,7 +3,7 @@ import styles from './assignments.module.scss';
 import Link from 'next/link';
 import { UserNameCell } from '../../../../components/common/tables/UserNameCell/UserNameCell';
 import { TaskTypeCell } from '../../../../components/common/tables/TaskTypeCell/TaskTypeCell';
-import { TaskType } from '../../../utils/types';
+import { TaskType } from '../../../types';
 import { TaskAttemptBadge } from '../../../../components/tasks/TaskAttemptBadge/TaskAttemptBadge';
 import dayjs from 'dayjs';
 import { IAssignment } from '../../../../api/assignments';

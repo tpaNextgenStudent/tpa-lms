@@ -1,6 +1,6 @@
 import { Column } from 'react-table';
 import styles from './cohort-progress.module.scss';
-import { TaskType } from '../../../utils/types';
+import { TaskType } from '../../../types';
 import { TaskTypeCell } from '../../../../components/common/tables/TaskTypeCell/TaskTypeCell';
 import { UserNameCell } from '../../../../components/common/tables/UserNameCell/UserNameCell';
 import { IProgressItem } from '../../../../api/cohort';

@@ -2,7 +2,7 @@ import { LoginDetailsForm } from '../../components/login/LoginDetailsForm/LoginD
 import { LoginLayout } from '../../components/login/LoginLayout/LoginLayout';
 import { LoginHeroText } from '../../components/login/LoginHeroText/LoginHeroText';
 import axios from 'axios';
-import { apiPath } from '../../lib/utils/apiPath';
+import { apiPath } from '../../utils/apiPath';
 import { withServerSideAuth } from '../../lib/auth/withServerSideAuth';
 import { useRouter } from 'next/router';
 import { UserDetails } from '../../schemas/userDetailsSchema';

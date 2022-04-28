@@ -1,10 +1,10 @@
 import { Layout } from '../../../components/common/Layout/Layout';
-import { InferPagePropsType } from '../../../lib/utils/types';
+import { InferPagePropsType } from '../../../lib/types';
 import { TaskSection } from '../../../components/tasks/TaskSection/TaskSection';
 import { withServerSideAuth } from '../../../lib/auth/withServerSideAuth';
 import { getUserDetails } from '../../../api/user';
 import { getAttemptById } from '../../../api/attempts';
-import { attemptToComments } from '../../../lib/utils/attemptsToComments';
+import { attemptToComments } from '../../../utils/attemptsToComments';
 
 export default function ScoresIndex({
   user,

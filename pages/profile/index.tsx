@@ -1,5 +1,5 @@
 import { Layout } from '../../components/common/Layout/Layout';
-import { InferPagePropsType } from '../../lib/utils/types';
+import { InferPagePropsType } from '../../lib/types';
 import { withServerSideAuth } from '../../lib/auth/withServerSideAuth';
 import { getUserDetails, UserRole } from '../../api/user';
 import { ProfileBanner } from '../../components/profile/ProfileBanner/ProfileBanner';

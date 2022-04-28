@@ -1,5 +1,5 @@
 import { Layout } from '../../../components/common/Layout/Layout';
-import { InferPagePropsType } from '../../../lib/utils/types';
+import { InferPagePropsType } from '../../../lib/types';
 import { Table } from '../../../components/common/tables/Table/Table';
 import {
   columns,
