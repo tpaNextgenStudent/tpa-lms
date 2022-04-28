@@ -79,7 +79,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   //TO DO SORT
   if (session.nextAuthSession) {
-    res.status(200).send(response.filter(n => n));
+    res.status(200).send(response.filter(n => n.user != undefined));
   } else {
     res.status(401).send({ message: 'Unauthorized' });
   }

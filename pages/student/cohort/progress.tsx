@@ -31,12 +31,12 @@ export const getServerSideProps = withServerSideAuth('student')(
 
     const progress = p.map(
       ({ user, module_name, task_name, task_type, module_position }) => {
-        const userName = [user.name, user.surname].filter(n => n).join(' ');
+        const userName = [user?.name, user?.surname].filter(n => n).join(' ');
         return {
           student: {
             name: userName,
-            login: user.email,
-            img: user.image,
+            login: user?.email,
+            img: user?.image,
           },
           module: `Module ${module_position}`,
           task_name,
