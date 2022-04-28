@@ -1,6 +1,6 @@
 import { GetServerSidePropsContext, GetServerSidePropsResult } from 'next';
-import { getSession } from 'next-auth/react';
 import { getUserDetails, UserRole } from '../../api/user';
+import axios from 'axios';
 
 export const withServerSideAuth =
   (role?: UserRole) =>
@@ -10,29 +10,36 @@ export const withServerSideAuth =
     ) => GetServerSidePropsResult<P> | Promise<GetServerSidePropsResult<P>>
   ) =>
   async (ctx: GetServerSidePropsContext) => {
-    const session = await getSession(ctx);
-    if (!session) {
+    try {
+      if (role) {
+        const authCookie = ctx.req.headers.cookie as string;
+        const user = await getUserDetails({ cookie: authCookie });
+
+        if (role !== user.role) {
+          return {
+            redirect: {
+              destination: '/',
+              permanent: false,
+            },
+          };
+        }
+      }
+
+      return await handler(ctx);
+    } catch (err) {
+      if (axios.isAxiosError(err)) {
+        if (err.response?.status === 401) {
+          return {
+            redirect: {
+              permanent: false,
+              destination: '/login',
+            },
+          };
+        }
+      }
+
       return {
-        redirect: {
-          destination: '/login',
-          permanent: false,
-        },
+        notFound: true as const,
       };
     }
-
-    if (role) {
-      const authCookie = ctx.req.headers.cookie as string;
-      const user = await getUserDetails({ cookie: authCookie });
-
-      if (role !== user.role) {
-        return {
-          redirect: {
-            destination: '/',
-            permanent: false,
-          },
-        };
-      }
-    }
-
-    return handler(ctx);
   };

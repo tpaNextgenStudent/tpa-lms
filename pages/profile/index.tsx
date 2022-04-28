@@ -50,6 +50,5 @@ function getCohortProgressLink(role: UserRole) {
 export const getServerSideProps = withServerSideAuth()(async ({ req, res }) => {
   const authCookie = req.headers.cookie as string;
   const user = await getUserDetails({ cookie: authCookie });
-  console.log(user);
   return { props: { user } };
 });

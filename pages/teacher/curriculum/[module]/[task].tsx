@@ -40,37 +40,32 @@ export const getServerSideProps = withServerSideAuth('teacher')(
       module: string;
       task: string;
     };
-    try {
-      const modules = await getUserModules({
-        cookie: authCookie,
-      });
-      const module = modules.find(m => m.module_version_id === moduleId)!;
 
-      const tasks = await getUserTasksByModule(moduleId, {
-        cookie: authCookie,
-      });
+    const modules = await getUserModules({
+      cookie: authCookie,
+    });
+    const module = modules.find(m => m.module_version_id === moduleId)!;
 
-      const task = tasks.find(t => t.task_data.id === taskId);
+    const tasks = await getUserTasksByModule(moduleId, {
+      cookie: authCookie,
+    });
 
-      if (!task) {
-        return {
-          notFound: true,
-        };
-      }
+    const task = tasks.find(t => t.task_data.id === taskId);
 
-      return {
-        props: {
-          user,
-          module,
-          modules,
-          tasks,
-          task,
-        },
-      };
-    } catch (e) {
+    if (!task) {
       return {
         notFound: true,
       };
     }
+
+    return {
+      props: {
+        user,
+        module,
+        modules,
+        tasks,
+        task,
+      },
+    };
   }
 );

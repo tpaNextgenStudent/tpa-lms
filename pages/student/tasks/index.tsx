@@ -7,23 +7,15 @@ export default function TasksIndex() {
 
 export const getServerSideProps = withServerSideAuth('student')(
   async ({ req }) => {
-    try {
-      const authCookie = req.headers.cookie as string;
+    const authCookie = req.headers.cookie as string;
 
-      const currentTask = await getCurrentTask({ cookie: authCookie });
-
-      return {
-        redirect: {
-          permanent: false,
-          destination: `/student/tasks/${currentTask.module_id}/${currentTask.task_id}`,
-        },
-      };
-    } catch (e) {
-      console.log(e);
-    }
+    const currentTask = await getCurrentTask({ cookie: authCookie });
 
     return {
-      notFound: true,
+      redirect: {
+        permanent: false,
+        destination: `/student/tasks/${currentTask.module_id}/${currentTask.task_id}`,
+      },
     };
   }
 );

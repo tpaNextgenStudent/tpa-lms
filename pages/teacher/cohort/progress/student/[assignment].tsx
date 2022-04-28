@@ -88,45 +88,41 @@ export const getServerSideProps = withServerSideAuth('teacher')(
       assignment: string;
     };
 
-    try {
-      const user = await getUserDetails({ cookie: authCookie });
+    const user = await getUserDetails({ cookie: authCookie });
 
-      const {
-        user: studentUser,
-        profile,
-        tasks_in_modules,
-      } = await getTeacherSingleStudentScores(assignmentId, {
+    const {
+      user: studentUser,
+      profile,
+      tasks_in_modules,
+    } = await getTeacherSingleStudentScores(assignmentId, {
+      cookie: authCookie,
+    });
+    const maxNumOfTasks = Math.max(
+      ...tasks_in_modules.map(m => m.tasks.length)
+    );
+
+    const studentScoresTableData =
+      mapStudentProgressToTableData(tasks_in_modules);
+
+    const rawStudentAssignments = await getTeacherAssignmentsByStudent(
+      assignmentId,
+      {
         cookie: authCookie,
-      });
-      const maxNumOfTasks = Math.max(
-        ...tasks_in_modules.map(m => m.tasks.length)
-      );
+      }
+    );
 
-      const studentScoresTableData =
-        mapStudentProgressToTableData(tasks_in_modules);
+    const studentAssignmentsTableData = mapStudentAssignmentsToTableData(
+      rawStudentAssignments
+    );
 
-      const rawStudentAssignments = await getTeacherAssignmentsByStudent(
-        assignmentId,
-        {
-          cookie: authCookie,
-        }
-      );
-
-      const studentAssignmentsTableData = mapStudentAssignmentsToTableData(
-        rawStudentAssignments
-      );
-
-      return {
-        props: {
-          user,
-          student: { user: studentUser, profile },
-          studentScoresTableData,
-          studentAssignmentsTableData,
-          maxNumOfTasks,
-        },
-      };
-    } catch {
-      return { notFound: true };
-    }
+    return {
+      props: {
+        user,
+        student: { user: studentUser, profile },
+        studentScoresTableData,
+        studentAssignmentsTableData,
+        maxNumOfTasks,
+      },
+    };
   }
 );

@@ -54,44 +54,39 @@ export const getServerSideProps = withServerSideAuth('student')(
       module: string;
       task: string;
     };
-    try {
-      const modules = await getUserModules({
-        cookie: authCookie,
-      });
-      const module = modules.find(m => m.module_version_id === moduleId)!;
 
-      const tasks = await getUserTasksByModule(moduleId, {
-        cookie: authCookie,
-      });
+    const modules = await getUserModules({
+      cookie: authCookie,
+    });
+    const module = modules.find(m => m.module_version_id === moduleId)!;
 
-      const task = tasks.find(t => t.task_data.id === taskId);
+    const tasks = await getUserTasksByModule(moduleId, {
+      cookie: authCookie,
+    });
 
-      if (!task) {
-        return {
-          notFound: true,
-        };
-      }
+    const task = tasks.find(t => t.task_data.id === taskId);
 
-      const attempts = await getAttemptsByTask(taskId, {
-        cookie: authCookie,
-      });
-
-      const comments = attemptsToComments(attempts);
-
-      return {
-        props: {
-          user,
-          module,
-          modules,
-          tasks,
-          task,
-          comments,
-        },
-      };
-    } catch (e) {
+    if (!task) {
       return {
         notFound: true,
       };
     }
+
+    const attempts = await getAttemptsByTask(taskId, {
+      cookie: authCookie,
+    });
+
+    const comments = attemptsToComments(attempts);
+
+    return {
+      props: {
+        user,
+        module,
+        modules,
+        tasks,
+        task,
+        comments,
+      },
+    };
   }
 );

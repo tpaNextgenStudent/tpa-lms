@@ -40,41 +40,35 @@ export const getServerSideProps = withServerSideAuth('student')(
     };
     const authCookie = req.headers.cookie as string;
 
-    try {
-      const user = await getUserDetails({ cookie: authCookie });
+    const user = await getUserDetails({ cookie: authCookie });
 
-      const attempt = await getAttemptById(attemptId, { cookie: authCookie });
+    const attempt = await getAttemptById(attemptId, { cookie: authCookie });
 
-      const comments = attemptToComments(attempt);
+    const comments = attemptToComments(attempt);
 
-      return {
-        props: {
-          user,
-          module: {
-            module_version_id: attempt.task.module_version_id,
-            name: 'Module Name',
-            module_number: attempt.module_number,
-          },
-          task: {
-            id: attempt.task_id,
-            name: attempt.task.name,
-            type: attempt.task.type,
-            description: attempt.task.description,
-            link: attempt.task.link,
-          },
-          attempt: {
-            status: 'approved' as const,
-            attempt_number: attempt.attempt_number,
-            score: attempt.score,
-            answer: attempt.answer,
-          },
-          comments,
+    return {
+      props: {
+        user,
+        module: {
+          module_version_id: attempt.task.module_version_id,
+          name: 'Module Name',
+          module_number: attempt.module_number,
         },
-      };
-    } catch (e) {
-      return {
-        notFound: true,
-      };
-    }
+        task: {
+          id: attempt.task_id,
+          name: attempt.task.name,
+          type: attempt.task.type,
+          description: attempt.task.description,
+          link: attempt.task.link,
+        },
+        attempt: {
+          status: 'approved' as const,
+          attempt_number: attempt.attempt_number,
+          score: attempt.score,
+          answer: attempt.answer,
+        },
+        comments,
+      },
+    };
   }
 );

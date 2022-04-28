@@ -45,48 +45,43 @@ export const getServerSideProps = withServerSideAuth('teacher')(
       assignment: string;
     };
     const authCookie = req.headers.cookie as string;
+    const user = await getUserDetails({ cookie: authCookie });
 
-    try {
-      const user = await getUserDetails({ cookie: authCookie });
+    const attempt = await getAttemptById(assignmentId, {
+      cookie: authCookie,
+    });
 
-      const attempt = await getAttemptById(assignmentId, {
-        cookie: authCookie,
-      });
+    const comments = attemptToComments(attempt);
 
-      const comments = attemptToComments(attempt);
+    const nextAttempt = await getNextTeacherAssessmentTask(assignmentId, {
+      cookie: authCookie,
+    });
 
-      const nextAttempt = await getNextTeacherAssessmentTask(assignmentId, {
-        cookie: authCookie,
-      });
-
-      return {
-        props: {
-          user,
-          module: {
-            module_version_id: attempt.task.module_version_id,
-            name: 'Module Name',
-            module_number: attempt.module_number,
-          },
-          task: {
-            id: attempt.task_id,
-            name: attempt.task.name,
-            type: attempt.task.type,
-            description: attempt.task.description,
-            link: attempt.task.link,
-          },
-          attempt: {
-            status: 'approved' as const,
-            attempt_number: attempt.attempt_number,
-            score: attempt.score,
-            answer: attempt.answer,
-          },
-          comments,
-          student: attempt.student.user,
-          nextAttempt,
+    return {
+      props: {
+        user,
+        module: {
+          module_version_id: attempt.task.module_version_id,
+          name: 'Module Name',
+          module_number: attempt.module_number,
         },
-      };
-    } catch (e) {
-      return { notFound: true };
-    }
+        task: {
+          id: attempt.task_id,
+          name: attempt.task.name,
+          type: attempt.task.type,
+          description: attempt.task.description,
+          link: attempt.task.link,
+        },
+        attempt: {
+          status: 'approved' as const,
+          attempt_number: attempt.attempt_number,
+          score: attempt.score,
+          answer: attempt.answer,
+        },
+        comments,
+        student: attempt.student.user,
+        nextAttempt,
+      },
+    };
   }
 );

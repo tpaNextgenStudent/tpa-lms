@@ -56,22 +56,18 @@ export const getServerSideProps = withServerSideAuth('teacher')(
       module: string;
     };
 
-    try {
-      const user = await getUserDetails({ cookie: authCookie });
-      const modules = await getUserModules({ cookie: authCookie });
-      const module = modules.find(m => m.module_version_id === moduleId)!;
-      const rawProgress = await getTeacherCohortProgress(moduleId, {
-        cookie: authCookie,
-      });
+    const user = await getUserDetails({ cookie: authCookie });
+    const modules = await getUserModules({ cookie: authCookie });
+    const module = modules.find(m => m.module_version_id === moduleId)!;
+    const rawProgress = await getTeacherCohortProgress(moduleId, {
+      cookie: authCookie,
+    });
 
-      const numOfTasksInModule = Math.max(
-        ...rawProgress.map(({ tasks }) => tasks.length)
-      );
+    const numOfTasksInModule = Math.max(
+      ...rawProgress.map(({ tasks }) => tasks.length)
+    );
 
-      const progress = mapProgressToTableData(rawProgress);
-      return { props: { user, progress, numOfTasksInModule, modules, module } };
-    } catch {
-      return { notFound: true };
-    }
+    const progress = mapProgressToTableData(rawProgress);
+    return { props: { user, progress, numOfTasksInModule, modules, module } };
   }
 );
