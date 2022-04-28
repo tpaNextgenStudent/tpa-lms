@@ -66,7 +66,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         });
 
         return {
-          user: user.user,
+          student: { user: user.user, profile: student.profile },
           module_name: module?.module.name,
           module_position: lastModule['position'],
           task_name: task?.name,
@@ -79,7 +79,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   //TO DO SORT
   if (session.nextAuthSession) {
-    res.status(200).send(response.filter(n => n.user != undefined));
+    res.status(200).send(response.filter(n => n.student != undefined));
   } else {
     res.status(401).send({ message: 'Unauthorized' });
   }

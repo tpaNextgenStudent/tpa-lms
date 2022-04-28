@@ -9,7 +9,7 @@ type Options = {
 };
 
 export interface IProgressItem {
-  user: IUser;
+  student: { user: IUser; profile: IProfile };
   module_name: string;
   module_position: number;
   task_name: string;
@@ -32,8 +32,8 @@ export interface ITeacherProgressTask {
   answer: string | null;
   status: TaskStatus;
   position: number;
-  attempt_id: string;
-  attempt_number: number;
+  attempt_id: string | null;
+  attempt_number: number | null;
 }
 
 export interface ITeacherProgressItem {

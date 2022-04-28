@@ -100,7 +100,7 @@ export const mapAssignmentsToTableData = (
       submission_date: dayjs(a.submission_date).format('DD MMM YYYY'),
       student: {
         name: a.student.user.name,
-        login: a.student.user.email,
+        login: a.student.profile.login,
         img: a.student.user.image,
       },
       module: `Module ${a.module_number}`,

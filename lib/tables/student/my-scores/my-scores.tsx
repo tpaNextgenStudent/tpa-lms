@@ -6,6 +6,7 @@ import { TaskTypeCell } from '../../../../components/common/tables/TaskTypeCell/
 import { TaskAttemptBadge } from '../../../../components/tasks/TaskAttemptBadge/TaskAttemptBadge';
 import { TaskScoreBadge } from '../../../../components/tasks/TaskScoreBadge/TaskScoreBadge';
 import { UserNameCell } from '../../../../components/common/tables/UserNameCell/UserNameCell';
+import { TaskDoneBadge } from '../../../../components/tasks/TaskDoneBadge/TaskDoneBadge';
 
 interface ScoresData {
   submission_date: string;
@@ -14,7 +15,7 @@ interface ScoresData {
   task: string;
   task_type: string;
   attempt: number;
-  score: number;
+  score: number | null;
   reviewed_by: { name: string; img: string | null; login: string | null };
   view: { link: string };
 }
@@ -23,17 +24,17 @@ export const columns: Column<ScoresData>[] = [
   {
     Header: 'Date of submission',
     accessor: 'submission_date',
-    width: '5fr',
+    width: 110,
   },
   {
     Header: 'Date of review',
     accessor: 'review_date',
-    width: '5fr',
+    width: 85,
   },
   {
     Header: 'Module',
     accessor: 'module',
-    width: '3fr',
+    width: 55,
 
     Cell: ({ cell: { value } }: { cell: { value: string } }) => (
       <span className={styles.moduleName}>{value}</span>
@@ -51,7 +52,7 @@ export const columns: Column<ScoresData>[] = [
   {
     Header: 'Task type',
     accessor: 'task_type',
-    width: '3fr',
+    width: 70,
 
     Cell: ({ cell: { value } }: { cell: { value: TaskType } }) => (
       <TaskTypeCell type={value} />
@@ -60,7 +61,7 @@ export const columns: Column<ScoresData>[] = [
   {
     Header: 'Attempt',
     accessor: 'attempt',
-    width: '3fr',
+    width: 48,
 
     Cell: ({ cell: { value } }: { cell: { value: number } }) => (
       <TaskAttemptBadge attempt={value} styleType="circle" />
@@ -69,16 +70,19 @@ export const columns: Column<ScoresData>[] = [
   {
     Header: 'Score',
     accessor: 'score',
-    width: '3fr',
+    width: 35,
 
-    Cell: ({ cell: { value } }: { cell: { value: number } }) => (
-      <TaskScoreBadge score={value} withBorder />
-    ),
+    Cell: ({ cell: { value } }: { cell: { value: number | null } }) =>
+      value ? (
+        <TaskScoreBadge score={value} withBorder />
+      ) : (
+        <TaskDoneBadge withBorder />
+      ),
   },
   {
     Header: 'Reviewed by',
     accessor: 'reviewed_by',
-    width: '4fr',
+    width: 155,
 
     Cell: ({
       cell: {
@@ -91,7 +95,7 @@ export const columns: Column<ScoresData>[] = [
   {
     Header: '',
     accessor: 'view',
-    width: '4fr',
+    width: '1fr',
 
     Cell: ({
       cell: {

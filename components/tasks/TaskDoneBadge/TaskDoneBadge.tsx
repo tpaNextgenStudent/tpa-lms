@@ -1,11 +1,16 @@
 import styles from './TaskDoneBadge.module.scss';
 import TickIcon from '../../../public/svg/tick-icon.svg';
+import clsx from 'clsx';
 
-interface TaskDoneBadgeProps {}
+interface TaskDoneBadgeProps {
+  withBorder?: boolean;
+}
 
-export const TaskDoneBadge = ({}: TaskDoneBadgeProps) => {
+export const TaskDoneBadge = ({ withBorder = false }: TaskDoneBadgeProps) => {
   return (
-    <span className={styles.wrapper}>
+    <span
+      className={clsx(styles.wrapper, withBorder && styles.wrapperWithBorder)}
+    >
       <span className={styles.svgWrapper}>
         <TickIcon />
       </span>
