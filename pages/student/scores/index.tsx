@@ -6,6 +6,7 @@ import dayjs from 'dayjs';
 import { withServerSideAuth } from '../../../lib/auth/withServerSideAuth';
 import { getUserDetails } from '../../../api/user';
 import { getUserScores } from '../../../api/scores';
+import { EmptyStateView } from '../../../components/common/EmptyStateView/EmptyStateView';
 
 export default function ScoresIndex({
   user,
@@ -18,7 +19,14 @@ export default function ScoresIndex({
       description="Track your scores. You can get 1 - don't give up, try again! 2 and 3 - well done, you are ready to go with the next task!"
       user={user}
     >
-      <Table columns={columns} data={scores} isFullWidth />
+      {scores.length < 1 ? (
+        <EmptyStateView
+          imgSrc={'/img/no-assignments-robot.png'}
+          message="You have no scores yet"
+        />
+      ) : (
+        <Table columns={columns} data={scores} isFullWidth />
+      )}
     </Layout>
   );
 }
