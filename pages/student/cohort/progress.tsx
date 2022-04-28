@@ -20,7 +20,7 @@ export default function CohortProgress({
     >
       {progress.length < 1 ? (
         <EmptyStateView
-          message="No cohort progress"
+          message="Here you will see how you are doing among other students"
           imgSrc="/img/no-assignments-robot.png"
         />
       ) : (
