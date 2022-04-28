@@ -34,7 +34,7 @@ export const columns: Column<ScoresData>[] = [
   {
     Header: 'Module',
     accessor: 'module',
-    width: 60,
+    width: 55,
 
     Cell: ({ cell: { value } }: { cell: { value: string } }) => (
       <span className={styles.moduleName}>{value}</span>
@@ -82,7 +82,7 @@ export const columns: Column<ScoresData>[] = [
   {
     Header: 'Reviewed by',
     accessor: 'reviewed_by',
-    width: 160,
+    width: 155,
 
     Cell: ({
       cell: {
