@@ -32,8 +32,8 @@ export interface ITeacherProgressTask {
   answer: string | null;
   status: TaskStatus;
   position: number;
-  attempt_id: string;
-  attempt_number: number;
+  attempt_id: string | null;
+  attempt_number: number | null;
 }
 
 export interface ITeacherProgressItem {

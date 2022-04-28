@@ -23,17 +23,17 @@ export const columns: Column<ScoresData>[] = [
   {
     Header: 'Date of submission',
     accessor: 'submission_date',
-    width: '5fr',
+    width: 110,
   },
   {
     Header: 'Date of review',
     accessor: 'review_date',
-    width: '5fr',
+    width: 85,
   },
   {
     Header: 'Module',
     accessor: 'module',
-    width: '3fr',
+    width: 60,
 
     Cell: ({ cell: { value } }: { cell: { value: string } }) => (
       <span className={styles.moduleName}>{value}</span>
@@ -51,7 +51,7 @@ export const columns: Column<ScoresData>[] = [
   {
     Header: 'Task type',
     accessor: 'task_type',
-    width: '3fr',
+    width: 70,
 
     Cell: ({ cell: { value } }: { cell: { value: TaskType } }) => (
       <TaskTypeCell type={value} />
@@ -60,7 +60,7 @@ export const columns: Column<ScoresData>[] = [
   {
     Header: 'Attempt',
     accessor: 'attempt',
-    width: '3fr',
+    width: 48,
 
     Cell: ({ cell: { value } }: { cell: { value: number } }) => (
       <TaskAttemptBadge attempt={value} styleType="circle" />
@@ -69,7 +69,7 @@ export const columns: Column<ScoresData>[] = [
   {
     Header: 'Score',
     accessor: 'score',
-    width: '3fr',
+    width: 35,
 
     Cell: ({ cell: { value } }: { cell: { value: number } }) => (
       <TaskScoreBadge score={value} withBorder />
@@ -78,7 +78,7 @@ export const columns: Column<ScoresData>[] = [
   {
     Header: 'Reviewed by',
     accessor: 'reviewed_by',
-    width: '4fr',
+    width: 160,
 
     Cell: ({
       cell: {
@@ -91,7 +91,7 @@ export const columns: Column<ScoresData>[] = [
   {
     Header: '',
     accessor: 'view',
-    width: '4fr',
+    width: '1fr',
 
     Cell: ({
       cell: {
