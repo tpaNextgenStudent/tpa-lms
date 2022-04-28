@@ -41,7 +41,7 @@ export const TasksListItem = ({
           </h3>
           <TaskBadges
             task={task.task_data}
-            attempt={task.last_attempt || undefined}
+            attempt={task.last_attempt}
             config={{ score: { withBorder: true } }}
           />
         </a>

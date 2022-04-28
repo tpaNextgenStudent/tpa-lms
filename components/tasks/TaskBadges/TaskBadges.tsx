@@ -30,7 +30,7 @@ interface TaskBadgesProps {
     status: TaskStatus;
     attempt_number: number | null;
     score: number | null;
-  };
+  } | null;
   className?: string;
   badges?: BadgeType[];
   config?: TaskBadgesConfig;

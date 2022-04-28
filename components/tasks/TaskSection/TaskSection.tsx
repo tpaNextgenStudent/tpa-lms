@@ -28,7 +28,7 @@ interface TaskSectionProps {
     attempt_number: number | null;
     score: number | null;
     answer: null | string;
-  };
+  } | null;
   comments?: Comment[];
   module: IModuleVersion;
   isTaskActionVisible?: boolean;

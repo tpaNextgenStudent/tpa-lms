@@ -35,7 +35,7 @@ export default function Tasks({
         />
         <TaskSection
           comments={comments}
-          attempt={task.last_attempt || undefined}
+          attempt={task.last_attempt}
           task={task.task_data}
           module={module}
           isTaskActionVisible
