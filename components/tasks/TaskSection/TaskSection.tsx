@@ -97,7 +97,9 @@ export const TaskSection = ({
                 locked={attempt?.status === 'upcoming'}
                 description={task.description}
               />
-              {isTaskActionVisible && <TaskAction task={task} />}
+              {isTaskActionVisible && attempt?.status !== 'upcoming' && (
+                <TaskAction task={task} />
+              )}
             </>
           ),
           comments: comments && <TaskComments comments={comments} />,
