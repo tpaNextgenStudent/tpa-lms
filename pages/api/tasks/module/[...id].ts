@@ -36,6 +36,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           description: true,
           link: true,
         },
+        orderBy: { position: 'asc' },
       },
     },
   });

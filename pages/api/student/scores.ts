@@ -18,7 +18,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const scores: Array<any> = [];
   moduleProgress.forEach(module => {
     module.tasks.forEach((task: any) => {
-      if (task.score != null) {
+      if (task.status === 'approved' || !!task.score) {
         const { id, ...rest } = task;
         scores.push({
           ...rest,

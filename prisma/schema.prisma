@@ -54,7 +54,7 @@ model Profile {
   profile_id          String       @unique @default(cuid())
   login               String       @unique
   role                UserRole
-  provider_account_id String       @unique
+  provider_account_id String
   assignments         Assignment[]
 }
 
@@ -118,7 +118,7 @@ model Task {
   position          Int
   name              String
   description       String
-  link              String
+  link              String?
   attempts          Attempt[]
 }
 
