@@ -13,6 +13,10 @@
   &:last-child {
     margin-right: 0;
   }
+
+  &WithBorder {
+    border: 1px solid colors.$statusFontGreen;
+  }
 }
 
 .svgWrapper {

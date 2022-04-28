@@ -6,6 +6,7 @@ import { TaskTypeCell } from '../../../../components/common/tables/TaskTypeCell/
 import { TaskAttemptBadge } from '../../../../components/tasks/TaskAttemptBadge/TaskAttemptBadge';
 import { TaskScoreBadge } from '../../../../components/tasks/TaskScoreBadge/TaskScoreBadge';
 import { UserNameCell } from '../../../../components/common/tables/UserNameCell/UserNameCell';
+import { TaskDoneBadge } from '../../../../components/tasks/TaskDoneBadge/TaskDoneBadge';
 
 interface ScoresData {
   submission_date: string;
@@ -14,7 +15,7 @@ interface ScoresData {
   task: string;
   task_type: string;
   attempt: number;
-  score: number;
+  score: number | null;
   reviewed_by: { name: string; img: string | null; login: string | null };
   view: { link: string };
 }
@@ -71,9 +72,12 @@ export const columns: Column<ScoresData>[] = [
     accessor: 'score',
     width: 35,
 
-    Cell: ({ cell: { value } }: { cell: { value: number } }) => (
-      <TaskScoreBadge score={value} withBorder />
-    ),
+    Cell: ({ cell: { value } }: { cell: { value: number | null } }) =>
+      value ? (
+        <TaskScoreBadge score={value} withBorder />
+      ) : (
+        <TaskDoneBadge withBorder />
+      ),
   },
   {
     Header: 'Reviewed by',
