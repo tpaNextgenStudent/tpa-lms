@@ -1,7 +1,7 @@
 import { apiPath } from '../lib/utils/apiPath';
 import axios from 'axios';
 import { IUser, UserRole } from './user';
-import { TaskType, TaskStatus } from '../lib/utils/types';
+import { TaskType, TaskStatus, IProfile } from '../lib/utils/types';
 
 type Options = {
   cookie: string;
@@ -34,6 +34,7 @@ export interface IAssignment {
   };
   student: {
     user: IUser;
+    profile: IProfile;
   };
 }
 
