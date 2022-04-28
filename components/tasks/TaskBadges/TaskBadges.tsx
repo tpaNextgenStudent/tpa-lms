@@ -49,7 +49,7 @@ export const TaskBadges = ({
     type: () => <TaskTypeBadge type={task.type} />,
     status: () => attempt && <TaskStatusBadge status={attempt.status} />,
     score: () =>
-      isInfoType ? (
+      isInfoType && attempt?.status === 'approved' ? (
         <TaskDoneBadge />
       ) : (
         attempt?.score && (
