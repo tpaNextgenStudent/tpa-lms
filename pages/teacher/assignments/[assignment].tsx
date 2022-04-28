@@ -22,7 +22,8 @@ export default function ScoresIndex({
   return (
     <Layout
       parentPage={{ title: 'Assignments', link: '/teacher/assignments' }}
-      title={studentFullName}
+      headerTitle={studentFullName}
+      title="Assignments"
       user={user}
       withHeaderPrevButton
     >
@@ -51,8 +52,6 @@ export const getServerSideProps = withServerSideAuth('teacher')(
       const attempt = await getAttemptById(assignmentId, {
         cookie: authCookie,
       });
-
-      console.log(attempt);
 
       const comments = attemptToComments(attempt);
 

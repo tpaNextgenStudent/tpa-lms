@@ -31,6 +31,7 @@ export default function CohortProgressIndex({
     <Layout
       user={user}
       title="Cohort Progress"
+      headerTitle="Cohort Progress"
       description="Students' progress grouped by modules."
     >
       <GradesLegend />

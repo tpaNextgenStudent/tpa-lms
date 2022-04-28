@@ -20,6 +20,7 @@ export default function Tasks({
 }: InferPagePropsType<typeof getServerSideProps>) {
   return (
     <Layout
+      headerTitle="My Tasks"
       title="My Tasks"
       user={user}
       description="Find all of yours tasks divided into modules."

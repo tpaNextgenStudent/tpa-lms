@@ -7,11 +7,14 @@ import { withServerSideAuth } from '../../lib/auth/withServerSideAuth';
 import { useRouter } from 'next/router';
 import { UserDetails } from '../../schemas/userDetailsSchema';
 import { toast } from 'react-toastify';
+import { useIsLoading } from '../../lib/hooks/loadingContext';
 
 export default function LoginDetails() {
   const router = useRouter();
+  const { setIsLoading } = useIsLoading();
 
   const onSubmit = async (data: UserDetails) => {
+    setIsLoading(true);
     try {
       await axios.post(apiPath('user/details'), data);
       toast('User details successfully updated!', {
@@ -23,10 +26,11 @@ export default function LoginDetails() {
         type: 'error',
       });
     }
+    setIsLoading(false);
   };
 
   return (
-    <LoginLayout>
+    <LoginLayout title="TPA - Login details">
       <LoginHeroText
         titleLines={['*Well done!*']}
         description="Tell other students a few words about yourself."

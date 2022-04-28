@@ -1,8 +1,10 @@
 import styles from './LoadingView.module.scss';
-import { ReactNode } from 'react';
+import { ReactNode, useEffect } from 'react';
 import clsx from 'clsx';
 import { LoadingAnimation } from '../LoadingAnimation/LoadingAnimation';
 import FocusTrap from 'focus-trap-react';
+import { useIsLoading } from '../../../lib/hooks/loadingContext';
+import { useRouter } from 'next/router';
 
 interface LoadingViewProps {
   children: ReactNode;

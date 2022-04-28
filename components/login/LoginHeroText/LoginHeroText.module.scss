@@ -2,13 +2,15 @@
 @use '/lib/styles/variables/fonts.module' as fonts;
 
 .title {
-  max-width: 380px;
-  font-weight: fonts.$weightRegular;
-  font-size: 32px;
+  max-width: 472px;
+  font-weight: fonts.$weightMedium;
+  font-size: 24px;
   line-height: 48px;
   color: colors.$fontPrimary;
 
   strong {
+    font-size: 32px;
+    line-height: 48px;
     font-weight: fonts.$weightBold;
   }
 }

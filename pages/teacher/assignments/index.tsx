@@ -9,7 +9,7 @@ import {
 import { withServerSideAuth } from '../../../lib/auth/withServerSideAuth';
 import { getUserDetails } from '../../../api/user';
 import { getTeacherAssignments } from '../../../api/assignments';
-import dayjs from 'dayjs';
+import { EmptyStateView } from '../../../components/common/EmptyStateView/EmptyStateView';
 
 export default function AssignmentsIndex({
   user,
@@ -18,11 +18,19 @@ export default function AssignmentsIndex({
   return (
     <Layout
       user={user}
-      title={'Assignments'}
+      headerTitle="Assignments"
+      title="Assignments"
       description="Students' tasks to be reviewed by you."
       actionsNumber={assignments.length}
     >
-      <Table data={assignments} columns={columns} isFullWidth />
+      {assignments.length > 0 ? (
+        <Table data={assignments} columns={columns} isFullWidth />
+      ) : (
+        <EmptyStateView
+          imgSrc="/img/no-assignments-robot.png"
+          message="No assignments to be reviewed"
+        />
+      )}
     </Layout>
   );
 }

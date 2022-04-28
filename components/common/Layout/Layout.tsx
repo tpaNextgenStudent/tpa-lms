@@ -8,7 +8,9 @@ import Head from 'next/head';
 interface LayoutProps {
   children: ReactNode;
   user: IUserDetails;
+  headerTitle: string;
   title: string;
+  titleTemplate?: string;
   description?: string;
   actionsNumber?: number;
   withHeaderPrevButton?: boolean;
@@ -18,7 +20,9 @@ interface LayoutProps {
 export const Layout = ({
   children,
   user,
+  headerTitle,
   title,
+  titleTemplate = 'TPA - {title}',
   description,
   actionsNumber,
   withHeaderPrevButton = false,
@@ -33,10 +37,13 @@ export const Layout = ({
   const closeMobileNav = useCallback(() => {
     setIsMobileNavOpen(false);
   }, []);
+
+  const titleToShow = titleTemplate.replace(/{title}/g, title);
+
   return (
     <>
       <Head>
-        <title>{title}</title>
+        <title>{titleToShow}</title>
       </Head>
       <div className={styles.wrapper}>
         <Sidebar
@@ -49,7 +56,7 @@ export const Layout = ({
             parentPage={parentPage}
             withPrevButton={withHeaderPrevButton}
             openMobileNav={openMobileNav}
-            title={title}
+            title={headerTitle}
             description={description}
             user={user}
             actionsNumber={actionsNumber}
