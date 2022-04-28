@@ -54,7 +54,6 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
       },
     };
   }
-
   const errorType = ctx.query.error;
   return {
     props: {

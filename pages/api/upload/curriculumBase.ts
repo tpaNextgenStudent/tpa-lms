@@ -2,8 +2,8 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import prisma from '../../../lib/prisma';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  const curriculumBase = req.body;
-  console.log(4);
+  const curriculumBase = req.body.body;
+  console.log(4, curriculumBase);
   curriculumBase.modules.forEach(async (module: any) => {
     //if we don't have this id in MODULE at all add it there
     const moduleExsist = await prisma.module.findUnique({
@@ -40,13 +40,13 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       // var request = require('request');
       // let description = '';
       // request.get(
-      //   'https://raw.githubusercontent.com/tpa-nextgen/modules-master/master/outlines/model_with_classes_1/mwc1.code.dart.spotify_playlist.md?token=GHSAT0AAAAAABUAF4SWJ4VYSUHTRTGCWZQKYTJ2P5Q',
+      //   task?.description,
       //   function (error: any, response: any, body: any) {
-      //     console.log(99999999, body);
+      //     console.log(8888, body);
       //     description = body;
       //   }
       // );
-
+      // console.log(9999, description);
       await prisma.task.create({
         data: {
           curriculum_id: task?.id,
