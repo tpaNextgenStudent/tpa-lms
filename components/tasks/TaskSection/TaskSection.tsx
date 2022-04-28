@@ -34,7 +34,10 @@ interface TaskSectionProps {
   isTaskActionVisible?: boolean;
   isPassAgainVisible?: boolean;
   isTeacherAssessPanelVisible?: boolean;
-  nextAttempt?: { next_attempt_id: string | null; assessments_number: number };
+  nextAttempt?: {
+    next_attempt_id: string | null;
+    assessments_number: number;
+  } | null;
 }
 
 export const TaskSection = ({
@@ -120,7 +123,7 @@ export const TaskSection = ({
           />
         </div>
       )}
-      {isTeacherAssessPanelVisible && (
+      {isTeacherAssessPanelVisible && nextAttempt && (
         <TeacherAssessPanel nextAttempt={nextAttempt} />
       )}
     </main>

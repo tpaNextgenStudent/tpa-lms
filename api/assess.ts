@@ -21,12 +21,19 @@ type Options = {
 export const getNextTeacherAssessmentTask = async (
   attemptId: string,
   { cookie }: Options
-): Promise<{ next_attempt_id: string | null; assessments_number: number }> => {
-  const { data } = await axios.get(
-    apiPath(`teacher/next/assignment/${attemptId}`),
-    {
-      headers: { cookie },
-    }
-  );
-  return data;
+): Promise<{
+  next_attempt_id: string | null;
+  assessments_number: number;
+} | null> => {
+  try {
+    const { data } = await axios.get(
+      apiPath(`teacher/next/assignment/${attemptId}`),
+      {
+        headers: { cookie },
+      }
+    );
+    return data;
+  } catch {
+    return null;
+  }
 };
