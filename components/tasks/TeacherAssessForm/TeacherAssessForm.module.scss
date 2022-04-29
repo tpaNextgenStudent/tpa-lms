@@ -1,0 +1,89 @@
+@use '/lib/styles/variables/colors.module' as colors;
+@use '/lib/styles/variables/media.module' as media;
+@use '/lib/styles/variables/fonts.module' as fonts;
+@use '/lib/styles/variables/shadows.module' as shadows;
+
+.wrapper {
+  box-shadow: shadows.$primary;
+  position: absolute;
+  bottom: 100%;
+  margin: 24px;
+  padding: 24px;
+  width: calc(100% - 48px);
+  max-width: 619px;
+  background-color: colors.$white;
+  border-radius: 16px;
+
+  @media (max-width: media.$laptopS) {
+    position: relative;
+    bottom: unset;
+  }
+}
+
+.closeButton {
+  display: flex;
+  border: none;
+  background: none;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  cursor: pointer;
+
+  svg {
+    width: 16px;
+    height: 16px;
+    stroke-width: 2px;
+  }
+}
+
+.textarea {
+  width: 100%;
+  resize: none;
+  border: 1px solid colors.$strokeMain;
+  border-radius: 8px;
+  padding: 16px;
+  font-family: fonts.$familyPrimary;
+  color: colors.$fontPrimary;
+  font-weight: fonts.$weightMedium;
+  font-size: 12px;
+  line-height: 24px;
+  height: 189px;
+  display: block;
+
+  &::placeholder {
+    color: colors.$fontSecondary;
+    font-weight: fonts.$weightMedium;
+    font-size: 12px;
+    line-height: 24px;
+  }
+}
+
+.actionWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.selectWrapper {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+}
+.submit {
+  margin-top: 24px;
+}
+
+.selectLabel {
+  margin-right: 16px;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: fonts.$weightMedium;
+  color: colors.$fontPrimary;
+}
+
+.select {
+  margin-left: 0 !important;
+  width: fit-content;
+}

@@ -1,0 +1,66 @@
+@use '/lib/styles/variables/colors.module' as colors;
+@use '/lib/styles/variables/media.module' as media;
+@use '/lib/styles/variables/fonts.module' as fonts;
+
+.form {
+  margin-top: 32px;
+  max-width: 312px;
+}
+
+.fieldWrapper {
+  display: flex;
+  flex-direction: column;
+  margin-top: 16px;
+
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.label {
+  font-weight: fonts.$weightMedium;
+  font-size: 14px;
+  line-height: 24px;
+  color: colors.$fontPrimary;
+}
+
+.field {
+  margin-top: 8px;
+  font-weight: fonts.$weightRegular;
+  font-size: 12px;
+  line-height: 24px;
+  color: colors.$fontPrimary;
+  padding: 12px 16px;
+  border: 1px solid colors.$strokeMain;
+  border-radius: 8px;
+  font-family: inherit;
+  resize: none;
+
+  &::placeholder {
+    color: colors.$fontSecondary;
+  }
+
+  &Error {
+    border-color: colors.$statusFontRed;
+  }
+
+  &Correct {
+    border-color: colors.$statusFontGreen;
+  }
+}
+
+.errorMessage {
+  margin-top: 4px;
+  font-weight: fonts.$weightRegular;
+  font-size: 12px;
+  line-height: 16px;
+  color: colors.$statusFontRed;
+}
+
+.ctaButtonWrapper {
+  margin-top: 72px;
+
+  @media (max-width: media.$tablet) {
+    margin-top: 32px;
+  }
+}

@@ -1,0 +1,64 @@
+@use '/lib/styles/variables/colors.module' as colors;
+@use '/lib/styles/variables/fonts.module' as fonts;
+
+.markdown {
+  font-weight: fonts.$weightRegular;
+  font-size: 16px;
+  line-height: 28px;
+  color: colors.$fontPrimary;
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-weight: fonts.$weightBold;
+    font-size: 16px;
+    line-height: 20px;
+    margin-top: 32px;
+  }
+
+  p {
+    margin-top: 16px;
+    font-weight: fonts.$weightRegular;
+    font-size: 16px;
+    line-height: 28px;
+  }
+
+  img {
+    margin-top: 16px;
+    max-width: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+  }
+
+  ul,
+  ol {
+    margin-top: 16px;
+    list-style-position: inside;
+  }
+
+  li {
+    font-weight: fonts.$weightRegular;
+    font-size: 16px;
+    line-height: 28px;
+  }
+
+  svg {
+    margin-top: 16px;
+  }
+
+  pre {
+    margin-top: 16px !important;
+    border-radius: 8px;
+  }
+
+  p > code {
+    background-color: colors.$purpleSecondary;
+    padding: 2px 6px;
+    border-radius: 8px;
+    margin: 0 2px;
+    font-style: italic;
+  }
+}

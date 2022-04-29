@@ -1,30 +1,31 @@
-datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+generator client {
+  provider = "prisma-client-js"
 }
 
-generator client {
-  provider        = "prisma-client-js"
+datasource db {
+  provider          = "postgresql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
 model Account {
-  id                        String  @id @default(cuid())
-  userId                    String
-  type                      String
-  provider                  String
-  providerAccountId         String
-  refresh_token             String?  @db.Text
-  access_token              String?  @db.Text
-  refresh_token_expires_in  Int?
-  expires_at                Int?
-  token_type                String?
-  scope                     String?
-  id_token                  String?  @db.Text
-  session_state             String?
-  oauth_token_secret        String?
-  oauth_token               String?
+  id                       String  @id @default(cuid())
+  userId                   String
+  type                     String
+  provider                 String
+  providerAccountId        String  @unique
+  refresh_token            String?
+  access_token             String?
+  refresh_token_expires_in Int?
+  expires_at               Int?
+  token_type               String?
+  scope                    String?
+  id_token                 String?
+  session_state            String?
+  oauth_token_secret       String?
+  oauth_token              String?
+  user                     User    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
 }
@@ -39,12 +40,22 @@ model Session {
 
 model User {
   id            String    @id @default(cuid())
-  name          String?
   email         String?   @unique
   emailVerified DateTime?
   image         String?
   accounts      Account[]
   sessions      Session[]
+  name          String?
+  surname       String?
+  bio           String?
+}
+
+model Profile {
+  profile_id          String       @unique @default(cuid())
+  login               String       @unique
+  role                UserRole
+  provider_account_id String
+  assignments         Assignment[]
 }
 
 model VerificationToken {
@@ -56,7 +67,90 @@ model VerificationToken {
 }
 
 model Cohort {
-  id            String  @id @default(cuid())
-  name          String
-  inviteUrlId   String  @default(cuid())
+  id          String       @id @default(cuid())
+  name        String
+  assignments Assignment[]
+}
+
+model Assignment {
+  id                 String      @id @default(cuid())
+  cohort_id          String
+  cohort             Cohort      @relation(fields: [cohort_id], references: [id])
+  profile_id         String?
+  profile            Profile?    @relation(fields: [profile_id], references: [profile_id])
+  role               userRole
+  curriculum         Curriculum?
+  checked_attempts   Attempt[]   @relation("teacher")
+  submitted_attempts Attempt[]   @relation("student")
+}
+
+enum UserRole {
+  student
+  teacher
+}
+
+enum userRole {
+  student
+  teacher
+}
+
+model Module {
+  id              String          @id @default(cuid())
+  name            String
+  module_versions ModuleVersion[]
+}
+
+model ModuleVersion {
+  id             String @id @default(cuid())
+  moduleId       String
+  module         Module @relation(fields: [moduleId], references: [id])
+  version_number Int
+  tasks          Task[]
+}
+
+model Task {
+  id                String         @id @default(cuid())
+  curriculum_id     String
+  module_version_id String
+  module_version    ModuleVersion? @relation(fields: [module_version_id], references: [id])
+  type              taskType
+  summative         Boolean?
+  position          Int
+  name              String
+  description       String
+  link              String?
+  attempts          Attempt[]
+}
+
+enum taskType {
+  info
+  code
+}
+
+model Curriculum {
+  id                   String     @id @default(cuid())
+  assignment_id        String     @unique
+  assignment           Assignment @relation(fields: [assignment_id], references: [id])
+  module_progress      Json
+  last_module_position Int
+  last_task_position   Int
+}
+
+model Attempt {
+  id                   String     @id @default(cuid())
+  assignment_id        String
+  student              Assignment @relation("student", fields: [assignment_id], references: [id])
+  task_id              String
+  task                 Task       @relation(fields: [task_id], references: [id])
+  score                Int?
+  answer               String
+  comment              String?
+  attempt_number       Int
+  teacher_assigment_id String
+  teacher              Assignment @relation("teacher", fields: [teacher_assigment_id], references: [id])
+  submission_date      DateTime   @default(now())
+  evaluation_date      DateTime?
+  status               String
+  module_number        Int?
+  task_number          Int?
 }

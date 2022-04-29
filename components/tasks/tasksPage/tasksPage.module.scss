@@ -1,0 +1,11 @@
+@use '/lib/styles/variables/media.module' as media;
+
+.tasksWrapper {
+  display: flex;
+  width: 100%;
+  height: 100%;
+
+  @media (max-width: media.$laptopS) {
+    flex-direction: column;
+  }
+}

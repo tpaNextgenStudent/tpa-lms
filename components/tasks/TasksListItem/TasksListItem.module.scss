@@ -1,0 +1,63 @@
+@use '/lib/styles/variables/colors.module' as colors;
+@use '/lib/styles/variables/media.module' as media;
+@use '/lib/styles/variables/shadows.module' as shadows;
+@use '/lib/styles/variables/fonts.module' as fonts;
+
+.task {
+  margin-top: 16px;
+  background-color: colors.$white;
+  border-radius: 16px;
+  position: relative;
+  color: colors.$fontPrimary;
+  border: 3px solid colors.$white;
+  min-width: 265px;
+  box-shadow: shadows.$primary;
+
+  &:first-of-type {
+    margin-top: 0;
+  }
+
+  &:hover {
+    background-color: colors.$whiteHover;
+    border-color: colors.$whiteHover;
+  }
+
+  &Active {
+    border-color: colors.$purplePrimary;
+
+    &:hover {
+      border-color: colors.$purplePrimary;
+    }
+  }
+
+  @media (max-width: media.$laptopS) {
+    margin-top: 0;
+    margin-left: 24px;
+
+    &:first-of-type {
+      margin-left: 0;
+    }
+  }
+}
+
+.taskLink {
+  display: block;
+  padding: 16px;
+}
+
+.moduleName {
+  display: block;
+  font-weight: fonts.$weightBold;
+  font-size: 12px;
+  line-height: 16px;
+  width: fit-content;
+  color: colors.$purplePrimary;
+}
+
+.taskName {
+  margin-top: 8px;
+  font-weight: fonts.$weightBold;
+  font-size: 16px;
+  line-height: 24px;
+  color: colors.$fontPrimary;
+}

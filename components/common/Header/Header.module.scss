@@ -1,0 +1,115 @@
+@use '/lib/styles/variables/colors.module' as colors;
+@use '/lib/styles/variables/media.module' as media;
+@use '/lib/styles/variables/shadows.module' as shadows;
+@use '/lib/styles/variables/fonts.module' as fonts;
+
+.mobileBurgerMenuButton {
+  display: none;
+  margin-right: 12px;
+  border: none;
+  color: colors.$purplePrimary;
+  cursor: pointer;
+  border-radius: 64px;
+  width: 40px;
+  height: 40px;
+  background-color: colors.$white;
+  box-shadow: shadows.$image;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    width: 16px;
+    height: 16px;
+    fill: colors.$purplePrimary;
+    path {
+      fill: colors.$purplePrimary;
+    }
+  }
+
+  @media (max-width: media.$laptopS) {
+    display: flex;
+  }
+}
+
+.titleWrapper {
+  display: flex;
+  align-items: center;
+
+  &EmptyDesc {
+    margin-bottom: 16px;
+  }
+}
+
+.headerWrapper {
+  display: flex;
+  align-items: flex-start;
+  padding: 42px 24px 24px;
+  border-bottom: 1px solid colors.$strokeLines;
+}
+
+.textWrapper {
+  margin-right: auto;
+}
+
+.title {
+  font-weight: fonts.$weightMedium;
+  font-size: 24px;
+  line-height: 40px;
+  color: colors.$fontPrimary;
+}
+
+.titlePrevPage {
+  color: colors.$fontSecondary;
+
+  &::after {
+    content: ' / ';
+    color: colors.$fontPrimary;
+  }
+
+  &:hover {
+    color: colors.$purplePrimary;
+  }
+}
+
+.actionsNumber {
+  font-weight: fonts.$weightBold;
+  font-size: 15px;
+  line-height: 24px;
+  margin-left: 16px;
+  background-color: colors.$purpleSecondary;
+  color: colors.$purplePrimary;
+  border-radius: 64px;
+  padding: 4px 8px;
+  min-width: 32px;
+  height: 32px;
+  text-align: center;
+}
+
+.description {
+  font-weight: fonts.$weightRegular;
+  font-size: 12px;
+  line-height: 16px;
+  color: colors.$fontSecondary;
+}
+
+.prevLink {
+  display: block;
+  padding: 8px;
+  border: none;
+  background: none;
+  margin-right: 14px;
+  cursor: pointer;
+
+  svg {
+    width: 14px;
+    height: 23px;
+    fill: colors.$purplePrimary;
+  }
+
+  &:hover {
+    svg {
+      opacity: 0.8;
+    }
+  }
+}

@@ -1,0 +1,34 @@
+@use '/lib/styles/variables/colors.module' as colors;
+
+.wrapper {
+  background-color: colors.$statusBgGreen;
+  width: 32px;
+  height: 32px;
+  border-radius: 100px;
+  margin-right: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &WithBorder {
+    border: 1px solid colors.$statusFontGreen;
+  }
+}
+
+.svgWrapper {
+  width: 15.5px;
+  height: 11px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  svg {
+    width: 100%;
+    height: 100%;
+    fill: colors.$statusFontGreen;
+  }
+}

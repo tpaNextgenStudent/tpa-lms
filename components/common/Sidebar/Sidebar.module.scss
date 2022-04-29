@@ -1,0 +1,164 @@
+@use '/lib/styles/variables/colors.module' as colors;
+@use '/lib/styles/variables/media.module' as media;
+@use '/lib/styles/variables/fonts.module' as fonts;
+@use '/lib/styles/variables/shadows.module' as shadows;
+
+.sideBarWrapper {
+  width: 256px;
+  background-color: colors.$bgMain;
+  padding: 52px 24px 32px;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid colors.$bgMain;
+
+  @media (max-width: media.$laptopS) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10;
+    transform: translateX(-100%);
+    display: flex;
+    flex-direction: column;
+
+    &Open {
+      transform: translateX(0);
+    }
+  }
+}
+
+.logoLinkWrapper {
+  display: flex;
+  align-items: center;
+  align-self: flex-end;
+}
+
+.logoLink {
+  height: auto;
+  display: flex;
+  width: fit-content;
+}
+
+.sidebarContentWrapper {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.cohortName {
+  font-weight: fonts.$weightBold;
+  font-size: 16px;
+  line-height: 24px;
+  padding: 12px 8px;
+  text-align: center;
+  border: 1px solid colors.$strokeMain;
+  text-transform: uppercase;
+  color: colors.$fontPrimary;
+  background-color: colors.$white;
+  border-radius: 8px;
+
+  @media (max-width: media.$laptopS) {
+    order: 1000;
+    margin-top: auto;
+  }
+}
+
+.navWrapper {
+  margin-top: 16px;
+}
+
+.navList {
+  list-style-type: none;
+}
+
+.navItem {
+  margin: 8px 0;
+}
+
+.navLink {
+  width: 100%;
+  height: 100%;
+  padding: 12px 21px;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  font-weight: fonts.$weightRegular;
+  font-size: 16px;
+  line-height: 24px;
+  color: colors.$fontSecondary;
+
+  svg > path {
+    fill: colors.$fontSecondary;
+  }
+
+  &Active {
+    svg > path {
+      fill: colors.$purplePrimary;
+    }
+  }
+
+  &Active {
+    background-color: colors.$white;
+    color: colors.$purplePrimary;
+    box-shadow: shadows.$navbar;
+    font-weight: fonts.$weightBold;
+  }
+
+  &:hover {
+    background-color: colors.$bgTable;
+  }
+}
+
+.linkIcon {
+  display: flex;
+  align-items: center;
+}
+
+.linkText {
+  margin-left: 16px;
+}
+
+.closeButtonWrapper {
+  display: none;
+  height: 56px;
+  align-items: center;
+  margin-right: 24px;
+  @media (max-width: media.$laptopS) {
+    display: flex;
+  }
+}
+
+.logoCloseWrapper {
+  @media (max-width: media.$laptopS) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.mobileNavClose {
+  border: none;
+  background: none;
+  color: colors.$purplePrimary;
+  cursor: pointer;
+  border-radius: 64px;
+  width: 40px;
+  height: 40px;
+  background: colors.$white;
+  box-shadow: shadows.$image;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    width: 16px;
+    height: 16px;
+    fill: colors.$purplePrimary;
+    path {
+      fill: colors.$purplePrimary;
+    }
+  }
+}

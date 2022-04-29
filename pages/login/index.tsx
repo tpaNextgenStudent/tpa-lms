@@ -1,37 +1,74 @@
-import { useSession, signIn, signOut } from "next-auth/react";
-import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { getSession, signIn } from 'next-auth/react';
+import { GetServerSidePropsContext } from 'next';
+import { LoginLayout } from '../../components/login/LoginLayout/LoginLayout';
+import { LoginHeroText } from '../../components/login/LoginHeroText/LoginHeroText';
+import styles from '../../components/login/loginPage/loginPage.module.scss';
+import { CTAButton } from '../../components/common/CTAButton/CTAButton';
+import { ERROR_TYPE_MESSAGE } from '../../lib/constants';
+import { InferPagePropsType } from '../../lib/utils/types';
+import { ErrorView } from '../../components/common/ErrorView/ErrorView';
+import { useRouter } from 'next/router';
+import { useIsLoading } from '../../lib/hooks/loadingContext';
 
-export default function Login() {
-  const Router = useRouter();
-  const { data: session } = useSession();
+export default function Login({
+  error,
+}: InferPagePropsType<typeof getServerSideProps>) {
+  const { setIsLoading } = useIsLoading();
 
-  useEffect(() => {
-    if (session) {
-      Router.push("/");
-    }
-  }, [session]);
+  const loginWithGithub = async () => {
+    setIsLoading(true);
+    await signIn('github', {});
+  };
 
-  const path = (Router.query.refId as string) || "";
-
-  return !session ? (
-    <>
-      Not signed in <br />
-      <button
-        onClick={() =>
-          signIn(
-            "github",
-            { callbackUrl: "http://localhost:3000" },
-            {
-              path: path,
-            }
-          )
-        }
-      >
-        Sign in
-      </button>
-    </>
-  ) : (
-    ""
+  const router = useRouter();
+  if (error) {
+    return (
+      <ErrorView
+        title="*Something went wrong.*"
+        description="Please, go back and log in again."
+        primaryButton={{
+          text: 'Back to login page',
+          onClick: () => {
+            router.push('/login');
+          },
+        }}
+      />
+    );
+  }
+  return (
+    <LoginLayout title="TPA - Login">
+      <LoginHeroText
+        titleLines={[
+          'Welcome to TechPlayAcademy! 👋',
+          '*Learn a professional approach*',
+          '*to building software*',
+          '*products*',
+        ]}
+        description="Start your journey with signing in using your GitHub account."
+      />
+      <div className={styles.ctaButtonWrapper}>
+        <CTAButton text="Login with github" onClick={loginWithGithub} />
+      </div>
+    </LoginLayout>
   );
+}
+
+export async function getServerSideProps(ctx: GetServerSidePropsContext) {
+  const session = await getSession(ctx);
+  if (session) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    };
+  }
+  const errorType = ctx.query.error;
+  return {
+    props: {
+      error: errorType
+        ? ERROR_TYPE_MESSAGE[errorType as keyof typeof ERROR_TYPE_MESSAGE]
+        : null,
+    },
+  };
 }

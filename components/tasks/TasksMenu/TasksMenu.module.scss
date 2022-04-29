@@ -1,0 +1,18 @@
+@use '/lib/styles/variables/colors.module' as colors;
+@use '/lib/styles/variables/media.module' as media;
+
+.wrapper {
+  width: 314px;
+  overflow-x: hidden;
+  padding-top: 24px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid colors.$strokeMain;
+
+  @media (max-width: media.$laptopS) {
+    border-right: none;
+    width: auto;
+    overflow-x: auto;
+  }
+}

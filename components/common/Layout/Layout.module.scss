@@ -1,0 +1,26 @@
+@use '/lib/styles/variables/media.module' as media;
+
+.wrapper {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+
+  @media (max-width: media.$laptopS) {
+    min-height: 100vh;
+    height: 100%;
+  }
+}
+
+.mainWrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.contentWrapper {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}

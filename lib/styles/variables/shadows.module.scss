@@ -1,0 +1,11 @@
+$primary: 4px 8px 32px rgba(7, 1, 48, 0.08);
+$secondary: 0px 8px 32px rgba(7, 1, 48, 0.12);
+$navbar: 0px 2px 24px rgba(7, 1, 48, 0.04);
+$image: 4px 8px 32px rgba(7, 1, 48, 0.04);
+
+:export {
+  primary: $primary;
+  secondary: $secondary;
+  navbar: $navbar;
+  image: $image;
+}
