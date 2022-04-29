@@ -13,6 +13,7 @@ const getUserResults = async (moduleId: string, session: any) => {
   });
 
   const modules = curriculum?.module_progress as Array<any>;
+
   module = modules.find(module => module.module_id === moduleId) || {};
 
   return module['tasks' as keyof typeof module];
@@ -42,9 +43,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   });
 
   const moduleTasksWithProgress = moduleTasks?.tasks.map(task => {
-    const result = userResults.find(
-      (taskResult: any) => taskResult.id === task.id
-    );
+    const result = userResults.find((taskResult: any) => {
+      return taskResult.id === task.id;
+    });
 
     delete result['id'];
 
