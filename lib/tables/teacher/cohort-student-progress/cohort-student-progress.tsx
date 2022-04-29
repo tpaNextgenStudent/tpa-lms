@@ -35,8 +35,12 @@ export function getTeacherStudentProgressColumns(
           cell: { value },
         }: {
           cell: { value: TaskScoreField | null };
-        }) =>
-          value?.attempt_id ? (
+        }) => {
+          if (!value) {
+            return null;
+          }
+
+          return value.attempt_id ? (
             <Link href={`/teacher/assignments/${value.attempt_id}`}>
               <a className={styles.taskCell}>
                 <GradeCell grade={value} />
@@ -46,7 +50,8 @@ export function getTeacherStudentProgressColumns(
             <span className={styles.taskCell}>
               <GradeCell grade={value} />
             </span>
-          ),
+          );
+        },
       } as const)
   );
 
