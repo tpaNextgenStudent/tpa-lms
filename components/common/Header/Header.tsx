@@ -29,9 +29,6 @@ export const Header = ({
   const router = useRouter();
 
   const goToPrevPage = () => {
-    if (parentPage) {
-      return router.push(parentPage.link);
-    }
     return router.back();
   };
 

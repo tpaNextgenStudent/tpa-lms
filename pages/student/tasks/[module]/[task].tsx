@@ -47,23 +47,26 @@ export default function Tasks({
 
 export const getServerSideProps = withServerSideAuth('student')(
   async ({ req, params }) => {
-    const authCookie = req.headers.cookie as string;
-    const user = await getUserDetails({ cookie: authCookie });
-
     const { module: moduleId, task: taskId } = params! as {
       module: string;
       task: string;
     };
+    const authCookie = req.headers.cookie as string;
 
-    const modules = await getUserModules({
-      cookie: authCookie,
-    });
+    const [user, modules, tasks, attempts] = await Promise.all([
+      getUserDetails({ cookie: authCookie }),
+      getUserModules({
+        cookie: authCookie,
+      }),
+      getUserTasksByModule(moduleId, {
+        cookie: authCookie,
+      }),
+      getAttemptsByTask(taskId, {
+        cookie: authCookie,
+      }),
+    ]);
+
     const module = modules.find(m => m.module_version_id === moduleId)!;
-
-    const tasks = await getUserTasksByModule(moduleId, {
-      cookie: authCookie,
-    });
-
     const task = tasks.find(t => t.task_data.id === taskId);
 
     if (!task) {
@@ -71,10 +74,6 @@ export const getServerSideProps = withServerSideAuth('student')(
         notFound: true,
       };
     }
-
-    const attempts = await getAttemptsByTask(taskId, {
-      cookie: authCookie,
-    });
 
     const comments = attemptsToComments(attempts);
 
