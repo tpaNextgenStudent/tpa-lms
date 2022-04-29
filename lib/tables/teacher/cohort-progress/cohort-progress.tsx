@@ -67,7 +67,7 @@ export function getTeacherCohortProgressColumns({
           cell: { value: TaskScoreField | null };
         }) =>
           value?.attempt_id ? (
-            <Link href={`/teacher/assignments/${value.attempt_id}`}>
+            <Link href={`/teacher/cohort/progress/attempt/${value.attempt_id}`}>
               <a className={styles.taskCell}>
                 <GradeCell grade={value} />
               </a>
