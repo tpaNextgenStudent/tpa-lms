@@ -79,6 +79,7 @@
   width: 50%;
   flex-shrink: 0;
   background-color: colors.$purpleSecondary;
+  position: relative;
 
   @media (max-width: media.$tablet) {
     flex: 1;
@@ -135,27 +136,9 @@
   z-index: 1;
 }
 
-.svgOverflowWrapper {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
-
-.svgWrapper {
+.bgImgWrapper {
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 29vw;
-  height: 27vw;
-  max-width: 425px;
-  max-height: 396px;
-  transform: translate(-33%, 43%);
-
-  svg {
-    width: 100%;
-    height: 100%;
-  }
+  width: 100%;
 }

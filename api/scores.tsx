@@ -1,7 +1,7 @@
 import { apiPath } from '../lib/utils/apiPath';
 import axios from 'axios';
 import { IUser } from './user';
-import { TaskType } from '../lib/utils/types';
+import { IProfile, TaskType } from '../lib/utils/types';
 
 type Options = {
   cookie: string;
@@ -16,7 +16,7 @@ export interface IScore {
     attempt_number: number;
     submission_date: string;
     evaluation_date: string;
-    teacher: { user: IUser };
+    teacher: { user: IUser; profile: IProfile };
   };
   task_name: string;
   task_type: TaskType;

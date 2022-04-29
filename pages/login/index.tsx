@@ -8,14 +8,18 @@ import { ERROR_TYPE_MESSAGE } from '../../lib/constants';
 import { InferPagePropsType } from '../../lib/utils/types';
 import { ErrorView } from '../../components/common/ErrorView/ErrorView';
 import { useRouter } from 'next/router';
-
-const loginWithGithub = async () => {
-  await signIn('github', {});
-};
+import { useIsLoading } from '../../lib/hooks/loadingContext';
 
 export default function Login({
   error,
 }: InferPagePropsType<typeof getServerSideProps>) {
+  const { setIsLoading } = useIsLoading();
+
+  const loginWithGithub = async () => {
+    setIsLoading(true);
+    await signIn('github', {});
+  };
+
   const router = useRouter();
   if (error) {
     return (
@@ -32,9 +36,14 @@ export default function Login({
     );
   }
   return (
-    <LoginLayout>
+    <LoginLayout title="TPA - Login">
       <LoginHeroText
-        titleLines={['*Hello! 👋*', '*Welcome to*', '*Tech Play Academy.*']}
+        titleLines={[
+          'Welcome to TechPlayAcademy! 👋',
+          '*Learn a professional approach*',
+          '*to building software*',
+          '*products*',
+        ]}
         description="Start your journey with signing in using your GitHub account."
       />
       <div className={styles.ctaButtonWrapper}>

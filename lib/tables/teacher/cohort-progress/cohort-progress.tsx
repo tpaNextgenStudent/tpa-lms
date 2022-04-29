@@ -19,6 +19,7 @@ type TaskScoreField = {
   score: number | null;
   status: TaskStatus;
   attempt_number: number;
+  attempt_id: string | null;
 };
 
 export interface CohortProgressData {
@@ -64,11 +65,18 @@ export function getTeacherCohortProgressColumns({
           cell: { value },
         }: {
           cell: { value: TaskScoreField | null };
-        }) => (
-          <span className={styles.taskCell}>
-            <GradeCell grade={value} />
-          </span>
-        ),
+        }) =>
+          value?.attempt_id ? (
+            <Link href={`/teacher/assignments/${value.attempt_id}`}>
+              <a className={styles.taskCell}>
+                <GradeCell grade={value} />
+              </a>
+            </Link>
+          ) : (
+            <span className={styles.taskCell}>
+              <GradeCell grade={value} />
+            </span>
+          ),
       } as const)
   );
 
@@ -134,9 +142,16 @@ export const mapProgressToTableData = (
             link: `/teacher/cohort/progress/student/${student.assignment_id}`,
           },
         },
-        ...tasks.map(({ position, score, status, attempt_number }) => ({
-          [`task_${position}`]: { score, status, attempt_number },
-        }))
+        ...tasks.map(
+          ({ position, score, status, attempt_number, attempt_id }) => ({
+            [`task_${position}`]: {
+              score,
+              status,
+              attempt_number,
+              attempt_id,
+            },
+          })
+        )
       );
     });
 };

@@ -5,6 +5,7 @@ import { columns } from '../../../lib/tables/student/cohort-progress/cohort-prog
 import { withServerSideAuth } from '../../../lib/auth/withServerSideAuth';
 import { getUserDetails } from '../../../api/user';
 import { getCohortProgress } from '../../../api/cohort';
+import { EmptyStateView } from '../../../components/common/EmptyStateView/EmptyStateView';
 
 export default function CohortProgress({
   user,
@@ -12,6 +13,7 @@ export default function CohortProgress({
 }: InferPagePropsType<typeof getServerSideProps>) {
   return (
     <Layout
+      headerTitle="Cohort Progress"
       title="Cohort Progress"
       description="See your teammates and how they are doing with their tasks."
       user={user}
@@ -29,13 +31,15 @@ export const getServerSideProps = withServerSideAuth('student')(
     const p = await getCohortProgress({ cookie: authCookie });
 
     const progress = p.map(
-      ({ user, module_name, task_name, task_type, module_position }) => {
-        const userName = [user?.name, user?.surname].filter(n => n).join(' ');
+      ({ student, task_name, task_type, module_position }) => {
+        const studentName = [student.user.name, student.user.surname]
+          .filter(n => n)
+          .join(' ');
         return {
           student: {
-            name: userName,
-            login: user?.email,
-            img: user?.image,
+            name: studentName,
+            login: student.profile.login,
+            img: student.user.image,
           },
           module: `Module ${module_position}`,
           task_name,

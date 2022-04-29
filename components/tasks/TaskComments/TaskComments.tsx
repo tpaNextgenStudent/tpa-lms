@@ -9,6 +9,7 @@ import { Comment } from '../../../lib/utils/types';
 import Link from 'next/link';
 dayjs.extend(relativeTime);
 import { useRouter } from 'next/router';
+import { EmptyStateView } from '../../common/EmptyStateView/EmptyStateView';
 
 interface TaskCommentsProps {
   comments: Comment[];
@@ -16,6 +17,16 @@ interface TaskCommentsProps {
 
 export const TaskComments = ({ comments }: TaskCommentsProps) => {
   const { asPath } = useRouter();
+
+  if (comments.length < 1) {
+    return (
+      <EmptyStateView
+        imgSrc="/img/no-comments-robot.png"
+        message="Here you will see comments"
+      />
+    );
+  }
+
   return (
     <div data-cypress="TaskComments" className={styles.wrapper}>
       <div className={styles.content}>

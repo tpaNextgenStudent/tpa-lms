@@ -1,7 +1,7 @@
 import { getSession } from 'next-auth/react';
 import { NextApiHandler, NextApiRequest, NextApiResponse } from 'next';
-import prisma from '../../../lib/prisma';
-import { userDetailsSchema } from '../../../schemas/userDetailsSchema';
+import prisma from '../../../../lib/prisma';
+import { userDetailsSchema } from '../../../../schemas/userDetailsSchema';
 import { ObjectShape, OptionalObjectSchema } from 'yup/lib/object';
 
 const postRequest = async (
@@ -57,7 +57,29 @@ const getRequest = async (res: NextApiResponse, userId: string) => {
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const session = await getSession({ req });
-  const userId = session?.userId as any;
+  const assigmentId = req.query.id[0];
+  let userId = session?.userId as any;
+
+  if (assigmentId && req.method === 'GET') {
+    const assignment = await prisma.assignment.findFirst({
+      where: { id: assigmentId },
+      select: {
+        profile: { select: { provider_account_id: true } },
+      },
+    });
+
+    if (!assignment) {
+      res.status(401).send({ message: 'User not found' });
+    }
+
+    const account = await prisma.account.findFirst({
+      where: { providerAccountId: assignment?.profile?.provider_account_id },
+      select: {
+        user: { select: { id: true } },
+      },
+    });
+    userId = account?.user.id;
+  }
 
   if (session) {
     switch (req.method) {

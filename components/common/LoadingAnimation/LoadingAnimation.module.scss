@@ -10,6 +10,16 @@
   }
 }
 
+@keyframes transformSpin {
+  0% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+
+  100% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+}
+
 .loading {
   display: block;
   position: relative;
@@ -17,7 +27,7 @@
   width: var(--size);
   height: var(--size);
   border: calc(var(--size) / 8) solid colors.$purpleSecondary;
-  border-top-color: colors.$purplePrimary;
+  border-top-color: colors.$purplePrimaryLight;
   animation: spin 0.75s infinite linear;
 
   &::before,
@@ -27,7 +37,7 @@
     border-radius: 50%;
     width: calc(var(--size) / 8);
     height: calc(var(--size) / 8);
-    background: colors.$purplePrimary;
+    background: colors.$purplePrimaryLight;
   }
 
   &::before {
@@ -38,5 +48,24 @@
   &::after {
     top: 0;
     right: calc(var(--size) / 192);
+  }
+}
+
+.tpa {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  width: calc(var(--size) * 0.75);
+  height: calc(var(--size) * 0.75);
+  background-color: colors.$purplePrimary;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: transformSpin 0.75s infinite linear;
+
+  svg {
+    max-width: 100%;
   }
 }

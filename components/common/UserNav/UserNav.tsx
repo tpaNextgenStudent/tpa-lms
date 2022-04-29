@@ -7,6 +7,7 @@ import clsx from 'clsx';
 import { useClickOutside } from '../../../lib/hooks/useClickOutside';
 import { IUserDetails } from '../../../api/user';
 import { signOut } from 'next-auth/react';
+import { useIsLoading } from '../../../lib/hooks/loadingContext';
 
 interface UserNavProps {
   user: IUserDetails;
@@ -16,6 +17,7 @@ export const UserNav = ({ user }: UserNavProps) => {
   const buttonRef = useRef<HTMLButtonElement>(null);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isDropdownOpenByClick, setIsDropdownOpenByClick] = useState(false);
+  const { setIsLoading } = useIsLoading();
 
   const handleClickOutside = () => {
     setIsDropdownOpenByClick(false);
@@ -41,6 +43,11 @@ export const UserNav = ({ user }: UserNavProps) => {
 
   const handleBlur = () => {
     setIsDropdownOpen(false);
+  };
+
+  const handleLogoutClick = async () => {
+    setIsLoading(true);
+    await signOut();
   };
 
   const fullName = [user.name, user.surname].filter(n => !!n).join(' ');
@@ -92,7 +99,7 @@ export const UserNav = ({ user }: UserNavProps) => {
           </li>
           <li className={styles.userNavListItem}>
             <button
-              onClick={() => signOut()}
+              onClick={handleLogoutClick}
               className={styles.userNavLogoutButton}
             >
               Log out

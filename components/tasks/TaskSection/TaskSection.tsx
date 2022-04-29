@@ -34,7 +34,10 @@ interface TaskSectionProps {
   isTaskActionVisible?: boolean;
   isPassAgainVisible?: boolean;
   isTeacherAssessPanelVisible?: boolean;
-  nextAttempt?: { next_attempt_id: string | null; assessments_number: number };
+  nextAttempt?: {
+    next_attempt_id: string | null;
+    assessments_number: number;
+  } | null;
 }
 
 export const TaskSection = ({
@@ -97,7 +100,9 @@ export const TaskSection = ({
                 locked={attempt?.status === 'upcoming'}
                 description={task.description}
               />
-              {isTaskActionVisible && <TaskAction task={task} />}
+              {isTaskActionVisible && attempt?.status !== 'upcoming' && (
+                <TaskAction task={task} />
+              )}
             </>
           ),
           comments: comments && <TaskComments comments={comments} />,
@@ -118,7 +123,7 @@ export const TaskSection = ({
           />
         </div>
       )}
-      {isTeacherAssessPanelVisible && (
+      {isTeacherAssessPanelVisible && nextAttempt && (
         <TeacherAssessPanel nextAttempt={nextAttempt} />
       )}
     </main>
