@@ -1,17 +1,13 @@
-import { apiPath } from '../utils/apiPath';
-import axios from 'axios';
 import { withServerSideAuth } from '../lib/auth/withServerSideAuth';
+import { getUserDetails } from '../api/user';
 
 export default function Component() {
   return null;
 }
 
 export const getServerSideProps = withServerSideAuth()(async ctx => {
-  const { data: user } = await axios.get(apiPath('user/details'), {
-    headers: {
-      cookie: ctx.req.headers.cookie as string,
-    },
-  });
+  const authCookie = ctx.req.headers.cookie as string;
+  const user = await getUserDetails({ cookie: authCookie });
 
   const { name, surname, bio, role } = user;
 
