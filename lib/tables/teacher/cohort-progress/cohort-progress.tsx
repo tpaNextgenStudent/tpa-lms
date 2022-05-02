@@ -2,7 +2,6 @@ import { Column } from 'react-table';
 import styles from './cohort-progress.module.scss';
 import Link from 'next/link';
 import { UserNameCell } from '../../../../components/common/tables/UserNameCell/UserNameCell';
-import { TaskStatus } from '../../../../api/tasks';
 import {
   ITeacherProgressItem,
   ITeacherProgressTask,
@@ -14,6 +13,7 @@ import {
   OptionType,
 } from '../../../../components/common/CustomSelect/CustomSelect';
 import { SingleValue } from 'react-select';
+import { TaskStatus } from '../../../types';
 
 type TaskScoreField = {
   score: number | null;

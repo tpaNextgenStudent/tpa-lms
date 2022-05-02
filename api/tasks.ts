@@ -1,19 +1,10 @@
 import { apiPath } from '../utils/apiPath';
 import axios from 'axios';
-import { Task, Attempt } from '@prisma/client';
-import { TaskType } from '../lib/types';
+import { TaskStatus, TaskType } from '../lib/types';
 
 type Options = {
   cookie: string;
 };
-
-type Teacher = {
-  legalName: string;
-  surname: string;
-  image: string;
-};
-
-export type TaskStatus = 'upcoming' | 'in progress' | 'approved' | 'in review';
 
 export interface ITask {
   task_data: {

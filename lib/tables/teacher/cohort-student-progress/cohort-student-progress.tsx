@@ -1,9 +1,9 @@
 import { Column } from 'react-table';
 import styles from './cohort-student-progress.module.scss';
-import { TaskStatus } from '../../../../api/tasks';
 import { ITeacherSingleStudentScores } from '../../../../api/cohort';
 import { GradeCell } from '../../../../components/common/tables/GradeCell/GradeCell';
 import Link from 'next/link';
+import { TaskStatus } from '../../../types';
 
 type TaskScoreField = {
   score: number | null;
