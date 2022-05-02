@@ -2,7 +2,6 @@ import { InferPagePropsType } from '../../../lib/types';
 import { Layout } from '../../../components/common/Layout/Layout';
 import { Table } from '../../../components/common/tables/Table/Table';
 import {
-  AssignmentsData,
   columns,
   mapAssignmentsToTableData,
 } from '../../../lib/tables/teacher/assignments/assignments';
@@ -37,11 +36,8 @@ export default function AssignmentsIndex({
 export const getServerSideProps = withServerSideAuth('teacher')(
   async ({ req, user }) => {
     const authCookie = req.headers.cookie as string;
-
     const rawAssignments = await getTeacherAssignments({ cookie: authCookie });
-
-    const assignments: AssignmentsData[] =
-      mapAssignmentsToTableData(rawAssignments);
+    const assignments = mapAssignmentsToTableData(rawAssignments);
 
     return { props: { user, assignments } };
   }
