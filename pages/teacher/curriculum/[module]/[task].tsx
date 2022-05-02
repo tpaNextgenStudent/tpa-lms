@@ -39,15 +39,16 @@ export const getServerSideProps = withServerSideAuth('teacher')(
       task: string;
     };
 
-    const modules = await getUserModules({
-      cookie: authCookie,
-    });
+    const [modules, tasks] = await Promise.all([
+      getUserModules({
+        cookie: authCookie,
+      }),
+      getUserTasksByModule(moduleId, {
+        cookie: authCookie,
+      }),
+    ]);
+
     const module = modules.find(m => m.module_version_id === moduleId)!;
-
-    const tasks = await getUserTasksByModule(moduleId, {
-      cookie: authCookie,
-    });
-
     const task = tasks.find(t => t.task_data.id === taskId);
 
     if (!task) {
