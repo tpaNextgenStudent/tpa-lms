@@ -3,6 +3,7 @@
 
 .wrapper {
   width: 314px;
+  flex-shrink: 0;
   overflow-x: hidden;
   padding-top: 24px;
   height: 100%;
@@ -11,8 +12,10 @@
   border-right: 1px solid colors.$strokeMain;
 
   @media (max-width: media.$laptopS) {
+    flex-shrink: unset;
     border-right: none;
     width: auto;
     overflow-x: auto;
+    height: auto;
   }
 }
