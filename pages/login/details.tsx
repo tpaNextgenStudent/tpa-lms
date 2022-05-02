@@ -41,7 +41,7 @@ export default function LoginDetails() {
 }
 
 export const getServerSideProps = withServerSideAuth()(async ({ user }) => {
-  const areDetailsFilled = [user.name, user.surname, user.bio].every(x => !!x);
+  const areDetailsFilled = [user.name, user.surname, user.bio].every(Boolean);
 
   if (areDetailsFilled) {
     return {
