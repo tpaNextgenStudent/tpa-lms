@@ -15,7 +15,7 @@ import { useRouter } from 'next/router';
 
 export default function CohortProgressIndex({
   user,
-  progress,
+  progressTableData,
   numOfTasksInModule,
   modules,
   module,
@@ -35,7 +35,7 @@ export default function CohortProgressIndex({
     >
       <GradesLegend />
       <Table
-        data={progress}
+        data={progressTableData}
         columns={getTeacherCohortProgressColumns({
           numOfTasksInModule,
           modules,
@@ -55,17 +55,22 @@ export const getServerSideProps = withServerSideAuth('teacher')(
       module: string;
     };
 
-    const modules = await getUserModules({ cookie: authCookie });
+    const [modules, rawProgress] = await Promise.all([
+      getUserModules({ cookie: authCookie }),
+      getTeacherCohortProgress(moduleId, {
+        cookie: authCookie,
+      }),
+    ]);
+
     const module = modules.find(m => m.module_version_id === moduleId)!;
-    const rawProgress = await getTeacherCohortProgress(moduleId, {
-      cookie: authCookie,
-    });
 
     const numOfTasksInModule = Math.max(
       ...rawProgress.map(({ tasks }) => tasks.length)
     );
 
-    const progress = mapProgressToTableData(rawProgress);
-    return { props: { user, progress, numOfTasksInModule, modules, module } };
+    const progressTableData = mapProgressToTableData(rawProgress);
+    return {
+      props: { user, modules, module, numOfTasksInModule, progressTableData },
+    };
   }
 );

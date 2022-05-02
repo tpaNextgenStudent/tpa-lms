@@ -87,26 +87,24 @@ export const getServerSideProps = withServerSideAuth('teacher')(
       assignment: string;
     };
 
-    const {
-      user: studentUser,
-      profile,
-      tasks_in_modules,
-    } = await getTeacherSingleStudentScores(assignmentId, {
-      cookie: authCookie,
-    });
+    const [
+      { user: studentUser, profile, tasks_in_modules },
+      rawStudentAssignments,
+    ] = await Promise.all([
+      getTeacherSingleStudentScores(assignmentId, {
+        cookie: authCookie,
+      }),
+      getTeacherAssignmentsByStudent(assignmentId, {
+        cookie: authCookie,
+      }),
+    ]);
+
     const maxNumOfTasks = Math.max(
       ...tasks_in_modules.map(m => m.tasks.length)
     );
 
     const studentScoresTableData =
       mapStudentProgressToTableData(tasks_in_modules);
-
-    const rawStudentAssignments = await getTeacherAssignmentsByStudent(
-      assignmentId,
-      {
-        cookie: authCookie,
-      }
-    );
 
     const studentAssignmentsTableData = mapStudentAssignmentsToTableData(
       rawStudentAssignments
@@ -116,9 +114,9 @@ export const getServerSideProps = withServerSideAuth('teacher')(
       props: {
         user,
         student: { user: studentUser, profile },
+        maxNumOfTasks,
         studentScoresTableData,
         studentAssignmentsTableData,
-        maxNumOfTasks,
       },
     };
   }

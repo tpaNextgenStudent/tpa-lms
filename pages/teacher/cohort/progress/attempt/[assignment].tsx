@@ -48,16 +48,16 @@ export const getServerSideProps = withServerSideAuth('teacher')(
     };
     const authCookie = req.headers.cookie as string;
 
-    const attempt = await getAttemptById(assignmentId, {
-      cookie: authCookie,
-    });
+    const [attempt, nextAttempt] = await Promise.all([
+      getAttemptById(assignmentId, {
+        cookie: authCookie,
+      }),
+      getNextTeacherAssessmentTask(assignmentId, {
+        cookie: authCookie,
+      }),
+    ]);
 
     const comments = attemptToComments(attempt);
-
-    const nextAttempt = await getNextTeacherAssessmentTask(assignmentId, {
-      cookie: authCookie,
-    });
-
     return {
       props: {
         user,
