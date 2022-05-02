@@ -10,11 +10,12 @@ export const getServerSideProps = withServerSideAuth('student')(
     const moduleId = params!.module as string;
     const authCookie = req.headers.cookie as string;
 
-    const tasks = await getUserTasksByModule(moduleId, {
-      cookie: authCookie,
-    });
-
-    const { task_id } = await getCurrentTask({ cookie: authCookie });
+    const [tasks, { task_id }] = await Promise.all([
+      getUserTasksByModule(moduleId, {
+        cookie: authCookie,
+      }),
+      getCurrentTask({ cookie: authCookie }),
+    ]);
 
     const isTaskInModule = tasks.map(t => t.task_data.id).includes(task_id);
 
