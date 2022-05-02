@@ -6,7 +6,6 @@ import { TaskSection } from '../../../../components/tasks/TaskSection/TaskSectio
 import { getUserTasksByModule } from '../../../../api/tasks';
 import { getUserModules } from '../../../../api/modules';
 import { withServerSideAuth } from '../../../../lib/auth/withServerSideAuth';
-import { getUserDetails } from '../../../../api/user';
 
 export default function Tasks({
   user,
@@ -32,9 +31,8 @@ export default function Tasks({
 }
 
 export const getServerSideProps = withServerSideAuth('teacher')(
-  async ({ req, params }) => {
+  async ({ req, params, user }) => {
     const authCookie = req.headers.cookie as string;
-    const user = await getUserDetails({ cookie: authCookie });
 
     const { module: moduleId, task: taskId } = params! as {
       module: string;

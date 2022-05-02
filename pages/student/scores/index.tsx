@@ -6,7 +6,6 @@ import {
   mapStudentScoresToTableData,
 } from '../../../lib/tables/student/my-scores/my-scores';
 import { withServerSideAuth } from '../../../lib/auth/withServerSideAuth';
-import { getUserDetails } from '../../../api/user';
 import { getUserScores } from '../../../api/scores';
 import { EmptyStateView } from '../../../components/common/EmptyStateView/EmptyStateView';
 
@@ -34,10 +33,8 @@ export default function ScoresIndex({
 }
 
 export const getServerSideProps = withServerSideAuth('student')(
-  async ({ req, res }) => {
+  async ({ req, res, user }) => {
     const authCookie = req.headers.cookie as string;
-    const user = await getUserDetails({ cookie: authCookie });
-
     const rawScores = await getUserScores({ cookie: authCookie });
     const scores = mapStudentScoresToTableData(rawScores);
 

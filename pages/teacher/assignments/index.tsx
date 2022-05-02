@@ -7,7 +7,6 @@ import {
   mapAssignmentsToTableData,
 } from '../../../lib/tables/teacher/assignments/assignments';
 import { withServerSideAuth } from '../../../lib/auth/withServerSideAuth';
-import { getUserDetails } from '../../../api/user';
 import { getTeacherAssignments } from '../../../api/assignments';
 import { EmptyStateView } from '../../../components/common/EmptyStateView/EmptyStateView';
 
@@ -36,9 +35,8 @@ export default function AssignmentsIndex({
 }
 
 export const getServerSideProps = withServerSideAuth('teacher')(
-  async ({ req, res }) => {
+  async ({ req, user }) => {
     const authCookie = req.headers.cookie as string;
-    const user = await getUserDetails({ cookie: authCookie });
 
     const rawAssignments = await getTeacherAssignments({ cookie: authCookie });
 

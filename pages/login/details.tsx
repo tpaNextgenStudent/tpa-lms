@@ -8,7 +8,6 @@ import { useRouter } from 'next/router';
 import { UserDetails } from '../../schemas/userDetailsSchema';
 import { toast } from 'react-toastify';
 import { useIsLoading } from '../../lib/hooks/loadingContext';
-import { getUserDetails } from '../../api/user';
 
 export default function LoginDetails() {
   const router = useRouter();
@@ -41,10 +40,7 @@ export default function LoginDetails() {
   );
 }
 
-export const getServerSideProps = withServerSideAuth()(async ctx => {
-  const authCookie = ctx.req.headers.cookie as string;
-  const user = await getUserDetails({ cookie: authCookie });
-
+export const getServerSideProps = withServerSideAuth()(async ({ user }) => {
   const areDetailsFilled = [user.name, user.surname, user.bio].every(x => !!x);
 
   if (areDetailsFilled) {

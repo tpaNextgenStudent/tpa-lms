@@ -1,7 +1,6 @@
 import { Layout } from '../../../../../components/common/Layout/Layout';
 import { InferPagePropsType } from '../../../../../lib/types';
 import { withServerSideAuth } from '../../../../../lib/auth/withServerSideAuth';
-import { getUserDetails } from '../../../../../api/user';
 import { getAttemptById } from '../../../../../api/attempts';
 import { TaskSection } from '../../../../../components/tasks/TaskSection/TaskSection';
 import { attemptToComments } from '../../../../../utils/attemptsToComments';
@@ -43,12 +42,11 @@ export default function ScoresIndex({
 }
 
 export const getServerSideProps = withServerSideAuth('teacher')(
-  async ({ req, params }) => {
+  async ({ req, params, user }) => {
     const { assignment: assignmentId } = params! as {
       assignment: string;
     };
     const authCookie = req.headers.cookie as string;
-    const user = await getUserDetails({ cookie: authCookie });
 
     const attempt = await getAttemptById(assignmentId, {
       cookie: authCookie,

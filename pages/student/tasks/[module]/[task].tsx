@@ -6,7 +6,6 @@ import { TaskSection } from '../../../../components/tasks/TaskSection/TaskSectio
 import { getUserTasksByModule } from '../../../../api/tasks';
 import { getUserModules } from '../../../../api/modules';
 import { withServerSideAuth } from '../../../../lib/auth/withServerSideAuth';
-import { getUserDetails } from '../../../../api/user';
 import { getAttemptsByTask } from '../../../../api/attempts';
 import { attemptsToComments } from '../../../../utils/attemptsToComments';
 
@@ -46,15 +45,14 @@ export default function Tasks({
 }
 
 export const getServerSideProps = withServerSideAuth('student')(
-  async ({ req, params }) => {
+  async ({ req, params, user }) => {
     const { module: moduleId, task: taskId } = params! as {
       module: string;
       task: string;
     };
     const authCookie = req.headers.cookie as string;
 
-    const [user, modules, tasks, attempts] = await Promise.all([
-      getUserDetails({ cookie: authCookie }),
+    const [modules, tasks, attempts] = await Promise.all([
       getUserModules({
         cookie: authCookie,
       }),

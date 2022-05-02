@@ -2,7 +2,6 @@ import { InferPagePropsType } from '../../../../../lib/types';
 import { Layout } from '../../../../../components/common/Layout/Layout';
 import { Table } from '../../../../../components/common/tables/Table/Table';
 import { withServerSideAuth } from '../../../../../lib/auth/withServerSideAuth';
-import { getUserDetails } from '../../../../../api/user';
 import { GradesLegend } from '../../../../../components/teacher/GradesLegend/GradesLegend';
 import { ProfileBanner } from '../../../../../components/profile/ProfileBanner/ProfileBanner';
 import { ProfileUserInfo } from '../../../../../components/profile/ProfileUserInfo/ProfileUserInfo';
@@ -82,13 +81,11 @@ export default function CohortProgressIndex({
 }
 
 export const getServerSideProps = withServerSideAuth('teacher')(
-  async ({ req, params }) => {
+  async ({ req, params, user }) => {
     const authCookie = req.headers.cookie as string;
     const { assignment: assignmentId } = params! as {
       assignment: string;
     };
-
-    const user = await getUserDetails({ cookie: authCookie });
 
     const {
       user: studentUser,

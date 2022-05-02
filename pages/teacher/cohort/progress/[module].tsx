@@ -7,7 +7,6 @@ import {
 } from '../../../../lib/tables/teacher/cohort-progress/cohort-progress';
 import { withServerSideAuth } from '../../../../lib/auth/withServerSideAuth';
 import { getTeacherCohortProgress } from '../../../../api/cohort';
-import { getUserDetails } from '../../../../api/user';
 import { GradesLegend } from '../../../../components/teacher/GradesLegend/GradesLegend';
 import { getUserModules } from '../../../../api/modules';
 import { SingleValue } from 'react-select';
@@ -50,13 +49,12 @@ export default function CohortProgressIndex({
 }
 
 export const getServerSideProps = withServerSideAuth('teacher')(
-  async ({ req, params }) => {
+  async ({ req, params, user }) => {
     const authCookie = req.headers.cookie as string;
     const { module: moduleId } = params! as {
       module: string;
     };
 
-    const user = await getUserDetails({ cookie: authCookie });
     const modules = await getUserModules({ cookie: authCookie });
     const module = modules.find(m => m.module_version_id === moduleId)!;
     const rawProgress = await getTeacherCohortProgress(moduleId, {

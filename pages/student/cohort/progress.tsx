@@ -6,7 +6,6 @@ import {
   mapCohortProgressToTableData,
 } from '../../../lib/tables/student/cohort-progress/cohort-progress';
 import { withServerSideAuth } from '../../../lib/auth/withServerSideAuth';
-import { getUserDetails } from '../../../api/user';
 import { getCohortProgress } from '../../../api/cohort';
 
 export default function CohortProgress({
@@ -26,10 +25,8 @@ export default function CohortProgress({
 }
 
 export const getServerSideProps = withServerSideAuth('student')(
-  async ({ req, res }) => {
+  async ({ req, user }) => {
     const authCookie = req.headers.cookie as string;
-    const user = await getUserDetails({ cookie: authCookie });
-
     const rawProgress = await getCohortProgress({ cookie: authCookie });
     const progress = mapCohortProgressToTableData(rawProgress);
 
