@@ -3,8 +3,8 @@ import { OptionType } from '../../common/CustomSelect/CustomSelect';
 import { TasksList } from '../TasksList/TasksList';
 import { useRouter } from 'next/router';
 import { SingleValue } from 'react-select';
-import { IModuleVersion } from '../../../api/modules';
-import { ITask } from '../../../api/tasks';
+import { IModuleVersion } from '../../../apii/modules';
+import { ITask } from '../../../apii/tasks';
 import { CustomSelect } from '../../common/CustomSelect/CustomSelect';
 import { useMemo } from 'react';
 

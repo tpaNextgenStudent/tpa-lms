@@ -1,4 +1,4 @@
-import { getCurrentTask, getUserTasksByModule } from '../../../../api/tasks';
+import { getCurrentTask, getUserTasksByModule } from '../../../../apii/tasks';
 import { withServerSideAuth } from '../../../../lib/auth/withServerSideAuth';
 
 export default function Module() {

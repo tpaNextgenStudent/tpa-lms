@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { useRef, useState } from 'react';
 import clsx from 'clsx';
 import { useClickOutside } from '../../../lib/hooks/useClickOutside';
-import { IUserDetails } from '../../../api/user';
+import { IUserDetails } from '../../../apii/user';
 import { signOut } from 'next-auth/react';
 import { useIsLoading } from '../../../lib/hooks/loadingContext';
 
