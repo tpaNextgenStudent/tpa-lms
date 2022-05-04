@@ -1,7 +1,7 @@
 import styles from './TasksList.module.scss';
 import { TasksListItem } from '../TasksListItem/TasksListItem';
-import { ITask } from '../../../api/tasks';
-import { IModuleVersion } from '../../../api/modules';
+import { ITask } from '../../../apii/tasks';
+import { IModuleVersion } from '../../../apii/modules';
 
 interface TasksListProps {
   currentTask: ITask;

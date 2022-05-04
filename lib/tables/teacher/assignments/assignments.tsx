@@ -6,7 +6,7 @@ import { TaskTypeCell } from '../../../../components/common/tables/TaskTypeCell/
 import { TaskType } from '../../../utils/types';
 import { TaskAttemptBadge } from '../../../../components/tasks/TaskAttemptBadge/TaskAttemptBadge';
 import dayjs from 'dayjs';
-import { IAssignment } from '../../../../api/assignments';
+import { IAssignment } from '../../../../apii/assignments';
 
 export interface AssignmentsData {
   submission_date: string;

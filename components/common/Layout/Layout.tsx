@@ -2,7 +2,7 @@ import { ReactNode, useCallback, useState } from 'react';
 import styles from './Layout.module.scss';
 import { Sidebar } from '../Sidebar/Sidebar';
 import { Header } from '../Header/Header';
-import { IUserDetails } from '../../../api/user';
+import { IUserDetails } from '../../../apii/user';
 import Head from 'next/head';
 
 interface LayoutProps {

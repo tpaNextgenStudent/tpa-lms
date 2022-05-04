@@ -1,5 +1,5 @@
 import { withServerSideAuth } from '../../../../lib/auth/withServerSideAuth';
-import { getUserModules } from '../../../../api/modules';
+import { getUserModules } from '../../../../apii/modules';
 
 export default function CohortProgressIndex() {
   return null;

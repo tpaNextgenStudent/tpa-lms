@@ -7,8 +7,8 @@ import {
   mapAssignmentsToTableData,
 } from '../../../lib/tables/teacher/assignments/assignments';
 import { withServerSideAuth } from '../../../lib/auth/withServerSideAuth';
-import { getUserDetails } from '../../../api/user';
-import { getTeacherAssignments } from '../../../api/assignments';
+import { getUserDetails } from '../../../apii/user';
+import { getTeacherAssignments } from '../../../apii/assignments';
 import { EmptyStateView } from '../../../components/common/EmptyStateView/EmptyStateView';
 
 export default function AssignmentsIndex({

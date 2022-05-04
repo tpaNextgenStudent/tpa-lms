@@ -1,6 +1,6 @@
 import { GetServerSidePropsContext, GetServerSidePropsResult } from 'next';
 import { getSession } from 'next-auth/react';
-import { getUserDetails, UserRole } from '../../api/user';
+import { getUserDetails, UserRole } from '../../apii/user';
 
 export const withServerSideAuth =
   (role?: UserRole) =>

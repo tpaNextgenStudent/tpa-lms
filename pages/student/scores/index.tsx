@@ -4,8 +4,8 @@ import { Table } from '../../../components/common/tables/Table/Table';
 import { columns } from '../../../lib/tables/student/my-scores/my-scores';
 import dayjs from 'dayjs';
 import { withServerSideAuth } from '../../../lib/auth/withServerSideAuth';
-import { getUserDetails } from '../../../api/user';
-import { getUserScores } from '../../../api/scores';
+import { getUserDetails } from '../../../apii/user';
+import { getUserScores } from '../../../apii/scores';
 import { EmptyStateView } from '../../../components/common/EmptyStateView/EmptyStateView';
 
 export default function ScoresIndex({
