@@ -2,13 +2,13 @@ import { Column } from 'react-table';
 import styles from './cohort-progress.module.scss';
 import Link from 'next/link';
 import { UserNameCell } from '../../../../components/common/tables/UserNameCell/UserNameCell';
-import { TaskStatus } from '../../../../api/tasks';
+import { TaskStatus } from '../../../../apii/tasks';
 import {
   ITeacherProgressItem,
   ITeacherProgressTask,
-} from '../../../../api/cohort';
+} from '../../../../apii/cohort';
 import { GradeCell } from '../../../../components/common/tables/GradeCell/GradeCell';
-import { IModuleVersion } from '../../../../api/modules';
+import { IModuleVersion } from '../../../../apii/modules';
 import {
   CustomSelect,
   OptionType,

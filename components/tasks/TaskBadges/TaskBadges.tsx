@@ -3,7 +3,7 @@ import { TaskTypeBadge } from '../TaskTypeBadge/TaskTypeBadge';
 import { TaskStatusBadge } from '../TaskStatusBadge/TaskStatusBadge';
 import { TaskScoreBadge } from '../TaskScoreBadge/TaskScoreBadge';
 import { TaskDoneBadge } from '../TaskDoneBadge/TaskDoneBadge';
-import { TaskStatus } from '../../../api/tasks';
+import { TaskStatus } from '../../../apii/tasks';
 import { TaskType } from '../../../lib/utils/types';
 import {
   TaskAttemptBadge,

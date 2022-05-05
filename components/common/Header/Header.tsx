@@ -1,5 +1,5 @@
 import styles from './Header.module.scss';
-import { IUserDetails } from '../../../api/user';
+import { IUserDetails } from '../../../apii/user';
 import ArrowLeftIcon from '../../../public/svg/arrow-left.svg';
 import MenuIcon from '../../../public/svg/menu-icon.svg';
 import { UserNav } from '../UserNav/UserNav';

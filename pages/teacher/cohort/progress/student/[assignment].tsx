@@ -2,17 +2,17 @@ import { InferPagePropsType } from '../../../../../lib/utils/types';
 import { Layout } from '../../../../../components/common/Layout/Layout';
 import { Table } from '../../../../../components/common/tables/Table/Table';
 import { withServerSideAuth } from '../../../../../lib/auth/withServerSideAuth';
-import { getUserDetails } from '../../../../../api/user';
+import { getUserDetails } from '../../../../../apii/user';
 import { GradesLegend } from '../../../../../components/teacher/GradesLegend/GradesLegend';
 import { ProfileBanner } from '../../../../../components/profile/ProfileBanner/ProfileBanner';
 import { ProfileUserInfo } from '../../../../../components/profile/ProfileUserInfo/ProfileUserInfo';
-import { getTeacherSingleStudentScores } from '../../../../../api/cohort';
+import { getTeacherSingleStudentScores } from '../../../../../apii/cohort';
 import {
   getTeacherStudentProgressColumns,
   mapStudentProgressToTableData,
 } from '../../../../../lib/tables/teacher/cohort-student-progress/cohort-student-progress';
 import { ViewParamTabsSection } from '../../../../../components/common/ViewParamTabsSection/ViewParamTabsSection';
-import { getTeacherAssignmentsByStudent } from '../../../../../api/assignments';
+import { getTeacherAssignmentsByStudent } from '../../../../../apii/assignments';
 import { mapStudentAssignmentsToTableData } from '../../../../../lib/tables/teacher/student-assignments/student-assignments';
 import { columns } from '../../../../../lib/tables/teacher/student-assignments/student-assignments';
 import styles from '../../../../../components/teacher/cohort/progress/student/singleStudentProgressPage.module.scss';

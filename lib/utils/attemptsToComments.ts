@@ -1,4 +1,4 @@
-import { IAttempt, ISingleAttempt } from '../../api/attempts';
+import { IAttempt, ISingleAttempt } from '../../apii/attempts';
 import { Comment } from './types';
 
 export function attemptToComments(attempt: ISingleAttempt): Comment[] {

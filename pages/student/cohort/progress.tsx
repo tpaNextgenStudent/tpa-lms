@@ -3,8 +3,8 @@ import { InferPagePropsType } from '../../../lib/utils/types';
 import { Table } from '../../../components/common/tables/Table/Table';
 import { columns } from '../../../lib/tables/student/cohort-progress/cohort-progress';
 import { withServerSideAuth } from '../../../lib/auth/withServerSideAuth';
-import { getUserDetails } from '../../../api/user';
-import { getCohortProgress } from '../../../api/cohort';
+import { getUserDetails } from '../../../apii/user';
+import { getCohortProgress } from '../../../apii/cohort';
 import { EmptyStateView } from '../../../components/common/EmptyStateView/EmptyStateView';
 
 export default function CohortProgress({
