@@ -13,6 +13,7 @@ export default async (req: NextApiRequest, res: NextApiResponse<any>) => {
         clientSecret: process.env.GITHUB_SECRET,
       }),
     ],
+    secret: '8e0e274d740b555a5753d4709235a010',
     pages: {
       signIn: '/login',
       error: '/auth/error',
