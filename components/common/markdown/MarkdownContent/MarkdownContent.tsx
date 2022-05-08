@@ -1,5 +1,4 @@
 import ReactMarkdown from 'react-markdown';
-import rehypeRaw from 'rehype-raw';
 import { HandleCode } from '../HandleCode/HandleCode';
 import styles from './MarkdownContent.module.scss';
 import remarkGfm from 'remark-gfm';
@@ -13,7 +12,6 @@ export const MarkdownContent = ({ content }: MarkdownContentProps) => {
   return (
     <ReactMarkdown
       className={clsx('markdown-body', styles.markdown)}
-      rehypePlugins={[rehypeRaw]}
       remarkPlugins={[remarkGfm]}
       components={{
         code({ inline, className, children, ...props }) {

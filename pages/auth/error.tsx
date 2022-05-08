@@ -8,7 +8,7 @@ export default function ErrorPage() {
     <ErrorView
       title="*Something went wrong.*"
       description="Please, go back and log in again."
-      primaryButton={{
+      button={{
         text: 'Back to login page',
         onClick: () => {
           router.push('/login');
