@@ -23,7 +23,9 @@ export const Table = <T extends {}>({
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable<T>({ columns, data });
 
-  const gridTemplateCols = headerGroups[0].headers.map(({ width }) => width);
+  const gridTemplateCols = headerGroups[0].headers.map(
+    ({ width }) => width || 'auto'
+  );
 
   return (
     <main
