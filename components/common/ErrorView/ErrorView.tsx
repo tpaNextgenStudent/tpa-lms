@@ -1,22 +1,21 @@
 import styles from './ErrorView.module.scss';
 import { CTAButton } from '../CTAButton/CTAButton';
-import { HandleBold } from '../HandleBold/HandleBold';
 import Image from 'next/image';
-import BgStripesIcon from '../../../public/svg/bg-stripes.svg';
 import Link from 'next/link';
+import { HandleBold } from '../HandleBold/HandleBold';
 
 interface ErrorViewProps {
-  title: string;
   description: string;
-  primaryButton?: { text: string; onClick: () => void };
-  secondaryButton?: { text: string; onClick: () => void };
+  title?: string;
+  code?: number;
+  button?: { text: string; onClick: () => void };
 }
 
 export const ErrorView = ({
-  title,
+  title = '*Oops!*',
   description,
-  primaryButton,
-  secondaryButton,
+  code,
+  button,
 }: ErrorViewProps) => {
   return (
     <div className={styles.wrapper}>
@@ -33,36 +32,30 @@ export const ErrorView = ({
         </Link>
       </header>
       <main className={styles.main}>
-        <div className={styles.contentWrapper}>
-          <h1 className={styles.title}>
+        <h1 className={styles.title}>
+          <span className={styles.titleIntro}>
             <HandleBold>{title}</HandleBold>
-          </h1>
-          <p className={styles.description}>
+          </span>
+          {code && <span className={styles.titleCode}>{404}</span>}
+          <span className={styles.titleContent}>
             <HandleBold>{description}</HandleBold>
-          </p>
+          </span>
+        </h1>
+        <div className={styles.imageWrapper}>
+          <Image
+            src="/img/not-found-robot.png"
+            alt=""
+            width={285}
+            height={257}
+            layout="responsive"
+            quality={100}
+          />
         </div>
-        <div className={styles.buttonSection}>
-          {(primaryButton || secondaryButton) && (
-            <div className={styles.ctaButtonWrapper}>
-              {primaryButton && (
-                <CTAButton
-                  onClick={primaryButton.onClick}
-                  text={primaryButton.text}
-                />
-              )}
-              {secondaryButton && (
-                <CTAButton
-                  styleType="secondary"
-                  onClick={secondaryButton.onClick}
-                  text={secondaryButton.text}
-                />
-              )}
-            </div>
-          )}
-          <div className={styles.svgWrapper}>
-            <BgStripesIcon />
+        {button && (
+          <div className={styles.buttonWrapper}>
+            <CTAButton text={button.text} onClick={button.onClick} />
           </div>
-        </div>
+        )}
       </main>
     </div>
   );

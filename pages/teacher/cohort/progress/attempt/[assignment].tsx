@@ -1,10 +1,10 @@
-import { Layout } from '../../../components/common/Layout/Layout';
-import { InferPagePropsType } from '../../../lib/types';
-import { withServerSideAuth } from '../../../lib/auth/withServerSideAuth';
-import { getAttemptById } from '../../../api/attempts';
-import { TaskSection } from '../../../components/tasks/TaskSection/TaskSection';
-import { attemptToComments } from '../../../utils/attemptsToComments';
-import { getNextTeacherAssessmentTask } from '../../../api/assess';
+import { Layout } from '../../../../../components/common/Layout/Layout';
+import { InferPagePropsType } from '../../../../../lib/types';
+import { withServerSideAuth } from '../../../../../lib/auth/withServerSideAuth';
+import { getAttemptById } from '../../../../../api/attempts';
+import { TaskSection } from '../../../../../components/tasks/TaskSection/TaskSection';
+import { attemptToComments } from '../../../../../utils/attemptsToComments';
+import { getNextTeacherAssessmentTask } from '../../../../../api/assess';
 
 export default function ScoresIndex({
   user,
@@ -20,9 +20,12 @@ export default function ScoresIndex({
     .join(' ');
   return (
     <Layout
-      parentPage={{ title: 'Assignments', link: '/teacher/assignments' }}
+      parentPage={{
+        title: 'Cohort Progress',
+        link: '/teacher/cohort/progress',
+      }}
       headerTitle={studentFullName}
-      title="Assignments"
+      title="Cohort Progress"
       user={user}
       withHeaderPrevButton
     >
@@ -55,7 +58,6 @@ export const getServerSideProps = withServerSideAuth('teacher')(
     ]);
 
     const comments = attemptToComments(attempt);
-
     return {
       props: {
         user,

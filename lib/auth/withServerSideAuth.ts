@@ -1,30 +1,24 @@
 import { GetServerSidePropsContext, GetServerSidePropsResult } from 'next';
-import { getSession } from 'next-auth/react';
-import { getUserDetails, UserRole } from '../../api/user';
+import { getUserDetails, IUserDetails, UserRole } from '../../api/user';
+import axios from 'axios';
+
+type AuthContextExtend = { user: IUserDetails };
 
 export const withServerSideAuth =
   (role?: UserRole) =>
-  <P>(
+  <DefaultContext extends GetServerSidePropsContext, Props>(
     handler: (
-      ctx: GetServerSidePropsContext
-    ) => GetServerSidePropsResult<P> | Promise<GetServerSidePropsResult<P>>
+      ctx: DefaultContext & AuthContextExtend
+    ) =>
+      | GetServerSidePropsResult<Props>
+      | Promise<GetServerSidePropsResult<Props>>
   ) =>
-  async (ctx: GetServerSidePropsContext) => {
-    const session = await getSession(ctx);
-    if (!session) {
-      return {
-        redirect: {
-          destination: '/login',
-          permanent: false,
-        },
-      };
-    }
+  async (ctx: DefaultContext) => {
+    const authCookie = ctx.req.headers.cookie as string;
 
-    if (role) {
-      const authCookie = ctx.req.headers.cookie as string;
+    try {
       const user = await getUserDetails({ cookie: authCookie });
-
-      if (role !== user.role) {
+      if (role && role !== user.role) {
         return {
           redirect: {
             destination: '/',
@@ -32,7 +26,23 @@ export const withServerSideAuth =
           },
         };
       }
-    }
 
-    return handler(ctx);
+      (ctx as DefaultContext & AuthContextExtend).user = user;
+      return await handler(ctx as DefaultContext & AuthContextExtend);
+    } catch (err) {
+      if (axios.isAxiosError(err)) {
+        if (err.response?.status === 401) {
+          return {
+            redirect: {
+              permanent: false,
+              destination: '/login',
+            },
+          };
+        }
+      }
+
+      return {
+        notFound: true as const,
+      };
+    }
   };

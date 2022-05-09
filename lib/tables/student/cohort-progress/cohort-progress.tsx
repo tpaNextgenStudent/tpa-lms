@@ -1,8 +1,9 @@
 import { Column } from 'react-table';
 import styles from './cohort-progress.module.scss';
-import { TaskType } from '../../../utils/types';
+import { TaskType } from '../../../types';
 import { TaskTypeCell } from '../../../../components/common/tables/TaskTypeCell/TaskTypeCell';
 import { UserNameCell } from '../../../../components/common/tables/UserNameCell/UserNameCell';
+import { IProgressItem } from '../../../../api/cohort';
 
 interface ProgressData {
   student: { name: string; img: string | null; login: string | null };
@@ -49,3 +50,23 @@ export const columns: Column<ProgressData>[] = [
     ),
   },
 ];
+
+export function mapCohortProgressToTableData(rawProgress: IProgressItem[]) {
+  return rawProgress.map(
+    ({ student, task_name, task_type, module_position }) => {
+      const studentName = [student.user.name, student.user.surname]
+        .filter(n => n)
+        .join(' ');
+      return {
+        student: {
+          name: studentName,
+          login: student.profile.login,
+          img: student.user.image,
+        },
+        module: `Module ${module_position}`,
+        task_name,
+        task_type,
+      };
+    }
+  );
+}

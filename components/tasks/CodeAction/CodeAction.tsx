@@ -3,7 +3,7 @@ import { useEffect, useState, useCallback } from 'react';
 import { Toast } from '../../common/Toast/Toast';
 import { useRouter } from 'next/router';
 import { CodeActionLines } from '../CodeActionLines/CodeActionLines';
-import { TaskType } from '../../../lib/utils/types';
+import { TaskType } from '../../../lib/types';
 
 interface CodeActionProps {
   task: {

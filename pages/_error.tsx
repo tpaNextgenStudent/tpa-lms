@@ -9,7 +9,7 @@ export default function Error() {
     <ErrorView
       title="*Something went wrong.*"
       description="Please, go back and log in again."
-      primaryButton={{
+      button={{
         text: 'Back to login page',
         onClick: async () => {
           // await axios.post('http://localhost:3000/api/createCurriculum/', {

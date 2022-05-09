@@ -1,4 +1,4 @@
-import { InferPagePropsType } from '../../../../lib/utils/types';
+import { InferPagePropsType } from '../../../../lib/types';
 import { Layout } from '../../../../components/common/Layout/Layout';
 import { Table } from '../../../../components/common/tables/Table/Table';
 import {
@@ -7,7 +7,6 @@ import {
 } from '../../../../lib/tables/teacher/cohort-progress/cohort-progress';
 import { withServerSideAuth } from '../../../../lib/auth/withServerSideAuth';
 import { getTeacherCohortProgress } from '../../../../api/cohort';
-import { getUserDetails } from '../../../../api/user';
 import { GradesLegend } from '../../../../components/teacher/GradesLegend/GradesLegend';
 import { getUserModules } from '../../../../api/modules';
 import { SingleValue } from 'react-select';
@@ -16,7 +15,7 @@ import { useRouter } from 'next/router';
 
 export default function CohortProgressIndex({
   user,
-  progress,
+  progressTableData,
   numOfTasksInModule,
   modules,
   module,
@@ -36,7 +35,7 @@ export default function CohortProgressIndex({
     >
       <GradesLegend />
       <Table
-        data={progress}
+        data={progressTableData}
         columns={getTeacherCohortProgressColumns({
           numOfTasksInModule,
           modules,
@@ -50,28 +49,28 @@ export default function CohortProgressIndex({
 }
 
 export const getServerSideProps = withServerSideAuth('teacher')(
-  async ({ req, params }) => {
+  async ({ req, params, user }) => {
     const authCookie = req.headers.cookie as string;
     const { module: moduleId } = params! as {
       module: string;
     };
 
-    try {
-      const user = await getUserDetails({ cookie: authCookie });
-      const modules = await getUserModules({ cookie: authCookie });
-      const module = modules.find(m => m.module_version_id === moduleId)!;
-      const rawProgress = await getTeacherCohortProgress(moduleId, {
+    const [modules, rawProgress] = await Promise.all([
+      getUserModules({ cookie: authCookie }),
+      getTeacherCohortProgress(moduleId, {
         cookie: authCookie,
-      });
+      }),
+    ]);
 
-      const numOfTasksInModule = Math.max(
-        ...rawProgress.map(({ tasks }) => tasks.length)
-      );
+    const module = modules.find(m => m.module_version_id === moduleId)!;
 
-      const progress = mapProgressToTableData(rawProgress);
-      return { props: { user, progress, numOfTasksInModule, modules, module } };
-    } catch {
-      return { notFound: true };
-    }
+    const numOfTasksInModule = Math.max(
+      ...rawProgress.map(({ tasks }) => tasks.length)
+    );
+
+    const progressTableData = mapProgressToTableData(rawProgress);
+    return {
+      props: { user, modules, module, numOfTasksInModule, progressTableData },
+    };
   }
 );

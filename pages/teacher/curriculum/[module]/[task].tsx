@@ -1,12 +1,11 @@
 import { Layout } from '../../../../components/common/Layout/Layout';
-import { InferPagePropsType } from '../../../../lib/utils/types';
+import { InferPagePropsType } from '../../../../lib/types';
 import { TasksMenu } from '../../../../components/tasks/TasksMenu/TasksMenu';
 import styles from '../../../../components/tasks/tasksPage/tasksPage.module.scss';
 import { TaskSection } from '../../../../components/tasks/TaskSection/TaskSection';
 import { getUserTasksByModule } from '../../../../api/tasks';
 import { getUserModules } from '../../../../api/modules';
 import { withServerSideAuth } from '../../../../lib/auth/withServerSideAuth';
-import { getUserDetails } from '../../../../api/user';
 
 export default function Tasks({
   user,
@@ -32,45 +31,40 @@ export default function Tasks({
 }
 
 export const getServerSideProps = withServerSideAuth('teacher')(
-  async ({ req, params }) => {
+  async ({ req, params, user }) => {
     const authCookie = req.headers.cookie as string;
-    const user = await getUserDetails({ cookie: authCookie });
 
     const { module: moduleId, task: taskId } = params! as {
       module: string;
       task: string;
     };
-    try {
-      const modules = await getUserModules({
+
+    const [modules, tasks] = await Promise.all([
+      getUserModules({
         cookie: authCookie,
-      });
-      const module = modules.find(m => m.module_version_id === moduleId)!;
-
-      const tasks = await getUserTasksByModule(moduleId, {
+      }),
+      getUserTasksByModule(moduleId, {
         cookie: authCookie,
-      });
+      }),
+    ]);
 
-      const task = tasks.find(t => t.task_data.id === taskId);
+    const module = modules.find(m => m.module_version_id === moduleId)!;
+    const task = tasks.find(t => t.task_data.id === taskId);
 
-      if (!task) {
-        return {
-          notFound: true,
-        };
-      }
-
-      return {
-        props: {
-          user,
-          module,
-          modules,
-          tasks,
-          task,
-        },
-      };
-    } catch (e) {
+    if (!task) {
       return {
         notFound: true,
       };
     }
+
+    return {
+      props: {
+        user,
+        module,
+        modules,
+        tasks,
+        task,
+      },
+    };
   }
 );

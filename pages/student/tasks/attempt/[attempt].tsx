@@ -1,9 +1,9 @@
-import { Layout } from '../../../components/common/Layout/Layout';
-import { InferPagePropsType } from '../../../lib/types';
-import { TaskSection } from '../../../components/tasks/TaskSection/TaskSection';
-import { withServerSideAuth } from '../../../lib/auth/withServerSideAuth';
-import { getAttemptById } from '../../../api/attempts';
-import { attemptToComments } from '../../../utils/attemptsToComments';
+import { Layout } from '../../../../components/common/Layout/Layout';
+import { InferPagePropsType } from '../../../../lib/types';
+import { TaskSection } from '../../../../components/tasks/TaskSection/TaskSection';
+import { withServerSideAuth } from '../../../../lib/auth/withServerSideAuth';
+import { getAttemptById } from '../../../../api/attempts';
+import { attemptToComments } from '../../../../utils/attemptsToComments';
 
 export default function ScoresIndex({
   user,
@@ -14,9 +14,9 @@ export default function ScoresIndex({
 }: InferPagePropsType<typeof getServerSideProps>) {
   return (
     <Layout
-      parentPage={{ title: 'My Scores', link: '/student/scores' }}
+      parentPage={{ title: 'My Tasks', link: '/student/tasks' }}
       headerTitle={task.name}
-      title={'My Scores'}
+      title={'My Tasks'}
       user={user}
       withHeaderPrevButton
     >

@@ -1,5 +1,5 @@
-import { IAttempt, ISingleAttempt } from '../../api/attempts';
-import { Comment } from './types';
+import { IAttempt, ISingleAttempt } from '../api/attempts';
+import { Comment } from '../lib/types';
 
 export function attemptToComments(attempt: ISingleAttempt): Comment[] {
   return attempt.comment && attempt.evaluation_date

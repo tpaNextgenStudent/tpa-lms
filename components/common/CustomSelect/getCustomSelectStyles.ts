@@ -21,9 +21,9 @@ export function getCustomSelectStyles({
 
   function getBorderRadius(isOpen: boolean, isTop: boolean) {
     if (isTop) {
-      return isOpen ? '0 0 24px 24px' : '64px';
+      return isOpen ? '0 0 16px 16px' : '64px';
     } else {
-      return isOpen ? '24px 24px 0 0' : '64px';
+      return isOpen ? '16px 16px 0 0' : '64px';
     }
   }
 
@@ -98,10 +98,10 @@ export function getCustomSelectStyles({
       width: '100%',
       margin: 0,
       borderRadius: 0,
-      borderBottomLeftRadius: !openSelectToTop ? '24px' : 0,
-      borderBottomRightRadius: !openSelectToTop ? '24px' : 0,
-      borderTopLeftRadius: openSelectToTop ? '24px' : 0,
-      borderTopRightRadius: openSelectToTop ? '24px' : 0,
+      borderBottomLeftRadius: !openSelectToTop ? '16px' : 0,
+      borderBottomRightRadius: !openSelectToTop ? '16px' : 0,
+      borderTopLeftRadius: openSelectToTop ? '16px' : 0,
+      borderTopRightRadius: openSelectToTop ? '16px' : 0,
       boxShadow: 'none',
       border: `1px solid ${colors.purplePrimary}`,
       borderTop: !openSelectToTop ? 0 : `1px solid ${colors.purplePrimary}`,
@@ -134,10 +134,10 @@ export function getCustomSelectStyles({
     menuList: (provided, state) => ({
       ...provided,
       padding: 0,
-      borderBottomLeftRadius: !openSelectToTop ? '24px' : 0,
-      borderBottomRightRadius: !openSelectToTop ? '24px' : 0,
-      borderTopLeftRadius: openSelectToTop ? '24px' : 0,
-      borderTopRightRadius: openSelectToTop ? '24px' : 0,
+      borderBottomLeftRadius: !openSelectToTop ? '16px' : 0,
+      borderBottomRightRadius: !openSelectToTop ? '16px' : 0,
+      borderTopLeftRadius: openSelectToTop ? '16px' : 0,
+      borderTopRightRadius: openSelectToTop ? '16px' : 0,
     }),
     option: (provided, state) => ({
       ...provided,

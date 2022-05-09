@@ -2,7 +2,7 @@ import { LoginDetailsForm } from '../../components/login/LoginDetailsForm/LoginD
 import { LoginLayout } from '../../components/login/LoginLayout/LoginLayout';
 import { LoginHeroText } from '../../components/login/LoginHeroText/LoginHeroText';
 import axios from 'axios';
-import { apiPath } from '../../lib/utils/apiPath';
+import { apiPath } from '../../utils/apiPath';
 import { withServerSideAuth } from '../../lib/auth/withServerSideAuth';
 import { useRouter } from 'next/router';
 import { UserDetails } from '../../schemas/userDetailsSchema';
@@ -40,30 +40,16 @@ export default function LoginDetails() {
   );
 }
 
-export const getServerSideProps = withServerSideAuth()(async ctx => {
-  try {
-    const { data: user } = await axios.get(apiPath('user/details'), {
-      headers: {
-        cookie: ctx.req.headers.cookie as string,
+export const getServerSideProps = withServerSideAuth()(async ({ user }) => {
+  const areDetailsFilled = [user.name, user.surname, user.bio].every(Boolean);
+
+  if (areDetailsFilled) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
       },
-    });
-
-    const areDetailsFilled = [user.name, user.surname, user.bio].every(
-      x => !!x
-    );
-
-    if (areDetailsFilled) {
-      return {
-        redirect: {
-          destination: '/',
-          permanent: false,
-        },
-      };
-    }
-  } catch (err: unknown) {
-    if (axios.isAxiosError(err)) {
-      console.log(err.response?.statusText);
-    }
+    };
   }
 
   return { props: {} };

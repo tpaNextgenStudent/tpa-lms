@@ -1,12 +1,14 @@
 import { Column } from 'react-table';
 import styles from './my-scores.module.scss';
 import Link from 'next/link';
-import { TaskType } from '../../../utils/types';
+import { TaskType } from '../../../types';
 import { TaskTypeCell } from '../../../../components/common/tables/TaskTypeCell/TaskTypeCell';
 import { TaskAttemptBadge } from '../../../../components/tasks/TaskAttemptBadge/TaskAttemptBadge';
 import { TaskScoreBadge } from '../../../../components/tasks/TaskScoreBadge/TaskScoreBadge';
 import { UserNameCell } from '../../../../components/common/tables/UserNameCell/UserNameCell';
 import { TaskDoneBadge } from '../../../../components/tasks/TaskDoneBadge/TaskDoneBadge';
+import dayjs from 'dayjs';
+import { IScore } from '../../../../api/scores';
 
 interface ScoresData {
   submission_date: string;
@@ -110,3 +112,29 @@ export const columns: Column<ScoresData>[] = [
     ),
   },
 ];
+
+export function mapStudentScoresToTableData(rawScores: IScore[]) {
+  return rawScores.map(({ attempt, task_type, task_name, module_number }) => {
+    const teacherName = [
+      attempt.teacher.user.name,
+      attempt.teacher.user.surname,
+    ]
+      .filter(n => n)
+      .join(' ');
+    return {
+      submission_date: dayjs(attempt.submission_date).format('DD MMM YYYY'),
+      review_date: dayjs(attempt.evaluation_date).format('DD MMM YYYY'),
+      module: `Module ${module_number}`,
+      task: task_name,
+      task_type: task_type,
+      attempt: attempt.attempt_number,
+      score: attempt.score,
+      reviewed_by: {
+        name: teacherName,
+        img: attempt.teacher.user.image,
+        login: attempt.teacher.profile.login,
+      },
+      view: { link: `/student/scores/${attempt.id}` },
+    };
+  });
+}

@@ -34,7 +34,8 @@
 
 .titleWrapper {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  max-width: 650px;
 
   &EmptyDesc {
     margin-bottom: 16px;

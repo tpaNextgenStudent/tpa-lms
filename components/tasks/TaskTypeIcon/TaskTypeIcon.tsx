@@ -1,4 +1,4 @@
-import { TaskType } from '../../../lib/utils/types';
+import { TaskType } from '../../../lib/types';
 import InfoTypeIcon from '../../../public/svg/info-type-icon.svg';
 import CodeTypeIcon from '../../../public/svg/code-type-icon.svg';
 

@@ -5,7 +5,7 @@ import { TaskAttemptBadge } from '../TaskAttemptBadge/TaskAttemptBadge';
 import { MarkdownContent } from '../../common/markdown/MarkdownContent/MarkdownContent';
 import relativeTime from 'dayjs/plugin/relativeTime';
 import dayjs from 'dayjs';
-import { Comment } from '../../../lib/utils/types';
+import { Comment } from '../../../lib/types';
 import Link from 'next/link';
 dayjs.extend(relativeTime);
 import { useRouter } from 'next/router';
@@ -32,7 +32,7 @@ export const TaskComments = ({ comments }: TaskCommentsProps) => {
       <div className={styles.content}>
         <ul>
           {comments.map(comment => {
-            const versionLink = `/student/scores/${comment.attempt_id}`;
+            const versionLink = `/student/tasks/attempt/${comment.attempt_id}`;
             const authorName = [comment.author.name, comment.author.surname]
               .filter(n => !!n)
               .join(' ');

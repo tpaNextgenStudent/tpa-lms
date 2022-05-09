@@ -1,4 +1,4 @@
-import { TaskType } from '../../../../lib/utils/types';
+import { TaskType } from '../../../../lib/types';
 import styles from './TaskTypeCell.module.scss';
 import { TaskTypeIcon } from '../../../tasks/TaskTypeIcon/TaskTypeIcon';
 

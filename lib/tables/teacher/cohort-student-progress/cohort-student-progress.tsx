@@ -1,9 +1,9 @@
 import { Column } from 'react-table';
 import styles from './cohort-student-progress.module.scss';
-import { TaskStatus } from '../../../../api/tasks';
 import { ITeacherSingleStudentScores } from '../../../../api/cohort';
 import { GradeCell } from '../../../../components/common/tables/GradeCell/GradeCell';
 import Link from 'next/link';
+import { TaskStatus } from '../../../types';
 
 type TaskScoreField = {
   score: number | null;
@@ -35,9 +35,13 @@ export function getTeacherStudentProgressColumns(
           cell: { value },
         }: {
           cell: { value: TaskScoreField | null };
-        }) =>
-          value?.attempt_id ? (
-            <Link href={`/teacher/assignments/${value.attempt_id}`}>
+        }) => {
+          if (!value) {
+            return null;
+          }
+
+          return value.attempt_id ? (
+            <Link href={`/teacher/cohort/progress/attempt/${value.attempt_id}`}>
               <a className={styles.taskCell}>
                 <GradeCell grade={value} />
               </a>
@@ -46,7 +50,8 @@ export function getTeacherStudentProgressColumns(
             <span className={styles.taskCell}>
               <GradeCell grade={value} />
             </span>
-          ),
+          );
+        },
       } as const)
   );
 

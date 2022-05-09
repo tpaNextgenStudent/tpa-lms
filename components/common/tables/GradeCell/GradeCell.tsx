@@ -1,7 +1,7 @@
 import styles from './GradeCell.module.scss';
-import { getColorByScore } from '../../../../lib/utils/getColorByScore';
+import { getColorByScore } from '../../../../utils/getColorByScore';
 import clsx from 'clsx';
-import { TaskStatus } from '../../../../lib/utils/types';
+import { TaskStatus } from '../../../../lib/types';
 import ClockIcon from '../../../../public/svg/clock-icon.svg';
 import TickIcon from '../../../../public/svg/tick-icon.svg';
 

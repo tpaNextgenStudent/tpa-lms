@@ -1,7 +1,7 @@
 import { Layout } from '../../components/common/Layout/Layout';
-import { InferPagePropsType } from '../../lib/utils/types';
+import { InferPagePropsType } from '../../lib/types';
 import { withServerSideAuth } from '../../lib/auth/withServerSideAuth';
-import { getUserDetails, UserRole } from '../../api/user';
+import { UserRole } from '../../api/user';
 import { ProfileBanner } from '../../components/profile/ProfileBanner/ProfileBanner';
 import { ProfileUserInfo } from '../../components/profile/ProfileUserInfo/ProfileUserInfo';
 import { ProfileCohortInfo } from '../../components/profile/ProfileCohortInfo/ProfileCohortInfo';
@@ -47,9 +47,8 @@ function getCohortProgressLink(role: UserRole) {
   }
 }
 
-export const getServerSideProps = withServerSideAuth()(async ({ req, res }) => {
-  const authCookie = req.headers.cookie as string;
-  const user = await getUserDetails({ cookie: authCookie });
-  console.log(user);
-  return { props: { user } };
-});
+export const getServerSideProps = withServerSideAuth()(
+  async ({ req, user }) => {
+    return { props: { user } };
+  }
+);

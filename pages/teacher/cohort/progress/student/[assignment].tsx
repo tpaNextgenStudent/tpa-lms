@@ -1,8 +1,7 @@
-import { InferPagePropsType } from '../../../../../lib/utils/types';
+import { InferPagePropsType } from '../../../../../lib/types';
 import { Layout } from '../../../../../components/common/Layout/Layout';
 import { Table } from '../../../../../components/common/tables/Table/Table';
 import { withServerSideAuth } from '../../../../../lib/auth/withServerSideAuth';
-import { getUserDetails } from '../../../../../api/user';
 import { GradesLegend } from '../../../../../components/teacher/GradesLegend/GradesLegend';
 import { ProfileBanner } from '../../../../../components/profile/ProfileBanner/ProfileBanner';
 import { ProfileUserInfo } from '../../../../../components/profile/ProfileUserInfo/ProfileUserInfo';
@@ -82,51 +81,43 @@ export default function CohortProgressIndex({
 }
 
 export const getServerSideProps = withServerSideAuth('teacher')(
-  async ({ req, params }) => {
+  async ({ req, params, user }) => {
     const authCookie = req.headers.cookie as string;
     const { assignment: assignmentId } = params! as {
       assignment: string;
     };
 
-    try {
-      const user = await getUserDetails({ cookie: authCookie });
-
-      const {
-        user: studentUser,
-        profile,
-        tasks_in_modules,
-      } = await getTeacherSingleStudentScores(assignmentId, {
+    const [
+      { user: studentUser, profile, tasks_in_modules },
+      rawStudentAssignments,
+    ] = await Promise.all([
+      getTeacherSingleStudentScores(assignmentId, {
         cookie: authCookie,
-      });
-      const maxNumOfTasks = Math.max(
-        ...tasks_in_modules.map(m => m.tasks.length)
-      );
+      }),
+      getTeacherAssignmentsByStudent(assignmentId, {
+        cookie: authCookie,
+      }),
+    ]);
 
-      const studentScoresTableData =
-        mapStudentProgressToTableData(tasks_in_modules);
+    const maxNumOfTasks = Math.max(
+      ...tasks_in_modules.map(m => m.tasks.length)
+    );
 
-      const rawStudentAssignments = await getTeacherAssignmentsByStudent(
-        assignmentId,
-        {
-          cookie: authCookie,
-        }
-      );
+    const studentScoresTableData =
+      mapStudentProgressToTableData(tasks_in_modules);
 
-      const studentAssignmentsTableData = mapStudentAssignmentsToTableData(
-        rawStudentAssignments
-      );
+    const studentAssignmentsTableData = mapStudentAssignmentsToTableData(
+      rawStudentAssignments
+    );
 
-      return {
-        props: {
-          user,
-          student: { user: studentUser, profile },
-          studentScoresTableData,
-          studentAssignmentsTableData,
-          maxNumOfTasks,
-        },
-      };
-    } catch {
-      return { notFound: true };
-    }
+    return {
+      props: {
+        user,
+        student: { user: studentUser, profile },
+        maxNumOfTasks,
+        studentScoresTableData,
+        studentAssignmentsTableData,
+      },
+    };
   }
 );
