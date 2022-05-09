@@ -32,6 +32,8 @@ const updateCurriculum = async (updatedAttempt: Attempt) => {
           module => module.position === i + 2
         );
         nextModule.tasks[0].status = 'in progress';
+      } else {
+        nextTask.status = 'in progress';
       }
     }
     return module;
