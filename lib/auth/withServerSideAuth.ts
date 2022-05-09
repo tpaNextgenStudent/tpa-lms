@@ -1,5 +1,5 @@
 import { GetServerSidePropsContext, GetServerSidePropsResult } from 'next';
-import { getUserDetails, IUserDetails, UserRole } from '../../api/user';
+import { getUserDetails, IUserDetails, UserRole } from '../../apiHelpers/user';
 import axios from 'axios';
 
 type AuthContextExtend = { user: IUserDetails };

@@ -9,7 +9,7 @@ import { FormEvent, useState } from 'react';
 import CrossIcon from '../../../public/svg/cross-icon.svg';
 import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
-import { postTeacherAssessment } from '../../../api/assess';
+import { postTeacherAssessment } from '../../../apiHelpers/assess';
 
 interface TeacherAssessFormProps {
   closePanel: () => void;

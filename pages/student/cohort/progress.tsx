@@ -6,7 +6,7 @@ import {
   mapCohortProgressToTableData,
 } from '../../../lib/tables/student/cohort-progress/cohort-progress';
 import { withServerSideAuth } from '../../../lib/auth/withServerSideAuth';
-import { getCohortProgress } from '../../../api/cohort';
+import { getCohortProgress } from '../../../apiHelpers/cohort';
 
 export default function CohortProgress({
   user,

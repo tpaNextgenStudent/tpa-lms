@@ -1,10 +1,10 @@
 import { Layout } from '../../../components/common/Layout/Layout';
 import { InferPagePropsType } from '../../../lib/types';
 import { withServerSideAuth } from '../../../lib/auth/withServerSideAuth';
-import { getAttemptById } from '../../../api/attempts';
-import { TaskSection } from '../../../components/tasks/TaskSection/TaskSection';
 import { attemptToComments } from '../../../utils/attemptsToComments';
-import { getNextTeacherAssessmentTask } from '../../../api/assess';
+import { getAttemptById } from '../../../apiHelpers/attempts';
+import { TaskSection } from '../../../components/tasks/TaskSection/TaskSection';
+import { getNextTeacherAssessmentTask } from '../../../apiHelpers/assess';
 
 export default function ScoresIndex({
   user,

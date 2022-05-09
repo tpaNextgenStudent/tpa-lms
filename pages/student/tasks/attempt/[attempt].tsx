@@ -2,7 +2,7 @@ import { Layout } from '../../../../components/common/Layout/Layout';
 import { InferPagePropsType } from '../../../../lib/types';
 import { TaskSection } from '../../../../components/tasks/TaskSection/TaskSection';
 import { withServerSideAuth } from '../../../../lib/auth/withServerSideAuth';
-import { getAttemptById } from '../../../../api/attempts';
+import { getAttemptById } from '../../../../apiHelpers/attempts';
 import { attemptToComments } from '../../../../utils/attemptsToComments';
 
 export default function ScoresIndex({

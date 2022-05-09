@@ -6,7 +6,7 @@ import {
   mapStudentScoresToTableData,
 } from '../../../lib/tables/student/my-scores/my-scores';
 import { withServerSideAuth } from '../../../lib/auth/withServerSideAuth';
-import { getUserScores } from '../../../api/scores';
+import { getUserScores } from '../../../apiHelpers/scores';
 import { EmptyStateView } from '../../../components/common/EmptyStateView/EmptyStateView';
 
 export default function ScoresIndex({

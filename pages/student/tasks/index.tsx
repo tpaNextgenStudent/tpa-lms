@@ -1,5 +1,5 @@
 import { withServerSideAuth } from '../../../lib/auth/withServerSideAuth';
-import { getCurrentTask } from '../../../api/tasks';
+import { getCurrentTask } from '../../../apiHelpers/tasks';
 
 export default function TasksIndex() {
   return null;

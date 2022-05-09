@@ -1,4 +1,4 @@
-import { getUserModules } from '../../../api/modules';
+import { getUserModules } from '../../../apiHelpers/modules';
 import { withServerSideAuth } from '../../../lib/auth/withServerSideAuth';
 
 export default function TasksIndex() {

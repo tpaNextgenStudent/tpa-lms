@@ -3,7 +3,7 @@ import styles from './cohort-progress.module.scss';
 import { TaskType } from '../../../types';
 import { TaskTypeCell } from '../../../../components/common/tables/TaskTypeCell/TaskTypeCell';
 import { UserNameCell } from '../../../../components/common/tables/UserNameCell/UserNameCell';
-import { IProgressItem } from '../../../../api/cohort';
+import { IProgressItem } from '../../../../apiHelpers/cohort';
 
 interface ProgressData {
   student: { name: string; img: string | null; login: string | null };

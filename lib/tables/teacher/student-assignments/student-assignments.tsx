@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { TaskTypeCell } from '../../../../components/common/tables/TaskTypeCell/TaskTypeCell';
 import { TaskType } from '../../../types';
 import { TaskAttemptBadge } from '../../../../components/tasks/TaskAttemptBadge/TaskAttemptBadge';
-import { IAssignment } from '../../../../api/assignments';
+import { IAssignment } from '../../../../apiHelpers/assignments';
 import dayjs from 'dayjs';
 
 export interface AssignmentsData {

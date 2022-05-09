@@ -3,12 +3,10 @@
 
 .wrapper {
   height: 100%;
-  overflow-y: auto;
+  overflow: auto;
 }
 
 .table {
-  overflow-x: auto;
-
   &FullWidth {
     width: 100%;
     min-width: 1170px;

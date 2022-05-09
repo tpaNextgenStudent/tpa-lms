@@ -1,8 +1,7 @@
 import styles from './TeacherAssessPanel.module.scss';
 import { CTAButton } from '../../common/CTAButton/CTAButton';
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 import { TeacherAssessForm } from '../TeacherAssessForm/TeacherAssessForm';
-import { AssessValue } from '../../../schemas/assessSchema';
 import { useRouter } from 'next/router';
 
 interface TeacherAssessPanelProps {

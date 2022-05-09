@@ -1,6 +1,6 @@
 import { apiPath } from '../utils/apiPath';
 import axios from 'axios';
-import { IUser, UserRole } from './user';
+import { IUser } from './user';
 import { TaskType, TaskStatus, IProfile } from '../lib/types';
 
 type Options = {

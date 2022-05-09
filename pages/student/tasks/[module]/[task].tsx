@@ -3,10 +3,10 @@ import { InferPagePropsType } from '../../../../lib/types';
 import { TasksMenu } from '../../../../components/tasks/TasksMenu/TasksMenu';
 import styles from '../../../../components/tasks/tasksPage/tasksPage.module.scss';
 import { TaskSection } from '../../../../components/tasks/TaskSection/TaskSection';
-import { getUserTasksByModule } from '../../../../api/tasks';
-import { getUserModules } from '../../../../api/modules';
+import { getUserTasksByModule } from '../../../../apiHelpers/tasks';
+import { getUserModules } from '../../../../apiHelpers/modules';
 import { withServerSideAuth } from '../../../../lib/auth/withServerSideAuth';
-import { getAttemptsByTask } from '../../../../api/attempts';
+import { getAttemptsByTask } from '../../../../apiHelpers/attempts';
 import { attemptsToComments } from '../../../../utils/attemptsToComments';
 
 export default function Tasks({

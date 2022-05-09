@@ -2,8 +2,8 @@ import styles from './TasksListItem.module.scss';
 import clsx from 'clsx';
 import Link from 'next/link';
 import { TaskBadges } from '../TaskBadges/TaskBadges';
-import { ITask } from '../../../api/tasks';
-import { IModuleVersion } from '../../../api/modules';
+import { ITask } from '../../../apiHelpers/tasks';
+import { IModuleVersion } from '../../../apiHelpers/modules';
 
 interface TaskListItemProps {
   task: ITask;

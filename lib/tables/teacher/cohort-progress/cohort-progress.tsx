@@ -5,9 +5,9 @@ import { UserNameCell } from '../../../../components/common/tables/UserNameCell/
 import {
   ITeacherProgressItem,
   ITeacherProgressTask,
-} from '../../../../api/cohort';
+} from '../../../../apiHelpers/cohort';
 import { GradeCell } from '../../../../components/common/tables/GradeCell/GradeCell';
-import { IModuleVersion } from '../../../../api/modules';
+import { IModuleVersion } from '../../../../apiHelpers/modules';
 import {
   CustomSelect,
   OptionType,

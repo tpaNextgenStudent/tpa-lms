@@ -1,6 +1,6 @@
 import { Column } from 'react-table';
 import styles from './cohort-student-progress.module.scss';
-import { ITeacherSingleStudentScores } from '../../../../api/cohort';
+import { ITeacherSingleStudentScores } from '../../../../apiHelpers/cohort';
 import { GradeCell } from '../../../../components/common/tables/GradeCell/GradeCell';
 import Link from 'next/link';
 import { TaskStatus } from '../../../types';

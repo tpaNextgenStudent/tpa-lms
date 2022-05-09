@@ -6,9 +6,9 @@ import {
   mapProgressToTableData,
 } from '../../../../lib/tables/teacher/cohort-progress/cohort-progress';
 import { withServerSideAuth } from '../../../../lib/auth/withServerSideAuth';
-import { getTeacherCohortProgress } from '../../../../api/cohort';
+import { getTeacherCohortProgress } from '../../../../apiHelpers/cohort';
 import { GradesLegend } from '../../../../components/teacher/GradesLegend/GradesLegend';
-import { getUserModules } from '../../../../api/modules';
+import { getUserModules } from '../../../../apiHelpers/modules';
 import { SingleValue } from 'react-select';
 import { OptionType } from '../../../../components/common/CustomSelect/CustomSelect';
 import { useRouter } from 'next/router';

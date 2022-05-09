@@ -8,7 +8,7 @@ import { TaskScoreBadge } from '../../../../components/tasks/TaskScoreBadge/Task
 import { UserNameCell } from '../../../../components/common/tables/UserNameCell/UserNameCell';
 import { TaskDoneBadge } from '../../../../components/tasks/TaskDoneBadge/TaskDoneBadge';
 import dayjs from 'dayjs';
-import { IScore } from '../../../../api/scores';
+import { IScore } from '../../../../apiHelpers/scores';
 
 interface ScoresData {
   submission_date: string;

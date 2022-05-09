@@ -7,10 +7,11 @@ import 'react-toastify/dist/ReactToastify.css';
 import { LoadingProvider } from '../lib/hooks/loadingContext';
 
 export default function App({ Component, pageProps }: AppProps) {
+  const AnyComponent = Component as any;
   return (
     <SessionProvider session={pageProps.session} refetchInterval={0}>
       <LoadingProvider>
-        <Component {...pageProps} />
+        <AnyComponent {...pageProps} />
         <ToastContainer closeOnClick={false} position="bottom-left" />
       </LoadingProvider>
     </SessionProvider>
