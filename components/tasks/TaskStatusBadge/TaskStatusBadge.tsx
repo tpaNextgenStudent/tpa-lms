@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import styles from './TaskStatusBadge.module.scss';
 import { TaskStatus } from '../../../lib/types';
 import LockIcon from '../../../public/svg/lock-icon.svg';
+import { capitalize } from '../../../utils/capitalize';
 
 interface TaskStatusBadgeProps {
   status: TaskStatus;
@@ -21,7 +22,7 @@ export const TaskStatusBadge = ({ status }: TaskStatusBadgeProps) => {
           <LockIcon />
         </span>
       )}
-      <span>{status}</span>
+      <span>{capitalize(status)}</span>
     </span>
   );
 };
