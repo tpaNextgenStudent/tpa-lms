@@ -1,6 +1,7 @@
 import styles from './InfoAction.module.scss';
 import { CTAButton } from '../../common/CTAButton/CTAButton';
 import { TaskType } from '../../../lib/types';
+import { SizedHTMLElement } from '../../../lib/hooks/useElementSize';
 
 interface InfoActionProps {
   task: {
@@ -10,11 +11,12 @@ interface InfoActionProps {
     description: string;
     link: string | null;
   };
+  sizeRef?: (element: SizedHTMLElement) => void;
 }
 
-export const InfoAction = ({}: InfoActionProps) => {
+export const InfoAction = ({ sizeRef }: InfoActionProps) => {
   return (
-    <div data-cypress="InfoAction" className={styles.wrapper}>
+    <div ref={sizeRef} data-cypress="InfoAction" className={styles.wrapper}>
       <CTAButton text="Mark as read" />
     </div>
   );
