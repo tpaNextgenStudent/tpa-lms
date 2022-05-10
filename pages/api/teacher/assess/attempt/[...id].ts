@@ -1,4 +1,4 @@
-import { NextApiHandler, NextApiRequest, NextApiResponse } from 'next';
+import next, { NextApiHandler, NextApiRequest, NextApiResponse } from 'next';
 import prisma from '../../../../../lib/prisma';
 import { assessSchema } from '../../../../../schemas/assessSchema';
 import { ObjectShape, OptionalObjectSchema } from 'yup/lib/object';
@@ -17,9 +17,23 @@ const updateCurriculum = async (updatedAttempt: Attempt) => {
       const task = module.tasks.find(
         (task: any) => task.attempt_id === updatedAttempt.id
       );
+
       if (updatedAttempt?.score) {
         task.score = updatedAttempt?.score;
         task.status = updatedAttempt?.score > 1 ? 'approved' : 'in progress';
+      }
+
+      const nextTask = module.tasks.find(
+        (el: any) => el.position === task.position + 1
+      );
+
+      if (!nextTask) {
+        const nextModule = curriculumProgress.find(
+          module => module.position === i + 2
+        );
+        nextModule.tasks[0].status = 'in progress';
+      } else {
+        nextTask.status = 'in progress';
       }
     }
     return module;
