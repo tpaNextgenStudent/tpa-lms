@@ -13,6 +13,7 @@ export const MarkdownContent = ({ content }: MarkdownContentProps) => {
     <ReactMarkdown
       className={clsx('markdown-body', styles.markdown)}
       remarkPlugins={[remarkGfm]}
+      linkTarget="_blank"
       components={{
         code({ inline, className, children, ...props }) {
           return (
