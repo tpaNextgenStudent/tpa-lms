@@ -4,6 +4,7 @@ import { Toast } from '../../common/Toast/Toast';
 import { useRouter } from 'next/router';
 import { CodeActionLines } from '../CodeActionLines/CodeActionLines';
 import { TaskType } from '../../../lib/types';
+import { SizedHTMLElement } from '../../../lib/hooks/useElementSize';
 
 interface CodeActionProps {
   task: {
@@ -13,9 +14,10 @@ interface CodeActionProps {
     description: string;
     link: string | null;
   };
+  sizeRef?: (element: SizedHTMLElement) => void;
 }
 
-export const CodeAction = ({ task }: CodeActionProps) => {
+export const CodeAction = ({ task, sizeRef }: CodeActionProps) => {
   const router = useRouter();
 
   const [isWarningVisible, setIsWarningVisible] = useState(false);
@@ -36,7 +38,7 @@ export const CodeAction = ({ task }: CodeActionProps) => {
   }, [isWarningDisabled]);
 
   return (
-    <div data-cypress="CodeAction" className={styles.wrapper}>
+    <div data-cypress="CodeAction" ref={sizeRef} className={styles.wrapper}>
       {isWarningVisible && (
         <Toast
           onCloseClick={handleWarningClose}

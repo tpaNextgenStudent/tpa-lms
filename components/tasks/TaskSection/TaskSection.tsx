@@ -13,6 +13,7 @@ import { CTAButton } from '../../common/CTAButton/CTAButton';
 import { useRouter } from 'next/router';
 import { TeacherAssessPanel } from '../TeacherAssessPanel/TeacherAssessPanel';
 import { ViewParamTabsSection } from '../../common/ViewParamTabsSection/ViewParamTabsSection';
+import { useElementSize } from '../../../lib/hooks/useElementSize';
 
 interface TaskSectionProps {
   task: {
@@ -51,6 +52,7 @@ export const TaskSection = ({
 }: TaskSectionProps) => {
   const router = useRouter();
   const [isFullScreenMode, setIsFullScreenMode] = useState(false);
+  const { ref, size } = useElementSize();
 
   const toggleFullScreenMode = () => {
     setIsFullScreenMode(prev => !prev);
@@ -95,12 +97,13 @@ export const TaskSection = ({
           description: (
             <>
               <TaskDescription
+                paddingBottom={size[1]}
                 answer={attempt?.answer}
                 locked={attempt?.status === 'upcoming'}
                 description={task.description}
               />
               {isTaskActionVisible && attempt?.status !== 'upcoming' && (
-                <TaskAction task={task} />
+                <TaskAction sizeRef={ref} task={task} />
               )}
             </>
           ),
