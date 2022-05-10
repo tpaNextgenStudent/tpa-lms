@@ -14,7 +14,16 @@ export const withServerSideAuth =
       | Promise<GetServerSidePropsResult<Props>>
   ) =>
   async (ctx: DefaultContext) => {
-    const authCookie = ctx.req.headers.cookie as string;
+    const authCookie = ctx.req.headers.cookie;
+
+    if (!authCookie) {
+      return {
+        redirect: {
+          permanent: false,
+          destination: '/login',
+        },
+      };
+    }
 
     try {
       const user = await getUserDetails({ cookie: authCookie });
@@ -30,6 +39,7 @@ export const withServerSideAuth =
       (ctx as DefaultContext & AuthContextExtend).user = user;
       return await handler(ctx as DefaultContext & AuthContextExtend);
     } catch (err) {
+      console.error(err);
       if (axios.isAxiosError(err)) {
         if (err.response?.status === 401) {
           return {
