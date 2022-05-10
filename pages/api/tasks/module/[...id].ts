@@ -51,7 +51,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
     return {
       task_data: task,
-      last_attempt: Object.keys(result).length === 0 ? null : result,
+      last_attempt: result.attempt_id ? result : null,
     };
   });
 
