@@ -51,7 +51,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
     return {
       task_data: task,
-      last_attempt: result.attempt_id ? result : null,
+      last_attempt: result.status ? result : null,
     };
   });
 
