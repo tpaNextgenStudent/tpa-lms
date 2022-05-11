@@ -2,6 +2,7 @@
 @use '/lib/styles/variables/fonts.module' as fonts;
 
 .wrapper {
+  margin-bottom: 24px;
   height: 100%;
   overflow: auto;
 }
