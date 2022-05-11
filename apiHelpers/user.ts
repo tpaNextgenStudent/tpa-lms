@@ -36,3 +36,13 @@ export const getUserDetails = async ({
   });
   return data;
 };
+
+export const getUserDetailsById = async (
+  userId: string,
+  { cookie }: Options
+): Promise<IUserDetails> => {
+  const { data } = await axios.get(apiPath(`user/details/${userId}`), {
+    headers: { cookie },
+  });
+  return data;
+};
