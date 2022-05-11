@@ -49,6 +49,21 @@ function getCohortProgressLink(role: UserRole) {
 
 export const getServerSideProps = withServerSideAuth()(
   async ({ req, user }) => {
-    return { props: { user } };
+    const areDetailsFilled = user.name && user.surname && user.bio;
+
+    if (!areDetailsFilled) {
+      return {
+        redirect: {
+          destination: '/login/details',
+          permanent: false,
+        },
+      };
+    }
+
+    return {
+      props: {
+        user,
+      },
+    };
   }
 );
