@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { TaskBadges } from '../TaskBadges/TaskBadges';
 import { ITask } from '../../../apiHelpers/tasks';
 import { IModuleVersion } from '../../../apiHelpers/modules';
+import { useEffect, useRef } from 'react';
 
 interface TaskListItemProps {
   task: ITask;
@@ -19,8 +20,19 @@ export const TasksListItem = ({
   tasksPathPrefix,
 }: TaskListItemProps) => {
   const moduleName = `Module ${module.module_number}`;
+  const listItemRef = useRef<HTMLLIElement>(null);
+
+  useEffect(() => {
+    if (isActive && listItemRef.current) {
+      listItemRef.current.scrollIntoView({
+        block: 'nearest',
+      });
+    }
+  }, [isActive]);
+
   return (
     <li
+      ref={listItemRef}
       data-cypress={isActive ? 'ActiveTaskListItem' : 'TaskListItem'}
       className={clsx(styles.task, isActive && styles.taskActive)}
     >
