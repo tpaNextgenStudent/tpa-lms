@@ -97,14 +97,7 @@ export const columns: Column<ScoresData>[] = [
       },
     }: {
       cell: { value: ScoresData['reviewed_by'] };
-    }) => (
-      <UserNameCell
-        profileLink={`/profile/${id}`}
-        name={name}
-        img={img}
-        login={login}
-      />
-    ),
+    }) => <UserNameCell id={id} name={name} img={img} login={login} />,
   },
   {
     Header: '',

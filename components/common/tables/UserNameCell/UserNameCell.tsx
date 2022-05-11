@@ -3,18 +3,13 @@ import Image from 'next/image';
 import { BlockedLink } from '../../BlockedLink/BlockedLink';
 
 interface UserNameCellProps {
-  profileLink?: string;
+  id?: string;
   name: string;
   img: string | null;
   login: string | null;
 }
 
-export const UserNameCell = ({
-  img,
-  name,
-  login,
-  profileLink,
-}: UserNameCellProps) => {
+export const UserNameCell = ({ img, name, login, id }: UserNameCellProps) => {
   return (
     <div data-cypress="UserNameCell" className={styles.userCellWrapper}>
       <div className={styles.userImgWrapper}>
@@ -31,8 +26,8 @@ export const UserNameCell = ({
         )}
       </div>
       <BlockedLink
-        isBlocked={!profileLink}
-        href={profileLink}
+        isBlocked={!id}
+        href={id && `/profile/${id}`}
         className={styles.userNameWrapper}
       >
         <p data-cypress="UserName" className={styles.userName}>
