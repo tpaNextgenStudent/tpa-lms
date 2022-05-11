@@ -58,18 +58,16 @@ export const UserNav = ({ user }: UserNavProps) => {
       onMouseLeave={handleMouseLeave}
       className={styles.userWrapper}
     >
-      {user.image && (
-        <div className={styles.userAvatar}>
-          <Image
-            className={styles.userAvatar}
-            width={40}
-            height={40}
-            layout="fixed"
-            src={user.image!}
-            alt="Avatar"
-          />
-        </div>
-      )}
+      <div className={styles.userAvatar}>
+        <Image
+          className={styles.userAvatar}
+          width={40}
+          height={40}
+          layout="fixed"
+          src={user.image || '/svg/user.svg'}
+          alt="Avatar"
+        />
+      </div>
       <p className={styles.userName}>{fullName}</p>
       <button
         ref={buttonRef}
