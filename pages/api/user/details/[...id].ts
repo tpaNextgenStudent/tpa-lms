@@ -57,40 +57,21 @@ const getRequest = async (res: NextApiResponse, userId: string) => {
 
 const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const session = await getSession({ req });
-  const assigmentId = req.query.id[0];
-  let userId = session?.userId as any;
-
-  if (assigmentId && req.method === 'GET') {
-    const assignment = await prisma.assignment.findFirst({
-      where: { id: assigmentId },
-      select: {
-        profile: { select: { provider_account_id: true } },
-      },
-    });
-
-    if (!assignment) {
-      res.status(401).send({ message: 'User not found' });
-    }
-
-    const account = await prisma.account.findFirst({
-      where: { providerAccountId: assignment?.profile?.provider_account_id },
-      select: {
-        user: { select: { id: true } },
-      },
-    });
-    userId = account?.user.id;
+  if (!session) {
+    return res.status(401).send({ message: 'Unauthorized' });
   }
 
-  if (session) {
-    switch (req.method) {
-      case 'POST':
-        return postRequest(req, res, userId);
-      default:
-        return getRequest(res, userId);
+  const userId = req.query.id[0];
+  const sessionUserId = session?.userId as string;
+
+  if (req.method === 'POST') {
+    if (userId !== sessionUserId) {
+      return res.status(401).send({ message: 'Unauthorized' });
     }
-  } else {
-    res.status(401).send({ message: 'Unauthorized' });
+    return postRequest(req, res, sessionUserId);
   }
+
+  return getRequest(res, userId);
 };
 
 export function validate(

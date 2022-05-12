@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 interface ConditionalLinkProps {
   children: ReactNode;
-  href: string;
+  href?: string;
   isBlocked?: boolean;
   className?: string;
 }
@@ -14,7 +14,7 @@ export const BlockedLink = ({
   isBlocked = false,
   className,
 }: ConditionalLinkProps) => {
-  if (isBlocked) {
+  if (isBlocked || !href) {
     return <span className={className}>{children}</span>;
   }
 

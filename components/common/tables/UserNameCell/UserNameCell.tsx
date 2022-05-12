@@ -1,13 +1,15 @@
 import styles from './UserNameCell.module.scss';
 import Image from 'next/image';
+import { BlockedLink } from '../../BlockedLink/BlockedLink';
 
 interface UserNameCellProps {
+  id?: string;
   name: string;
   img: string | null;
   login: string | null;
 }
 
-export const UserNameCell = ({ img, name, login }: UserNameCellProps) => {
+export const UserNameCell = ({ img, name, login, id }: UserNameCellProps) => {
   return (
     <div data-cypress="UserNameCell" className={styles.userCellWrapper}>
       <div className={styles.userImgWrapper}>
@@ -23,12 +25,16 @@ export const UserNameCell = ({ img, name, login }: UserNameCellProps) => {
           />
         )}
       </div>
-      <div className={styles.userNameWrapper}>
+      <BlockedLink
+        isBlocked={!id}
+        href={id && `/profile/${id}`}
+        className={styles.userNameWrapper}
+      >
         <p data-cypress="UserName" className={styles.userName}>
           {name}
         </p>
         {login && <p className={styles.userLogin}>#{login}</p>}
-      </div>
+      </BlockedLink>
     </div>
   );
 };

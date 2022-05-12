@@ -18,7 +18,12 @@ interface ScoresData {
   task_type: string;
   attempt: number;
   score: number | null;
-  reviewed_by: { name: string; img: string | null; login: string | null };
+  reviewed_by: {
+    id: string;
+    name: string;
+    img: string | null;
+    login: string | null;
+  };
   view: { link: string };
 }
 
@@ -88,11 +93,11 @@ export const columns: Column<ScoresData>[] = [
 
     Cell: ({
       cell: {
-        value: { name, img, login },
+        value: { name, img, login, id },
       },
     }: {
       cell: { value: ScoresData['reviewed_by'] };
-    }) => <UserNameCell name={name} img={img} login={login} />,
+    }) => <UserNameCell id={id} name={name} img={img} login={login} />,
   },
   {
     Header: '',
@@ -113,7 +118,7 @@ export const columns: Column<ScoresData>[] = [
   },
 ];
 
-export function mapStudentScoresToTableData(rawScores: IScore[]) {
+export function mapStudentScoresToTableData(rawScores: IScore[]): ScoresData[] {
   return rawScores.map(({ attempt, task_type, task_name, module_number }) => {
     const teacherName = [
       attempt.teacher.user.name,
@@ -130,6 +135,7 @@ export function mapStudentScoresToTableData(rawScores: IScore[]) {
       attempt: attempt.attempt_number,
       score: attempt.score,
       reviewed_by: {
+        id: attempt.teacher.user.id,
         name: teacherName,
         img: attempt.teacher.user.image,
         login: attempt.teacher.profile.login,
