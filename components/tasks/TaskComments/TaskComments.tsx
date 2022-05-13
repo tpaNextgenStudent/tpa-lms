@@ -58,13 +58,14 @@ export const TaskComments = ({ comments }: TaskCommentsProps) => {
                     {dayjs(comment.date).format('DD MMM YYYY, HH:MM a')}
                   </span>
                   <div className={styles.attemptBadges}>
-                    {comment.attempt_id && !asPath.includes(versionLink) && (
-                      <Link href={versionLink}>
-                        <a className={styles.underAssessmentLink}>
-                          Version under assessment
-                        </a>
-                      </Link>
-                    )}
+                    {comment.attempt_id &&
+                      !asPath.includes(comment.attempt_id) && (
+                        <Link href={versionLink}>
+                          <a className={styles.underAssessmentLink}>
+                            Version under assessment
+                          </a>
+                        </Link>
+                      )}
                     <TaskAttemptBadge attempt={comment.attempt_number} />
                     {comment.attempt_score && (
                       <TaskScoreBadge score={comment.attempt_score} withText />
