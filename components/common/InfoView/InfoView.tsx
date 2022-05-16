@@ -3,7 +3,7 @@ import { CTAButton } from '../CTAButton/CTAButton';
 import Image from 'next/image';
 import Link from 'next/link';
 import { HandleBold } from '../HandleBold/HandleBold';
-import { ReactNode } from 'react';
+import { Fragment, ReactNode } from 'react';
 
 interface InfoViewProps {
   description: string;
@@ -37,10 +37,10 @@ export const InfoView = ({
         <h1 className={styles.title}>
           {Array.isArray(title) ? (
             title.map(line => (
-              <>
+              <Fragment key={line}>
                 <HandleBold>{line}</HandleBold>
                 <br />
-              </>
+              </Fragment>
             ))
           ) : (
             <HandleBold>{title}</HandleBold>

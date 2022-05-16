@@ -8,6 +8,7 @@ import { InferPagePropsType } from '../../lib/types';
 import { ErrorView } from '../../components/common/ErrorView/ErrorView';
 import { useRouter } from 'next/router';
 import { useIsLoading } from '../../lib/hooks/loadingContext';
+import { getUserInOrganisation } from '../../apiHelpers/github';
 
 export default function Login({
   error,
@@ -55,6 +56,26 @@ export default function Login({
 export async function getServerSideProps(ctx: GetServerSidePropsContext) {
   const session = await getSession(ctx);
   if (session) {
+    const authCookie = ctx.req.headers.cookie as string;
+    const { userInOrganisation, resposCreated } = await getUserInOrganisation({
+      cookie: authCookie,
+    });
+    if (!userInOrganisation) {
+      return {
+        redirect: {
+          destination: '/login/invitation',
+          permanent: false,
+        },
+      };
+    }
+    if (!resposCreated) {
+      return {
+        redirect: {
+          destination: '/login/configuration',
+          permanent: false,
+        },
+      };
+    }
     return {
       redirect: {
         destination: '/',

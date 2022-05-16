@@ -1,8 +1,10 @@
-import { useRouter } from 'next/router';
 import { InfoView } from '../../components/common/InfoView/InfoView';
+import { withServerSideAuth } from '../../lib/auth/withServerSideAuth';
+import { getUserInOrganisation } from '../../apiHelpers/github';
+import { useAutoRefresh } from '../../lib/hooks/useAutoRefresh';
 
 export default function InvitationPage() {
-  const router = useRouter();
+  const { refresh } = useAutoRefresh();
 
   return (
     <InfoView
@@ -10,10 +12,39 @@ export default function InvitationPage() {
       description="To get to our organization, please, *confirm your email address*."
       button={{
         text: 'Refresh',
-        onClick: () => {
-          router.reload();
-        },
+        onClick: refresh,
       }}
     />
   );
 }
+
+export const getServerSideProps = withServerSideAuth()(
+  async ({ req, params }) => {
+    const authCookie = req.headers.cookie as string;
+
+    const { userInOrganisation, resposCreated } = await getUserInOrganisation({
+      cookie: authCookie,
+    });
+
+    if (!userInOrganisation) {
+      return {
+        props: {},
+      };
+    }
+
+    if (!resposCreated) {
+      return {
+        redirect: {
+          destination: '/login/configuration',
+          permanent: false,
+        },
+      };
+    }
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      },
+    };
+  }
+);
