@@ -1,7 +1,6 @@
 import styles from './InfoAction.module.scss';
 import { CTAButton } from '../../common/CTAButton/CTAButton';
 import { TaskType } from '../../../lib/types';
-import { SizedHTMLElement } from '../../../lib/hooks/useElementSize';
 
 interface InfoActionProps {
   task: {
@@ -11,7 +10,7 @@ interface InfoActionProps {
     description: string;
     link: string | null;
   };
-  sizeRef?: (element: SizedHTMLElement) => void;
+  sizeRef?: (element: HTMLElement | null) => void;
 }
 
 export const InfoAction = ({ sizeRef }: InfoActionProps) => {

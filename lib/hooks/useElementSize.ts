@@ -1,35 +1,28 @@
-import { useCallback, useLayoutEffect, useRef, useState } from 'react';
-
-export type SizedHTMLElement = Pick<
-  HTMLElement,
-  'getBoundingClientRect'
-> | null;
+import { useCallback, useLayoutEffect, useState } from 'react';
 
 export function useElementSize() {
   const [size, setSize] = useState<[number, number]>([0, 0]);
-  const elementRef = useRef<SizedHTMLElement>(null);
+  const [elementRef, setElementRef] = useState<HTMLElement | null>(null);
 
-  const ref = useCallback((element: SizedHTMLElement) => {
-    if (element) {
-      const rect = element.getBoundingClientRect();
-      setSize([rect.width, rect.height]);
-    }
-
-    elementRef.current = element;
+  const ref = useCallback((element: HTMLElement | null) => {
+    setElementRef(element);
   }, []);
 
   useLayoutEffect(() => {
-    function handleResize() {
-      if (elementRef.current) {
-        const rect = elementRef.current.getBoundingClientRect();
-        setSize([rect.width, rect.height]);
+    const el = elementRef;
+
+    const resizeObserver = new ResizeObserver(entries => {
+      const entry = entries[0];
+      if (entry) {
+        setSize([entry.contentRect.width, entry.contentRect.height]);
       }
-    }
+    });
+    if (el) resizeObserver.observe(el);
 
-    window.addEventListener('resize', handleResize);
-
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
+    return () => {
+      if (el) resizeObserver.unobserve(el);
+    };
+  }, [elementRef]);
 
   return { size, ref };
 }

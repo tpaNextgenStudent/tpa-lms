@@ -4,7 +4,6 @@ import { Toast } from '../../common/Toast/Toast';
 import { useRouter } from 'next/router';
 import { CodeActionLines } from '../CodeActionLines/CodeActionLines';
 import { TaskType } from '../../../lib/types';
-import { SizedHTMLElement } from '../../../lib/hooks/useElementSize';
 
 interface CodeActionProps {
   task: {
@@ -14,7 +13,7 @@ interface CodeActionProps {
     description: string;
     link: string | null;
   };
-  sizeRef?: (element: SizedHTMLElement) => void;
+  sizeRef?: (element: HTMLElement | null) => void;
 }
 
 export const CodeAction = ({ task, sizeRef }: CodeActionProps) => {

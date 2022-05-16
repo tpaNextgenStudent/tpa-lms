@@ -1,7 +1,6 @@
 import { CodeAction } from '../CodeAction/CodeAction';
 import { InfoAction } from '../InfoAction/InfoAction';
 import { TaskType } from '../../../lib/types';
-import { SizedHTMLElement } from '../../../lib/hooks/useElementSize';
 
 interface TaskActionProps {
   task: {
@@ -11,7 +10,7 @@ interface TaskActionProps {
     description: string;
     link: string | null;
   };
-  sizeRef?: (element: SizedHTMLElement) => void;
+  sizeRef?: (element: HTMLElement | null) => void;
 }
 
 const TASK_TYPES = {
