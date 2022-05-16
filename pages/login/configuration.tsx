@@ -5,6 +5,7 @@ import {
   createUserRepos,
   getUserInOrganisation,
 } from '../../apiHelpers/github';
+import { MechanicRobotAnimation } from '../../components/common/MechanicRobotAnimation/MechanicRobotAnimation';
 
 export default function ConfigurationPage() {
   const { refresh } = useAutoRefresh(10);
@@ -20,7 +21,9 @@ export default function ConfigurationPage() {
         text: 'Refresh',
         onClick: refresh,
       }}
-    />
+    >
+      <MechanicRobotAnimation />
+    </InfoView>
   );
 }
 

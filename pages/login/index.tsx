@@ -47,7 +47,7 @@ export default function Login({
         description="Start your journey with signing in using your GitHub account."
       />
       <div className={styles.ctaButtonWrapper}>
-        <CTAButton text="Login with github" onClick={loginWithGithub} />
+        <CTAButton text="Login with GitHub" onClick={loginWithGithub} />
       </div>
     </LoginLayout>
   );
