@@ -4,7 +4,7 @@ import { getUserInOrganisation } from '../../apiHelpers/github';
 import { useAutoRefresh } from '../../lib/hooks/useAutoRefresh';
 
 export default function InvitationPage() {
-  const { refresh } = useAutoRefresh();
+  const { refresh } = useAutoRefresh(10);
 
   return (
     <InfoView

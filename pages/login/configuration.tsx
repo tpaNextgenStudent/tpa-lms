@@ -5,12 +5,9 @@ import {
   createUserRepos,
   getUserInOrganisation,
 } from '../../apiHelpers/github';
-import { useEffect } from 'react';
 
 export default function ConfigurationPage() {
-  const { refresh } = useAutoRefresh();
-
-  useEffect(() => {}, []);
+  const { refresh } = useAutoRefresh(10);
 
   return (
     <InfoView
@@ -34,6 +31,8 @@ export const getServerSideProps = withServerSideAuth()(
     const { userInOrganisation, resposCreated } = await getUserInOrganisation({
       cookie: authCookie,
     });
+
+    return { props: {} };
 
     if (!userInOrganisation) {
       return {
