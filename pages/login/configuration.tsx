@@ -1,10 +1,16 @@
 import { InfoView } from '../../components/common/InfoView/InfoView';
 import { useAutoRefresh } from '../../lib/hooks/useAutoRefresh';
 import { withServerSideAuth } from '../../lib/auth/withServerSideAuth';
-import { getUserInOrganisation } from '../../apiHelpers/github';
+import {
+  createUserRepos,
+  getUserInOrganisation,
+} from '../../apiHelpers/github';
+import { useEffect } from 'react';
 
 export default function ConfigurationPage() {
   const { refresh } = useAutoRefresh();
+
+  useEffect(() => {}, []);
 
   return (
     <InfoView
@@ -39,6 +45,7 @@ export const getServerSideProps = withServerSideAuth()(
     }
 
     if (!resposCreated) {
+      await createUserRepos({ cookie: authCookie });
       return {
         props: {},
       };
