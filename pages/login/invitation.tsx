@@ -19,8 +19,17 @@ export default function InvitationPage() {
 }
 
 export const getServerSideProps = withServerSideAuth()(
-  async ({ req, params }) => {
+  async ({ req, user }) => {
     const authCookie = req.headers.cookie as string;
+
+    if (user.role === 'teacher') {
+      return {
+        redirect: {
+          destination: '/',
+          permanent: false,
+        },
+      };
+    }
 
     const { userInOrganisation, resposCreated } = await getUserInOrganisation({
       cookie: authCookie,

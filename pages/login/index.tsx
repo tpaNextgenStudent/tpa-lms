@@ -9,6 +9,7 @@ import { ErrorView } from '../../components/common/ErrorView/ErrorView';
 import { useRouter } from 'next/router';
 import { useIsLoading } from '../../lib/hooks/loadingContext';
 import { getUserInOrganisation } from '../../apiHelpers/github';
+import { getUserDetails } from '../../apiHelpers/user';
 
 export default function Login({
   error,
@@ -57,6 +58,16 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
   const session = await getSession(ctx);
   if (session) {
     const authCookie = ctx.req.headers.cookie as string;
+    const user = await getUserDetails({ cookie: authCookie });
+    if (user.role === 'teacher') {
+      return {
+        redirect: {
+          destination: '/',
+          permanent: false,
+        },
+      };
+    }
+
     const { userInOrganisation, resposCreated } = await getUserInOrganisation({
       cookie: authCookie,
     });
