@@ -50,7 +50,7 @@ export const columns: Column<ScoresData>[] = [
     accessor: 'task',
 
     Cell: ({ cell: { value } }: { cell: { value: string } }) => (
-      <TextCell id="MyScoresTableTaskCell" value={value} maxWidth={205} />
+      <TextCell id="MyScoresTableTaskCell" value={value} maxWidth={180} />
     ),
   },
   {
