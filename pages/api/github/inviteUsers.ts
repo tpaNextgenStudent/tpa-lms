@@ -7,7 +7,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const usersArray = users.split(' ');
 
   const octokit = new Octokit({
-    auth: `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`,
+    auth: process.env.GITHUB_PERSONAL_ACCESS_TOKEN,
   });
 
   const {

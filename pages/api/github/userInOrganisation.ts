@@ -5,7 +5,7 @@ import prisma from '../../../lib/prisma';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const octokit = new Octokit({
-    auth: `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`,
+    auth: process.env.GITHUB_PERSONAL_ACCESS_TOKEN,
   });
 
   const {

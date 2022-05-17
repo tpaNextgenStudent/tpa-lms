@@ -26,11 +26,7 @@ export interface CreateUserReposData {
   updatedCurriculum: Curriculum;
 }
 
-export const createUserRepos = async ({
-  cookie,
-}: Options): Promise<CreateUserReposData> => {
-  const { data } = await axios.get(apiPath('github/createRepos'), {
-    headers: { cookie },
-  });
+export const createUserRepos = async (): Promise<CreateUserReposData> => {
+  const { data } = await axios.get(apiPath('github/createRepos'));
   return data;
 };

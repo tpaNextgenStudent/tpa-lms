@@ -1,7 +1,8 @@
 import MechanicRobot from '../../../public/svg/robot-mechanic.svg';
 import styles from './MechanicRobotAnimation.module.scss';
-import { gsap } from 'gsap';
+import { gsap, Linear } from 'gsap';
 import { useEffect, useRef } from 'react';
+import { randomFromRange } from '../../../utils/randomFromRange';
 
 export const MechanicRobotAnimation = () => {
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -47,38 +48,31 @@ export const MechanicRobotAnimation = () => {
         0
       );
 
-    gsap
-      .timeline({ repeat: -1 })
-      .from(q('.screw1'), {
-        y: -250,
-        rotate: -720,
-        transformOrigin: 'center',
-        duration: 1,
-      })
-      .to(q('.screw1'), {
-        y: 0,
-        rotate: 0,
-      })
-      .to(q('.screw1'), {
-        opacity: 0,
-      })
-      .from(
-        q('.screw2'),
+    const screws = Array(8)
+      .fill(null)
+      .map((_, i) => q(`.screw${i + 1}`));
+
+    screws.forEach((screw, index) => {
+      gsap.fromTo(
+        screw,
+        {
+          y: 250,
+          x: randomFromRange(-200, 30),
+          rotate:
+            [-1, 1][Math.round(Math.random())] * randomFromRange(180, 900),
+          transformOrigin: 'center',
+        },
         {
           y: -250,
-          rotate: 720,
-          transformOrigin: 'center',
-          duration: 1.5,
-        },
-        -1
-      )
-      .to(q('.screw2'), {
-        y: 0,
-        rotate: 0,
-      })
-      .to(q('.screw2'), {
-        opacity: 0,
-      });
+          x: randomFromRange(-200, 30),
+          rotate: 0,
+          duration: randomFromRange(2, 4),
+          repeat: -1,
+          delay: randomFromRange(0, 5),
+          ease: Linear.easeInOut,
+        }
+      );
+    });
   }, [q]);
 
   return (

@@ -6,9 +6,33 @@ import {
   getUserInOrganisation,
 } from '../../apiHelpers/github';
 import { MechanicRobotAnimation } from '../../components/common/MechanicRobotAnimation/MechanicRobotAnimation';
+import { useEffect } from 'react';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
 export default function ConfigurationPage() {
-  const { refresh } = useAutoRefresh(10);
+  const { refresh } = useAutoRefresh(20);
+
+  useEffect(() => {
+    const createRepos = async () => {
+      try {
+        await createUserRepos();
+        toast('Repositories successfully created!', { type: 'success' });
+      } catch (error) {
+        if (axios.isAxiosError(error)) {
+          if (error.response?.status === 409) {
+            return toast('Please wait, repositories are being created...', {
+              type: 'info',
+            });
+          }
+          return toast('There was an error while creating repositories!', {
+            type: 'error',
+          });
+        }
+      }
+    };
+    createRepos();
+  }, []);
 
   return (
     <InfoView
@@ -53,18 +77,17 @@ export const getServerSideProps = withServerSideAuth()(
       };
     }
 
-    if (!resposCreated) {
-      await createUserRepos({ cookie: authCookie });
+    if (resposCreated) {
       return {
-        props: {},
+        redirect: {
+          destination: '/',
+          permanent: false,
+        },
       };
     }
 
     return {
-      redirect: {
-        destination: '/',
-        permanent: false,
-      },
+      props: {},
     };
   }
 );
