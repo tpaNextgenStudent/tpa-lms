@@ -9,6 +9,7 @@ import { UserNameCell } from '../../../../components/common/tables/UserNameCell/
 import { TaskDoneBadge } from '../../../../components/tasks/TaskDoneBadge/TaskDoneBadge';
 import dayjs from 'dayjs';
 import { IScore } from '../../../../apiHelpers/scores';
+import { TextCell } from '../../../../components/common/tables/TextCell/TextCell';
 
 interface ScoresData {
   submission_date: string;
@@ -47,12 +48,9 @@ export const columns: Column<ScoresData>[] = [
   {
     Header: 'Task',
     accessor: 'task',
-    maxWidth: 205,
 
     Cell: ({ cell: { value } }: { cell: { value: string } }) => (
-      <strong title={value} data-cypress="MyScoresTableTaskCell">
-        {value}
-      </strong>
+      <TextCell id="MyScoresTableTaskCell" value={value} maxWidth={205} />
     ),
   },
   {

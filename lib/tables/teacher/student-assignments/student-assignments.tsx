@@ -6,6 +6,7 @@ import { TaskType } from '../../../types';
 import { TaskAttemptBadge } from '../../../../components/tasks/TaskAttemptBadge/TaskAttemptBadge';
 import { IAssignment } from '../../../../apiHelpers/assignments';
 import dayjs from 'dayjs';
+import { TextCell } from '../../../../components/common/tables/TextCell/TextCell';
 
 export interface AssignmentsData {
   submission_date: string;
@@ -34,16 +35,9 @@ export const columns: Column<AssignmentsData>[] = [
   {
     Header: 'Task name',
     accessor: 'task',
-    width: 256,
 
     Cell: ({ cell: { value } }: { cell: { value: string } }) => (
-      <span
-        data-cypress="AssignmentsTableTaskCell"
-        title={value}
-        className={styles.taskName}
-      >
-        {value}
-      </span>
+      <TextCell id="AssignmentsTableTaskCell" value={value} />
     ),
   },
   {
