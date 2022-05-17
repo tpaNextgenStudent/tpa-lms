@@ -10,7 +10,12 @@ import { IAssignment } from '../../../../apiHelpers/assignments';
 
 export interface AssignmentsData {
   submission_date: string;
-  student: { name: string; login: string | null; img: string | null };
+  student: {
+    name: string;
+    login: string | null;
+    img: string | null;
+    id: string;
+  };
   module: string;
   task: string;
   task_type: string;
@@ -31,11 +36,11 @@ export const columns: Column<AssignmentsData>[] = [
 
     Cell: ({
       cell: {
-        value: { name, img, login },
+        value: { name, img, login, id },
       },
     }: {
       cell: { value: AssignmentsData['student'] };
-    }) => <UserNameCell name={name} img={img} login={login} />,
+    }) => <UserNameCell id={id} name={name} img={img} login={login} />,
   },
   {
     Header: 'Module',
@@ -99,6 +104,7 @@ export const mapAssignmentsToTableData = (
     return {
       submission_date: dayjs(a.submission_date).format('DD MMM YYYY'),
       student: {
+        id: a.student.user.id,
         name: a.student.user.name,
         login: a.student.profile.login,
         img: a.student.user.image,
