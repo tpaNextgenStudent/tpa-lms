@@ -8,10 +8,8 @@
 }
 
 .table {
-  &FullWidth {
-    width: 100%;
-    min-width: 1170px;
-  }
+  width: 100%;
+  border-collapse: collapse;
 }
 
 .headRow {
@@ -24,8 +22,12 @@
   line-height: 16px;
   color: colors.$fontSecondary;
   text-align: left;
-  padding: 24px 0 12px 0;
-  align-self: end;
+  padding: 24px 24px 12px;
+  white-space: nowrap;
+
+  &:last-child {
+    margin-left: auto;
+  }
 }
 
 .tableRow {
@@ -44,6 +46,8 @@
 }
 
 .tableRowWrapper {
+  border-top: 1px solid colors.$strokeMain;
+
   min-width: max-content;
   &:nth-child(odd) {
     background: colors.$bgTable;
@@ -55,9 +59,17 @@
   font-size: 12px;
   line-height: 16px;
   color: colors.$fontPrimary;
-  padding: 24px 0;
-  display: flex;
-  align-items: center;
+  padding: 24px 24px 12px;
+  white-space: nowrap;
+  width: auto;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  &:last-child {
+    margin-left: auto;
+    width: 100%;
+    text-align: right;
+  }
 }
 
 .taskTypeWrapper {

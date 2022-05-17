@@ -31,17 +31,14 @@ export const columns: Column<ScoresData>[] = [
   {
     Header: 'Date of submission',
     accessor: 'submission_date',
-    width: 110,
   },
   {
     Header: 'Date of review',
     accessor: 'review_date',
-    width: 85,
   },
   {
     Header: 'Module',
     accessor: 'module',
-    width: 55,
 
     Cell: ({ cell: { value } }: { cell: { value: string } }) => (
       <span className={styles.moduleName}>{value}</span>
@@ -50,16 +47,17 @@ export const columns: Column<ScoresData>[] = [
   {
     Header: 'Task',
     accessor: 'task',
-    width: 205,
+    maxWidth: 205,
 
     Cell: ({ cell: { value } }: { cell: { value: string } }) => (
-      <strong data-cypress="MyScoresTableTaskCell">{value}</strong>
+      <strong title={value} data-cypress="MyScoresTableTaskCell">
+        {value}
+      </strong>
     ),
   },
   {
     Header: 'Task type',
     accessor: 'task_type',
-    width: 70,
 
     Cell: ({ cell: { value } }: { cell: { value: TaskType } }) => (
       <TaskTypeCell type={value} />
@@ -68,7 +66,6 @@ export const columns: Column<ScoresData>[] = [
   {
     Header: 'Attempt',
     accessor: 'attempt',
-    width: 48,
 
     Cell: ({ cell: { value } }: { cell: { value: number } }) => (
       <TaskAttemptBadge attempt={value} styleType="circle" />
@@ -77,7 +74,6 @@ export const columns: Column<ScoresData>[] = [
   {
     Header: 'Score',
     accessor: 'score',
-    width: 35,
 
     Cell: ({ cell: { value } }: { cell: { value: number | null } }) =>
       value ? (
@@ -89,7 +85,6 @@ export const columns: Column<ScoresData>[] = [
   {
     Header: 'Reviewed by',
     accessor: 'reviewed_by',
-    width: 155,
 
     Cell: ({
       cell: {
@@ -102,7 +97,6 @@ export const columns: Column<ScoresData>[] = [
   {
     Header: '',
     accessor: 'view',
-    width: '1fr',
 
     Cell: ({
       cell: {

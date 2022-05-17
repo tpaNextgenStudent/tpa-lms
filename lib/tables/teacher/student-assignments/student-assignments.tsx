@@ -37,7 +37,11 @@ export const columns: Column<AssignmentsData>[] = [
     width: 256,
 
     Cell: ({ cell: { value } }: { cell: { value: string } }) => (
-      <span data-cypress="AssignmentsTableTaskCell" className={styles.taskName}>
+      <span
+        data-cypress="AssignmentsTableTaskCell"
+        title={value}
+        className={styles.taskName}
+      >
         {value}
       </span>
     ),

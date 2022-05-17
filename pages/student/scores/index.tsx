@@ -26,7 +26,7 @@ export default function ScoresIndex({
           message="You have no scores yet"
         />
       ) : (
-        <Table columns={columns} data={scores} isFullWidth colGap={42} />
+        <Table columns={columns} data={scores} />
       )}
     </Layout>
   );
