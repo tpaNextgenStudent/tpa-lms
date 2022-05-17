@@ -2,9 +2,10 @@ import { InfoView } from '../../components/common/InfoView/InfoView';
 import { withServerSideAuth } from '../../lib/auth/withServerSideAuth';
 import { getUserInOrganisation } from '../../apiHelpers/github';
 import { useAutoRefresh } from '../../lib/hooks/useAutoRefresh';
+import { PaperPlaneRobotAnimation } from '../../components/common/PaperPlaneRobotAnimation/PaperPlaneRobotAnimation';
 
 export default function InvitationPage() {
-  const { refresh } = useAutoRefresh(10);
+  const { refresh } = useAutoRefresh(20);
 
   return (
     <InfoView
@@ -14,7 +15,9 @@ export default function InvitationPage() {
         text: 'Refresh',
         onClick: refresh,
       }}
-    />
+    >
+      <PaperPlaneRobotAnimation />
+    </InfoView>
   );
 }
 
