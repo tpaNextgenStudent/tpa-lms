@@ -17,7 +17,7 @@ export const PaperPlaneRobotAnimation = () => {
     const path = 'M 0 0 C 992 -482 -1133 -243 1028 100';
     gsap
       .timeline({ repeat: -1, repeatDelay: 2 })
-      .from(arm, { rotate: -50, duration: 0.5 })
+      .from(arm, { rotate: -50, y: 20, duration: 0.5 })
       .from(plane, { x: -20, y: -20, duration: 0.5, rotate: -30 }, 0)
       .to(
         plane,
@@ -33,7 +33,7 @@ export const PaperPlaneRobotAnimation = () => {
         0.25
       )
       .to(plane, { opacity: 0, x: -20, y: -20, duration: 0, rotate: -30 })
-      .to(arm, { rotate: -50, duration: 0.5 })
+      .to(arm, { rotate: -50, duration: 0.5, y: 20 })
       .to(plane, { opacity: 1 });
     console.log({ arm, plane });
   }, [q]);
