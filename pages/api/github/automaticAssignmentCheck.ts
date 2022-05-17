@@ -70,8 +70,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   //   }
 
   res.status(200).send({
-    req,
-    1: 1,
+    body: req.body,
+
   });
   // }
 };
