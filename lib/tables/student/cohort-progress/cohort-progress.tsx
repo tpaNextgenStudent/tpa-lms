@@ -6,7 +6,12 @@ import { UserNameCell } from '../../../../components/common/tables/UserNameCell/
 import { IProgressItem } from '../../../../apiHelpers/cohort';
 
 interface ProgressData {
-  student: { name: string; img: string | null; login: string | null };
+  student: {
+    name: string;
+    img: string | null;
+    login: string | null;
+    id: string;
+  };
   module: string;
   task_name: string;
   task_type: string;
@@ -20,11 +25,11 @@ export const columns: Column<ProgressData>[] = [
 
     Cell: ({
       cell: {
-        value: { name, img, login },
+        value: { name, img, login, id },
       },
     }: {
       cell: { value: ProgressData['student'] };
-    }) => <UserNameCell name={name} img={img} login={login} />,
+    }) => <UserNameCell id={id} name={name} img={img} login={login} />,
   },
   {
     Header: 'Module',
@@ -51,7 +56,9 @@ export const columns: Column<ProgressData>[] = [
   },
 ];
 
-export function mapCohortProgressToTableData(rawProgress: IProgressItem[]) {
+export function mapCohortProgressToTableData(
+  rawProgress: IProgressItem[]
+): ProgressData[] {
   return rawProgress.map(
     ({ student, task_name, task_type, module_position }) => {
       const studentName = [student.user.name, student.user.surname]
@@ -59,6 +66,7 @@ export function mapCohortProgressToTableData(rawProgress: IProgressItem[]) {
         .join(' ');
       return {
         student: {
+          id: student.user.id,
           name: studentName,
           login: student.profile.login,
           img: student.user.image,
