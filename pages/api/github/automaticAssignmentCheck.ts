@@ -8,13 +8,13 @@ import prisma from '../../../lib/prisma';
 // we're finding artefat_id by run_id (id)
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
-  const octokit = new Octokit({
-    auth: process.env.GITHUB_PERSONAL_ACCESS_TOKEN,
-  });
+  // const octokit = new Octokit({
+  //   auth: process.env.GITHUB_PERSONAL_ACCESS_TOKEN,
+  // });
 
-  const {
-    data: { login },
-  } = await octokit.rest.users.getAuthenticated();
+  // const {
+  //   data: { login },
+  // } = await octokit.rest.users.getAuthenticated();
 
   //Check if it was pull_request event
   // if (req.body.payload.workflow_run.event != 'pull_request') {
@@ -69,10 +69,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   //     }
   //   }
   // console.log('la', { comment, score });
-  console.log(1, req.body.workflow_run);
 
-  res.status(200).send({
-    body: req.body,
-  });
+  res.status(200).send({ 1: JSON.parse(req.body.payload) });
   // }
 };
