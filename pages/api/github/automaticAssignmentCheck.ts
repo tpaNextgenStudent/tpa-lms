@@ -19,24 +19,24 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   } = await octokit.rest.users.getAuthenticated();
 
   //Check if it was pull_request event
-  if (req.body.payload.workflow_run.event != 'pull_request') {
+  if (payload.workflow_run.event != 'pull_request') {
     res.status(404).send({ message: 'Not a pull request event' });
   }
 
   //Check if user pushed to the correct branch
-  if (req.body.payload.workflow_run.head_branch != 'solution-branch') {
+  if (payload.workflow_run.head_branch != 'solution-branch') {
     res.status(404).send({ message: 'Incorrect branch name' });
   }
 
-  if (req.body.payload.action != 'requested') {
+  if (payload.action != 'requested') {
     //Mark attempt as in review if action is requested
-  } else if (req.body.payload.action != 'completed') {
+  } else if (payload.action != 'completed') {
     //Make all actions for completed state
-    const runId = req.body.payload.Id;
+    const runId = payload.workflow_run.id;
 
     const runJobs = (await octokit
       .request('GET /repos/{owner}/{repo}/actions/runs/{run_id}/jobs', {
-        repo: req.body.repository.name,
+        repo: payload.workflow_run.repository.name,
         owner: 'tpa-nextgen-staging',
         run_id: runId,
       })
@@ -44,7 +44,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
     const logs = (await octokit
       .request('GET /repos/{owner}/{repo}/actions/jobs/{job_id}/logs', {
-        repo: req.body.repository.name,
+        repo: payload.workflow_run.repository.name,
         owner: 'tpa-nextgen-staging',
         job_id: runJobs.data.jobs[0].id,
       })
