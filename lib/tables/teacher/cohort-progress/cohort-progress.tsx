@@ -23,7 +23,12 @@ type TaskScoreField = {
 };
 
 export interface CohortProgressData {
-  student: { name: string; img: string | null; login: string | null };
+  student: {
+    name: string;
+    img: string | null;
+    login: string | null;
+    id: string;
+  };
   [key: `task_${number}`]: TaskScoreField | null;
   profile: { link: string };
 }
@@ -91,7 +96,12 @@ export function getTeacherCohortProgressColumns({
       }: {
         cell: { value: CohortProgressData['student'] };
       }) => (
-        <UserNameCell name={value.name} img={value.img} login={value.login} />
+        <UserNameCell
+          id={value.id}
+          name={value.name}
+          img={value.img}
+          login={value.login}
+        />
       ),
     },
     ...tasksColumns,
@@ -134,6 +144,7 @@ export const mapProgressToTableData = (
       return Object.assign(
         {
           student: {
+            id: student.user.id,
             name: studentName,
             login: student.profile.login,
             img: student.user.image,

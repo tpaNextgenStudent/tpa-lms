@@ -7,10 +7,16 @@ import { TaskType } from '../../../types';
 import { TaskAttemptBadge } from '../../../../components/tasks/TaskAttemptBadge/TaskAttemptBadge';
 import dayjs from 'dayjs';
 import { IAssignment } from '../../../../apiHelpers/assignments';
+import { TextCell } from '../../../../components/common/tables/TextCell/TextCell';
 
 export interface AssignmentsData {
   submission_date: string;
-  student: { name: string; login: string | null; img: string | null };
+  student: {
+    name: string;
+    login: string | null;
+    img: string | null;
+    id: string;
+  };
   module: string;
   task: string;
   task_type: string;
@@ -22,25 +28,22 @@ export const columns: Column<AssignmentsData>[] = [
   {
     Header: 'Date of submission',
     accessor: 'submission_date',
-    width: 110,
   },
   {
     Header: 'Student name',
     accessor: 'student',
-    width: 160,
 
     Cell: ({
       cell: {
-        value: { name, img, login },
+        value: { name, img, login, id },
       },
     }: {
       cell: { value: AssignmentsData['student'] };
-    }) => <UserNameCell name={name} img={img} login={login} />,
+    }) => <UserNameCell id={id} name={name} img={img} login={login} />,
   },
   {
     Header: 'Module',
     accessor: 'module',
-    width: 90,
 
     Cell: ({ cell: { value } }: { cell: { value: string } }) => (
       <span data-cypress="AssignmentsTableModuleCell">{value}</span>
@@ -49,18 +52,14 @@ export const columns: Column<AssignmentsData>[] = [
   {
     Header: 'Task name',
     accessor: 'task',
-    width: 256,
 
     Cell: ({ cell: { value } }: { cell: { value: string } }) => (
-      <span data-cypress="AssignmentsTableTaskCell" className={styles.taskName}>
-        {value}
-      </span>
+      <TextCell id="AssignmentsTableTaskCell" value={value} />
     ),
   },
   {
     Header: 'Task type',
     accessor: 'task_type',
-    width: 100,
 
     Cell: ({ cell: { value } }: { cell: { value: TaskType } }) => (
       <TaskTypeCell type={value} />
@@ -69,7 +68,6 @@ export const columns: Column<AssignmentsData>[] = [
   {
     Header: 'Attempt',
     accessor: 'attempt',
-    width: 100,
 
     Cell: ({ cell: { value } }: { cell: { value: number } }) => (
       <TaskAttemptBadge attempt={value} styleType="circle" />
@@ -78,7 +76,6 @@ export const columns: Column<AssignmentsData>[] = [
   {
     Header: '',
     accessor: 'check',
-    width: '1fr',
 
     Cell: ({
       cell: { value },
@@ -99,6 +96,7 @@ export const mapAssignmentsToTableData = (
     return {
       submission_date: dayjs(a.submission_date).format('DD MMM YYYY'),
       student: {
+        id: a.student.user.id,
         name: a.student.user.name,
         login: a.student.profile.login,
         img: a.student.user.image,

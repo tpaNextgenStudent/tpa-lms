@@ -1,13 +1,10 @@
 import styles from './Table.module.scss';
 import { Column, useTable } from 'react-table';
 import clsx from 'clsx';
-import { TableGridWrapper } from '../TableGridWrapper/TableGridWrapper';
 
 interface TableProps<T extends {}> {
   data: T[];
   columns: Column<T>[];
-  isFullWidth?: boolean;
-  colGap?: number;
   className?: string;
   id?: string;
 }
@@ -15,17 +12,11 @@ interface TableProps<T extends {}> {
 export const Table = <T extends {}>({
   data,
   columns,
-  isFullWidth,
-  colGap,
   className,
   id,
 }: TableProps<T>) => {
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable<T>({ columns, data });
-
-  const gridTemplateCols = headerGroups[0].headers.map(
-    ({ width }) => width || 'auto'
-  );
 
   return (
     <main
@@ -33,77 +24,66 @@ export const Table = <T extends {}>({
       id={id}
       className={clsx(styles.wrapper, className)}
     >
-      <div
-        className={clsx(styles.table, isFullWidth && styles.tableFullWidth)}
-        {...getTableProps()}
-      >
-        <div>
+      <table className={styles.table} {...getTableProps()}>
+        <thead>
           {headerGroups.map(headerGroup => {
             const { key, ...headerProps } = headerGroup.getHeaderGroupProps();
             return (
-              <div key={key} {...headerProps}>
-                <TableGridWrapper
-                  colGap={colGap}
-                  className={styles.headRow}
-                  columns={gridTemplateCols}
-                >
-                  {headerGroup.headers.map(column => {
-                    const { key, ...columnHeaderProps } =
-                      column.getHeaderProps();
-                    return (
-                      <div
-                        data-cypress="TableHead"
-                        style={{
-                          minWidth: column.minWidth,
-                          maxWidth: column.maxWidth,
-                        }}
-                        className={styles.tableHead}
-                        key={key}
-                        {...columnHeaderProps}
-                      >
-                        {column.render('Header')}
-                      </div>
-                    );
-                  })}
-                </TableGridWrapper>
-              </div>
+              <tr key={key} {...headerProps}>
+                {headerGroup.headers.map(column => {
+                  const { key, ...columnHeaderProps } = column.getHeaderProps();
+                  return (
+                    <th
+                      data-cypress="TableHead"
+                      style={{
+                        minWidth: column.minWidth,
+                        maxWidth: column.maxWidth,
+                      }}
+                      className={styles.tableHead}
+                      key={key}
+                      {...columnHeaderProps}
+                    >
+                      {column.render('Header')}
+                    </th>
+                  );
+                })}
+              </tr>
             );
           })}
-        </div>
-        <div {...getTableBodyProps()}>
+        </thead>
+        <tbody {...getTableBodyProps()}>
           {rows.map(row => {
             prepareRow(row);
             const { key, ...rowProps } = row.getRowProps();
             return (
-              <div
+              <tr
                 data-cypress="TableRow"
                 className={styles.tableRowWrapper}
                 key={key}
                 {...rowProps}
               >
-                <TableGridWrapper
-                  colGap={colGap}
-                  className={styles.tableRow}
-                  columns={gridTemplateCols}
-                >
-                  {row.cells.map(cell => {
-                    const { key, ...cellProps } = cell.getCellProps();
-                    return (
-                      <div
-                        className={styles.tableCell}
-                        key={key}
-                        {...cellProps}
-                      >
-                        {cell.render('Cell')}
-                      </div>
-                    );
-                  })}
-                </TableGridWrapper>
-              </div>
+                {row.cells.map(cell => {
+                  const { key, ...cellProps } = cell.getCellProps();
+                  console.log(cell.column.width);
+                  return (
+                    <td
+                      className={styles.tableCell}
+                      key={key}
+                      style={{
+                        minWidth: cell.column.minWidth,
+                        maxWidth: cell.column.maxWidth,
+                      }}
+                      {...cellProps}
+                    >
+                      {cell.render('Cell')}
+                    </td>
+                  );
+                })}
+              </tr>
             );
           })}
-        </div>
-      </div>
+        </tbody>
+      </table>
     </main>
   );
 };

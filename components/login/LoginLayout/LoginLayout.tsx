@@ -4,6 +4,7 @@ import styles from './LoginLayout.module.scss';
 import { CTAButton } from '../../common/CTAButton/CTAButton';
 import clsx from 'clsx';
 import Head from 'next/head';
+import appScreenImg from '../../../public/img/app_screen.png';
 
 interface LoginLayoutProps {
   children: ReactNode;
@@ -36,6 +37,7 @@ export const LoginLayout = ({
                   alt="Tech Play Academy Logo"
                   width={208}
                   height={20}
+                  layout="fixed"
                 />
               </div>
             </header>
@@ -52,7 +54,9 @@ export const LoginLayout = ({
             <div className={styles.imageWrapper}>
               <Image
                 layout="responsive"
-                src={'/img/app_screen.png'}
+                src={appScreenImg}
+                priority
+                placeholder="blur"
                 width={547}
                 height={389}
                 className={styles.image}

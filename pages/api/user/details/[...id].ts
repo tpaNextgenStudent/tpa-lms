@@ -33,6 +33,10 @@ const getRequest = async (res: NextApiResponse, userId: string) => {
     include: { accounts: true },
   });
 
+  if (!user) {
+    return res.status(404).send({ message: 'User not found' });
+  }
+
   const profile = await prisma.profile.findFirst({
     where: { provider_account_id: user?.accounts[0].providerAccountId },
     select: {
