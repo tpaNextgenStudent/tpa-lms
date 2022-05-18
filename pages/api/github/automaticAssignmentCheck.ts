@@ -56,6 +56,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     let comment = '';
     let score;
 
+
     if (logs.data.includes('gotest')) {
       if (logs.data.includes('Messages:')) {
         comment = logs.data
@@ -72,6 +73,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       }
     }
     console.log('la', { comment, score });
+
 
     res.status(200).send({
       1: {
