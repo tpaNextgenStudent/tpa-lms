@@ -30,7 +30,7 @@ export default function LoginDetails() {
   };
 
   return (
-    <LoginLayout title="TPA - Login details">
+    <LoginLayout title="TPA | Login details">
       <LoginHeroText
         titleLines={['*Well done!*']}
         description="Tell other students a few words about yourself."

@@ -22,7 +22,7 @@ export const Layout = ({
   user,
   headerTitle,
   title,
-  titleTemplate = 'TPA - {title}',
+  titleTemplate = 'TPA | {title}',
   description,
   actionsNumber,
   withHeaderPrevButton = false,

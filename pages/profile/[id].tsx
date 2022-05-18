@@ -18,7 +18,7 @@ export default function UserProfileIndex({
       withHeaderPrevButton
       headerTitle={userName}
       title={userName}
-      titleTemplate={'TPA - Profile - {title}'}
+      titleTemplate={'TPA | Profile | {title}'}
       user={user}
     >
       <ProfileBanner />

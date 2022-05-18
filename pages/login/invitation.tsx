@@ -9,6 +9,7 @@ export default function InvitationPage() {
 
   return (
     <InfoView
+      tabTitle="Accept Invitation"
       title="*You have been invited to Tech Play Academy.*"
       description="To get to our organization, please, *confirm your email address*."
       button={{

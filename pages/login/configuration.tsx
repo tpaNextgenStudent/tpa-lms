@@ -39,6 +39,7 @@ export default function ConfigurationPage() {
 
   return (
     <InfoView
+      tabTitle="Configuring Repositories"
       title={[
         '*We are setting up a space for you.*',
         '*It might take up to a few minutes.*',
