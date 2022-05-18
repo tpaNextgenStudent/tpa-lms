@@ -6,11 +6,11 @@ class MyDocument extends Document {
       <Html>
         <Head>
           <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-          <link rel="preconnect" href="https://fonts.googleapis.com" />
-          <link rel="preconnect" href="https://fonts.gstatic.com" />
+          <link href="/fonts/DM_Sans/dmsans.css" rel="preload" as="style" />
           <link
-            href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap"
+            href="/fonts/DM_Sans/dmsans.css"
             rel="stylesheet"
+            type="text/css"
           />
         </Head>
         <body>
