@@ -34,13 +34,13 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     //Make all actions for completed state
     const runId = payload.workflow_run.id;
 
-    // const runJobs = (await octokit
-    //   .request('GET /repos/{owner}/{repo}/actions/runs/{run_id}/jobs', {
-    //     repo: payload.workflow_run.repository.name,
-    //     owner: 'tpa-nextgen-staging',
-    //     run_id: runId,
-    //   })
-    //   .catch(e => console.log(e))) as any;
+    const runJobs = (await octokit
+      .request('GET /repos/{owner}/{repo}/actions/runs/{run_id}/jobs', {
+        repo: 'Go-repo-example',
+        owner: 'tpa-nextgen-staging',
+        run_id: 2347867778,
+      })
+      .catch(e => console.log(e))) as any;
 
     // const logs = (await octokit
     //   .request('GET /repos/{owner}/{repo}/actions/jobs/{job_id}/logs', {
@@ -71,7 +71,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     // console.log('la', { comment, score });
 
     res.status(200).send({
-      1: { name: payload.workflow_run.repository.name, id: runId },
+      1: { name: payload.workflow_run.repository.name, id: runId, runJobs },
     });
   }
 };
