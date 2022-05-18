@@ -30,6 +30,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   if (payload.action === 'requested') {
     //Mark attempt as in review if action is requested
+    res.status(200).send({
+      1: 1,
+    });
   } else if (payload.action === 'completed') {
     //Make all actions for completed state
     const runId = payload.workflow_run.id;
@@ -42,36 +45,45 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       })
       .catch(e => console.log(e))) as any;
 
-    // const logs = (await octokit
-    //   .request('GET /repos/{owner}/{repo}/actions/jobs/{job_id}/logs', {
-    //     repo: payload.workflow_run.repository.name,
-    //     owner: 'tpa-nextgen-staging',
-    //     job_id: runJobs.data.jobs[0].id,
-    //   })
-    //   .catch(e => console.log(e))) as any;
+    const logs = (await octokit
+      .request('GET /repos/{owner}/{repo}/actions/jobs/{job_id}/logs', {
+        repo: payload.workflow_run.repository.name,
+        owner: 'tpa-nextgen-staging',
+        job_id: runJobs.data.jobs[0].id,
+      })
+      .catch(e => console.log(e))) as any;
 
-    // let comment = '';
-    // let score;
+    let comment = '';
+    let score;
 
-    // if (logs.data.includes('gotest')) {
-    //   if (logs.data.includes('Messages:')) {
-    //     comment = logs.data
-    //       .split('Messages:')[1]
-    //       .split('\r\n')[0]
-    //       .replace('\t', '')
-    //       .trim();
-    //   }
-    //   if (logs.data.includes('✓')) {
-    //     score = 3;
-    //     comment = 'Perfectly done.';
-    //   } else if (logs.data.includes('✖')) {
-    //     score = 1;
-    //   }
-    // }
-    // console.log('lala', { comment, score });
+
+    if (logs.data.includes('gotest')) {
+      if (logs.data.includes('Messages:')) {
+        comment = logs.data
+          .split('Messages:')[1]
+          .split('\r\n')[0]
+          .replace('\t', '')
+          .trim();
+      }
+      if (logs.data.includes('✓')) {
+        score = 3;
+        comment = 'Perfectly done.';
+      } else if (logs.data.includes('✖')) {
+        score = 1;
+      }
+    }
+    console.log('la', { comment, score });
+
 
     res.status(200).send({
-      1: { name: payload.workflow_run.repository.name, id: runId, runJobs },
+      1: {
+        name: payload.workflow_run.repository.name,
+        id: runId,
+        runJobs,
+        logs,
+        comment,
+        score,
+      },
     });
   }
 };
