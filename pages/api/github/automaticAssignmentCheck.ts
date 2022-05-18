@@ -9,7 +9,7 @@ import prisma from '../../../lib/prisma';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   const octokit = new Octokit({
-    auth: `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`,
+    auth: `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`,
   });
 
   const {
