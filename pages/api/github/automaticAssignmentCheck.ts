@@ -68,7 +68,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     //     score = 1;
     //   }
     // }
-    // console.log('la', { comment, score });
+    // console.log('lala', { comment, score });
 
     res.status(200).send({
       1: { name: payload.workflow_run.repository.name, id: runId, runJobs },
