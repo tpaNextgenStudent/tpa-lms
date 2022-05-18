@@ -72,7 +72,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   console.log(2, req.body.payload.workflow_run);
 
   res.status(200).send({
-    req,
+    1: 1,
   });
   // }
 };
