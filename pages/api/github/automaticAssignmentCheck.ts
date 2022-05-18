@@ -36,9 +36,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
     const runJobs = (await octokit
       .request('GET /repos/{owner}/{repo}/actions/runs/{run_id}/jobs', {
-        repo: 'Go-repo-example',
+        repo: payload.workflow_run.repository.name,
         owner: 'tpa-nextgen-staging',
-        run_id: 2347867778,
+        run_id: runId,
       })
       .catch(e => console.log(e))) as any;
 
