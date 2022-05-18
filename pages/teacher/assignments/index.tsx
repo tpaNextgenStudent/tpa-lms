@@ -22,7 +22,7 @@ export default function AssignmentsIndex({
       actionsNumber={assignments.length}
     >
       {assignments.length > 0 ? (
-        <Table data={assignments} columns={columns} isFullWidth />
+        <Table data={assignments} columns={columns} />
       ) : (
         <EmptyStateView
           imgSrc="/img/no-assignments-robot.png"

@@ -4,6 +4,7 @@ import { TaskType } from '../../../types';
 import { TaskTypeCell } from '../../../../components/common/tables/TaskTypeCell/TaskTypeCell';
 import { UserNameCell } from '../../../../components/common/tables/UserNameCell/UserNameCell';
 import { IProgressItem } from '../../../../apiHelpers/cohort';
+import { TextCell } from '../../../../components/common/tables/TextCell/TextCell';
 
 interface ProgressData {
   student: {
@@ -21,7 +22,6 @@ export const columns: Column<ProgressData>[] = [
   {
     Header: 'Student name',
     accessor: 'student',
-    width: 200,
 
     Cell: ({
       cell: {
@@ -34,7 +34,6 @@ export const columns: Column<ProgressData>[] = [
   {
     Header: 'Module',
     accessor: 'module',
-    width: 100,
 
     Cell: ({ cell: { value } }: { cell: { value: string } }) => (
       <span className={styles.moduleName}>{value}</span>
@@ -43,12 +42,14 @@ export const columns: Column<ProgressData>[] = [
   {
     Header: 'Task name',
     accessor: 'task_name',
-    width: 205,
+
+    Cell: ({ cell: { value } }: { cell: { value: string } }) => {
+      return <TextCell value={value} />;
+    },
   },
   {
     Header: 'Task type',
     accessor: 'task_type',
-    width: 100,
 
     Cell: ({ cell: { value } }: { cell: { value: TaskType } }) => (
       <TaskTypeCell type={value} />

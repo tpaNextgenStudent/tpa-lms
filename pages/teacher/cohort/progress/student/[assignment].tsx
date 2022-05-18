@@ -55,7 +55,6 @@ export default function CohortProgressIndex({
                 id="student-scores-table"
                 data={studentScoresTableData}
                 columns={getTeacherStudentProgressColumns(maxNumOfTasks)}
-                colGap={26}
               />
             </>
           ),
@@ -66,7 +65,6 @@ export default function CohortProgressIndex({
                 className={styles.toAssignTableWrapper}
                 data={studentAssignmentsTableData}
                 columns={columns}
-                colGap={26}
               />
             ) : (
               <EmptyStateView

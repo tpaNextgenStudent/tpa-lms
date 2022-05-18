@@ -42,7 +42,6 @@ export default function CohortProgressIndex({
           module,
           onModuleChange,
         })}
-        colGap={26}
       />
     </Layout>
   );
