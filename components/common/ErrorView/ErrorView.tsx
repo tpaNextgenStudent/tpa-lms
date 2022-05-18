@@ -3,6 +3,7 @@ import { CTAButton } from '../CTAButton/CTAButton';
 import Image from 'next/image';
 import Link from 'next/link';
 import { HandleBold } from '../HandleBold/HandleBold';
+import { RobotBugAnimation } from '../RobotBugAnimation/RobotBugAnimation';
 
 interface ErrorViewProps {
   description: string;
@@ -41,16 +42,7 @@ export const ErrorView = ({
             <HandleBold>{description}</HandleBold>
           </span>
         </h1>
-        <div className={styles.imageWrapper}>
-          <Image
-            src="/img/not-found-robot.png"
-            alt=""
-            width={285}
-            height={257}
-            layout="responsive"
-            quality={100}
-          />
-        </div>
+        <RobotBugAnimation />
         {button && (
           <div className={styles.buttonWrapper}>
             <CTAButton text={button.text} onClick={button.onClick} />
