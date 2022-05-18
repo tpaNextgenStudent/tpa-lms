@@ -28,9 +28,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     res.status(404).send({ message: 'Incorrect branch name' });
   }
 
-  if (payload.action != 'requested') {
+  if (payload.action === 'requested') {
     //Mark attempt as in review if action is requested
-  } else if (payload.action != 'completed') {
+  } else if (payload.action === 'completed') {
     //Make all actions for completed state
     const runId = payload.workflow_run.id;
 
@@ -70,8 +70,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     // }
     // console.log('la', { comment, score });
 
-    res
-      .status(200)
-      .send({ 1: { name: payload.workflow_run.repository.name, id: runId } });
+    res.status(200).send({
+      1: { name: payload.workflow_run.repository.name, id: runId },
+    });
   }
 };
