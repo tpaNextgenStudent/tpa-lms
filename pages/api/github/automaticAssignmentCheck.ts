@@ -28,19 +28,19 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     res.status(404).send({ message: 'Incorrect branch name' });
   }
 
-  if (payload.action != 'requested') {
+  if (payload.action === 'requested') {
     //Mark attempt as in review if action is requested
-  } else if (payload.action != 'completed') {
+  } else if (payload.action === 'completed') {
     //Make all actions for completed state
     const runId = payload.workflow_run.id;
 
-    const runJobs = (await octokit
-      .request('GET /repos/{owner}/{repo}/actions/runs/{run_id}/jobs', {
-        repo: payload.workflow_run.repository.name,
-        owner: 'tpa-nextgen-staging',
-        run_id: runId,
-      })
-      .catch(e => console.log(e))) as any;
+    // const runJobs = (await octokit
+    //   .request('GET /repos/{owner}/{repo}/actions/runs/{run_id}/jobs', {
+    //     repo: payload.workflow_run.repository.name,
+    //     owner: 'tpa-nextgen-staging',
+    //     run_id: runId,
+    //   })
+    //   .catch(e => console.log(e))) as any;
 
     // const logs = (await octokit
     //   .request('GET /repos/{owner}/{repo}/actions/jobs/{job_id}/logs', {
@@ -71,7 +71,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     // console.log('la', { comment, score });
 
     res.status(200).send({
-      1: { name: payload.workflow_run.repository.name, id: runId, runJobs },
+      1: { name: payload.workflow_run.repository.name, id: runId },
     });
   }
 };
