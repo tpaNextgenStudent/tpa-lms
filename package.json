@@ -22,6 +22,7 @@
     "dayjs": "^1.11.0",
     "focus-trap-react": "^8.9.2",
     "fs": "^0.0.1-security",
+    "gsap": "^3.10.4",
     "mermaid": "^8.14.0",
     "net": "^1.0.2",
     "next": "12.1.0",

@@ -6,6 +6,7 @@ const nextConfig = {
   },
   env: {
     BASE_URL: process.env.BASE_URL || 'localhost:3000',
+    GITHUB_PERSONAL_ACCESS_TOKEN: process.env.GITHUB_PERSONAL_ACCESS_TOKEN,
   },
 };
 

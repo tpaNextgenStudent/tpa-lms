@@ -1,28 +1,30 @@
-import styles from './ErrorView.module.scss';
+import styles from './InfoView.module.scss';
 import { CTAButton } from '../CTAButton/CTAButton';
 import Image from 'next/image';
 import Link from 'next/link';
 import { HandleBold } from '../HandleBold/HandleBold';
-import { RobotBugAnimation } from '../RobotBugAnimation/RobotBugAnimation';
+import { Fragment, ReactNode } from 'react';
 import Head from 'next/head';
 
-interface ErrorViewProps {
+interface InfoViewProps {
   description: string;
-  title?: string;
-  code?: number;
+  title: string | string[];
+  tabTitle: string;
   button?: { text: string; onClick: () => void };
+  children?: ReactNode;
 }
 
-export const ErrorView = ({
-  title = '*Oops!*',
+export const InfoView = ({
+  title,
+  tabTitle,
   description,
-  code,
   button,
-}: ErrorViewProps) => {
+  children,
+}: InfoViewProps) => {
   return (
     <>
       <Head>
-        <title>TPA | Error {code && `- ${code}`}</title>
+        <title>TPA | {tabTitle}</title>
       </Head>
       <div className={styles.wrapper}>
         <header className={styles.header}>
@@ -33,21 +35,38 @@ export const ErrorView = ({
                 alt="Tech Play Academy Logo"
                 width={208}
                 height={20}
+                layout="fixed"
               />
             </a>
           </Link>
         </header>
         <main className={styles.main}>
           <h1 className={styles.title}>
-            <span className={styles.titleIntro}>
+            {Array.isArray(title) ? (
+              title.map(line => (
+                <Fragment key={line}>
+                  <HandleBold>{line}</HandleBold>
+                  <br />
+                </Fragment>
+              ))
+            ) : (
               <HandleBold>{title}</HandleBold>
-            </span>
-            {code && <span className={styles.titleCode}>{404}</span>}
-            <span className={styles.titleContent}>
-              <HandleBold>{description}</HandleBold>
-            </span>
+            )}
           </h1>
-          <RobotBugAnimation />
+          <p className={styles.description}>
+            <HandleBold>{description}</HandleBold>
+          </p>
+          <div className={styles.imageWrapper}>
+            <Image
+              src="/img/not-found-robot.png"
+              alt=""
+              width={285}
+              height={257}
+              layout="responsive"
+              quality={100}
+            />
+          </div>
+          {children}
           {button && (
             <div className={styles.buttonWrapper}>
               <CTAButton text={button.text} onClick={button.onClick} />

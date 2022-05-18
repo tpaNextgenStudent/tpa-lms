@@ -68,10 +68,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   //       score = 1;
   //     }
   //   }
-  console.log('la', req.body);
+  console.log(2, req.body);
   res.status(200).send({
-    req,
+    body: req.body,
   });
+
 
   // }
 };
