@@ -9,15 +9,18 @@ import { MechanicRobotAnimation } from '../../components/common/MechanicRobotAni
 import { useEffect } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { useRouter } from 'next/router';
 
 export default function ConfigurationPage() {
   const { refresh } = useAutoRefresh(20);
+  const router = useRouter();
 
   useEffect(() => {
     const createRepos = async () => {
       try {
         await createUserRepos();
         toast('Repositories successfully created!', { type: 'success' });
+        router.push('/');
       } catch (error) {
         if (axios.isAxiosError(error)) {
           if (error.response?.status === 409) {
