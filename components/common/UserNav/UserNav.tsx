@@ -74,7 +74,7 @@ export const UserNav = ({ user }: UserNavProps) => {
         onMouseEnter={handleMouseEnter}
         onClick={handleClick}
         className={styles.settingsIcon}
-        aria-hidden
+        aria-label="Open menu"
       >
         <ArrowDown />
       </button>

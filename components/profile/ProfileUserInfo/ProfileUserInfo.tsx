@@ -42,7 +42,7 @@ export const ProfileUserInfo = ({
             className={styles.ghLink}
             href={`https://github.com/${login}`}
           >
-            <span className={styles.ghIcon} aria-label="Github icon">
+            <span className={styles.ghIcon} role="img" aria-label="Github icon">
               <GhIcon />
             </span>
             <span className={styles.login}>{login}</span>
