@@ -8,69 +8,102 @@ import prisma from '../../../lib/prisma';
 // we're finding artefat_id by run_id (id)
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
+  // const payload = JSON.parse(req.body.payload);
+
   const octokit = new Octokit({
-    auth: `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`,
+    auth: process.env.GITHUB_PERSONAL_ACCESS_TOKEN,
   });
 
   const {
     data: { login },
   } = await octokit.rest.users.getAuthenticated();
 
-  //Check if it was pull_request event
-  if (req.body.payload.workflow_run.event != 'pull_request') {
-    res.status(404).send({ message: 'Not a pull request event' });
-  }
+  // //Check if it was pull_request event
+  // if (payload.workflow_run.event != 'pull_request') {
+  //   res.status(404).send({ message: 'Not a pull request event' });
+  // }
 
-  //Check if user pushed to the correct branch
-  if (req.body.payload.workflow_run.head_branch != 'solution-branch') {
-    res.status(404).send({ message: 'Incorrect branch name' });
-  }
+  // //Check if user pushed to the correct branch
+  // if (payload.workflow_run.head_branch != 'solution-branch') {
+  //   res.status(404).send({ message: 'Incorrect branch name' });
+  // }
 
-  if (req.body.payload.action != 'requested') {
-    //Mark attempt as in review if action is requested
-  }
+  //Find if user that performed request is our student and find taskId
 
-  if (req.body.payload.action != 'completed') {
-    //Make all actions for completed state
-    const runId = req.body.payload.Id;
+  // const studentCurriculum = await prisma.profile.findUnique({
+  //   where: {
+  //     login: payload.workflow_run.actor.login,
+  //   },
+  //   select: { assignments: { select: { curriculum: true } } },
+  // });
 
-    const runJobs = (await octokit
-      .request('GET /repos/{owner}/{repo}/actions/runs/{run_id}/jobs', {
-        repo: req.body.repository.name,
-        owner: 'tpa-nextgen-staging',
-        run_id: runId,
-      })
-      .catch(e => console.log(e))) as any;
+  //Fetch task details and check if task is summative or formative
 
-    const logs = (await octokit
-      .request('GET /repos/{owner}/{repo}/actions/jobs/{job_id}/logs', {
-        repo: req.body.repository.name,
-        owner: 'tpa-nextgen-staging',
-        job_id: runJobs.data.jobs[0].id,
-      })
-      .catch(e => console.log(e))) as any;
+  // if (payload.action === 'requested') {
+  //   //Mark attempt as in review if action is requested
+  //   res.status(200).send({
+  //     1: 1,
+  //   });
+  // } else if (payload.action === 'completed') {
+  //   //Make all actions for completed state
+  //   const runId = payload.workflow_run.id;
 
-    let comment = '';
-    let score;
+  const runJobs = (await octokit
+    .request('GET /repos/{owner}/{repo}/actions/runs/{run_id}/jobs', {
+      repo: 'Dart-example',
+      owner: 'tpa-nextgen-staging',
+      run_id: 2348353221,
+    })
+    .catch(e => console.log(e))) as any;
 
-    if (logs.data.includes('gotest')) {
-      if (logs.data.includes('Messages:')) {
-        comment = logs.data
-          .split('Messages:')[1]
-          .split('\r\n')[0]
-          .replace('\t', '')
-          .trim();
-      }
-      if (logs.data.includes('✓')) {
-        score = 3;
-        comment = 'Perfectly done.';
-      } else if (logs.data.includes('✖')) {
-        score = 1;
-      }
+  const logs = (await octokit
+    .request('GET /repos/{owner}/{repo}/actions/jobs/{job_id}/logs', {
+      repo: 'Dart-example',
+      owner: 'tpa-nextgen-staging',
+      job_id: runJobs.data.jobs[0].id,
+    })
+    .catch(e => console.log(e))) as any;
+
+  let comment = '';
+  let score;
+  let comments;
+
+  if (logs.data.includes('gotest')) {
+    if (logs.data.includes('Messages:')) {
+      comment = logs.data
+        .split('Messages:')[1]
+        .split('\r\n')[0]
+        .replace('\t', '')
+        .trim();
     }
-    console.log('la', { comment, score });
-    res.status(200).send({
-      req,
-    });
+    if (logs.data.includes('✓')) {
+      score = 3;
+      comment = 'Perfectly done.';
+    } else if (logs.data.includes('✖')) {
+      score = 1;
+    }
+  } else if (logs.data.includes('dart')) {
+    if (logs.data.includes('All tests passed')) {
+      score = 3;
+      comment = 'Perfectly done.';
+    } else if (logs.data.includes('tests failed')) {
+      score = 1;
+      comments = logs.data.split('[E]').map((el: any, i: number) => {
+        if (i === 0) {
+          return;
+        }
+        if (el.includes('UnimplementedError')) {
+          return;
+        }
+        const string = el.split('\r\n')[1];
+        const indexOfSpace = string.indexOf(' ');
+        return string.substring(indexOfSpace + 1).trim();
+      });
+      comment =
+        comments.length > 0 ? comments.filter((n: any) => n).join('.') : '';
+    }
   }
+
+  res.status(200).send({ comment, score });
+  // }
 };
