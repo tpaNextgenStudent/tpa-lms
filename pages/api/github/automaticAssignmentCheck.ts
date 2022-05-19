@@ -31,12 +31,12 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   //Find if user that performed request is our student
   //payload.workflow_run.actor.login
   // TODO
-  const studentCurriculum = await prisma.profile.findUnique({
-    where: {
-      login: payload.workflow_run.actor.login,
-    },
-    select: { assignments: { select: { curriculum: true } } },
-  });
+  // const studentCurriculum = await prisma.profile.findUnique({
+  //   where: {
+  //     login: payload.workflow_run.actor.login,
+  //   },
+  //   select: { assignments: { select: { curriculum: true } } },
+  // });
 
   //If user is our student find their curricumum
 
