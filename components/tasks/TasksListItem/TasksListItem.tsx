@@ -48,9 +48,9 @@ export const TasksListItem = ({
           >
             {moduleName}
           </span>
-          <h3 data-cypress="TaskListItemTitle" className={styles.taskName}>
+          <h2 data-cypress="TaskListItemTitle" className={styles.taskName}>
             {task.task_data.name}
-          </h3>
+          </h2>
           <TaskBadges
             task={task.task_data}
             attempt={task.last_attempt}
