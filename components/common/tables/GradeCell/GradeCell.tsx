@@ -19,7 +19,11 @@ export const GradeCell = ({ grade, isEmpty = false }: GradeCellProps) => {
     if (grade.status === 'in review') {
       return (
         <span className={clsx(styles.wrapper, styles.wrapperBlue)}>
-          <span className={styles.value} aria-label="Waiting for assessment">
+          <span
+            className={styles.value}
+            role="img"
+            aria-label="Waiting for assessment"
+          >
             <ClockIcon />
           </span>
         </span>
@@ -42,7 +46,7 @@ export const GradeCell = ({ grade, isEmpty = false }: GradeCellProps) => {
     if (grade.status === 'approved') {
       return (
         <span className={clsx(styles.wrapper, styles.wrapperGreen)}>
-          <span className={styles.value} aria-label="Approved">
+          <span className={styles.value} role="img" aria-label="Approved">
             <TickIcon />
           </span>
         </span>

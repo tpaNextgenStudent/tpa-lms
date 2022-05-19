@@ -1,10 +1,10 @@
 import styles from './ErrorView.module.scss';
 import { CTAButton } from '../CTAButton/CTAButton';
-import Image from 'next/image';
 import Link from 'next/link';
 import { HandleBold } from '../HandleBold/HandleBold';
 import { RobotBugAnimation } from '../RobotBugAnimation/RobotBugAnimation';
 import Head from 'next/head';
+import SvgLogo from '../../../public/svg/tpa-logo.svg';
 
 interface ErrorViewProps {
   description: string;
@@ -27,13 +27,11 @@ export const ErrorView = ({
       <div className={styles.wrapper}>
         <header className={styles.header}>
           <Link href="/">
-            <a className={styles.logoWrapper} aria-label="Home page link">
-              <Image
-                src="/svg/tpa-logo.svg"
-                alt="Tech Play Academy Logo"
-                width={208}
-                height={20}
-              />
+            <a
+              className={styles.logoWrapper}
+              aria-label="Tech Play Academy Logo"
+            >
+              <SvgLogo />
             </a>
           </Link>
         </header>

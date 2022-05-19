@@ -5,6 +5,8 @@ import { CTAButton } from '../../common/CTAButton/CTAButton';
 import clsx from 'clsx';
 import Head from 'next/head';
 import appScreenImg from '../../../public/img/app_screen.png';
+import loginBgImg from '../../../public/img/login-bg.png';
+import SvgLogo from '../../../public/svg/tpa-logo.svg';
 
 interface LoginLayoutProps {
   children: ReactNode;
@@ -31,14 +33,12 @@ export const LoginLayout = ({
         <div className={styles.contentBackgroundWrapper}>
           <div className={styles.contentWrapper}>
             <header className={styles.header}>
-              <div className={styles.logoWrapper}>
-                <Image
-                  src="/svg/tpa-logo.svg"
-                  alt="Tech Play Academy Logo"
-                  width={208}
-                  height={20}
-                  layout="fixed"
-                />
+              <div
+                className={styles.logoWrapper}
+                role="img"
+                aria-label="Tech Play Academy Logo"
+              >
+                <SvgLogo />
               </div>
             </header>
             <main className={styles.main}>{children}</main>
@@ -66,7 +66,9 @@ export const LoginLayout = ({
           </section>
           <div className={styles.bgImgWrapper} aria-hidden>
             <Image
-              src={'/img/login-bg.png'}
+              src={loginBgImg}
+              priority
+              placeholder="blur"
               layout="responsive"
               height={420}
               width={720}

@@ -35,7 +35,6 @@ export const PaperPlaneRobotAnimation = () => {
       .to(plane, { opacity: 0, x: -20, y: -20, duration: 0, rotate: -30 })
       .to(arm, { rotate: -50, duration: 0.5, y: 20 })
       .to(plane, { opacity: 1 });
-    console.log({ arm, plane });
   }, [q]);
 
   return (
