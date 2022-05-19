@@ -9,6 +9,7 @@ interface TaskDoneBadgeProps {
 export const TaskDoneBadge = ({ withBorder = false }: TaskDoneBadgeProps) => {
   return (
     <span
+      data-cypress="TaskScoreBadge"
       className={clsx(styles.wrapper, withBorder && styles.wrapperWithBorder)}
     >
       <span className={styles.svgWrapper}>

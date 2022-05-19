@@ -51,15 +51,5 @@ describe('Student - My Scores', () => {
         taskName
       );
     });
-
-    cy.get('[data-cypress=TaskSectionTryAgainBar]')
-      .should('exist')
-      .find('button')
-      .click();
-
-    cy.location('pathname', { timeout: 10000 }).should(
-      'match',
-      new RegExp('/student\\/tasks\\/.+')
-    );
   });
 });
