@@ -2,28 +2,21 @@ import styles from './TaskSection.module.scss';
 import { TaskDescription } from '../TaskDescription/TaskDescription';
 import { TaskAction } from '../TaskAction/TaskAction';
 import { useState } from 'react';
-import EnlargeIcon from '../../../public/svg/enlarge-icon.svg';
-import ShrinkIcon from '../../../public/svg/shrink-icon.svg';
 import clsx from 'clsx';
 import { TaskComments } from '../TaskComments/TaskComments';
-import { Comment, TaskStatus, TaskType } from '../../../lib/types';
+import { Comment, TaskStatus } from '../../../lib/types';
 import { IModuleVersion } from '../../../apiHelpers/modules';
 import { TaskBadges } from '../TaskBadges/TaskBadges';
-import { CTAButton } from '../../common/CTAButton/CTAButton';
-import { useRouter } from 'next/router';
 import { TeacherAssessPanel } from '../TeacherAssessPanel/TeacherAssessPanel';
 import { ViewParamTabsSection } from '../../common/ViewParamTabsSection/ViewParamTabsSection';
 import { useElementSize } from '../../../lib/hooks/useElementSize';
+import { TaskSectionModuleInfo } from '../TaskSectionModuleInfo/TaskSectionModuleInfo';
+import { ITask } from '../../../apiHelpers/tasks';
+import { TaskSectionHeader } from '../TaskSectionHeader/TaskSectionHeader';
+import { TaskSectionPassAgain } from '../TaskSectionPassAgain/TaskSectionPassAgain';
 
 interface TaskSectionProps {
-  task: {
-    id: string;
-    name: string;
-    type: TaskType;
-    description: string;
-    link: string | null;
-    position: number;
-  };
+  task: ITask['task_data'];
   attempt?: {
     status: TaskStatus;
     attempt_number: number | null;
@@ -51,16 +44,12 @@ export const TaskSection = ({
   isTeacherAssessPanelVisible = false,
   nextAttempt,
 }: TaskSectionProps) => {
-  const router = useRouter();
   const [isFullScreenMode, setIsFullScreenMode] = useState(false);
   const { ref, size } = useElementSize();
 
   const toggleFullScreenMode = () => {
     setIsFullScreenMode(prev => !prev);
   };
-
-  const modulePosition = `Module ${module.module_number}`;
-  const taskPosition = `${task.position}`.padStart(2, '0');
 
   return (
     <main
@@ -70,24 +59,12 @@ export const TaskSection = ({
         isFullScreenMode && styles.wrapperFullScreen
       )}
     >
-      <p data-cypress="TaskSectionModuleName" className={styles.taskModule}>
-        <span className={styles.taskModuleNumber}>{modulePosition}</span>
-        <span className={styles.taskModuleName}>{module.name}</span>
-      </p>
-      <div className={styles.taskHeader}>
-        <h2 data-cypress="TaskSectionTaskTitle" className={styles.taskTitle}>
-          <span className={styles.taskTitlePosition}>{taskPosition}</span>
-          <span className={styles.taskTitleName}>{task.name}</span>
-        </h2>
-        <button
-          data-cypress="TaskSectionFullScreenButton"
-          onClick={toggleFullScreenMode}
-          className={styles.fullScreenButton}
-          aria-label="Toggle FullScreen"
-        >
-          {isFullScreenMode ? <ShrinkIcon /> : <EnlargeIcon />}
-        </button>
-      </div>
+      <TaskSectionModuleInfo module={module} />
+      <TaskSectionHeader
+        task={task}
+        isFullScreenMode={isFullScreenMode}
+        toggleFullScreenMode={toggleFullScreenMode}
+      />
       <TaskBadges
         task={task}
         attempt={attempt}
@@ -114,19 +91,7 @@ export const TaskSection = ({
         }}
       />
       {isPassAgainVisible && (
-        <div
-          data-cypress="TaskSectionTryAgainBar"
-          className={styles.tryAgainBar}
-        >
-          <CTAButton
-            onClick={() => {
-              router.push(
-                `/student/tasks/${module.module_version_id}/${task.id}`
-              );
-            }}
-            text="Pass one more time"
-          />
-        </div>
+        <TaskSectionPassAgain module={module} task={task} />
       )}
       {isTeacherAssessPanelVisible && nextAttempt && (
         <TeacherAssessPanel nextAttempt={nextAttempt} />
