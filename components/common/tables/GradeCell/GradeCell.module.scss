@@ -11,14 +11,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 
   svg {
     fill: colors.$fontSecondary;
   }
 
   &Empty {
-    border: none;
-    background-color: colors.$strokeLines;
+    border: 1px solid colors.$strokeLines;
+    background-color: colors.$bgMain;
   }
 
   &Blue {
@@ -62,4 +63,36 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: fonts.$weightBold;
+
+  &Red {
+    color: colors.$statusFontRed;
+  }
+
+  &Orange {
+    color: colors.$statusFontOrange;
+  }
+
+  &Green {
+    color: colors.$statusFontGreen;
+  }
+}
+
+.attempt {
+  position: absolute;
+  left: 20px;
+  top: 16px;
+  width: 28px;
+  height: 28px;
+  background-color: colors.$bgMain;
+  border: 1px solid colors.$white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: fonts.$weightBold;
+  font-size: 10px;
+  line-height: 12px;
+  border-radius: 100px;
 }
