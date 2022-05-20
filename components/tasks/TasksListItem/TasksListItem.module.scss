@@ -45,13 +45,18 @@
   padding: 13px;
 }
 
-.moduleName {
-  display: block;
-  font-weight: fonts.$weightBold;
+.taskPosition {
   font-size: 12px;
   line-height: 16px;
+  font-weight: fonts.$weightBold;
   width: fit-content;
-  color: colors.$purplePrimary;
+  &Module {
+    color: colors.$purplePrimary;
+    margin-right: 8px;
+  }
+  &Task {
+    color: colors.$fontSecondary;
+  }
 }
 
 .taskName {
