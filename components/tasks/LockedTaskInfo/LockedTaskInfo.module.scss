@@ -10,8 +10,26 @@
   font-weight: fonts.$weightBold;
   font-size: 16px;
   line-height: 24px;
+  width: fit-content;
 }
 
 .content {
   align-self: center;
+}
+
+.lines {
+  margin-top: 8px;
+}
+
+.line {
+  display: block;
+  max-width: var(--width);
+  height: 12px;
+  background-color: colors.$strokeLines;
+  margin-top: 16px;
+  border-radius: 16px;
+
+  &:nth-child(4) {
+    margin-top: 64px;
+  }
 }

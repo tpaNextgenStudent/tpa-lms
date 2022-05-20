@@ -6,7 +6,11 @@ interface TaskLockBadgeProps {}
 
 export const TaskLockBadge = ({}: TaskLockBadgeProps) => {
   return (
-    <span className={clsx(styles.taskLockWrapper)} aria-label="Task locked">
+    <span
+      className={clsx(styles.taskLockWrapper)}
+      role="img"
+      aria-label="Task locked"
+    >
       <LockIcon />
     </span>
   );
