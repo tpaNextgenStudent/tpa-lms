@@ -22,6 +22,7 @@ interface TaskSectionProps {
     type: TaskType;
     description: string;
     link: string | null;
+    position: number;
   };
   attempt?: {
     status: TaskStatus;
@@ -58,7 +59,8 @@ export const TaskSection = ({
     setIsFullScreenMode(prev => !prev);
   };
 
-  const moduleNumber = `Module ${module.module_number}`;
+  const modulePosition = `Module ${module.module_number}`;
+  const taskPosition = `${task.position}`.padStart(2, '0');
 
   return (
     <main
@@ -69,12 +71,13 @@ export const TaskSection = ({
       )}
     >
       <p data-cypress="TaskSectionModuleName" className={styles.taskModule}>
-        <span className={styles.taskModuleNumber}>{moduleNumber}</span>
+        <span className={styles.taskModuleNumber}>{modulePosition}</span>
         <span className={styles.taskModuleName}>{module.name}</span>
       </p>
       <div className={styles.taskHeader}>
         <h2 data-cypress="TaskSectionTaskTitle" className={styles.taskTitle}>
-          {task.name}
+          <span className={styles.taskTitlePosition}>{taskPosition}</span>
+          <span className={styles.taskTitleName}>{task.name}</span>
         </h2>
         <button
           data-cypress="TaskSectionFullScreenButton"
