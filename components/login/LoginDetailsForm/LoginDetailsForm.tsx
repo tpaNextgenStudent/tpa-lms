@@ -1,5 +1,4 @@
 import styles from './LoginDetailsForm.module.scss';
-import { useRouter } from 'next/router';
 import { CTAButton } from '../../common/CTAButton/CTAButton';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
@@ -15,7 +14,6 @@ interface LoginDetailsFormProps {
 }
 
 export const LoginDetailsForm = ({ onSubmit }: LoginDetailsFormProps) => {
-  const router = useRouter();
   const {
     register,
     handleSubmit,
