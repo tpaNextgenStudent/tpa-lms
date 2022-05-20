@@ -102,7 +102,7 @@ export const TaskSection = ({
               <TaskDescription
                 paddingBottom={size[1]}
                 answer={attempt?.answer}
-                locked={attempt?.status === 'upcoming'}
+                isLocked={attempt?.status === 'upcoming'}
                 description={task.description}
               />
               {isTaskActionVisible && attempt?.status !== 'upcoming' && (

@@ -64,7 +64,6 @@ export const Table = <T extends {}>({
               >
                 {row.cells.map(cell => {
                   const { key, ...cellProps } = cell.getCellProps();
-                  console.log(cell.column.width);
                   return (
                     <td
                       className={styles.tableCell}

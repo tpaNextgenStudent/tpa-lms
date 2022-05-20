@@ -35,7 +35,7 @@ export default function ConfigurationPage() {
       }
     };
     createRepos();
-  }, []);
+  }, [router]);
 
   return (
     <InfoView

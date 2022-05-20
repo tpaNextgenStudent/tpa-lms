@@ -4,14 +4,14 @@ import { LockedTaskInfo } from '../LockedTaskInfo/LockedTaskInfo';
 
 interface TaskDescriptionProps {
   description: string;
-  locked?: boolean;
+  isLocked?: boolean;
   answer?: string | null;
   paddingBottom?: number;
 }
 
 export const TaskDescription = ({
   description,
-  locked,
+  isLocked,
   answer,
   paddingBottom,
 }: TaskDescriptionProps) => {
@@ -25,7 +25,7 @@ export const TaskDescription = ({
       className={styles.wrapper}
     >
       <div className={styles.content}>
-        {locked ? (
+        {isLocked ? (
           <LockedTaskInfo content="Finish previous task to unlock this content!" />
         ) : (
           <MarkdownContent content={content} />
