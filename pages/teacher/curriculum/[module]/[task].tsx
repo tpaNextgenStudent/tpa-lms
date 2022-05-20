@@ -1,7 +1,7 @@
 import { Layout } from '../../../../components/common/Layout/Layout';
 import { InferPagePropsType } from '../../../../lib/types';
 import { TasksMenu } from '../../../../components/tasks/TasksMenu/TasksMenu';
-import styles from '../../../../components/tasks/tasksPage/tasksPage.module.scss';
+import styles from '../../../../components/pagesStyles/tasksPage.module.scss';
 import { TaskSection } from '../../../../components/tasks/TaskSection/TaskSection';
 import { getUserTasksByModule } from '../../../../apiHelpers/tasks';
 import { getUserModules } from '../../../../apiHelpers/modules';
