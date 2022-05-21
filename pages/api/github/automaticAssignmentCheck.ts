@@ -55,60 +55,60 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   const runJobs = (await octokit
     .request('GET /repos/{owner}/{repo}/actions/runs/{run_id}/jobs', {
-      repo: 'Dart-example',
-      owner: 'tpa-nextgen-staging',
-      run_id: 2348353221,
+      repo: 'mwc1.tf16.toggl_task.code.dart',
+      owner: 'tpa-nextgen',
+      run_id: 2351531697,
     })
     .catch(e => console.log(e))) as any;
 
   const logs = (await octokit
     .request('GET /repos/{owner}/{repo}/actions/jobs/{job_id}/logs', {
-      repo: 'Dart-example',
-      owner: 'tpa-nextgen-staging',
+      repo: 'mwc1.tf16.toggl_task.code.dart',
+      owner: 'tpa-nextgen',
       job_id: runJobs.data.jobs[0].id,
     })
     .catch(e => console.log(e))) as any;
 
-  let comment = '';
-  let score;
-  let comments;
+  // let comment = '';
+  // let score;
+  // let comments;
 
-  if (logs.data.includes('gotest')) {
-    if (logs.data.includes('Messages:')) {
-      comment = logs.data
-        .split('Messages:')[1]
-        .split('\r\n')[0]
-        .replace('\t', '')
-        .trim();
-    }
-    if (logs.data.includes('✓')) {
-      score = 3;
-      comment = 'Perfectly done.';
-    } else if (logs.data.includes('✖')) {
-      score = 1;
-    }
-  } else if (logs.data.includes('dart')) {
-    if (logs.data.includes('All tests passed')) {
-      score = 3;
-      comment = 'Perfectly done.';
-    } else if (logs.data.includes('tests failed')) {
-      score = 1;
-      comments = logs.data.split('[E]').map((el: any, i: number) => {
-        if (i === 0) {
-          return;
-        }
-        if (el.includes('UnimplementedError')) {
-          return;
-        }
-        const string = el.split('\r\n')[1];
-        const indexOfSpace = string.indexOf(' ');
-        return string.substring(indexOfSpace + 1).trim();
-      });
-      comment =
-        comments.length > 0 ? comments.filter((n: any) => n).join('.') : '';
-    }
-  }
+  // if (logs.data.includes('gotest')) {
+  //   if (logs.data.includes('Messages:')) {
+  //     comment = logs.data
+  //       .split('Messages:')[1]
+  //       .split('\r\n')[0]
+  //       .replace('\t', '')
+  //       .trim();
+  //   }
+  //   if (logs.data.includes('✓')) {
+  //     score = 3;
+  //     comment = 'Perfectly done.';
+  //   } else if (logs.data.includes('✖')) {
+  //     score = 1;
+  //   }
+  // } else if (logs.data.includes('dart')) {
+  //   if (logs.data.includes('All tests passed')) {
+  //     score = 3;
+  //     comment = 'Perfectly done.';
+  //   } else if (logs.data.includes('tests failed')) {
+  //     score = 1;
+  //     comments = logs.data.split('[E]').map((el: any, i: number) => {
+  //       if (i === 0) {
+  //         return;
+  //       }
+  //       if (el.includes('UnimplementedError')) {
+  //         return;
+  //       }
+  //       const string = el.split('\r\n')[1];
+  //       const indexOfSpace = string.indexOf(' ');
+  //       return string.substring(indexOfSpace + 1).trim();
+  //     });
+  //     comment =
+  //       comments.length > 0 ? comments.filter((n: any) => n).join('.') : '';
+  //   }
+  // }
 
-  res.status(200).send({ comment, score });
+  res.status(200).send({ logs });
   // }
 };
