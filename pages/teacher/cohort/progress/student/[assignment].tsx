@@ -14,7 +14,7 @@ import { ViewParamTabsSection } from '../../../../../components/common/ViewParam
 import { getTeacherAssignmentsByStudent } from '../../../../../apiHelpers/assignments';
 import { mapStudentAssignmentsToTableData } from '../../../../../lib/tables/teacher/student-assignments/student-assignments';
 import { columns } from '../../../../../lib/tables/teacher/student-assignments/student-assignments';
-import styles from '../../../../../components/teacher/cohort/progress/student/singleStudentProgressPage.module.scss';
+import styles from '../../../../../components/pagesStyles/singleStudentProgressPage.module.scss';
 import { EmptyStateView } from '../../../../../components/common/EmptyStateView/EmptyStateView';
 
 export default function CohortProgressIndex({

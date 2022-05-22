@@ -18,40 +18,24 @@ export const GradesLegend = ({ className }: GradesLegendProps) => {
       </p>
       <p className={styles.legendItem}>
         <span>Pass</span>
-        <GradeCell
-          grade={{ status: 'approved', attempt_number: 0, score: 2 }}
-          isEmpty
-        />
-        <GradeCell
-          grade={{ status: 'approved', attempt_number: 0, score: 3 }}
-          isEmpty
-        />
+        <GradeCell grade={{ status: 'approved', score: 2 }} />
+        <GradeCell grade={{ status: 'approved', score: 3 }} />
       </p>
       <p className={styles.legendItem}>
         <span>Failed</span>
-        <GradeCell
-          grade={{ status: 'approved', attempt_number: 0, score: 1 }}
-          isEmpty
-        />
+        <GradeCell grade={{ status: 'approved', score: 1 }} />
       </p>
       <p className={styles.legendItem}>
         <span>Info task</span>
-        <GradeCell
-          grade={{ status: 'approved', attempt_number: 0, score: null }}
-          isEmpty
-        />
+        <GradeCell grade={{ status: 'approved', score: null }} />
       </p>
       <p className={styles.legendItem}>
         <span>Waiting for assessment</span>
-        <GradeCell
-          grade={{ status: 'in review', attempt_number: 0, score: null }}
-        />
+        <GradeCell grade={{ status: 'in review', score: null }} />
       </p>
       <p className={styles.legendItem}>
         <span>Upcoming</span>
-        <GradeCell
-          grade={{ status: 'upcoming', attempt_number: 0, score: null }}
-        />
+        <GradeCell grade={{ status: 'upcoming', score: null }} />
       </p>
     </section>
   );

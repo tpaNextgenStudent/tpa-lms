@@ -4,57 +4,88 @@ import clsx from 'clsx';
 import { TaskStatus } from '../../../../lib/types';
 import ClockIcon from '../../../../public/svg/clock-icon.svg';
 import TickIcon from '../../../../public/svg/tick-icon.svg';
+import { ReactNode } from 'react';
 
 interface GradeCellProps {
   grade: {
     score: number | null;
     status: TaskStatus;
-    attempt_number: number;
+    attempt_number?: number;
   } | null;
-  isEmpty?: boolean;
 }
 
-export const GradeCell = ({ grade, isEmpty = false }: GradeCellProps) => {
+interface AttemptWrapperProps {
+  className?: string;
+  children: ReactNode;
+  attempt?: number;
+}
+const AttemptWrapper = ({
+  className,
+  children,
+  attempt,
+}: AttemptWrapperProps) => {
+  return (
+    <span className={clsx(styles.wrapper, className)}>
+      {children}
+      {attempt && <span className={styles.attempt}>A{attempt}</span>}
+    </span>
+  );
+};
+
+export const GradeCell = ({ grade }: GradeCellProps) => {
   if (grade) {
     if (grade.status === 'in review') {
       return (
-        <span className={clsx(styles.wrapper, styles.wrapperBlue)}>
-          <span className={styles.value} aria-label="Waiting for assessment">
+        <AttemptWrapper
+          attempt={grade.attempt_number}
+          className={styles.wrapperBlue}
+        >
+          <span
+            className={styles.value}
+            role="img"
+            aria-label="Waiting for assessment"
+          >
             <ClockIcon />
           </span>
-        </span>
+        </AttemptWrapper>
       );
     }
     if (grade.score) {
       return (
-        <span
-          className={clsx(
-            styles.wrapper,
-            styles[`wrapper${getColorByScore(grade.score)}`]
-          )}
+        <AttemptWrapper
+          attempt={grade.attempt_number}
+          className={styles[`wrapper${getColorByScore(grade.score)}`]}
         >
-          <span className={styles.value}>
-            {isEmpty ? '-' : grade.attempt_number}
+          <span
+            className={clsx(
+              styles.value,
+              styles[`value${getColorByScore(grade.score)}`]
+            )}
+          >
+            {grade.score}
           </span>
-        </span>
+        </AttemptWrapper>
       );
     }
     if (grade.status === 'approved') {
       return (
-        <span className={clsx(styles.wrapper, styles.wrapperGreen)}>
-          <span className={styles.value} aria-label="Approved">
+        <AttemptWrapper
+          attempt={grade.attempt_number}
+          className={styles.wrapperGreen}
+        >
+          <span className={styles.value} role="img" aria-label="Approved">
             <TickIcon />
           </span>
-        </span>
+        </AttemptWrapper>
       );
     }
   }
 
   return (
-    <span className={clsx(styles.wrapper, styles.wrapperEmpty)}>
+    <AttemptWrapper className={styles.wrapperEmpty}>
       <span className={styles.value} aria-label="Waiting for assessment">
         -
       </span>
-    </span>
+    </AttemptWrapper>
   );
 };

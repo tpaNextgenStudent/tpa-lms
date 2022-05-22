@@ -19,7 +19,6 @@ export const TasksListItem = ({
   task,
   tasksPathPrefix,
 }: TaskListItemProps) => {
-  const moduleName = `Module ${module.module_number}`;
   const listItemRef = useRef<HTMLLIElement>(null);
 
   useEffect(() => {
@@ -29,6 +28,12 @@ export const TasksListItem = ({
       });
     }
   }, [isActive]);
+
+  const modulePosition = `Module ${module.module_number}`;
+  const taskPosition = `Task ${String(task.task_data.position).padStart(
+    2,
+    '0'
+  )}`;
 
   return (
     <li
@@ -40,17 +45,13 @@ export const TasksListItem = ({
         href={`${tasksPathPrefix}/${module.module_version_id}/${task.task_data.id}`}
       >
         <a className={styles.taskLink}>
-          <span
-            className={clsx(
-              styles.moduleName,
-              isActive && styles.moduleNameActive
-            )}
-          >
-            {moduleName}
-          </span>
-          <h3 data-cypress="TaskListItemTitle" className={styles.taskName}>
+          <p className={styles.taskPosition}>
+            <span className={styles.taskPositionModule}>{modulePosition}</span>
+            <span className={styles.taskPositionTask}>{taskPosition}</span>
+          </p>
+          <h2 data-cypress="TaskListItemTitle" className={styles.taskName}>
             {task.task_data.name}
-          </h3>
+          </h2>
           <TaskBadges
             task={task.task_data}
             attempt={task.last_attempt}

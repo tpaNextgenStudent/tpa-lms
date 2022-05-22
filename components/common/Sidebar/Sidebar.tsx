@@ -8,7 +8,7 @@ import ProgressIcon from '../../../public/svg/progress-icon.svg';
 import CrossIcon from '../../../public/svg/cross-icon.svg';
 import AssignmentsIcon from '../../../public/svg/assignments-icon.svg';
 import CurriculumIcon from '../../../public/svg/curriculum-icon.svg';
-import Image from 'next/image';
+import SvgLogo from '../../../public/svg/tpa-logo.svg';
 import { IUserDetails } from '../../../apiHelpers/user';
 
 const dashboardLinks = {
@@ -75,14 +75,8 @@ export const Sidebar = ({
         </div>
         <div className={styles.logoLinkWrapper}>
           <Link href="/">
-            <a className={styles.logoLink}>
-              <Image
-                src="/svg/tpa-logo.svg"
-                alt="Tech Play Academy logo"
-                objectFit="contain"
-                width={208}
-                height={20}
-              />
+            <a className={styles.logoLink} aria-label="Tech Play Academy logo">
+              <SvgLogo />
             </a>
           </Link>
         </div>

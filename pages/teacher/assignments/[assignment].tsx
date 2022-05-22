@@ -70,6 +70,7 @@ export const getServerSideProps = withServerSideAuth('teacher')(
           type: attempt.task.type,
           description: attempt.task.description,
           link: attempt.task.link,
+          position: attempt.task_number,
         },
         attempt: {
           status: attempt.status,

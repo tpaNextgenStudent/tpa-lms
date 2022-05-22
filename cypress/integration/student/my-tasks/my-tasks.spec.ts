@@ -41,28 +41,18 @@ describe('Student - My Tasks', () => {
     });
 
     cy.get('[data-cypress=CustomSelect]').click();
-    cy.get('#react-select-module-select-listbox').then($list => {
-      cy.wrap($list)
-        .first()
-        .then($item => {
-          cy.wrap($item).click();
-          cy.get('[data-cypress=TaskSectionModuleName]').contains(
-            $item.text(),
-            { timeout: 10000 }
-          );
-        });
+    cy.get('#react-select-module-select-option-1').then($item => {
+      cy.wrap($item).click();
+      cy.get('[data-cypress=TaskSectionModuleName]').contains($item.text(), {
+        timeout: 10000,
+      });
     });
     cy.get('[data-cypress=CustomSelect]').click();
-    cy.get('#react-select-module-select-listbox').then($list => {
-      cy.wrap($list)
-        .first()
-        .then($item => {
-          cy.wrap($item).click();
-          cy.get('[data-cypress=TaskSectionModuleName]').contains(
-            $item.text(),
-            { timeout: 10000 }
-          );
-        });
+    cy.get('#react-select-module-select-option-0').then($item => {
+      cy.wrap($item).click();
+      cy.get('[data-cypress=TaskSectionModuleName]').contains($item.text(), {
+        timeout: 10000,
+      });
     });
   });
 
