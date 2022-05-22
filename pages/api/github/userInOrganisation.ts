@@ -52,16 +52,16 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     })
   );
 
-  let resposCreated = true;
+  let reposCreated = true;
   module_progrees_with_tasks_info.flat().map(task => {
     if (task.task_details.type === 'code') {
-      if (task.github_link === '') resposCreated = false;
+      if (task.github_link === '') reposCreated = false;
     }
   });
 
   //zjoinuj progress z task info zeby sprawdzic czy wszystkie taski z typem code maja nadany github link
   //jesli nie mają to status zeby odpalic nowy endpoint
   //jesli maja wpusc do systemu
-
-  res.status(200).send({ userInOrganisation, resposCreated });
+  console.log({ userInOrganisation, reposCreated });
+  res.status(200).send({ userInOrganisation, reposCreated });
 };

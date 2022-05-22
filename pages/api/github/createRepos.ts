@@ -52,8 +52,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
                 {
                   template_repo: task_details?.link?.split('/').slice(-1)[0],
                   template_owner: 'tpa-nextgen',
-                  owner: 'tpa-nextgen',
-                  name: `${task_details?.link?.split('/').slice(-1)[0]}-v${
+                  owner: 'tpa-nextgen-staging',
+                  name: `${task_details?.link?.split('/').slice(-1)[0]}-${
                     profile?.login
                   }`,
                   private: true,
