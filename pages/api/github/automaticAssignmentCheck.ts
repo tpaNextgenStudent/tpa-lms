@@ -1,14 +1,46 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { Octokit, App } from 'octokit';
-import getUserSession from '../../../utils/getUserSession';
 import prisma from '../../../lib/prisma';
+import curriculumBase from '../upload/curriculumBase';
 
 // Info from Workflow runs webhook
 // workflow_run.head_branch must match user personal branch name
 // we're finding artefat_id by run_id (id)
+const findTaskInfo = (repositoryUrl: string) => {
+  const repositoryUrlSplitted = repositoryUrl.split('-');
+  const userLogin = repositoryUrlSplitted.pop();
+  return userLogin;
+};
+
+const findTaskDetails = async (repositoryUrl: string) => {
+  const userLogin = findTaskInfo(repositoryUrl);
+
+  const userProfile = await prisma.profile.findUnique({
+    where: { login: userLogin },
+  });
+
+  const userAssignment = await prisma.assignment.findFirst({
+    where: { profile_id: userProfile?.profile_id },
+    include: { curriculum: true },
+  });
+
+  const module_progress = userAssignment?.curriculum
+    ?.module_progress as Array<any>;
+  let moduleTasks = [] as Array<any>;
+  module_progress.map(module => moduleTasks.push(module.tasks));
+  const task = moduleTasks.flat().find(el => el.github_link === repositoryUrl);
+
+  return { taskId: task.id, assignmentId: userAssignment?.id };
+};
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
   // const payload = JSON.parse(req.body.payload);
+  const payload = {
+    repository: {
+      html_url:
+        'https://github.com/tpa-nextgen-staging/mwc1.tf16.tasks_manager.code.dart-PaulinaPogorzelska',
+    },
+  };
 
   const octokit = new Octokit({
     auth: process.env.GITHUB_PERSONAL_ACCESS_TOKEN,
@@ -17,6 +49,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const {
     data: { login },
   } = await octokit.rest.users.getAuthenticated();
+
+  const taskDetails = await findTaskDetails(payload.repository.html_url);
 
   // //Check if it was pull_request event
   // if (payload.workflow_run.event != 'pull_request') {
@@ -53,21 +87,21 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   //   //Make all actions for completed state
   //   const runId = payload.workflow_run.id;
 
-  const runJobs = (await octokit
-    .request('GET /repos/{owner}/{repo}/actions/runs/{run_id}/jobs', {
-      repo: 'mwc1.tf16.toggl_task.code.dart',
-      owner: 'tpa-nextgen',
-      run_id: 2351531697,
-    })
-    .catch(e => console.log(e))) as any;
+  // const runJobs = (await octokit
+  //   .request('GET /repos/{owner}/{repo}/actions/runs/{run_id}/jobs', {
+  //     repo: 'mwc1.tf16.toggl_task.code.dart',
+  //     owner: 'tpa-nextgen',
+  //     run_id: 2351531697,
+  //   })
+  //   .catch(e => console.log(e))) as any;
 
-  const logs = (await octokit
-    .request('GET /repos/{owner}/{repo}/actions/jobs/{job_id}/logs', {
-      repo: 'mwc1.tf16.toggl_task.code.dart',
-      owner: 'tpa-nextgen',
-      job_id: runJobs.data.jobs[0].id,
-    })
-    .catch(e => console.log(e))) as any;
+  // const logs = (await octokit
+  //   .request('GET /repos/{owner}/{repo}/actions/jobs/{job_id}/logs', {
+  //     repo: 'mwc1.tf16.toggl_task.code.dart',
+  //     owner: 'tpa-nextgen',
+  //     job_id: runJobs.data.jobs[0].id,
+  //   })
+  //   .catch(e => console.log(e))) as any;
 
   // let comment = '';
   // let score;
@@ -109,6 +143,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   //   }
   // }
 
-  res.status(200).send({ logs });
+  res.status(200).send({ taskDetails });
   // }
 };

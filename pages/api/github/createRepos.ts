@@ -65,11 +65,10 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
                 'PUT https://api.github.com/repos/{owner}/{repo}/collaborators/{username}',
                 {
                   repo: data2.data.html_url.split('/').slice(-1)[0],
-                  owner: 'tpa-nextgen',
+                  owner: 'tpa-nextgen-staging',
                   username: profile?.login,
                 }
               );
-
               return {
                 ...task,
                 github_link: data2.data.html_url,
@@ -81,7 +80,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         return { ...module, tasks };
       })
     );
-
     const updatedCurriculum = await prisma.curriculum.update({
       where: { id: profile?.assignments[0]?.curriculum?.id },
       data: { module_progress: new_module_progress },

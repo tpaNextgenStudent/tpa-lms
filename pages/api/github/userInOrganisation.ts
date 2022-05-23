@@ -63,5 +63,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   //jesli nie mają to status zeby odpalic nowy endpoint
   //jesli maja wpusc do systemu
   console.log({ userInOrganisation, reposCreated });
-  res.status(200).send({ userInOrganisation, reposCreated });
+  res.status(200).send({
+    userInOrganisation,
+    reposCreated,
+    la: module_progrees_with_tasks_info.flat(),
+  });
 };
