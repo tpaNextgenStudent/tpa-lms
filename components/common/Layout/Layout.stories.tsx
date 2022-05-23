@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Layout } from '../components/common/Layout/Layout';
-import { LoadingProvider } from '../lib/hooks/loadingContext';
+import { Layout } from './Layout';
+import { LoadingProvider } from '../../../lib/hooks/loadingContext';
 
 export default {
   title: 'Layout/Main Layout',
