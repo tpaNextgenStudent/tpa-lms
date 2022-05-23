@@ -2,6 +2,7 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { InfoView } from './InfoView';
 import { MechanicRobotAnimation } from '../MechanicRobotAnimation/MechanicRobotAnimation';
+import { action } from '@storybook/addon-actions';
 
 export default {
   title: 'Layout/InfoView',
@@ -14,8 +15,8 @@ const Template: ComponentStory<typeof InfoView> = args => (
   </InfoView>
 );
 
-export const Base = Template.bind({});
-Base.args = {
+export const Default = Template.bind({});
+Default.args = {
   title: [
     '*We are setting up a space for you.*',
     '*It might take up to a few minutes.*',
@@ -23,11 +24,11 @@ Base.args = {
   description: 'Thank you for your patience.',
   button: {
     text: 'Refresh',
-    onClick: () => {},
+    onClick: action('onClick'),
   },
   tabTitle: '-',
 };
-Base.story = {
+Default.story = {
   parameters: {
     nextRouter: {
       pathname: '/student/tasks/[module]/[task]',
