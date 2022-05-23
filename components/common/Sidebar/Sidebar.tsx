@@ -9,7 +9,7 @@ import CrossIcon from '../../../public/svg/cross-icon.svg';
 import AssignmentsIcon from '../../../public/svg/assignments-icon.svg';
 import CurriculumIcon from '../../../public/svg/curriculum-icon.svg';
 import SvgLogo from '../../../public/svg/tpa-logo.svg';
-import { IUserDetails } from '../../../apiHelpers/user';
+import { UserRole } from '../../../apiHelpers/user';
 
 const dashboardLinks = {
   teacher: [
@@ -47,13 +47,15 @@ const dashboardLinks = {
 interface SidebarProps {
   closeMobileNav: () => void;
   isMobileNavOpen: boolean;
-  user: IUserDetails;
+  role: UserRole;
+  cohortName?: string;
 }
 
 export const Sidebar = ({
   closeMobileNav,
   isMobileNavOpen,
-  user,
+  role,
+  cohortName,
 }: SidebarProps) => {
   const { pathname: currentPath } = useRouter();
   return (
@@ -82,12 +84,12 @@ export const Sidebar = ({
         </div>
       </div>
       <div className={styles.sidebarContentWrapper}>
-        {user.role === 'teacher' && (
-          <span className={styles.cohortName}>{user.cohort_name}</span>
+        {role === 'teacher' && cohortName && (
+          <span className={styles.cohortName}>{cohortName}</span>
         )}
         <nav className={styles.navWrapper}>
           <ul className={styles.navList}>
-            {dashboardLinks[user.role].map(({ path, label, Icon }) => (
+            {dashboardLinks[role].map(({ path, label, Icon }) => (
               <li key={path} className={styles.navItem}>
                 <Link href={path}>
                   <a

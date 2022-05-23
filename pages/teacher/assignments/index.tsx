@@ -18,7 +18,7 @@ export default function AssignmentsIndex({
       user={user}
       headerTitle="Assignments"
       title="Assignments"
-      description="Students' tasks to be reviewed by you."
+      headerDescription="Students' tasks to be reviewed by you."
       actionsNumber={assignments.length}
     >
       {assignments.length > 0 ? (

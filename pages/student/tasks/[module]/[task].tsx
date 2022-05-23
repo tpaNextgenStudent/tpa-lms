@@ -22,7 +22,7 @@ export default function Tasks({
       headerTitle="My Tasks"
       title="My Tasks"
       user={user}
-      description="Find all of yours tasks divided into modules."
+      headerDescription="Find all of yours tasks divided into modules."
     >
       <div className={styles.tasksWrapper}>
         <TasksMenu

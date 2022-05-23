@@ -16,7 +16,7 @@ export default function CohortProgress({
     <Layout
       headerTitle="Cohort Progress"
       title="Cohort Progress"
-      description="See your teammates and how they are doing with their tasks."
+      headerDescription="See your teammates and how they are doing with their tasks."
       user={user}
     >
       <Table data={progress} columns={columns} />
