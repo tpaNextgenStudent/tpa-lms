@@ -36,11 +36,10 @@ const findTaskDetails = async (
   let moduleTasks = [] as Array<any>;
   module_progress.map(module => moduleTasks.push(module.tasks));
   const task = moduleTasks.flat().find(el => {
-    console.log(1, el.github_link);
-    console.log(2, repositoryUrl);
+    console.log(1, el);
     return el.github_link === repositoryUrl;
   });
-  console.log(3, { moduleTasks, task });
+  console.log(3, { moduleTaskFlat: moduleTasks.flat() });
   // return { taskId: task.id, assignmentId: userAssignment?.id };
 };
 
