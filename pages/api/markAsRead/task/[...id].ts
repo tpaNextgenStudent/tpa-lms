@@ -42,6 +42,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     ?.module_progress as Array<any>;
 
   let attemptCreated = false;
+  let lastPosition = { lastModulePosition: 0, lastTaskPosition: 0 };
   const newModuleProgress = await Promise.all(
     moduleProgress.map(async (module: any) => {
       const tasks = await Promise.all(
@@ -54,6 +55,10 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
               taskId,
               userProfile?.assignments[0].id
             );
+            lastPosition = {
+              lastModulePosition: createdAttemptData.module_number || 0,
+              lastTaskPosition: createdAttemptData.task_number || 0,
+            };
             task.status = createdAttemptData.status;
             task.attempt_id = createdAttemptData.id;
             const nextTask = module.tasks.find(
@@ -69,10 +74,14 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       return { ...module, tasks };
     })
   );
-
+  console.log(lastPosition);
   const updatedCurriculum = await prisma.curriculum.update({
     where: { id: userProfile?.assignments[0]?.curriculum?.id },
-    data: { module_progress: newModuleProgress },
+    data: {
+      module_progress: newModuleProgress,
+      last_module_position: lastPosition.lastModulePosition,
+      last_task_position: lastPosition.lastTaskPosition,
+    },
   });
 
   if (!attemptCreated) {
