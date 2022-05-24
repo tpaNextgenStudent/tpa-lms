@@ -16,5 +16,5 @@ const Template: ComponentStory<typeof GithubNameLink> = args => (
 
 export const Default = Template.bind({});
 Default.args = {
-  login: 'PatrykBuniX',
+  login: 'JohnDoe',
 };

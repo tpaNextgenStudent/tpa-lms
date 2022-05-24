@@ -1,10 +1,10 @@
 export const sampleUser = {
   cohort_name: 'TPA-TOYOTA-05',
   bio: 'I love TypeScript',
-  name: 'Patryk',
-  surname: 'Górka',
+  name: 'John',
+  surname: 'Doe',
   image: '',
-  github_login: 'patrykbunix',
+  github_login: 'johndoe',
   role: 'student' as const,
-  email: 'patrykbunix@gmail.com',
+  email: 'johndoe@gmail.com',
 };

@@ -14,13 +14,13 @@ const Template: ComponentStory<typeof UserNameCell> = args => (
 
 export const Default = Template.bind({});
 Default.args = {
-  name: 'Patryk Górka',
-  login: 'patrykbunix',
+  name: 'John Doe',
+  login: 'johndoe',
   id: 'userId',
 };
 
 export const WithoutId = Template.bind({});
 WithoutId.args = {
-  name: 'Patryk Górka',
-  login: 'patrykbunix',
+  name: 'John Doe',
+  login: 'johndoe',
 };
