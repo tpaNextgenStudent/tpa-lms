@@ -3,7 +3,7 @@ export const sampleUser = {
   bio: 'I love TypeScript',
   name: 'John',
   surname: 'Doe',
-  image: '',
+  image: 'https://unsplash.it/200/200',
   github_login: 'johndoe',
   role: 'student' as const,
   email: 'johndoe@gmail.com',
