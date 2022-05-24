@@ -2,6 +2,7 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { Layout } from './Layout';
 import { LoadingProvider } from '../../../lib/hooks/loadingContext';
+import { sampleUser } from '../../../lib/constants';
 
 export default {
   title: 'Layout/Main Layout',
@@ -17,17 +18,6 @@ export default {
     controls: { exclude: ['title', 'titleTemplate'] },
   },
 } as ComponentMeta<typeof Layout>;
-
-const sampleUser = {
-  cohort_name: 'TPA-TOYOTA-05',
-  bio: 'I love TypeScript',
-  name: 'Patryk',
-  surname: 'Górka',
-  image: '',
-  github_login: 'patrykbunix',
-  role: 'student' as const,
-  email: 'patrykbunix@gmail.com',
-};
 
 const Template: ComponentStory<typeof Layout> = args => (
   <Layout {...args}>
