@@ -30,14 +30,14 @@ const findTaskDetails = async (
     where: { profile_id: userProfile?.profile_id },
     include: { curriculum: true },
   });
+  console.log(3, { userProfile, userAssignment });
+  // const module_progress = userAssignment?.curriculum
+  //   ?.module_progress as Array<any>;
+  // let moduleTasks = [] as Array<any>;
+  // module_progress.map(module => moduleTasks.push(module.tasks));
+  // const task = moduleTasks.flat().find(el => el.github_link === repositoryUrl);
 
-  const module_progress = userAssignment?.curriculum
-    ?.module_progress as Array<any>;
-  let moduleTasks = [] as Array<any>;
-  module_progress.map(module => moduleTasks.push(module.tasks));
-  const task = moduleTasks.flat().find(el => el.github_link === repositoryUrl);
-
-  return { taskId: task.id, assignmentId: userAssignment?.id };
+  // return { taskId: task.id, assignmentId: userAssignment?.id };
 };
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
