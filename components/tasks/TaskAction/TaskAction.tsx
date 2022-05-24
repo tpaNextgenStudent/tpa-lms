@@ -15,8 +15,6 @@ interface TaskActionProps {
 
 const TASK_TYPES = {
   CODE: 'code',
-  IMAGE: 'image',
-  QUIZ: 'quiz',
   INFO: 'info',
 };
 
