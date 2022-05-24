@@ -1,10 +1,14 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { BlockedLink } from './BlockedLink';
+import { Default } from '../GithubNameLink/GithubNameLink.stories';
 
 export default {
   title: 'Utils/BlockedLink',
   component: BlockedLink,
+  parameters: {
+    controls: { exclude: ['className'] },
+  },
 } as ComponentMeta<typeof BlockedLink>;
 
 const Template: ComponentStory<typeof BlockedLink> = args => (

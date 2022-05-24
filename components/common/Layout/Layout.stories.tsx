@@ -13,6 +13,9 @@ export default {
       </LoadingProvider>
     ),
   ],
+  parameters: {
+    controls: { exclude: ['title', 'titleTemplate'] },
+  },
 } as ComponentMeta<typeof Layout>;
 
 const sampleUser = {

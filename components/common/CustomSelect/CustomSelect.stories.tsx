@@ -25,6 +25,9 @@ export default {
       }, {}),
     },
   },
+  parameters: {
+    controls: { exclude: ['className', 'handleChange'] },
+  },
 } as ComponentMeta<typeof CustomSelect>;
 
 const Template: ComponentStory<typeof CustomSelect> = args => (

@@ -9,6 +9,7 @@
   background-color: colors.$purpleSecondary;
   border-radius: 4px;
   margin-right: 16px;
+  max-width: fit-content;
 
   @media (max-width: media.$tabletS) {
     margin-right: 0;

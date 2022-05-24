@@ -7,6 +7,9 @@ import { action } from '@storybook/addon-actions';
 export default {
   title: 'Layout/InfoView',
   component: InfoView,
+  parameters: {
+    controls: { exclude: ['tabTitle'] },
+  },
 } as ComponentMeta<typeof InfoView>;
 
 const Template: ComponentStory<typeof InfoView> = args => (

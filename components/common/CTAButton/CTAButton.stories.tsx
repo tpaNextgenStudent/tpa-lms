@@ -5,6 +5,9 @@ import { CTAButton } from './CTAButton';
 export default {
   title: 'Inputs/CTAButton',
   component: CTAButton,
+  parameters: {
+    controls: { exclude: ['className', 'onClick'] },
+  },
 } as ComponentMeta<typeof CTAButton>;
 
 const Template: ComponentStory<typeof CTAButton> = args => (
