@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { InfoAction } from './InfoAction';
 
 export default {
-  title: 'Common/InfoAction',
+  title: 'Tasks/InfoAction',
   component: InfoAction,
   parameters: { controls: { exclude: ['sizeRef'] } },
 } as ComponentMeta<typeof InfoAction>;

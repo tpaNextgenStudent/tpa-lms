@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { TaskBadges } from './TaskBadges';
 
 export default {
-  title: 'Common/TaskBadges',
+  title: 'Tasks/TaskBadges',
   component: TaskBadges,
   parameters: { controls: { exclude: ['className'] } },
 } as ComponentMeta<typeof TaskBadges>;

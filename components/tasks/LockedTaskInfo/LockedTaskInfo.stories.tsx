@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { LockedTaskInfo } from './LockedTaskInfo';
 
 export default {
-  title: 'Common/LockedTaskInfo',
+  title: 'Tasks/LockedTaskInfo',
   component: LockedTaskInfo,
 } as ComponentMeta<typeof LockedTaskInfo>;
 
