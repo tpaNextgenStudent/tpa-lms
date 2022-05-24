@@ -50,9 +50,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const {
     data: { login },
   } = await octokit.rest.users.getAuthenticated();
+  console.log(1, payload.workflow_run.repository.html_url);
+  console.log(2, payload.workflow_run.actor.login);
 
   const taskDetails = await findTaskDetails(
-    payload.repository.html_url,
+    payload.workflow_run.repository.html_url,
     payload.workflow_run.actor.login,
     res
   );
