@@ -92,7 +92,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     });
   }
 
-  console.log('NIE POWINNO NAS TU BYĆ');
   const updatedCurriculum = await prisma.curriculum.update({
     where: { id: userProfile?.assignments[0]?.curriculum?.id },
     data: {
