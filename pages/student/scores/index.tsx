@@ -8,6 +8,7 @@ import {
 import { withServerSideAuth } from '../../../lib/auth/withServerSideAuth';
 import { getUserScores } from '../../../apiHelpers/scores';
 import { EmptyStateView } from '../../../components/common/EmptyStateView/EmptyStateView';
+import NoAssignmentsRobotImg from '../../../public/img/no-assignments-robot.png';
 
 export default function ScoresIndex({
   user,
@@ -22,7 +23,7 @@ export default function ScoresIndex({
     >
       {scores.length < 1 ? (
         <EmptyStateView
-          imgSrc={'/img/no-assignments-robot.png'}
+          imgSrc={NoAssignmentsRobotImg}
           message="You have no scores yet"
         />
       ) : (

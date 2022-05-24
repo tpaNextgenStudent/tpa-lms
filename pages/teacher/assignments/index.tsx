@@ -8,6 +8,7 @@ import {
 import { withServerSideAuth } from '../../../lib/auth/withServerSideAuth';
 import { getTeacherAssignments } from '../../../apiHelpers/assignments';
 import { EmptyStateView } from '../../../components/common/EmptyStateView/EmptyStateView';
+import NoAssignmentsRobotImg from '../../../public/img/no-assignments-robot.png';
 
 export default function AssignmentsIndex({
   user,
@@ -25,7 +26,7 @@ export default function AssignmentsIndex({
         <Table data={assignments} columns={columns} />
       ) : (
         <EmptyStateView
-          imgSrc="/img/no-assignments-robot.png"
+          imgSrc={NoAssignmentsRobotImg}
           message="No assignments to be reviewed"
         />
       )}

@@ -4,12 +4,13 @@ import { TaskScoreBadge } from '../TaskScoreBadge/TaskScoreBadge';
 import { TaskAttemptBadge } from '../TaskAttemptBadge/TaskAttemptBadge';
 import { MarkdownContent } from '../../common/markdown/MarkdownContent/MarkdownContent';
 import relativeTime from 'dayjs/plugin/relativeTime';
-import dayjs from 'dayjs';
 import { Comment } from '../../../lib/types';
 import Link from 'next/link';
-dayjs.extend(relativeTime);
 import { useRouter } from 'next/router';
 import { EmptyStateView } from '../../common/EmptyStateView/EmptyStateView';
+import NoCommentsRobotImg from '../../../public/img/no-comments-robot.png';
+import dayjs from 'dayjs';
+dayjs.extend(relativeTime);
 
 interface TaskCommentsProps {
   comments: Comment[];
@@ -21,7 +22,7 @@ export const TaskComments = ({ comments }: TaskCommentsProps) => {
   if (comments.length < 1) {
     return (
       <EmptyStateView
-        imgSrc="/img/no-comments-robot.png"
+        imgSrc={NoCommentsRobotImg}
         message="Here you will see comments"
       />
     );

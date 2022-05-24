@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { HandleBold } from '../HandleBold/HandleBold';
 
 interface EmptyStateViewProps {
-  imgSrc?: string;
+  imgSrc?: string | StaticImageData;
   message?: string;
 }
 
@@ -19,6 +19,7 @@ export const EmptyStateView = ({ imgSrc, message }: EmptyStateViewProps) => {
             height={240}
             layout="responsive"
             quality={100}
+            placeholder="blur"
             objectFit="contain"
             objectPosition="center"
           />

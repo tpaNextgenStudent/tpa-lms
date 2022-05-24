@@ -16,6 +16,7 @@ import { mapStudentAssignmentsToTableData } from '../../../../../lib/tables/teac
 import { columns } from '../../../../../lib/tables/teacher/student-assignments/student-assignments';
 import styles from '../../../../../components/pagesStyles/singleStudentProgressPage.module.scss';
 import { EmptyStateView } from '../../../../../components/common/EmptyStateView/EmptyStateView';
+import NoAssignmentsRobotImg from '../../../../../public/img/no-assignments-robot.png';
 
 export default function CohortProgressIndex({
   user,
@@ -68,7 +69,7 @@ export default function CohortProgressIndex({
               />
             ) : (
               <EmptyStateView
-                imgSrc="/img/no-assignments-robot.png"
+                imgSrc={NoAssignmentsRobotImg}
                 message="No assignments to be reviewed"
               />
             ),
