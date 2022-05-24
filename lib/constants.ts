@@ -25,9 +25,9 @@ export const sampleComments = [
   },
   {
     author: {
-      name: 'Harry',
-      surname: 'Maguire',
-      login: 'Maguire',
+      name: 'Joe',
+      surname: 'Mag',
+      login: 'Magi',
       image: 'https://unsplash.it/150/150',
     },
     attempt_number: 1,
