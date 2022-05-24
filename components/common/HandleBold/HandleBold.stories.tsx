@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { HandleBold } from './HandleBold';
 
 export default {
-  title: 'Common/HandleBold',
+  title: 'Utils/HandleBold',
   component: HandleBold,
 } as ComponentMeta<typeof HandleBold>;
 
