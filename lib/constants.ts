@@ -1,3 +1,5 @@
+import { TaskStatus } from './types';
+
 export const sampleUser = {
   cohort_name: 'TPA-TOYOTA-05',
   bio: 'I love TypeScript',
@@ -37,3 +39,18 @@ export const sampleComments = [
     content: 'Try again!',
   },
 ];
+
+export const sampleTask = {
+  id: 'taskId',
+  type: 'code' as const,
+  position: 1,
+  name: 'Object model',
+  description: 'Task description content',
+  link: null,
+};
+
+export const sampleModule = {
+  module_version_id: 'moduleId',
+  module_number: 1,
+  name: 'Basics',
+};
