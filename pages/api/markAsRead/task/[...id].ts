@@ -42,12 +42,20 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     ?.module_progress as Array<any>;
 
   let attemptCreated = false;
-  let lastPosition = { lastModulePosition: 0, lastTaskPosition: 0 };
+  let alreadyMarked = false;
+  let incorrectStatus = false;
+
   const newModuleProgress = await Promise.all(
     moduleProgress.map(async (module: any) => {
       const tasks = await Promise.all(
         module.tasks.map(async (task: any) => {
           if (task.id === taskId) {
+            if (task.status === 'approved') {
+              alreadyMarked = true;
+            }
+            if (task.status != 'in progress') {
+              incorrectStatus = true;
+            }
             attemptCreated = true;
             const createdAttemptData = await createAttempt(
               module.position,
@@ -55,10 +63,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
               taskId,
               userProfile?.assignments[0].id
             );
-            lastPosition = {
-              lastModulePosition: createdAttemptData.module_number || 0,
-              lastTaskPosition: createdAttemptData.task_number || 0,
-            };
+
             task.status = createdAttemptData.status;
             task.attempt_id = createdAttemptData.id;
             const nextTask = module.tasks.find(
@@ -74,13 +79,24 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       return { ...module, tasks };
     })
   );
-  console.log(lastPosition);
+
+  if (alreadyMarked) {
+    return res.status(404).send({
+      message: 'Task has been already marked as read',
+    });
+  }
+
+  if (incorrectStatus) {
+    return res.status(404).send({
+      message: 'Task have to has in progress status to mark it as read',
+    });
+  }
+
+  console.log('NIE POWINNO NAS TU BYĆ');
   const updatedCurriculum = await prisma.curriculum.update({
     where: { id: userProfile?.assignments[0]?.curriculum?.id },
     data: {
       module_progress: newModuleProgress,
-      last_module_position: lastPosition.lastModulePosition,
-      last_task_position: lastPosition.lastTaskPosition,
     },
   });
 
@@ -90,5 +106,5 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     });
   }
 
-  res.status(200).send({});
+  res.status(200).send({ updatedCurriculum });
 };
