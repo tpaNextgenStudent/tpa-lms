@@ -16,6 +16,7 @@ interface CommentAuthor {
   name: string | null;
   surname: string | null;
   image: string | null;
+  login: string | null;
 }
 
 export interface Comment {

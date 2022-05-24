@@ -28,6 +28,7 @@ export interface IAttempt {
   evaluation_date: string;
   teacher: {
     user: IUser;
+    profile: IProfile;
   };
 }
 
@@ -58,6 +59,7 @@ export interface ISingleAttempt {
   };
   teacher: {
     user: IUser;
+    profile: IProfile;
   };
   module_number: number;
   task_number: number;

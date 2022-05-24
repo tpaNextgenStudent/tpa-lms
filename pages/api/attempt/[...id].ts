@@ -26,15 +26,19 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     },
   });
 
+  if (!attempt) {
+    return res.status(404).send({ message: 'Attempt not found' });
+  }
+
   const { ...teacher } = await prisma.account.findUnique({
     where: {
-      providerAccountId: attempt?.teacher?.profile?.provider_account_id,
+      providerAccountId: attempt.teacher.profile?.provider_account_id,
     },
     include: { user: true },
   });
   const { ...student } = await prisma.account.findUnique({
     where: {
-      providerAccountId: attempt?.student?.profile?.provider_account_id,
+      providerAccountId: attempt.student.profile?.provider_account_id,
     },
     include: { user: true },
   });
@@ -42,8 +46,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (session.nextAuthSession) {
     res.status(200).send({
       ...attempt,
-      teacher: { user: teacher.user },
-      student: { user: student.user },
+      teacher: { user: teacher.user, profile: attempt.teacher.profile },
+      student: { user: student.user, profile: attempt.student.profile },
     });
   } else {
     res.status(401).send({ message: 'Unauthorized' });

@@ -2,6 +2,7 @@ import styles from './ProfileUserInfo.module.scss';
 import Image from 'next/image';
 import GhIcon from '../../../public/svg/gh-icon.svg';
 import dayjs from 'dayjs';
+import { GithubNameLink } from '../../common/GithubNameLink/GithubNameLink';
 
 interface ProfileUserInfoProps {
   name: string;
@@ -35,18 +36,7 @@ export const ProfileUserInfo = ({
           <h2 data-cypress="ProfileUserName" className={styles.name}>
             {name}
           </h2>
-          <a
-            data-cypress="ProfileUserGithubLink"
-            target="_blank"
-            rel="noreferrer noopener"
-            className={styles.ghLink}
-            href={`https://github.com/${login}`}
-          >
-            <span className={styles.ghIcon} role="img" aria-label="Github icon">
-              <GhIcon />
-            </span>
-            <span className={styles.login}>{login}</span>
-          </a>
+          <GithubNameLink login={login} />
         </div>
         {bio && (
           <p data-cypress="ProfileUserBio" className={styles.bio}>
