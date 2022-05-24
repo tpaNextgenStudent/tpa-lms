@@ -30,13 +30,17 @@ const findTaskDetails = async (
     where: { profile_id: userProfile?.profile_id },
     include: { curriculum: true },
   });
-  console.log(3, { userProfile, userAssignment });
-  // const module_progress = userAssignment?.curriculum
-  //   ?.module_progress as Array<any>;
-  // let moduleTasks = [] as Array<any>;
-  // module_progress.map(module => moduleTasks.push(module.tasks));
-  // const task = moduleTasks.flat().find(el => el.github_link === repositoryUrl);
 
+  const module_progress = userAssignment?.curriculum
+    ?.module_progress as Array<any>;
+  let moduleTasks = [] as Array<any>;
+  module_progress.map(module => moduleTasks.push(module.tasks));
+  const task = moduleTasks.flat().find(el => {
+    console.log(1, el.github_link);
+    console.log(2, repositoryUrl);
+    return el.github_link === repositoryUrl;
+  });
+  console.log(3, { moduleTasks, task });
   // return { taskId: task.id, assignmentId: userAssignment?.id };
 };
 
