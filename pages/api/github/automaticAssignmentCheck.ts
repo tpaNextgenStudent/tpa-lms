@@ -119,7 +119,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   let comment = '';
   let score;
-  if (taskDetails.taskDetails?.summative === true) {
+  if (taskDetails?.taskDetails?.summative === true) {
     console.log(1);
   } else {
     if (logs.data.includes('gotest')) {
