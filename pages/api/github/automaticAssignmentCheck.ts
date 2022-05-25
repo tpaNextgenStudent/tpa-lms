@@ -98,6 +98,12 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   // });
   // } else {
   // }
+  console.log(3, taskDetails.taskDetails?.summative);
+  if (taskDetails.taskDetails?.summative === true) {
+    console.log(1);
+  } else {
+    console.log(2);
+  }
 
   // //Check if task is summative or formative
 
