@@ -34,7 +34,11 @@ const findTaskDetails = async (
   const module_progress = userAssignment?.curriculum
     ?.module_progress as Array<any>;
   let moduleTasks = [] as Array<any>;
-  module_progress.map(module => moduleTasks.push(module.tasks));
+  module_progress.map(module =>
+    module.tasks.map((task: any) =>
+      moduleTasks.push({ ...task, modulePosition: module.position })
+    )
+  );
   const task = moduleTasks.flat().find(el => el.github_link === repositoryUrl);
 
   const taskDetails = await prisma.task.findFirst({ where: { id: task.id } });
@@ -52,8 +56,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const {
     data: { login },
   } = await octokit.rest.users.getAuthenticated();
-  console.log(1, payload.workflow_run.repository.html_url);
-  console.log(2, payload.workflow_run.actor.login);
 
   const taskDetails = await findTaskDetails(
     payload.workflow_run.repository.html_url,
@@ -61,15 +63,44 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     res
   );
 
-  // //Check if it was pull_request event
-  // if (payload.workflow_run.event != 'pull_request') {
-  //   res.status(404).send({ message: 'Not a pull request event' });
-  // }
+  //Check if it was pull_request event
+  if (payload.workflow_run.event != 'pull_request') {
+    res.status(404).send({ message: 'Not a pull request event' });
+  }
 
-  // //Check if user pushed to the correct branch
-  // if (payload.workflow_run.head_branch != 'solution-branch') {
-  //   res.status(404).send({ message: 'Incorrect branch name' });
-  // }
+  //Check if user pushed to the correct branch
+  if (payload.workflow_run.head_branch != 'solution-branch') {
+    res.status(404).send({ message: 'Incorrect branch name' });
+  }
+  //sprawdzić czy jest status in progress jak nie to return i koniec !!!!!!!!!!
+
+  if (taskDetails.taskDetails?.summative === true) {
+    console.log({
+      assignment_id: taskDetails.assignmentId || '',
+      task_id: taskDetails.taskDetails.id,
+      answer: `https://github.com/tpa-nextgen-staging/${payload.workflow_run.pull_request[0].head.repo.name}/pull/${payload.workflow_run.pull_request[0].number}`,
+      attempt_number: 1,
+      teacher_assigment_id: '',
+      submission_date: new Date(),
+      status: 'in review',
+      module_number: 1,
+      task_number: taskDetails.task.position,
+    });
+    // await prisma.attempt.create({
+    //   data: {
+    //     assignment_id: taskDetails.assignmentId || '',
+    //     task_id: taskDetails.taskDetails.id,
+    //     answer: `https://github.com/tpa-nextgen-staging/${payload.workflow_run.pull_request[0].head.repo.name}/pull/${payload.workflow_run.pull_request[0].number}`,
+    //     attempt_number: 1,
+    //     teacher_assigment_id: '',
+    //     submission_date: new Date(),
+    //     status: 'in review',
+    //     module_number: 1,
+    //     task_number: taskDetails.task.position,
+    //   },
+    // });
+  } else {
+  }
 
   // //Check if task is summative or formative
 
