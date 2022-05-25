@@ -8,19 +8,8 @@ const findTaskInfo = (repositoryUrl: string) => {
   return userLogin;
 };
 
-const findTaskDetails = async (
-  repositoryUrl: string,
-  userLogin: string,
-  res: NextApiResponse
-) => {
+const findTaskDetails = async (repositoryUrl: string, userLogin: string) => {
   const userRepoLogin = findTaskInfo(repositoryUrl);
-
-  if (userRepoLogin != userLogin) {
-    res.status(404).send({
-      message:
-        'User that made action is not a user that should make actions on this repository',
-    });
-  }
 
   const userProfile = await prisma.profile.findUnique({
     where: { login: userLogin },
@@ -66,8 +55,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   const taskDetails = await findTaskDetails(
     payload.workflow_run.repository.html_url,
-    payload.workflow_run.actor.login,
-    res
+    payload.workflow_run.actor.login
   );
 
   // //Check if it was pull_request event
