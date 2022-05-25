@@ -10,8 +10,9 @@
   position: relative;
   color: colors.$fontPrimary;
   border: 3px solid colors.$white;
-  min-width: 266px;
+  width: 266px;
   box-shadow: shadows.$primary;
+  list-style-type: none;
 
   &:first-of-type {
     margin-top: 0;
