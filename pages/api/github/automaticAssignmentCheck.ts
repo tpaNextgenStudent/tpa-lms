@@ -106,17 +106,17 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   //   if (payload.action === 'completed') {
   //     //Make all actions for completed state
 
-  //     const runId = payload.workflow_run.id;
+  const runId = payload.workflow_run.id;
   const runJobs = (await octokit
     .request('GET /repos/{owner}/{repo}/actions/runs/{run_id}/jobs', {
-      repo: 'mwc1.tf16.toggl_task.code.dart-PaulinaPogorzelska',
+      repo: payload.workflow_run.pull_request[0].head.repo.name,
       owner: 'tpa-nextgen-staging',
-      run_id: 2386449741,
+      run_id: runId,
     })
     .catch(e => console.log(e))) as any;
   const logs = (await octokit
     .request('GET /repos/{owner}/{repo}/actions/jobs/{job_id}/logs', {
-      repo: 'mwc1.tf16.toggl_task.code.dart-PaulinaPogorzelska',
+      repo: payload.workflow_run.pull_request[0].head.repo.name,
       owner: 'tpa-nextgen-staging',
       job_id: runJobs.data.jobs[0].id,
     })
