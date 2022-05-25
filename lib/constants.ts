@@ -64,6 +64,12 @@ export const sampleModule = {
   name: 'Basics',
 };
 
+export const sampleModule2 = {
+  module_version_id: 'moduleId2',
+  module_number: 2,
+  name: 'Reactivity',
+};
+
 export const sampleAttempts = [
   {
     score: 3,
@@ -84,3 +90,5 @@ export const sampleAttempts = [
 ];
 
 export const sampleTasks = [sampleTask, sampleTask2];
+
+export const sampleModules = [sampleModule, sampleModule2];
