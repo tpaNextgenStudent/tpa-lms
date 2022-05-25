@@ -1,12 +1,11 @@
 import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentStory } from '@storybook/react';
 import { Box } from './Box';
 import colors from '../../../lib/styles/variables/colors.module.scss';
 
 export default {
   title: 'Styles/Colors',
-  component: Box,
-} as ComponentMeta<typeof Box>;
+};
 
 const colorGroups = [
   {

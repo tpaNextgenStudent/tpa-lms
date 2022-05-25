@@ -1,12 +1,11 @@
 import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentStory } from '@storybook/react';
 import { Box } from './Box';
 import shadowsVars from '../../../lib/styles/variables/shadows.module.scss';
 
 export default {
   title: 'Styles/Shadows',
-  component: Box,
-} as ComponentMeta<typeof Box>;
+};
 
 const shadows = [
   { name: 'primary', value: shadowsVars.primary },
