@@ -36,7 +36,10 @@ const findTaskDetails = async (
   let moduleTasks = [] as Array<any>;
   module_progress.map(module => moduleTasks.push(module.tasks));
   const task = moduleTasks.flat().find(el => el.github_link === repositoryUrl);
-  return { task, assignmentId: userAssignment?.id };
+
+  const taskDetails = await prisma.task.findFirst({ where: { id: task.id } });
+
+  return { task, taskDetails, assignmentId: userAssignment?.id };
 };
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
