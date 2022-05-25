@@ -16,7 +16,7 @@ const findTaskDetails = async (
   const userRepoLogin = findTaskInfo(repositoryUrl);
 
   if (userRepoLogin != userLogin) {
-    res.status(404).send({
+    return res.status(404).send({
       message:
         'User that made action is not a user that should make actions on this repository',
     });
@@ -59,7 +59,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   if (payload.action === 'requested') {
     //Mark attempt as in review if action is requested
-    res.status(404).send({
+    return res.status(404).send({
       message: 'Handler supposed to make procedures only for completed actions',
     });
   }
@@ -72,12 +72,12 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   //Check if it was pull_request event
   if (payload.workflow_run.event != 'pull_request') {
-    res.status(404).send({ message: 'Not a pull request event' });
+    return res.status(404).send({ message: 'Not a pull request event' });
   }
 
   //Check if user pushed to the correct branch
   if (payload.workflow_run.head_branch != 'solution-branch') {
-    res.status(404).send({ message: 'Incorrect branch name' });
+    return res.status(404).send({ message: 'Incorrect branch name' });
   }
   //sprawdzić czy jest status in progress jak nie to return i koniec !!!!!!!!!!
 
@@ -180,6 +180,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   //     }
   //   }
 
-  res.status(200).send({ comment, score });
+  return res.status(200).send({ comment, score });
   // }
 };
