@@ -81,31 +81,21 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   }
   //sprawdzić czy jest status in progress jak nie to return i koniec !!!!!!!!!!
 
+  //Check if task is summative
   if (taskDetails.taskDetails?.summative === true) {
-    console.log({
-      assignment_id: taskDetails.assignmentId || '',
-      task_id: taskDetails.taskDetails.id,
-      answer: `https://github.com/tpa-nextgen-staging/${payload.workflow_run.pull_requests[0].head.repo.name}/pull/${payload.workflow_run.pull_requests[0].number}`,
-      attempt_number: 1,
-      teacher_assigment_id: '',
-      submission_date: new Date(),
-      status: 'in review',
-      module_number: 1,
-      task_number: taskDetails.task.position,
+    await prisma.attempt.create({
+      data: {
+        assignment_id: taskDetails.assignmentId || '',
+        task_id: taskDetails.taskDetails.id,
+        answer: `https://github.com/tpa-nextgen-staging/${payload.workflow_run.pull_requests[0].head.repo.name}/pull/${payload.workflow_run.pull_requests[0].number}`,
+        attempt_number: taskDetails.task.attempt_number + 1,
+        teacher_assigment_id: 'cl2idovve0492o0s6xca7z2vs',
+        submission_date: new Date(),
+        status: 'in review',
+        module_number: taskDetails.task.modulePosition,
+        task_number: taskDetails.task.position,
+      },
     });
-    // await prisma.attempt.create({
-    //   data: {
-    //     assignment_id: taskDetails.assignmentId || '',
-    //     task_id: taskDetails.taskDetails.id,
-    //     answer: `https://github.com/tpa-nextgen-staging/${payload.workflow_run.pull_request[0].head.repo.name}/pull/${payload.workflow_run.pull_request[0].number}`,
-    //     attempt_number: 1,
-    //     teacher_assigment_id: '',
-    //     submission_date: new Date(),
-    //     status: 'in review',
-    //     module_number: 1,
-    //     task_number: taskDetails.task.position,
-    //   },
-    // });
   } else {
   }
 
@@ -176,6 +166,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   //     }
   //   }
 
-  res.status(200).send({ taskDetails, logs });
+  // res.status(200).send({ taskDetails, logs });
   // }
 };
