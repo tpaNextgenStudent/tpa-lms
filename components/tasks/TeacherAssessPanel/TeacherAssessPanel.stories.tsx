@@ -8,7 +8,17 @@ export default {
 } as ComponentMeta<typeof TeacherAssessPanel>;
 
 const Template: ComponentStory<typeof TeacherAssessPanel> = args => (
-  <TeacherAssessPanel {...args} />
+  <div style={{ height: 350, display: 'flex', alignItems: 'flex-end' }}>
+    <div
+      style={{
+        position: 'relative',
+        marginTop: 'auto',
+        width: '100%',
+      }}
+    >
+      <TeacherAssessPanel {...args} />
+    </div>
+  </div>
 );
 
 export const Default = Template.bind({});

@@ -1,6 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { InfoAction } from './InfoAction';
+import { LoadingProvider } from '../../../lib/hooks/loadingContext';
 
 export default {
   title: 'Tasks/InfoAction',
@@ -9,7 +10,9 @@ export default {
 } as ComponentMeta<typeof InfoAction>;
 
 const Template: ComponentStory<typeof InfoAction> = args => (
-  <InfoAction {...args} />
+  <LoadingProvider>
+    <InfoAction {...args} />
+  </LoadingProvider>
 );
 
 export const Default = Template.bind({});
