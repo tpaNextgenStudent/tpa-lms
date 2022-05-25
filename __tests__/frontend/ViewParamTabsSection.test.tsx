@@ -1,10 +1,16 @@
-import { render, screen } from '@testing-library/react';
+import {
+  getByText,
+  render,
+  screen,
+  getByLabelText,
+} from '@testing-library/react';
 import { ViewParamTabsSection } from '../../components/common/ViewParamTabsSection/ViewParamTabsSection';
 import userEvent from '@testing-library/user-event';
 import { expect } from '@jest/globals';
 
 // Mocks useRouter
 const useRouter = jest.spyOn(require('next/router'), 'useRouter');
+const routerPush = jest.fn();
 
 userEvent.setup();
 
@@ -27,10 +33,9 @@ describe('ViewParamTabsSection', () => {
   });
 
   it('Should redirect to first (default) tab when view query is invalid', async () => {
-    const push = jest.fn();
     useRouter.mockImplementationOnce(() => ({
       query: { view: 'there-is-no-tab-like-this' },
-      push,
+      push: routerPush,
     }));
 
     render(
@@ -42,7 +47,7 @@ describe('ViewParamTabsSection', () => {
       />
     );
 
-    expect(push).toHaveBeenCalledWith(
+    expect(routerPush).toHaveBeenCalledWith(
       { pathname: undefined, query: {} },
       undefined,
       { shallow: true }
@@ -79,5 +84,30 @@ describe('ViewParamTabsSection', () => {
     );
 
     expect(screen.getByText('description')).toBeDefined();
+  });
+
+  it('Switches between tabs', async () => {
+    useRouter.mockImplementationOnce(() => ({
+      query: { view: 'description' },
+      push: routerPush,
+    }));
+
+    render(
+      <ViewParamTabsSection
+        tabs={{
+          description: <p>description</p>,
+          comments: <p>comments</p>,
+        }}
+      />
+    );
+
+    const button = screen.getByText('Comments');
+    button.click();
+
+    expect(routerPush).toHaveBeenCalledWith(
+      { pathname: undefined, query: { view: 'comments' } },
+      undefined,
+      { shallow: true }
+    );
   });
 });
