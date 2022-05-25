@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 import { TaskLockBadge } from './TaskLockBadge';
 
 export default {
-  title: 'Tasks/TaskLockBadge',
+  title: 'Tasks/Badges/TaskLockBadge',
   component: TaskLockBadge,
 } as ComponentMeta<typeof TaskLockBadge>;
 
