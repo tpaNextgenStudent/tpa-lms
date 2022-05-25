@@ -136,9 +136,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       } else if (logs.data.includes('✖')) {
         score = 1;
       }
-    } else if (logs.data.includes('dart')) {
-     console.log(4);
-    }
+    } 
     console.log(2);
   }
 
