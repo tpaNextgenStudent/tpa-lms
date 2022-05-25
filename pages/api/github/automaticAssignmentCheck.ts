@@ -83,19 +83,19 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   //Check if task is summative
   if (taskDetails.taskDetails?.summative === true) {
-    await prisma.attempt.create({
-      data: {
-        assignment_id: taskDetails.assignmentId || '',
-        task_id: taskDetails.taskDetails.id,
-        answer: `https://github.com/tpa-nextgen-staging/${payload.workflow_run.pull_requests[0].head.repo.name}/pull/${payload.workflow_run.pull_requests[0].number}`,
-        attempt_number: taskDetails.task.attempt_number + 1,
-        teacher_assigment_id: 'cl2idovve0492o0s6xca7z2vs',
-        submission_date: new Date(),
-        status: 'in review',
-        module_number: taskDetails.task.modulePosition,
-        task_number: taskDetails.task.position,
-      },
-    });
+    // await prisma.attempt.create({
+    //   data: {
+    //     assignment_id: taskDetails.assignmentId || '',
+    //     task_id: taskDetails.taskDetails.id,
+    //     answer: `https://github.com/tpa-nextgen-staging/${payload.workflow_run.pull_requests[0].head.repo.name}/pull/${payload.workflow_run.pull_requests[0].number}`,
+    //     attempt_number: taskDetails.task.attempt_number + 1,
+    //     teacher_assigment_id: 'cl2idovve0492o0s6xca7z2vs',
+    //     submission_date: new Date(),
+    //     status: 'in review',
+    //     module_number: taskDetails.task.modulePosition,
+    //     task_number: taskDetails.task.position,
+    //   },
+    // });
   } else {
   }
 
@@ -166,6 +166,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   //     }
   //   }
 
-  // res.status(200).send({ taskDetails, logs });
+  res.status(200).send({ taskDetails, logs });
   // }
 };
