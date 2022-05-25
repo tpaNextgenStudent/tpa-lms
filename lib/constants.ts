@@ -49,8 +49,38 @@ export const sampleTask = {
   link: null,
 };
 
+const sampleTask2 = {
+  id: 'taskId2',
+  type: 'info' as const,
+  position: 2,
+  name: 'Object model in depth',
+  description: 'Task description content',
+  link: null,
+};
+
 export const sampleModule = {
   module_version_id: 'moduleId',
   module_number: 1,
   name: 'Basics',
 };
+
+export const sampleAttempts = [
+  {
+    score: 3,
+    answer: 'https://github.com/path/to/answer',
+    status: 'approved' as const,
+    position: 1,
+    attempt_id: 'attemptId',
+    attempt_number: 1,
+  },
+  {
+    score: null,
+    answer: null,
+    status: 'upcoming' as const,
+    position: 2,
+    attempt_id: 'attemptId2',
+    attempt_number: 1,
+  },
+];
+
+export const sampleTasks = [sampleTask, sampleTask2];
