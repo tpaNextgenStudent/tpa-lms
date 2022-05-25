@@ -58,7 +58,11 @@ export const ViewParamTabsSection = ({ tabs }: TabsSectionProps) => {
 
   return (
     <>
-      <div data-cypress="ViewParamTabsSection" className={styles.taskNav}>
+      <div
+        data-cypress="ViewParamTabsSection"
+        data-testid="ViewParamTabsSection"
+        className={styles.taskNav}
+      >
         {Object.entries(tabs).map(([label, component]) => {
           return (
             component && (
