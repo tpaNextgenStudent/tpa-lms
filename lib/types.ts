@@ -28,7 +28,7 @@ export interface Comment {
   author: CommentAuthor;
 }
 
-export type TaskType = 'code' | 'quiz' | 'image' | 'info';
+export type TaskType = 'code' | 'info';
 export type TaskStatus = 'upcoming' | 'in progress' | 'approved' | 'in review';
 
 export type IProfile = {
