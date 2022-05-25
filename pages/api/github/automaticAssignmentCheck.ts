@@ -137,6 +137,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         score = 1;
       }
     }
+    console.log(2);
   }
 
   //   let comment = '';
