@@ -36,7 +36,7 @@ const findTaskDetails = async (
   let moduleTasks = [] as Array<any>;
   module_progress.map(module => moduleTasks.push(module.tasks));
   const task = moduleTasks.flat().find(el => el.github_link === repositoryUrl);
-  return { taskId: task.id, assignmentId: userAssignment?.id };
+  return { task, assignmentId: userAssignment?.id };
 };
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
