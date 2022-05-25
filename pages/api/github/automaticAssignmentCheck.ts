@@ -57,6 +57,13 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     data: { login },
   } = await octokit.rest.users.getAuthenticated();
 
+  if (payload.action === 'requested') {
+    //Mark attempt as in review if action is requested
+    res.status(404).send({
+      message: 'Handler supposed to make procedures only for completed actions',
+    });
+  }
+
   const taskDetails = await findTaskDetails(
     payload.workflow_run.repository.html_url,
     payload.workflow_run.actor.login,
@@ -111,23 +118,23 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   //   });
   // } else if (payload.action === 'completed') {
   //   //Make all actions for completed state
-  //   const runId = payload.workflow_run.id;
+  const runId = payload.workflow_run.id;
 
-  //   const runJobs = (await octokit
-  //     .request('GET /repos/{owner}/{repo}/actions/runs/{run_id}/jobs', {
-  //       repo: 'mwc1.tf16.toggl_task.code.dart',
-  //       owner: 'tpa-nextgen',
-  //       run_id: 2351531697,
-  //     })
-  //     .catch(e => console.log(e))) as any;
+  const runJobs = (await octokit
+    .request('GET /repos/{owner}/{repo}/actions/runs/{run_id}/jobs', {
+      repo: payload.workflow_run.repository.name,
+      owner: 'tpa-nextgen-staging',
+      run_id: runId,
+    })
+    .catch(e => console.log(e))) as any;
 
-  //   const logs = (await octokit
-  //     .request('GET /repos/{owner}/{repo}/actions/jobs/{job_id}/logs', {
-  //       repo: 'mwc1.tf16.toggl_task.code.dart',
-  //       owner: 'tpa-nextgen',
-  //       job_id: runJobs.data.jobs[0].id,
-  //     })
-  //     .catch(e => console.log(e))) as any;
+  const logs = (await octokit
+    .request('GET /repos/{owner}/{repo}/actions/jobs/{job_id}/logs', {
+      repo: payload.workflow_run.repository.name,
+      owner: 'tpa-nextgen-staging',
+      job_id: runJobs.data.jobs[0].id,
+    })
+    .catch(e => console.log(e))) as any;
 
   //   let comment = '';
   //   let score;
@@ -169,6 +176,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   //     }
   //   }
 
-  res.status(200).send({ taskDetails });
+  res.status(200).send({ taskDetails, logs });
   // }
 };
