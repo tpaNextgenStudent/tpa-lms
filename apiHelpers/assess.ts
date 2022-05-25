@@ -37,3 +37,8 @@ export const getNextTeacherAssessmentTask = async (
     return null;
   }
 };
+
+export const postMarkTaskAsRead = async (attemptId: string): Promise<any> => {
+  const { data } = await axios.post(apiPath(`markAsRead/task/${attemptId}`));
+  return data;
+};

@@ -12,42 +12,25 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     where: { assignment_id: userAssigment?.id },
   });
 
-  const module_progress = curriculum?.module_progress || [];
+  const module_progress = curriculum?.module_progress as Array<any>;
 
-  const lastModulePositionIndex = (curriculum?.last_module_position || 1) - 1;
+  let lastInProgressTaskModuleId = '';
+  let lastInProgressTaskTaskId = '';
 
-  const lastTaskPositionIndex = (curriculum?.last_task_position || 1) - 1;
-
-  const lastDoneTaskModule =
-    module_progress[lastModulePositionIndex as keyof typeof module_progress];
-
-  let response = {};
-  if (lastDoneTaskModule['tasks'][lastTaskPositionIndex + 1]) {
-    response = {
-      module_id:
-        module_progress[
-          lastModulePositionIndex as keyof typeof module_progress
-        ]['module_id'],
-      task_id:
-        module_progress[
-          lastModulePositionIndex as keyof typeof module_progress
-        ]['tasks'][lastTaskPositionIndex + 1]['id'],
-    };
-  } else {
-    response = {
-      module_id:
-        module_progress[
-          (lastModulePositionIndex + 1) as keyof typeof module_progress
-        ]['module_id'],
-      task_id:
-        module_progress[
-          (lastModulePositionIndex + 1) as keyof typeof module_progress
-        ]['tasks'][0]['id'],
-    };
-  }
+  module_progress.map((module: any) =>
+    module.tasks.map((task: any) => {
+      if (task.status === 'in progress') {
+        lastInProgressTaskModuleId = module.module_id;
+        lastInProgressTaskTaskId = task.id;
+      }
+    })
+  );
 
   if (session.nextAuthSession) {
-    res.status(200).send(response);
+    res.status(200).send({
+      module_id: lastInProgressTaskModuleId,
+      task_id: lastInProgressTaskTaskId,
+    });
   } else {
     res.status(401).send({ message: 'Unauthorized' });
   }
