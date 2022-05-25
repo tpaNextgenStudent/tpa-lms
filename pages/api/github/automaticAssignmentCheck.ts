@@ -137,22 +137,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         score = 1;
       }
     } else if (logs.data.includes('dart')) {
-      if (!logs.data.includes('error')) {
-        score = 3;
-        comment = 'Tests passed sucessfully.';
-      } else {
-        score = 1;
-        comment = logs.data
-          .split(`\"testID\":`)
-          .filter((n: any) => n.includes(`\"error\":`))
-          .map((el: any) => {
-            const splittedEl = el.split(',');
-            return {
-              testID: splittedEl[0],
-              error: el.split(`\"error\":\"`)[1].split(`",\"stackTrace\"`)[0],
-            };
-          });
-      }
+     console.log(4);
     }
     console.log(2);
   }
