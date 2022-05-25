@@ -72,103 +72,109 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (payload.workflow_run.head_branch != 'solution-branch') {
     res.status(404).send({ message: 'Incorrect branch name' });
   }
-  //sprawdzić czy jest status in progress jak nie to return i koniec !!!!!!!!!!
 
-  if (taskDetails.taskDetails?.summative === true) {
-    console.log({
-      assignment_id: taskDetails.assignmentId || '',
-      task_id: taskDetails.taskDetails.id,
-      answer: `https://github.com/tpa-nextgen-staging/${payload.workflow_run.pull_requests[0].head.repo.name}/pull/${payload.workflow_run.pull_requests[0].number}`,
-      attempt_number: 1,
-      teacher_assigment_id: '',
-      submission_date: new Date(),
-      status: 'in review',
-      module_number: 1,
-      task_number: taskDetails.task.position,
-    });
-    // await prisma.attempt.create({
-    //   data: {
-    //     assignment_id: taskDetails.assignmentId || '',
-    //     task_id: taskDetails.taskDetails.id,
-    //     answer: `https://github.com/tpa-nextgen-staging/${payload.workflow_run.pull_request[0].head.repo.name}/pull/${payload.workflow_run.pull_request[0].number}`,
-    //     attempt_number: 1,
-    //     teacher_assigment_id: '',
-    //     submission_date: new Date(),
-    //     status: 'in review',
-    //     module_number: 1,
-    //     task_number: taskDetails.task.position,
-    //   },
-    // });
-  } else {
+  //Check if task has in progress status
+  if (taskDetails.task.status != 'in progress') {
+    res
+      .status(404)
+      .send({ message: 'Task is not in progress. Action disallowed.' });
   }
 
-  // //Check if task is summative or formative
+  if (payload.action === 'requested') {
+    //Mark attempt as in review if action is requested
+    res.status(404).send({
+      message: 'Handler supposed to make procedures only for completed actions',
+    });
+  }
 
-  // if (payload.action === 'requested') {
-  //   //Mark attempt as in review if action is requested
-  //   res.status(200).send({
-  //     1: 1,
-  //   });
-  // } else if (payload.action === 'completed') {
-  //   //Make all actions for completed state
-  //   const runId = payload.workflow_run.id;
+  //Check if task is summative
+  if (taskDetails.taskDetails?.summative === true) {
+    await prisma.attempt.create({
+      data: {
+        assignment_id: taskDetails.assignmentId || '',
+        task_id: taskDetails.taskDetails.id,
+        answer: `https://github.com/tpa-nextgen-staging/${payload.workflow_run.pull_request[0].head.repo.name}/pull/${payload.workflow_run.pull_request[0].number}`,
+        attempt_number: taskDetails.task.attempt_number + 1,
+        teacher_assigment_id: 'cl2idovve0492o0s6xca7z2vs',
+        submission_date: new Date(),
+        status: 'in review',
+        module_number: taskDetails.task.modulePosition,
+        task_number: taskDetails.task.position,
+      },
+    });
+  } else {
+    if (payload.action === 'completed') {
+      //Make all actions for completed state
 
-  //   const runJobs = (await octokit
-  //     .request('GET /repos/{owner}/{repo}/actions/runs/{run_id}/jobs', {
-  //       repo: 'mwc1.tf16.toggl_task.code.dart',
-  //       owner: 'tpa-nextgen',
-  //       run_id: 2351531697,
-  //     })
-  //     .catch(e => console.log(e))) as any;
+      const runId = payload.workflow_run.id;
+      const runJobs = (await octokit
+        .request('GET /repos/{owner}/{repo}/actions/runs/{run_id}/jobs', {
+          repo: 'mwc1.tf16.toggl_task.code.dart',
+          owner: 'tpa-nextgen',
+          run_id: runId,
+        })
+        .catch(e => console.log(e))) as any;
+      const logs = (await octokit
+        .request('GET /repos/{owner}/{repo}/actions/jobs/{job_id}/logs', {
+          repo: 'mwc1.tf16.toggl_task.code.dart',
+          owner: 'tpa-nextgen',
+          job_id: runJobs.data.jobs[0].id,
+        })
+        .catch(e => console.log(e))) as any;
+      let comment = '';
+      let score;
 
-  //   const logs = (await octokit
-  //     .request('GET /repos/{owner}/{repo}/actions/jobs/{job_id}/logs', {
-  //       repo: 'mwc1.tf16.toggl_task.code.dart',
-  //       owner: 'tpa-nextgen',
-  //       job_id: runJobs.data.jobs[0].id,
-  //     })
-  //     .catch(e => console.log(e))) as any;
+      if (logs.data.includes('gotest')) {
+        if (logs.data.includes('Messages:')) {
+          comment = logs.data
+            .split('Messages:')[1]
+            .split('\r\n')[0]
+            .replace('\t', '')
+            .trim();
+        }
+        if (logs.data.includes('✓')) {
+          score = 3;
+          comment = 'Tests passed sucessfully.';
+        } else if (logs.data.includes('✖')) {
+          score = 1;
+        }
+      } else if (logs.data.includes('dart')) {
+        if (!logs.data.includes('error')) {
+          score = 3;
+          comment = 'Tests passed sucessfully.';
+        } else {
+          score = 1;
+          comment = logs.data
+            .split(`\"testID\":`)
+            .filter((n: any) => n.includes(`\"error\":`))
+            .map((el: any) => {
+              const splittedEl = el.split(',');
+              return {
+                testID: splittedEl[0],
+                error: el.split(`\"error\":\"`)[1].split(`",\"stackTrace\"`)[0],
+              };
+            });
+        }
+      }
 
-  //   let comment = '';
-  //   let score;
-  //   let comments;
+      await prisma.attempt.create({
+        data: {
+          assignment_id: taskDetails.assignmentId || '',
+          task_id: taskDetails?.taskDetails?.id || '',
+          answer: `https://github.com/tpa-nextgen-staging/${payload.workflow_run.pull_request[0].head.repo.name}/pull/${payload.workflow_run.pull_request[0].number}`,
+          attempt_number: taskDetails.task.attempt_number + 1,
+          teacher_assigment_id: 'cl2idovve0492o0s6xca7z2vs',
+          submission_date: new Date(),
+          evaluation_date: new Date(),
+          status: (score || 0) > 1 ? 'approved' : 'in progress',
+          module_number: taskDetails.task.modulePosition,
+          task_number: taskDetails.task.position,
+          score: score,
+          comment: comment,
+        },
+      });
+    }
+  }
 
-  //   if (logs.data.includes('gotest')) {
-  //     if (logs.data.includes('Messages:')) {
-  //       comment = logs.data
-  //         .split('Messages:')[1]
-  //         .split('\r\n')[0]
-  //         .replace('\t', '')
-  //         .trim();
-  //     }
-  //     if (logs.data.includes('✓')) {
-  //       score = 3;
-  //       comment = 'Perfectly done.';
-  //     } else if (logs.data.includes('✖')) {
-  //       score = 1;
-  //     }
-  //   } else if (logs.data.includes('dart')) {
-  //     if (logs.data.includes('All tests passed')) {
-  //       score = 3;
-  //       comment = 'Perfectly done.';
-  //     } else if (logs.data.includes('tests failed')) {
-  //       score = 1;
-  //       comments = logs.data.split('[E]').map((el: any, i: number) => {
-  //         if (i === 0) {
-  //           return;
-  //         }
-  //         if (el.includes('UnimplementedError')) {
-  //           return;
-  //         }
-  //         const string = el.split('\r\n')[1];
-  //         const indexOfSpace = string.indexOf(' ');
-  //         return string.substring(indexOfSpace + 1).trim();
-  //       });
-  //       comment =
-  //         comments.length > 0 ? comments.filter((n: any) => n).join('.') : '';
-  //     }
-  //   }
-
-  res.status(200).send({ taskDetails });
-  // }
+  res.status(200).send({});
 };
