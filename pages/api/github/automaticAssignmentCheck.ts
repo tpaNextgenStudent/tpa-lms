@@ -14,36 +14,36 @@ const findTaskDetails = async (
   res: NextApiResponse
 ) => {
   const userRepoLogin = findTaskInfo(repositoryUrl);
-  console.log(2, { repositoryUrl, userLogin, res, userRepoLogin });
-  // if (userRepoLogin != userLogin) {
-  //   res.status(404).send({
-  //     message:
-  //       'User that made action is not a user that should make actions on this repository',
-  //   });
-  // }
 
-  // const userProfile = await prisma.profile.findUnique({
-  //   where: { login: userLogin },
-  // });
+  if (userRepoLogin != userLogin) {
+    res.status(404).send({
+      message:
+        'User that made action is not a user that should make actions on this repository',
+    });
+  }
 
-  // const userAssignment = await prisma.assignment.findFirst({
-  //   where: { profile_id: userProfile?.profile_id },
-  //   include: { curriculum: true },
-  // });
+  const userProfile = await prisma.profile.findUnique({
+    where: { login: userLogin },
+  });
 
-  // const module_progress = userAssignment?.curriculum
-  //   ?.module_progress as Array<any>;
-  // let moduleTasks = [] as Array<any>;
-  // module_progress.map(module =>
-  //   module.tasks.map((task: any) =>
-  //     moduleTasks.push({ ...task, modulePosition: module.position })
-  //   )
-  // );
-  // const task = moduleTasks.flat().find(el => el.github_link === repositoryUrl);
+  const userAssignment = await prisma.assignment.findFirst({
+    where: { profile_id: userProfile?.profile_id },
+    include: { curriculum: true },
+  });
 
-  // const taskDetails = await prisma.task.findFirst({ where: { id: task.id } });
+  const module_progress = userAssignment?.curriculum
+    ?.module_progress as Array<any>;
+  let moduleTasks = [] as Array<any>;
+  module_progress.map(module =>
+    module.tasks.map((task: any) =>
+      moduleTasks.push({ ...task, modulePosition: module.position })
+    )
+  );
+  const task = moduleTasks.flat().find(el => el.github_link === repositoryUrl);
 
-  // return { task, taskDetails, assignmentId: userAssignment?.id };
+  const taskDetails = await prisma.task.findFirst({ where: { id: task.id } });
+
+  return { task, taskDetails, assignmentId: userAssignment?.id };
 };
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
@@ -56,6 +56,13 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const {
     data: { login },
   } = await octokit.rest.users.getAuthenticated();
+
+  if (payload.action === 'requested') {
+    //Mark attempt as in review if action is requested
+    res.status(404).send({
+      message: 'Handler supposed to make procedures only for completed actions',
+    });
+  }
 
   const taskDetails = await findTaskDetails(
     payload.workflow_run.repository.html_url,
@@ -80,13 +87,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   //     .send({ message: 'Task is not in progress. Action disallowed.' });
   // }
 
-  // if (payload.action === 'requested') {
-  //   //Mark attempt as in review if action is requested
-  //   res.status(404).send({
-  //     message: 'Handler supposed to make procedures only for completed actions',
-  //   });
-  // }
-
   //Check if task is summative
   // if (taskDetails.taskDetails?.summative === true) {
   //   await prisma.attempt.create({
@@ -107,6 +107,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   //     //Make all actions for completed state
 
   const runId = payload.workflow_run.id;
+
   const runJobs = (await octokit
     .request('GET /repos/{owner}/{repo}/actions/runs/{run_id}/jobs', {
       repo: payload.workflow_run.pull_requests[0].head.repo.name,
@@ -176,5 +177,5 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   //   }
   // }
 
-  res.status(200).send({ logs });
+  res.status(200).send({ logs, taskDetails });
 };
