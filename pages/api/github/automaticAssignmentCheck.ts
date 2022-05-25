@@ -136,7 +136,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       } else if (logs.data.includes('✖')) {
         score = 1;
       }
-    } 
+    }
     console.log(2);
   }
 
