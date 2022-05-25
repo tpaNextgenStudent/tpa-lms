@@ -98,22 +98,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   // });
   // } else {
   // }
-  console.log(3, taskDetails.taskDetails?.summative);
-  if (taskDetails.taskDetails?.summative === true) {
-    console.log(1);
-  } else {
-    console.log(2);
-  }
 
-  // //Check if task is summative or formative
-
-  // if (payload.action === 'requested') {
-  //   //Mark attempt as in review if action is requested
-  //   res.status(200).send({
-  //     1: 1,
-  //   });
-  // } else if (payload.action === 'completed') {
-  //   //Make all actions for completed state
   const runId = payload.workflow_run.id;
 
   const runJobs = (await octokit
@@ -131,6 +116,45 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       job_id: runJobs.data.jobs[0].id,
     })
     .catch(e => console.log(e))) as any;
+
+  let comment = '';
+  let score;
+  if (taskDetails.taskDetails?.summative === true) {
+    console.log(1);
+  } else {
+    if (logs.data.includes('gotest')) {
+      if (logs.data.includes('Messages:')) {
+        comment = logs.data
+          .split('Messages:')[1]
+          .split('\r\n')[0]
+          .replace('\t', '')
+          .trim();
+      }
+      if (logs.data.includes('✓')) {
+        score = 3;
+        comment = 'Tests passed sucessfully.';
+      } else if (logs.data.includes('✖')) {
+        score = 1;
+      }
+    } else if (logs.data.includes('dart')) {
+      if (!logs.data.includes('error')) {
+        score = 3;
+        comment = 'Tests passed sucessfully.';
+      } else {
+        score = 1;
+        comment = logs.data
+          .split(`\"testID\":`)
+          .filter((n: any) => n.includes(`\"error\":`))
+          .map((el: any) => {
+            const splittedEl = el.split(',');
+            return {
+              testID: splittedEl[0],
+              error: el.split(`\"error\":\"`)[1].split(`",\"stackTrace\"`)[0],
+            };
+          });
+      }
+    }
+  }
 
   //   let comment = '';
   //   let score;
@@ -172,6 +196,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   //     }
   //   }
 
-  res.status(200).send({ taskDetails, logs });
+  res.status(200).send({ comment, score });
   // }
 };
