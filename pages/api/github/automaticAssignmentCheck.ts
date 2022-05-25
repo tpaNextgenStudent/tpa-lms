@@ -93,7 +93,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   //     data: {
   //       assignment_id: taskDetails.assignmentId || '',
   //       task_id: taskDetails.taskDetails.id,
-  //       answer: `https://github.com/tpa-nextgen-staging/${payload.workflow_run.pull_request[0].head.repo.name}/pull/${payload.workflow_run.pull_request[0].number}`,
+  //       answer: `https://github.com/tpa-nextgen-staging/${payload.workflow_run.pull_requests[0].head.repo.name}/pull/${payload.workflow_run.pull_requests[0].number}`,
   //       attempt_number: taskDetails.task.attempt_number + 1,
   //       teacher_assigment_id: 'cl2idovve0492o0s6xca7z2vs',
   //       submission_date: new Date(),
@@ -109,14 +109,14 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const runId = payload.workflow_run.id;
   const runJobs = (await octokit
     .request('GET /repos/{owner}/{repo}/actions/runs/{run_id}/jobs', {
-      repo: payload.workflow_run.pull_request[0].head.repo.name,
+      repo: payload.workflow_run.pull_requests[0].head.repo.name,
       owner: 'tpa-nextgen-staging',
       run_id: runId,
     })
     .catch(e => console.log(e))) as any;
   const logs = (await octokit
     .request('GET /repos/{owner}/{repo}/actions/jobs/{job_id}/logs', {
-      repo: payload.workflow_run.pull_request[0].head.repo.name,
+      repo: payload.workflow_run.pull_requests[0].head.repo.name,
       owner: 'tpa-nextgen-staging',
       job_id: runJobs.data.jobs[0].id,
     })
@@ -161,7 +161,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   //       data: {
   //         assignment_id: taskDetails.assignmentId || '',
   //         task_id: taskDetails?.taskDetails?.id || '',
-  //         answer: `https://github.com/tpa-nextgen-staging/${payload.workflow_run.pull_request[0].head.repo.name}/pull/${payload.workflow_run.pull_request[0].number}`,
+  //         answer: `https://github.com/tpa-nextgen-staging/${payload.workflow_run.pull_requests[0].head.repo.name}/pull/${payload.workflow_run.pull_requests[0].number}`,
   //         attempt_number: taskDetails.task.attempt_number + 1,
   //         teacher_assigment_id: 'cl2idovve0492o0s6xca7z2vs',
   //         submission_date: new Date(),
