@@ -6,6 +6,7 @@ import {
   sampleModule,
   sampleTask,
 } from '../../../lib/constants';
+import { TaskStatus, TaskType } from '../../../lib/types';
 
 export default {
   title: 'Tasks/TaskSection',
@@ -23,6 +24,9 @@ const args = {
     attempt_number: 1,
     score: null,
     answer: null,
+    github_link: 'https://github.com/link/to/gh-repo',
+    position: 1,
+    attempt_id: 'attemptId',
   },
   task: sampleTask,
   module: sampleModule,

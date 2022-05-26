@@ -16,7 +16,7 @@ export const TaskDescription = ({
   paddingBottom,
 }: TaskDescriptionProps) => {
   const content = answer
-    ? `## Github link:\n${answer}\n${description}`
+    ? `## Github link:\n${answer}\n\n${description}`
     : description;
   return (
     <article

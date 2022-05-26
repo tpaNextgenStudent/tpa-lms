@@ -16,12 +16,4 @@ const Template: ComponentStory<typeof InfoAction> = args => (
 );
 
 export const Default = Template.bind({});
-Default.args = {
-  task: {
-    id: 'taskId',
-    name: 'Task Name',
-    description: 'Task description',
-    link: 'https://github.com/path/to/repository/with/task',
-    type: 'code',
-  },
-};
+Default.args = {};

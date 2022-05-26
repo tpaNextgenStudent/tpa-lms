@@ -22,7 +22,8 @@ export interface ITask {
     position: number;
     attempt_id: string | null;
     attempt_number: number | null;
-  } | null;
+    github_link: string;
+  };
 }
 
 export const getUserTasksByModule = async (

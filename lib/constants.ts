@@ -1,4 +1,5 @@
 import { TaskStatus } from './types';
+import { ITask } from '../apiHelpers/tasks';
 
 export const sampleUser = {
   cohort_name: 'TPA-TOYOTA-05',
@@ -70,7 +71,7 @@ export const sampleModule2 = {
   name: 'Reactivity',
 };
 
-export const sampleAttempts = [
+export const sampleAttempts: ITask['last_attempt'][] = [
   {
     score: 3,
     answer: 'https://github.com/path/to/answer',
@@ -78,6 +79,7 @@ export const sampleAttempts = [
     position: 1,
     attempt_id: 'attemptId',
     attempt_number: 1,
+    github_link: 'https://github.com/path/to/repo/clone',
   },
   {
     score: null,
@@ -86,6 +88,7 @@ export const sampleAttempts = [
     position: 2,
     attempt_id: 'attemptId2',
     attempt_number: 1,
+    github_link: 'https://github.com/path/to/repo2/clone',
   },
 ];
 

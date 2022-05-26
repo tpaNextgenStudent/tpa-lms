@@ -14,11 +14,5 @@ const Template: ComponentStory<typeof CodeAction> = args => (
 
 export const Code = Template.bind({});
 Code.args = {
-  task: {
-    id: 'taskId',
-    name: 'Task Name',
-    description: 'Task description',
-    link: 'https://github.com/path/to/repository/with/task',
-    type: 'code',
-  },
+  github_link: 'https://github.com/path/to/pr',
 };
