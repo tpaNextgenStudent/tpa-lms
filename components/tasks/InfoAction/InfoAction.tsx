@@ -1,19 +1,13 @@
 import styles from './InfoAction.module.scss';
 import { CTAButton } from '../../common/CTAButton/CTAButton';
-import { TaskType } from '../../../lib/types';
+import { TaskStatus, TaskType } from '../../../lib/types';
 import { useIsLoading } from '../../../lib/hooks/loadingContext';
 import { postMarkTaskAsRead } from '../../../apiHelpers/assess';
 import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
+import { ITask } from '../../../apiHelpers/tasks';
 
 interface InfoActionProps {
-  task: {
-    id: string;
-    name: string;
-    type: TaskType;
-    description: string;
-    link: string | null;
-  };
   sizeRef?: (element: HTMLElement | null) => void;
 }
 

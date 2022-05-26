@@ -1,29 +1,22 @@
 import { CodeAction } from '../CodeAction/CodeAction';
 import { InfoAction } from '../InfoAction/InfoAction';
-import { TaskType } from '../../../lib/types';
+import { TaskStatus, TaskType } from '../../../lib/types';
+import { ITask } from '../../../apiHelpers/tasks';
 
 interface TaskActionProps {
-  task: {
-    id: string;
-    name: string;
-    type: TaskType;
-    description: string;
-    link: string | null;
-  };
+  type: TaskType;
+  github_link?: string;
   sizeRef?: (element: HTMLElement | null) => void;
 }
 
-const TASK_TYPES = {
-  CODE: 'code',
-  INFO: 'info',
-};
-
-export const TaskAction = ({ task, sizeRef }: TaskActionProps) => {
-  switch (task.type) {
-    case TASK_TYPES.CODE:
-      return <CodeAction sizeRef={sizeRef} task={task} />;
-    case TASK_TYPES.INFO:
-      return <InfoAction sizeRef={sizeRef} task={task} />;
+export const TaskAction = ({ type, github_link, sizeRef }: TaskActionProps) => {
+  switch (type) {
+    case 'code':
+      return github_link ? (
+        <CodeAction sizeRef={sizeRef} github_link={github_link} />
+      ) : null;
+    case 'info':
+      return <InfoAction sizeRef={sizeRef} />;
     default:
       return null;
   }

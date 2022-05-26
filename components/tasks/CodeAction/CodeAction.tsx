@@ -3,20 +3,15 @@ import { useEffect, useState, useCallback } from 'react';
 import { Toast } from '../../common/Toast/Toast';
 import { useRouter } from 'next/router';
 import { CodeActionLines } from '../CodeActionLines/CodeActionLines';
-import { TaskType } from '../../../lib/types';
+import { TaskStatus, TaskType } from '../../../lib/types';
+import { ITask } from '../../../apiHelpers/tasks';
 
 interface CodeActionProps {
-  task: {
-    id: string;
-    name: string;
-    type: TaskType;
-    description: string;
-    link: string | null;
-  };
+  github_link: string;
   sizeRef?: (element: HTMLElement | null) => void;
 }
 
-export const CodeAction = ({ task, sizeRef }: CodeActionProps) => {
+export const CodeAction = ({ github_link, sizeRef }: CodeActionProps) => {
   const router = useRouter();
 
   const [isWarningVisible, setIsWarningVisible] = useState(false);
@@ -49,14 +44,20 @@ export const CodeAction = ({ task, sizeRef }: CodeActionProps) => {
           <p className={styles.codeText}>How to start</p>
           <CodeActionLines
             onCopyClick={onCopyClick}
-            lines={[`git clone ${task.link}`, 'git checkout -b my-branch']}
+            lines={[
+              `git clone ${github_link}`,
+              'git checkout -b solution-branch',
+            ]}
           />
         </div>
         <div className={styles.codeActionBlock}>
           <p className={styles.codeText}>Submit your work</p>
           <CodeActionLines
             onCopyClick={onCopyClick}
-            lines={[`git commit -a -m solution`, 'git checkout -b my-branch']}
+            lines={[
+              `git commit -a -m solution`,
+              'git push -u origin solution-branch',
+            ]}
           />
         </div>
       </div>

@@ -22,6 +22,7 @@ interface TaskSectionProps {
     attempt_number: number | null;
     score: number | null;
     answer: null | string;
+    github_link?: string;
   } | null;
   comments?: Comment[];
   module: IModuleVersion;
@@ -83,7 +84,11 @@ export const TaskSection = ({
                 description={task.description}
               />
               {isTaskActionVisible && attempt?.status !== 'upcoming' && (
-                <TaskAction sizeRef={ref} task={task} />
+                <TaskAction
+                  sizeRef={ref}
+                  type={task.type}
+                  github_link={attempt?.github_link}
+                />
               )}
             </>
           ),
