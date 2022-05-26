@@ -154,6 +154,22 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           });
       }
     }
+    await prisma.attempt.create({
+        data: {
+          assignment_id: taskDetails.assignmentId || '',
+          task_id: taskDetails?.taskDetails?.id || '',
+          answer: `https://github.com/tpa-nextgen-staging/${payload.workflow_run.pull_requests[0].head.repo.name}/pull/${payload.workflow_run.pull_requests[0].number}`,
+          attempt_number: taskDetails.task.attempt_number + 1,
+          teacher_assigment_id: 'cl2idovve0492o0s6xca7z2vs',
+          submission_date: new Date(),
+          evaluation_date: new Date(),
+          status: (score || 0) > 1 ? 'approved' : 'in progress',
+          module_number: taskDetails.task.modulePosition,
+          task_number: taskDetails.task.position,
+          score: score,
+          comment: comment,
+        },
+      });
     console.log(2);
   }
 
