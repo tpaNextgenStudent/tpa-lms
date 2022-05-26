@@ -28,7 +28,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const data = await octokit
     .request('GET https://api.github.com/orgs/{org}/members/{username}', {
       username: profile?.login,
-      org: 'tpa-nextgen',
+      org: 'tpa-nextgen-staging',
     })
     .catch(e => {
       userInOrganisation = false;

@@ -41,7 +41,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
                 'PATCH https://api.github.com/repos/{owner}/{repo}',
                 {
                   repo: task_details?.link?.split('/').slice(-1)[0],
-                  owner: 'tpa-nextgen',
+                  owner: 'tpa-nextgen-staging',
                   is_template: true,
                 }
               );
@@ -51,7 +51,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
                 'POST https://api.github.com/repos/{template_owner}/{template_repo}/generate',
                 {
                   template_repo: task_details?.link?.split('/').slice(-1)[0],
-                  template_owner: 'tpa-nextgen',
+                  template_owner: 'tpa-nextgen-staging',
                   owner: 'tpa-nextgen-staging',
                   name: `${task_details?.link?.split('/').slice(-1)[0]}-${
                     profile?.login
