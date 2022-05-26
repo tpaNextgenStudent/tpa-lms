@@ -209,7 +209,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
                     approved = approved + 1;
                   }
                 });
-                if (approved === i) {
+                if (approved === i - 1 && newAttempt.score === 3) {
                   nextTask.status = 'in progress';
                 }
               }
