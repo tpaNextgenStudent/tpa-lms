@@ -126,6 +126,49 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   let comment = '';
   let score;
   if (taskDetails?.taskDetails?.summative === true) {
+    const newAttempt = await prisma.attempt.create({
+      data: {
+        assignment_id: taskDetails?.assignmentId || '',
+        task_id: taskDetails?.taskDetails?.id || '',
+        answer: `https://github.com/tpa-nextgen-staging/${payload.workflow_run.pull_requests[0].head.repo.name}/pull/${payload.workflow_run.pull_requests[0].number}`,
+        attempt_number: taskDetails?.task?.attempt_number + 1,
+        teacher_assigment_id: 'cl2idovve0492o0s6xca7z2vs',
+        submission_date: new Date(),
+        status: 'in review',
+        module_number: taskDetails?.task?.modulePosition,
+        task_number: taskDetails?.task?.position,
+      },
+    });
+
+    const module_progress = taskDetails?.curriculum
+      ?.module_progress as Array<any>;
+    const task_id = taskDetails?.taskDetails?.id as string;
+    //unblock next task, chyba ze nastepny summative to sprawdz czy wszystko jest approved
+    const newModuleProgress = await Promise.all(
+      module_progress.map(async (module: any) => {
+        const tasks = await Promise.all(
+          module.tasks.map(async (task: any) => {
+            if (task.id === task_id) {
+              task.attempt_number += 1;
+              task.attempt_id = newAttempt.id;
+              task.answer = newAttempt.answer;
+              task.status = 'in review';
+              return task;
+            } else {
+              return task;
+            }
+          })
+        );
+        return { ...module, tasks };
+      })
+    );
+
+    const updatedCurriculum = await prisma.curriculum.update({
+      where: { id: taskDetails?.curriculum?.id },
+      data: {
+        module_progress: newModuleProgress,
+      },
+    });
     console.log(1);
   } else {
     if (logs.data.includes('gotest')) {
