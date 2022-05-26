@@ -154,7 +154,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           });
       }
     }
-    const markdownComment = '```'+`${comment}`+'```'
+  
     await prisma.attempt.create({
         data: {
           assignment_id: taskDetails?.assignmentId || '',
@@ -168,7 +168,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           module_number: taskDetails?.task?.modulePosition,
           task_number: taskDetails?.task?.position,
           score: score,
-          comment: markdownComment
+          comment: JSON.stringify(comment)
         },
       });
     console.log(2);
