@@ -68,7 +68,7 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
       };
     }
 
-    const { userInOrganisation, resposCreated } = await getUserInOrganisation({
+    const { userInOrganisation, reposCreated } = await getUserInOrganisation({
       cookie: authCookie,
     });
     if (!userInOrganisation) {
@@ -79,7 +79,7 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
         },
       };
     }
-    if (!resposCreated) {
+    if (!reposCreated) {
       return {
         redirect: {
           destination: '/login/configuration',

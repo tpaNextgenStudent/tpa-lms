@@ -8,7 +8,7 @@ type Options = {
 
 export interface IsUserInOrganisationData {
   userInOrganisation: boolean;
-  resposCreated: boolean;
+  reposCreated: boolean;
 }
 
 export const getUserInOrganisation = async ({

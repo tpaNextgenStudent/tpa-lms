@@ -35,7 +35,7 @@ export const getServerSideProps = withServerSideAuth()(
       };
     }
 
-    const { userInOrganisation, resposCreated } = await getUserInOrganisation({
+    const { userInOrganisation, reposCreated } = await getUserInOrganisation({
       cookie: authCookie,
     });
 
@@ -45,7 +45,7 @@ export const getServerSideProps = withServerSideAuth()(
       };
     }
 
-    if (!resposCreated) {
+    if (!reposCreated) {
       return {
         redirect: {
           destination: '/login/configuration',
