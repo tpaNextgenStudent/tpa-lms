@@ -205,9 +205,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
                 console.log(2, 'else');
                 let approved = 0;
                 let i = 0;
-                module.tasks.map((el: any, i: number) => {
+                module.tasks.map((el: any) => {
+                  i = i + 1;
                   if (el.status === 'approved') {
-                    i = i + 1;
                     approved = approved + 1;
                   }
                 });
