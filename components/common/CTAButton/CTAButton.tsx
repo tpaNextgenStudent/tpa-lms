@@ -3,7 +3,7 @@ import clsx from 'clsx';
 
 interface CTAButtonProps {
   text: string;
-  disabled?: boolean;
+  isDisabled?: boolean;
   className?: string;
   type?: 'button' | 'submit' | 'reset';
   onClick?: () => void;
@@ -13,7 +13,7 @@ interface CTAButtonProps {
 export const CTAButton = ({
   text,
   type = 'button',
-  disabled = false,
+  isDisabled = false,
   onClick,
   className,
   styleType = 'primary',
@@ -26,10 +26,10 @@ export const CTAButton = ({
       className={clsx(
         styles.button,
         styleType === 'secondary' && styles.buttonSecondary,
-        disabled && styles.buttonDisabled,
+        isDisabled && styles.buttonDisabled,
         className
       )}
-      disabled={disabled}
+      disabled={isDisabled}
       onClick={onClick}
     >
       {text}

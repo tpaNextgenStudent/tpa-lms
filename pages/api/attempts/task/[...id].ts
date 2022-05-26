@@ -39,7 +39,10 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         },
         include: { user: true },
       });
-      return { ...attempt, teacher: { user: user.user } };
+      return {
+        ...attempt,
+        teacher: { user: user.user, profile: attempt.teacher.profile },
+      };
     })
   );
 

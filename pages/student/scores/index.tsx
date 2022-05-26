@@ -8,6 +8,7 @@ import {
 import { withServerSideAuth } from '../../../lib/auth/withServerSideAuth';
 import { getUserScores } from '../../../apiHelpers/scores';
 import { EmptyStateView } from '../../../components/common/EmptyStateView/EmptyStateView';
+import NoAssignmentsRobotImg from '../../../public/img/no-assignments-robot.png';
 
 export default function ScoresIndex({
   user,
@@ -17,12 +18,12 @@ export default function ScoresIndex({
     <Layout
       headerTitle="My Scores"
       title="My Scores"
-      description="Track your scores. You can get 1 - don't give up, try again! 2 and 3 - well done, you are ready to go with the next task!"
+      headerDescription="Track your scores. You can get 1 - don't give up, try again! 2 and 3 - well done, you are ready to go with the next task!"
       user={user}
     >
       {scores.length < 1 ? (
         <EmptyStateView
-          imgSrc={'/img/no-assignments-robot.png'}
+          imgSrc={NoAssignmentsRobotImg}
           message="You have no scores yet"
         />
       ) : (

@@ -14,17 +14,15 @@ export const UserNameCell = ({ img, name, login, id }: UserNameCellProps) => {
     <BlockedLink isBlocked={!id} href={id && `/profile/${id}`}>
       <div data-cypress="UserNameCell" className={styles.userCellWrapper}>
         <div className={styles.userImgWrapper}>
-          {img && (
-            <Image
-              width={32}
-              height={32}
-              layout="fixed"
-              objectFit="cover"
-              className={styles.userImg}
-              src={img}
-              alt={name}
-            />
-          )}
+          <Image
+            width={32}
+            height={32}
+            layout="fixed"
+            objectFit="cover"
+            className={styles.userImg}
+            src={img || '/svg/user.svg'}
+            alt={name}
+          />
         </div>
         <div className={styles.userNameWrapper}>
           <p data-cypress="UserName" className={styles.userName}>

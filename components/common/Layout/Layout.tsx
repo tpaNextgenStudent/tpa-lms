@@ -11,7 +11,7 @@ interface LayoutProps {
   headerTitle: string;
   title: string;
   titleTemplate?: string;
-  description?: string;
+  headerDescription?: string;
   actionsNumber?: number;
   withHeaderPrevButton?: boolean;
   parentPage?: { title: string; link: string };
@@ -23,7 +23,7 @@ export const Layout = ({
   headerTitle,
   title,
   titleTemplate = 'TPA | {title}',
-  description,
+  headerDescription,
   actionsNumber,
   withHeaderPrevButton = false,
   parentPage,
@@ -49,7 +49,8 @@ export const Layout = ({
         <Sidebar
           closeMobileNav={closeMobileNav}
           isMobileNavOpen={isMobileNavOpen}
-          user={user}
+          role={user.role}
+          cohortName={user.cohort_name}
         />
         <div className={styles.mainWrapper}>
           <Header
@@ -57,7 +58,7 @@ export const Layout = ({
             withPrevButton={withHeaderPrevButton}
             openMobileNav={openMobileNav}
             title={headerTitle}
-            description={description}
+            description={headerDescription}
             user={user}
             actionsNumber={actionsNumber}
           />

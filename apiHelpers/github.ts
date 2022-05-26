@@ -6,8 +6,6 @@ type Options = {
   cookie: string;
 };
 
-export type UserRole = 'teacher' | 'student';
-
 export interface IsUserInOrganisationData {
   userInOrganisation: boolean;
   resposCreated: boolean;

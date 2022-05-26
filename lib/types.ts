@@ -16,6 +16,7 @@ interface CommentAuthor {
   name: string | null;
   surname: string | null;
   image: string | null;
+  login: string | null;
 }
 
 export interface Comment {
@@ -27,7 +28,7 @@ export interface Comment {
   author: CommentAuthor;
 }
 
-export type TaskType = 'code' | 'quiz' | 'image' | 'info';
+export type TaskType = 'code' | 'info';
 export type TaskStatus = 'upcoming' | 'in progress' | 'approved' | 'in review';
 
 export type IProfile = {
