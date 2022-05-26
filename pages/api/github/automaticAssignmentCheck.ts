@@ -189,6 +189,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             if (task.id === task_id) {
               task.attempt_number += 1;
               task.attempt_id = newAttempt.id;
+              task.score = newAttempt.score;
+              task.answer = newAttempt.answer;
               const nextTask = module.tasks.find(
                 (el: any) => el.position === task.position + 1
               );
