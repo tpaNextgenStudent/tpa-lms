@@ -161,7 +161,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       }
     }
 
-    await prisma.attempt.create({
+    const newAttempt = await prisma.attempt.create({
       data: {
         assignment_id: taskDetails?.assignmentId || '',
         task_id: taskDetails?.taskDetails?.id || '',
@@ -177,6 +177,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         comment: JSON.stringify(comment),
       },
     });
+
     const module_progress = taskDetails?.curriculum
       ?.module_progress as Array<any>;
     const task_id = taskDetails?.taskDetails?.id as string;
@@ -186,6 +187,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         const tasks = await Promise.all(
           module.tasks.map(async (task: any) => {
             if (task.id === task_id) {
+              task.attempt_number += 1;
+              task.attempt_id = newAttempt.id;
               const nextTask = module.tasks.find(
                 (el: any) => el.position === task.position + 1
               );
@@ -198,7 +201,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
                 let approved = 0;
                 let i = 0;
                 module.tasks.map((el: any, i: number) => {
-                  if ((el.status = 'approved')) {
+                  if (el.status === 'approved') {
                     i = i;
                     approved = approved + 1;
                   }
