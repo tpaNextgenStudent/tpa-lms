@@ -167,7 +167,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           module_number: taskDetails?.task?.modulePosition,
           task_number: taskDetails?.task?.position,
           score: score,
-          comment: `${comment}`,
+          comment: `"${comment}"`,
         },
       });
     console.log(2);
