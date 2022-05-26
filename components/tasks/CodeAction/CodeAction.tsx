@@ -44,20 +44,22 @@ export const CodeAction = ({ github_link, sizeRef }: CodeActionProps) => {
           <p className={styles.codeText}>How to start</p>
           <CodeActionLines
             onCopyClick={onCopyClick}
-            lines={[
-              `git clone ${github_link}`,
-              'git checkout -b solution-branch',
-            ]}
+            lines={[`git clone ${github_link}`]}
+          />
+          <CodeActionLines
+            onCopyClick={onCopyClick}
+            lines={['git checkout -b solution-branch']}
           />
         </div>
         <div className={styles.codeActionBlock}>
           <p className={styles.codeText}>Submit your work</p>
           <CodeActionLines
             onCopyClick={onCopyClick}
-            lines={[
-              `git commit -a -m solution`,
-              'git push -u origin solution-branch',
-            ]}
+            lines={[`git commit -a -m solution`]}
+          />
+          <CodeActionLines
+            onCopyClick={onCopyClick}
+            lines={['git push -u origin solution-branch']}
           />
         </div>
       </div>

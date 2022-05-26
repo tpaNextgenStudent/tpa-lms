@@ -13,6 +13,10 @@
   @media (max-width: media.$tabletS) {
     margin-left: 0;
   }
+
+  &:last-child {
+    margin-top: auto;
+  }
 }
 
 .codeBlock {
