@@ -199,8 +199,10 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
                 (el: any) => el.position === task.position + 2
               );
               if (afterNextTask) {
+                console.log(1, afterNextTask);
                 nextTask.status = 'in progress';
               } else {
+                console.log(2, 'else');
                 let approved = 0;
                 let i = 0;
                 module.tasks.map((el: any, i: number) => {
@@ -209,6 +211,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
                     approved = approved + 1;
                   }
                 });
+                console.log(3, approved);
+                console.log(4, i);
+                console.log(5, approved === i - 1 && newAttempt.score === 3);
                 if (approved === i - 1 && newAttempt.score === 3) {
                   nextTask.status = 'in progress';
                 }

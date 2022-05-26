@@ -19,7 +19,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   module_progress.map((module: any) =>
     module.tasks.map((task: any) => {
-      if (task.status === 'in progress') {
+      if (task.status === 'in progress' || task.status === 'in review') {
         lastInProgressTaskModuleId = module.module_id;
         lastInProgressTaskTaskId = task.id;
       }
