@@ -133,6 +133,7 @@ export const mapProgressToTableData = (
   rawProgress: ITeacherProgressItem[]
 ): CohortProgressData[] => {
   return rawProgress
+    .filter(({ student }) => student.user)
     .sort(({ tasks: t1 }, { tasks: t2 }) => {
       return countApprovedTasks(t1) > countApprovedTasks(t2) ? -1 : 1;
     })
