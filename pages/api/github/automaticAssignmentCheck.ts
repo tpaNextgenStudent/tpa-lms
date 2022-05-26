@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import { Octokit } from 'octokit';
 import prisma from '../../../lib/prisma';
+import modules from '../modules';
 
 const findTaskInfo = (repositoryUrl: string) => {
   const repositoryUrlSplitted = repositoryUrl.split('-');
@@ -43,7 +44,12 @@ const findTaskDetails = async (
 
   const taskDetails = await prisma.task.findFirst({ where: { id: task.id } });
 
-  return { task, taskDetails, assignmentId: userAssignment?.id };
+  return {
+    task,
+    taskDetails,
+    assignmentId: userAssignment?.id,
+    curriculum: userAssignment?.curriculum,
+  };
 };
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
@@ -154,22 +160,70 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           });
       }
     }
+
     await prisma.attempt.create({
       data: {
         assignment_id: taskDetails?.assignmentId || '',
         task_id: taskDetails?.taskDetails?.id || '',
         answer: `https://github.com/tpa-nextgen-staging/${payload.workflow_run.pull_requests[0].head.repo.name}/pull/${payload.workflow_run.pull_requests[0].number}`,
-        attempt_number: taskDetails?.task.attempt_number + 1,
+        attempt_number: taskDetails?.task?.attempt_number + 1,
         teacher_assigment_id: 'cl2idovve0492o0s6xca7z2vs',
         submission_date: new Date(),
         evaluation_date: new Date(),
         status: (score || 0) > 1 ? 'approved' : 'in progress',
-        module_number: taskDetails?.task.modulePosition,
-        task_number: taskDetails?.task.position,
+        module_number: taskDetails?.task?.modulePosition,
+        task_number: taskDetails?.task?.position,
         score: score,
-        comment: comment,
+        comment: JSON.stringify(comment),
       },
     });
+    const module_progress = taskDetails?.curriculum
+      ?.module_progress as Array<any>;
+    const task_id = taskDetails?.taskDetails?.id as string;
+    //unblock next task, chyba ze nastepny summative to sprawdz czy wszystko jest approved
+    const newModuleProgress = await Promise.all(
+      module_progress.map(async (module: any) => {
+        const tasks = await Promise.all(
+          module.tasks.map(async (task: any) => {
+            if (task.id === task_id) {
+              const nextTask = module.tasks.find(
+                (el: any) => el.position === task.position + 1
+              );
+              const afterNextTask = module.tasks.find(
+                (el: any) => el.position === task.position + 2
+              );
+              if (afterNextTask) {
+                nextTask.status = 'in progress';
+              } else {
+                let approved = 0;
+                let i = 0;
+                module.tasks.map((el: any, i: number) => {
+                  if ((el.status = 'approved')) {
+                    i = i;
+                    approved = approved + 1;
+                  }
+                });
+                if (approved === i) {
+                  nextTask.status = 'in progress';
+                }
+              }
+              return task;
+            } else {
+              return task;
+            }
+          })
+        );
+        return { ...module, tasks };
+      })
+    );
+
+    const updatedCurriculum = await prisma.curriculum.update({
+      where: { id: taskDetails?.curriculum?.id },
+      data: {
+        module_progress: newModuleProgress,
+      },
+    });
+
     console.log(2);
   }
 
