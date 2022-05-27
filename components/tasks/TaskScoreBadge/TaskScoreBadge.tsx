@@ -6,15 +6,20 @@ interface TaskScoreBadgeProps {
   score: number;
   withText?: boolean;
   withBorder?: boolean;
+  className?: string;
 }
 
 export const TaskScoreBadge = ({
   score,
   withText,
   withBorder,
+  className,
 }: TaskScoreBadgeProps) => {
   return (
-    <span data-cypress="TaskScoreBadge" className={styles.wrapper}>
+    <span
+      data-cypress="TaskScoreBadge"
+      className={clsx(styles.wrapper, className)}
+    >
       {withText && <span className={styles.scoreText}>Score</span>}
       <span
         className={clsx(

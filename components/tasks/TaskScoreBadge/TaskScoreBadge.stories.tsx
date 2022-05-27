@@ -5,6 +5,7 @@ import { TaskScoreBadge } from './TaskScoreBadge';
 export default {
   title: 'Tasks/Badges/TaskScoreBadge',
   component: TaskScoreBadge,
+  parameters: { controls: { exclude: ['className'] } },
 } as ComponentMeta<typeof TaskScoreBadge>;
 
 const Template: ComponentStory<typeof TaskScoreBadge> = args => (
