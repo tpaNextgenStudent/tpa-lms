@@ -83,7 +83,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   if (payload.action === 'requested') {
     //If action is requested create attempt with workflow-run-id to later identify this attempt
-    console.log(1, {
+    const newAttempt = await prisma.attempt.create({
       data: {
         assignment_id: taskDetails?.assignmentId || '',
         task_id: taskDetails?.taskDetails?.id || '',
@@ -97,21 +97,56 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         workflow_run_id: runId,
       },
     });
-    await prisma.attempt.create({
+    //update modules progress
+    const module_progress = taskDetails?.curriculum
+      ?.module_progress as Array<any>;
+    const task_id = taskDetails?.taskDetails?.id as string;
+    const newModuleProgress = await Promise.all(
+      module_progress.map(async (module: any) => {
+        const tasks = await Promise.all(
+          module.tasks.map(async (task: any) => {
+            if (task.id === task_id) {
+              task.attempt_number += 1;
+              task.attempt_id = newAttempt.id;
+              task.answer = newAttempt.answer;
+              task.status = 'in review';
+              const nextTask = module.tasks.find(
+                (el: any) => el.position === task.position + 1
+              );
+              const afterNextTask = module.tasks.find(
+                (el: any) => el.position === task.position + 2
+              );
+              if (afterNextTask) {
+                nextTask.status = 'in progress';
+              } else {
+                let approved = 0;
+                let i = 0;
+                module.tasks.map((el: any) => {
+                  i = i + 1;
+                  if (el.status === 'approved') {
+                    approved = approved + 1;
+                  }
+                });
+                if (approved === i - 1 && newAttempt.score === 3) {
+                  nextTask.status = 'in progress';
+                }
+              }
+              return task;
+            } else {
+              return task;
+            }
+          })
+        );
+        return { ...module, tasks };
+      })
+    );
+
+    const updatedCurriculum = await prisma.curriculum.update({
+      where: { id: taskDetails?.curriculum?.id },
       data: {
-        assignment_id: taskDetails?.assignmentId || '',
-        task_id: taskDetails?.taskDetails?.id || '',
-        answer: `https://github.com/tpa-nextgen-staging/${payload.workflow_run.pull_requests[0].head.repo.name}/pull/${payload.workflow_run.pull_requests[0].number}`,
-        attempt_number: taskDetails?.task?.attempt_number + 1,
-        teacher_assigment_id: 'cl3mjp6v60090uts6s96mglvo',
-        submission_date: new Date(),
-        status: 'in review',
-        module_number: taskDetails?.task?.modulePosition,
-        task_number: taskDetails?.task?.position,
-        workflow_run_id: runId,
+        module_progress: newModuleProgress,
       },
     });
-    return res.status(200).send({ la: 'al' });
   }
 
   // const runJobs = (await octokit
