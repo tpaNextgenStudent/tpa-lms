@@ -83,7 +83,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   if (payload.action === 'requested') {
     //If action is requested create attempt with workflow-run-id to later identify this attempt
-    return await prisma.attempt.create({
+    console.log(1, {
       data: {
         assignment_id: taskDetails?.assignmentId || '',
         task_id: taskDetails?.taskDetails?.id || '',
@@ -97,6 +97,21 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         workflow_run_id: runId,
       },
     });
+    await prisma.attempt.create({
+      data: {
+        assignment_id: taskDetails?.assignmentId || '',
+        task_id: taskDetails?.taskDetails?.id || '',
+        answer: `https://github.com/tpa-nextgen-staging/${payload.workflow_run.pull_requests[0].head.repo.name}/pull/${payload.workflow_run.pull_requests[0].number}`,
+        attempt_number: taskDetails?.task?.attempt_number + 1,
+        teacher_assigment_id: 'cl3mjp6v60090uts6s96mglvo',
+        submission_date: new Date(),
+        status: 'in review',
+        module_number: taskDetails?.task?.modulePosition,
+        task_number: taskDetails?.task?.position,
+        workflow_run_id: runId,
+      },
+    });
+    return res.status(200).send({ la: 'al' });
   }
 
   // const runJobs = (await octokit
