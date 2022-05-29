@@ -213,7 +213,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       })
     );
 
-    updateModuleProgress(
+    await updateModuleProgress(
       taskDetails?.curriculum?.id as string,
       newModuleProgress
     );
@@ -293,11 +293,12 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         })
       );
 
-      updateModuleProgress(
+      await updateModuleProgress(
         taskDetails?.curriculum?.id as string,
         newModuleProgress
       );
     } else {
+      console.log('JESTEM TU GDZIE POWINIENIEM');
       const { comment, score } = extractCommentsAndScore(logs);
       let newAttempt: newAttmept;
       if (alreadyCreatedAttempt) {
@@ -388,7 +389,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         })
       );
 
-      updateModuleProgress(
+      await updateModuleProgress(
         taskDetails?.curriculum?.id as string,
         newModuleProgress
       );
