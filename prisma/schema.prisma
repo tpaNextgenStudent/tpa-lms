@@ -137,20 +137,21 @@ model Curriculum {
 }
 
 model Attempt {
-  id                   String     @id @default(cuid())
+  id                   String      @id @default(cuid())
   assignment_id        String
-  student              Assignment @relation("student", fields: [assignment_id], references: [id])
+  student              Assignment  @relation("student", fields: [assignment_id], references: [id])
   task_id              String
-  task                 Task       @relation(fields: [task_id], references: [id])
+  task                 Task        @relation(fields: [task_id], references: [id])
   score                Int?
-  answer               String
+  answer               String?
   comment              String?
   attempt_number       Int
-  teacher_assigment_id String
-  teacher              Assignment @relation("teacher", fields: [teacher_assigment_id], references: [id])
-  submission_date      DateTime   @default(now())
+  teacher_assigment_id String?
+  teacher              Assignment? @relation("teacher", fields: [teacher_assigment_id], references: [id])
+  submission_date      DateTime    @default(now())
   evaluation_date      DateTime?
   status               String
-  module_number        Int?
-  task_number          Int?
+  module_number        Int
+  task_number          Int
+  workflow_run_id      Int?
 }
