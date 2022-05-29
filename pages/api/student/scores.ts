@@ -64,7 +64,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         ...attempt,
         teacher: {
           user: teacherAccount?.user,
-          profile: attempt?.teacher.profile,
+          profile: attempt?.teacher?.profile,
         },
       };
 
