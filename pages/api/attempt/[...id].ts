@@ -32,7 +32,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
   const { ...teacher } = await prisma.account.findUnique({
     where: {
-      providerAccountId: attempt.teacher.profile?.provider_account_id,
+      providerAccountId: attempt.teacher?.profile?.provider_account_id,
     },
     include: { user: true },
   });
@@ -46,7 +46,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   if (session.nextAuthSession) {
     res.status(200).send({
       ...attempt,
-      teacher: { user: teacher.user, profile: attempt.teacher.profile },
+      teacher: { user: teacher.user, profile: attempt.teacher?.profile },
       student: { user: student.user, profile: attempt.student.profile },
     });
   } else {
