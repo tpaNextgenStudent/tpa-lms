@@ -163,7 +163,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         status: 'in review',
         module_number: taskDetails?.task?.modulePosition,
         task_number: taskDetails?.task?.position,
-        workflow_run_id: runId,
+        workflow_run_id: `${runId}`,
       },
     });
     //update modules progress
@@ -219,7 +219,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     );
   } else if (payload.action === 'completed') {
     const alreadyCreatedAttempt = await prisma.attempt.findUnique({
-      where: { workflow_run_id: runId },
+      where: { workflow_run_id: `${runId}` },
     });
 
     const runJobs = (await octokit
@@ -242,7 +242,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       let newAttempt: newAttmept;
       if (alreadyCreatedAttempt) {
         newAttempt = await prisma.attempt.update({
-          where: { workflow_run_id: runId },
+          where: { workflow_run_id: `${runId}` },
           data: {
             assignment_id: taskDetails?.assignmentId || '',
             task_id: taskDetails?.taskDetails?.id || '',
@@ -302,7 +302,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       let newAttempt: newAttmept;
       if (alreadyCreatedAttempt) {
         newAttempt = await prisma.attempt.update({
-          where: { workflow_run_id: runId },
+          where: { workflow_run_id: `${runId}` },
           data: {
             assignment_id: taskDetails?.assignmentId || '',
             task_id: taskDetails?.taskDetails?.id || '',
