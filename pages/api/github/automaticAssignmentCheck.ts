@@ -110,25 +110,28 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
               task.attempt_id = newAttempt.id;
               task.answer = newAttempt.answer;
               task.status = 'in review';
-              const nextTask = module.tasks.find(
-                (el: any) => el.position === task.position + 1
-              );
-              const afterNextTask = module.tasks.find(
-                (el: any) => el.position === task.position + 2
-              );
-              if (afterNextTask) {
-                nextTask.status = 'in progress';
-              } else {
-                let approved = 0;
-                let i = 0;
-                module.tasks.map((el: any) => {
-                  i = i + 1;
-                  if (el.status === 'approved') {
-                    approved = approved + 1;
-                  }
-                });
-                if (approved === i - 1 && newAttempt.score === 3) {
+
+              if (taskDetails?.taskDetails?.summative === false) {
+                const nextTask = module.tasks.find(
+                  (el: any) => el.position === task.position + 1
+                );
+                const afterNextTask = module.tasks.find(
+                  (el: any) => el.position === task.position + 2
+                );
+                if (afterNextTask) {
                   nextTask.status = 'in progress';
+                } else {
+                  let approved = 0;
+                  let i = 0;
+                  module.tasks.map((el: any) => {
+                    i = i + 1;
+                    if (el.status === 'approved') {
+                      approved = approved + 1;
+                    }
+                  });
+                  if (approved === i - 1 && newAttempt.score === 3) {
+                    nextTask.status = 'in progress';
+                  }
                 }
               }
               return task;
