@@ -153,5 +153,5 @@ model Attempt {
   status               String
   module_number        Int
   task_number          Int
-  workflow_run_id      String?
+  workflow_run_id      String?     @unique
 }
