@@ -238,6 +238,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       })
       .catch(e => console.log(e))) as any;
 
+
     // if (taskDetails?.taskDetails?.summative === true) {
     //   let newAttempt: newAttmept;
     //   if (alreadyCreatedAttempt) {
@@ -353,6 +354,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       //       },
       //     });
       //   }
+
 
       //   const module_progress = taskDetails?.curriculum
       //     ?.module_progress as Array<any>;
