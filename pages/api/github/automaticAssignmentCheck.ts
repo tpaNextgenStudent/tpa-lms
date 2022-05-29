@@ -175,7 +175,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         const tasks = await Promise.all(
           module.tasks.map(async (task: any) => {
             if (task.id === task_id) {
-              task.attempt_number += newAttempt.attempt_number;
+              task.attempt_number = newAttempt.attempt_number;
               task.attempt_id = newAttempt.id;
               task.answer = newAttempt.answer;
               task.status = 'in review';
@@ -347,7 +347,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
           const tasks = await Promise.all(
             module.tasks.map(async (task: any) => {
               if (task.id === task_id) {
-                task.attempt_number += 1;
+                task.attempt_number = newAttempt.attempt_number;
                 task.attempt_id = newAttempt.id;
                 task.score = newAttempt.score;
                 task.answer = newAttempt.answer;
