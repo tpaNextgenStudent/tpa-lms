@@ -247,7 +247,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             assignment_id: taskDetails?.assignmentId || '',
             task_id: taskDetails?.taskDetails?.id || '',
             answer: `https://github.com/tpa-nextgen-staging/${payload.workflow_run.pull_requests[0].head.repo.name}/pull/${payload.workflow_run.pull_requests[0].number}`,
-            attempt_number: taskDetails?.task?.attempt_number + 1,
+            attempt_number: taskDetails?.task?.attempt_number,
             teacher_assigment_id: 'cl3mjp6v60090uts6s96mglvo',
             submission_date: new Date(),
             status: 'in review',
@@ -298,7 +298,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         newModuleProgress
       );
     } else {
-      console.log('JESTEM TU GDZIE POWINIENIEM');
       const { comment, score } = extractCommentsAndScore(logs);
       let newAttempt: newAttmept;
       if (alreadyCreatedAttempt) {
@@ -308,7 +307,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             assignment_id: taskDetails?.assignmentId || '',
             task_id: taskDetails?.taskDetails?.id || '',
             answer: `https://github.com/tpa-nextgen-staging/${payload.workflow_run.pull_requests[0].head.repo.name}/pull/${payload.workflow_run.pull_requests[0].number}`,
-            attempt_number: taskDetails?.task?.attempt_number + 1,
+            attempt_number: taskDetails?.task?.attempt_number,
             teacher_assigment_id: 'cl3mjp6v60090uts6s96mglvo',
             submission_date: new Date(),
             evaluation_date: new Date(),
@@ -360,10 +359,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
                   (el: any) => el.position === task.position + 2
                 );
                 if (afterNextTask) {
-                  console.log(1, afterNextTask);
                   nextTask.status = 'in progress';
                 } else {
-                  console.log(2, 'else');
                   let approved = 0;
                   let i = 0;
                   module.tasks.map((el: any) => {
@@ -372,10 +369,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
                       approved = approved + 1;
                     }
                   });
-                  console.log(3, approved);
-                  console.log(4, i);
-                  console.log(5, approved === i - 1 && newAttempt.score === 3);
-                  if (approved === i - 1 && newAttempt.score === 3) {
+                  if (approved === i - 1 && (newAttempt.score || 1) > 1) {
                     nextTask.status = 'in progress';
                   }
                 }
