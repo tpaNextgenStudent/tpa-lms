@@ -308,7 +308,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             assignment_id: taskDetails?.assignmentId || '',
             task_id: taskDetails?.taskDetails?.id || '',
             answer: `https://github.com/tpa-nextgen-staging/${payload.workflow_run.pull_requests[0].head.repo.name}/pull/${payload.workflow_run.pull_requests[0].number}`,
-            attempt_number: taskDetails?.task?.attempt_number + 1,
+            attempt_number: taskDetails?.task?.attempt_number,
             teacher_assigment_id: 'cl3mjp6v60090uts6s96mglvo',
             submission_date: new Date(),
             evaluation_date: new Date(),
