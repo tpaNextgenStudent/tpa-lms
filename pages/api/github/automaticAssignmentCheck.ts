@@ -238,161 +238,177 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       })
       .catch(e => console.log(e))) as any;
 
-    if (taskDetails?.taskDetails?.summative === true) {
-      let newAttempt: newAttmept;
-      if (alreadyCreatedAttempt) {
-        newAttempt = await prisma.attempt.update({
-          where: { workflow_run_id: `${runId}` },
-          data: {
-            assignment_id: taskDetails?.assignmentId || '',
-            task_id: taskDetails?.taskDetails?.id || '',
-            answer: `https://github.com/tpa-nextgen-staging/${payload.workflow_run.pull_requests[0].head.repo.name}/pull/${payload.workflow_run.pull_requests[0].number}`,
-            attempt_number: taskDetails?.task?.attempt_number || 1,
-            teacher_assigment_id: 'cl3mjp6v60090uts6s96mglvo',
-            submission_date: new Date(),
-            status: 'in review',
-            module_number: taskDetails?.task?.modulePosition,
-            task_number: taskDetails?.task?.position,
-          },
-        });
-      } else {
-        newAttempt = await prisma.attempt.create({
-          data: {
-            assignment_id: taskDetails?.assignmentId || '',
-            task_id: taskDetails?.taskDetails?.id || '',
-            answer: `https://github.com/tpa-nextgen-staging/${payload.workflow_run.pull_requests[0].head.repo.name}/pull/${payload.workflow_run.pull_requests[0].number}`,
-            attempt_number: taskDetails?.task?.attempt_number + 1,
-            teacher_assigment_id: 'cl3mjp6v60090uts6s96mglvo',
-            submission_date: new Date(),
-            status: 'in review',
-            module_number: taskDetails?.task?.modulePosition,
-            task_number: taskDetails?.task?.position,
-          },
-        });
-      }
-      const module_progress = taskDetails?.curriculum
-        ?.module_progress as Array<any>;
-      const task_id = taskDetails?.taskDetails?.id as string;
-      //unblock next task, chyba ze nastepny summative to sprawdz czy wszystko jest approved
-      const newModuleProgress = await Promise.all(
-        module_progress.map(async (module: any) => {
-          const tasks = await Promise.all(
-            module.tasks.map(async (task: any) => {
-              if (task.id === task_id) {
-                task.attempt_number += 1;
-                task.attempt_id = newAttempt.id;
-                task.answer = newAttempt.answer;
-                task.status = 'in review';
-                return task;
-              } else {
-                return task;
-              }
-            })
-          );
-          return { ...module, tasks };
-        })
-      );
+    // if (taskDetails?.taskDetails?.summative === true) {
+    //   let newAttempt: newAttmept;
+    //   if (alreadyCreatedAttempt) {
+    //     newAttempt = await prisma.attempt.update({
+    //       where: { workflow_run_id: `${runId}` },
+    //       data: {
+    //         assignment_id: taskDetails?.assignmentId || '',
+    //         task_id: taskDetails?.taskDetails?.id || '',
+    //         answer: `https://github.com/tpa-nextgen-staging/${payload.workflow_run.pull_requests[0].head.repo.name}/pull/${payload.workflow_run.pull_requests[0].number}`,
+    //         attempt_number: taskDetails?.task?.attempt_number || 1,
+    //         teacher_assigment_id: 'cl3mjp6v60090uts6s96mglvo',
+    //         submission_date: new Date(),
+    //         status: 'in review',
+    //         module_number: taskDetails?.task?.modulePosition,
+    //         task_number: taskDetails?.task?.position,
+    //       },
+    //     });
+    //   } else {
+    //     newAttempt = await prisma.attempt.create({
+    //       data: {
+    //         assignment_id: taskDetails?.assignmentId || '',
+    //         task_id: taskDetails?.taskDetails?.id || '',
+    //         answer: `https://github.com/tpa-nextgen-staging/${payload.workflow_run.pull_requests[0].head.repo.name}/pull/${payload.workflow_run.pull_requests[0].number}`,
+    //         attempt_number: taskDetails?.task?.attempt_number + 1,
+    //         teacher_assigment_id: 'cl3mjp6v60090uts6s96mglvo',
+    //         submission_date: new Date(),
+    //         status: 'in review',
+    //         module_number: taskDetails?.task?.modulePosition,
+    //         task_number: taskDetails?.task?.position,
+    //       },
+    //     });
+    //   }
+    //   const module_progress = taskDetails?.curriculum
+    //     ?.module_progress as Array<any>;
+    //   const task_id = taskDetails?.taskDetails?.id as string;
+    //   //unblock next task, chyba ze nastepny summative to sprawdz czy wszystko jest approved
+    //   const newModuleProgress = await Promise.all(
+    //     module_progress.map(async (module: any) => {
+    //       const tasks = await Promise.all(
+    //         module.tasks.map(async (task: any) => {
+    //           if (task.id === task_id) {
+    //             task.attempt_number += 1;
+    //             task.attempt_id = newAttempt.id;
+    //             task.answer = newAttempt.answer;
+    //             task.status = 'in review';
+    //             return task;
+    //           } else {
+    //             return task;
+    //           }
+    //         })
+    //       );
+    //       return { ...module, tasks };
+    //     })
+    //   );
 
-      await updateModuleProgress(
-        taskDetails?.curriculum?.id as string,
-        newModuleProgress
-      );
-    } else {
-      console.log('JESTEM TU GDZIE POWINIENIEM');
-      const { comment, score } = extractCommentsAndScore(logs);
-      let newAttempt: newAttmept;
-      if (alreadyCreatedAttempt) {
-        newAttempt = await prisma.attempt.update({
-          where: { workflow_run_id: `${runId}` },
-          data: {
-            assignment_id: taskDetails?.assignmentId || '',
-            task_id: taskDetails?.taskDetails?.id || '',
-            answer: `https://github.com/tpa-nextgen-staging/${payload.workflow_run.pull_requests[0].head.repo.name}/pull/${payload.workflow_run.pull_requests[0].number}`,
-            attempt_number: taskDetails?.task?.attempt_number || 1,
-            teacher_assigment_id: 'cl3mjp6v60090uts6s96mglvo',
-            submission_date: new Date(),
-            evaluation_date: new Date(),
-            status: (score || 0) > 1 ? 'approved' : 'in progress',
-            module_number: taskDetails?.task?.modulePosition,
-            task_number: taskDetails?.task?.position,
-            score: score,
-            comment: JSON.stringify(comment),
-          },
-        });
-      } else {
-        newAttempt = await prisma.attempt.create({
-          data: {
-            assignment_id: taskDetails?.assignmentId || '',
-            task_id: taskDetails?.taskDetails?.id || '',
-            answer: `https://github.com/tpa-nextgen-staging/${payload.workflow_run.pull_requests[0].head.repo.name}/pull/${payload.workflow_run.pull_requests[0].number}`,
-            attempt_number: taskDetails?.task?.attempt_number + 1,
-            teacher_assigment_id: 'cl3mjp6v60090uts6s96mglvo',
-            submission_date: new Date(),
-            evaluation_date: new Date(),
-            status: (score || 0) > 1 ? 'approved' : 'in progress',
-            module_number: taskDetails?.task?.modulePosition,
-            task_number: taskDetails?.task?.position,
-            score: score,
-            comment: JSON.stringify(comment),
-          },
-        });
-      }
+    //   await updateModuleProgress(
+    //     taskDetails?.curriculum?.id as string,
+    //     newModuleProgress
+    //   );
+    // } else {
+    const { comment, score } = extractCommentsAndScore(logs);
+    let newAttempt: newAttmept;
+    console.log(2, {
+      la: alreadyCreatedAttempt,
+      data: {
+        assignment_id: taskDetails?.assignmentId || '',
+        task_id: taskDetails?.taskDetails?.id || '',
+        answer: `https://github.com/tpa-nextgen-staging/${payload.workflow_run.pull_requests[0].head.repo.name}/pull/${payload.workflow_run.pull_requests[0].number}`,
+        attempt_number: taskDetails?.task?.attempt_number || 1,
+        teacher_assigment_id: 'cl3mjp6v60090uts6s96mglvo',
+        submission_date: new Date(),
+        evaluation_date: new Date(),
+        status: (score || 0) > 1 ? 'approved' : 'in progress',
+        module_number: taskDetails?.task?.modulePosition,
+        task_number: taskDetails?.task?.position,
+        score: score,
+        comment: JSON.stringify(comment),
+      },
+    });
+    if (alreadyCreatedAttempt) {
+      newAttempt = await prisma.attempt.update({
+        where: { workflow_run_id: `${runId}` },
+        data: {
+          assignment_id: taskDetails?.assignmentId || '',
+          task_id: taskDetails?.taskDetails?.id || '',
+          answer: `https://github.com/tpa-nextgen-staging/${payload.workflow_run.pull_requests[0].head.repo.name}/pull/${payload.workflow_run.pull_requests[0].number}`,
+          attempt_number: taskDetails?.task?.attempt_number || 1,
+          teacher_assigment_id: 'cl3mjp6v60090uts6s96mglvo',
+          submission_date: new Date(),
+          evaluation_date: new Date(),
+          status: (score || 0) > 1 ? 'approved' : 'in progress',
+          module_number: taskDetails?.task?.modulePosition,
+          task_number: taskDetails?.task?.position,
+          score: score,
+          comment: JSON.stringify(comment),
+        },
+      });
+      //   } else {
+      //     newAttempt = await prisma.attempt.create({
+      //       data: {
+      //         assignment_id: taskDetails?.assignmentId || '',
+      //         task_id: taskDetails?.taskDetails?.id || '',
+      //         answer: `https://github.com/tpa-nextgen-staging/${payload.workflow_run.pull_requests[0].head.repo.name}/pull/${payload.workflow_run.pull_requests[0].number}`,
+      //         attempt_number: taskDetails?.task?.attempt_number + 1,
+      //         teacher_assigment_id: 'cl3mjp6v60090uts6s96mglvo',
+      //         submission_date: new Date(),
+      //         evaluation_date: new Date(),
+      //         status: (score || 0) > 1 ? 'approved' : 'in progress',
+      //         module_number: taskDetails?.task?.modulePosition,
+      //         task_number: taskDetails?.task?.position,
+      //         score: score,
+      //         comment: JSON.stringify(comment),
+      //       },
+      //     });
+      //   }
 
-      const module_progress = taskDetails?.curriculum
-        ?.module_progress as Array<any>;
-      const task_id = taskDetails?.taskDetails?.id as string;
-      //unblock next task, chyba ze nastepny summative to sprawdz czy wszystko jest approved
-      const newModuleProgress = await Promise.all(
-        module_progress.map(async (module: any) => {
-          const tasks = await Promise.all(
-            module.tasks.map(async (task: any) => {
-              if (task.id === task_id) {
-                task.attempt_number += 1;
-                task.attempt_id = newAttempt.id;
-                task.score = newAttempt.score;
-                task.answer = newAttempt.answer;
-                task.status =
-                  newAttempt.score === 3 ? 'approved' : 'in progress';
-                const nextTask = module.tasks.find(
-                  (el: any) => el.position === task.position + 1
-                );
-                const afterNextTask = module.tasks.find(
-                  (el: any) => el.position === task.position + 2
-                );
-                if (afterNextTask) {
-                  console.log(1, afterNextTask);
-                  nextTask.status = 'in progress';
-                } else {
-                  console.log(2, 'else');
-                  let approved = 0;
-                  let i = 0;
-                  module.tasks.map((el: any) => {
-                    i = i + 1;
-                    if (el.status === 'approved') {
-                      approved = approved + 1;
-                    }
-                  });
-                  console.log(3, approved);
-                  console.log(4, i);
-                  console.log(5, approved === i - 1 && newAttempt.score === 3);
-                  if (approved === i - 1 && newAttempt.score === 3) {
-                    nextTask.status = 'in progress';
-                  }
-                }
-                return task;
-              } else {
-                return task;
-              }
-            })
-          );
-          return { ...module, tasks };
-        })
-      );
+      //   const module_progress = taskDetails?.curriculum
+      //     ?.module_progress as Array<any>;
+      //   const task_id = taskDetails?.taskDetails?.id as string;
+      //   //unblock next task, chyba ze nastepny summative to sprawdz czy wszystko jest approved
+      //   const newModuleProgress = await Promise.all(
+      //     module_progress.map(async (module: any) => {
+      //       const tasks = await Promise.all(
+      //         module.tasks.map(async (task: any) => {
+      //           if (task.id === task_id) {
+      //             task.attempt_number += 1;
+      //             task.attempt_id = newAttempt.id;
+      //             task.score = newAttempt.score;
+      //             task.answer = newAttempt.answer;
+      //             task.status =
+      //               newAttempt.score === 3 ? 'approved' : 'in progress';
+      //             const nextTask = module.tasks.find(
+      //               (el: any) => el.position === task.position + 1
+      //             );
+      //             const afterNextTask = module.tasks.find(
+      //               (el: any) => el.position === task.position + 2
+      //             );
+      //             if (afterNextTask) {
+      //               console.log(1, afterNextTask);
+      //               nextTask.status = 'in progress';
+      //             } else {
+      //               console.log(2, 'else');
+      //               let approved = 0;
+      //               let i = 0;
+      //               module.tasks.map((el: any) => {
+      //                 i = i + 1;
+      //                 if (el.status === 'approved') {
+      //                   approved = approved + 1;
+      //                 }
+      //               });
+      //               console.log(3, approved);
+      //               console.log(4, i);
+      //               console.log(5, approved === i - 1 && newAttempt.score === 3);
+      //               if (approved === i - 1 && newAttempt.score === 3) {
+      //                 nextTask.status = 'in progress';
+      //               }
+      //             }
+      //             return task;
+      //           } else {
+      //             return task;
+      //           }
+      //         })
+      //       );
+      //       return { ...module, tasks };
+      //     })
+      //   );
 
-      await updateModuleProgress(
-        taskDetails?.curriculum?.id as string,
-        newModuleProgress
-      );
+      //   await updateModuleProgress(
+      //     taskDetails?.curriculum?.id as string,
+      //     newModuleProgress
+      //   );
     }
   }
 
