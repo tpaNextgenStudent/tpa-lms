@@ -1,57 +1,32 @@
 import styles from './TeacherAssessForm.module.scss';
 import { CTAButton } from '../../common/CTAButton/CTAButton';
-import {
-  CustomSelect,
-  OptionType,
-} from '../../common/CustomSelect/CustomSelect';
-import { SingleValue } from 'react-select';
-import { FormEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, useState } from 'react';
 import CrossIcon from '../../../public/svg/cross-icon.svg';
 import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
 import { postTeacherAssessment } from '../../../apiHelpers/assess';
+import { TaskScoreBadge } from '../TaskScoreBadge/TaskScoreBadge';
+import clsx from 'clsx';
 
 interface TeacherAssessFormProps {
   closePanel: () => void;
   openSelectToTop?: boolean;
 }
 
-const scoreOptions = [
-  {
-    value: '1',
-    label: '1',
-  },
-  {
-    value: '2',
-    label: '2 ',
-  },
-  {
-    value: '3',
-    label: '3',
-  },
-];
+const scoreOptions = ['3', '2', '1'];
 
-export const TeacherAssessForm = ({
-  closePanel,
-  openSelectToTop = false,
-}: TeacherAssessFormProps) => {
+export const TeacherAssessForm = ({ closePanel }: TeacherAssessFormProps) => {
   const router = useRouter();
   const attemptId = router.query.assignment as string;
 
-  const [currentScore, setCurrentScore] = useState<OptionType>(scoreOptions[0]);
+  const [currentScore, setCurrentScore] = useState(scoreOptions[0]);
   const [comment, setComment] = useState('');
-
-  const handleScoreChange = (option: SingleValue<OptionType>) => {
-    if (option?.value) {
-      setCurrentScore({ value: option.value, label: option.label });
-    }
-  };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       await postTeacherAssessment(attemptId, {
-        body: { score: currentScore.value, comment },
+        body: { score: currentScore, comment },
       });
       closePanel();
       await router.push('/teacher/assignments');
@@ -65,6 +40,11 @@ export const TeacherAssessForm = ({
 
   const handleInput = (e: FormEvent<HTMLTextAreaElement>) => {
     setComment(e.currentTarget.value);
+  };
+
+  const handleRadioChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+    setCurrentScore(value);
   };
 
   return (
@@ -92,14 +72,34 @@ export const TeacherAssessForm = ({
             <label className={styles.selectLabel} htmlFor="score-select">
               Select score
             </label>
-            <CustomSelect
-              id="score-select"
-              className={styles.select}
-              options={openSelectToTop ? scoreOptions.reverse() : scoreOptions}
-              value={currentScore}
-              handleChange={handleScoreChange}
-              openSelectToTop={openSelectToTop}
-            />
+            <div
+              data-cypress="TeacherAssessFormScore"
+              className={styles.radioWrapper}
+            >
+              {scoreOptions.map(v => {
+                const id = `score${v}`;
+                return (
+                  <label key={id} htmlFor={id}>
+                    <TaskScoreBadge
+                      className={clsx(
+                        styles.scoresBadge,
+                        v === currentScore && styles.scoresBadgeActive
+                      )}
+                      score={Number(v)}
+                      withBorder
+                    />
+                    <input
+                      className={styles.radioInput}
+                      onChange={handleRadioChange}
+                      type="radio"
+                      name="score"
+                      id={id}
+                      value={v}
+                    />
+                  </label>
+                );
+              })}
+            </div>
           </div>
           <CTAButton className={styles.submit} text="Submit" type="submit" />
         </div>

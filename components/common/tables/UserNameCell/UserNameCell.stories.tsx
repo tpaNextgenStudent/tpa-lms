@@ -5,7 +5,7 @@ import { UserNameCell } from './UserNameCell';
 export default {
   title: 'Tables/UserNameCell',
   component: UserNameCell,
-  parameters: { controls: { exclude: ['img'] } },
+  parameters: { controls: { exclude: ['img', 'className'] } },
 } as ComponentMeta<typeof UserNameCell>;
 
 const Template: ComponentStory<typeof UserNameCell> = args => (

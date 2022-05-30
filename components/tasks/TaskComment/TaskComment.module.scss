@@ -16,28 +16,11 @@
   flex-wrap: wrap;
 }
 
-.teacher {
-  display: flex;
-  align-items: center;
-  margin-top: 8px;
-}
-
-.teacherImgWrapper {
-  width: 32px;
-  height: 32px;
-  margin-right: 10px;
-}
-
-.teacherImg {
-  border-radius: 64px;
-}
-
 .teacherName {
-  font-weight: fonts.$weightMedium;
   font-size: 12px;
   line-height: 16px;
-  color: colors.$fontPrimary;
-  margin-right: 10px;
+  margin-right: 24px;
+  margin-top: 8px;
 }
 
 .time {
@@ -61,10 +44,6 @@
     border-radius: 64px;
     background-color: colors.$purplePrimary;
   }
-}
-
-.ghLink {
-  margin-right: 24px;
 }
 
 .attemptBadges {

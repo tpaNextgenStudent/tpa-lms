@@ -20,6 +20,44 @@
   }
 }
 
+.radioWrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background: colors.$bgTable;
+  border-radius: 8px;
+  padding: 16px 0 16px 16px;
+  margin-right: 16px;
+}
+
+.radioInput {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  white-space: nowrap;
+}
+
+.scoresBadge {
+  cursor: pointer;
+
+  &:focus-within {
+    & > * {
+      transform: scale(2);
+    }
+  }
+
+  &Active {
+    cursor: default;
+    & > * {
+      border-width: 3px;
+    }
+  }
+}
+
 .closeButton {
   display: flex;
   border: none;
@@ -62,7 +100,7 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: space-between;
   width: 100%;
 }
 

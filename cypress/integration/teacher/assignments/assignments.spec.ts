@@ -54,7 +54,7 @@ describe('Teacher - Assignments', () => {
         taskModule
       );
       cy.get('[data-cypress=TaskSectionTaskTitle]').should(
-        'have.text',
+        'include.text',
         taskName
       );
     });
@@ -102,14 +102,13 @@ describe('Teacher - Assignments', () => {
               .should('exist')
               .type(commentContent);
 
-            cy.get('[data-cypress=CustomSelect]').should('exist').click();
-            cy.get('#react-select-score-select-listbox').then($list => {
-              cy.wrap($list)
-                .contains('2')
-                .then($item => {
+            cy.get('[data-cypress=TeacherAssessFormScore]')
+              .should('exist')
+              .within(() => {
+                cy.contains('2').then($item => {
                   cy.wrap($item).click();
                 });
-            });
+              });
             cy.intercept(
               'POST',
               `http://localhost:3000/api/teacher/assess/attempt/*`,

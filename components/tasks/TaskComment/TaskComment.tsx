@@ -1,5 +1,4 @@
 import styles from './TaskComment.module.scss';
-import Image from 'next/image';
 import dayjs from 'dayjs';
 import Link from 'next/link';
 import { TaskAttemptBadge } from '../TaskAttemptBadge/TaskAttemptBadge';
@@ -7,7 +6,8 @@ import { TaskScoreBadge } from '../TaskScoreBadge/TaskScoreBadge';
 import { MarkdownContent } from '../../common/markdown/MarkdownContent/MarkdownContent';
 import { Comment } from '../../../lib/types';
 import { useRouter } from 'next/router';
-import { GithubNameLink } from '../../common/GithubNameLink/GithubNameLink';
+import { parseCommentMessage } from '../../../utils/parseCommentMessage';
+import { UserNameCell } from '../../common/tables/UserNameCell/UserNameCell';
 
 interface TaskCommentProps {
   comment: Comment;
@@ -16,6 +16,8 @@ interface TaskCommentProps {
 export const TaskComment = ({ comment }: TaskCommentProps) => {
   const { asPath } = useRouter();
 
+  const content = parseCommentMessage(comment.content);
+
   const versionLink = `/student/tasks/attempt/${comment.attempt_id}`;
   const authorName = [comment.author.name, comment.author.surname]
     .filter(n => !!n)
@@ -23,27 +25,13 @@ export const TaskComment = ({ comment }: TaskCommentProps) => {
   return (
     <li className={styles.commentsListItem}>
       <div className={styles.commentHeader}>
-        <div className={styles.teacher}>
-          <div className={styles.teacherImgWrapper}>
-            {comment.author.image && (
-              <Image
-                className={styles.teacherImg}
-                src={comment.author.image}
-                width={32}
-                height={32}
-                layout={'fixed'}
-                alt={`${authorName} avatar`}
-              />
-            )}
-          </div>
-          <span className={styles.teacherName}>{authorName}</span>
-          {comment.author.login && (
-            <GithubNameLink
-              login={comment.author.login}
-              className={styles.ghLink}
-            />
-          )}
-        </div>
+        <UserNameCell
+          id={comment.author.id!}
+          className={styles.teacherName}
+          name={authorName}
+          img={comment.author.image}
+          login={null}
+        />
         <span className={styles.time}>
           {dayjs(comment.date).format('DD MMM YYYY, HH:MM a')}
         </span>
@@ -62,7 +50,7 @@ export const TaskComment = ({ comment }: TaskCommentProps) => {
         </div>
       </div>
       <div className={styles.contentWrapper}>
-        <MarkdownContent content={comment.content} />
+        <MarkdownContent content={content} />
       </div>
     </li>
   );

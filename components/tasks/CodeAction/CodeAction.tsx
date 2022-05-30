@@ -3,8 +3,7 @@ import { useEffect, useState, useCallback } from 'react';
 import { Toast } from '../../common/Toast/Toast';
 import { useRouter } from 'next/router';
 import { CodeActionLines } from '../CodeActionLines/CodeActionLines';
-import { TaskStatus, TaskType } from '../../../lib/types';
-import { ITask } from '../../../apiHelpers/tasks';
+import { githubRepoToSSH } from '../../../utils/githubRepoToSSH';
 
 interface CodeActionProps {
   github_link: string;
@@ -31,12 +30,14 @@ export const CodeAction = ({ github_link, sizeRef }: CodeActionProps) => {
     setIsWarningDisabled(true);
   }, [isWarningDisabled]);
 
+  const githubSshLink = githubRepoToSSH(github_link);
+
   return (
     <div data-cypress="CodeAction" ref={sizeRef} className={styles.wrapper}>
       {isWarningVisible && (
         <Toast
           onCloseClick={handleWarningClose}
-          message="Remember we count the number of your attempts. Before submitting the task,please, review it thoroughly."
+          message="Remember we count the number of your attempts. Before submitting the task, please, review it thoroughly."
         />
       )}
       <div className={styles.codeActionWrapper}>
@@ -44,10 +45,11 @@ export const CodeAction = ({ github_link, sizeRef }: CodeActionProps) => {
           <p className={styles.codeText}>How to start</p>
           <CodeActionLines
             onCopyClick={onCopyClick}
-            lines={[
-              `git clone ${github_link}`,
-              'git checkout -b solution-branch',
-            ]}
+            lines={[{ text: `git clone ${githubSshLink}` }]}
+          />
+          <CodeActionLines
+            onCopyClick={onCopyClick}
+            lines={[{ text: 'git checkout -b solution-branch' }]}
           />
         </div>
         <div className={styles.codeActionBlock}>
@@ -55,9 +57,15 @@ export const CodeAction = ({ github_link, sizeRef }: CodeActionProps) => {
           <CodeActionLines
             onCopyClick={onCopyClick}
             lines={[
-              `git commit -a -m solution`,
-              'git push -u origin solution-branch',
+              {
+                text: `git commit -a -m solution`,
+                value: 'git commit -a -m [your commit message here]',
+              },
             ]}
+          />
+          <CodeActionLines
+            onCopyClick={onCopyClick}
+            lines={[{ text: 'git push -u origin solution-branch' }]}
           />
         </div>
       </div>

@@ -53,6 +53,7 @@ export const TasksListItem = ({
             {task.task_data.name}
           </h2>
           <TaskBadges
+            className={styles.badgesWrapper}
             task={task.task_data}
             attempt={task.last_attempt}
             config={{ score: { withBorder: true } }}

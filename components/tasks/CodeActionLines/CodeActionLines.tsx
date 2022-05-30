@@ -4,12 +4,13 @@ import TickIcon from '../../../public/svg/tick-icon.svg';
 import ClipboardIcon from '../../../public/svg/clipboard-icon.svg';
 
 interface CodeActionLinesProps {
-  lines: string[];
+  lines: { text: string; value?: string }[];
   onCopyClick: () => void;
 }
 
 interface CodeLineProps {
-  value: string;
+  value?: string;
+  text: string;
   index: number;
   onCopyClick: () => void;
 }
@@ -21,12 +22,13 @@ export const CodeActionLines = ({
   return (
     <div className={styles.codeWrapper}>
       <code className={styles.codeBlock}>
-        {lines.map((value, index) => {
+        {lines.map(({ value, text }, index) => {
           return (
             <CodeLine
               onCopyClick={onCopyClick}
-              key={value}
+              key={text}
               value={value}
+              text={text}
               index={index}
             />
           );
@@ -36,7 +38,7 @@ export const CodeActionLines = ({
   );
 };
 
-const CodeLine = ({ value, index, onCopyClick }: CodeLineProps) => {
+const CodeLine = ({ value, text, index, onCopyClick }: CodeLineProps) => {
   const [isCopied, setIsCopied] = useState(false);
   const timeoutIdRef = useRef<ReturnType<typeof setTimeout>>();
 
@@ -49,7 +51,7 @@ const CodeLine = ({ value, index, onCopyClick }: CodeLineProps) => {
   }, []);
 
   const handleClick = async () => {
-    await navigator.clipboard.writeText(value);
+    await navigator.clipboard.writeText(value || text);
     setIsCopied(true);
     timeoutIdRef.current = setTimeout(() => {
       setIsCopied(false);
@@ -59,7 +61,7 @@ const CodeLine = ({ value, index, onCopyClick }: CodeLineProps) => {
 
   return (
     <pre className={styles.codeLine} key={value} data-testid="code-action-line">
-      <span data-testid="code-action-line-value">{value}</span>
+      <span data-testid="code-action-line-value">{text}</span>
       <button
         onClick={handleClick}
         title={isCopied ? 'Copied' : 'Copy to clipboard'}

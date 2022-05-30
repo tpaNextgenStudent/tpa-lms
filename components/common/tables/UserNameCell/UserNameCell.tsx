@@ -1,18 +1,29 @@
 import styles from './UserNameCell.module.scss';
 import Image from 'next/image';
 import { BlockedLink } from '../../BlockedLink/BlockedLink';
+import clsx from 'clsx';
 
 interface UserNameCellProps {
   id?: string;
   name: string;
   img: string | null;
   login: string | null;
+  className?: string;
 }
 
-export const UserNameCell = ({ img, name, login, id }: UserNameCellProps) => {
+export const UserNameCell = ({
+  img,
+  name,
+  login,
+  id,
+  className,
+}: UserNameCellProps) => {
   return (
     <BlockedLink isBlocked={!id} href={id && `/profile/${id}`}>
-      <div data-cypress="UserNameCell" className={styles.userCellWrapper}>
+      <div
+        data-cypress="UserNameCell"
+        className={clsx(styles.userCellWrapper, className)}
+      >
         <div className={styles.userImgWrapper}>
           <Image
             width={32}
