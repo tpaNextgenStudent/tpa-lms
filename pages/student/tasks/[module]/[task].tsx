@@ -49,7 +49,7 @@ export default function Tasks({
 
   const module = useMemo(
     () => modules && modules.find(m => m.module_version_id === moduleId)!,
-    [modules]
+    [modules, moduleId]
   );
   const comments = useMemo(
     () => attempts && attemptsToComments(attempts),
