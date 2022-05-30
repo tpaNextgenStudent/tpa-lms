@@ -10,6 +10,7 @@ import { fetchAttemptsByTask } from '../../../../apiHelpers/attempts';
 import { attemptsToComments } from '../../../../utils/attemptsToComments';
 import { useRouter } from 'next/router';
 import { useQuery } from 'react-query';
+import { LoadingSpinner } from '../../../../components/common/LoadingSpinner/LoadingSpinner';
 
 export default function Tasks({
   user,
@@ -20,21 +21,33 @@ export default function Tasks({
     task: string;
   };
 
-  const { data: modules } = useQuery('modules', fetchUserModules);
-  const { data: tasks } = useQuery(['tasks', { moduleId }], () =>
-    fetchUserTasksByModule(moduleId)
-  );
-
+  const {
+    data: modules,
+    isLoading: isModulesLoading,
+    refetch: refetchModules,
+  } = useQuery('modules', fetchUserModules);
   const module =
     modules && modules.find(m => m.module_version_id === moduleId)!;
 
+  const {
+    data: tasks,
+    isLoading: isTasksLoading,
+    refetch: refetchTasks,
+  } = useQuery(['tasks', { moduleId }], () => fetchUserTasksByModule(moduleId));
   const task = tasks && tasks.find(t => t.task_data.id === taskId);
 
-  const { data: attempts } = useQuery(['attempts', { taskId }], () =>
-    fetchAttemptsByTask(taskId)
-  );
-
+  const {
+    data: attempts,
+    isLoading: isAttemptsLoading,
+    refetch: refetchAttempts,
+  } = useQuery(['attempts', { taskId }], () => fetchAttemptsByTask(taskId));
   const comments = attempts && attemptsToComments(attempts);
+
+  const isLoading = isAttemptsLoading || isModulesLoading || isTasksLoading;
+
+  const refetchAll = async () => {
+    await Promise.all([refetchModules(), refetchTasks(), refetchAttempts()]);
+  };
 
   return (
     <Layout
@@ -43,22 +56,26 @@ export default function Tasks({
       user={user}
       headerDescription="Find all of yours tasks divided into modules."
     >
-      <div className={styles.tasksWrapper}>
-        <TasksMenu
-          tasksPathPrefix={'/student/tasks'}
-          modules={modules}
-          module={module}
-          tasks={tasks}
-          task={task}
-        />
-        <TaskSection
-          comments={comments}
-          attempt={task?.last_attempt}
-          task={task?.task_data}
-          module={module}
-          isTaskActionVisible
-        />
-      </div>
+      {modules && module && tasks && task && comments ? (
+        <div className={styles.tasksWrapper}>
+          <TasksMenu
+            tasksPathPrefix={'/student/tasks'}
+            modules={modules}
+            module={module}
+            tasks={tasks}
+            task={task}
+          />
+          <TaskSection
+            comments={comments}
+            attempt={task?.last_attempt}
+            task={task?.task_data}
+            module={module}
+            isTaskActionVisible
+          />
+        </div>
+      ) : (
+        <LoadingSpinner isLoading={isLoading} refetch={refetchAll} />
+      )}
     </Layout>
   );
 }
