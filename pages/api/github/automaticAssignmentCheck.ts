@@ -239,6 +239,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       .catch(e => console.log(e))) as any;
 
     if (taskDetails?.taskDetails?.summative === true) {
+      const oldAttempt = await prisma.attempt.findMany({
+        where: { task_id: taskDetails?.taskDetails?.id, score: null },
+      });
+      console.log(oldAttempt);
+
       let newAttempt: newAttmept;
       if (alreadyCreatedAttempt) {
         newAttempt = await prisma.attempt.update({
