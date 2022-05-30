@@ -22,7 +22,7 @@ export function getTeacherStudentProgressColumns(
   numOfMaxTasksInModule: number
 ): Column<CohortStudentProgressData>[] {
   //prepare columns for all tasks
-  const tasksColumns = [...Array(numOfMaxTasksInModule)].map(
+  const tasksColumns = [...Array(numOfMaxTasksInModule - 1)].map(
     (_, index) =>
       ({
         Header: () => (
@@ -67,15 +67,18 @@ export function getTeacherStudentProgressColumns(
       accessor: 'sa',
       width: '1fr',
 
-      Cell: ({
-        cell: { value },
-      }: {
-        cell: { value: TaskScoreField | null };
-      }) => (
-        <span className={styles.saCell}>
-          <GradeCell grade={value} />
-        </span>
-      ),
+      Cell: ({ cell: { value } }: { cell: { value: TaskScoreField | null } }) =>
+        value?.attempt_id ? (
+          <Link href={`/teacher/cohort/progress/attempt/${value.attempt_id}`}>
+            <a className={styles.saCell}>
+              <GradeCell grade={value} />
+            </a>
+          </Link>
+        ) : (
+          <span className={styles.saCell}>
+            <GradeCell grade={value} />
+          </span>
+        ),
     },
   ];
 }
@@ -84,20 +87,24 @@ export const mapStudentProgressToTableData = (
   rawStudentProgress: ITeacherSingleStudentScores['tasks_in_modules']
 ): CohortStudentProgressData[] => {
   return rawStudentProgress
-    .sort(({ position: p1 }, { position: p2 }) => {
-      return p1 > p2 ? 1 : -1;
-    })
+    .sort(({ position: p1 }, { position: p2 }) => (p1 > p2 ? 1 : -1))
     .map(({ tasks, position }) => {
+      const sortedTasks = tasks.sort(({ position: p1 }, { position: p2 }) =>
+        p1 > p2 ? 1 : -1
+      );
+      const summative = sortedTasks[sortedTasks.length - 1];
+      const formative = sortedTasks.slice(0, sortedTasks.length - 1);
       return Object.assign(
         {
           module: `Module ${position}`,
           sa: {
-            score: null,
-            status: 'upcoming',
-            attempt_number: null,
+            score: summative.score,
+            status: summative.status,
+            attempt_number: summative.attempt_number,
+            attempt_id: summative.attempt_id,
           },
         },
-        ...tasks.map(
+        ...formative.map(
           ({ position, score, status, attempt_number, attempt_id }) => ({
             [`task_${position}`]: { score, status, attempt_number, attempt_id },
           })
