@@ -37,13 +37,8 @@ export interface IAssignment {
     profile: IProfile;
   };
 }
-
-export const getTeacherAssignments = async ({
-  cookie,
-}: Options): Promise<IAssignment[]> => {
-  const { data } = await axios.get(apiPath(`teacher/assignments`), {
-    headers: { cookie },
-  });
+export const fetchTeacherAssignments = async (): Promise<IAssignment[]> => {
+  const { data } = await axios.get(apiPath(`teacher/assignments`));
   return data;
 };
 

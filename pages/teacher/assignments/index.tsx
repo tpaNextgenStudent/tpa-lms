@@ -6,40 +6,50 @@ import {
   mapAssignmentsToTableData,
 } from '../../../lib/tables/teacher/assignments/assignments';
 import { withServerSideAuth } from '../../../lib/auth/withServerSideAuth';
-import { getTeacherAssignments } from '../../../apiHelpers/assignments';
+import { fetchTeacherAssignments } from '../../../apiHelpers/assignments';
 import { EmptyStateView } from '../../../components/common/EmptyStateView/EmptyStateView';
 import NoAssignmentsRobotImg from '../../../public/img/no-assignments-robot.png';
+import { useQuery } from 'react-query';
+import { LoadingSpinner } from '../../../components/common/LoadingSpinner/LoadingSpinner';
 
 export default function AssignmentsIndex({
   user,
-  assignments,
 }: InferPagePropsType<typeof getServerSideProps>) {
+  const {
+    data: rawAssignments,
+    refetch,
+    isLoading,
+  } = useQuery('assignments', fetchTeacherAssignments);
+
+  const assignments =
+    rawAssignments && mapAssignmentsToTableData(rawAssignments);
+
   return (
     <Layout
       user={user}
       headerTitle="Assignments"
       title="Assignments"
       headerDescription="Students' tasks to be reviewed by you."
-      actionsNumber={assignments.length}
+      actionsNumber={assignments?.length || 0}
     >
-      {assignments.length > 0 ? (
-        <Table data={assignments} columns={columns} />
+      {assignments ? (
+        assignments.length > 0 ? (
+          <Table data={assignments} columns={columns} />
+        ) : (
+          <EmptyStateView
+            imgSrc={NoAssignmentsRobotImg}
+            message="No assignments to be reviewed"
+          />
+        )
       ) : (
-        <EmptyStateView
-          imgSrc={NoAssignmentsRobotImg}
-          message="No assignments to be reviewed"
-        />
+        <LoadingSpinner isLoading={isLoading} refetch={refetch} />
       )}
     </Layout>
   );
 }
 
 export const getServerSideProps = withServerSideAuth('teacher')(
-  async ({ req, user }) => {
-    const authCookie = req.headers.cookie as string;
-    const rawAssignments = await getTeacherAssignments({ cookie: authCookie });
-    const assignments = mapAssignmentsToTableData(rawAssignments);
-
-    return { props: { user, assignments } };
+  async ({ user }) => {
+    return { props: { user } };
   }
 );

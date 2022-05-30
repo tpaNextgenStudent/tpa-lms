@@ -33,14 +33,14 @@ export default function Tasks({
     data: tasks,
     isLoading: isTasksLoading,
     refetch: refetchTasks,
-  } = useQuery(['tasks', { moduleId }], () => fetchUserTasksByModule(moduleId));
+  } = useQuery(['tasks', moduleId], () => fetchUserTasksByModule(moduleId));
   const task = tasks && tasks.find(t => t.task_data.id === taskId);
 
   const {
     data: attempts,
     isLoading: isAttemptsLoading,
     refetch: refetchAttempts,
-  } = useQuery(['attempts', { taskId }], () => fetchAttemptsByTask(taskId));
+  } = useQuery(['attempts', taskId], () => fetchAttemptsByTask(taskId));
   const comments = attempts && attemptsToComments(attempts);
 
   const isLoading = isAttemptsLoading || isModulesLoading || isTasksLoading;

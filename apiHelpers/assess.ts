@@ -38,6 +38,22 @@ export const getNextTeacherAssessmentTask = async (
   }
 };
 
+export const fetchNextTeacherAssessmentTask = async (
+  attemptId: string
+): Promise<{
+  next_attempt_id: string | null;
+  assessments_number: number;
+} | null> => {
+  try {
+    const { data } = await axios.get(
+      apiPath(`teacher/next/assignment/${attemptId}`)
+    );
+    return data;
+  } catch {
+    return null;
+  }
+};
+
 export const postMarkTaskAsRead = async (attemptId: string): Promise<any> => {
   const { data } = await axios.post(apiPath(`markAsRead/task/${attemptId}`));
   return data;

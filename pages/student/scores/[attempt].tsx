@@ -20,7 +20,7 @@ export default function ScoresIndex({
     data: attempt,
     isLoading,
     refetch,
-  } = useQuery(['attempt', { attemptId }], () => fetchAttemptById(attemptId));
+  } = useQuery(['attempt', attemptId], () => fetchAttemptById(attemptId));
   const comments = attempt && attemptToComments(attempt);
 
   const module = attempt && {
