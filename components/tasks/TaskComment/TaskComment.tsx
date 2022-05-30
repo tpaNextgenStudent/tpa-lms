@@ -7,6 +7,7 @@ import { TaskScoreBadge } from '../TaskScoreBadge/TaskScoreBadge';
 import { MarkdownContent } from '../../common/markdown/MarkdownContent/MarkdownContent';
 import { Comment } from '../../../lib/types';
 import { useRouter } from 'next/router';
+import { parseCommentMessage } from '../../../utils/parseCommentMessage';
 
 interface TaskCommentProps {
   comment: Comment;
@@ -62,39 +63,3 @@ export const TaskComment = ({ comment }: TaskCommentProps) => {
     </li>
   );
 };
-
-interface DartError {
-  testID: string;
-  error: string;
-}
-
-function isDartError(error: unknown): error is DartError {
-  return (
-    error !== null &&
-    typeof error === 'object' &&
-    'testID' in error &&
-    'error' in error
-  );
-}
-
-function parseCommentMessage(comment: string) {
-  try {
-    const parsed = JSON.parse(comment);
-
-    if (Array.isArray(parsed)) {
-      const m = parsed.map(obj => {
-        if (isDartError(obj)) {
-          return obj.error
-            .replaceAll(' '.repeat(10), '')
-            .replaceAll(' '.repeat(12), '')
-            .replaceAll('\\n', '\n\n');
-        }
-        return '';
-      });
-      return m.join('<hr/>');
-    }
-    return parsed;
-  } catch {
-    return comment;
-  }
-}
