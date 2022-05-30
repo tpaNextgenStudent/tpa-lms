@@ -24,7 +24,7 @@ interface TaskSectionProps {
     answer: null | string;
     github_link?: string;
   } | null;
-  comments: Comment[];
+  comments?: Comment[];
   module: IModuleVersion;
   isTaskActionVisible?: boolean;
   isPassAgainVisible?: boolean;

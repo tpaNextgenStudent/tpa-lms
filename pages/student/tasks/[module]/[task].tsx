@@ -46,7 +46,9 @@ export default function Tasks({
   const isLoading = isAttemptsLoading || isModulesLoading || isTasksLoading;
 
   const refetchAll = async () => {
-    await Promise.all([refetchModules(), refetchTasks(), refetchAttempts()]);
+    await refetchModules();
+    await refetchTasks();
+    await refetchAttempts();
   };
 
   return (
