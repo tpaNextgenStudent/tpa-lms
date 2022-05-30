@@ -11,6 +11,7 @@ import { EmptyStateView } from '../../../components/common/EmptyStateView/EmptyS
 import NoAssignmentsRobotImg from '../../../public/img/no-assignments-robot.png';
 import { useQuery } from 'react-query';
 import { LoadingSpinner } from '../../../components/common/LoadingSpinner/LoadingSpinner';
+import { useMemo } from 'react';
 
 export default function AssignmentsIndex({
   user,
@@ -21,8 +22,10 @@ export default function AssignmentsIndex({
     isFetching,
   } = useQuery('assignments', fetchTeacherAssignments);
 
-  const assignments =
-    rawAssignments && mapAssignmentsToTableData(rawAssignments);
+  const assignments = useMemo(
+    () => rawAssignments && mapAssignmentsToTableData(rawAssignments),
+    [rawAssignments]
+  );
 
   return (
     <Layout

@@ -34,13 +34,12 @@ export default function Tasks({
   } = useQuery(['tasks', moduleId], () => fetchUserTasksByModule(moduleId));
   const task = tasks && tasks.find(t => t.task_data.id === taskId);
 
-  const isFetching = isModulesFetching || isTasksFetching;
-
   const refetchAll = async () => {
     await refetchModules();
     await refetchTasks();
   };
 
+  const isFetching = isModulesFetching || isTasksFetching;
   return (
     <Layout title="Curriculum" headerTitle="Curriculum" user={user}>
       <div className={styles.tasksWrapper}>

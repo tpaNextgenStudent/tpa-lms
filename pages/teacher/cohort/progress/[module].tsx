@@ -14,6 +14,7 @@ import { OptionType } from '../../../../components/common/CustomSelect/CustomSel
 import { useRouter } from 'next/router';
 import { useQuery } from 'react-query';
 import { LoadingSpinner } from '../../../../components/common/LoadingSpinner/LoadingSpinner';
+import { useMemo } from 'react';
 
 export default function CohortProgressIndex({
   user,
@@ -38,23 +39,29 @@ export default function CohortProgressIndex({
   } = useQuery(['cohort-progress', moduleId], () =>
     fetchTeacherCohortProgress(moduleId)
   );
-  const numOfTasksInModule =
-    rawProgress && Math.max(...rawProgress.map(({ tasks }) => tasks.length));
+  const refetchAll = async () => {
+    await refetchModules();
+    await refetchProgress();
+  };
 
-  const progressTableData = rawProgress && mapProgressToTableData(rawProgress);
+  const numOfTasksInModule = useMemo(
+    () =>
+      rawProgress && Math.max(...rawProgress.map(({ tasks }) => tasks.length)),
+    [rawProgress]
+  );
+
+  const progressTableData = useMemo(
+    () => rawProgress && mapProgressToTableData(rawProgress),
+    rawProgress
+  );
+
   const onModuleChange = (option: SingleValue<OptionType>) => {
     if (option?.value) {
       router.push(`/teacher/cohort/progress/${option.value}`);
     }
   };
 
-  const refetchAll = async () => {
-    await refetchModules();
-    await refetchProgress();
-  };
-
   const isLoading = isModulesFetching || isProgressFetching;
-
   return (
     <Layout
       user={user}

@@ -8,6 +8,7 @@ import { fetchNextTeacherAssessmentTask } from '../../../apiHelpers/assess';
 import { useQuery } from 'react-query';
 import { useRouter } from 'next/router';
 import { LoadingSpinner } from '../../../components/common/LoadingSpinner/LoadingSpinner';
+import { useMemo } from 'react';
 
 export default function ScoresIndex({
   user,
@@ -31,11 +32,22 @@ export default function ScoresIndex({
     refetch: refetchAttempt,
   } = useQuery(['attempt', assignmentId], () => fetchAttemptById(assignmentId));
 
+  const refetchAll = async () => {
+    await refetchAttempt();
+    await refetchNextAttempt();
+  };
+
   const module = attempt && {
     module_version_id: attempt.task.module_version_id,
     name: 'Module Name',
     module_number: attempt.module_number,
   };
+
+  const comments = useMemo(
+    () => attempt && attemptToComments(attempt),
+    [attempt]
+  );
+
   const task = attempt && {
     id: attempt.task_id,
     name: attempt.task.name,
@@ -45,15 +57,10 @@ export default function ScoresIndex({
     position: attempt.task_number,
   };
 
-  const refetchAll = async () => {
-    await refetchAttempt();
-    await refetchNextAttempt();
-  };
-
-  const comments = attempt && attemptToComments(attempt);
   const student = attempt?.student.user;
   const studentFullName =
     student && [student.name, student.surname].filter(n => !!n).join(' ');
+
   const isLoading = isAttemptFetching || isNextAttemptFetching;
   return (
     <Layout

@@ -37,6 +37,7 @@ export default function ScoresIndex({
     link: attempt.task.link,
     position: attempt.task_number,
   };
+
   return (
     <Layout
       parentPage={{ title: 'My Scores', link: '/student/scores' }}

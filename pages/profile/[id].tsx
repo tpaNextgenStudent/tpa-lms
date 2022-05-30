@@ -26,6 +26,7 @@ export default function UserProfileIndex({
   const userName =
     profileUser &&
     [profileUser.name, profileUser.surname].filter(n => !!n).join(' ');
+
   return (
     <Layout
       withHeaderPrevButton

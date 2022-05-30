@@ -7,6 +7,7 @@ import { attemptToComments } from '../../../../../utils/attemptsToComments';
 import { useRouter } from 'next/router';
 import { useQuery } from 'react-query';
 import { LoadingSpinner } from '../../../../../components/common/LoadingSpinner/LoadingSpinner';
+import { useMemo } from 'react';
 
 export default function ScoresIndex({
   user,
@@ -22,7 +23,11 @@ export default function ScoresIndex({
   } = useQuery(['attempt', assignmenttId], () =>
     fetchAttemptById(assignmenttId)
   );
-  const comments = attempt && attemptToComments(attempt);
+
+  const comments = useMemo(
+    () => attempt && attemptToComments(attempt),
+    [attempt]
+  );
 
   const module = attempt && {
     module_version_id: attempt.task.module_version_id,
@@ -40,8 +45,10 @@ export default function ScoresIndex({
   };
 
   const student = attempt?.student.user;
+
   const studentFullName =
     student && [student.name, student.surname].filter(n => !!n).join(' ');
+
   return (
     <Layout
       parentPage={{

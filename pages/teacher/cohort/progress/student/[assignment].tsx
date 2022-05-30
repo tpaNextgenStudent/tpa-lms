@@ -20,6 +20,7 @@ import NoAssignmentsRobotImg from '../../../../../public/img/no-assignments-robo
 import { useQuery } from 'react-query';
 import { useRouter } from 'next/router';
 import { LoadingSpinner } from '../../../../../components/common/LoadingSpinner/LoadingSpinner';
+import { useMemo } from 'react';
 
 export default function CohortProgressIndex({
   user,
@@ -44,17 +45,31 @@ export default function CohortProgressIndex({
     fetchTeacherAssignmentsByStudent(assignmentId)
   );
 
-  const studentAssignmentsTableData =
-    rawStudentAssignments &&
-    mapStudentAssignmentsToTableData(rawStudentAssignments);
+  const studentAssignmentsTableData = useMemo(
+    () =>
+      rawStudentAssignments &&
+      mapStudentAssignmentsToTableData(rawStudentAssignments),
+    [rawStudentAssignments]
+  );
+
+  const refetchAll = async () => {
+    await refetchStudentScores();
+    await refetchStudentAssignments();
+  };
 
   const tasks_in_modules = singleStudentScores?.tasks_in_modules;
 
-  const maxNumOfTasks =
-    tasks_in_modules && Math.max(...tasks_in_modules.map(m => m.tasks.length));
+  const maxNumOfTasks = useMemo(
+    () =>
+      tasks_in_modules &&
+      Math.max(...tasks_in_modules.map(m => m.tasks.length)),
+    [tasks_in_modules]
+  );
 
-  const studentScoresTableData =
-    tasks_in_modules && mapStudentProgressToTableData(tasks_in_modules);
+  const studentScoresTableData = useMemo(
+    () => tasks_in_modules && mapStudentProgressToTableData(tasks_in_modules),
+    [tasks_in_modules]
+  );
 
   const student = singleStudentScores && {
     user: singleStudentScores.user,
@@ -65,13 +80,7 @@ export default function CohortProgressIndex({
     student &&
     [student.user.name, student.user.surname].filter(n => !!n).join(' ');
 
-  const refetchAll = async () => {
-    await refetchStudentScores();
-    await refetchStudentAssignments();
-  };
-
   const isLoading = isStudentScoresFetching || isStudentAssignmentsFetching;
-
   return (
     <Layout
       user={user}

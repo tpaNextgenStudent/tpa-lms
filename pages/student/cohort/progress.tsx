@@ -9,6 +9,7 @@ import { withServerSideAuth } from '../../../lib/auth/withServerSideAuth';
 import { fetchCohortProgress } from '../../../apiHelpers/cohort';
 import { useQuery } from 'react-query';
 import { LoadingSpinner } from '../../../components/common/LoadingSpinner/LoadingSpinner';
+import { useMemo } from 'react';
 
 export default function CohortProgress({
   user,
@@ -18,7 +19,11 @@ export default function CohortProgress({
     refetch,
     isFetching,
   } = useQuery('cohort-progress', fetchCohortProgress);
-  const progress = rawProgress && mapCohortProgressToTableData(rawProgress);
+
+  const progress = useMemo(
+    () => rawProgress && mapCohortProgressToTableData(rawProgress),
+    [rawProgress]
+  );
 
   return (
     <Layout

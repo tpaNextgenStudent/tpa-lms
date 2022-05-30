@@ -11,6 +11,7 @@ import { attemptsToComments } from '../../../../utils/attemptsToComments';
 import { useRouter } from 'next/router';
 import { useQuery } from 'react-query';
 import { LoadingSpinner } from '../../../../components/common/LoadingSpinner/LoadingSpinner';
+import { useMemo } from 'react';
 
 export default function Tasks({
   user,
@@ -26,8 +27,6 @@ export default function Tasks({
     isFetching: isModulesFetching,
     refetch: refetchModules,
   } = useQuery('modules', fetchUserModules);
-  const module =
-    modules && modules.find(m => m.module_version_id === moduleId)!;
 
   const {
     data: tasks,
@@ -41,9 +40,6 @@ export default function Tasks({
     isFetching: isAttemptsFetching,
     refetch: refetchAttempts,
   } = useQuery(['attempts', taskId], () => fetchAttemptsByTask(taskId));
-  const comments = attempts && attemptsToComments(attempts);
-
-  const isLoading = isAttemptsFetching || isModulesFetching || isTasksFetching;
 
   const refetchAll = async () => {
     await refetchModules();
@@ -51,6 +47,16 @@ export default function Tasks({
     await refetchAttempts();
   };
 
+  const module = useMemo(
+    () => modules && modules.find(m => m.module_version_id === moduleId)!,
+    [modules]
+  );
+  const comments = useMemo(
+    () => attempts && attemptsToComments(attempts),
+    [attempts]
+  );
+
+  const isLoading = isAttemptsFetching || isModulesFetching || isTasksFetching;
   return (
     <Layout
       headerTitle="My Tasks"

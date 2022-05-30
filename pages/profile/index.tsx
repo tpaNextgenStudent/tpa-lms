@@ -11,6 +11,7 @@ export default function UserProfileIndex({
   user,
 }: InferPagePropsType<typeof getServerSideProps>) {
   const userName = [user.name, user.surname].filter(n => !!n).join(' ');
+
   return (
     <Layout
       withHeaderPrevButton
