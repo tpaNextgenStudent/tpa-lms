@@ -66,7 +66,10 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         });
 
         return {
-          student: { user: user.user, profile: student.profile },
+          student: {
+            user: Object.keys(user).length > 0 ? user.user : null,
+            profile: student.profile,
+          },
           module_name: module?.module.name,
           module_position: lastModule['position'],
           task_name: task?.name,
