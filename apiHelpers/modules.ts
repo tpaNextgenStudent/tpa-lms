@@ -19,3 +19,8 @@ export const getUserModules = async ({
   });
   return data;
 };
+
+export const fetchUserModules = async (): Promise<IModuleVersion[]> => {
+  const { data } = await axios.get(apiPath('modules'));
+  return data;
+};
