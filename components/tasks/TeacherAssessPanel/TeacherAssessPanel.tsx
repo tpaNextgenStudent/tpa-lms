@@ -5,7 +5,10 @@ import { TeacherAssessForm } from '../TeacherAssessForm/TeacherAssessForm';
 import { useRouter } from 'next/router';
 
 interface TeacherAssessPanelProps {
-  nextAttempt?: { next_attempt_id: string | null; assessments_number: number };
+  nextAttempt?: {
+    next_attempt_id: string | null;
+    assessments_number: number;
+  } | null;
 }
 
 export const TeacherAssessPanel = ({

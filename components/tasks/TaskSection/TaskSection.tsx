@@ -98,7 +98,7 @@ export const TaskSection = ({
       {isPassAgainVisible && (
         <TaskSectionPassAgain module={module} task={task} />
       )}
-      {isTeacherAssessPanelVisible && nextAttempt && (
+      {isTeacherAssessPanelVisible && (
         <TeacherAssessPanel nextAttempt={nextAttempt} />
       )}
     </main>

@@ -69,7 +69,7 @@ export default function ScoresIndex({
           comments={comments}
           attempt={attempt}
           module={module}
-          isTeacherAssessPanelVisible
+          isTeacherAssessPanelVisible={task.type === 'code'}
           nextAttempt={nextAttempt}
         />
       ) : (
