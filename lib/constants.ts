@@ -15,6 +15,7 @@ export const sampleUser = {
 export const sampleComments = [
   {
     author: {
+      id: 'authorId',
       name: 'John',
       surname: 'Doe',
       login: 'johndoe',
@@ -28,6 +29,7 @@ export const sampleComments = [
   },
   {
     author: {
+      id: 'authorId2',
       name: 'Joe',
       surname: 'Mag',
       login: 'Magi',
