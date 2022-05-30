@@ -52,7 +52,7 @@ export default function CohortProgressIndex({
 
   const progressTableData = useMemo(
     () => rawProgress && mapProgressToTableData(rawProgress),
-    rawProgress
+    [rawProgress]
   );
 
   const onModuleChange = (option: SingleValue<OptionType>) => {
