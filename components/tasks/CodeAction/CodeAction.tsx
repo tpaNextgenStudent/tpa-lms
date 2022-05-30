@@ -36,7 +36,7 @@ export const CodeAction = ({ github_link, sizeRef }: CodeActionProps) => {
       {isWarningVisible && (
         <Toast
           onCloseClick={handleWarningClose}
-          message="Remember we count the number of your attempts. Before submitting the task,please, review it thoroughly."
+          message="Remember we count the number of your attempts. Before submitting the task, please, review it thoroughly."
         />
       )}
       <div className={styles.codeActionWrapper}>
