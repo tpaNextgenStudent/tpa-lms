@@ -3,8 +3,7 @@ import { useEffect, useState, useCallback } from 'react';
 import { Toast } from '../../common/Toast/Toast';
 import { useRouter } from 'next/router';
 import { CodeActionLines } from '../CodeActionLines/CodeActionLines';
-import { TaskStatus, TaskType } from '../../../lib/types';
-import { ITask } from '../../../apiHelpers/tasks';
+import { githubRepoToSSH } from '../../../utils/githubRepoToSSH';
 
 interface CodeActionProps {
   github_link: string;
@@ -31,6 +30,8 @@ export const CodeAction = ({ github_link, sizeRef }: CodeActionProps) => {
     setIsWarningDisabled(true);
   }, [isWarningDisabled]);
 
+  const githubSshLink = githubRepoToSSH(github_link);
+
   return (
     <div data-cypress="CodeAction" ref={sizeRef} className={styles.wrapper}>
       {isWarningVisible && (
@@ -44,7 +45,7 @@ export const CodeAction = ({ github_link, sizeRef }: CodeActionProps) => {
           <p className={styles.codeText}>How to start</p>
           <CodeActionLines
             onCopyClick={onCopyClick}
-            lines={[{ text: `git clone ${github_link}` }]}
+            lines={[{ text: `git clone ${githubSshLink}` }]}
           />
           <CodeActionLines
             onCopyClick={onCopyClick}
