@@ -53,6 +53,15 @@ export const getTeacherCohortProgress = async (
   return data;
 };
 
+export const fetchTeacherCohortProgress = async (
+  moduleId: string
+): Promise<ITeacherProgressItem[]> => {
+  const { data } = await axios.get(
+    apiPath(`teacher/cohort/scores/module/${moduleId}`)
+  );
+  return data;
+};
+
 export interface ITeacherSingleStudentScores {
   user: IUser;
   profile: IProfile;
