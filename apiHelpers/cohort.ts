@@ -16,12 +16,8 @@ export interface IProgressItem {
   task_type: TaskType;
 }
 
-export const getCohortProgress = async ({
-  cookie,
-}: Options): Promise<IProgressItem[]> => {
-  const { data } = await axios.get(apiPath('progress/cohort'), {
-    headers: { cookie },
-  });
+export const fetchCohortProgress = async (): Promise<IProgressItem[]> => {
+  const { data } = await axios.get(apiPath('progress/cohort'));
   return data;
 };
 
@@ -57,6 +53,15 @@ export const getTeacherCohortProgress = async (
   return data;
 };
 
+export const fetchTeacherCohortProgress = async (
+  moduleId: string
+): Promise<ITeacherProgressItem[]> => {
+  const { data } = await axios.get(
+    apiPath(`teacher/cohort/scores/module/${moduleId}`)
+  );
+  return data;
+};
+
 export interface ITeacherSingleStudentScores {
   user: IUser;
   profile: IProfile;
@@ -67,16 +72,11 @@ export interface ITeacherSingleStudentScores {
   }[];
 }
 
-export const getTeacherSingleStudentScores = async (
-  assignmentId: string,
-  { cookie }: Options
+export const fetchTeacherSingleStudentScores = async (
+  assignmentId: string
 ): Promise<ITeacherSingleStudentScores> => {
   const { data } = await axios.get(
-    apiPath(`teacher/scores/student/${assignmentId}`),
-    {
-      headers: { cookie },
-    }
+    apiPath(`teacher/scores/student/${assignmentId}`)
   );
-
   return data.student;
 };

@@ -6,26 +6,62 @@ import {
   mapProgressToTableData,
 } from '../../../../lib/tables/teacher/cohort-progress/cohort-progress';
 import { withServerSideAuth } from '../../../../lib/auth/withServerSideAuth';
-import { getTeacherCohortProgress } from '../../../../apiHelpers/cohort';
+import { fetchTeacherCohortProgress } from '../../../../apiHelpers/cohort';
 import { GradesLegend } from '../../../../components/teacher/GradesLegend/GradesLegend';
-import { getUserModules } from '../../../../apiHelpers/modules';
+import { fetchUserModules } from '../../../../apiHelpers/modules';
 import { SingleValue } from 'react-select';
 import { OptionType } from '../../../../components/common/CustomSelect/CustomSelect';
 import { useRouter } from 'next/router';
+import { useQuery } from 'react-query';
+import { LoadingSpinner } from '../../../../components/common/LoadingSpinner/LoadingSpinner';
+import { useMemo } from 'react';
 
 export default function CohortProgressIndex({
   user,
-  progressTableData,
-  numOfTasksInModule,
-  modules,
-  module,
 }: InferPagePropsType<typeof getServerSideProps>) {
   const router = useRouter();
+  const { module: moduleId } = router.query as {
+    module: string;
+  };
+
+  const {
+    data: modules,
+    refetch: refetchModules,
+    isFetching: isModulesFetching,
+  } = useQuery('modules', fetchUserModules);
+  const module =
+    modules && modules.find(m => m.module_version_id === moduleId)!;
+
+  const {
+    data: rawProgress,
+    refetch: refetchProgress,
+    isFetching: isProgressFetching,
+  } = useQuery(['cohort-progress', moduleId], () =>
+    fetchTeacherCohortProgress(moduleId)
+  );
+  const refetchAll = async () => {
+    await refetchModules();
+    await refetchProgress();
+  };
+
+  const numOfTasksInModule = useMemo(
+    () =>
+      rawProgress && Math.max(...rawProgress.map(({ tasks }) => tasks.length)),
+    [rawProgress]
+  );
+
+  const progressTableData = useMemo(
+    () => rawProgress && mapProgressToTableData(rawProgress),
+    [rawProgress]
+  );
+
   const onModuleChange = (option: SingleValue<OptionType>) => {
     if (option?.value) {
       router.push(`/teacher/cohort/progress/${option.value}`);
     }
   };
+
+  const isLoading = isModulesFetching || isProgressFetching;
   return (
     <Layout
       user={user}
@@ -33,43 +69,30 @@ export default function CohortProgressIndex({
       headerTitle="Cohort Progress"
       headerDescription="Students' progress grouped by modules."
     >
-      <GradesLegend />
-      <Table
-        data={progressTableData}
-        columns={getTeacherCohortProgressColumns({
-          numOfTasksInModule,
-          modules,
-          module,
-          onModuleChange,
-        })}
-      />
+      {rawProgress && modules && module && numOfTasksInModule ? (
+        <>
+          <GradesLegend />
+          <Table
+            data={progressTableData!}
+            columns={getTeacherCohortProgressColumns({
+              numOfTasksInModule,
+              modules,
+              module,
+              onModuleChange,
+            })}
+          />
+        </>
+      ) : (
+        <LoadingSpinner isLoading={isLoading} refetch={refetchAll} />
+      )}
     </Layout>
   );
 }
 
 export const getServerSideProps = withServerSideAuth('teacher')(
-  async ({ req, params, user }) => {
-    const authCookie = req.headers.cookie as string;
-    const { module: moduleId } = params! as {
-      module: string;
-    };
-
-    const [modules, rawProgress] = await Promise.all([
-      getUserModules({ cookie: authCookie }),
-      getTeacherCohortProgress(moduleId, {
-        cookie: authCookie,
-      }),
-    ]);
-
-    const module = modules.find(m => m.module_version_id === moduleId)!;
-
-    const numOfTasksInModule = Math.max(
-      ...rawProgress.map(({ tasks }) => tasks.length)
-    );
-
-    const progressTableData = mapProgressToTableData(rawProgress);
+  async ({ user }) => {
     return {
-      props: { user, modules, module, numOfTasksInModule, progressTableData },
+      props: { user },
     };
   }
 );

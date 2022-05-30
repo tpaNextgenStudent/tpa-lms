@@ -7,7 +7,13 @@ import 'react-toastify/dist/ReactToastify.css';
 import { LoadingProvider } from '../lib/hooks/loadingContext';
 import { QueryClientProvider, QueryClient } from 'react-query';
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 export default function App({ Component, pageProps }: AppProps) {
   return (

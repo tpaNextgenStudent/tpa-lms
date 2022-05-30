@@ -10,6 +10,8 @@ import { fetchAttemptsByTask } from '../../../../apiHelpers/attempts';
 import { attemptsToComments } from '../../../../utils/attemptsToComments';
 import { useRouter } from 'next/router';
 import { useQuery } from 'react-query';
+import { LoadingSpinner } from '../../../../components/common/LoadingSpinner/LoadingSpinner';
+import { useMemo } from 'react';
 
 export default function Tasks({
   user,
@@ -20,22 +22,41 @@ export default function Tasks({
     task: string;
   };
 
-  const { data: modules } = useQuery('modules', fetchUserModules);
-  const { data: tasks } = useQuery(['tasks', { moduleId }], () =>
-    fetchUserTasksByModule(moduleId)
-  );
+  const {
+    data: modules,
+    isFetching: isModulesFetching,
+    refetch: refetchModules,
+  } = useQuery('modules', fetchUserModules);
 
-  const module =
-    modules && modules.find(m => m.module_version_id === moduleId)!;
-
+  const {
+    data: tasks,
+    isFetching: isTasksFetching,
+    refetch: refetchTasks,
+  } = useQuery(['tasks', moduleId], () => fetchUserTasksByModule(moduleId));
   const task = tasks && tasks.find(t => t.task_data.id === taskId);
 
-  const { data: attempts } = useQuery(['attempts', { taskId }], () =>
-    fetchAttemptsByTask(taskId)
+  const {
+    data: attempts,
+    isFetching: isAttemptsFetching,
+    refetch: refetchAttempts,
+  } = useQuery(['attempts', taskId], () => fetchAttemptsByTask(taskId));
+
+  const refetchAll = async () => {
+    await refetchModules();
+    await refetchTasks();
+    await refetchAttempts();
+  };
+
+  const module = useMemo(
+    () => modules && modules.find(m => m.module_version_id === moduleId)!,
+    [modules, moduleId]
+  );
+  const comments = useMemo(
+    () => attempts && attemptsToComments(attempts),
+    [attempts]
   );
 
-  const comments = attempts && attemptsToComments(attempts);
-
+  const isLoading = isAttemptsFetching || isModulesFetching || isTasksFetching;
   return (
     <Layout
       headerTitle="My Tasks"
@@ -43,28 +64,32 @@ export default function Tasks({
       user={user}
       headerDescription="Find all of yours tasks divided into modules."
     >
-      <div className={styles.tasksWrapper}>
-        <TasksMenu
-          tasksPathPrefix={'/student/tasks'}
-          modules={modules}
-          module={module}
-          tasks={tasks}
-          task={task}
-        />
-        <TaskSection
-          comments={comments}
-          attempt={task?.last_attempt}
-          task={task?.task_data}
-          module={module}
-          isTaskActionVisible
-        />
-      </div>
+      {modules && module && tasks && task && comments ? (
+        <div className={styles.tasksWrapper}>
+          <TasksMenu
+            tasksPathPrefix={'/student/tasks'}
+            modules={modules}
+            module={module}
+            tasks={tasks}
+            task={task}
+          />
+          <TaskSection
+            comments={comments}
+            attempt={task?.last_attempt}
+            task={task?.task_data}
+            module={module}
+            isTaskActionVisible
+          />
+        </div>
+      ) : (
+        <LoadingSpinner isLoading={isLoading} refetch={refetchAll} />
+      )}
     </Layout>
   );
 }
 
 export const getServerSideProps = withServerSideAuth('student')(
-  async ({ req, params, user }) => {
+  async ({ user }) => {
     return {
       props: {
         user,

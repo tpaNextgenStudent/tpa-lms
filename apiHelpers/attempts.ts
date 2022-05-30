@@ -65,16 +65,6 @@ export interface ISingleAttempt {
   task_number: number;
 }
 
-export const getAttemptsByTask = async (
-  taskId: string,
-  { cookie }: Options
-): Promise<IAttempt[]> => {
-  const { data } = await axios.get(apiPath(`attempts/task/${taskId}`), {
-    headers: { cookie },
-  });
-  return data.attempts;
-};
-
 export const fetchAttemptsByTask = async (
   taskId: string
 ): Promise<IAttempt[]> => {
@@ -89,5 +79,12 @@ export const getAttemptById = async (
   const { data } = await axios.get(apiPath(`attempt/${attemptId}`), {
     headers: { cookie },
   });
+  return data;
+};
+
+export const fetchAttemptById = async (
+  attemptId: string
+): Promise<ISingleAttempt> => {
+  const { data } = await axios.get(apiPath(`attempt/${attemptId}`));
   return data;
 };

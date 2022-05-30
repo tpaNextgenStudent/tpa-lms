@@ -24,9 +24,7 @@ export interface IScore {
   module_number: number;
 }
 
-export const getUserScores = async ({ cookie }: Options): Promise<IScore[]> => {
-  const { data } = await axios.get(apiPath(`student/scores`), {
-    headers: { cookie },
-  });
+export const fetchUserScores = async (): Promise<IScore[]> => {
+  const { data } = await axios.get(apiPath(`student/scores`));
   return data;
 };

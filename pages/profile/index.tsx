@@ -11,6 +11,7 @@ export default function UserProfileIndex({
   user,
 }: InferPagePropsType<typeof getServerSideProps>) {
   const userName = [user.name, user.surname].filter(n => !!n).join(' ');
+
   return (
     <Layout
       withHeaderPrevButton
@@ -47,23 +48,21 @@ function getCohortProgressLink(role: UserRole) {
   }
 }
 
-export const getServerSideProps = withServerSideAuth()(
-  async ({ req, user }) => {
-    const areDetailsFilled = user.name && user.surname && user.bio;
+export const getServerSideProps = withServerSideAuth()(async ({ user }) => {
+  const areDetailsFilled = user.name && user.surname && user.bio;
 
-    if (!areDetailsFilled) {
-      return {
-        redirect: {
-          destination: '/login/details',
-          permanent: false,
-        },
-      };
-    }
-
+  if (!areDetailsFilled) {
     return {
-      props: {
-        user,
+      redirect: {
+        destination: '/login/details',
+        permanent: false,
       },
     };
   }
-);
+
+  return {
+    props: {
+      user,
+    },
+  };
+});

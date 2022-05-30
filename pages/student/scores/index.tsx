@@ -6,14 +6,27 @@ import {
   mapStudentScoresToTableData,
 } from '../../../lib/tables/student/my-scores/my-scores';
 import { withServerSideAuth } from '../../../lib/auth/withServerSideAuth';
-import { getUserScores } from '../../../apiHelpers/scores';
+import { fetchUserScores } from '../../../apiHelpers/scores';
 import { EmptyStateView } from '../../../components/common/EmptyStateView/EmptyStateView';
 import NoAssignmentsRobotImg from '../../../public/img/no-assignments-robot.png';
+import { useQuery } from 'react-query';
+import { LoadingSpinner } from '../../../components/common/LoadingSpinner/LoadingSpinner';
+import { useMemo } from 'react';
 
 export default function ScoresIndex({
   user,
-  scores,
 }: InferPagePropsType<typeof getServerSideProps>) {
+  const {
+    data: rawScores,
+    refetch,
+    isFetching,
+  } = useQuery('scores', fetchUserScores);
+
+  const scores = useMemo(
+    () => rawScores && mapStudentScoresToTableData(rawScores),
+    [rawScores]
+  );
+
   return (
     <Layout
       headerTitle="My Scores"
@@ -21,24 +34,24 @@ export default function ScoresIndex({
       headerDescription="Track your scores. You can get 1 - don't give up, try again! 2 and 3 - well done, you are ready to go with the next task!"
       user={user}
     >
-      {scores.length < 1 ? (
-        <EmptyStateView
-          imgSrc={NoAssignmentsRobotImg}
-          message="You have no scores yet"
-        />
+      {scores ? (
+        scores.length < 1 ? (
+          <EmptyStateView
+            imgSrc={NoAssignmentsRobotImg}
+            message="You have no scores yet"
+          />
+        ) : (
+          <Table columns={columns} data={scores} />
+        )
       ) : (
-        <Table columns={columns} data={scores} />
+        <LoadingSpinner isLoading={isFetching} refetch={refetch} />
       )}
     </Layout>
   );
 }
 
 export const getServerSideProps = withServerSideAuth('student')(
-  async ({ req, res, user }) => {
-    const authCookie = req.headers.cookie as string;
-    const rawScores = await getUserScores({ cookie: authCookie });
-    const scores = mapStudentScoresToTableData(rawScores);
-
-    return { props: { user, scores } };
+  async ({ user }) => {
+    return { props: { user } };
   }
 );
