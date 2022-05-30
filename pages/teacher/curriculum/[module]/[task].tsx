@@ -22,19 +22,19 @@ export default function Tasks({
   const {
     data: modules,
     refetch: refetchModules,
-    isLoading: isModulesLoading,
+    isFetching: isModulesFetching,
   } = useQuery('modules', fetchUserModules);
   const module =
     modules && modules.find(m => m.module_version_id === moduleId)!;
 
   const {
     data: tasks,
-    isLoading: isTasksLoading,
     refetch: refetchTasks,
+    isFetching: isTasksFetching,
   } = useQuery(['tasks', moduleId], () => fetchUserTasksByModule(moduleId));
   const task = tasks && tasks.find(t => t.task_data.id === taskId);
 
-  const isLoading = isModulesLoading || isTasksLoading;
+  const isFetching = isModulesFetching || isTasksFetching;
 
   const refetchAll = async () => {
     await refetchModules();
@@ -56,7 +56,7 @@ export default function Tasks({
             <TaskSection task={task.task_data} module={module} />
           </>
         ) : (
-          <LoadingSpinner isLoading={isLoading} refetch={refetchAll} />
+          <LoadingSpinner isLoading={isFetching} refetch={refetchAll} />
         )}
       </div>
     </Layout>

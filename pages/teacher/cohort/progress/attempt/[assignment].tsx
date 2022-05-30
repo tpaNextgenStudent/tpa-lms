@@ -17,7 +17,7 @@ export default function ScoresIndex({
   };
   const {
     data: attempt,
-    isLoading,
+    isFetching,
     refetch,
   } = useQuery(['attempt', assignmenttId], () =>
     fetchAttemptById(assignmenttId)
@@ -62,7 +62,7 @@ export default function ScoresIndex({
           isTeacherAssessPanelVisible={task.type === 'code'}
         />
       ) : (
-        <LoadingSpinner isLoading={isLoading} refetch={refetch} />
+        <LoadingSpinner isLoading={isFetching} refetch={refetch} />
       )}
     </Layout>
   );

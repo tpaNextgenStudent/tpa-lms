@@ -20,7 +20,7 @@ export default function UserProfileIndex({
   const {
     data: profileUser,
     refetch,
-    isLoading,
+    isFetching,
   } = useQuery(['profileUser', userId], () => fetchUserDetailsById(userId));
 
   const userName =
@@ -51,7 +51,7 @@ export default function UserProfileIndex({
           />
         </>
       ) : (
-        <LoadingSpinner isLoading={isLoading} refetch={refetch} />
+        <LoadingSpinner isLoading={isFetching} refetch={refetch} />
       )}
     </Layout>
   );

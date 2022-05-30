@@ -23,7 +23,7 @@ export default function Tasks({
 
   const {
     data: modules,
-    isLoading: isModulesLoading,
+    isFetching: isModulesFetching,
     refetch: refetchModules,
   } = useQuery('modules', fetchUserModules);
   const module =
@@ -31,19 +31,19 @@ export default function Tasks({
 
   const {
     data: tasks,
-    isLoading: isTasksLoading,
+    isFetching: isTasksFetching,
     refetch: refetchTasks,
   } = useQuery(['tasks', moduleId], () => fetchUserTasksByModule(moduleId));
   const task = tasks && tasks.find(t => t.task_data.id === taskId);
 
   const {
     data: attempts,
-    isLoading: isAttemptsLoading,
+    isFetching: isAttemptsFetching,
     refetch: refetchAttempts,
   } = useQuery(['attempts', taskId], () => fetchAttemptsByTask(taskId));
   const comments = attempts && attemptsToComments(attempts);
 
-  const isLoading = isAttemptsLoading || isModulesLoading || isTasksLoading;
+  const isLoading = isAttemptsFetching || isModulesFetching || isTasksFetching;
 
   const refetchAll = async () => {
     await refetchModules();
@@ -83,7 +83,7 @@ export default function Tasks({
 }
 
 export const getServerSideProps = withServerSideAuth('student')(
-  async ({ req, params, user }) => {
+  async ({ user }) => {
     return {
       props: {
         user,

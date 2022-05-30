@@ -26,7 +26,7 @@ export default function CohortProgressIndex({
   const {
     data: modules,
     refetch: refetchModules,
-    isLoading: isModulesLoading,
+    isFetching: isModulesFetching,
   } = useQuery('modules', fetchUserModules);
   const module =
     modules && modules.find(m => m.module_version_id === moduleId)!;
@@ -34,7 +34,7 @@ export default function CohortProgressIndex({
   const {
     data: rawProgress,
     refetch: refetchProgress,
-    isLoading: isProgressLoading,
+    isFetching: isProgressFetching,
   } = useQuery(['cohort-progress', moduleId], () =>
     fetchTeacherCohortProgress(moduleId)
   );
@@ -53,7 +53,7 @@ export default function CohortProgressIndex({
     await refetchProgress();
   };
 
-  const isLoading = isModulesLoading || isProgressLoading;
+  const isLoading = isModulesFetching || isProgressFetching;
 
   return (
     <Layout

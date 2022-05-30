@@ -19,7 +19,7 @@ export default function ScoresIndex({
 
   const {
     data: nextAttempt,
-    isLoading: isNextAttemptLoading,
+    isFetching: isNextAttemptFetching,
     refetch: refetchNextAttempt,
   } = useQuery(['nextAttempt', assignmentId], () =>
     fetchNextTeacherAssessmentTask(assignmentId)
@@ -27,7 +27,7 @@ export default function ScoresIndex({
 
   const {
     data: attempt,
-    isLoading: isAttemptLoading,
+    isFetching: isAttemptFetching,
     refetch: refetchAttempt,
   } = useQuery(['attempt', assignmentId], () => fetchAttemptById(assignmentId));
 
@@ -54,7 +54,7 @@ export default function ScoresIndex({
   const student = attempt?.student.user;
   const studentFullName =
     student && [student.name, student.surname].filter(n => !!n).join(' ');
-  const isLoading = isAttemptLoading || isNextAttemptLoading;
+  const isLoading = isAttemptFetching || isNextAttemptFetching;
   return (
     <Layout
       parentPage={{ title: 'Assignments', link: '/teacher/assignments' }}

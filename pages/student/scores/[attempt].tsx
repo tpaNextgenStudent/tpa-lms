@@ -18,7 +18,7 @@ export default function ScoresIndex({
 
   const {
     data: attempt,
-    isLoading,
+    isFetching,
     refetch,
   } = useQuery(['attempt', attemptId], () => fetchAttemptById(attemptId));
   const comments = attempt && attemptToComments(attempt);
@@ -56,7 +56,7 @@ export default function ScoresIndex({
           }
         />
       ) : (
-        <LoadingSpinner isLoading={isLoading} refetch={refetch} />
+        <LoadingSpinner isLoading={isFetching} refetch={refetch} />
       )}
     </Layout>
   );

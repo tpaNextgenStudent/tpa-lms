@@ -18,7 +18,7 @@ export default function ScoresIndex({
   const {
     data: rawScores,
     refetch,
-    isLoading,
+    isFetching,
   } = useQuery('scores', fetchUserScores);
 
   const scores = rawScores && mapStudentScoresToTableData(rawScores);
@@ -40,7 +40,7 @@ export default function ScoresIndex({
           <Table columns={columns} data={scores} />
         )
       ) : (
-        <LoadingSpinner isLoading={isLoading} refetch={refetch} />
+        <LoadingSpinner isLoading={isFetching} refetch={refetch} />
       )}
     </Layout>
   );

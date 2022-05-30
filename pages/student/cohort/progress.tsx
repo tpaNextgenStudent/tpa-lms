@@ -16,7 +16,7 @@ export default function CohortProgress({
   const {
     data: rawProgress,
     refetch,
-    isLoading,
+    isFetching,
   } = useQuery('cohort-progress', fetchCohortProgress);
   const progress = rawProgress && mapCohortProgressToTableData(rawProgress);
 
@@ -30,7 +30,7 @@ export default function CohortProgress({
       {progress ? (
         <Table data={progress} columns={columns} />
       ) : (
-        <LoadingSpinner isLoading={isLoading} refetch={refetch} />
+        <LoadingSpinner isLoading={isFetching} refetch={refetch} />
       )}
     </Layout>
   );

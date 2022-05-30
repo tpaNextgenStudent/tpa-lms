@@ -31,14 +31,14 @@ export default function CohortProgressIndex({
   const {
     data: singleStudentScores,
     refetch: refetchStudentScores,
-    isLoading: isStudentScoresLoading,
+    isFetching: isStudentScoresFetching,
   } = useQuery(['single-student-scores', assignmentId], () =>
     fetchTeacherSingleStudentScores(assignmentId)
   );
 
   const {
     data: rawStudentAssignments,
-    isLoading: isStudentAssignmentsLoading,
+    isFetching: isStudentAssignmentsFetching,
     refetch: refetchStudentAssignments,
   } = useQuery(['student-assignments', assignmentId], () =>
     fetchTeacherAssignmentsByStudent(assignmentId)
@@ -70,7 +70,7 @@ export default function CohortProgressIndex({
     await refetchStudentAssignments();
   };
 
-  const isLoading = isStudentScoresLoading || isStudentAssignmentsLoading;
+  const isLoading = isStudentScoresFetching || isStudentAssignmentsFetching;
 
   return (
     <Layout

@@ -18,7 +18,7 @@ export default function AssignmentsIndex({
   const {
     data: rawAssignments,
     refetch,
-    isLoading,
+    isFetching,
   } = useQuery('assignments', fetchTeacherAssignments);
 
   const assignments =
@@ -42,7 +42,7 @@ export default function AssignmentsIndex({
           />
         )
       ) : (
-        <LoadingSpinner isLoading={isLoading} refetch={refetch} />
+        <LoadingSpinner isLoading={isFetching} refetch={refetch} />
       )}
     </Layout>
   );
