@@ -6,7 +6,6 @@ import { SingleValue } from 'react-select';
 import { IModuleVersion } from '../../../apiHelpers/modules';
 import { ITask } from '../../../apiHelpers/tasks';
 import { CustomSelect } from '../../common/CustomSelect/CustomSelect';
-import { useMemo } from 'react';
 import { LoadingAnimation } from '../../common/LoadingAnimation/LoadingAnimation';
 
 interface TasksMenuProps {
