@@ -5,15 +5,19 @@ import '../lib/styles/gmfStyles.scss';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { LoadingProvider } from '../lib/hooks/loadingContext';
+import { QueryClientProvider, QueryClient } from 'react-query';
+
+const queryClient = new QueryClient();
 
 export default function App({ Component, pageProps }: AppProps) {
-  const AnyComponent = Component as any;
   return (
     <SessionProvider session={pageProps.session} refetchInterval={0}>
-      <LoadingProvider>
-        <AnyComponent {...pageProps} />
-        <ToastContainer closeOnClick={false} position="bottom-left" />
-      </LoadingProvider>
+      <QueryClientProvider client={queryClient}>
+        <LoadingProvider>
+          <Component {...pageProps} />
+          <ToastContainer closeOnClick={false} position="bottom-left" />
+        </LoadingProvider>
+      </QueryClientProvider>
     </SessionProvider>
   );
 }

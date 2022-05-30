@@ -75,6 +75,13 @@ export const getAttemptsByTask = async (
   return data.attempts;
 };
 
+export const fetchAttemptsByTask = async (
+  taskId: string
+): Promise<IAttempt[]> => {
+  const { data } = await axios.get(apiPath(`attempts/task/${taskId}`));
+  return data.attempts;
+};
+
 export const getAttemptById = async (
   attemptId: string,
   { cookie }: Options

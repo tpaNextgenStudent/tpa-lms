@@ -14,9 +14,10 @@ import { TaskSectionModuleInfo } from '../TaskSectionModuleInfo/TaskSectionModul
 import { ITask } from '../../../apiHelpers/tasks';
 import { TaskSectionHeader } from '../TaskSectionHeader/TaskSectionHeader';
 import { TaskSectionPassAgain } from '../TaskSectionPassAgain/TaskSectionPassAgain';
+import { LoadingAnimation } from '../../common/LoadingAnimation/LoadingAnimation';
 
 interface TaskSectionProps {
-  task: ITask['task_data'];
+  task?: ITask['task_data'];
   attempt?: {
     status: TaskStatus;
     attempt_number: number | null;
@@ -25,7 +26,7 @@ interface TaskSectionProps {
     github_link?: string;
   } | null;
   comments?: Comment[];
-  module: IModuleVersion;
+  module?: IModuleVersion;
   isTaskActionVisible?: boolean;
   isPassAgainVisible?: boolean;
   isTeacherAssessPanelVisible?: boolean;
@@ -60,46 +61,54 @@ export const TaskSection = ({
         isFullScreenMode && styles.wrapperFullScreen
       )}
     >
-      <TaskSectionModuleInfo module={module} />
-      <TaskSectionHeader
-        task={task}
-        isFullScreenMode={isFullScreenMode}
-        toggleFullScreenMode={toggleFullScreenMode}
-      />
-      <TaskBadges
-        task={task}
-        attempt={attempt}
-        className={styles.taskBadges}
-        badges={['type', 'status', 'attempt', 'score']}
-        config={{ score: { withText: true, withBorder: true } }}
-      />
-      <ViewParamTabsSection
-        tabs={{
-          description: (
-            <>
-              <TaskDescription
-                paddingBottom={size[1]}
-                answer={attempt?.answer}
-                isLocked={attempt?.status === 'upcoming'}
-                description={task.description}
-              />
-              {isTaskActionVisible && attempt?.status !== 'upcoming' && (
-                <TaskAction
-                  sizeRef={ref}
-                  type={task.type}
-                  github_link={attempt?.github_link}
-                />
-              )}
-            </>
-          ),
-          comments: comments && <TaskComments comments={comments} />,
-        }}
-      />
-      {isPassAgainVisible && (
-        <TaskSectionPassAgain module={module} task={task} />
-      )}
-      {isTeacherAssessPanelVisible && nextAttempt && (
-        <TeacherAssessPanel nextAttempt={nextAttempt} />
+      {task && module ? (
+        <>
+          <TaskSectionModuleInfo module={module} />
+          <TaskSectionHeader
+            task={task}
+            isFullScreenMode={isFullScreenMode}
+            toggleFullScreenMode={toggleFullScreenMode}
+          />
+          <TaskBadges
+            task={task}
+            attempt={attempt}
+            className={styles.taskBadges}
+            badges={['type', 'status', 'attempt', 'score']}
+            config={{ score: { withText: true, withBorder: true } }}
+          />
+          <ViewParamTabsSection
+            tabs={{
+              description: (
+                <>
+                  <TaskDescription
+                    paddingBottom={size[1]}
+                    answer={attempt?.answer}
+                    isLocked={attempt?.status === 'upcoming'}
+                    description={task.description}
+                  />
+                  {isTaskActionVisible && attempt?.status !== 'upcoming' && (
+                    <TaskAction
+                      sizeRef={ref}
+                      type={task.type}
+                      github_link={attempt?.github_link}
+                    />
+                  )}
+                </>
+              ),
+              comments: comments && <TaskComments comments={comments} />,
+            }}
+          />
+          {isPassAgainVisible && (
+            <TaskSectionPassAgain module={module} task={task} />
+          )}
+          {isTeacherAssessPanelVisible && nextAttempt && (
+            <TeacherAssessPanel nextAttempt={nextAttempt} />
+          )}
+        </>
+      ) : (
+        <div className={styles.loadingWrapper}>
+          <LoadingAnimation />
+        </div>
       )}
     </main>
   );

@@ -36,6 +36,13 @@ export const getUserTasksByModule = async (
   return data;
 };
 
+export const fetchUserTasksByModule = async (
+  moduleId: string
+): Promise<ITask[]> => {
+  const { data } = await axios.get(apiPath(`tasks/module/${moduleId}`));
+  return data;
+};
+
 export interface ICurrentTask {
   module_id: string;
   task_id: string;

@@ -18,12 +18,5 @@ const Template: ComponentStory<typeof TasksMenu> = args => (
 
 export const Default = Template.bind({});
 Default.args = {
-  task: { task_data: sampleTasks[0], last_attempt: sampleAttempts[0] },
   tasksPathPrefix: '/student/tasks',
-  module: sampleModules[0],
-  modules: sampleModules,
-  tasks: [
-    { task_data: sampleTasks[0], last_attempt: sampleAttempts[0] },
-    { task_data: sampleTasks[1], last_attempt: sampleAttempts[1] },
-  ],
 };
