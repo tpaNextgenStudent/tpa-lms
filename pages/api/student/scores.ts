@@ -54,12 +54,14 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         },
       });
 
-      const teacherAccount = await prisma.account.findFirst({
+      const teacherAccount = await prisma.account.findUnique({
         where: {
-          providerAccountId: attempt?.teacher?.profile?.provider_account_id,
+          providerAccountId:
+            attempt?.teacher?.profile?.provider_account_id || '',
         },
         include: { user: true },
       });
+
       const singleAttempt = {
         ...attempt,
         teacher: {

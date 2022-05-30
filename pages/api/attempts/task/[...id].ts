@@ -4,6 +4,7 @@ import getUserSession from '../../../../utils/getUserSession';
 import getUserAssignment from '../../../../utils/getUserAssignment';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
+  console.log('JA');
   const session = await getUserSession({ req });
   const taskId = req.query.id[0];
   const userAssigment = await getUserAssignment(
@@ -35,7 +36,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     response.map(async (attempt): Promise<any> => {
       const { ...user } = await prisma.account.findUnique({
         where: {
-          providerAccountId: attempt.teacher?.profile?.provider_account_id,
+          providerAccountId:
+            attempt.teacher?.profile?.provider_account_id || '',
         },
         include: { user: true },
       });
