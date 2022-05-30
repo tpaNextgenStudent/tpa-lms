@@ -4,7 +4,7 @@ import { BlockedLink } from '../../BlockedLink/BlockedLink';
 import clsx from 'clsx';
 
 interface UserNameCellProps {
-  id?: string;
+  id?: string | null;
   name: string;
   img: string | null;
   login: string | null;

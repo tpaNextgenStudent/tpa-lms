@@ -8,10 +8,10 @@ import { TextCell } from '../../../../components/common/tables/TextCell/TextCell
 
 interface ProgressData {
   student: {
+    id: string | null;
     name: string;
     img: string | null;
     login: string | null;
-    id: string;
   };
   module: string;
   task_name: string;
@@ -62,15 +62,15 @@ export function mapCohortProgressToTableData(
 ): ProgressData[] {
   return rawProgress.map(
     ({ student, task_name, task_type, module_position }) => {
-      const studentName = [student.user.name, student.user.surname]
+      const studentName = [student.user?.name, student.user?.surname]
         .filter(n => n)
         .join(' ');
       return {
         student: {
-          id: student.user.id,
+          id: student.user?.id || null,
           name: studentName,
           login: student.profile.login,
-          img: student.user.image,
+          img: student.user?.image || null,
         },
         module: `Module ${module_position}`,
         task_name,

@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 interface ConditionalLinkProps {
   children: ReactNode;
-  href?: string;
+  href?: string | null;
   isBlocked?: boolean;
   className?: string;
 }
