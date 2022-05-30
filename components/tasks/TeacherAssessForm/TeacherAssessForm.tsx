@@ -72,7 +72,10 @@ export const TeacherAssessForm = ({ closePanel }: TeacherAssessFormProps) => {
             <label className={styles.selectLabel} htmlFor="score-select">
               Select score
             </label>
-            <div className={styles.radioWrapper}>
+            <div
+              data-cypress="TeacherAssessFormScore"
+              className={styles.radioWrapper}
+            >
               {scoreOptions.map(v => {
                 const id = `score${v}`;
                 return (
