@@ -37,12 +37,9 @@ export const getUserDetails = async ({
   return data;
 };
 
-export const getUserDetailsById = async (
-  userId: string,
-  { cookie }: Options
+export const fetchUserDetailsById = async (
+  userId: string
 ): Promise<IUserDetails> => {
-  const { data } = await axios.get(apiPath(`user/details/${userId}`), {
-    headers: { cookie },
-  });
+  const { data } = await axios.get(apiPath(`user/details/${userId}`));
   return data;
 };
