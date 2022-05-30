@@ -245,7 +245,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
       await Promise.all(
         oldAttempts.map(async (attempt: any) => {
-          if (attempt.workflow_run_id === `${runId}`) {
+          if (attempt.workflow_run_id != `${runId}`) {
             await prisma.attempt.update({
               where: { id: attempt.id },
               data: { deprecated: true },
