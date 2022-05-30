@@ -1,5 +1,4 @@
 import styles from './TaskComment.module.scss';
-import Image from 'next/image';
 import dayjs from 'dayjs';
 import Link from 'next/link';
 import { TaskAttemptBadge } from '../TaskAttemptBadge/TaskAttemptBadge';
@@ -8,6 +7,7 @@ import { MarkdownContent } from '../../common/markdown/MarkdownContent/MarkdownC
 import { Comment } from '../../../lib/types';
 import { useRouter } from 'next/router';
 import { parseCommentMessage } from '../../../utils/parseCommentMessage';
+import { UserNameCell } from '../../common/tables/UserNameCell/UserNameCell';
 
 interface TaskCommentProps {
   comment: Comment;
@@ -25,21 +25,13 @@ export const TaskComment = ({ comment }: TaskCommentProps) => {
   return (
     <li className={styles.commentsListItem}>
       <div className={styles.commentHeader}>
-        <div className={styles.teacher}>
-          <div className={styles.teacherImgWrapper}>
-            {comment.author.image && (
-              <Image
-                className={styles.teacherImg}
-                src={comment.author.image}
-                width={32}
-                height={32}
-                layout={'fixed'}
-                alt={`${authorName} avatar`}
-              />
-            )}
-          </div>
-          <span className={styles.teacherName}>{authorName}</span>
-        </div>
+        <UserNameCell
+          id={comment.author.id!}
+          className={styles.teacherName}
+          name={authorName}
+          img={comment.author.image}
+          login={null}
+        />
         <span className={styles.time}>
           {dayjs(comment.date).format('DD MMM YYYY, HH:MM a')}
         </span>

@@ -6,6 +6,7 @@ export function attemptToComments(attempt: ISingleAttempt): Comment[] {
     ? [
         {
           author: {
+            id: attempt.teacher.user.id,
             name: attempt.teacher.user.name,
             surname: attempt.teacher.user.surname,
             image: attempt.teacher.user.image,
@@ -26,6 +27,7 @@ export function attemptsToComments(attempts: IAttempt[]): Comment[] {
     .filter(a => !!a.comment)
     .map(attempt => ({
       author: {
+        id: attempt.teacher.user.id,
         name: attempt.teacher.user.name,
         surname: attempt.teacher.user.surname,
         image: attempt.teacher.user.image,
