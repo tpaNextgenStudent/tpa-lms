@@ -154,4 +154,5 @@ model Attempt {
   module_number        Int
   task_number          Int
   workflow_run_id      String?     @unique
+  deprecated           Boolean     @default(false)
 }
