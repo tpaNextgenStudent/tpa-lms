@@ -22,18 +22,19 @@ const updateCurriculum = async (updatedAttempt: Attempt) => {
         task.score = updatedAttempt?.score;
         task.status = updatedAttempt?.score > 1 ? 'approved' : 'in progress';
       }
-
-      const nextTask = module.tasks.find(
-        (el: any) => el.position === task.position + 1
-      );
-
-      if (!nextTask) {
-        const nextModule = curriculumProgress.find(
-          module => module.position === i + 2
+      if ((updatedAttempt?.score || 1) > 1) {
+        const nextTask = module.tasks.find(
+          (el: any) => el.position === task.position + 1
         );
-        nextModule.tasks[0].status = 'in progress';
-      } else {
-        nextTask.status = 'in progress';
+
+        if (!nextTask) {
+          const nextModule = curriculumProgress.find(
+            module => module.position === i + 2
+          );
+          nextModule.tasks[0].status = 'in progress';
+        } else {
+          nextTask.status = 'in progress';
+        }
       }
     }
     return module;

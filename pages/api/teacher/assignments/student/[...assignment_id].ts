@@ -25,6 +25,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     where: {
       assignment_id: assignmentId,
       teacher_assigment_id: assignment.id,
+      deprecated: false,
       task: { type: 'code', summative: true },
     },
     include: { task: true, student: { include: { profile: true } } },
