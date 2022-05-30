@@ -52,7 +52,7 @@ export default function ScoresIndex({
           attempt={attempt}
           module={module}
           isPassAgainVisible={
-            attempt && typeof attempt.score === 'number' && attempt.score < 3
+            typeof attempt.score === 'number' && attempt.score < 3
           }
         />
       ) : (

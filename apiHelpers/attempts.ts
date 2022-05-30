@@ -65,16 +65,6 @@ export interface ISingleAttempt {
   task_number: number;
 }
 
-export const getAttemptsByTask = async (
-  taskId: string,
-  { cookie }: Options
-): Promise<IAttempt[]> => {
-  const { data } = await axios.get(apiPath(`attempts/task/${taskId}`), {
-    headers: { cookie },
-  });
-  return data.attempts;
-};
-
 export const fetchAttemptsByTask = async (
   taskId: string
 ): Promise<IAttempt[]> => {
