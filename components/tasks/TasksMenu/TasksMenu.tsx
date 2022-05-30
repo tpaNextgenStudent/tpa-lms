@@ -6,7 +6,7 @@ import { SingleValue } from 'react-select';
 import { IModuleVersion } from '../../../apiHelpers/modules';
 import { ITask } from '../../../apiHelpers/tasks';
 import { CustomSelect } from '../../common/CustomSelect/CustomSelect';
-import { LoadingAnimation } from '../../common/LoadingAnimation/LoadingAnimation';
+import { LoadingSpinner } from '../../common/LoadingSpinner/LoadingSpinner';
 
 interface TasksMenuProps {
   modules?: IModuleVersion[];
@@ -55,7 +55,7 @@ export const TasksMenu = ({
         </>
       ) : (
         <div className={styles.loadingWrapper}>
-          <LoadingAnimation />
+          <LoadingSpinner />
         </div>
       )}
     </section>

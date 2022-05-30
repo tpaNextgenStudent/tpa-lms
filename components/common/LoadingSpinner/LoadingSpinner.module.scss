@@ -1,0 +1,38 @@
+@use '/lib/styles/variables/colors.module' as colors;
+
+@keyframes pulse {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(16px);
+  }
+}
+
+.loadingWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.blob {
+  position: relative;
+  height: 16px;
+  width: 16px;
+  background-color: colors.$purplePrimary;
+  border-radius: 50%;
+  animation: pulse 0.25s infinite alternate;
+  z-index: 1;
+
+  &:nth-child(2) {
+    margin: 0 5px;
+    animation-delay: 0.125s;
+  }
+  &:nth-child(3) {
+    animation-delay: 0.25s;
+  }
+}
+
+.text {
+  margin-top: 26px;
+}

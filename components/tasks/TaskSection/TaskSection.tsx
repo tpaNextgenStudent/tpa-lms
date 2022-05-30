@@ -15,6 +15,7 @@ import { ITask } from '../../../apiHelpers/tasks';
 import { TaskSectionHeader } from '../TaskSectionHeader/TaskSectionHeader';
 import { TaskSectionPassAgain } from '../TaskSectionPassAgain/TaskSectionPassAgain';
 import { LoadingAnimation } from '../../common/LoadingAnimation/LoadingAnimation';
+import { LoadingSpinner } from '../../common/LoadingSpinner/LoadingSpinner';
 
 interface TaskSectionProps {
   task?: ITask['task_data'];
@@ -107,7 +108,7 @@ export const TaskSection = ({
         </>
       ) : (
         <div className={styles.loadingWrapper}>
-          <LoadingAnimation />
+          <LoadingSpinner />
         </div>
       )}
     </main>
