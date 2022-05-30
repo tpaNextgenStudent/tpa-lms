@@ -16,12 +16,8 @@ export interface IProgressItem {
   task_type: TaskType;
 }
 
-export const getCohortProgress = async ({
-  cookie,
-}: Options): Promise<IProgressItem[]> => {
-  const { data } = await axios.get(apiPath('progress/cohort'), {
-    headers: { cookie },
-  });
+export const fetchCohortProgress = async (): Promise<IProgressItem[]> => {
+  const { data } = await axios.get(apiPath('progress/cohort'));
   return data;
 };
 
