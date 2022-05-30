@@ -5,29 +5,72 @@ import { withServerSideAuth } from '../../../../../lib/auth/withServerSideAuth';
 import { GradesLegend } from '../../../../../components/teacher/GradesLegend/GradesLegend';
 import { ProfileBanner } from '../../../../../components/profile/ProfileBanner/ProfileBanner';
 import { ProfileUserInfo } from '../../../../../components/profile/ProfileUserInfo/ProfileUserInfo';
-import { getTeacherSingleStudentScores } from '../../../../../apiHelpers/cohort';
+import { fetchTeacherSingleStudentScores } from '../../../../../apiHelpers/cohort';
 import {
   getTeacherStudentProgressColumns,
   mapStudentProgressToTableData,
 } from '../../../../../lib/tables/teacher/cohort-student-progress/cohort-student-progress';
 import { ViewParamTabsSection } from '../../../../../components/common/ViewParamTabsSection/ViewParamTabsSection';
-import { getTeacherAssignmentsByStudent } from '../../../../../apiHelpers/assignments';
+import { fetchTeacherAssignmentsByStudent } from '../../../../../apiHelpers/assignments';
 import { mapStudentAssignmentsToTableData } from '../../../../../lib/tables/teacher/student-assignments/student-assignments';
 import { columns } from '../../../../../lib/tables/teacher/student-assignments/student-assignments';
 import styles from '../../../../../components/pagesStyles/singleStudentProgressPage.module.scss';
 import { EmptyStateView } from '../../../../../components/common/EmptyStateView/EmptyStateView';
 import NoAssignmentsRobotImg from '../../../../../public/img/no-assignments-robot.png';
+import { useQuery } from 'react-query';
+import { useRouter } from 'next/router';
+import { LoadingSpinner } from '../../../../../components/common/LoadingSpinner/LoadingSpinner';
 
 export default function CohortProgressIndex({
   user,
-  student,
-  studentScoresTableData,
-  studentAssignmentsTableData,
-  maxNumOfTasks,
 }: InferPagePropsType<typeof getServerSideProps>) {
-  const userName = [student.user.name, student.user.surname]
-    .filter(n => !!n)
-    .join(' ');
+  const router = useRouter();
+  const { assignment: assignmentId } = router.query as {
+    assignment: string;
+  };
+  const {
+    data: singleStudentScores,
+    refetch: refetchStudentScores,
+    isLoading: isStudentScoresLoading,
+  } = useQuery(['single-student-scores', assignmentId], () =>
+    fetchTeacherSingleStudentScores(assignmentId)
+  );
+
+  const {
+    data: rawStudentAssignments,
+    isLoading: isStudentAssignmentsLoading,
+    refetch: refetchStudentAssignments,
+  } = useQuery(['student-assignments', assignmentId], () =>
+    fetchTeacherAssignmentsByStudent(assignmentId)
+  );
+
+  const studentAssignmentsTableData =
+    rawStudentAssignments &&
+    mapStudentAssignmentsToTableData(rawStudentAssignments);
+
+  const tasks_in_modules = singleStudentScores?.tasks_in_modules;
+
+  const maxNumOfTasks =
+    tasks_in_modules && Math.max(...tasks_in_modules.map(m => m.tasks.length));
+
+  const studentScoresTableData =
+    tasks_in_modules && mapStudentProgressToTableData(tasks_in_modules);
+
+  const student = singleStudentScores && {
+    user: singleStudentScores.user,
+    profile: singleStudentScores.profile,
+  };
+
+  const userName =
+    student &&
+    [student.user.name, student.user.surname].filter(n => !!n).join(' ');
+
+  const refetchAll = async () => {
+    await refetchStudentScores();
+    await refetchStudentAssignments();
+  };
+
+  const isLoading = isStudentScoresLoading || isStudentAssignmentsLoading;
 
   return (
     <Layout
@@ -38,84 +81,61 @@ export default function CohortProgressIndex({
       }}
       withHeaderPrevButton
       title="Cohort Progress"
-      headerTitle={userName}
+      headerTitle={userName || '...'}
     >
-      <ProfileBanner />
-      <ProfileUserInfo
-        name={userName}
-        login={student.profile.login}
-        avatar={student.user.image}
-        bio={student.user.bio}
-      />
-      <ViewParamTabsSection
-        tabs={{
-          scores: (
-            <>
-              <GradesLegend className={styles.gradesLegendWrapper} />
-              <Table
-                id="student-scores-table"
-                data={studentScoresTableData}
-                columns={getTeacherStudentProgressColumns(maxNumOfTasks)}
-              />
-            </>
-          ),
-          'tasks to be assigned':
-            studentAssignmentsTableData.length > 0 ? (
-              <Table
-                id="student-tasks-to-be-assigned-table"
-                className={styles.toAssignTableWrapper}
-                data={studentAssignmentsTableData}
-                columns={columns}
-              />
-            ) : (
-              <EmptyStateView
-                imgSrc={NoAssignmentsRobotImg}
-                message="No assignments to be reviewed"
-              />
-            ),
-        }}
-      />
+      {student &&
+      studentAssignmentsTableData &&
+      studentScoresTableData &&
+      maxNumOfTasks ? (
+        <>
+          <ProfileBanner />
+          <ProfileUserInfo
+            name={userName!}
+            login={student.profile.login}
+            avatar={student.user.image}
+            bio={student.user.bio}
+          />
+          <ViewParamTabsSection
+            tabs={{
+              scores: (
+                <>
+                  <GradesLegend className={styles.gradesLegendWrapper} />
+                  <Table
+                    id="student-scores-table"
+                    data={studentScoresTableData}
+                    columns={getTeacherStudentProgressColumns(maxNumOfTasks)}
+                  />
+                </>
+              ),
+              'tasks to be assigned':
+                studentAssignmentsTableData.length > 0 ? (
+                  <Table
+                    id="student-tasks-to-be-assigned-table"
+                    className={styles.toAssignTableWrapper}
+                    data={studentAssignmentsTableData}
+                    columns={columns}
+                  />
+                ) : (
+                  <EmptyStateView
+                    imgSrc={NoAssignmentsRobotImg}
+                    message="No assignments to be reviewed"
+                  />
+                ),
+            }}
+          />
+        </>
+      ) : (
+        <LoadingSpinner isLoading={isLoading} refetch={refetchAll} />
+      )}
     </Layout>
   );
 }
 
 export const getServerSideProps = withServerSideAuth('teacher')(
-  async ({ req, params, user }) => {
-    const authCookie = req.headers.cookie as string;
-    const { assignment: assignmentId } = params! as {
-      assignment: string;
-    };
-
-    const [
-      { user: studentUser, profile, tasks_in_modules },
-      rawStudentAssignments,
-    ] = await Promise.all([
-      getTeacherSingleStudentScores(assignmentId, {
-        cookie: authCookie,
-      }),
-      getTeacherAssignmentsByStudent(assignmentId, {
-        cookie: authCookie,
-      }),
-    ]);
-
-    const maxNumOfTasks = Math.max(
-      ...tasks_in_modules.map(m => m.tasks.length)
-    );
-
-    const studentScoresTableData =
-      mapStudentProgressToTableData(tasks_in_modules);
-
-    const studentAssignmentsTableData = mapStudentAssignmentsToTableData(
-      rawStudentAssignments
-    );
-
+  async ({ user }) => {
     return {
       props: {
         user,
-        student: { user: studentUser, profile },
-        maxNumOfTasks,
-        studentScoresTableData,
-        studentAssignmentsTableData,
       },
     };
   }

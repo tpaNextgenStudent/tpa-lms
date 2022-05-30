@@ -72,16 +72,11 @@ export interface ITeacherSingleStudentScores {
   }[];
 }
 
-export const getTeacherSingleStudentScores = async (
-  assignmentId: string,
-  { cookie }: Options
+export const fetchTeacherSingleStudentScores = async (
+  assignmentId: string
 ): Promise<ITeacherSingleStudentScores> => {
   const { data } = await axios.get(
-    apiPath(`teacher/scores/student/${assignmentId}`),
-    {
-      headers: { cookie },
-    }
+    apiPath(`teacher/scores/student/${assignmentId}`)
   );
-
   return data.student;
 };

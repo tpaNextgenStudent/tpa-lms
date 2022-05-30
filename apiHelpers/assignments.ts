@@ -55,3 +55,13 @@ export const getTeacherAssignmentsByStudent = async (
 
   return data;
 };
+
+export const fetchTeacherAssignmentsByStudent = async (
+  assignmentId: string
+): Promise<IAssignment[]> => {
+  const { data } = await axios.get(
+    apiPath(`teacher/assignments/student/${assignmentId}`)
+  );
+
+  return data;
+};
