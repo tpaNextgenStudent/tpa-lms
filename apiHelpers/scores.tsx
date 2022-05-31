@@ -12,7 +12,7 @@ export interface IScore {
     attempt_number: number;
     submission_date: string;
     evaluation_date: string;
-    teacher: { user: IUser; profile: IProfile };
+    teacher: { user: IUser; profile: IProfile } | {};
   };
   task_name: string;
   task_type: TaskType;

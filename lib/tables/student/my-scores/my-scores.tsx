@@ -10,6 +10,7 @@ import { TaskDoneBadge } from '../../../../components/tasks/TaskDoneBadge/TaskDo
 import dayjs from 'dayjs';
 import { IScore } from '../../../../apiHelpers/scores';
 import { TextCell } from '../../../../components/common/tables/TextCell/TextCell';
+import { isUserObjectValid } from '../../../../utils/isUserObjectValid';
 
 interface ScoresData {
   submission_date: string;
@@ -20,7 +21,7 @@ interface ScoresData {
   attempt: number;
   score: number | null;
   reviewed_by: {
-    id: string;
+    id: string | null;
     name: string;
     img: string | null;
     login: string | null;
@@ -110,14 +111,15 @@ export const columns: Column<ScoresData>[] = [
   },
 ];
 
+const tpaBotUser = {
+  id: null,
+  name: 'TPA - BOT',
+  img: '/img/tpa-bot-avatar.png',
+  login: null,
+};
+
 export function mapStudentScoresToTableData(rawScores: IScore[]): ScoresData[] {
   return rawScores.map(({ attempt, task_type, task_name, module_number }) => {
-    const teacherName = [
-      attempt.teacher.user.name,
-      attempt.teacher.user.surname,
-    ]
-      .filter(n => n)
-      .join(' ');
     return {
       submission_date: dayjs(attempt.submission_date).format('DD MMM YYYY'),
       review_date: dayjs(attempt.evaluation_date).format('DD MMM YYYY'),
@@ -126,12 +128,16 @@ export function mapStudentScoresToTableData(rawScores: IScore[]): ScoresData[] {
       task_type: task_type,
       attempt: attempt.attempt_number,
       score: attempt.score,
-      reviewed_by: {
-        id: attempt.teacher.user.id,
-        name: teacherName,
-        img: attempt.teacher.user.image,
-        login: attempt.teacher.profile.login,
-      },
+      reviewed_by: isUserObjectValid(attempt.teacher)
+        ? {
+            id: attempt.teacher.user.id,
+            name: [attempt.teacher.user.name, attempt.teacher.user.surname]
+              .filter(n => n)
+              .join(' '),
+            img: attempt.teacher.user.image,
+            login: attempt.teacher.profile.login,
+          }
+        : tpaBotUser,
       view: { link: `/student/scores/${attempt.id}` },
     };
   });

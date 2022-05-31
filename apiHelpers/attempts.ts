@@ -56,10 +56,12 @@ export interface ISingleAttempt {
     user: IUser;
     profile: IProfile;
   };
-  teacher: {
-    user: IUser;
-    profile: IProfile;
-  };
+  teacher:
+    | {
+        user: IUser;
+        profile: IProfile;
+      }
+    | {};
   module_number: number;
   task_number: number;
   deprecated: boolean;

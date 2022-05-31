@@ -1,6 +1,6 @@
 import { IAttempt, ISingleAttempt } from '../apiHelpers/attempts';
-import { Comment, IProfile } from '../lib/types';
-import { IUser } from '../apiHelpers/user';
+import { Comment } from '../lib/types';
+import { isUserObjectValid } from './isUserObjectValid';
 
 const tpaBotUser = {
   id: null,
@@ -32,7 +32,7 @@ export function attemptToComments({
   return comment && evaluation_date
     ? [
         {
-          author: isUserDefined(teacher)
+          author: isUserObjectValid(teacher)
             ? {
                 id: teacher.user.id,
                 name: teacher.user.name,
@@ -70,7 +70,7 @@ export function attemptsToComments(attempts: IAttempt[]): Comment[] {
             evaluation_date: evaluation_date,
           })
         : {
-            author: isUserDefined(teacher)
+            author: isUserObjectValid(teacher)
               ? {
                   id: teacher.user.id,
                   name: teacher.user.name,
@@ -104,12 +104,4 @@ function createDeprecatedComment(attempt: {
     content:
       '**You uploaded a newer version of this task before the teacher could assess this one.**',
   };
-}
-
-function isUserDefined(
-  user: unknown
-): user is { user: IUser; profile: IProfile } {
-  return (
-    !!user && typeof user === 'object' && 'user' in user && 'profile' in user
-  );
 }
