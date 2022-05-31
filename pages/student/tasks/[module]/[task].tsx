@@ -37,14 +37,15 @@ export default function Tasks({
 
   const {
     data: attempts,
-    isFetching: isAttemptsFetching,
     refetch: refetchAttempts,
-  } = useQuery(['attempts', taskId], () => fetchAttemptsByTask(taskId));
+    isFetching: isAttemptsFetching,
+  } = useQuery(['attempts', taskId], () => fetchAttemptsByTask(taskId), {
+    enabled: router.query.view === 'comments',
+  });
 
   const refetchAll = async () => {
     await refetchModules();
     await refetchTasks();
-    await refetchAttempts();
   };
 
   const module = useMemo(
@@ -56,7 +57,7 @@ export default function Tasks({
     [attempts]
   );
 
-  const isLoading = isAttemptsFetching || isModulesFetching || isTasksFetching;
+  const isLoading = isModulesFetching || isTasksFetching;
   return (
     <Layout
       headerTitle="My Tasks"
@@ -64,7 +65,7 @@ export default function Tasks({
       user={user}
       headerDescription="Find all of yours tasks divided into modules."
     >
-      {modules && module && tasks && task && comments ? (
+      {modules && module && tasks && task ? (
         <div className={styles.tasksWrapper}>
           <TasksMenu
             tasksPathPrefix={'/student/tasks'}
@@ -74,7 +75,11 @@ export default function Tasks({
             task={task}
           />
           <TaskSection
-            comments={comments}
+            comments={{
+              data: comments,
+              refetch: refetchAttempts,
+              isLoading: isAttemptsFetching,
+            }}
             attempt={task?.last_attempt}
             task={task?.task_data}
             module={module}

@@ -3,7 +3,7 @@ import { TaskDescription } from '../TaskDescription/TaskDescription';
 import { TaskAction } from '../TaskAction/TaskAction';
 import { useState } from 'react';
 import clsx from 'clsx';
-import { TaskComments } from '../TaskComments/TaskComments';
+import { TaskComments, TaskCommentsLazy } from '../TaskComments/TaskComments';
 import { Comment, TaskStatus } from '../../../lib/types';
 import { IModuleVersion } from '../../../apiHelpers/modules';
 import { TaskBadges } from '../TaskBadges/TaskBadges';
@@ -24,7 +24,9 @@ interface TaskSectionProps {
     answer: null | string;
     github_link?: string;
   } | null;
-  comments?: Comment[];
+  comments:
+    | Comment[]
+    | { data?: Comment[]; refetch: () => void; isLoading: boolean };
   module: IModuleVersion;
   isTaskActionVisible?: boolean;
   isPassAgainVisible?: boolean;
@@ -92,7 +94,17 @@ export const TaskSection = ({
               )}
             </>
           ),
-          comments: comments && <TaskComments comments={comments} />,
+          comments: Array.isArray(comments) ? (
+            <TaskComments comments={comments} />
+          ) : (
+            <TaskCommentsLazy
+              comments={{
+                data: comments.data,
+                refetch: comments.refetch,
+                isLoading: comments.isLoading,
+              }}
+            />
+          ),
         }}
       />
       {isPassAgainVisible && (
