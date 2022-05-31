@@ -24,7 +24,7 @@ interface TaskSectionProps {
     answer: null | string;
     github_link?: string;
   } | null;
-  comments:
+  comments?:
     | Comment[]
     | { data?: Comment[]; refetch: () => void; isLoading: boolean };
   module: IModuleVersion;
@@ -97,13 +97,15 @@ export const TaskSection = ({
           comments: Array.isArray(comments) ? (
             <TaskComments comments={comments} />
           ) : (
-            <TaskCommentsLazy
-              comments={{
-                data: comments.data,
-                refetch: comments.refetch,
-                isLoading: comments.isLoading,
-              }}
-            />
+            comments && (
+              <TaskCommentsLazy
+                comments={{
+                  data: comments.data,
+                  refetch: comments.refetch,
+                  isLoading: comments.isLoading,
+                }}
+              />
+            )
           ),
         }}
       />
