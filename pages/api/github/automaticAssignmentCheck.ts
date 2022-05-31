@@ -151,6 +151,20 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
   const runId = payload.workflow_run.id;
 
   if (payload.action === 'requested') {
+    if (taskDetails?.taskDetails?.summative === true) {
+      const oldAttempts = await prisma.attempt.findMany({
+        where: { task_id: taskDetails?.taskDetails?.id, score: null },
+      });
+
+      await Promise.all(
+        oldAttempts.map(async (attempt: any) => {
+          await prisma.attempt.update({
+            where: { id: attempt.id },
+            data: { deprecated: true },
+          });
+        })
+      );
+    }
     //If action is requested create attempt with workflow-run-id to later identify this attempt
     const newAttempt = await prisma.attempt.create({
       data: {
@@ -239,21 +253,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       .catch(e => console.log(e))) as any;
 
     if (taskDetails?.taskDetails?.summative === true) {
-      const oldAttempts = await prisma.attempt.findMany({
-        where: { task_id: taskDetails?.taskDetails?.id, score: null },
-      });
-
-      await Promise.all(
-        oldAttempts.map(async (attempt: any) => {
-          if (attempt.workflow_run_id != `${runId}`) {
-            await prisma.attempt.update({
-              where: { id: attempt.id },
-              data: { deprecated: true },
-            });
-          }
-        })
-      );
-
       let newAttempt: newAttmept;
       if (alreadyCreatedAttempt) {
         newAttempt = await prisma.attempt.update({
