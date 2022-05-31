@@ -3,10 +3,6 @@ import axios from 'axios';
 import { IUser } from './user';
 import { IProfile, TaskType } from '../lib/types';
 
-type Options = {
-  cookie: string;
-};
-
 export interface IScore {
   attempt: {
     id: string;
