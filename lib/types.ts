@@ -22,7 +22,7 @@ interface CommentAuthor {
 
 export interface Comment {
   attempt_id: string;
-  content: string;
+  content: string | null;
   date: string;
   attempt_number: number;
   attempt_score: number | null;
