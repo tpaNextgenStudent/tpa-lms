@@ -157,7 +157,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         assignment_id: taskDetails?.assignmentId || '',
         task_id: taskDetails?.taskDetails?.id || '',
         answer: `https://github.com/tpa-nextgen-staging/${payload.workflow_run.pull_requests[0].head.repo.name}/pull/${payload.workflow_run.pull_requests[0].number}`,
-        attempt_number: taskDetails?.task?.attempt_number + 1,
+        attempt_number: taskDetails?.task?.attempt_number + 1 || 1,
         teacher_assigment_id: 'cl3mjp6v60090uts6s96mglvo',
         submission_date: new Date(),
         status: 'in review',
@@ -239,6 +239,21 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       .catch(e => console.log(e))) as any;
 
     if (taskDetails?.taskDetails?.summative === true) {
+      const oldAttempts = await prisma.attempt.findMany({
+        where: { task_id: taskDetails?.taskDetails?.id, score: null },
+      });
+
+      await Promise.all(
+        oldAttempts.map(async (attempt: any) => {
+          if (attempt.workflow_run_id != `${runId}`) {
+            await prisma.attempt.update({
+              where: { id: attempt.id },
+              data: { deprecated: true },
+            });
+          }
+        })
+      );
+
       let newAttempt: newAttmept;
       if (alreadyCreatedAttempt) {
         newAttempt = await prisma.attempt.update({
@@ -247,7 +262,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             assignment_id: taskDetails?.assignmentId || '',
             task_id: taskDetails?.taskDetails?.id || '',
             answer: `https://github.com/tpa-nextgen-staging/${payload.workflow_run.pull_requests[0].head.repo.name}/pull/${payload.workflow_run.pull_requests[0].number}`,
-            attempt_number: taskDetails?.task?.attempt_number,
+            attempt_number: taskDetails?.task?.attempt_number || 1,
             teacher_assigment_id: 'cl3mjp6v60090uts6s96mglvo',
             submission_date: new Date(),
             status: 'in review',
@@ -308,7 +323,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             assignment_id: taskDetails?.assignmentId || '',
             task_id: taskDetails?.taskDetails?.id || '',
             answer: `https://github.com/tpa-nextgen-staging/${payload.workflow_run.pull_requests[0].head.repo.name}/pull/${payload.workflow_run.pull_requests[0].number}`,
-            attempt_number: taskDetails?.task?.attempt_number,
+            attempt_number: taskDetails?.task?.attempt_number || 1,
             teacher_assigment_id: 'cl3mjp6v60090uts6s96mglvo',
             submission_date: new Date(),
             evaluation_date: new Date(),

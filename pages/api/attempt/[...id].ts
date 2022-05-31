@@ -23,6 +23,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       teacher: { select: { profile: true } },
       module_number: true,
       task_number: true,
+      deprecated: true,
     },
   });
 

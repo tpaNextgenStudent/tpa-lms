@@ -26,6 +26,7 @@ export interface IAttempt {
     user: IUser;
     profile: IProfile;
   };
+  deprecated: boolean;
 }
 
 export interface ISingleAttempt {
@@ -59,6 +60,7 @@ export interface ISingleAttempt {
   };
   module_number: number;
   task_number: number;
+  deprecated: boolean;
 }
 
 export const fetchAttemptsByTask = async (

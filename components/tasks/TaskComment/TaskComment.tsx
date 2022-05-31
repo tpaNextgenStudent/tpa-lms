@@ -16,7 +16,7 @@ interface TaskCommentProps {
 export const TaskComment = ({ comment }: TaskCommentProps) => {
   const { asPath } = useRouter();
 
-  const content = parseCommentMessage(comment.content);
+  const content = parseCommentMessage(comment.content || '');
 
   const versionLink = `/student/tasks/attempt/${comment.attempt_id}`;
   const authorName = [comment.author.name, comment.author.surname]
