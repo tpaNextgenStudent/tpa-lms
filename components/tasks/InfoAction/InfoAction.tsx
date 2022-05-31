@@ -14,17 +14,18 @@ export const InfoAction = ({ sizeRef }: InfoActionProps) => {
   const { setIsLoading } = useIsLoading();
   const router = useRouter();
   const attemptId = router.query.task as string;
-  const { invalidateQueries } = useQueryClient();
+  const queryCache = useQueryClient();
 
   const handleClick = async () => {
     try {
       setIsLoading(true);
       await postMarkTaskAsRead(attemptId);
-      await invalidateQueries('tasks');
-      await invalidateQueries('attempts');
+      await queryCache.invalidateQueries('tasks');
+      await queryCache.invalidateQueries('attempts');
       toast('Task was marked as read.', { type: 'success' });
       await router.push('/student/tasks');
     } catch (e) {
+      console.log(e);
       toast('There was an error while marking this task as read.', {
         type: 'error',
       });
