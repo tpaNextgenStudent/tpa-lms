@@ -1,77 +1,102 @@
 import { IAttempt, ISingleAttempt } from '../apiHelpers/attempts';
-import { Comment } from '../lib/types';
+import { Comment, IProfile } from '../lib/types';
+import { IUser } from '../apiHelpers/user';
 
-export function attemptToComments(attempt: ISingleAttempt): Comment[] {
-  if (attempt.deprecated && attempt.evaluation_date) {
+const tpaBotUser = {
+  id: null,
+  name: 'TPA - BOT',
+  surname: '',
+  image: '/img/tpa-bot-avatar.png',
+  login: null,
+};
+
+export function attemptToComments({
+  deprecated,
+  evaluation_date,
+  id,
+  attempt_number,
+  score,
+  comment,
+  teacher,
+}: ISingleAttempt): Comment[] {
+  if (deprecated && evaluation_date) {
     return [
-      createDepracatedComment({
-        attempt_id: attempt.id,
-        attempt_number: attempt.attempt_number,
-        score: attempt.score,
-        evaluation_date: attempt.evaluation_date,
+      createDeprecatedComment({
+        attempt_id: id,
+        attempt_number: attempt_number,
+        score: score,
+        evaluation_date: evaluation_date,
       }),
     ];
   }
-  return attempt.comment && attempt.evaluation_date
+  return comment && evaluation_date
     ? [
         {
-          author: {
-            id: attempt.teacher.user.id,
-            name: attempt.teacher.user.name,
-            surname: attempt.teacher.user.surname,
-            image: attempt.teacher.user.image,
-            login: attempt.teacher.profile.login,
-          },
-          attempt_score: attempt.score,
-          content: attempt.comment,
-          attempt_number: attempt.attempt_number,
-          attempt_id: attempt.id,
-          date: attempt.evaluation_date,
+          author: isUserDefined(teacher)
+            ? {
+                id: teacher.user.id,
+                name: teacher.user.name,
+                surname: teacher.user.surname,
+                image: teacher.user.image,
+                login: teacher.profile.login,
+              }
+            : tpaBotUser,
+          attempt_score: score,
+          content: comment,
+          attempt_number: attempt_number,
+          attempt_id: id,
+          date: evaluation_date,
         },
       ]
     : [];
 }
 
 export function attemptsToComments(attempts: IAttempt[]): Comment[] {
-  return attempts.map(attempt => {
-    return attempt.deprecated
-      ? createDepracatedComment({
-          attempt_id: attempt.attempt_id,
-          attempt_number: attempt.attempt_number,
-          score: attempt.score,
-          evaluation_date: attempt.evaluation_date,
-        })
-      : {
-          author: {
-            id: attempt.teacher.user.id,
-            name: attempt.teacher.user.name,
-            surname: attempt.teacher.user.surname,
-            image: attempt.teacher.user.image,
-            login: attempt.teacher.profile.login,
-          },
-          attempt_id: attempt.attempt_id,
-          attempt_number: attempt.attempt_number,
-          attempt_score: attempt.score,
-          date: attempt.evaluation_date,
-          content: attempt.comment!,
-        };
-  });
+  return attempts.map(
+    ({
+      attempt_id,
+      attempt_number,
+      comment,
+      teacher,
+      evaluation_date,
+      score,
+      deprecated,
+    }) => {
+      return deprecated
+        ? createDeprecatedComment({
+            attempt_id: attempt_id,
+            attempt_number: attempt_number,
+            score: score,
+            evaluation_date: evaluation_date,
+          })
+        : {
+            author: isUserDefined(teacher)
+              ? {
+                  id: teacher.user.id,
+                  name: teacher.user.name,
+                  surname: teacher.user.surname,
+                  image: teacher.user.image,
+                  login: teacher.profile.login,
+                }
+              : tpaBotUser,
+            attempt_id: attempt_id,
+            attempt_number: attempt_number,
+            attempt_score: score,
+            date: evaluation_date,
+            content: comment!,
+          };
+    }
+  );
 }
 
-function createDepracatedComment(attempt: {
+function createDeprecatedComment(attempt: {
   attempt_id: string;
   attempt_number: number;
   score: number | null;
   evaluation_date: string;
 }): Comment {
   return {
-    author: {
-      id: null,
-      name: 'TPA - BOT',
-      surname: '',
-      image: '/img/tpa-bot-avatar.png',
-      login: null,
-    },
+    author: tpaBotUser,
     attempt_id: attempt.attempt_id,
     attempt_number: attempt.attempt_number,
     attempt_score: attempt.score,
@@ -79,4 +104,12 @@ function createDepracatedComment(attempt: {
     content:
       '**You uploaded a newer version of this task before the teacher could assess this one.**',
   };
+}
+
+function isUserDefined(
+  user: unknown
+): user is { user: IUser; profile: IProfile } {
+  return (
+    !!user && typeof user === 'object' && 'user' in user && 'profile' in user
+  );
 }

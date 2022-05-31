@@ -22,10 +22,12 @@ export interface IAttempt {
   attempt_number: number;
   submission_date: string;
   evaluation_date: string;
-  teacher: {
-    user: IUser;
-    profile: IProfile;
-  };
+  teacher:
+    | {
+        user: IUser;
+        profile: IProfile;
+      }
+    | {};
   deprecated: boolean;
 }
 
