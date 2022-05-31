@@ -26,6 +26,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       evaluation_date: true,
       teacher: { select: { profile: true } },
       task: true,
+      deprecated: true,
     },
     orderBy: {
       attempt_number: 'asc',

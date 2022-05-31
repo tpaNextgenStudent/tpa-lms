@@ -17,6 +17,7 @@ export function attemptToComments(attempt: ISingleAttempt): Comment[] {
           attempt_number: attempt.attempt_number,
           attempt_id: attempt.id,
           date: attempt.evaluation_date,
+          // deprecated: attempt.deprecated,
         },
       ]
     : [];
@@ -39,4 +40,27 @@ export function attemptsToComments(attempts: IAttempt[]): Comment[] {
       date: attempt.evaluation_date,
       content: attempt.comment!,
     }));
+}
+
+function createDepracatedComment(attempt: {
+  attempt_id: string;
+  attempt_number: number;
+  score: number;
+  evaluation_date: string;
+  comment: string;
+}): Comment {
+  return {
+    author: {
+      id: null,
+      name: 'TPA - BOT',
+      surname: '',
+      image: 'tpa-bot-avatar.png',
+      login: null,
+    },
+    attempt_id: attempt.attempt_id,
+    attempt_number: attempt.attempt_number,
+    attempt_score: attempt.score,
+    date: attempt.evaluation_date,
+    content: attempt.comment,
+  };
 }

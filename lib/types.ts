@@ -13,7 +13,7 @@ export type InferPagePropsType<T> = T extends (
   : never;
 
 interface CommentAuthor {
-  id: string;
+  id: string | null;
   name: string | null;
   surname: string | null;
   image: string | null;
