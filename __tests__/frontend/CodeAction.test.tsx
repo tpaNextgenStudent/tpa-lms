@@ -16,11 +16,7 @@ describe('CodeAction', () => {
       asPath: '/student/tasks/moduleId/taskId',
     }));
 
-    render(
-      <CodeAction
-        task={{ description: '', id: '', link: '', type: 'code', name: '' }}
-      />
-    );
+    render(<CodeAction github_link={''} />);
 
     //no toast at initial render
     const toast = screen.queryByTestId('toast');
