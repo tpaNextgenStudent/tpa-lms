@@ -3,10 +3,6 @@ import axios from 'axios';
 import { IProfile, TaskStatus, TaskType } from '../lib/types';
 import { IUser } from './user';
 
-type Options = {
-  cookie: string;
-};
-
 export interface IProgressItem {
   student: { user: IUser | null; profile: IProfile };
   module_name: string;
@@ -39,19 +35,6 @@ export interface ITeacherProgressItem {
   };
   tasks: ITeacherProgressTask[];
 }
-
-export const getTeacherCohortProgress = async (
-  moduleId: string,
-  { cookie }: Options
-): Promise<ITeacherProgressItem[]> => {
-  const { data } = await axios.get(
-    apiPath(`teacher/cohort/scores/module/${moduleId}`),
-    {
-      headers: { cookie },
-    }
-  );
-  return data;
-};
 
 export const fetchTeacherCohortProgress = async (
   moduleId: string

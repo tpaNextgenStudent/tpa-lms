@@ -80,6 +80,10 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     })
   );
 
+  console.log('-–––––––––––––––LOG-START-–––––––––––––––');
+  console.log(alreadyMarked);
+  console.log('-–––––––––––––––LOG-END---–––––––––––––––');
+
   if (alreadyMarked) {
     return res.status(404).send({
       message: 'Task has been already marked as read',
