@@ -3,10 +3,6 @@ import axios from 'axios';
 import { IProfile, TaskStatus, TaskType } from '../lib/types';
 import { IUser } from './user';
 
-type Options = {
-  cookie: string;
-};
-
 export interface IAttempt {
   attempt_id: string;
   task_data: {
@@ -72,19 +68,12 @@ export const fetchAttemptsByTask = async (
   return data.attempts;
 };
 
-export const getAttemptById = async (
-  attemptId: string,
-  { cookie }: Options
-): Promise<ISingleAttempt> => {
-  const { data } = await axios.get(apiPath(`attempt/${attemptId}`), {
-    headers: { cookie },
-  });
-  return data;
-};
-
 export const fetchAttemptById = async (
   attemptId: string
 ): Promise<ISingleAttempt> => {
   const { data } = await axios.get(apiPath(`attempt/${attemptId}`));
+  console.log('-–––––––––––––––LOG-START-–––––––––––––––');
+  console.log(data);
+  console.log('-–––––––––––––––LOG-END---–––––––––––––––');
   return data;
 };
