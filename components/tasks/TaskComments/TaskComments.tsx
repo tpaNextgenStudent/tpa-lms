@@ -6,14 +6,15 @@ import NoCommentsRobotImg from '../../../public/img/no-comments-robot.png';
 import dayjs from 'dayjs';
 import { TaskComment } from '../TaskComment/TaskComment';
 import { LoadingSpinner } from '../../common/LoadingSpinner/LoadingSpinner';
+import { useQuery } from 'react-query';
+import { fetchAttemptsByTask } from '../../../apiHelpers/attempts';
+import { useRouter } from 'next/router';
+import { useMemo } from 'react';
+import { attemptsToComments } from '../../../utils/attemptsToComments';
 dayjs.extend(relativeTime);
 
 interface TaskCommentsProps {
   comments: Comment[];
-}
-
-interface TaskCommentsLazyProps {
-  comments: { data?: Comment[]; refetch: () => void; isLoading: boolean };
 }
 
 interface CommentsListProps {
@@ -45,14 +46,27 @@ export const TaskComments = ({ comments }: TaskCommentsProps) => {
   return <CommentsList comments={comments} />;
 };
 
-export const TaskCommentsLazy = ({
-  comments: { data, refetch, isLoading },
-}: TaskCommentsLazyProps) => {
-  if (!data) {
-    return <LoadingSpinner isLoading={isLoading} refetch={refetch} />;
+export const TaskCommentsLazy = () => {
+  const router = useRouter();
+  const { task: taskId } = router.query! as {
+    task: string;
+  };
+  const {
+    data: attempts,
+    refetch,
+    isFetching,
+  } = useQuery(['attempts', taskId], () => fetchAttemptsByTask(taskId));
+
+  const comments = useMemo(
+    () => attempts && attemptsToComments(attempts),
+    [attempts]
+  );
+
+  if (!comments) {
+    return <LoadingSpinner isLoading={isFetching} refetch={refetch} />;
   }
 
-  if (!isLoading && data.length < 1) {
+  if (!isFetching && comments.length < 1) {
     return (
       <EmptyStateView
         imgSrc={NoCommentsRobotImg}
@@ -61,5 +75,5 @@ export const TaskCommentsLazy = ({
     );
   }
 
-  return <CommentsList comments={data} />;
+  return <CommentsList comments={comments} />;
 };

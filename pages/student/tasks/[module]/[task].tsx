@@ -35,14 +35,6 @@ export default function Tasks({
   } = useQuery(['tasks', moduleId], () => fetchUserTasksByModule(moduleId));
   const task = tasks && tasks.find(t => t.task_data.id === taskId);
 
-  const {
-    data: attempts,
-    refetch: refetchAttempts,
-    isFetching: isAttemptsFetching,
-  } = useQuery(['attempts', taskId], () => fetchAttemptsByTask(taskId), {
-    enabled: router.query.view === 'comments',
-  });
-
   const refetchAll = async () => {
     await refetchModules();
     await refetchTasks();
@@ -51,10 +43,6 @@ export default function Tasks({
   const module = useMemo(
     () => modules && modules.find(m => m.module_version_id === moduleId)!,
     [modules, moduleId]
-  );
-  const comments = useMemo(
-    () => attempts && attemptsToComments(attempts),
-    [attempts]
   );
 
   const isLoading = isModulesFetching || isTasksFetching;
@@ -75,11 +63,7 @@ export default function Tasks({
             task={task}
           />
           <TaskSection
-            comments={{
-              data: comments,
-              refetch: refetchAttempts,
-              isLoading: isAttemptsFetching,
-            }}
+            comments="lazy"
             attempt={task?.last_attempt}
             task={task?.task_data}
             module={module}
