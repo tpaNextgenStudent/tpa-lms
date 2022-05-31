@@ -77,6 +77,6 @@ function createDepracatedComment(attempt: {
     attempt_score: attempt.score,
     date: attempt.evaluation_date,
     content:
-      'You uploaded a newer version of this task before the teacher could assess this one.',
+      '**You uploaded a newer version of this task before the teacher could assess this one.**',
   };
 }
