@@ -70,5 +70,6 @@
 }
 
 .badgesWrapper {
-  justify-content: space-between;
+  display: grid !important;
+  grid-template-columns: min-content auto min-content;
 }

@@ -3,10 +3,6 @@ import axios from 'axios';
 import { IUser } from './user';
 import { TaskType, TaskStatus, IProfile } from '../lib/types';
 
-type Options = {
-  cookie: string;
-};
-
 export interface IAssignment {
   id: string;
   assignment_id: string;
@@ -39,20 +35,6 @@ export interface IAssignment {
 }
 export const fetchTeacherAssignments = async (): Promise<IAssignment[]> => {
   const { data } = await axios.get(apiPath(`teacher/assignments`));
-  return data;
-};
-
-export const getTeacherAssignmentsByStudent = async (
-  assignmentId: string,
-  { cookie }: Options
-): Promise<IAssignment[]> => {
-  const { data } = await axios.get(
-    apiPath(`teacher/assignments/student/${assignmentId}`),
-    {
-      headers: { cookie },
-    }
-  );
-
   return data;
 };
 
